@@ -1,0 +1,34 @@
+\mysection{Metot}
+
+Bu kitabın yazarı C öğrenmeye başladığında ve sonrasında da \Cpp, ufak kod parçaları yazıp derlerdi ve üretilen assembly çıktısını incelerdi. Bu, yazdığı kodda neler olup bittiğini daha kolay anlayabilmesini sağladı.
+
+\footnote{Öte yandan, yazar bunu hala belirli bir kodu anlayamadığında yapıyor}.
+He did this so many times that the relationship between the \CCpp code and what the compiler produced was imprinted deeply in his mind.
+Şimdilerde bir C kodunun görünümünü ve fonksiyonunu kaba taslak hayal etmesi onun için oldukça kolaylaştı.
+Belki bu teknik sizler için de yararlı olur.
+
+%There are a lot of examples for both x86/x64 and ARM.
+%Those who already familiar with one of architectures, may freely skim over pages.
+
+Öte yandan aynı işi kendi makinenize kurmanız yerine çeşitli derleyiciler ile yapmanıza imkan sağlayan faydalı bir websitesi mevcut. 
+Bu adres üzerinden kullanabilirsiniz: \url{https://godbolt.org/}.
+
+\section*{\Exercises}
+
+Bu kitabın yazarı assembly dilini öğrenirken kodu olabildiğince küçültmek için sıklıkla ufak C fonksiyonları yazıp kademeli olarak assembly'e çevirirdi.
+Bu yöntem bugünün dünyasında pek değerli olmayabilir çünkü yeni nesil derleyiciler  ile verimlilik konusunda yarışmak oldukça zor. Yine de assembly'i kavramak için hala iyi bir yöntem. Bu kitapta bulunan herhangi bir assembly kodunu alıp daha kısa bir şekilde yazmayı deneyebilirsiniz.
+Tabi yazdığınız kodu test etmeyi unutmayın.
+
+% rewrote to show that debug\release and optimisations levels are orthogonal concepts.
+\section*{Optimizasyon Seviyeleri ve Debug Bilgisi}
+
+Kaynak kod farklı derleyicilerle farklı optimizasyon seviyelerinde derlenebilir.
+Genellikle bir derleyicide 3 farklı optimizasyon seviyesi bulunur. Değer sıfır verildiğinde bu optimasyon yapılmayacak anlamına gelir.
+Optimizasyon kod boyutunu veya kodun çalışma hızı göre yapılabilir.
+Optimizasyon yapmayan derleyici daha hızlı bir şekilde anlaşılır kod üretir (her ne kadar gereksiz kodlar da içerse de). Buna karşın optimizasyon yapan derleyici daha yavaş bir şekilde anlaşılması daha güç kod üretir (daha yoğun olması zorunlu değil tabi).
+Optimizasyon seviyelerine ek olarak, derleyici debuging işlemlerinin daha kolay gerçekleştirilmesi için çıktıya çeşitli debug bilgileri ekleyebilir.
+
+´debug' kodun en önemli özeliklerinden birisi kaynak kodun her satırına bağlantılar ve ilgili makine kodun adresini içerebilmesidir. Optimizasyon yapan derleyiciler kaynak kodun tüm satırlarını optimize etme ve kaynak kodda olmayan makine kodları üretme eğilimindedirler. Tersine Mühendisler her iki versiyonla da karşılaşabilirler çünkü bazı geliştiriciler optimizasyonu bayraklarını kullanır bazırıysa kullanmazlar.
+Bu yüzden kitap boyunca mümkün olan durumlarda kodun debug ve release örnekleri üzerinde çalışacağız.
+
+Alınabilecek en kısa (ya da basit) kodu alabilmek için bu kitap boyunca bazı yerlerde antika derleyiciler de kullanıldı.
