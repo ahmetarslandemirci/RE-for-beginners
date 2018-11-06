@@ -1,8 +1,8 @@
-﻿\subsection{Boundaries of strings}
+﻿\subsection{文字列境界}
 
 \myindex{win32!GetOpenFileName}
-It's interesting to note, how parameters are passed into win32 \IT{GetOpenFileName()} function.
-In order to call it, one must set list of allowed file extensions:
+パラメータがwin32の\IT{GetOpenFileName()}関数にどのように渡されるかは興味深いことです。 
+それを呼び出すには、許可されたファイル拡張子のリストを設定する必要があります：
 
 \begin{lstlisting}[style=customc]
 	OPENFILENAME *LPOPENFILENAME;
@@ -19,16 +19,14 @@ In order to call it, one must set list of allowed file extensions:
 		...
 \end{lstlisting}
 
-What happens here is that list of strings are passed into \IT{GetOpenFileName()}.
-It is not a problem to parse it: whenever you encounter single zero byte, this is an item.
-Whenever you encounter two zero bytes, this is end of the list.
-If you will pass this string into \printf, it will treat first item as a single string.
+ここでは、\IT{GetOpenFileName()}に文字列のリストが渡されます。 
+解析するのは問題ではありません。ゼロバイトが1つ出現するたびに、これがアイテムになります。 
+ゼロバイトが2バイト出現すれば、リストの最後になります。 
+この文字列を \printf に渡すと、最初の項目は単一の文字列として扱われます。
 
-So this is string, or...?
-It's better say this is buffer containing several zero-terminated C-strings, which can be stored and processed
-as a whole.
+これは文字列か、そうではないのか。
+これは、複数のゼロ終端されたC文字列を含むバッファであり、全体として格納して処理することができます。
 
 \myindex{\CStandardLibrary!strtok}
-Another exmaple is \IT{strtok()} function. It takes a string and write zero bytes in the middle of it.
-It thus transforms input string into some kind of buffer, which has several zero-terminated C-strings.
-
+もう一つの例は\IT{strtok()}関数です。文字列をとり、その真ん中にゼロバイトを書き込みます。 
+したがって、入力文字列をいくつかの種類のバッファに変換します。バッファには、ゼロで終了するC文字列がいくつかあります。

@@ -1,5 +1,25 @@
-% TODO to be synced with EN version
 \section*{はじめに}
+
+\subsection*{What is with two titles?}
+\label{TwoTitles}
+
+The book was named ``Reverse Engineering for Beginners'' in 2014-2018, but I always suspected this makes readership too narrow.
+
+Infosec people know about ``reverse engineering'', but I've rarely hear the ``assembler'' word from them.
+
+Likewise, the ``reverse engineering'' term is somewhat cryptic to a general audience of programmers, but they know about ``assembler''.
+
+In July 2018, as an experiment, I've changed the title to ``Assembly Language for Beginners''
+and posted the link to Hacker News website\footnote{\url{https://news.ycombinator.com/item?id=17549050}}, and the book was received generally well.
+
+So let it be, the book now has two titles.
+
+However, I've changed the second title to ``Understanding Assembly Language'', because someone already written ``Assembly Language for Beginners'' book.
+Also, people say ``for Beginners'' sounds a bit sarcastic for the book of \textasciitilde{}1000 pages.
+
+Two books differ only by title, filename (UAL-XX.pdf versus RE4B-XX.pdf), URL and couple of first pages.
+
+\subsection*{About reverse engineering}
 
 \q{\gls{reverse engineering}}にはよく知られた意味がいくつかあります。
 
@@ -39,6 +59,52 @@ Dennis Yurichevは経験豊富なリバースエンジニアでありまたプ�
 \input{praise}
 \input{thanks}
 \input{FAQ_JPN}
+
+\subsection*{How to learn programming}
+
+Many people keep asking about it.
+
+There is no ``royal road'', but there are quite efficient ways.
+
+From my own experience, this is just: solving exercises from:
+
+\begin{itemize}
+\item \KRBook
+\item Harold Abelson, Gerald Jay Sussman, Julie Sussman -- Structure and Interpretation of Computer Programs
+\item \TAOCP
+\item Niklaus Wirth's books
+\item \RobPikePractice
+\end{itemize}
+
+... in pure C and LISP.
+You may never use these programming languages in future at all.
+Almost all commercial programmers don’t. But C and LISP coding experience will help enormously in long run.
+
+Also, you can skip reading these books itselves,
+just skim them whenever you feel you need to understand something you missing for the exercise you currently solve.
+
+This may take years at best, or a lifetime, but still this is way faster than to rush between fads.
+
+The success of these books probably related to the fact that their authors are teachers
+and all this material has been honed on students first.
+
+As of LISP, I personally would recommend Racket (Scheme dialect). But this is matter of taste, anyway.
+
+Some people say assembly language understanding is also very helpful, even if you will never use it.
+This is true.
+But this is a way for the most dedicated geeks, and it can be postponed at start.
+
+Also, self-taught people (including author of these lines) often has the problem of trying too hard on hard problems,
+skipping easy ones.
+This is a great mistake.
+Compare to sport or music -- no one starts at 100kg weights, or Paganini's Caprices.
+I would say -- you can try to tackle a problem if you can outline its solution in your mind.
+
+\input{knuth_baby_steps}
+( Donald E. Knuth -- \url{https://theorydish.blog/2018/02/01/donald-knuth-on-doing-research/} )
+
+Good luck!
+
 
 \subsection*{韓国語版について}
 

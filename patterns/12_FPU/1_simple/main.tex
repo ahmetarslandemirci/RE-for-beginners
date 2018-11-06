@@ -23,6 +23,12 @@ Let's consider this simple example:
 Considérons cet exemple simple:
 \fi
 
+\ifdefined\JAPANESE
+\subsection{簡単な例}
+
+この簡単な例を考えてみましょう。
+\fi
+
 \lstinputlisting[style=customc]{patterns/12_FPU/1_simple/simple.c}
 
 \input{patterns/12_FPU/1_simple/x86}
@@ -32,4 +38,5 @@ Considérons cet exemple simple:
 \RU{\input{patterns/12_FPU/1_simple/MIPS_RU}}
 \DE{\input{patterns/12_FPU/1_simple/MIPS_DE}}
 \FR{\input{patterns/12_FPU/1_simple/MIPS_FR}}
+\JPN{\input{patterns/12_FPU/1_simple/MIPS_JPN}}
 

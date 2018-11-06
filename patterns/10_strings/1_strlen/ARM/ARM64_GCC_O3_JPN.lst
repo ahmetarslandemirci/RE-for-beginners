@@ -1,13 +1,13 @@
 ﻿my_strlen:
 	mov	x1, x0
-	; X1 is now temporary pointer (eos), acting like ﾂｧ\IT{cursor}ﾂｧ
+	; X1は一時的なポインタ(eos)で、 ﾂｧ\IT{cursor}ﾂｧ のようにふるまう
 .L58:
-	; load byte from X1 to W2, increment X1 (post-index)
+	; X1 から W2にバイトをロードし、X1 (post-index)をインクリメント
 	ldrb	w2, [x1],1
-	; Compare and Branch if NonZero: compare W2 with 0, jump to .L58 if it is not
+	; ゼロでなければ分岐：W2と0を比較し、異なれば.L58にジャンプ
 	cbnz	w2, .L58
-	; calculate difference between initial pointer in X0 and current address in X1
+	; X0の初期ポインタとX1の現在のアドレスとの差分を計算
 	sub	x0, x1, x0
-	; decrement lowest 32-bit of result
+	; 結果の下位32ビットをデクリメント
 	sub	w0, w0, #1
 	ret

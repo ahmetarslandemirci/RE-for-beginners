@@ -1,18 +1,18 @@
-my_strlen:
-; "eos" variable will always reside in $v1:
+﻿my_strlen:
+; "eos"変数は常に$v1に配置
                 move    $v1, $a0
 
 loc_4:
-; load byte at address in "eos" into $a1:
+; "eos"のアドレスのバイトを$a1にロード
                 lb      $a1, 0($v1)
                 or      $at, $zero ; load delay slot, NOP
-; if loaded byte is not zero, jump to loc_4:
+; ロードされたバイトがゼロでなければ、loc_4にジャンプ
                 bnez    $a1, loc_4
-; increment "eos" anyway:
+; "eos"をとにかくインクリメント
                 addiu   $v1, 1 ; branch delay slot
-; loop finished. invert "str" variable:
+; ループが終了。"str"変数を反転させる
                 nor     $v0, $zero, $a0
 ; $v0=-str-1
                 jr      $ra
-; return value = $v1 + $v0 = eos + ( -str-1 ) = eos - str - 1
+; 戻り値 = $v1 + $v0 = eos + ( -str-1 ) = eos - str - 1
                 addu    $v0, $v1, $v0 ; branch delay slot

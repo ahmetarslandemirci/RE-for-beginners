@@ -1,116 +1,114 @@
-\subsubsection{x86}
+﻿\subsubsection{x86}
 
 \myparagraph{\NonOptimizing MSVC}
 
-Let's compile:
+コンパイルしてみましょう。
 
 \lstinputlisting[style=customasmx86]{patterns/10_strings/1_strlen/10_1_msvc_JPN.asm}
 
 \myindex{x86!\Instructions!MOVSX}
 \myindex{x86!\Instructions!TEST}
 
-We get two new instructions here: \MOVSX and \TEST.
+新しい命令が2つ出てきました、 \MOVSX と \TEST です。
 
 \label{MOVSX}
 
-The first one---\MOVSX---takes a byte from an address in memory and stores the value in a 32-bit register. 
-\MOVSX stands for \IT{MOV with Sign-Extend}. 
-\MOVSX sets the rest of the bits, from the 8th to the 31th, 
-to 1 if the source byte is \IT{negative} or to 0 if is \IT{positive}.
+最初の \MOVSX は、メモリ内のアドレスからバイトを取り出し、その値を32ビットレジスタに格納します。 
+\MOVSX は\IT{MOV with Sign-Extend}の略です。 
+\MOVSX はソースバイトが\IT{負}の場合は1に、\IT{正}の場合は0に残りのビットを8から31に設定します。
 
-And here is why.
+そして、それが理由です。
 
-By default, the \Tchar type is signed in MSVC and GCC. If we have two values of which one is \Tchar 
-and the other is \Tint, (\Tint is signed too), and if the first value contain -2 (coded as \TT{0xFE}) 
-and we just copy this byte into the \Tint container, it makes \TT{0x000000FE}, and this 
-from the point of signed \Tint view is 254, but not -2. In signed int, -2 is coded as \TT{0xFFFFFFFE}. 
-So if we have to transfer \TT{0xFE} from a variable of \Tchar type to \Tint, 
-we have to identify its sign and extend it. That is what \MOVSX does.
+デフォルトでは、 \Tchar 型はMSVCとGCCで署名されています。 一方が \Tchar で
+他方が \Tint である2つの値がある場合（ \Tint も署名されます）、最初の値に-2（\TT{0xFE}としてコード化されています）
+が含まれ、このバイトを \Tint コンテナにコピーするだけで\TT{0x000000FE} 、
+これは符号付きの \Tint ビューのポイントから254ですが、-2ではありません。
+符号付き \Tint の場合、-2は\TT{0xFFFFFFFE}としてコード化されます。 
+したがって、 \Tchar 型の変数から\TT{0xFE}を \Tint に転送する必要がある場合は、
+その符号を識別して拡張する必要があります。 これが \MOVSX の役割です。
 
-You can also read about it in \q{\IT{\SignedNumbersSectionName}} section~(\myref{sec:signednumbers}).
+\q{\IT{\SignedNumbersSectionName}}のセクション~(\myref{sec:signednumbers})で読むこともできます。
 
-It's hard to say if the compiler needs to store a \Tchar variable in \EDX, it could just take a 8-bit register part 
-(for example \DL). Apparently, the compiler's \gls{register allocator} works like that.
+コンパイラが \EDX に \Tchar 変数を格納する必要があるかどうかを言うのは難しいですが、
+8ビットのレジスタ部分（ \DL など）を取ることができます。 どうやら、コンパイラの\gls{register allocator}はそのように機能します。
 
 \myindex{ARM!\Instructions!TEST}
 
-Then we see \TT{TEST EDX, EDX}. 
-You can read more about the \TEST instruction in the section about bit fields~(\myref{sec:bitfields}).
-Here this instruction just checks if the value in \EDX equals to 0.
+次に、\TT{TEST EDX, EDX}が表示されます。 
+\TEST 命令の詳細については、ビットフィールドに関するセクション~(\myref{sec:bitfields})を参照してください。 
+ここでは、この命令は \EDX の値が0に等しいかどうかをチェックするだけです。
 
 \myparagraph{\NonOptimizing GCC}
 
-Let's try GCC 4.4.1:
+GCC 4.4.1で試してみましょう。
 
 \lstinputlisting[style=customasmx86]{patterns/10_strings/1_strlen/10_3_gcc.asm}
 
 \label{movzx}
 \myindex{x86!\Instructions!MOVZX}
 
-The result is almost the same as in MSVC, but here we see \MOVZX instead of \MOVSX. 
-\MOVZX stands for \IT{MOV with Zero-Extend}. 
-This instruction copies a 8-bit or 16-bit value into a 32-bit register and sets the rest of the bits to 0. 
-In fact, this instruction is convenient only because it enable us to replace this instruction pair:\\
-\TT{xor eax, eax / mov al, [...]}.
+結果はMSVCとほぼ同じですが、 \MOVSX の代わりに \MOVZX があります。 
+\MOVZX は\IT{MOV with Zero-Extend}の略です。
+この命令は、8ビットまたは16ビットの値を32ビットレジスタにコピーし、残りのビットを0に設定します。
+実際、この命令は以下の命令ペアを置き換えることができることでのみ役立ちます：
+\TT{xor eax, eax / mov al, [...]}
 
-On the other hand, it is obvious that the compiler could produce this code: \\
-\TT{mov al, byte ptr [eax] / test al, al}---it is almost the same, however, 
-the highest bits of the \EAX register will contain random noise. 
-But let's think it is compiler's drawback---it cannot produce more understandable code. 
-Strictly speaking, the compiler is not obliged to emit understandable (to humans) code at all.
+一方、コンパイラがこのコードを生成できることは明らかです。
+\TT{mov al, byte ptr [eax] / test al, al} はほぼ同じですが、
+\EAX レジスタの最上位ビットにランダムノイズが含まれます。
+しかし、それがコンパイラの欠点だと考えてみましょう。より理解しやすいコードを生成することはできません。
+厳密に言えば、コンパイラは（人間に）理解できるコードを出力する義務は全くありません。
 
 \myindex{x86!\Instructions!SETcc}
 
-The next new instruction for us is \SETNZ. 
-Here, if \AL doesn't contain zero, \TT{test al, al} 
-sets the \ZF flag to 0, but \SETNZ, if \TT{ZF==0} (\IT{NZ} stands for \IT{not zero}) sets \AL to 1.
-Speaking in natural language, \IT{if \AL is not zero, let's jump to loc\_80483F0}. 
-The compiler emits some redundant code, but let's not forget that the optimizations are turned off.
+次の新しい命令は \SETNZ です。
+ここで、 \AL にゼロが含まれていない場合、\TT{test al, al}は \ZF フラグを0に設定しますが、
+\TT{ZF==0}（\IT{NZ}は\IT{ゼロではない}）の場合、 \SETNZ は \AL に1を設定します。
+自然言語で言えば、\IT{\AL がゼロでなければ、loc\_80483F0にジャンプせよ}となります。
+コンパイラは冗長なコードを出力しますが、最適化がオフになっていることを忘れないでください。
 
 \myparagraph{\Optimizing MSVC}
 \label{strlen_MSVC_Ox}
 
-Now let's compile all this in MSVC 2012, with optimizations turned on (\Ox):
+さて、最適化をオンにして、MSVC 2012ですべてコンパイルしましょう（\Ox）。
 
 \lstinputlisting[caption=\Optimizing MSVC 2012 /Ob0,style=customasmx86]{patterns/10_strings/1_strlen/10_2_JPN.asm}
 
-Now it is all simpler.
-Needless to say, the compiler could use registers with such efficiency
-only in small functions with a few local variables.
+すべて単純です。
+言うまでもなく、コンパイラは、ローカル変数が少数である小さな関数でのみ
+効率を持つレジスタを使用することができます。
 
 \myindex{x86!\Instructions!INC}
 \myindex{x86!\Instructions!DEC}
-\INC/\DEC---are \gls{increment}/\gls{decrement} instructions, in other words: add or subtract 1 to/from a variable.
+\INC/\DEC は\gls{increment}/\gls{decrement}命令です。すなわち、変数に1を加算または減算します。
 
-\input{patterns/10_strings/1_strlen/olly_EN.tex}
+\input{patterns/10_strings/1_strlen/olly_JPN.tex}
 
 \myparagraph{\Optimizing GCC}
 
-Let's check GCC 4.4.1 with optimizations turned on (\Othree key):
+最適化をオンにして（ \Othree キー）GCC 4.4.1をチェックしましょう。
 
 \lstinputlisting[style=customasmx86]{patterns/10_strings/1_strlen/10_3_gcc_O3.asm}
  
-Here GCC is almost the same as MSVC, except for the presence of \MOVZX.
-However, here \MOVZX could be replaced with\\
-\TT{mov dl, byte ptr [eax]}.
+ここで、GCCは \MOVZX の存在を除いてMSVCとほぼ同じです。 
+しかし、ここでは \MOVZX を\TT{mov dl, byte ptr [eax]}に置き換えることができます。
 
-Perhaps it is simpler for GCC's code generator to \IT{remember} 
-the whole 32-bit \EDX register 
-is allocated for a \Tchar variable and it then can be sure that the highest bits has no any noise 
-at any point.
+おそらく、GCCのコードジェネレータが \Tchar 変数に割り当てられた32ビットEDXレジスタ全体を\IT{記憶している}
+ことを覚えているのはおそらく簡単です。
+そして、最も高いビットにはいつでもノイズがないことを確かめることができます。
 
 \label{strlen_NOT_ADD}
 \myindex{x86!\Instructions!NOT}
 \myindex{x86!\Instructions!XOR}
 
-After that we also see a new instruction---\NOT. This instruction inverts all bits in the operand. \\
-You can say that it is a synonym to the \TT{XOR ECX, 0ffffffffh} instruction. 
-\NOT and the following \ADD calculate the pointer difference and subtract 1, just in a different way. 
-At the start \ECX, where the pointer to \IT{str} is stored, gets inverted and 1 is subtracted from it.
+その後で、新しい命令を見ます、 \NOT です。 この命令は、オペランドのすべてのビットを反転します。
+\TT{XOR ECX, 0ffffffffh}命令と同義です。 
+\NOT と次の \ADD は ポインタの差を計算し、1を差し引きます。 
+\IT{str}へのポインタが格納されている開始 \ECX では反転され、1が減算されます。
 
-See also: \q{\SignedNumbersSectionName}~(\myref{sec:signednumbers}).
- 
-In other words, at the end of the function just after loop body, these operations are executed:
+参照：\q{\SignedNumbersSectionName}~(\myref{sec:signednumbers})
+
+つまり、ループ本体の直後の関数の最後では、これらの操作が実行されます。
 
 \begin{lstlisting}[style=customc]
 ecx=str;
@@ -120,7 +118,7 @@ eax=eax+ecx
 return eax
 \end{lstlisting}
 
-\dots~and this is effectively equivalent to:
+\dots~これは事実上次のものと同等です：
 
 \begin{lstlisting}[style=customc]
 ecx=str;
@@ -130,5 +128,5 @@ eax=eax-1;
 return eax
 \end{lstlisting}
 
-Why did GCC decide it would be better? Hard to guess. 
-But perhaps the both variants are equivalent in efficiency.
+なぜGCCはそれがより良いと判断したのでしょうか。
+推測するのは難しいですが、おそらく両方の変種は効率の面では同じです。

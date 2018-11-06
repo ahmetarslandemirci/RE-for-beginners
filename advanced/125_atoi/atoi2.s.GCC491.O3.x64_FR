@@ -14,7 +14,7 @@ my_atoi:
 ; ESI=0 ici si il n'y avait pas de signe moins et 1 si il en avait un
 	lea	eax, [rdx-48]
 ; §tout caractère autre qu'un chiffre résultera en un nombre non signé plus grand que 9 après§
-; soustraction donc s'il ne s'agit pas d'un chiffre, sauter en L4, §oú l'erreur doit être rapportée§
+; soustraction donc s'il ne s'agit pas d'un chiffre, sauter en L4, §où l'erreur doit être rapportée§
 	cmp	al, 9
 	ja	.L4
 	xor	eax, eax
