@@ -1,25 +1,25 @@
 \section*{はじめに}
 
-\subsection*{What is with two titles?}
+\subsection*{どうしてタイトルが2つあるの？}
 \label{TwoTitles}
 
-The book was named ``Reverse Engineering for Beginners'' in 2014-2018, but I always suspected this makes readership too narrow.
+2014年～2018年に``Reverse Engineering for Beginners''という名前を付けていましたが、読者層が狭すぎるといつも思っていました。
 
-Infosec people know about ``reverse engineering'', but I've rarely hear the ``assembler'' word from them.
+情報セキュリティの人々は ``リバースエンジニアリング''について知っていますが、私はめったに ``アセンブラ'' という言葉を聞きませんでした。
 
-Likewise, the ``reverse engineering'' term is somewhat cryptic to a general audience of programmers, but they know about ``assembler''.
+同様に、``リバースエンジニアリング''という用語は、一般的なプログラマの読者にとってはやや暗黙の言葉ですが、``アセンブラ''については知っています。
 
-In July 2018, as an experiment, I've changed the title to ``Assembly Language for Beginners''
-and posted the link to Hacker News website\footnote{\url{https://news.ycombinator.com/item?id=17549050}}, and the book was received generally well.
+2018年7月、実験として``初心者のためのアセンブリ言語''のタイトルを変更し、Hacker Newsのウェブサイトへのリンク\footnote{\url{https://news.ycombinator.com/item?id=17549050}}を掲載しました。
+この本は一般によく受け入れられました。
 
-So let it be, the book now has two titles.
+そんなわけでなすがままにして、タイトルを2つにしてあります。
 
-However, I've changed the second title to ``Understanding Assembly Language'', because someone already written ``Assembly Language for Beginners'' book.
-Also, people say ``for Beginners'' sounds a bit sarcastic for the book of \textasciitilde{}1000 pages.
+しかし、2番目のタイトルを``アセンブリ言語を理解する''に変更しました。これは、すでに誰かが``初心者のためのアセンブリ言語''という本を既に書いているからです。 
+また、``初心者のため''という言葉は\textasciitilde{}1000ページ以上ある本だと皮肉に聞こえます。
 
-Two books differ only by title, filename (UAL-XX.pdf versus RE4B-XX.pdf), URL and couple of first pages.
+2つの書籍は、タイトルとファイル名（UAL-XX.pdfに対してRE4B-XX.pdf）、URLと最初の数ページのみ異なります。
 
-\subsection*{About reverse engineering}
+\subsection*{リバースエンジニアリングについて}
 
 \q{\gls{reverse engineering}}にはよく知られた意味がいくつかあります。
 
@@ -50,7 +50,7 @@ Cプログラミング言語( \ac{PL} )の基礎知識。
 
 &
 Dennis Yurichevは経験豊富なリバースエンジニアでありまたプログラマです。
-彼には メール \textbf{\EMAIL{}}. % または Skype \textbf{dennis.yurichev} でコンタクトをとれます。
+彼には メールアドレス \textbf{\EMAIL{}}. % または Skype \textbf{dennis.yurichev} でコンタクトをとれます。
 
 % FIXME: no link. \tablefootnote doesn't work
 \end{tabularx}
@@ -60,13 +60,13 @@ Dennis Yurichevは経験豊富なリバースエンジニアでありまたプ�
 \input{thanks}
 \input{FAQ_JPN}
 
-\subsection*{How to learn programming}
+\subsection*{プログラミングを学ぶには}
 
-Many people keep asking about it.
+多くの人が何度も聞いています。
 
-There is no ``royal road'', but there are quite efficient ways.
+``王道''はありませんが、かなり効率的な方法はあります。
 
-From my own experience, this is just: solving exercises from:
+私自身の経験から、以下の書籍の練習問題を解くことがそれです。
 
 \begin{itemize}
 \item \KRBook
@@ -76,35 +76,33 @@ From my own experience, this is just: solving exercises from:
 \item \RobPikePractice
 \end{itemize}
 
-... in pure C and LISP.
-You may never use these programming languages in future at all.
-Almost all commercial programmers don’t. But C and LISP coding experience will help enormously in long run.
+純粋なCとLISPで。 
+将来的にこれらのプログラミング言語を使用することは決してないかもしれません。
+ほとんどすべての商用プログラマーは使いません。しかし、CとLISPのコーディングの経験は、長期的には非常に役立ちます。
 
-Also, you can skip reading these books itselves,
-just skim them whenever you feel you need to understand something you missing for the exercise you currently solve.
+また、現在解決している練習のためにあなたが不足しているものを理解する必要があると感じるときはいつでも、
+これらの本自体を読み飛ばすことができます。
 
-This may take years at best, or a lifetime, but still this is way faster than to rush between fads.
+これは何年もあるいは一生の間かかるかもしれませんが、それでもこれは流行を急いで追いかけるよりも速いです。
 
-The success of these books probably related to the fact that their authors are teachers
-and all this material has been honed on students first.
+これらの書籍の成功は、おそらく、著者が先生であり、このすべての資料が生徒によって
+洗練されてきたという事実に関連しています。
 
-As of LISP, I personally would recommend Racket (Scheme dialect). But this is matter of taste, anyway.
+LISPについては、私は個人的にRacket（Schemeの方言）をお勧めします。 まあこれは好みの問題です。
 
-Some people say assembly language understanding is also very helpful, even if you will never use it.
-This is true.
-But this is a way for the most dedicated geeks, and it can be postponed at start.
+たとえアセンブリ言語を決して使用しなくとも、アセンブリ言語の理解は非常に役に立ちます。
+これは本当です。
+しかし、これは最も熱心なギークのための方法であり、最初は後回しすることができます。
 
-Also, self-taught people (including author of these lines) often has the problem of trying too hard on hard problems,
-skipping easy ones.
-This is a great mistake.
-Compare to sport or music -- no one starts at 100kg weights, or Paganini's Caprices.
-I would say -- you can try to tackle a problem if you can outline its solution in your mind.
+また、独学者（これらの行の作者を含む）は、しばしば簡単な問題をスキップして、難しい問題を解決しようとするのは難しいです。 
+これは大きな間違いです。 
+スポーツや音楽と比較しましょう。100kgの重さでスタートする者はいませんし、パガニーニのカプリスでスタートする者もいません。
+心の中で解決策の輪郭を描けるなら、問題に取り組むことができるでしょう。
 
 \input{knuth_baby_steps}
 ( Donald E. Knuth -- \url{https://theorydish.blog/2018/02/01/donald-knuth-on-doing-research/} )
 
-Good luck!
-
+幸運を祈ります！
 
 \subsection*{韓国語版について}
 

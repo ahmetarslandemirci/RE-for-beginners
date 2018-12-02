@@ -2,27 +2,27 @@
 ; $f12-$f13=A
 ; $f14-$f15=B
                 lui     $v0, (dword_C4 >> 16) ; ?
-; load low 32-bit part of 3.14 constant to $f0:
+; 定数3.14の下位32ビットを$f0にロード
                 lwc1    $f0, dword_BC
-                or      $at, $zero            ; load delay slot, NOP
-; load high 32-bit part of 3.14 constant to $f1:
+                or      $at, $zero            ; ロード遅延スロット, NOP
+; 定数3.14の上位32ビットを$f1にロード
                 lwc1    $f1, $LC0
                 lui     $v0, ($LC1 >> 16)     ; ?
-; A in $f12-$f13, 3.14 constant in $f0-$f1, do division:
+; $f12-$f13にAで、$f0-$f1に定数3.14があり、除算を行う
                 div.d   $f0, $f12, $f0
 ; $f0-$f1=A/3.14
-; load low 32-bit part of 4.1 to $f2:
+; 定数4.1の下位32ビットを$f2にロード
                 lwc1    $f2, dword_C4
-                or      $at, $zero            ; load delay slot, NOP
-; load high 32-bit part of 4.1 to $f3:
+                or      $at, $zero            ; ロード遅延スロット, NOP
+; 定数4.1の上位32ビットを$f3にロード
                 lwc1    $f3, $LC1
-                or      $at, $zero            ; load delay slot, NOP
-; B in $f14-$f15, 4.1 constant in $f2-$f3, do multiplication:
+                or      $at, $zero            ; ロード遅延スロット, NOP
+; $f14-$f15にBで、$f2-$f3に定数4.1があり、乗算を行う
                 mul.d   $f2, $f14, $f2
 ; $f2-$f3=B*4.1
                 jr      $ra
-; sum 64-bit parts and leave result in $f0-$f1:
-                add.d   $f0, $f2              ; branch delay slot, NOP
+; 64ビットを合計し、結果を$f0-$f1に残す
+                add.d   $f0, $f2              ; 分岐遅延スロット, NOP
 
 
 .rodata.cst8:000000B8 $LC0:           .word 0x40091EB8         # DATA XREF: f+C

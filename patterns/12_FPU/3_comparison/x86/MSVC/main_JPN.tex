@@ -1,12 +1,12 @@
 ﻿\myparagraph{\NonOptimizing MSVC}
 
-MSVC 2010 generates the following:
+MSVC 2010は以下のコードを生成します。
 
 \lstinputlisting[caption=\NonOptimizing MSVC 2010,style=customasmx86]{patterns/12_FPU/3_comparison/x86/MSVC/MSVC_JPN.asm}
 
 \myindex{x86!\Instructions!FLD}
 
-So, \FLD loads \GTT{\_b} into \ST{0}.
+\FLD は\GTT{\_b}を\ST{0}にロードします。
 
 \label{Czero_etc}
 \newcommand{\Czero}{\GTT{C0}\xspace}
@@ -16,25 +16,26 @@ So, \FLD loads \GTT{\_b} into \ST{0}.
 
 \myindex{x86!\Instructions!FCOMP}
 
-\FCOMP compares the value in \ST{0} with what is in \GTT{\_a} 
-and sets \CThreeBits bits in FPU status word register, accordingly. 
-This is a 16-bit register that reflects the current state of the FPU.
+\FCOMP は\ST{0}の値と\GTT{\_a}の値を比較し、
+それに応じてFPUステータスワードレジスタの \CThreeBits ビットを設定します。
+これは、FPUの現在の状態を反映する16ビットのレジスタです。
 
-After the bits are set, the \FCOMP instruction also pops one variable from the stack. 
-This is what distinguishes it from \FCOM, which is just compares values, leaving the stack in the same state.
+ビットがセットされると、 \FCOMP 命令はスタックから1つの変数もポップします。
+これは、値を比較してスタックを同じ状態にしておく \FCOM とは区別されます。
 
-Unfortunately, CPUs before Intel P6
-\footnote{Intel P6 is Pentium Pro, Pentium II, etc.} don't have any conditional 
-jumps instructions which check the \CThreeBits bits. 
-Perhaps, it is a matter of history (recall: FPU was a separate chip in past).\\
-Modern CPU starting at Intel P6 have \FCOMI/\FCOMIP/\FUCOMI/\FUCOMIP 
-instructions~---which do the same, but modify the \ZF/\PF/\CF CPU flags.
+残念ながら、インテルP6 
+\footnote{インテルP6はPentium Pro、Pentium IIなどです。}
+より前のCPUには、 \CThreeBits ビットをチェックする条件付きジャンプ命令はありません。
+おそらく、それは歴史の問題です。（思い起こしてみてください：FPUは過去に別のチップでした）
+
+インテルP6で始まる最新のCPUは、\FCOMI/\FCOMIP/\FUCOMI/\FUCOMIP 命令を持っていて、
+同じことをしますが、 \ZF/\PF/\CF CPUフラグを変更します。
 
 \myindex{x86!\Instructions!FNSTSW}
 
-The \FNSTSW instruction copies FPU the status word register to \AX. 
-\CThreeBits bits are placed at positions 14/10/8, 
-they are at the same positions in the \AX register and all they are placed in the high part of \AX{}~---\AH{}.
+\FNSTSW 命令は状態レジスタであるFPUを \AX にコピーします。 
+\CThreeBits ビットは14/10/8の位置に配置され、
+\AX レジスタの同じ位置にあり、 \AX{}~---\AH{} の上位部分に配置されます。
 
 \begin{itemize}
 \item If $b>a$ in our example, then \CThreeBits bits are to be set as following: 0, 0, 0.
@@ -46,57 +47,64 @@ If the result is unordered (in case of error), then the set bits are: 1, 1, 1.
 \end{itemize}
 % TODO: table here?
 
-This is how \CThreeBits bits are located in the \AX register:
+\begin{itemize}
+\item この例では $b>a$ の場合、 \CThreeBits ビットは0,0,0と設定します。
+\item $a>b$ の場合、ビットは0,0,1です。
+\item $a=b$ の場合、ビットは1,0,0です。
+\item
+
+結果が順序付けられていない場合（エラーの場合）、セットされたビットは1,1,1,1です。
+\end{itemize}
+% TODO: table here?
+
+これは、 \CThreeBits ビットが \AX レジスタにどのように配置されるかを示しています。
 
 \input{C3_in_AX}
 
-This is how \CThreeBits bits are located in the \AH register:
+これは、 \CThreeBits ビットが \AH レジスタにどのように配置されるかを示しています。
 
 \input{C3_in_AH}
 
-After the execution of \INS{test ah, 5}\footnote{5=101b}, 
-only \Czero and \Ctwo bits (on 0 and 2 position) are considered, all other bits are just
-ignored.
+\INS{test ah, 5}\footnote{5=101b}の実行後、
+\Czero と \Ctwo ビット（0と2の位置）のみが考慮され、他のビットはすべて無視されます。
 
 \label{parity_flag}
 \myindex{x86!\Registers!\Flags!Parity flag}
 
-Now let's talk about the \IT{parity flag}, another notable historical rudiment.
+さて、\IT{パリティーフラグ}と注目すべきもう1つの歴史的基礎についてお話しましょう。
 
-This flag is set to 1 if the number of ones in the result of the last calculation is even, and to 0 if it is odd.
+このフラグは、最後の計算結果の1の数が偶数の場合は1に設定され、奇数の場合は0に設定されます。
 
-Let's look into Wikipedia\footnote{\href{http://go.yurichev.com/17131}{wikipedia.org/wiki/Parity\_flag}}:
+Wikipedia\footnote{\href{http://go.yurichev.com/17131}{wikipedia.org/wiki/Parity\_flag}}を見てみましょう：
 
 \begin{framed}
 \begin{quotation}
-One common reason to test the parity flag actually has nothing to do with parity. The FPU has four condition flags 
-(C0 to C3), but they cannot be tested directly, and must instead be first copied to the flags register. 
-When this happens, C0 is placed in the carry flag, C2 in the parity flag and C3 in the zero flag. 
-The C2 flag is set when e.g. incomparable floating point values (NaN or unsupported format) are compared 
-with the FUCOM instructions.
+パリティフラグをテストする一般的な理由の1つに、無関係なFPUフラグをチェックすることがあります。 FPUには4つの条件フラグ
+（C0～C3）がありますが、直接テストすることはできず、最初にフラグレジスタにコピーする必要があります。 
+これが起こると、C0はキャリーフラグに、C2はパリティフラグに、C3はゼロフラグに置かれます。 
+C2フラグは、例えば比較できない浮動小数点値（NaNまたはサポートされていない形式）がFUCOM命令と比較されます。
 \end{quotation}
 \end{framed}
 
-As noted in Wikipedia, the parity flag used sometimes in FPU code, let's see how.
+Wikipediaで述べられているように、パリティフラグはFPUコードで使用されることがあります。
 
 \myindex{x86!\Instructions!JP}
 
-The \PF flag is to be set to 1 if both \Czero and \Ctwo are set to 0 or both are 1, in which case
-the subsequent \JP (\IT{jump if PF==1}) is triggering. 
-If we recall the values of \CThreeBits for various cases,
-we can see that the conditional jump 
-\JP is triggering in two cases: if $b>a$ or $a=b$ 
-(\Cthree bit is not considered here, since it has been cleared by the \INS{test ah, 5} instruction).
+\Czero と \Ctwo の両方が0に設定されている場合、 \PF フラグは1に設定されます。その場合、
+後続の \JP （\IT{jump if PF==1}）が実行されます。 
+いろいろな場合の \CThreeBits の値を思い出すと、
+条件ジャンプ \JP は、 $b>a$ または $a=b$ の場合に実行されます。
+（\INS{test ah, 5}命令によってクリアされているので、 \Cthree ビットはここでは考慮されていません）
 
-It is all simple after that. 
-If the conditional jump has been triggered, 
-\FLD loads the value of \GTT{\_b} 
-in \ST{0}, and if it hasn't been triggered, the value of \GTT{\_a} is loaded there.
+それ以降はすべて簡単です。 
+条件付きジャンプが実行された場合、
+\FLD は\ST{0}の\GTT{\_b}の値をロードし、
+実行されていなければ\GTT{\_a}の値をロードします。
 
-\mysubparagraph{And what about checking \Ctwo?}
+\mysubparagraph{\Ctwo? のチェックは？}
 
-The \Ctwo flag is set in case of error (\gls{NaN}, etc.), but our code doesn't check it.
+\Ctwo フラグはエラー（\gls{NaN}など）の場合に設定されますが、コードではチェックされません。
 
-If the programmer cares about FPU errors, he/she must add additional checks.
+プログラマがFPUエラーを気にする場合は、チェックを追加する必要があります。
 
-\input{patterns/12_FPU/3_comparison/x86/MSVC/olly_EN.tex}
+\input{patterns/12_FPU/3_comparison/x86/MSVC/olly_JPN.tex}

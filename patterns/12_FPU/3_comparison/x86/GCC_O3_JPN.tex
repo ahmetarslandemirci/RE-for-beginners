@@ -4,21 +4,20 @@
 
 \myindex{x86!\Instructions!JA}
 
-It is almost the same except that \JA is used after \SAHF. 
-Actually, conditional jump instructions that check \q{larger}, \q{lesser} or \q{equal} for unsigned number comparison 
-(these are \JA, \JAE, \JB, \JBE, \JE/\JZ, \JNA, \JNAE, \JNB, \JNBE, \JNE/\JNZ) check only flags \CF and \ZF.\\
-\\
-Let's recall where bits \CThreeBits are located in the \GTT{AH} register after the execution of \INS{FSTSW}/\FNSTSW:
+\JA が \SAHF の後に使用されることを除いて、ほとんど同じです。 
+実際には、符号なしの番号比較（これらは \JA , \JAE , \JB , \JBE , \JE/\JZ , \JNA , \JNAE , \JNB , \JNBE , \JNE/\JNZ ）のチェックに
+\q{大なり}、\q{小なり}、\q{等しい}をチェックする条件ジャンプ命令は \CF および \ZF フラグが立っているときだけチェックします。
+
+\INS{FSTSW}/\FNSTSW の実行後に、 \CThreeBits が\GTT{AH}レジスタのどこにあるかを思い出してみましょう。
 
 \input{C3_in_AH}
 
-Let's also recall, how the bits from \GTT{AH} are stored into the CPU flags after the execution of \SAHF:
+\SAHF の実行後に、\GTT{AH}からのビットがCPUフラグの中にどのようにして保存されるかを思いだしてみましょう。
 
 \input{SAHF_LAHF}
 
-After the comparison, the \Cthree and \Czero bits are moved into \ZF and \CF, so the conditional jumps are able work after. \JA is triggering if both \CF are \ZF zero.
+比較の後、\Cthree および \Czero ビットは \ZF および \CF に移動するので、条件付きジャンプはその後に働きます。 \CF と \ZF がともにゼロである場合、 \JA は実行します。
 
-Thereby, the conditional jumps instructions listed here can be used after a \FNSTSW/\SAHF instruction pair.
+したがって、ここにリストされている条件付きジャンプ命令は、 \FNSTSW/\SAHF 命令ペアの後に使用できます。
 
-Apparently, the FPU \CThreeBits status bits were placed there intentionally, to easily map them to base CPU flags without additional permutations?
-
+どうやらFPU \CThreeBits ステータスビットは、追加の順列を付けずにCPUの基本フラグに簡単にマッピングできるよう、意図的に配置されています。

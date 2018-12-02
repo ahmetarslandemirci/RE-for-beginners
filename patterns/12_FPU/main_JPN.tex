@@ -8,119 +8,116 @@
 \newcommand{\FNURLDP}{\footnote{\href{http://go.yurichev.com/17127}{wikipedia.org/wiki/Double-precision\_floating-point\_format}}}
 \newcommand{\FNURLEP}{\footnote{\href{http://go.yurichev.com/17128}{wikipedia.org/wiki/Extended\_precision}}}
 
-The \ac{FPU} is a device within the main \ac{CPU}, specially designed to deal with floating point numbers.
+\ac{FPU}はメイン\ac{CPU}内のデバイスで、特に浮動小数点数を扱うように設計されています。
 
-It was called \q{coprocessor} in the past and it stays somewhat aside of the main \ac{CPU}.
+これは過去に\q{コプロセッサー}と呼ばれていましたが、メイン\ac{CPU}とは別の場所にとどまっています。
 
 \subsection{IEEE 754}
 
-A number in the IEEE 754 format consists of a \IT{sign}, a \IT{significand} (also called \IT{fraction}) and an \IT{exponent}.
+IEEE 754形式の数字は、\IT{符号}、\IT{有効数字}（\IT{小数部}とも呼ばれます）、および\IT{指数}で構成されます。
 
 \subsection{x86}
 
-It is worth looking into stack machines\FNURLSTACK or learning the basics of the Forth language\FNURLFORTH,
-before studying the \ac{FPU} in x86.
+x86の\ac{FPU}を学ぶ前に、スタックマシン\FNURLSTACK を調べたり、Forth言語\FNURLFORTH の基礎を学ぶことは価値があります。
 
 \myindex{Intel!80486}
 \myindex{Intel!FPU}
-It is interesting to know that in the past (before the 80486 CPU) the coprocessor was a separate chip 
-and it was not always pre-installed on the motherboard. It was possible to buy it separately and install it
-\footnote{For example, John Carmack used fixed-point arithmetic 
-(\href{http://go.yurichev.com/17356}{wikipedia.org/wiki/Fixed-point\_arithmetic}) values in his Doom video game, stored in 
-32-bit \ac{GPR} registers (16 bit for integral part and another 16 bit for fractional part), so Doom
-could work on 32-bit computers without FPU, i.e., 80386 and 80486 SX.}.
+過去（80486 CPUの前）のコプロセッサは別個のチップであり、いつもマザーボードにプリインストールされていなかった
+ことは興味深いことです。別に購入してインストールすることができました。
+\footnote{たとえば、John Carmackは、32ビット\ac{GPR}レジスタ（整数部分は16ビット、小数部分は16ビット）
+に格納されたDoomビデオゲームの固定小数点演算（\href{http://go.yurichev.com/17356}{wikipedia.org/wiki/Fixed-point\_arithmetic}）
+の値を使用しました。 DoomはFPUなしの32ビットコンピュータ、つまり80386と80486 SXで動作しました}
 
-Starting with the 80486 DX CPU, the \ac{FPU} is integrated in the \ac{CPU}.
+\ac{FPU}は80486 DX CPUから\ac{CPU}に統合されています。
 
 \myindex{x86!\Instructions!FWAIT}
-The \INS{FWAIT} instruction reminds us of that fact---it switches the \ac{CPU} to a waiting state, so it can wait until the \ac{FPU} has finished with its work.
+\INS{FWAIT}命令は、\ac{CPU}を待機状態に切り替えるので、\ac{FPU}が処理を終了するまで待つことができるという事実を思い出させます。
 
-Another rudiment is the fact that the \ac{FPU} instruction 
-opcodes start with the so called \q{escape}-opcodes (\GTT{D8..DF}), i.e., 
-opcodes passed to a separate coprocessor.
+もう一つの基本は、\ac{FPU}命令オペコードが、いわゆる\q{エスケープ}オペコード（\GTT{D8..DF}）、
+すなわちオペコードが別個のコプロセッサに渡されることから始まるという事実です。
 
 \myindex{IEEE 754}
 \label{FPU_is_stack}
 
-The FPU has a stack capable to holding 8 80-bit registers, and each register can hold a number 
-in the IEEE 754\FNURLIEEE format.
+FPUは8個の80ビットレジスタを保持できるスタックを持ち、各レジスタは
+IEEE 754\FNURLIEEE 形式の番号を保持できます。
 
-They are \ST{0}..\ST{7}. For brevity, \IDA and \olly show \ST{0} as \GTT{ST}, 
-which is represented in some textbooks and manuals as \q{Stack Top}.
+それらは\ST{0}..\ST{7}です。 簡潔には、 \IDA と \olly は\ST{0}を\GTT{ST}と表示します。
+これは一部の教科書とマニュアルでは\q{スタックトップ}として表されています。
 
 \subsection{ARM, MIPS, x86/x64 SIMD}
 
-In ARM and MIPS the FPU is not a stack, but a set of registers, which can be accessed randomly, like \ac{GPR}.
+ARMおよびMIPSでは、FPUはスタックではなく、\ac{GPR}のようにランダムアクセスできるレジスタのセットです。
 
-The same ideology is used in the SIMD extensions of x86/x64 CPUs.
+同じ体系がx86/x64 CPUのSIMD拡張で使用されています。
 
 \subsection{\CCpp}
 
 \myindex{float}
 \myindex{double}
 
-The standard \CCpp languages offer at least two floating number types, \Tfloat (\IT{single-precision}\FNURLSP, 32 bits)
-\footnote{the single precision floating point number format is also addressed in 
-the \IT{\WorkingWithFloatAsWithStructSubSubSectionName}~(\myref{sec:floatasstruct}) section}
-and \Tdouble (\IT{double-precision}\FNURLDP, 64 bits).
+標準の \CCpp 言語では、 \Tfloat （\IT{単精度}\FNURLSP、32ビット）と 
+\footnote{単精度浮動小数点数形式も 
+\IT{\WorkingWithFloatAsWithStructSubSubSectionName}~(\myref{sec:floatasstruct}) セクションで扱います}
+\Tdouble （\IT{倍精度}\FNURLDP、64ビット）の少なくとも2つの浮動小数点型が用意されています。
 
-In \InSqBrackets{\TAOCPvolII 246} we can find the \IT{single-precision} means that the floating point value can be placed into a single
-[32-bit] machine word, \IT{double-precision} means it can be stored in two words (64 bits).
+\InSqBrackets{\TAOCPvolII 246}において、\IT{単精度}は、浮動小数点値を単一の[32ビット]マシンに入れることができることを意味するワード、
+\IT{倍精度}は、2ワード（64ビット）で格納できることを意味します。
 
 \myindex{long double}
 
-GCC also supports the \IT{long double} type (\IT{extended precision}\FNURLEP, 80 bit), which MSVC doesn't.
+GCCはMSVCがサポートしない\IT{long double}型（\IT{拡張精度}\FNURLEP、80ビット）もサポートしています。
 
-The \Tfloat type requires the same number of bits as the \Tint type in 32-bit environments, 
-but the number representation is completely different.
+\Tfloat 型は、32ビット環境では \Tint 型と同じビット数が必要ですが、
+数値表現はまったく異なります。
 
 \input{patterns/12_FPU/1_simple/main}
 \input{patterns/12_FPU/2_passing_floats/main}
 \input{patterns/12_FPU/3_comparison/main}
 
-\subsection{Some constants}
+\subsection{いくつかの定数}
 
-It's easy to find representations of some constants in Wikipedia for IEEE 754 encoded numbers.
-It's interesting to know that 0.0 in IEEE 754 is represented as 32 zero bits (for single precision) or 64 zero bits
-(for double).
-So in order to set a floating point variable to 0.0 in register or memory, one can use \MOV or \TT{XOR reg, reg} instruction.
-\myindex{\CStandardLibrary!memset()}
-This is suitable for structures where many variables present of various data types.
-With usual memset() function one can set all integer variables to 0, all boolean variables to \IT{false}, all pointers
-to NULL, and all floating point variables (of any precision) to 0.0.
+IEEE 754でエンコードされた数のWikipediaでいくつかの定数の表現を見つけるのは簡単です。 
+IEEE 754の0.0は、32ビットのゼロビット（単精度の場合）または64ビットのゼロビット（倍精度の場合）として表されることは
+興味深いことです。
+したがって、浮動小数点変数をレジスタまたはメモリで0.0に設定するには、 \MOV または\TT{XOR reg, reg}命令を使用します。
+これは、さまざまなデータ型の多くの変数が存在する構造に適しています。
+通常のmemset()関数では、すべての整数変数を0に、すべてのブール変数を \IT{false}に、すべてのポインタをNULLに、
+すべての浮動小数点変数（任意の精度）を0.0に設定できます。
 
-\subsection{Copying}
+\subsection{コピー}
 
-One may think inertially that \INS{FLD}/\INS{FST} instructions must be used to load and store (and hence, copy) IEEE 754 values.
-Nevertheless, same can be achieved easier by usual \INS{MOV} instruction, which, of course, copies values bitwisely.
+IEEE 754の値をロードして格納する（したがって、コピーする）には、\INS{FLD}/\INS{FST}命令を使用しないといけなと慣性でに考えるかもしれません。
+にもかかわらず、普通の \MOV 命令でも同じことがより簡単に実現できます。もちろん、ビット単位で値をコピーします。
 
-\subsection{Stack, calculators and reverse Polish notation}
+\subsection{スタック、計算機と逆ポーランド記法}
 
 \myindex{Reverse Polish notation}
 
-Now we understand why some old calculators use reverse Polish notation
-\footnote{\href{http://go.yurichev.com/17354}{wikipedia.org/wiki/Reverse\_Polish\_notation}}.
+いくつかの古い計算機が逆ポーランド記法
+\footnote{\href{http://go.yurichev.com/17354}{wikipedia.org/wiki/Reverse\_Polish\_notation}}
+を使用する理由を理解しました。
 
-For example, for addition of 12 and 34 one has to enter 12, then 34, then press \q{plus} sign.
+たとえば、12と34を追加するには12を入力し、34を入力してから\q{プラス}を押します。
 
-It's because old calculators were just stack machine implementations, and this was much simpler
-than to handle complex parenthesized expressions.
+これは、古い電卓はスタックマシンの実装なので、複雑なカッコで囲まれた式を処理するより
+はるかに簡単だからです。
 
-\subsection{80 bits?}
+\subsection{80ビット？}
 
-\myindex{Punched card}
-Internal numbers representation in FPU --- 80-bit.
-Strange number, because the number not in $2^n$ form.
-There is a hypothesis that this is probably due to historical reasons---the standard IBM puched card can encode 12 rows of 80 bits.
-$80\cdot 25$ text mode resolution was also popular in past.
+\myindex{パンチカード}
+FPUの内部数値表現は80ビットです。
+$2^n$形式ではないので、変わった数値です。
+おそらく歴史的な理由によるものだという仮説があります。IBMの標準的なパンチカードでは、12行の80ビットをエンコードできます。 
+$80\cdot 25$テキストモードの解像度も過去においてポピュラーでした。
 
-Wikipedia has another explanation: \url{https://en.wikipedia.org/wiki/Extended_precision}.
+ウィキペディアには別の説明があります：\url{https://en.wikipedia.org/wiki/Extended_precision}
 
-If you know better, please a drop email to the author: \EMAIL{}.
+もっと知っていたら、著者にメールを送ってください： \EMAIL{}
 
 \subsection{x64}
 
-On how floating point numbers are processed in x86-64, read more here: \myref{floating_SIMD}.
+浮動小数点数がx86-64でどのように処理されるかについては、これを読んでください：\myref{floating_SIMD}
 
 % sections
 \input{patterns/12_FPU/exercises}

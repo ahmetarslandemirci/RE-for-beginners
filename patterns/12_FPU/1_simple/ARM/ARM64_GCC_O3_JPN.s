@@ -10,7 +10,7 @@
 ; D0 = D1*D2+D0 = b*4.1+a/3.14
 	ret
 
-; constants in IEEE 754 format:
+; IEEE 754形式の定数
 .LC25:
 	.word	1374389535	; 3.14
 	.word	1074339512

@@ -1,0 +1,140 @@
+\subsection{Version de structure C}
+
+De nombreux programmeurs Windows ont vu ceci dans MSDN:
+
+\begin{lstlisting}
+SizeOfStruct
+    The size of the structure, in bytes. This member must be set to sizeof(SYMBOL_INFO).
+\end{lstlisting}
+
+( \url{https://msdn.microsoft.com/en-us/library/windows/desktop/ms680686(v=vs.85).aspx} )
+
+En effet, certaines structures comme \IT{SYMBOL\_INFO} commencent en effet avec ce
+champ.  Pourquoi ?
+C'est une sorte de version de structure.
+
+Imaginez que vous avez une fonction qui dessine un cercle.
+Elle prend un unique argument---un pointeur sur une structure avec seulement trois
+champs: X, Y et radius.
+Et puis, les affichages couleurs ont inondé le marché durant les années 1980. Et
+vous voulez ajouter un argument \IT{color} à la fonction.
+Mais, disons que vous ne pouvez pas lui ajouter un argument (de nombreux logiciels
+utilisent votre \ac{API} et ne peuvent pas être recompilés).
+Et si un vieux logiciels utilise votre \ac{API} avec un affichage couleur, faites
+que votre fonction dessine un cercle avec par défaut les couleurs noire et blanche.
+
+Un autre jour, vous ajoutez une autre possibilité: le cercle peut maintenant être
+rempli, et le type de brosse peut être passé.
+
+Voici une solution à ce problème:
+
+\begin{lstlisting}[style=customc]
+#include <stdio.h>
+
+struct ver1
+{
+	size_t SizeOfStruct;
+	int coord_X;
+	int coord_Y;
+	int radius;
+};
+
+struct ver2
+{
+	size_t SizeOfStruct;
+	int coord_X;
+	int coord_Y;
+	int radius;
+	int color;
+};
+
+struct ver3
+{
+	size_t SizeOfStruct;
+	int coord_X;
+	int coord_Y;
+	int radius;
+	int color;
+	int fill_brush_type; // 0 - ne pas remplir le cercle
+};
+
+void draw_circle(struct ver3 *s) // latest struct version is used here
+{
+	// we presume SizeOfStruct, coord_X and coord_Y fields are always present
+	printf ("We are going to draw a circle at %d:%d\n", s->coord_X, s->coord_Y);
+
+	if (s->SizeOfStruct>=sizeof(int)*5)
+	{
+		// this is at least ver2, color field is present
+		printf ("We are going to set color %d\n", s->color);
+	}
+
+	if (s->SizeOfStruct>=sizeof(int)*6)
+	{
+		// this is at least ver3, fill_brush_type field is present
+		printf ("We are going to fill it using brush type %d\n", s->fill_brush_type);
+	}
+};
+
+// early software version
+void call_as_ver1()
+{
+	struct ver1 s;
+	s.SizeOfStruct=sizeof(s);
+	s.coord_X=123;
+	s.coord_Y=456;
+	s.radius=10;
+	printf ("** %s()\n", __FUNCTION__);
+	draw_circle(&s);
+};
+
+// next software version
+void call_as_ver2()
+{
+	struct ver2 s;
+	s.SizeOfStruct=sizeof(s);
+	s.coord_X=123;
+	s.coord_Y=456;
+	s.radius=10;
+	s.color=1;
+	printf ("** %s()\n", __FUNCTION__);
+	draw_circle(&s);
+};
+
+// latest, most advanced version
+void call_as_ver3()
+{
+	struct ver3 s;
+	s.SizeOfStruct=sizeof(s);
+	s.coord_X=123;
+	s.coord_Y=456;
+	s.radius=10;
+	s.color=1;
+	s.fill_brush_type=3;
+	printf ("** %s()\n", __FUNCTION__);
+	draw_circle(&s);
+};
+
+int main()
+{
+	call_as_ver1();
+	call_as_ver2();
+	call_as_ver3();
+};
+\end{lstlisting}
+
+Autrement dit, le champ \IT{SizeOfStruct} prend le rôle d'un champ \IT{version of structure}.
+Il pourrait être un type énuméré (1, 2, 3, etc.), mais mettre le champ \IT{SizeOfStruct}
+à \IT{sizeof(struct...)} est moins sujet à l'erreur: nous écrivons simplement \IT{s.SizeOfStruct=sizeof(...)}
+dans le code de l'appelant.
+
+En C++, ce problème est résolu en utilisant l'\IT{hérutage} (\myref{cpp_inheritance}).
+Vous avez seulement à étendre la classe de base (appelons la \IT{Circle}), puis vous
+aurez une classe \IT{ColoredCircle}, et ensuite \IT{FilledColoredCircle}, et ainsi
+de suite.
+La version courante d'un objet (ou, plus précisemment, le \IT{type} courant) sera
+déterminé en utilisant la \ac{RTTI} de C++.
+
+Donc lorsque vous voyez \IT{SizeOfStruct} quelque part dans \ac{MSDN}---peut-être
+que cette structure a été étendue au moins une fois par le passé.
+

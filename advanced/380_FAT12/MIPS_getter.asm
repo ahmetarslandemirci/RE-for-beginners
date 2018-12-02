@@ -12,7 +12,7 @@ get_from_array:
 ; jump if $4 (idx&1) is not zero (if idx is odd):
         bne     $4,$0,$L6
 ; $2 = $3+$2 = idx>>1 + idx&(~1) = idx*1.5
-	addu    $2,$3,$2 ; branch delay slot - this instruction executed before BNE
+        addu    $2,$3,$2 ; branch delay slot - this instruction is executed before BNE
 
 ; idx is even, go on:
         lw      $3,%got(array)($28)
@@ -31,7 +31,7 @@ get_from_array:
         srl     $2,$2,4
 ; $2 = $2>>4 = middle_byte>>4
         j       $31
-        or      $2,$2,$3 ; branch delay slot - this instruction executed before J
+        or      $2,$2,$3 ; branch delay slot - this instruction is executed before J
 ; $2 = $2|$3 = middle_byte>>4 | left_byte<<4
 ; $2=returned result
 
@@ -52,8 +52,8 @@ $L6:
 ; $2 = $4&0xF = middle_byte&0xF
         sll     $2,$2,8
 ; $2 = $2<<8 = middle_byte&0xF << 8
-        j       $31        
-	or      $2,$2,$3 ; branch delay slot - this instruction executed before J
+        j       $31
+        or      $2,$2,$3 ; branch delay slot - this instruction is executed before J
 ; $2 = $2|$3 = middle_byte&0xF << 8 | right byte
 ; $2=returned result
 

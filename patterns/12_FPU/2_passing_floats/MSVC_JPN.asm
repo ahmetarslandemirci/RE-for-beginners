@@ -6,19 +6,19 @@ CONST    ENDS
 _main    PROC
     push   ebp
     mov    ebp, esp
-    sub    esp, 8  ; allocate space for the first variable
+    sub    esp, 8  ; 最初の変数に領域を確保
     fld    QWORD PTR __real@3ff8a3d70a3d70a4
     fstp   QWORD PTR [esp]
-    sub    esp, 8  ; allocate space for the second variable
+    sub    esp, 8  ; 2番目の変数に領域を確保
     fld    QWORD PTR __real@40400147ae147ae1
     fstp   QWORD PTR [esp]
     call   _pow
-    add    esp, 8  ; ﾂｧ\IT{return back}ﾂｧ place of one variable.
+    add    esp, 8  ; 1つの変数の領域を ﾂｧ\IT{戻す}ﾂｧ 
 
-; in local stack here 8 bytes still reserved for us.
-; result now in ST(0)
+; ローカルスタックにまだ8バイト空きがある
+; 結果がST(0)に
 
-    fstp   QWORD PTR [esp] ; move result from ST(0) to local stack for printf()
+    fstp   QWORD PTR [esp] ; printf()に渡すために結果をST(0)からローカルスタックに移す
     push   OFFSET $SG2651
     call   _printf
     add    esp, 12

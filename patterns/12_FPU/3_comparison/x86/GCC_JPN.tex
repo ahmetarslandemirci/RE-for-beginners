@@ -4,75 +4,73 @@
 
 \myindex{x86!\Instructions!FUCOMPP}
 
-\FUCOMPP{} is almost like \FCOM, but pops both values from the stack and handles
-\q{not-a-numbers} differently.
+\FUCOMPP{} は \FCOM に似ていますが、スタックから両方の値をポップし、
+\q{非数値} を異なる方法で処理します。
 
 \myindex{Non-a-numbers (NaNs)}
-A bit about \IT{not-a-numbers}.
+\q{非数値} について少々。
 
 \newcommand{\NANFN}{\footnote{\href{http://go.yurichev.com/17130}{wikipedia.org/wiki/NaN}}}
 
-The FPU is able to deal with special values which are \IT{not-a-numbers} or \gls{NaN}s\NANFN. 
-These are infinity, result of division by 0, etc.
-Not-a-numbers can be \q{quiet} and \q{signaling}. It is possible to continue to work with \q{quiet} NaNs, 
-but if one tries to do any operation with \q{signaling} NaNs, an exception is to be raised.
+FPUは、数字でない特別な\IT{非数値} や \gls{NaN}\NANFN を扱うことができます。 
+これらは無限大で、0で除算した結果です。
+非数値は\q{寡黙}であることも\q{シグナルを発する}こともできます。\q{寡黙な} NaNで
+作業を続行することは可能ですが、\q{シグナルを発する} NaNで何らかの操作を試みる場合は例外が発生します。
 
 \myindex{x86!\Instructions!FCOM}
 \myindex{x86!\Instructions!FUCOM}
 
-\FCOM raising an exception if any operand is \gls{NaN}. 
-\FUCOM raising an exception only if any operand is a signaling \gls{NaN} (SNaN).
+オペランドが\gls{NaN}の場合、 \FCOM は例外を送出します。 
+\FUCOM は、オペランドがシグナルを発する \gls{NaN}（SNaN）である場合にのみ例外を送出します。
 
 \myindex{x86!\Instructions!SAHF}
 \label{SAHF}
 
-The next instruction is \SAHF (\IT{Store AH into Flags})~---this is a rare 
-instruction in code not related to the FPU. 
-8 bits from AH are moved into the lower 8 bits of the CPU flags in the following order:
+次の命令は \SAHF （\IT{AHをフラグにストア}）です。これはFPUに
+関連しないコードではまれな命令です。
+AHからの8ビットは、次の順序でCPUフラグの下位8ビットに移動します。
 
 \input{SAHF_LAHF}
 
 \myindex{x86!\Instructions!FNSTSW}
 
-Let's recall that \FNSTSW moves the bits that interest us (\CThreeBits) into \AH 
-and they are in positions 6, 2, 0 of the \AH register:
+\FNSTSW が関心のあるビット（\CThreeBits）を \AH に移動し、
+\AH レジスタの位置6,2,0にあることを思い出してください。
 
 \input{C3_in_AH}
 
-In other words, the \INS{fnstsw  ax / sahf} instruction pair moves \CThreeBits into \ZF, \PF and \CF.
+言い換えると、\INS{fnstsw  ax / sahf}命令ペアは、 \CThreeBits を \ZF 、 \PF 、および \CF に移動します。
 
-Now let's also recall the values of \CThreeBits in different conditions:
+異なる条件で \CThreeBits の値を思い出してみましょう。
 
 \begin{itemize}
-\item If $a$ is greater than $b$ in our example, then \CThreeBits are to be set to: 0, 0, 0.
-\item if $a$ is less than $b$, then the bits are to be set to: 0, 0, 1.
-\item If $a=b$, then: 1, 0, 0.
+\item この例で $a$ が $b$ より大きい場合、 \CThreeBits は0,0,0に設定されます。
+\item $a$ が $b$ より小さければ、ビットは0,0,1に設定されます。
+\item $a=b$ の場合は、1,0,0に設定されます。
 \end{itemize}
 % TODO: table?
 
-In other words, these states of the CPU flags are possible
-after three \\
-\FUCOMPP/\FNSTSW/\SAHF instructions:
+言い換えれば、これらのCPUフラグの状態は、
+3つの \FUCOMPP/\FNSTSW/\SAHF 命令の後に可能になります。
 
 \begin{itemize}
-\item If $a>b$, the CPU flags are to be set as: \GTT{ZF=0, PF=0, CF=0}.
-\item If $a<b$, then the flags are to be set as: \GTT{ZF=0, PF=0, CF=1}.
-\item And if $a=b$, then: \GTT{ZF=1, PF=0, CF=0}.
+\item $a>b$ の場合、CPUフラグは、\GTT{ZF=0, PF=0, CF=0}として設定されます。
+\item $a<b$ の場合、フラグは、\GTT{ZF=0, PF=0, CF=1}として設定されます。
+\item そして、 $a=b$ ならば、\GTT{ZF=1, PF=0, CF=0}になります。
 \end{itemize}
 % TODO: table?
 
 \myindex{x86!\Instructions!SETcc}
 \myindex{x86!\Instructions!JNBE}
 
-Depending on the CPU flags and conditions, \SETNBE stores 1 or 0 to AL. 
-It is almost the counterpart of \JNBE, with the exception that \SETcc 
-\footnote{\IT{cc} is \IT{condition code}} stores 1 or 0 in \AL, 
-but \Jcc does actually jump or not. 
-\SETNBE stores 1 only if \GTT{CF=0} and \GTT{ZF=0}. 
-If it is not true, 0 is to be stored into \AL.
+CPUのフラグと条件に応じて、 \SETNBE はALに1または0を格納します。 
+これはほぼ \JNBE のものですが、 \SETcc
+\footnote{\IT{cc} は \IT{条件コード} です}
+はALに1または0を格納しますが、 \Jcc は実際にジャンプするかどうかは異なります。
+\SETNBE は、\GTT{CF=0}および\GTT{ZF=0}の場合にのみ1を格納します。 
+真でない場合は、0が \AL に格納されます。
 
-Only in one case both \CF and \ZF are 0: if $a>b$.
+$a>b$ の場合でのみ、\CF と \ZF の両方が0になります。
 
-Then 1 is to be stored to \AL, the subsequent \JZ is not to be triggered and the function will return {\_a}. 
-In all other cases, {\_b} is to be returned.
-
+その後、1が \AL に格納され、後続の \JZ は実行されず、関数は{\_a}を返します。 
+それ以外の場合は{\_b}が返されます。

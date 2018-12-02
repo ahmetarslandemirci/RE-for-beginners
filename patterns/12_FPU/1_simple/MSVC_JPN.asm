@@ -12,26 +12,26 @@ _f  PROC
     mov    ebp, esp
     fld    QWORD PTR _a$[ebp]
 
-; current stack state: ST(0) = _a
+; 現在のスタック状態: ST(0) = _a
 
     fdiv   QWORD PTR __real@40091eb851eb851f
 
-; current stack state: ST(0) = result of _a divided by 3.14
+; 現在のスタック状態: ST(0) = _aを3.14で割った結果
 
     fld    QWORD PTR _b$[ebp]
 
-; current stack state: ST(0) = _b;
-; ST(1) = result of _a divided by 3.14
+; 現在のスタック状態: ST(0) = _b;
+; ST(1) = _aを3.14で割った結果
 
     fmul   QWORD PTR __real@4010666666666666
 
-; current stack state: 
-; ST(0) = result of _b * 4.1; 
-; ST(1) = result of _a divided by 3.14
+; 現在のスタック状態: 
+; ST(0) = _b * 4.1の結果; 
+; ST(1) = _aを3.14で割った結果
 
     faddp  ST(1), ST(0)
 
-; current stack state: ST(0) = result of addition
+; 現在のスタック状態: ST(0) = 加算の結果
 
     pop    ebp
     ret    0

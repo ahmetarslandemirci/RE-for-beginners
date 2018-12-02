@@ -1,7 +1,7 @@
 ﻿f
                 VLDR            D16, =3.14
-                VMOV            D17, R0, R1 ; load "a"
-                VMOV            D18, R2, R3 ; load "b"
+                VMOV            D17, R0, R1 ; "a"をロード
+                VMOV            D18, R2, R3 ; "b"をロード
                 VDIV.F64        D16, D17, D16 ; a/3.14
                 VLDR            D17, =4.1
                 VMUL.F64        D17, D18, D17 ; b*4.1

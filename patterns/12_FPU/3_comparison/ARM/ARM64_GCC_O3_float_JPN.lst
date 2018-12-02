@@ -2,5 +2,5 @@
 ; S0 - a, S1 - b
 	fcmpe	s0, s1
 	fcsel	s0, s0, s1, gt
-; now result in S0
+; 結果がS0にある
 	ret

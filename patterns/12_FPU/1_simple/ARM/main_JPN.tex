@@ -1,82 +1,77 @@
-\subsubsection{ARM: \OptimizingXcodeIV (\ARMMode)}
+﻿\subsubsection{ARM: \OptimizingXcodeIV (\ARMMode)}
 
-Until ARM got standardized floating point support, several processor manufacturers added their own 
-instructions extensions.
-Then, VFP (\IT{Vector Floating Point}) was standardized.
+ARMが標準化された浮動小数点サポートを得るまで、いくつかのプロセッサーメーカーは独自の命令拡張を追加しました。 
+次に、VFP（\IT{Vector Floating Point}）を標準化しました。
 
-One important difference from x86 is that in ARM, there
-is no stack, you work just with registers.
+x86との重要な違いの1つは、ARMではスタックがなく、
+レジスタだけで動作するということです。
 
 \lstinputlisting[label=ARM_leaf_example10,caption=\OptimizingXcodeIV (\ARMMode),style=customasmARM]{patterns/12_FPU/1_simple/ARM/Xcode_ARM_O3_JPN.asm}
 
 \myindex{ARM!D-\registers{}}
 \myindex{ARM!S-\registers{}}
 
-So, we see here new some registers used, with D prefix.
+そこで、ここではDの接頭辞を使用して新しいレジスタをいくつか見ていきます。
 
-These are 64-bit registers, there are 32 of them, and they can be used both for floating-point numbers 
-(double) but also for SIMD (it is called NEON here in ARM).
+これらは64ビットレジスタで、32個あり、浮動小数点数（double）とSIMD（ARMではNEONと呼ばれます）
+の両方に使用できます。
 
-There are also 32 32-bit S-registers, intended to be used for single precision 
-floating pointer numbers (float).
+32ビットの32ビットSレジスタもあり、単精度浮動小数点数
+（浮動小数点数）として使用されます。
 
-It is easy to memorize: D-registers are for double precision numbers, while
-S-registers---for single precision numbers.
-More about it: \myref{ARM_VFP_registers}.
+暗記するのは簡単です.Dレジスタは倍精度の数値用であり、Sレジスタは単精度の数値です。
+詳細は：\myref{ARM_VFP_registers}
 
-Both constants (3.14 and 4.1) are stored in memory in IEEE 754 format.
+両方の定数（3.14と4.1）はIEEE 754形式でメモリに格納されます。
 
 \myindex{ARM!\Instructions!VLDR}
 \myindex{ARM!\Instructions!VMOV}
-\INS{VLDR} and \INS{VMOV}, as it can be easily deduced, are analogous to the \INS{LDR} and \MOV instructions,
-but they work with D-registers.
+\INS{VLDR}と\INS{VMOV}は、簡単に推測できるように、\INS{LDR}命令と \MOV 命令に似ていますが、
+Dレジスタで動作します。
 
-It has to be noted that these instructions, just like the D-registers, are intended not only for
-floating point numbers, 
-but can be also used for SIMD (NEON) operations and this will also be shown soon.
+これらの命令は、Dレジスタと同様に、浮動小数点数だけでなく、
+SIMD（NEON）演算にも使用でき、これもすぐに表示されることに注意してください。
 
-The arguments are passed to the function in a common way, via the R-registers, however
-each number that has double precision has a size of 64 bits, so two R-registers are needed to pass each one.
+引数はRレジスタを介して共通の方法で関数に渡されますが、
+倍精度の各数値のサイズは64ビットなので、各レジスタを渡すには2つのRレジスタが必要です。
 
-\INS{VMOV D17, R0, R1} at the start, composes two 32-bit values from \Reg{0} and \Reg{1} into one 64-bit value
-and saves it to \GTT{D17}.
+\INS{VMOV D17, R0, R1}は\Reg{0}と\Reg{1}から2つの32ビット値を1つの64ビット値に合成し、
+\GTT{D17}に保存します。
 
-\INS{VMOV R0, R1, D16} is the inverse operation: what has been in \GTT{D16} 
-is split in two registers, \Reg{0} and \Reg{1}, because a double-precision number 
-that needs 64 bits for storage, is returned in \Reg{0} and \Reg{1}.
+\INS{VMOV R0, R1, D16}は逆の演算です。\GTT{D16}にあったものは、
+\Reg{0}と\Reg{1}の2つのレジスタに分割されます。
+これは、格納に64ビット必要な倍精度数が\Reg{0}と\Reg{1}に返されるためです。
 
 \myindex{ARM!\Instructions!VDIV}
 \myindex{ARM!\Instructions!VMUL}
 \myindex{ARM!\Instructions!VADD}
-\INS{VDIV}, \INS{VMUL} and \INS{VADD}, 
-are instruction for processing floating point numbers that compute \gls{quotient}, 
-\gls{product} and sum, respectively.
+\INS{VDIV}、\INS{VMUL}、\INS{VADD}はそれぞれ\gls{quotient}、\gls{product}、
+和を計算する浮動小数点数を処理する命令です。
 
-The code for Thumb-2 is same.
+Thumb-2のコードは同じです。
 
 \subsubsection{ARM: \OptimizingKeilVI (\ThumbMode)}
 
 \lstinputlisting[style=customasmARM]{patterns/12_FPU/1_simple/ARM/Keil_O3_thumb_JPN.asm}
 
-Keil generated code for a processor without FPU or NEON support.
+KeilはFPUまたはNEONをサポートしていないプロセッサ用のコードを生成しました。
 
-The double-precision floating-point numbers are passed via generic R-registers,
-and instead of FPU-instructions, service library functions are called\\
-(like \GTT{\_\_aeabi\_dmul}, \GTT{\_\_aeabi\_ddiv}, \GTT{\_\_aeabi\_dadd})
-which emulate multiplication, division and addition for floating-point numbers.
+倍精度浮動小数点数は、汎用Rレジスタを介して渡され、
+FPU命令の代わりに浮動小数点数の乗算、除算、加算をエミュレートするサービスライブラリ関数
+（\GTT{\_\_aeabi\_dmul}、 \GTT{\_\_aeabi\_ddiv}、 \GTT{\_\_aeabi\_dadd}など）が呼び出されます。
 
-Of course, that is slower than FPU-coprocessor, but it's still better than nothing.
+もちろん、それはFPUコプロセッサよりも遅いですが、何もないよりはましです。
 
-By the way, similar FPU-emulating libraries were very popular in the x86 world when coprocessors were rare
-and expensive, and were installed only on expensive computers.
+ところで、同様のFPUエミュレートライブラリは、コプロセッサが貴重で高価で、
+高価なコンピュータにしかインストールされていなかったx86の世界で非常に人気がありました。
 
 \myindex{ARM!soft float}
 \myindex{ARM!armel}
 \myindex{ARM!armhf}
 \myindex{ARM!hard float}
 
-The FPU-coprocessor emulation is called \IT{soft float} or \IT{armel} (\IT{emulation}) in the ARM world, 
-while using the coprocessor's FPU-instructions is called \IT{hard float} or \IT{armhf}.
+FPUコプロセッサエミュレーションは、ARMワールドでは\IT{ソフトフロート}または\IT{armel}（\IT{エミュレーション}）と呼ばれ、
+コプロセッサのFPU命令はハードフロートまたは\IT{armhf}と呼ばれます。
 
 \iffalse
 % TODO разобраться...
@@ -92,7 +87,7 @@ and that is why all the code in Linux distributions must be compiled according t
 
 \subsubsection{ARM64: \Optimizing GCC (Linaro) 4.9}
 
-Very compact code:
+とってもコンパクトなコードです。
 
 \lstinputlisting[caption=\Optimizing GCC (Linaro) 4.9,style=customasmARM]{patterns/12_FPU/1_simple/ARM/ARM64_GCC_O3_JPN.s}
 
@@ -100,15 +95,15 @@ Very compact code:
 
 \lstinputlisting[caption=\NonOptimizing GCC (Linaro) 4.9,style=customasmARM]{patterns/12_FPU/1_simple/ARM/ARM64_GCC_O0_JPN.s}
 
-\NonOptimizing GCC is more verbose.
+\NonOptimizing GCCはもっと冗長です。
 
-There is a lot of unnecessary value shuffling, including some clearly redundant code 
-(the last two \INS{FMOV} instructions). Probably, GCC 4.9 is not yet good in generating ARM64 code.
+いくつかの明確に冗長なコード（最後の2つの\INS{FMOV}命令）を含む、不要な値のシャッフルが多くあります。 
+おそらく、GCC 4.9はまだARM64コードを生成するのに適していません。
 
-What is worth noting is that ARM64 has 64-bit registers, and the D-registers are 64-bit ones as well.
+注目すべきことは、ARM64には64ビットのレジスタがあり、Dレジスタには64ビットのレジスタも含まれているということです。
 
-So the compiler is free to save values of type \Tdouble in \ac{GPR}s instead of the local stack.
-This isn't possible on 32-bit CPUs.
+したがって、コンパイラはローカルスタックではなく\ac{GPR}に \Tdouble 型の値を自由に保存できます。 
+これは32ビットCPUでは不可能です。
 
-And again, as an exercise, you can try to optimize this function manually, without introducing
-new instructions like \INS{FMADD}.
+また、エクササイズとして、\INS{FMADD}のような新しい命令を導入することなく、
+この機能を手動で最適化してみることができます。

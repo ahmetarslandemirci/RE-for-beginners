@@ -3,28 +3,26 @@
 
 \lstinputlisting[style=customasmARM]{patterns/12_FPU/2_passing_floats/Xcode_thumb_O0.asm}
 
-As it was mentioned before, 64-bit floating pointer numbers are passed in R-registers pairs.
+前に述べたように、64ビットの浮動ポインタ番号はRレジスタのペアで渡されます。
 
-This code is a bit redundant (certainly because optimization is turned off), 
-since it is possible to load values into the R-registers directly without touching the D-registers.
+D-レジスタに触れることなく直接Rレジスタに値をロードすることができるので、
+このコードは少し冗長です（最適化がオフになっているためです）。
 
-So, as we see, the \GTT{\_pow} function receives its first argument in \Reg{0} and \Reg{1}, and its second one in \Reg{2} and \Reg{3}. 
-The function leaves its result in \Reg{0} and \Reg{1}.
-The result of \GTT{\_pow} is moved into \GTT{D16}, then in the \Reg{1} and \Reg{2} pair, from where \printf takes the resulting number.
+したがって、見てきたように、\GTT{\_pow}関数は\Reg{0}と\Reg{1}で最初の引数を受け取り、\Reg{2}と\Reg{3}で2番目の引数を受け取ります。
+関数は、その結果を\Reg{0} と\Reg{1} のままにします。 
+\GTT{\_pow}の結果は\GTT{D16}に移動し、次に\Reg{1}と\Reg{2}のペアで \printf が結果の数値を取得します。
 
 \subsubsection{ARM + \NonOptimizingKeilVI (\ARMMode)}
 
 \lstinputlisting[style=customasmARM]{patterns/12_FPU/2_passing_floats/Keil_ARM_O0.asm}
 
-D-registers are not used here, just R-register pairs.
+Dレジスタはここでは使用されず、Rレジスタのペアのみが使用されます。
 
 \subsubsection{ARM64 + \Optimizing GCC (Linaro) 4.9}
 
 \lstinputlisting[caption=\Optimizing GCC (Linaro) 4.9,style=customasmARM]{patterns/12_FPU/2_passing_floats/ARM64_JPN.s}
 
-The constants are loaded into \RegD{0} and \RegD{1}: \TT{pow()} takes them from there.
-The result will be in \RegD{0} after the execution of \TT{pow()}.
-It is to be passed to \printf without any modification and moving, 
-because \printf takes arguments of \glslink{integral type}{integral types} 
-and pointers from X-registers, and floating point arguments from D-registers.
-
+定数は\RegD{0}と\RegD{1}にロードされます。\TT{pow()}は定数をそこから取り出します。
+結果は、\TT{pow()}の実行後に\RegD{0}に格納されます。 
+変更や移動をせずに \printf に渡す必要があります。これは、
+\printf は、Xレジスタからの\glslink{integral type}{integral types}とポインタとDレジスタからの浮動小数点引数の引数をとります。

@@ -1,19 +1,19 @@
 ﻿\subsubsection{MIPS}
 
 \myindex{MIPS!\Registers!FCCR}
-The co-processor of the MIPS processor has a condition bit which can be set in the FPU and checked in the CPU.
+MIPSプロセッサのコプロセッサには条件ビットがあり、これをFPUにセットしてCPUでチェックすることができます。
 
-Earlier MIPS-es have only one condition bit (called FCC0), later ones have 8 (called FCC7-FCC0).
+以前のMIPSには1つの条件ビット（FCC0と呼びます）があり、後のモデルには8つのビット（FCC7-FCC0と呼びます）があります。
 
-This bit (or bits) are located in the register called FCCR.
+このビット（または複数のビット）はFCCRと呼ばれるレジスタに配置されています。
 
 \lstinputlisting[caption=\Optimizing GCC 4.4.5 (IDA),style=customasmMIPS]{patterns/12_FPU/3_comparison/MIPS_O3_IDA_JPN.lst}
 
 \myindex{MIPS!\Instructions!C.LT.D}
-\INS{C.LT.D} compares two values. 
-\GTT{LT} is the condition \q{Less Than}.
-\GTT{D} implies values of type \Tdouble.
-Depending on the result of the comparison, the FCC0 condition bit is either set or cleared.
+\INS{C.LT.D}は2つの値を比較します。 
+\GTT{LT}は\q{Less Than}の条件です。
+\GTT{D}は \Tdouble 型の値を意味します。 
+比較の結果に応じて、FCC0条件ビットはセットまたはクリアされます。
 
 \myindex{MIPS!\Instructions!BC1T}
 \myindex{MIPS!\Instructions!BC1F}
@@ -21,4 +21,8 @@ Depending on the result of the comparison, the FCC0 condition bit is either set 
 \GTT{T} means that the jump is to be taken if the bit is set (\q{True}).
 There is also the instruction \INS{BC1F} which jumps if the bit is cleared (\q{False}).
 
-Depending on the jump, one of function arguments is placed into \$F0.
+\INS{BC1T}はFCC0ビットをチェックし、ビットがセットされていればジャンプします。 
+\GTT{T}は、ビットがセット（\q{True}）されている場合にジャンプが行われることを意味します。 
+ビットがクリアされるとジャンプする\INS{BC1F}命令もあります。（\q{False}）
+
+ジャンプに応じて、関数引数の1つが \$F0 に配置されます。

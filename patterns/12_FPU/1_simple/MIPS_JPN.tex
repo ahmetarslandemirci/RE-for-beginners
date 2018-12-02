@@ -1,17 +1,16 @@
 ﻿\subsubsection{MIPS}
 
-MIPS can support several coprocessors (up to 4), 
-the zeroth of which\footnote{Starting at 0.} is a special control coprocessor,
-and first coprocessor is the FPU.
+MIPSはいくつかのコプロセッサ（最大4個）をサポートすることができます。
+そのうちの0番目\footnote{0から始まる}は特別な制御コプロセッサであり、最初のコプロセッサはFPUです。
 
-As in ARM, the MIPS coprocessor is not a stack machine, it has 32 32-bit registers (\$F0-\$F31):
+ARMと同様に、MIPSコプロセッサはスタックマシンではなく、32個の32ビットレジスタ（\$F0-\$F31）を持ちます。
 \myref{MIPS_FPU_registers}.
 
-When one needs to work with 64-bit \Tdouble values, a pair of 32-bit F-registers is used.
+64ビットの \Tdouble 値を扱う必要がある場合、32ビットのFレジスタのペアが使用されます。
 
 \lstinputlisting[caption=\Optimizing GCC 4.4.5 (IDA),style=customasmMIPS]{patterns/12_FPU/1_simple/MIPS_O3_IDA_JPN.lst}
 
-The new instructions here are:
+新しい命令は以下です。
 
 \myindex{MIPS!\Instructions!LWC1}
 \myindex{MIPS!\Instructions!DIV.D}
@@ -19,13 +18,13 @@ The new instructions here are:
 \myindex{MIPS!\Instructions!ADD.D}
 \begin{itemize}
 
-\item \INS{LWC1} loads a 32-bit word into a register of the first coprocessor (hence \q{1} in instruction name).
+\item \INS{LWC1}は32ビットワードを第1コプロセッサのレジスタにロードします（命令名は\q{1}）。
 \myindex{MIPS!\Pseudoinstructions!L.D}
 
-A pair of \INS{LWC1} instructions may be combined into a \INS{L.D} pseudo instruction.
+一対の\INS{LWC1}命令を組み合わせて\INS{L.D}疑似命令にすることができます。
 
-\item \INS{DIV.D}, \INS{MUL.D}, \INS{ADD.D} do division, multiplication, and addition respectively 
-(\q{.D} in the suffix stands for double precision, \q{.S} stands for single precision)
+\item \INS{DIV.D}、 \INS{MUL.D}、 \INS{ADD.D}はそれぞれ除算、乗算、加算を行います
+（接尾辞の\q{.D}は倍精度、\q{.S}は単精度を表します）
 
 \end{itemize}
 
@@ -33,9 +32,8 @@ A pair of \INS{LWC1} instructions may be combined into a \INS{L.D} pseudo instru
 \myindex{\CompilerAnomaly}
 \label{MIPS_FPU_LUI}
 
-There is also a weird compiler anomaly: the \INS{LUI} instructions that we've marked with a question mark.
-It's hard for me to understand why load a part of a 64-bit constant of \Tdouble type into the \$V0 register.
-These instructions has no effect.
+また、奇妙なコンパイラの例外があります\INS{LUI}命令に疑問符がついています。 
+\$V0 レジスタに64ビット定数の \Tdouble 型の一部をロードする理由を理解することは難しいです。 
+これらの命令は何の効果もありません。 
 % TODO did you try checking out compiler source code?
-If someone knows more about it, please drop an email to author\footnote{\EMAIL}.
-
+これについて何か知っているなら、著者に電子メール\footnote{\EMAIL}を送ってください。

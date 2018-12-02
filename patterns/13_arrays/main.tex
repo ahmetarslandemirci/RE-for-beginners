@@ -11,6 +11,9 @@ that lie next to each other and that have the same type%
 \FR{Un tableau est simplement un ensemble de variables en mémoire
 qui sont situées les unes à côté des autres et qui ont le même type%
 \footnote{\ac{AKA} \q{container homogène}}.}
+\JPN{配列は、互いに隣り合って、
+同じ型を持つメモリ内の変数のセットです。%
+\footnote{\ac{AKA} \q{homogeneous container}}}
 
 % sections
 \input{patterns/13_arrays/1_simple/main}
@@ -20,31 +23,37 @@ qui sont situées les unes à côté des autres et qui ont le même type%
 \RU{\input{patterns/13_arrays/3_BO_protection/main_RU}}
 \DE{\input{patterns/13_arrays/3_BO_protection/main_DE}}
 \FR{\input{patterns/13_arrays/3_BO_protection/main_FR}}
+\JPN{\input{patterns/13_arrays/3_BO_protection/main_JPN}}
 
 \EN{\input{patterns/13_arrays/4_one_more_thing/main_EN}}
 \RU{\input{patterns/13_arrays/4_one_more_thing/main_RU}}
 \DE{\input{patterns/13_arrays/4_one_more_thing/main_DE}}
 \FR{\input{patterns/13_arrays/4_one_more_thing/main_FR}}
+\JPN{\input{patterns/13_arrays/4_one_more_thing/main_JPN}}
 
 \EN{\input{patterns/13_arrays/45_month_1D/main_EN}}
 \RU{\input{patterns/13_arrays/45_month_1D/main_RU}}
 \DE{\input{patterns/13_arrays/45_month_1D/main_DE}}
 \FR{\input{patterns/13_arrays/45_month_1D/main_FR}}
+\JPN{\input{patterns/13_arrays/45_month_1D/main_JPN}}
 
 \EN{\input{patterns/13_arrays/5_multidimensional/main_EN}}
 \RU{\input{patterns/13_arrays/5_multidimensional/main_RU}}
 \DE{\input{patterns/13_arrays/5_multidimensional/main_DE}}
 \FR{\input{patterns/13_arrays/5_multidimensional/main_FR}}
+\JPN{\input{patterns/13_arrays/5_multidimensional/main_JPN}}
 
 \EN{\input{patterns/13_arrays/55_month_2D/main_EN}}
 \RU{\input{patterns/13_arrays/55_month_2D/main_RU}}
 \DE{\input{patterns/13_arrays/55_month_2D/main_DE}}
 \FR{\input{patterns/13_arrays/55_month_2D/main_FR}}
+\JPN{\input{patterns/13_arrays/55_month_2D/main_JPN}}
 
 \EN{\input{patterns/13_arrays/conclusion_EN}}
 \RU{\input{patterns/13_arrays/conclusion_RU}}
 \DE{\input{patterns/13_arrays/conclusion_DE}}
 \FR{\input{patterns/13_arrays/conclusion_FR}}
+\JPN{\input{patterns/13_arrays/conclusion_JPN}}
 
 \myindex{Hex-Rays}
 
@@ -68,4 +77,10 @@ C'est pourquoi les expressions \TT{ptr[0]} et \TT{*ptr} sont équivalentes en \C
 Il est intéressant de noter que Hex-Rays remplace souvent la première par la seconde.
 Il procède ainsi lorsqu'il n'a aucune idée qu'il travaille avec un pointeur sur
 le tableau complet et pense que c'est un pointeur sur une seule variable.}
+\JPN{\mysection{ところで}
+したがって、最初の要素の配列とアドレスへのポインタは同じことです。 
+このため、\TT{ptr[0]}と\TT{*ptr}の式は \CCpp で同等です。 
+Hex-Raysはしばしば最初のものを2番目のものに置き換えることは興味深いことです。 
+これは、配列全体へのポインタで動作するかどうかわからないときに行い、
+これが単一変数へのポインタであると考えます。}
 \input{patterns/13_arrays/exercises}

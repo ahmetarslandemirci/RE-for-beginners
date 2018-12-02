@@ -4,56 +4,51 @@
 
 \lstinputlisting[style=customasmARM]{patterns/12_FPU/3_comparison/ARM/ARM64_GCC_O3_JPN.lst}
 
-The ARM64 \ac{ISA} has FPU-instructions 
-which set \ac{APSR} the CPU flags instead of \ac{FPSCR} for convenience.
-The\ac{FPU} is not a separate device here anymore (at least, logically).
+ARM64 \ac{ISA}には、便宜上、
+\ac{FPSCR}の代わりにCPUフラグを\ac{APSR}に設定するFPU命令があります。
+\ac{FPU}はもはや別個のデバイスではありません。（少なくとも論理的には）
 \myindex{ARM!\Instructions!FCMPE}
-Here we see \INS{FCMPE}. It compares the two values passed in \RegD{0} and \RegD{1} (which are the first and second arguments of the function)
-and sets \ac{APSR} flags (N, Z, C, V).
+ここでは\INS{FCMPE}を参照してください。 \RegD{0}と\RegD{1}（関数の第1引数と第2引数）で渡された2つの値を比較し、
+\ac{APSR}フラグ（N, Z, C, V）を設定します。
 
 \myindex{ARM!\Instructions!FCSEL}
-\INS{FCSEL} (\IT{Floating Conditional Select}) copies the value of \RegD{0} or \RegD{1} into \RegD{0} depending on the condition (\GTT{GT}---Greater Than),
-and again, it uses flags in \ac{APSR} register instead of \ac{FPSCR}.
+\INS{FCSEL}（\IT{Floating Conditional Select}）は、条件（\GTT{GT}---Greater Than）に応じて\RegD{0}または\RegD{1}の値を\RegD{0}にコピーし、
+再び\ac{FPSCR}の代わりに\ac{APSR}レジスタのフラグを使用します。
 
-This is much more convenient, compared to the instruction set in older CPUs.
+これは、古いCPUの命令セットに比べてはるかに便利です。
 
-If the condition is true (\GTT{GT}), then the value of \RegD{0} 
-is copied into \RegD{0} (i.e., nothing happens).
-If the condition is not true, the value of \RegD{1} 
-is copied into \RegD{0}.
+条件が真（\GTT{GT}）の場合、\RegD{0}の値が
+\RegD{0}にコピーされます。（つまり何も起こりません）
+条件が真でない場合、\RegD{1}の値が\RegD{0}にコピーされます。
 
 \myparagraph{\NonOptimizing GCC (Linaro) 4.9}
 
-\lstinputlisting[style=customasmARM]{patterns/12_FPU/3_comparison/ARM/ARM64_GCC_EN.lst}
+\lstinputlisting[style=customasmARM]{patterns/12_FPU/3_comparison/ARM/ARM64_GCC_JPN.lst}
 
-Non-optimizing GCC is more verbose.
+非最適化GCCはより冗長です。
 
-First, the function saves its input argument values in the local stack (\IT{Register Save Area}).
-Then the code reloads these values into registers
-\RegX{0}/\RegX{1} and finally copies them to 
-\RegD{0}/\RegD{1} to be compared using \INS{FCMPE}. 
-A lot of redundant code, 
-but that is how non-optimizing compilers work.
-\INS{FCMPE} compares the values and sets the \ac{APSR} flags.
-At this moment, 
-the compiler is not thinking yet about the more convenient \INS{FCSEL} instruction, so it proceed using old methods: 
-using the \INS{BLE} instruction (\IT{Branch if Less than or Equal}).
-In the first case ($a>b$), the value of $a$ gets loaded 
-into \RegX{0}.
-In the other case ($a<=b$), the value of $b$ gets loaded into 
-\RegX{0}.
-Finally, the value from \RegX{0} gets copied into \RegD{0}, 
-because the return value needs to be in this 
-register.
+まず、関数は入力引数の値をローカルスタック（\IT{Register Save Area}）に保存します。
+次に、これらの値をレジスタ
+\RegD{0}/\RegD{1}にリロードし、
+最終的に\RegX{0}/\RegX{1}にコピーして\INS{FCMPE}を使用して比較します。
+冗長なコードがたくさんありますが、
+最適化されていないコンパイラの仕組みです。 
+\INS{FCMPE}は値を比較し、\ac{APSR}フラグを設定します。
+現時点では、コンパイラは、より便利な\INS{FCSEL}命令についてはまだ考えていないため、古いメソッドを使用して処理を進めます。
+つまり、\INS{BLE}命令を使用します（\IT{Branch if Less than or Equal}）。
+最初のケース（$a>b$）では、 $a$ の値が\RegX{0}にロードされます。
+それ以外の場合（$a<=b$）、 $b$ の値は\RegX{0}にロードされます。
+最後に、戻り値がこのレジスタにある必要があるため、
+\RegX{0}からの値が\RegD{0}にコピーされます。
 
 \mysubparagraph{\Exercise}
 
-As an exercise, you can try optimizing this piece of code 
-manually by removing redundant instructions and not introducing new ones (including \INS{FCSEL}).
+練習として、冗長な命令を削除し、
+新しい命令（\INS{FCSEL}を含む）を導入しないで手動でこのコードを最適化することができます。
 
 \myparagraph{\Optimizing GCC (Linaro) 4.9---float}
 
-Let's also rewrite this example to use \Tfloat instead of \Tdouble.
+\Tdouble の代わりに \Tfloat を使うようにこの例を書き直しましょう。
 
 \begin{lstlisting}[style=customc]
 float f_max (float a, float b)
@@ -65,8 +60,7 @@ float f_max (float a, float b)
 };
 \end{lstlisting}
 
-\lstinputlisting[style=customasmARM]{patterns/12_FPU/3_comparison/ARM/ARM64_GCC_O3_float_EN.lst}
+\lstinputlisting[style=customasmARM]{patterns/12_FPU/3_comparison/ARM/ARM64_GCC_O3_float_JPN.lst}
 
-It is the same code, but the S-registers are used instead of D- ones.
-It's because numbers of type \Tfloat are passed in 32-bit S-registers (which are in fact the lower parts of the 64-bit D-registers).
-
+これは同じコードですが、D-レジスタの代わりにS-レジスタが使用されています。 
+これは、浮動小数点数が32ビットSレジスタ（実際には64ビットDレジスタの下位部分）に渡されるためです。

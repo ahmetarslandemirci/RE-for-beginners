@@ -1,58 +1,56 @@
 ﻿\myparagraph{GCC 4.8.1 with \Othree optimization turned on}
 \label{gcc481_o3}
 
-Some new FPU instructions were added in the P6 Intel family\footnote{Starting at Pentium Pro, Pentium-II, etc.}.
+いくつかの新しいFPU命令がP6インテルファミリ\footnote{Pentium Pro、Pentium-IIなどに始まる}に追加されました。 
 \myindex{x86!\Instructions!FUCOMI}
-These are \INS{FUCOMI} (compare operands and set flags of the main CPU) and 
+これらは \INS{FUCOMI} （メインCPUのオペランドとフラグの比較）と
 \myindex{x86!\Instructions!FCMOVcc}
-\INS{FCMOVcc} (works like \INS{CMOVcc}, but on FPU registers).
+\INS{FCMOVcc} （FPOレジスタ上の\INS{CMOVcc}のように機能します）です。
 
-Apparently, the maintainers of GCC decided to drop support of pre-P6 Intel CPUs (early Pentiums, 80486, etc.).
+どうやら、GCCのメンテナは、P6以前のインテルCPU（初期のPentium、80486など）のサポートを中止することに決めました。
 
-And also, the FPU is no longer separate unit in P6 Intel family, so now it is possible to modify/check flags of the main CPU from the FPU.
+また、FPUはP6インテルファミリではもはや別個のユニットではなくなったので、FPUからメインCPUのフラグを変更/チェックすることが可能になりました。
 
-So what we get is:
+つまり私たちが得るものは次のとおりです。
 
 \lstinputlisting[caption=\Optimizing GCC 4.8.1,style=customasmx86]{patterns/12_FPU/3_comparison/x86/GCC481_O3_JPN.s}
 
-Hard to guess why \INS{FXCH} (swap operands) is here.
+\INS{FXCH} （スワップオペランド）がどうしてここにあるのかを推測するのは難しいです。
 
-It's possible to get rid of it easily by swapping the first two \FLD instructions or by replacing 
-\INS{FCMOVBE} (\IT{below or equal}) by \INS{FCMOVA} (\IT{above}).
-Probably it's a compiler inaccuracy.
+最初の2つの \FLD 命令を交換するか、 \INS{FCMOVBE} （\IT{below or equal}）を \INS{FCMOVA} （\IT{above}）に
+置き換えることで、簡単に取り除くことができます。 
+おそらく、それはコンパイラが不正確なためです。
 
-So \INS{FUCOMI} compares \ST{0} ($a$) and \ST{1} ($b$) 
-and then sets some flags in the main CPU.
-\INS{FCMOVBE} checks the flags and copies \ST{1} 
-($b$ here at the moment) to 
-\ST{0} ($a$ here) if $ST0 (a) <= ST1 (b)$.
-Otherwise ($a>b$), it leaves $a$ in \ST{0}.
+そのため、 \INS{FUCOMI} は \ST{0} （ $a$ ）と \ST{1}（ $b$ ）を比較し、
+メインCPUにいくつかのフラグを設定します。 
+\INS{FCMOVBE}はフラグをチェックし、 $ST0 (a) <= ST1 (b)$ なら
+\ST{1}（ここでは $b$ ）を\ST{0}（ここでは $a$ ）にコピーします。
+そうでなければ（ $a>b$ ）、\ST{0}に $a$ を残します。
 
-The last \FSTP leaves \ST{0} on top of the stack, discarding the contents of \ST{1}.
+最後の \FSTP は、\ST{1}の内容を破棄してスタックの上に\ST{0}を残します。
 
-Let's trace this function in GDB:
+GDBでこの関数をトレースしましょう：
 
 \lstinputlisting[caption=\Optimizing GCC 4.8.1 and GDB,numbers=left]{patterns/12_FPU/3_comparison/x86/gdb.txt}
 
-Using \q{ni}, 
-let's execute the first two \FLD instructions.
+\q{ni}を使って、
+最初の \FLD 命令を2つ実行してみましょう。
 
-Let's examine the FPU registers (line 33).
+FPUレジスタを確認してみましょう。(33行目)
 
-As it was mentioned before, the FPU registers set is a circular buffer rather than a stack (\myref{FPU_is_rather_circular_buffer}).
-And GDB doesn't show \GTT{STx} registers, but internal the FPU registers (\GTT{Rx}). 
-The arrow (at line 35) points to the current top of the stack.
+以前書いたように、FPUレジスタのセットはスタックではなく循環バッファです。(\myref{FPU_is_rather_circular_buffer})
+そしてGDBは\GTT{STx}レジスタを表示しませんが、FPUレジスタの内部を表示します。（\GTT{Rx}）
+(35行目の)矢印は現在のスタックのトップを示しています。
 
-You can also see the \GTT{TOP} register contents in \IT{Status Word} (line 44)---it is 6 now, 
-so the stack top is now pointing to internal register 6.
+\IT{Status Word}(44行目)に\GTT{TOP}レジスタの内容を見ることができます。今は6で、
+スタックのトップは内部レジスタ6を示しています。
 
-The values of $a$ and $b$ are swapped after \INS{FXCH} is executed (line 54).
+$a$ および $b$ の値は\INS{FXCH}が実行されると交換されます。(54行目)
 
-\INS{FUCOMI} is executed (line 83). 
-Let's see the flags: \CF is set (line 95).
+\INS{FUCOMI}は実行されます。(83行目)
+フラグを見てみましょう： \CF がセットされます。(95行目)
 
-\INS{FCMOVBE} has copied the value of $b$ (see line 104).
+\INS{FCMOVBE} は $b$ の値をコピーします。(104行目)
 
-\FSTP leaves one value at the top of stack (line 136). 
-The value of \GTT{TOP} is now 7, so the FPU stack top is pointing to internal register 7.
-
+\FSTP はスタックのトップの値を1つ残します。(136行目)
+\GTT{TOP}の値は7で、FPUスタックのトップは内部レジスタ7を示しています。

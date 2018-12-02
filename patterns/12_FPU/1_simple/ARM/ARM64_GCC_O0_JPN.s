@@ -1,7 +1,7 @@
-f:
+﻿f:
 	sub	sp, sp, #16
-	str	d0, [sp,8]	; save "a" in Register Save Area
-	str	d1, [sp]	; save "b" in Register Save Area
+	str	d0, [sp,8]	; レジスタの保存領域に "a"を保存する
+	str	d1, [sp]	; レジスタの保存領域に "b"を保存する
 	ldr	x1, [sp,8]
 ; X1 = a
 	ldr	x0, .LC25
@@ -34,7 +34,7 @@ f:
 	fadd	d0, d0, d1
 ; D0 = D0+D1 = a/3.14 + b*4.1
 
-	fmov	x0, d0 ; \ redundant code
+	fmov	x0, d0 ; \ 冗長符号
 	fmov	d0, x0 ; /
 	add	sp, sp, 16
 	ret

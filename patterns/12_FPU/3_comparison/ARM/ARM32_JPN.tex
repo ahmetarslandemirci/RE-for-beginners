@@ -6,28 +6,27 @@
 
 \myindex{ARM!\Registers!APSR}
 \myindex{ARM!\Registers!FPSCR}
-A very simple case.
-The input values are placed into the \GTT{D17} and \GTT{D16} registers and then compared using the \INS{VCMPE} instruction.
+非常に単純なケースです。
+入力値は\GTT{D17}および\GTT{D16}レジスタに格納され、次に\INS{VCMPE}命令を使用して比較されます。
 
-Just like in the x86 coprocessor, the ARM coprocessor has its own status and flags register (\ac{FPSCR}),
-since there is a necessity to store coprocessor-specific flags.
+コプロセッサ固有のフラグを格納する必要があるため、x86コプロセッサと同様に、
+ARMコプロセッサには独自のステータスおよびフラグレジスタ（\ac{FPSCR}）があります。 
 % TODO -> расписать регистр по битам
 \myindex{ARM!\Instructions!VMRS}
-And just like in x86, there are no conditional jump instruction in ARM, 
-that can check bits in the status register of the coprocessor. 
-So there is \INS{VMRS}, which copies 4 bits (N, Z, C, V) from the coprocessor status word into bits of the \IT{general} status register (\ac{APSR}).
+また、x86と同様に、ARMでは条件付きジャンプ命令がなく、
+コプロセッサのステータスレジスタ内のビットをチェックできます。 
+したがって、コプロセッサステータスワードからの4ビット（N, Z, C, V）を汎用ステータスレジスタ（\ac{APSR}）のビットにコピーするVMRSがあります。
 
 \myindex{ARM!\Instructions!VMOVGT}
-\INS{VMOVGT} is the analog of the \INS{MOVGT}, 
-instruction for D-registers, it executes if one operand is greater than the other while comparing (\IT{GT---Greater Than}). 
+\INS{VMOVGT}はDレジスタ用の\INS{MOVGT}命令に類似のもので、
+比較中に一方のオペランドが他方のものより大きい場合に実行されます。（\IT{GT---Greater Than}）
 
-If it gets executed, the value of $a$ is to be written into \GTT{D16} (that is currently stored in \GTT{D17}).
-Otherwise the value of $b$ stays in the \GTT{D16} register.
+実行されると、 （現在\GTT{D17}に格納されている） $a$ の値は\GTT{D16}に書き込まれます。 
+それ以外の場合は、 $b$ の値は\GTT{D16}レジスタにとどまります。
 
 \myindex{ARM!\Instructions!VMOV}
 
-The penultimate instruction \INS{VMOV} prepares the value in the \GTT{D16} register for returning it via the \Reg{0} and \Reg{1}
-register pair.
+最後から2番目の\INS{VMOV}命令は、D0レジスタ内の値を\Reg{0}および\Reg{1}レジスタ対を介して戻すための値を準備します。
 
 \myparagraph{\OptimizingXcodeIV (\ThumbTwoMode)}
 
@@ -42,30 +41,30 @@ VMOV            R0, R1, D16
 BX              LR
 \end{lstlisting}
 
-Almost the same as in the previous example, however slightly different.
-As we already know, many instructions in ARM mode can be supplemented by condition predicate.
-But there is no such thing in Thumb mode. 
-There is no space in the 16-bit instructions for 4 more bits in which conditions can be encoded.
+前の例とほとんど同じですが、少し異なります。 
+すでにわかっているように、ARMモードの多くの命令は条件述語で補うことができます。 
+しかしThumbモードではこのようなことはありません。 
+条件を符号化できる4ビット以上の16ビット命令にはスペースがありません。
 
 \myindex{ARM!\ThumbTwoMode}
 
-However, Thumb-2 was extended to make it possible to specify predicates to old Thumb instructions.
-Here, in the \IDA-generated listing, we see the \INS{VMOVGT} instruction, as in previous example.
+ただし、Thumb-2は、古いThumb命令に対する述部を指定できるように拡張されました。
+ここでは、 \IDA で生成されたリストでは、前の例のように\INS{VMOVGT}命令が表示されます。
 
-In fact, the usual \INS{VMOV} is encoded there, but \IDA adds the \GTT{-GT} suffix to it, 
-since there is a \INS{IT GT} instruction placed right before it.
+実際、通常の\INS{VMOV}はそこにエンコードされますが、その直前に\INS{IT GT}命令が置かれているため、
+\IDA は\GTT{-GT}接尾辞を追加します。
 
 \label{ARM_Thumb_IT}
 \myindex{ARM!\Instructions!IT}
 \myindex{ARM!if-then block}
-The \INS{IT} instruction defines a so-called \IT{if-then block}. 
+\INS{IT}命令は、いわゆる\IT{if-then ブロック}を定義します。
 
-After the instruction it is possible to place up to 4 instructions, 
-each of them has a predicate suffix.
-In our example, \INS{IT GT} implies that the next instruction is to be executed, if the \IT{GT} (\IT{Greater Than}) condition is true.
+命令の後に最大4つの命令を配置することができ、
+それぞれに述語接尾辞があります。
+この例では、\IT{GT}（\IT{Greater Than}）条件が真である場合、\INS{IT GT}は次の命令が実行されることを意味します。
 
 \myindex{Angry Birds}
-Here is a more complex code fragment, by the way, from Angry Birds (for iOS):
+ちなみにAngry Birds（iOS向け）のより複雑なコードの断片は次のとおりです。
 
 \begin{lstlisting}[caption=Angry Birds Classic,style=customasmARM]
 ...
@@ -76,17 +75,17 @@ BLX             _objc_msgSend ; not suffixed
 ...
 \end{lstlisting}
 
-\INS{ITE} stands for \IT{if-then-else} 
+\INS{ITE}は\IT{if-then-else}を表し、
 
-and it encodes suffixes for the next two instructions.
+次の2つの命令の接尾辞をエンコードします。
 
-The first instruction executes if the condition encoded in \INS{ITE} (\IT{NE, not equal}) is true at, and the second---if the condition is not true.
-(The inverse condition of \GTT{NE} is \GTT{EQ} (\IT{equal})).
+最初の命令は、\INS{ITE}でエンコードされた条件（\IT{NE, not equal}）が真である場合に実行され、2番目の場合は条件が真でない場合に実行されます。
+（\GTT{NE}の逆条件は\GTT{EQ}（\IT{等しい}）です。
 
-The instruction followed after the second \INS{VMOV} (or \INS{VMOVEQ}) is a normal one, not suffixed (\INS{BLX}).
+2番目の\INS{VMOV}（または\INS{VMOVEQ}）が通常のもので、接尾辞（\INS{BLX}）ではない命令の後に続きます。
 
 \myindex{Angry Birds}
-One more that's slightly harder, which is also from Angry Birds:
+もう1つはやや難しく、これもAngry Birdsからです。
 
 \begin{lstlisting}[caption=Angry Birds Classic,style=customasmARM]
 ...
@@ -99,12 +98,12 @@ BLX             ___stack_chk_fail ; not suffixed
 ...
 \end{lstlisting}
 
-Four \q{T} symbols in the instruction mnemonic mean that the four subsequent instructions are to be executed if the condition is true.
+命令ニーモニック内の4つの\q{T}記号は、条件が真である場合に4つの後続の命令が実行されることを意味します。
 
-That's why \IDA adds the \GTT{-EQ} suffix to each one of them. 
+これが \IDA がそれぞれに\GTT{-EQ}サフィックスを追加する理由です。
 
-And if there was, for example, \INS{ITEEE EQ} (\IT{if-then-else-else-else}), 
-then the suffixes would have been set as follows:
+たとえば、\INS{ITEEE EQ}（\IT{if-then-else-else-else}）があった場合、
+接尾辞は次のように設定されます。
 
 \begin{lstlisting}
 -EQ
@@ -114,7 +113,7 @@ then the suffixes would have been set as follows:
 \end{lstlisting}
 
 \myindex{Angry Birds}
-Another fragment from Angry Birds:
+Angry Birdsから別の断片です。
 
 \begin{lstlisting}[caption=Angry Birds Classic,style=customasmARM]
 ...
@@ -128,22 +127,19 @@ CBZ             R0, loc_1E7E32 ; not suffixed
 ...
 \end{lstlisting}
 
-\INS{ITTE} (\IT{if-then-then-else}) 
+\INS{ITTE}（\IT{if-then-then-else}）は、\GTT{LE}（\IT{Less or Equal}）
+条件が真であれば第1および第2の命令が実行されることを意味し、逆条件（\GTT{GT}---\IT{Greater Than}）
+が真であれば第3の命令を実行することを意味します。
 
-implies that the 1st and 2nd instructions are to be executed if the \GTT{LE} (\IT{Less or Equal})
-condition is true, and the 3rd---if the inverse condition (\GTT{GT}---\IT{Greater Than}) 
-is true.
-
-Compilers usually don't generate all possible combinations.
+コンパイラは通常、可能な組み合わせのすべてを生成しません。
 \myindex{Angry Birds}
 
-For example, in the mentioned Angry Birds game (\IT{classic} version for iOS)
-only these variants of the \INS{IT} instruction are used: 
-\INS{IT}, \INS{ITE}, \INS{ITT}, \INS{ITTE}, \INS{ITTT}, \INS{ITTTT}.
+たとえば、前述のAngry Birdsゲーム（iOSの\IT{クラシック}バージョン）では、
+\INS{IT}命令の変種である、\INS{ITE}、\INS{ITT}、\INS{ITTE}、\INS{ITTT}、\INS{ITTTT}のみが使用されます。 
 \myindex{\GrepUsage}
-How to learn this?
-In \IDA, it is possible to produce listing files, so it was created with an option to show 4 bytes for each opcode.
-Then, knowing the high part of the 16-bit opcode (\INS{IT} is \GTT{0xBF}), we do the following using \GTT{grep}:
+これらをを学ぶのはどうしたらいいでしょうか？
+\IDA ではリストファイルを作成することができるため、各オペコードに4バイトを表示するオプションで作成されました。 
+次に、16ビットのオペコードの大部分（\INS{IT} は \GTT{0xBF}）を知っているので、\GTT{grep}を使って次のことを行います。
 
 \begin{lstlisting}
 cat AngryBirdsClassic.lst | grep " BF" | grep "IT" > results.lst
@@ -151,9 +147,9 @@ cat AngryBirdsClassic.lst | grep " BF" | grep "IT" > results.lst
 
 \myindex{ARM!\ThumbTwoMode}
 
-By the way, if you program in ARM assembly language manually for Thumb-2 mode, 
-and you add conditional suffixes,
-the assembler will add the \INS{IT} instructions automatically with the required flags where it is necessary.
+ところで、ARMアセンブリ言語でThumb-2モードを手動でプログラムし、
+条件付きサフィックスを追加すると、
+アセンブラは必要な場所に必要なフラグを自動的に\INS{IT}命令に追加します。
 
 \myparagraph{\NonOptimizingXcodeIV (\ARMMode)}
 
@@ -192,9 +188,8 @@ loc_2E10
                 BX              LR
 \end{lstlisting}
 
-Almost the same as we already saw, 
-but there is too much redundant code because the $a$ and $b$ variables are stored in the local stack, as well
-as the return value.
+既に見たのとほぼ同じですが、
+$a$ と $b$ の変数がローカルスタックに格納され、戻り値も格納されるため、冗長コードがとても多くなっています。
 
 \myparagraph{\OptimizingKeilVI (\ThumbMode)}
 
@@ -216,14 +211,12 @@ loc_1C0
                 POP     {R3-R7,PC}
 \end{lstlisting}
 
-
-Keil doesn't generate FPU-instructions since it cannot rely on them being
-supported on the target CPU, and it cannot be done by straightforward bitwise comparing.
+ターゲットCPUでサポートされるかに依存できず、また、簡単なビット単位の比較では実行できないため、
+KeilはFPU命令を生成しません。
 %TODO1: why?
-So it calls an external library function to do the comparison: \GTT{\_\_aeabi\_cdrcmple}. 
+したがって、外部ライブラリ関数を呼び出して比較を行います：\GTT{\_\_aeabi\_cdrcmple}
 \myindex{ARM!\Instructions!BCS}
 
-N.B. The result of the comparison is to be left in the flags by this function, so the following
-\INS{BCS} (\IT{Carry set---Greater than or equal})
-instruction can work without any additional code.
-
+注意：比較の結果はこの関数によってフラグに残されます。したがって、
+次の\INS{BCS}（\IT{Carry set---Greater than or equal}）命令は
+追加コードなしで動作します。

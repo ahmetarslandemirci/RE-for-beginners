@@ -11,8 +11,7 @@ b_second_half   = dword ptr  14h
     mov     ebp, esp
     sub     esp, 10h
 
-; put a and b to local stack:
-
+; aとbをローカルスタックにプッシュ
     mov     eax, [ebp+a_first_half]
     mov     dword ptr [ebp+a], eax
     mov     eax, [ebp+a_second_half]
@@ -22,23 +21,23 @@ b_second_half   = dword ptr  14h
     mov     eax, [ebp+b_second_half]
     mov     dword ptr [ebp+b+4], eax
 
-; load a and b to FPU stack:
+; aとbをFPUスタックにロード
 
     fld     [ebp+a]
     fld     [ebp+b]
 
-; current stack state: ST(0) - b; ST(1) - a
+; 現在のスタック状態: ST(0) - b; ST(1) - a
 
     fxch    st(1) ; this instruction swapping ST(1) and ST(0)
 
-; current stack state: ST(0) - a; ST(1) - b
+; 現在のスタック状態: ST(0) - a; ST(1) - b
 
-    fucompp    ; compare a and b and pop two values from stack, i.e., a and b
-    fnstsw  ax ; store FPU status to AX
-    sahf       ; load SF, ZF, AF, PF, and CF flags state from AH
-    setnbe  al ; store 1 to AL, if CF=0 and ZF=0
-    test    al, al            ; AL==0 ?
-    jz      short loc_8048453 ; yes
+    fucompp    ; aとbを比較しスタックから2値をポップ。例：a and b
+    fnstsw  ax ; FPUステータスをAXに保存
+    sahf       ; AHからSF, ZF, AF, PFそしてCFフラグの状態をロード
+    setnbe  al ; CF=0かつZF=0の場合にALに1を保存
+    test    al, al            ; AL==0か
+    jz      short loc_8048453 ; 真
     fld     [ebp+a]
     jmp     short locret_8048456
 

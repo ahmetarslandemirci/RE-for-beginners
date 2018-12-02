@@ -7,18 +7,17 @@ _d_max     PROC
     mov    ebp, esp
     fld    QWORD PTR _b$[ebp]
 
-; current stack state: ST(0) = _b
-; compare _b (ST(0)) and _a, and pop register
-
+; 現在のスタック状態: ST(0) = _b
+; _b (ST(0))と_aを比較し、レジスタをポップ
     fcomp  QWORD PTR _a$[ebp] 
 
-; stack is empty here
+; スタックは空
 
     fnstsw ax
     test   ah, 5
     jp     SHORT $LN1@d_max
 
-; we are here only if a>b
+; a>bの場合のみここに来ます
 
     fld    QWORD PTR _a$[ebp]
     jmp    SHORT $LN2@d_max

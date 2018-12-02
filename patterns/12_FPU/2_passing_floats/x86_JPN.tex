@@ -1,19 +1,16 @@
 ﻿\subsubsection{x86}
 
-Let's see what we get in (MSVC 2010):
+(MSVC 2010)で見てみましょう
 
 \lstinputlisting[caption=MSVC 2010,style=customasmx86]{patterns/12_FPU/2_passing_floats/MSVC_JPN.asm}
 
 \myindex{x86!\Instructions!FLD}
 \myindex{x86!\Instructions!FSTP}
 
-\FLD and \FSTP move variables between the data segment and the FPU stack. 
-\GTT{pow()}\footnote{a standard C function, raises a number to the given power (exponentiation)}
-takes both values from the stack and returns its result in the \ST{0} register.
-\printf takes 8 bytes from the local stack and interprets them as \Tdouble type variable.
+\FLD および \FSTP は、データセグメントとFPUスタックとの間の変数を移動します。
+\GTT{pow()} \footnote{標準的なC関数であり、与えられたべき乗（指数関数）}はスタックから両方の値をとり、
+その結果を\ST{0}レジスタに返します。  \printf はローカルスタックから8バイトを取り出し、double型の変数として解釈します。
 
-By the way, a pair of \MOV instructions could be used here for moving values from the memory
-into the stack, because the values in memory are stored in IEEE 754 format, and pow() also takes them in this
-format, so no conversion is necessary.
-That's how it's done in the next example, for ARM: \myref{FPU_passing_floats_ARM}.
-
+ちなみに、メモリ内の値はIEEE 754形式で格納され、pow()もこの形式で格納されているため、
+値をメモリからスタックに移動するための一対の \MOV 命令を使用でき、変換は不要です。
+これはARMのための次の例で行われます：\myref{FPU_passing_floats_ARM}
