@@ -9,7 +9,7 @@ Let's also try 64-bit MSVC:
 
 In x86-64, all registers were extended to 64-bit, and now their names have an \TT{R-} prefix.
 In order to use the stack less often (in other words, to access external memory/cache less often), there is
-a popular way to pass function arguments via registers (\IT{fastcall}) \myref{fastcall}.
+a popular way to pass function arguments via registers (\emph{fastcall}) \myref{fastcall}.
 I.e., a part of the function's arguments are passed in registers, and the rest---via the stack.
 In Win64, 4 function arguments are passed in the \RCX, \RDX, \Reg{8}, and \Reg{9} registers.
 That is what we see here: a pointer to the string for \printf is now passed not in the stack, but rather in the \RCX register.

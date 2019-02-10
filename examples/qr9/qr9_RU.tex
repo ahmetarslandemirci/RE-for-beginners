@@ -17,7 +17,7 @@
 
 
 \begin{lstlisting}[style=customasmx86]
-.text:00541320 ; int __cdecl crypt_file(int Str, char *Filename, int password)
+.text:00541320 ; int __cdecl crypt_file(char *Str, char *Filename, int password)
 .text:00541320 crypt_file      proc near
 .text:00541320
 .text:00541320 Str             = dword ptr  4
@@ -32,7 +32,7 @@
 .text:00541320                 mov     eax, [esp+Str]
 .text:00541324                 push    ebp
 .text:00541325                 push    offset Mode     ; "rb"
-.text:0054132A                 push    eax             ; Filename
+.text:0054132A                 push    eax             ; Str
 .text:0054132B                 call    _fopen          ; open file
 .text:00541330                 mov     ebp, eax
 .text:00541332                 add     esp, 8
@@ -386,7 +386,7 @@ OK, посмотрим глубже.
 \myindex{x86!\Instructions!MOVSD}
 Этот фрагмент кода копирует часть входного буфера во внутренний буфер, который мы позже назовем \q{cube64}.%
 
-Длина в регистре \ECX. \TT{MOVSD} означает \IT{скопировать 32-битное слово}, так что, 16 32-битных слов
+Длина в регистре \ECX. \TT{MOVSD} означает \emph{скопировать 32-битное слово}, так что, 16 32-битных слов
 это как раз 64 байта.
 
 \begin{lstlisting}[style=customasmx86]
@@ -670,7 +670,7 @@ void rotate_all (char *pwd, int v)
 .text:00541067 get_bit         endp
 \end{lstlisting}
 
-\dots иными словами: подсчитать индекс в массиве cube64: \IT{arg\_4 + arg\_0 * 8}.
+\dots иными словами: подсчитать индекс в массиве cube64: \emph{arg\_4 + arg\_0 * 8}.
 Затем сдвинуть байт из массива вправо на количество бит заданных в arg\_8. 
 Изолировать самый младший бит и вернуть его
 
@@ -824,7 +824,7 @@ bool get_bit (int x, int y, int shift)
 \lstinputlisting[style=customasmx86]{examples/qr9/6_RU}
 
 \dots этот код помещает содержимое из внутреннего массива в глобальный массив cube используя функцию 
-\TT{set\_bit()}, \IT{но}, в обратном порядке!
+\TT{set\_bit()}, \emph{но}, в обратном порядке!
 Теперь счетчик первого цикла в интервале 7 до 0, уменьшается на 1 на каждой итерации!
 
 Представление кода на Си выглядит так:
@@ -849,7 +849,7 @@ void rotate1 (int v)
 
 \lstinputlisting[style=customasmx86]{examples/qr9/7_RU}
 
-\IT{Почти} то же самое, за исключением иного порядка аргументов в \TT{get\_bit()} и \TT{set\_bit()}.
+\emph{Почти} то же самое, за исключением иного порядка аргументов в \TT{get\_bit()} и \TT{set\_bit()}.
 Перепишем это на Си-подобный код:
 
 \begin{lstlisting}[style=customc]
@@ -920,7 +920,7 @@ void decrypt (BYTE *buf, int sz, char *pw)
 };
 \end{lstlisting}
 
-Почти то же самое что и crypt(), \IT{но} строка пароля разворачивается стандартной функцией Си
+Почти то же самое что и crypt(), \emph{но} строка пароля разворачивается стандартной функцией Си
 strrev() \footnote{\href{http://go.yurichev.com/17249}{MSDN}}
 и \TT{rotate\_all()} вызывается с аргументом 3.
 

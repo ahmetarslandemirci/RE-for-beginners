@@ -35,17 +35,17 @@ Let's try to patch a Linux x64 executable using \radare{}:
 \lstinputlisting[caption=\radare{} session]{patterns/01_helloworld/radare.lst}
 
 Here's what's going on: I searched for the \q{hello} string using the \TT{/} command,
-then I set the \IT{cursor} (\IT{seek}, in \radare{} terms) to that address.
+then I set the \emph{cursor} (\emph{seek}, in \radare{} terms) to that address.
 Then I want to be sure that this is really that place: \TT{px} dumps bytes there.
-\TT{oo+} switches \radare{} to \IT{read-write} mode.
-\TT{w} writes an ASCII string at the current \IT{seek}.
+\TT{oo+} switches \radare{} to \emph{read-write} mode.
+\TT{w} writes an ASCII string at the current \emph{seek}.
 Note the \TT{\textbackslash{}00} at the end---this is a zero byte.
 \TT{q} quits.
 
-\subsubsection{Software \IT{localization} of MS-DOS era}
+\subsubsection{Software \emph{localization} of MS-DOS era}
 
 This method was a common way to translate MS-DOS software to Russian language back to 1980's and 1990's.
-Russian words and sentences are usually slightly longer than its English counterparts, so that is why \IT{localized}
+Russian words and sentences are usually slightly longer than its English counterparts, so that is why \emph{localized}
 software has a lot of weird acronyms and hardly readable abbreviations.
 
 Perhaps this also happened to other languages during that era, in other countries.

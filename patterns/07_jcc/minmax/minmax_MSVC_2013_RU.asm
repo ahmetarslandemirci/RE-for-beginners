@@ -11,7 +11,7 @@ _my_min	PROC
 ; перезагрузить A в EAX в противном случае и перейти на выход
 	mov	eax, DWORD PTR _a$[ebp]
 	jmp	SHORT $LN3@my_min
-	jmp	SHORT $LN3@my_min ; это избыточная JMP
+	jmp	SHORT $LN3@my_min ; это избыточная инструкция
 $LN2@my_min:
 ; возврат B
 	mov	eax, DWORD PTR _b$[ebp]
@@ -33,7 +33,7 @@ _my_max	PROC
 ; перезагрузить A в EAX в противном случае и перейти на выход
 	mov	eax, DWORD PTR _a$[ebp]
 	jmp	SHORT $LN3@my_max
-	jmp	SHORT $LN3@my_max ; это избыточная JMP
+	jmp	SHORT $LN3@my_max ; это избыточная инструкция
 $LN2@my_max:
 ; возврат B
 	mov	eax, DWORD PTR _b$[ebp]

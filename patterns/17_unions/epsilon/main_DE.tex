@@ -12,7 +12,7 @@ Was wir hier machen ist, den Bruch in der IEEE 754 Zahl als Integer zu behandeln
 Die resultierende Fließkommazahl ist gleich $starting\_value+machine\_epsilon$, sodass wir nur den Startwert (in der
 Fließkommaarithmetik) abziehen müssen um zu messen, welchen Unterschied ein Bit in der einfachen Genauigkeit (\Tfloat)
 ausmacht.
-Die \IT{union} dient hier als Mittel, um auf die IEEE 754 Zahl als regulären Integer zuzugreifen.
+Die \emph{union} dient hier als Mittel, um auf die IEEE 754 Zahl als regulären Integer zuzugreifen.
 Die Addition von 1 entspricht hier einer Addition von 1 zum Bruch in der Zahl, aber natürlich kann hier ein Overflow
 auftreten, was eine Addition von 1 zum Exponenten nach sich zieht.
 
@@ -50,5 +50,5 @@ FPU.
 
 \subsubsection{\Conclusion}
 Es ist schwer zu sagen, ob jemand eine solche Trickserei in echtem Produktivcode benötigt, aber wie bereits mehrfach
-erwähnt, ist dieses Beispiel gut geeignet, um das IEEE 754 Format und \IT{unions} in \CCpp zu erklären.
+erwähnt, ist dieses Beispiel gut geeignet, um das IEEE 754 Format und \emph{unions} in \CCpp zu erklären.
 

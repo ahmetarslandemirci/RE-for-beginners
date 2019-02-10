@@ -9,12 +9,12 @@ _memcpy	PROC
 	push	esi
 	mov	esi, DWORD PTR _src$[esp]
 	sub	esi, eax
-; ESI=src-dst, т.е., §разница указателей§
+; ESI=src-dst, т.е., разница указателей
 $LL8@f:
-	mov	cl, BYTE PTR [esi+eax] ; §загрузить байт на "esi+dst" или на "src-dst+dst" в начале, или просто на "src"§
+	mov	cl, BYTE PTR [esi+eax] ; загрузить байт на "esi+dst" или на "src-dst+dst" в начале, или просто на "src"
 	lea	eax, DWORD PTR [eax+1] ; dst++
-	mov	BYTE PTR [eax-1], cl   ; §сохранить байт на "(dst++)--", или просто на "dst" в начале§
-	dec	edx                    ; §декремент счетчика, пока не закончим§
+	mov	BYTE PTR [eax-1], cl   ; сохранить байт на "(dst++)--", или просто на "dst" в начале
+	dec	edx                    ; декремент счетчика, пока не закончим
 	jne	SHORT $LL8@f
 	pop	esi
 $LN1@f:

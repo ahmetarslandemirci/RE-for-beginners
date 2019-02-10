@@ -14,8 +14,8 @@ f:
 	ldr	x0, [sp,8]
 ; X0 = a
 	and	x0, x1, x0
-; X0 = X1&X0 = (1<<i) & a
-; X0 contient §zéro§? alors sauter en .L3, §évitant d'incrémenter§ "rt"
+; X0 = X1\&X0 = (1<<i) \& a
+; X0 contient zéro? alors sauter en .L3, évitant d'incrémenter "rt"
 	cmp	x0, xzr
 	beq	.L3
 ; rt++

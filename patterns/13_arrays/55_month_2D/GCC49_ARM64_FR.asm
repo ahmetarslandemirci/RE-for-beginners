@@ -1,6 +1,6 @@
 ﻿; W0 = mois
 	sxtw	x0, w0
-; X0 = valeur §entrée§ avec signe §étendu§
+; X0 = valeur entrée avec signe étendu
 	adrp	x1, .LANCHOR1
 	add	x1, x1, :lo12:.LANCHOR1
 ; X1 = pointeur sur la table

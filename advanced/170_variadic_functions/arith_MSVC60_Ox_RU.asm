@@ -32,7 +32,7 @@ _main	PROC NEAR
 	push	1
 	call	_arith_mean
 	push	eax
-	push	OFFSET FLAT:$SG851 ; '%d'
+	push	OFFSET FLAT:$SG851 ; '\%d'
 	call	_printf
 	add	esp, 32
 	ret	0

@@ -47,7 +47,7 @@ All bit-wise operations work just like in any other \ac{ISA}:
 XORing with \TT{0xFFFFFFFF} has the same effect of inverting all bits
  (\myref{XOR_property}).
 
-Let's extend all data types to 64-bit \IT{long}:
+Let's extend all data types to 64-bit \emph{long}:
 
 
 \begin{lstlisting}[style=customjava]
@@ -90,10 +90,10 @@ Let's extend all data types to 64-bit \IT{long}:
          8: lreturn       
 \end{lstlisting}
 
-The code is the same, but instructions with \IT{l} prefix are used, which operate 
+The code is the same, but instructions with \emph{l} prefix are used, which operate 
 on 64-bit values.
 
-Also, the second argument of the function still is of type \IT{int}, and when the 32-bit value in it 
+Also, the second argument of the function still is of type \emph{int}, and when the 32-bit value in it 
 needs to be promoted to 64-bit value the \TT{i2l} instruction is used, 
-which essentially extend the value of an \IT{integer} type to a \IT{long} one.
+which essentially extend the value of an \emph{integer} type to a \emph{long} one.
 

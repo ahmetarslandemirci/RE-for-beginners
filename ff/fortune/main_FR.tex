@@ -1,12 +1,12 @@
-\mysection{\IT{fortune} programme d'indexation de fichier}
+\mysection{\emph{fortune} programme d'indexation de fichier}
 
 (Cette partie est tout d'abord apparue sur mon blog le 25 avril 2015.)
 
-\IT{fortune} est un programme UNIX bien connu qui affiche une phrase aléatoire depuis
+\emph{fortune} est un programme UNIX bien connu qui affiche une phrase aléatoire depuis
 une collection.
-Certains geeks ont souvent configuré leur système de telle manière que \IT{fortune}
+Certains geeks ont souvent configuré leur système de telle manière que \emph{fortune}
 puisse être appelé après la connexion.
-\IT{fortune} prend les phrases depuis des fichiers texte se trouvant dans \IT{/usr/share/games/fortunes}
+\emph{fortune} prend les phrases depuis des fichiers texte se trouvant dans \emph{/usr/share/games/fortunes}
 (sur Ubuntu Linux).
 Voici un exemple (fichier texte \q{fortunes}):
 
@@ -28,17 +28,17 @@ A tall, dark stranger will have more fun than you.
 
 Donc, il s'agit juste de phrases, parfois sur plusieurs lignes, séparées par le
 signe pourcent.
-La tâche du programme \IT{fortune} est de trouver une phrase aléatoire et de l'afficher.
+La tâche du programme \emph{fortune} est de trouver une phrase aléatoire et de l'afficher.
 Afin de réaliser ceci, il doit scanner le fichier texte complet, compter les phrases,
 en choisir une aléatoirement et l'afficher.
 Mais le fichier texte peut être très gros, et même sur les ordinateurs modernes, cet
 algorithme naïf est du gaspillage de ressource.
 La façon simple de procéder est de garder un fichier index binaire contenant l'offset
 de chaque phrase du fichier texte.
-Avec le fichier index, le programme \IT{fortune} peut fonctionner beaucoup plus vite:
+Avec le fichier index, le programme \emph{fortune} peut fonctionner beaucoup plus vite:
 il suffit de choisir un index aléatoirement, prendre son offset, se déplacer à cet
 offset dans le fichier texte et d'y lire la phrase.
-C'est ce qui est effectivement fait dans le programme \IT{fortune}.
+C'est ce qui est effectivement fait dans le programme \emph{fortune}.
 Examinons ce qu'il y a dans ce fichier index (ce sont les fichiers .dat dans le même
 répertoire) dans un éditeur hexadécimal.
 Ce programme est open-source bien sûr, mais intentionnellement, je ne vais pas jeter
@@ -68,7 +68,7 @@ Out[]= {33554432, 2936078336, 3137339392, 251658240, 0, 37, 0, \
 \end{lstlisting}
 
 Nope, quelque chose est faux, les nombres sont étrangement gros.
-Mais retournons à la sortie de \IT{od}: chaque élément de 4 octets a deux octets nuls
+Mais retournons à la sortie de \emph{od}: chaque élément de 4 octets a deux octets nuls
 et deux octets non nuls.
 Donc les offsets (au moins au début du fichier) sont au maximum 16-bit.
 Peut-être qu'un endianness différent est utilisé dans le fichier?
@@ -109,7 +109,7 @@ D'autres offsets peuvent aussi être essayés, oui, ils sont valides.
 Je peux aussi vérifier dans Mathematica que chaque élément consécutif est plus grand
 que le précédent.
 I.e., les éléments du tableau sont croissants.
-Dans le jargon mathématiques, ceci est appelé \IT{fonction monotone strictement croissante}.
+Dans le jargon mathématiques, ceci est appelé \emph{fonction monotone strictement croissante}.
 
 \begin{lstlisting}[style=custommath]
 In[]:= Differences[input]
@@ -150,7 +150,7 @@ la longueur de la phrase courante).
 
 Il est très important de garder à l'esprit que l'endianness peut être confondu avec
 un début de tableau incorrect.
-En effet, dans la sortie d'\IT{od} nous voyons que chaque élément débutait par deux
+En effet, dans la sortie d'\emph{od} nous voyons que chaque élément débutait par deux
 zéros.
 Mais lorsque nous décalons les des octets de chaque côté, nous pouvons interpréter
 ce tableau comme little-endian:
@@ -164,11 +164,11 @@ et la partie 8-bit basse semble être ascendante.
 
 Mais je suis sûr que c'est un tableau en big-endian, car le tout dernier élément
 32-bit du fichier est big-endian.
-(\IT{00 00 5f c4} ici):
+(\emph{00 00 5f c4} ici):
 
 \lstinputlisting{ff/fortune/4.lst}
 
-Peut-être que le développeur du programme \IT{fortune} avait un ordinateur big-endian
+Peut-être que le développeur du programme \emph{fortune} avait un ordinateur big-endian
 ou peut-être a-t-il été porté depuis quelque chose comme ça.
 
 Ok, donc le tableau est big-endian, et, à en juger avec bon sens, la toute première
@@ -185,7 +185,7 @@ C'est probablement ainsi car la longueur de la phrase est calculée comme la dif
 entre l'offset de la phrase courante et l'offset de la phrase suivante.
 Ceci est plus rapide que de lire la chaîne à la recherche du caractère pourcent.
 Mais ceci ne fonctionne pas pour le dernier élément.
-Donc un élément \IT{fictif} est aussi ajouté à la fin du tableau.
+Donc un élément \emph{fictif} est aussi ajouté à la fin du tableau.
 
 Donc les 6 première valeur entière 32-bit sont une sorte d'en-tête.
 
@@ -200,7 +200,7 @@ Quoiqu'il en soit, il y a 432 phrases dans le fichier texte.
 Et nous voyons quelque chose de très familier dans le second élément (la valeur 431).
 J'ai vérifié dans d'autres fichiers (literature.dat et riddles.dat sur Ubuntu Linux)
 et oui, le second élément 32-bit est bien le nombre de phrases moins 1.
-Pourquoi \IT{moins 1}? Peut-être que ceci n'est pas le nombre de phrases, mais plutôt
+Pourquoi \emph{moins 1}? Peut-être que ceci n'est pas le nombre de phrases, mais plutôt
 le numéro de la dernière phrase (commençant à zéro)?
 
 Et il y a d'autres éléments dans l'entête.
@@ -222,7 +222,7 @@ D'après mon expérience, ils peuvent être:
 \item checksum;
 \item des flags;
 \item peut-être même des identifiants de langages;
-\item timestamp du fichier texte, donc le programme \IT{fortune} regénèrerait le
+\item timestamp du fichier texte, donc le programme \emph{fortune} regénèrerait le
 fichier d'index isi l'utilisateur modifiait le fichier texte.
 \end{itemize}
 
@@ -237,14 +237,14 @@ Mais ce ne sont pas des timestamps, d'après moi. La manière la plus compacte d
 la date et l'heure est la valeur UNIX, qui est un nombre 32-bit. Nous ne voyons rien
 de tel ici. D'autres façons de les représenter sont encore moins compactes.
 
-Donc, voici supposément comment fonctionne l'algorithme de \IT{fortune}:
+Donc, voici supposément comment fonctionne l'algorithme de \emph{fortune}:
 
 \begin{itemize}
 \item prendre le nombre du second élément de la dernière phrase;
 \item générer un nombre aléatoire dans l'intervalle 0..number\_of\_last\_phrase;
 \item trouver l'élément correspondant dans le tableau des offsets, prendre aussi
 l'offset suivant;
-\item écrire sur \IT{stdout} tous les caractères depuis le fichier texte en commençant
+\item écrire sur \emph{stdout} tous les caractères depuis le fichier texte en commençant
 à l'offset jusqu'à l'offset suivant moins 2 (afin d'ignorer le caractère pourcent
 terminal et le caractère de la phrase suivante).
 \end{itemize}
@@ -252,7 +252,7 @@ terminal et le caractère de la phrase suivante).
 \subsection{Hacking}
 
 Effectuons quelques essais afin de vérifier nos hypothèses.
-Je vais créer ce fichier texte dans le chemin et le nom \IT{/usr/share/games/fortunes/fortunes}:
+Je vais créer ce fichier texte dans le chemin et le nom \emph{/usr/share/games/fortunes/fortunes}:
 
 \begin{lstlisting}
 Phrase one.
@@ -263,7 +263,7 @@ Phrase two.
 
 Puis, ce fichier fortunes.dat. Je prend l'entête du fichier original fortunes.dat,
 j'ai mis à zéro changé le second champ (nombre de phrases) et j'ai laissé deux éléments
-dans le tableau: 0 et 0x1c, car la longueur totale du fichier texte \IT{fortunes}
+dans le tableau: 0 et 0x1c, car la longueur totale du fichier texte \emph{fortunes}
 est 28 (0x1c) octets:
 
 \lstinputlisting{ff/fortune/6.lst}
@@ -296,7 +296,7 @@ Toutefois, il peut toujours l'être. Et peut-être qu'il l'a été dans le pass�
 \subsection{Les fichiers}
 
 Pour les besoins de la démonstration, je ne regarde toujours pas dans le code source
-de \IT{fortune}.
+de \emph{fortune}.
 Si vous soulez essayer de comprendre la signification des autres valeurs dans l'entête
 du fichier d'index, vous pouvez essayer de le faire sans regarder dans le code source.
 Les fichiers que j'ai utilisé sous Ubuntu Linux 14.04 sont ici: \url{http://beginners.re/examples/fortune/},
@@ -304,11 +304,11 @@ les fichiers bricolés le sont aussi.
 
 Oh, j'ai pris les fichiers de la version x64 d'Ubuntu, mais les éléments du tableau
 ont toujours une taille de 32 bit.
-C'est parce que les fichiers de texte de \IT{fortune} ne vont sans doute jamais dépasser
+C'est parce que les fichiers de texte de \emph{fortune} ne vont sans doute jamais dépasser
 une taille de 4\ac{GiB}.
 Mais s'ils le devaient, tous les éléments devraient avoir une taille de 64 bit afin
 de pouvoir stocker un offset de dans un fichier texte plus gros que 4GiB.
 
-Pour les lecteurs impatients, le code source de \IT{fortune} est ici:
+Pour les lecteurs impatients, le code source de \emph{fortune} est ici:
 \url{https://launchpad.net/ubuntu/+source/fortune-mod/1:1.99.1-3.1ubuntu4}.
 

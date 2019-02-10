@@ -10,7 +10,7 @@ Ancient \q{Block out}\footnote{\url{http://www.bestoldgames.net/eng/old-games/bl
 \caption{High score table}
 \end{figure}
 
-Now we can see that the file has changed after we added our name is \IT{BLSCORE.DAT}.
+Now we can see that the file has changed after we added our name is \emph{BLSCORE.DAT}.
 \begin{lstlisting}
 % xxd -g 1 BLSCORE.DAT
 
@@ -46,9 +46,9 @@ Now let's think about the fact that both array elements and structure elements a
 \myindex{\CStandardLibrary!fwrite()}
 \myindex{\CStandardLibrary!read()}
 \myindex{\CStandardLibrary!fread()}
-That enables us to write the whole array/structure to the file using simple \IT{write()} or \IT{fwrite()} function, 
-and then restore it using \IT{read()} or \IT{fread()}, as simple as that.
-This is what is called \IT{serialization} nowadays.
+That enables us to write the whole array/structure to the file using simple \emph{write()} or \emph{fwrite()} function, 
+and then restore it using \emph{read()} or \emph{fread()}, as simple as that.
+This is what is called \emph{serialization} nowadays.
 
 \subsubsection{Read}
 
@@ -93,7 +93,7 @@ int main(int argc, char* argv[])
 };
 \end{lstlisting}
 
-We need GCC \IT{((aligned (1),packed))} attribute so that all structure fields will be packed on 1-byte boundary.
+We need GCC \emph{((aligned (1),packed))} attribute so that all structure fields will be packed on 1-byte boundary.
 
 Of course it works:
 
@@ -214,7 +214,7 @@ Not a problem in strict sense: it's not a bug, but information can be exposed ou
 
 \myindex{Microsoft Word}
 Microsoft Word versions from 1990s has been often left pieces of previously edited texts into the *.doc* files.
-It was some kind of amusement back then, to get a \IT{.doc} file from someone,
+It was some kind of amusement back then, to get a \emph{.doc} file from someone,
 then open it in a hexadecimal editor and read something else,
 what has been edited on that computer before.
 
@@ -227,7 +227,7 @@ in OpenSSL.
 
 \q{Block out} has several polycubes (flat/basic/extended), size of pit can be configured, etc.
 And it seems, for each configuration, \q{Block out} has its own high score table.
-I've noticed that some information is probably stored in \IT{BLSCORE.IDX} file.
+I've noticed that some information is probably stored in \emph{BLSCORE.IDX} file.
 This can be a homework for hardcore \q{Block out} fans---to understand its structure as well.
 
 The \q{Block out} files are here: \url{http://beginners.re/examples/blockout.zip}

@@ -27,7 +27,7 @@ $LN2@f:
 $LN1@f:
 	mov	DWORD PTR _a$[esp-4], OFFSET $SG2806 ; 'default'
 	jmp	DWORD PTR __imp__printf
-	npad	2 ; aligner la table $LN11@f sur une limite de 16-octet
+	npad	2 ; aligner la table \$LN11@f sur une limite de 16-octet
 $LN11@f:
 	DD	$LN5@f ; afficher '1, 2, 7, 10'
 	DD	$LN4@f ; afficher '3, 4, 5'

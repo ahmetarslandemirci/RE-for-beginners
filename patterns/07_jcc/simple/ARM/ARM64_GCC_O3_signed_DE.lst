@@ -1,9 +1,9 @@
 f_signed:
 ; W0=a, W1=b
 	cmp	w0, w1
-	bgt	.L19	; verzweige, falls §größer§ (a>b)
+	bgt	.L19	; verzweige, falls größer (a>b)
 	beq	.L20	; verzweige, falls gleich (a==b)
-	bge	.L15	; §verzweige, falls größer gleich (a>=b) (hier nicht möglich)§
+	bge	.L15	; verzweige, falls größer gleich (a>=b) (hier nicht möglich)
 	; a<b
 	adrp	x0, .LC11	; "a<b"
 	add	x0, x0, :lo12:.LC11

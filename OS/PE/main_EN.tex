@@ -47,7 +47,7 @@ There usually are loaded modules, memory of the stack, \gls{heap}(s), etc.
 Many addresses in PE-file tables use \ac{RVA}-addresses.
 
 %\item
-%Data directory\EMDASH{}...
+%Data directory --- ...
 
 \item \ac{IAT}---an array of addresses of imported symbols \footnote{\PietrekPE}.
 Sometimes, the \TT{IMAGE\_DIRECTORY\_ENTRY\_IAT} data directory points at the \ac{IAT}.
@@ -98,7 +98,7 @@ method loads your program and all modules it needs at random base addresses, dif
 
 \subsubsection{Subsystem}
 
-There is also a \IT{subsystem} field, usually it is:
+There is also a \emph{subsystem} field, usually it is:
 
 \myindex{Native API}
 
@@ -136,18 +136,18 @@ Division in sections, as it seems, is present in all executable file formats.
 It is devised in order to separate code from data, and data---from constant data.
 
 \begin{itemize}
-\item Either the \IT{IMAGE\_SCN\_CNT\_CODE} or \IT{IMAGE\_SCN\_MEM\_EXECUTE} flags will be set on the code section---this is executable code.
+\item Either the \emph{IMAGE\_SCN\_CNT\_CODE} or \emph{IMAGE\_SCN\_MEM\_EXECUTE} flags will be set on the code section---this is executable code.
 
-\item On data section---\IT{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA},\\
-\IT{IMAGE\_SCN\_MEM\_READ} and \IT{IMAGE\_SCN\_MEM\_WRITE} flags.
+\item On data section---\emph{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA},\\
+\emph{IMAGE\_SCN\_MEM\_READ} and \emph{IMAGE\_SCN\_MEM\_WRITE} flags.
 
 \item On an empty section with uninitialized data---\\
-\IT{IMAGE\_SCN\_CNT\_UNINITIALIZED\_DATA}, \IT{IMAGE\_SCN\_MEM\_READ} \\
-        and \IT{IMAGE\_SCN\_MEM\_WRITE}.
+\emph{IMAGE\_SCN\_CNT\_UNINITIALIZED\_DATA}, \emph{IMAGE\_SCN\_MEM\_READ} \\
+        and \emph{IMAGE\_SCN\_MEM\_WRITE}.
 
 \item On a constant data section (one that's protected from writing), the flags \\
-\IT{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA} and \IT{IMAGE\_SCN\_MEM\_READ} can be set, \\
-but not \IT{IMAGE\_SCN\_MEM\_WRITE}.
+\emph{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA} and \emph{IMAGE\_SCN\_MEM\_READ} can be set, \\
+but not \emph{IMAGE\_SCN\_MEM\_WRITE}.
 A process going to crash if it tries to write to this section.
 \end{itemize}
 
@@ -155,7 +155,7 @@ A process going to crash if it tries to write to this section.
 \myindex{BSS}
 Each section in PE-file may have a name, however, it is not very important.
 Often (but not always) the code section is named \TT{.text},
-the data section---\TT{.data}, the constant data section --- \TT{.rdata} \IT{(readable data)}.
+the data section---\TT{.data}, the constant data section --- \TT{.rdata} \emph{(readable data)}.
 Other popular section names are:
 
 \myindex{MIPS}
@@ -203,8 +203,8 @@ typedef struct _IMAGE_SECTION_HEADER {
 \footnote{\href{http://go.yurichev.com/17048}{MSDN}}
 
 \myindex{Hiew}
-A word about terminology: \IT{PointerToRawData} is called \q{Offset} in Hiew
-and \IT{VirtualAddress} is called \q{RVA} there.
+A word about terminology: \emph{PointerToRawData} is called \q{Offset} in Hiew
+and \emph{VirtualAddress} is called \q{RVA} there.
 
 \subsubsection{Data section}
 
@@ -212,7 +212,7 @@ Data section in file can be smaller than in memory.
 For example, some variables can be initialized, some are not.
 Compiler and linker will collect them all into one section, but the first part of it is initialized and allocated in file,
 while another is absent in file (of course, to make it smaller).
-\IT{VirtualSize} will be equal to the size of section in memory, and \IT{SizeOfRawData} --- to
+\emph{VirtualSize} will be equal to the size of section in memory, and \emph{SizeOfRawData} --- to
 size of section in file.
 
 IDA can show the border between initialized and not initialized parts like that:
@@ -282,7 +282,7 @@ If a module is loaded at its original base address, nothing happens.
 All global variables can be treated like that.
 
 Relocs may have various types, however, in Windows for x86 processors, the type is usually \\
-\IT{IMAGE\_REL\_BASED\_HIGHLOW}.
+\emph{IMAGE\_REL\_BASED\_HIGHLOW}.
 
 \myindex{Hiew}
 
@@ -325,7 +325,7 @@ and in such programs there are no \ac{MFC} function names in \ac{INT}.
 When loading such programs in \IDA, it will ask for a path to the mfc*.dll files
 in order to determine the function names.
 
-If you don't tell \IDA the path to these DLLs, there will be \IT{mfc80\_123} instead of function names.
+If you don't tell \IDA the path to these DLLs, there will be \emph{mfc80\_123} instead of function names.
 
 \myparagraph{Imports section}
 
@@ -341,12 +341,12 @@ Imports are also a confusing subject because of the terminological mess. Let's t
 A scheme that unites all PE-file structures related to imports}
 \end{figure}
 
-The main structure is the array \IT{IMAGE\_IMPORT\_DESCRIPTOR}.
+The main structure is the array \emph{IMAGE\_IMPORT\_DESCRIPTOR}.
 Each element for each DLL being imported.
 
-Each element holds the \ac{RVA} address of the text string (DLL name) (\IT{Name}).
+Each element holds the \ac{RVA} address of the text string (DLL name) (\emph{Name}).
 
-\IT{OriginalFirstThunk} is the \ac{RVA} address of the \ac{INT} table.
+\emph{OriginalFirstThunk} is the \ac{RVA} address of the \ac{INT} table.
 This is an array of \ac{RVA} addresses, each of which points to a text string with a function name.
 Each string is prefixed by a 16-bit integer
 (\q{hint})---\q{ordinal} of function.
@@ -354,18 +354,18 @@ Each string is prefixed by a 16-bit integer
 While loading, if it is possible to find a function by ordinal,
 then the strings comparison will not occur. The array is terminated by zero.
 
-There is also a pointer to the \ac{IAT} table named \IT{FirstThunk}, it is just the \ac{RVA} address
+There is also a pointer to the \ac{IAT} table named \emph{FirstThunk}, it is just the \ac{RVA} address
 of the place where the loader writes the addresses of the resolved functions.
 
-The points where the loader writes addresses are marked by \IDA like this: \IT{\_\_imp\_CreateFileA}, etc.
+The points where the loader writes addresses are marked by \IDA like this: \emph{\_\_imp\_CreateFileA}, etc.
 
 There are at least two ways to use the addresses written by the loader.
 
 \myindex{x86!\Instructions!CALL}
 \begin{itemize}
-\item The code will have instructions like \IT{call \_\_imp\_CreateFileA},
+\item The code will have instructions like \emph{call \_\_imp\_CreateFileA},
 and since the field with the address of the imported function is a global variable in some sense,
-the address of the \IT{call} instruction (plus 1 or 2) is to be added to the relocs table,
+the address of the \emph{call} instruction (plus 1 or 2) is to be added to the relocs table,
 for the case when the module is loaded at a different base address.
 
 But, obviously, this may enlarge relocs table significantly.
@@ -404,10 +404,10 @@ JMP EAX
 \end{lstlisting}
 
 FirstThunk points to the first instruction. In other words, when loading yourdll.dll,
-the loader writes the address of the \IT{function} function right in the code.
+the loader writes the address of the \emph{function} function right in the code.
 
 It also worth noting that a code section is usually write-protected, so my utility adds the \\
-\IT{IMAGE\_SCN\_MEM\_WRITE}
+\emph{IMAGE\_SCN\_MEM\_WRITE}
 flag for code section. Otherwise, the program to crash while loading with error code
 5 (access denied). \\
 \\
@@ -415,8 +415,8 @@ One might ask: what if I supply a program with a set of DLL files which is not s
 is it possible to speed up the loading process?
 
 Yes, it is possible to write the addresses of the functions to be imported into the FirstThunk arrays in advance.
-The \IT{Timestamp} field is present in the \\
-\IT{IMAGE\_IMPORT\_DESCRIPTOR} structure.
+The \emph{Timestamp} field is present in the \\
+\emph{IMAGE\_IMPORT\_DESCRIPTOR} structure.
 
 If a value is present there, then the loader compares this value with the date-time of the DLL file.
 
@@ -436,7 +436,7 @@ In this case, the Windows loader, of course, will not load all necessary DLLs.
 \myindex{Windows!Win32!GetProcAddress}
 
 Therefore, the packer/encryptor does this on its own, with the help of
-\IT{LoadLibrary()} and the \IT{GetProcAddress()} functions.
+\emph{LoadLibrary()} and the \emph{GetProcAddress()} functions.
 
 That is why these two functions are often present in \ac{IAT} in packed files.\\
 \\

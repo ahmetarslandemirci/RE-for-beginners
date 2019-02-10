@@ -22,7 +22,7 @@ Dans tous les exemples que nous avons vu jusqu'ici, nous incrémentions la valeu
 de \q{rt} après la comparaison d'un bit spécifique, mais le code ici incrémente \q{rt}
 avant (ligne 6), écrivant la nouvelle valeur dans le registre \EDX.
 Donc, si le dernier bit est à 1, l'instruction \CMOVNE\footnote{Conditional MOVe if Not Equal}
-(qui est un synonyme pour \CMOVNZ\footnote{Conditional MOVe if Not Zero}) \IT{commits}
+(qui est un synonyme pour \CMOVNZ\footnote{Conditional MOVe if Not Zero}) \emph{commits}
 la nouvelle valeur de \q{rt} en déplaçant  \EDX (\q{valeur proposée de rt}) dans
 \EAX (\q{rt courant} qui va être retourné à la fin).
 

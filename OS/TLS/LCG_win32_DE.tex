@@ -73,7 +73,7 @@ In diesem Fall kann die \ac{TLS}-Callback-Funktion genutzt werden.
 
 Der folgende Code ist nicht sehr portabl, nichtsdestotrotz ist die Idee dahinter erkennbar.
 
-Was hier passiert ist eine Funktion zu definieren (\TT{tls\_callback()}) welche \IT{vor}
+Was hier passiert ist eine Funktion zu definieren (\TT{tls\_callback()}) welche \emph{vor}
 dem Starten eines Prozesses oder Threads aufgerufen wird.
 
 Die Funktion initialisiert den \ac{PRNG} mit dem Wert der von \TT{GetTickCount()} zurückgegeben wird.

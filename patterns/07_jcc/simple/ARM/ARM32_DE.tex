@@ -12,13 +12,13 @@ Dies ist beispielsweise oft beim Vergleich von Zahlen der Fall.
 
 \myindex{ARM!\Instructions!ADD}
 \myindex{ARM!\Instructions!ADDAL}
-Der \ADD Befehl zum Beispiel heißt hier intern \TT{ADDAL}, wobei \TT{AL} für \IT{Always} (dt. immer) steht, d.h. er wird
+Der \ADD Befehl zum Beispiel heißt hier intern \TT{ADDAL}, wobei \TT{AL} für \emph{Always} (dt. immer) steht, d.h. er wird
 immer ausgeführt.
-Die Prädikate werden in den 4 höchstwertigsten Bits des 32-Bit-ARM-Befehls kodiert, dem \IT{condition field}.
+Die Prädikate werden in den 4 höchstwertigsten Bits des 32-Bit-ARM-Befehls kodiert, dem \emph{condition field}.
 
 \myindex{ARM!\Instructions!B}
 Der Befehl \TT{B} für einen unbedingten Sprung ist tatsächlich doch bedingt und genau wie jeder andere bedingte Sprung
-kodiert, nut dass er \TT{AL} im \IT{condition field} hat und dadurch die Flags ignoriert und immer ausgeführt wird.
+kodiert, nut dass er \TT{AL} im \emph{condition field} hat und dadurch die Flags ignoriert und immer ausgeführt wird.
 
 \myindex{ARM!\Instructions!ADR}
 \myindex{ARM!\Instructions!ADRcc}
@@ -61,7 +61,7 @@ Wir haben bereits einen unbedingten Sprung zur Funktion \printf anstelle einer F
 \myindex{ARM!\Instructions!BLcc}
 \myindex{ARM!\Instructions!LDMccFD}
 \TT{f\_unsigned} ist ähnlich, nur die Befehle \TT{ADRHI}, \TT{BLHI} und \TT{LDMCSFD} werden hier verwendet.
-Deren Prädikaten (\IT{HI = Unsigned higher, CS = Carry Set (greater than or equal)}) sind analog zu den eben
+Deren Prädikaten (\emph{HI = Unsigned higher, CS = Carry Set (greater than or equal)}) sind analog zu den eben
 betrachteten, nur eben für vorzeichenlose Werte. 
 
 In der Funktion \main finden wir nicht viel Neues:
@@ -93,9 +93,9 @@ Nur der \TT{B} Befehl im Thumb mode kann mit condition codes versehen werden, so
 aussieht.
 
 
-\TT{BLE} ist ein normaler bedingter Sprung \IT{Less than or Equal}, 
-\TT{BNE}---\IT{Not Equal}, 
-\TT{BGE}---\IT{Greater than or Equal}.
+\TT{BLE} ist ein normaler bedingter Sprung \emph{Less than or Equal}, 
+\TT{BNE}---\emph{Not Equal}, 
+\TT{BGE}---\emph{Greater than or Equal}.
 
 \TT{f\_unsigned} ist ähnlich, nur dass andere Befehle verwendet werden, wenn mit vorzeichenlosen Werten umgegangen wird:
-\TT{BLS} (\IT{Unsigned lower or same}) und \TT{BCS} (\IT{Carry Set (Greater than or equal)}).
+\TT{BLS} (\emph{Unsigned lower or same}) und \TT{BCS} (\emph{Carry Set (Greater than or equal)}).

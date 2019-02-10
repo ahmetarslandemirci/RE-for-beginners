@@ -29,7 +29,7 @@ __cstring:00003E70 48 65 6C 6C 6F 20+aHelloWorld  DCB "Hello world!",0xA,0
 
 Les instructions \TT{BL} et \TT{BLX} en mode Thumb, comme on s'en souvient, sont
 encodées comme une paire d'instructions 16 bits.
-En Thumb-2 ces opcodes \IT{substituts} sont étendus de telle sorte que les nouvelles
+En Thumb-2 ces opcodes \emph{substituts} sont étendus de telle sorte que les nouvelles
 instructions puissent être encodées comme des instructions 32-bit.
 
 C'est évident en considérant que les opcodes des instructions Thumb-2 commencent
@@ -75,7 +75,7 @@ Cette instruction est placée ici, car l'instruction à laquelle est passée le 
 ressemble à (c'est encodé en mode ARM):
 
 \begin{lstlisting}[style=customasmARM]
-__symbolstub1:00003FEC _puts           ; CODE XREF: _hello_world+E
+__symbolstub1:00003FEC _puts           ; CODE XREF: \_hello\_world+E
 __symbolstub1:00003FEC 44 F0 9F E5     LDR  PC, =__imp__puts
 \end{lstlisting}
 
@@ -103,7 +103,7 @@ Le chargeur de l'\ac{OS} charge tous les modules dont il a besoin, tout en énum
 les symboles d'import dans le module primaire, il détermine l'adresse correcte de
 chaque symbole.
 
-Dans notre cas, \IT{\_\_imp\_\_puts} est une variable 32-bit utilisée par le
+Dans notre cas, \emph{\_\_imp\_\_puts} est une variable 32-bit utilisée par le
 chargeur de l'\ac{OS} pour sauver l'adresse correcte d'une fonction dans une
 bibliothèque externe.
 Ensuite l'instruction \TT{LDR} lit la valeur 32-bit depuis cette variable et
@@ -139,7 +139,7 @@ La manière la plus simple est de les voir comme des adaptateurs ou des
 convertisseurs d'un type jack à un autre.
 Par exemple, un adaptateur permettant l'insertion d'un cordon électrique
 britannique sur une prise murale américaine, ou vice-versa.
-Les fonctions thunk sont parfois appelées \IT{wrappers}.
+Les fonctions thunk sont parfois appelées \emph{wrappers}.
 
 Voici quelques autres descriptions de ces fonctions:
 

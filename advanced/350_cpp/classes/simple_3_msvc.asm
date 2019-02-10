@@ -1,6 +1,6 @@
 _this$ = -4          ; size = 4
 ?dump@c@@QAEXXZ PROC ; c::dump, COMDAT
-; _this$ = ecx
+; \_this\$ = ecx
     push ebp
     mov  ebp, esp
     push ecx

@@ -1,12 +1,12 @@
 my_max:
-; set $v1 to 1 if $a1<$a0, or clear otherwise (if $a1>$a0):
+; set \$v1 to 1 if \$a1<\$a0, or clear otherwise (if \$a1>\$a0):
                 slt     $v1, $a1, $a0
-; jump, if $v1 is 0 (or $a1>$a0):
+; jump, if \$v1 is 0 (or \$a1>\$a0):
                 beqz    $v1, locret_10
 ; this is branch delay slot
-; prepare $a1 in $v0 in case of branch triggered:
+; prepare \$a1 in \$v0 in case of branch triggered:
                 move    $v0, $a1 
-; no branch triggered, prepare $a0 in $v0:
+; no branch triggered, prepare \$a0 in \$v0:
                 move    $v0, $a0
 
 locret_10:

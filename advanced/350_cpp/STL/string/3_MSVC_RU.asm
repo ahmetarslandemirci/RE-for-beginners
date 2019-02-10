@@ -14,7 +14,7 @@ _main PROC
     mov  DWORD PTR _s1$[esp+100], 15
     mov  DWORD PTR _s1$[esp+96], 0
     mov  BYTE PTR _s1$[esp+80], 0
-    call ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
+    call ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; \verb|std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign|
 
     push 7
     push OFFSET $SG39514
@@ -22,7 +22,7 @@ _main PROC
     mov  DWORD PTR _s2$[esp+100], 15
     mov  DWORD PTR _s2$[esp+96], 0
     mov  BYTE PTR _s2$[esp+80], 0
-    call ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
+    call ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; \verb|std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign|
 
     lea  eax, DWORD PTR _s2$[esp+72]
     push eax
@@ -30,9 +30,9 @@ _main PROC
     push eax
     lea  eax, DWORD PTR _s3$[esp+80]
     push eax
-    call ??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z ; std::operator+<char,std::char_traits<char>,std::allocator<char> >
+    call ??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z ; \verb|std::operator+<char,std::char_traits<char>,std::allocator<char> >|
 
-    ; вставленный код метода (inlined) c_str():
+    ; вставленный код метода (inlined) c\_str():
     cmp  DWORD PTR _s3$[esp+104], 16
     lea  eax, DWORD PTR _s3$[esp+84]
     cmovae eax, DWORD PTR _s3$[esp+84]

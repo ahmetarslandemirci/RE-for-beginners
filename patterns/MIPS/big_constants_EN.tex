@@ -38,7 +38,7 @@ which allegedly loads a full 32-bit number into the \$V0 register.
 The GCC assembly output has the LI pseudo instruction, but in fact, \INS{LUI} (\q{Load Upper Immediate}) is there,
 which stores a 16-bit value into the high part of the register.
 
-Let's see in \IT{objdump} output:
+Let's see in \emph{objdump} output:
 
 \begin{lstlisting}[caption=objdump,style=customasmMIPS]
 00000000 <f>:
@@ -60,7 +60,7 @@ unsigned int f2()
 
 \myindex{MIPS!\Instructions!LW}
 
-This is slightly different: \INS{LUI} loads upper 16-bit from \IT{global\_var} into \$2 (or \$V0) and then \INS{LW} loads lower 16-bits summing it with the contents of \$2:
+This is slightly different: \INS{LUI} loads upper 16-bit from \emph{global\_var} into \$2 (or \$V0) and then \INS{LW} loads lower 16-bits summing it with the contents of \$2:
 
 \begin{lstlisting}[caption=GCC 4.4.5 -O3 (\assemblyOutput),style=customasmMIPS]
 f2:
@@ -87,10 +87,10 @@ _f2:
 
                 .data
                 .globl global_var
-global_var:     .word 0x12345678         # DATA XREF: _f2
+global_var:     .word 0x12345678         # DATA XREF: \_f2
 \end{lstlisting}
 
-\IT{objdump}'s output is the same as GCC's assembly output.
+\emph{objdump}'s output is the same as GCC's assembly output.
 Let's also dump relocs of the object file:
 
 \begin{lstlisting}[caption=objdump,style=customasmMIPS]
@@ -125,6 +125,6 @@ OFFSET   TYPE              VALUE
 
 \end{lstlisting}
 
-We can see that address of \IT{global\_var} is to be written right into \INS{LUI} and \INS{LW} instructions during executable file loading:
-high 16-bit part of \IT{global\_var} goes into the first one (\INS{LUI}), lower 16-bit part goes into the second one (\INS{LW}).
+We can see that address of \emph{global\_var} is to be written right into \INS{LUI} and \INS{LW} instructions during executable file loading:
+high 16-bit part of \emph{global\_var} goes into the first one (\INS{LUI}), lower 16-bit part goes into the second one (\INS{LW}).
 

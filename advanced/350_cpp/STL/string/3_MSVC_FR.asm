@@ -14,7 +14,7 @@ _main PROC
     mov  DWORD PTR _s1$[esp+100], 15
     mov  DWORD PTR _s1$[esp+96], 0
     mov  BYTE PTR _s1$[esp+80], 0
-    call ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
+    call ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; \verb|std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign|
 
     push 7
     push OFFSET $SG39514
@@ -22,7 +22,7 @@ _main PROC
     mov  DWORD PTR _s2$[esp+100], 15
     mov  DWORD PTR _s2$[esp+96], 0
     mov  BYTE PTR _s2$[esp+80], 0
-    call ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
+    call ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; \verb|std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign|
 
     lea  eax, DWORD PTR _s2$[esp+72]
     push eax
@@ -30,9 +30,9 @@ _main PROC
     push eax
     lea  eax, DWORD PTR _s3$[esp+80]
     push eax
-    call ??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z ; std::operator+<char,std::char_traits<char>,std::allocator<char> >
+    call ??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z ; \verb|std::operator+<char,std::char_traits<char>,std::allocator<char> >|
 
-    ; §méthode§ c_str() mise en ligne (inlined):
+    ; méthode c\_str() mise en ligne (inlined):
     cmp  DWORD PTR _s3$[esp+104], 16
     lea  eax, DWORD PTR _s3$[esp+84]
     cmovae eax, DWORD PTR _s3$[esp+84]
@@ -45,7 +45,7 @@ _main PROC
     cmp  DWORD PTR _s3$[esp+92], 16
     jb   SHORT $LN119@main
     push DWORD PTR _s3$[esp+72]
-    call ??3@YAXPAX@Z                ; §opérateur§ delete
+    call ??3@YAXPAX@Z                ; opérateur delete
     add  esp, 4
 $LN119@main:
     cmp  DWORD PTR _s2$[esp+92], 16
@@ -54,7 +54,7 @@ $LN119@main:
     mov  BYTE PTR _s3$[esp+72], 0
     jb   SHORT $LN151@main
     push DWORD PTR _s2$[esp+72]
-    call ??3@YAXPAX@Z                ; §opérateur§ delete
+    call ??3@YAXPAX@Z                ; opérateur delete
     add  esp, 4
 $LN151@main:
     cmp  DWORD PTR _s1$[esp+92], 16
@@ -63,7 +63,7 @@ $LN151@main:
     mov  BYTE PTR _s2$[esp+72], 0
     jb   SHORT $LN195@main
     push DWORD PTR _s1$[esp+72]
-    call ??3@YAXPAX@Z                ; §opérateur§ delete
+    call ??3@YAXPAX@Z                ; opérateur delete
     add  esp, 4
 $LN195@main:
     xor  eax, eax

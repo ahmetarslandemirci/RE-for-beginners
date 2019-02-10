@@ -13,7 +13,7 @@ class box
         };
         void dump()
         {
-            printf ("this is box. width=%d, height=%d, depth=%d\n", width, height, depth);
+            printf ("this is a box. width=%d, height=%d, depth=%d\n", width, height, depth);
         };
         int get_volume() 
         { 
@@ -36,7 +36,7 @@ class solid_object
         };
         void dump()
         {
-            printf ("this is solid_object. density=%d\n", density);
+            printf ("this is a solid_object. density=%d\n", density);
         };
 };
 
@@ -52,7 +52,7 @@ class solid_box: box, solid_object
         };
         void dump()
         {
-            printf ("this is solid_box. width=%d, height=%d, depth=%d, density=%d\n", width, height, depth, density);
+            printf ("this is a solid_box. width=%d, height=%d, depth=%d, density=%d\n", width, height, depth, density);
         };
         int get_weight() { return get_volume() * get_density(); };
 };

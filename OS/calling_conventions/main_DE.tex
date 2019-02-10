@@ -25,7 +25,7 @@ add esp, 12 ; gibt ESP zurueck
 
 \newcommand{\SIZEOFINT}{Die Größe einer Variablen vom Datentyp \Tint ist 4 in x86-Systemen und 8 in x64-Systemen}
 
-Dies ist fast gleich zu der \IT{cdecl}-Aufrufkonvention, mit Ausnahme, dass die
+Dies ist fast gleich zu der \emph{cdecl}-Aufrufkonvention, mit Ausnahme, dass die
 \gls{callee} den Wert von \ESP auf den ursprünglichen Wert setzen muss. Dies geschieht
 durch die \TT{RET x} anstatt \RET, wobei gilt \TT{x = Nummer des Arguments * sizeof(int)\footnote{\SIZEOFINT}}.
 
@@ -68,8 +68,8 @@ abgeleitet werden, indem $n$ durch 4 geteilt wird
 \subsubsection{Funktionen mit einer variablen Anzahl von Argumenten}
 
 \printf-ähnliche Funktionen sind vielleicht die einzigen Funktionen in \CCpp mit einer Variablen
-Anzahl von Argumenten, aber mit ihnen kann ein wichtiger Unterschied zwischen \IT{cdecl} und
-\IT{stdcall} veranschaulicht werden.
+Anzahl von Argumenten, aber mit ihnen kann ein wichtiger Unterschied zwischen \emph{cdecl} und
+\emph{stdcall} veranschaulicht werden.
 Beginnen wir mit der Vorstellung, dass der Compiler die Anzahl der Argumente für jeden Aufruf
 von \printf kennt.
 
@@ -78,11 +78,11 @@ Die aufgerufene und bereits kompilierte \printf-Funktion befindet sich in der Da
 übergeben wurden; dies kann jedoch über den Formatstring herausgefunden werden.
 
 %TODO: The following sentence is much too long.
-Wenn \printf eine \IT{stdcall}-Funktion wäre und den \gls{stack pointer} durch Zählen der Zahl
+Wenn \printf eine \emph{stdcall}-Funktion wäre und den \gls{stack pointer} durch Zählen der Zahl
 der Argumente im Formatstring auf den ursprünglichen Wert setzen würde, kann eine gefährliche
 Situation entstehen, da ein Schreibfehler des Programmierers zu einem plötzliche Programmabsturz
 führen könnte.
-Aus diesem Grund ist für diese Art von Funktionen \IT{stdcall} ungeeignet und \IT{cdecl} ist
+Aus diesem Grund ist für diese Art von Funktionen \emph{stdcall} ungeeignet und \emph{cdecl} ist
 zu bevorzugen.
 
 \subsection{fastcall}
@@ -90,22 +90,22 @@ zu bevorzugen.
 \myindex{fastcall}
 
 Dies ist der allgemeine Name für eine Methode, in der einige Argumente mittels Registern und
-der Rest über den Stack übergeben werden. Für ältere CPUs ist \IT{fastcall} schneller als
-\IT{cdecl} und \IT{stdcall} wegen der geringeren Stack-Nutzung.
+der Rest über den Stack übergeben werden. Für ältere CPUs ist \emph{fastcall} schneller als
+\emph{cdecl} und \emph{stdcall} wegen der geringeren Stack-Nutzung.
 Auf neueren \ac{CPU}s wird dieser Ansatz vermutlich keine signifikante Geschwindigkeitserhöhung
 nach sich ziehen.
 
-\IT{fastcall} ist nicht standardisiert, so das verschiedene Compiler eine unterschiedliche
+\emph{fastcall} ist nicht standardisiert, so das verschiedene Compiler eine unterschiedliche
 Umsetzung machen können.
 Dies kann zu Problemen führen, wenn zwei DLLs genutzt werden, von denen eine die andere nutzt
-und durch das Nutzen verschiedener Compiler unterschiedliche \IT{fastcall}-Aufrufkonventionen
+und durch das Nutzen verschiedener Compiler unterschiedliche \emph{fastcall}-Aufrufkonventionen
 genutzt werden.
 
 Sowohl MSVC als auch GCC übergeben das erste und zweite Argument über \ECX und \EDX und den Rest
 der Arguments mittels des Stacks.
 
 Der \gls{stack pointer} muss vom \gls{callee} auf den ursprünglichen Wert gesetzt werden,
-wie in \IT{stdcall} auch.
+wie in \emph{stdcall} auch.
 
 \begin{lstlisting}[caption=fastcall]
 push Argument3
@@ -143,7 +143,7 @@ Dies bedeutet, dass die Anzahl der Argumente ebenfalls einfach abgeleitet werden
 
 \newcommand{\URLREGPARMM}{\url{http://go.yurichev.com/17040}}
 
-Dies ist in gewisser Weise die Weiterentwicklung von \IT{fastcall}\footnote{\URLREGPARMM}.
+Dies ist in gewisser Weise die Weiterentwicklung von \emph{fastcall}\footnote{\URLREGPARMM}.
 Mit der \TT{-mregparm}-Option ist es möglich festzulegen, wieviele Argumente per Register
 übergeben werden (maximal 3).
 Aus diesem Grund werden die Register \EAX, \EDX und \ECX genutzt.
@@ -194,7 +194,7 @@ während längere Funktionen diese für späteren Gebrauch zwischenspeichern sol
 Der \gls{caller} muss den \gls{stack pointer} auf den vorherigen Zustand zurücksetzen.
 
 Diese Aufrufkonvention wird auch in den Windows x86-64-System-DLLs genutzt
-(anstatt \IT{stdcall} in Win32).
+(anstatt \emph{stdcall} in Win32).
 
 Beispiel:
 
@@ -283,12 +283,12 @@ nutzen (der Autor dieser Linien hat so einen Fall in der Praxis noch nie gesehen
 
 %TODO Compilation of german version fails with style=customasm
 %\lstinputlisting[caption=MSVC 2012,style=customasm]{OS/calling_conventions/change_arguments.asm}
-\lstinputlisting[caption=MSVC 2012]{OS/calling_conventions/change_arguments.asm}
+\lstinputlisting[caption=MSVC 2012,style=customasmx86]{OS/calling_conventions/change_arguments.asm}
 
 % TODO (OllyDbg) пример как в стеке меняется $a$
 
 Also: ja, die Argumente können einfach modifiziert werden.
-Natürlich, wenn diese keine \IT{Referenz} in  \Cpp{} (\myref{cpp_references}) ist,
+Natürlich, wenn diese keine \emph{Referenz} in  \Cpp{} (\myref{cpp_references}) ist,
 und nicht die Daten verändert werden auf die der Zeiger zeigt, wird der Effekt nicht
 außerhalb der aktuellen Funktion sichtbar sein.
 
@@ -298,7 +298,7 @@ Vielleicht wenn dies direkt in Assembler programmiert ist.
 
 Beispielsweise wird Code wie folgt von gewöhnlichen \CCpp-Compilern erzeugt:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 	push	456	; wird gleich b sein
 	push	123	; wird gleich a sein
 	call	f	; f() modifiziert das erste Argument
@@ -307,7 +307,7 @@ Beispielsweise wird Code wie folgt von gewöhnlichen \CCpp-Compilern erzeugt:
 
 Der Code kann wie folgt neu geschrieben werden:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 	push	456	; wird gleich b sein
 	push	123	; wird gleich a sein
 	call	f	; f() modifiziert das erste Argument

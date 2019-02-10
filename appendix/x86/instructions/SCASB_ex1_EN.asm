@@ -1,5 +1,5 @@
 lea     edi, string
-mov     ecx, 0FFFFFFFFh ; scan §$2^{32}-1$§ bytes, i.e., almost §\IT{infinitely}§
+mov     ecx, 0FFFFFFFFh ; scan $2^{32}-1$ bytes, i.e., almost \emph{infinitely}
 xor     eax, eax        ; 0 is the terminator
 repne scasb
 add     edi, 0FFFFFFFFh ; correct it

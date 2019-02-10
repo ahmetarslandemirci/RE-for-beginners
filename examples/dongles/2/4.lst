@@ -1,4 +1,4 @@
-.text:0000D708 prep_sys proc near ; CODE XREF: init_sys+46Ap
+.text:0000D708 prep_sys proc near ; \verb|CODE XREF: init_sys+46Ap|
 .text:0000D708
 .text:0000D708 var_14   = dword ptr -14h
 .text:0000D708 var_10   = byte ptr -10h
@@ -14,14 +14,14 @@
 .text:0000D717          mov     al, ds:ctl_model
 .text:0000D71C          test    al, al
 .text:0000D71E          jnz     short loc_D77E
-.text:0000D720          mov     [ebp+var_8], offset aIeCvulnvvOkgT_ ; "Ie-cvulnvV\\\bOKG]T_"
+.text:0000D720          mov     [ebp+var_8], offset aIeCvulnvvOkgT_ ; \verb|"Ie-cvulnvV\\\bOKG]T_"|
 .text:0000D727          mov     edx, 7
 .text:0000D72C          jmp     loc_D7E7
 
 ...
 
-.text:0000D7E7 loc_D7E7: ; CODE XREF: prep_sys+24j
-.text:0000D7E7           ; prep_sys+33j
+.text:0000D7E7 loc_D7E7: ; \verb|CODE XREF: prep_sys+24j|
+.text:0000D7E7           ; \verb|prep_sys+33j|
 .text:0000D7E7          push    edx
 .text:0000D7E8          mov     edx, [ebp+var_8]
 .text:0000D7EB          push    20h

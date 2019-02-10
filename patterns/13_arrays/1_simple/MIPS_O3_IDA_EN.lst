@@ -35,8 +35,8 @@ loc_34:                                  # CODE XREF: main+3C
                 addiu   $v1, 4
 ; array filling loop is ended
 ; second loop begin
-                la      $s3, $LC0        # "a[%d]=%d\n"
-; "i" variable will reside in $s0:
+                la      $s3, $LC0        # "a[\%d]=\%d\textbackslash{}n"
+; "i" variable will reside in \$s0:
                 move    $s0, $zero
                 li      $s2, 0x14
 

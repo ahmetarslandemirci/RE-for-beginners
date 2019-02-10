@@ -13,12 +13,12 @@ $LN5:
 	lea	rcx, OFFSET FLAT:$SG2924 ; 'Enter X:'
 	call	printf
 	lea	rdx, QWORD PTR x$[rsp]
-	lea	rcx, OFFSET FLAT:$SG2926 ; '%d'
+	lea	rcx, OFFSET FLAT:$SG2926 ; '\%d'
 	call	scanf
 	cmp	eax, 1
 	jne	SHORT $LN2@main
 	mov	edx, DWORD PTR x$[rsp]
-	lea	rcx, OFFSET FLAT:$SG2927 ; 'You entered %d...'
+	lea	rcx, OFFSET FLAT:$SG2927 ; 'You entered \%d...'
 	call	printf
 	jmp	SHORT $LN1@main
 $LN2@main:

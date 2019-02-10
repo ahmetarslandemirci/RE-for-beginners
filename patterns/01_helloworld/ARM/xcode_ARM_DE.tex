@@ -63,7 +63,7 @@ GCC ersetzt den ersten \printf-Aufruf mit \puts. In der Tat ist \printf mit nur 
 Argument identisch mit \puts.
 
 Die beiden Funktionen produzieren lediglich das gleiche Ergebnis, weil printf keine
-Formatkennzeichner, beginnend mit \IT{\%}, enhält.
+Formatkennzeichner, beginnend mit \emph{\%}, enhält.
 Sollte dies jedoch der Fall sein, wäre die Auswirkung der beiden Funktionen
 unterschiedlich\footnote{Des weiteren benötigt \puts kein '\textbackslash{}n'
 für den Zeilenumbruch am Ende der Zeichenkette, weswegen wir dies hier nicht sehen.}.
@@ -71,6 +71,6 @@ für den Zeilenumbruch am Ende der Zeichenkette, weswegen wir dies hier nicht se
 Warum hat der Compiler diese Ersetzung durchgeführt? Vermutlich hat dies Vorteile bei
 der Geschwindigkeit, weil \puts schneller ist
 \footnote{\href{http://go.yurichev.com/17063}{ciselant.de/projects/gcc\_printf/gcc\_printf.html}}
-und lediglich die Zeichen zu \gls{stdout} übergibt, anstatt jedes Zeichen mit \IT{\%} zu vergleichen.
+und lediglich die Zeichen zu \gls{stdout} übergibt, anstatt jedes Zeichen mit \emph{\%} zu vergleichen.
 
 Als nächstes ist die bekannte Anweisung \TT{MOV R0, \#0} zu sehen um das Register \Reg{0} auf 0 zu setzen.

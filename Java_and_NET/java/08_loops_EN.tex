@@ -36,26 +36,26 @@ public class Loop
 
 Why not the zeroth slot?
 Because the \main function has one argument (array of \TT{String}) 
-and a pointer to it (or \IT{reference}) is now in the zeroth slot.
+and a pointer to it (or \emph{reference}) is now in the zeroth slot.
 
 
-So, the \IT{i} local variable will always be in 1st slot.
+So, the \emph{i} local variable will always be in 1st slot.
 
 
-Instructions at offsets 3 and 5 compare \IT{i} with 10.
+Instructions at offsets 3 and 5 compare \emph{i} with 10.
 
-If \IT{i} is larger, execution flow passes to offset 21, where the function ends.
+If \emph{i} is larger, execution flow passes to offset 21, where the function ends.
 
 If it's not, \TT{println} is called.
 
-\IT{i} is then reloaded at offset 11, for \TT{println}.
+\emph{i} is then reloaded at offset 11, for \TT{println}.
 
-By the way, we call the \TT{println} method for an \IT{integer}, 
+By the way, we call the \TT{println} method for an \emph{integer}, 
 and we see this in the comments: \q{(I)V}
-(\IT{I} means \IT{integer} and \IT{V} means the return type is \IT{void}).
+(\emph{I} means \emph{integer} and \emph{V} means the return type is \emph{void}).
 
 
-When \TT{println} finishes, \IT{i} is incremented at offset 15.
+When \TT{println} finishes, \emph{i} is incremented at offset 15.
 
 The first operand of the instruction is the  number of a slot (1), 
 the second is the number (1) to add to the variable.
@@ -121,10 +121,10 @@ Here is a map of the \ac{LVA} slots:
 
 \begin{itemize}
 \item 0 --- the sole argument of \main
-\item 1 --- \IT{limit}, always contains 20
-\item 2 --- \IT{f}
-\item 3 --- \IT{g}
-\item 4 --- \IT{i}
+\item 1 --- \emph{limit}, always contains 20
+\item 2 --- \emph{f}
+\item 3 --- \emph{g}
+\item 4 --- \emph{i}
 \end{itemize}
 
 We can see that the Java compiler allocates variables in \ac{LVA} slots in the same order 
@@ -138,7 +138,7 @@ which takes the slot number as an operand.
 It's the same with \TT{iload} at offset 10.
 
 
-But isn't it dubious to allocate another slot for the \IT{limit} variable, which 
+But isn't it dubious to allocate another slot for the \emph{limit} variable, which 
 always contains 20 (so it's a constant in essence), and reload its value so often?
 
 \ac{JVM} \ac{JIT} compiler is usually good enough to optimize such things.

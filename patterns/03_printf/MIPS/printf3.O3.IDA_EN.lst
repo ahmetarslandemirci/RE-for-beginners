@@ -12,7 +12,7 @@
 ; load address of printf():
 .text:00000014                 lw      $t9, (printf & 0xFFFF)($gp)
 ; load address of the text string and set 1st argument of printf():
-.text:00000018                 la      $a0, $LC0        # "a=%d; b=%d; c=%d"
+.text:00000018                 la      $a0, $LC0        # "a=\%d; b=\%d; c=\%d"
 ; set 2nd argument of printf():
 .text:00000020                 li      $a1, 1
 ; set 3rd argument of printf():

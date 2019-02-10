@@ -91,7 +91,7 @@ rip            0x7ffff7a65f60	0x7ffff7a65f60 <__printf>
 0x400628:	"a=%d; b=%d; c=%d; d=%d; e=%d; f=%d; g=%d; h=%d\n"
 \end{lstlisting}
 
-Let's dump the stack with the x/g command this time---\IT{g} stands for \IT{giant words}, i.e., 64-bit words.
+Let's dump the stack with the x/g command this time---\emph{g} stands for \emph{giant words}, i.e., 64-bit words.
 
 \begin{lstlisting}
 (gdb) x/10g $rsp

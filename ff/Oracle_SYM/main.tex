@@ -84,8 +84,8 @@ variable names}.
 \RU{В Hiew отметим весь блок со строками (исключая оконечивающую сигнатуру OSYM) и сохраним его в отдельный
 файл.}%
 \EN{In Hiew, we will mark the whole strings block (except the trailing OSYM signatures) and put it into a separate file.}
-\RU{Затем запустим UNIX-утилиты \IT{strings} и \IT{wc} для подсчета текстовых строк:}%
-\EN{Then we run UNIX \IT{strings} and \IT{wc} utilities to count the text strings:}
+\RU{Затем запустим UNIX-утилиты \emph{strings} и \emph{wc} для подсчета текстовых строк:}%
+\EN{Then we run UNIX \emph{strings} and \emph{wc} utilities to count the text strings:}
 
 \begin{lstlisting}
 strings strings_block | wc -l
@@ -95,9 +95,9 @@ strings strings_block | wc -l
 \RU{Так что здесь 66 текстовых строк}\EN{So there are 66 text strings}.
 \RU{Запомните это число}\EN{Please note that number}.
 
-\RU{Можно сказать, что в общем, как правило, количество \IT{чего-либо} часто сохраняется в бинарном
+\RU{Можно сказать, что в общем, как правило, количество \emph{чего-либо} часто сохраняется в бинарном
 файле отдельно.}
-\EN{We can say, in general, as a rule, the number of \IT{anything} is often stored separately in binary files.}
+\EN{We can say, in general, as a rule, the number of \emph{anything} is often stored separately in binary files.}
 \RU{Это действительно так, мы можем найти значение 66 (0x42) в самом начале файла, прямо после сигнатуры OSYM:}
 \EN{It's indeed so, we can find the 66 value (0x42) at the file's start, right after the OSYM signature:}
 
@@ -129,7 +129,7 @@ about the file.}
 \RU{Рассмотрим бинарный блок поближе}\EN{Now let's investigate closer what this binary block is}.
 \RU{Снова используя Hiew, сохраним блок начиная с адреса 8 (т.е. после 32-битного значения,
 отражающего количество) до блока со строками, в отдельный файл.}%
-\EN{Using Hiew again, we put the block starting at address 8 (i.e., after the 32-bit \IT{count} value) 
+\EN{Using Hiew again, we put the block starting at address 8 (i.e., after the 32-bit \emph{count} value) 
 ending at the strings block, into a separate binary file.}
 
 \clearpage

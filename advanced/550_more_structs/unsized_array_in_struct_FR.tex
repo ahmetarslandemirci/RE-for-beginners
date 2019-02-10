@@ -20,8 +20,8 @@ typedef struct _SYMBOL_INFO {
 Ceci est une astuce, signifiant que le dernier champ est un tableau de taille inconnue,
 qui doit être calculée lors de l'allocation de la structure.
 
-Pourquoi: le champ \IT{Name} peut-être court, donc pourquoi le définir avec une sorte
-de constante \IT{MAX\_NAME} qui peut être 128, 256 et même plus ?
+Pourquoi: le champ \emph{Name} peut-être court, donc pourquoi le définir avec une sorte
+de constante \emph{MAX\_NAME} qui peut être 128, 256 et même plus ?
 
 Pourquoi ne pas utiliser un pointeur à la place ? Alors vous devez allouer deux blocs:
 un pour la structure et  pour la chaîne.
@@ -29,7 +29,7 @@ Ceci peut-être plus lent et peut nécessiter un plus large surplus de mémoire.
 Donc, vous devez déréférencer le pointeur (i.e., lire l'adresse de la chaîne dans
 la structure)---ce n'est pas un problème, mais certains disent que c'est un coût supplémentaire.
 
-Ceci est connu comme l'\IT{astuce struct}: \url{http://c-faq.com/struct/structhack.html}.
+Ceci est connu comme l'\emph{astuce struct}: \url{http://c-faq.com/struct/structhack.html}.
 
 Exemple:
 
@@ -67,7 +67,7 @@ Problème: après l'allocation, la taille entière du bloc alloué pour la struc
 est inconnue (excepté pour le gestionnaire de mémoire), donc vous ne pouvez pas remplacer
 une chaîne par un chaîne plus large.
 Vous pourriez faire quelque chose comme ça si le champ était déclaré comme quelque
-chose comme \IT{s[MAX\_NAME]}.
+chose comme \emph{s[MAX\_NAME]}.
 
 Autrement dit, vous avez une structure plus un tableau (ou une chaîne) fusionnés
 ensemble dans un bloc de mémoire alloué unique.
@@ -75,9 +75,9 @@ Un autre problème est que vous ne pouvez évidemment pas déclarer deux tableau
 ceci dans une structure unique, ou déclarer un autre champ après un tel tableau.
 
 Les cieux compilateurs nécessitent de déclarer le tableau avec au moins un élément:
-\IT{s[1]}, les plus récents permettent de le déclarer comme un tableau de taille
-variable:\IT{s[]}.
-Ceci est aussi appelé \IT{membre tableau flexible}\footnote{\url{https://en.wikipedia.org/wiki/Flexible_array_member}}
+\emph{s[1]}, les plus récents permettent de le déclarer comme un tableau de taille
+variable:\emph{s[]}.
+Ceci est aussi appelé \emph{membre tableau flexible}\footnote{\url{https://en.wikipedia.org/wiki/Flexible_array_member}}
 
 En lire plus à ce sujet dans
 GCC documentation\footnote{\url{https://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html}},

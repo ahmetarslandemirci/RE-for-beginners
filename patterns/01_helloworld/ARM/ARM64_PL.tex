@@ -13,7 +13,7 @@ Jest tu dwa razy więcej rejestrów: \myref{ARM64_GPRs}.
 \TT{X-}, a ich 32-bitowe części --- \TT{W-}.
 
 \myindex{ARM!\Instructions!STP}
-Instrukcja \TT{STP} (\IT{Store Pair}) 
+Instrukcja \TT{STP} (\emph{Store Pair}) 
 odkłada na stos od razu 2 rejestry: \RegX{29} i \RegX{30}.
 Oczywiście, ta instrukcja może zapisać tę parę rejestrów gdziekolwiek w pamięci, ale tu jest wskazany rejestr \ac{SP}, także ta para jest odkładana na stos.
 
@@ -21,8 +21,8 @@ Rejestry w ARM64 są 64-bitowe, każdy o długości 8 bajtów, dlatego do przech
 
 Wykrzyknik (``!'') po operandzie oznacza, że najpierw od \ac{SP} będzie odjęte 16 i dopiero po tej czynności wartości z obu rejestrów będą odłożone na stos.
 
-Jest to nazywane \IT{pre-index}.
-Więcej o róznicy między \IT{post-index} a \IT{pre-index} 
+Jest to nazywane \emph{pre-index}.
+Więcej o róznicy między \emph{post-index} a \emph{pre-index} 
 można znaleźć tu: \myref{ARM_postindex_vs_preindex}.
 
 W ten sposób, posługując się terminologią x86, pierwsza instrukcja~--- jest analogiczna do \TT{PUSH X29} i \TT{PUSH X30}.
@@ -83,11 +83,11 @@ Wynik jest taki sam, tylko \MOV w tej linii wygląda teraz w ten sposób:
 \end{lstlisting}
 
 \myindex{ARM!\Instructions!LDP}
-Następnie za pomocą instrukcji \INS{LDP} (\IT{Load Pair}) są przywracane rejestry \RegX{29} i \RegX{30}.
+Następnie za pomocą instrukcji \INS{LDP} (\emph{Load Pair}) są przywracane rejestry \RegX{29} i \RegX{30}.
 
 Wykrzyknika po instrukcji brak. To oznacza, że najpierw wartości są zdejmowane ze stosu, i dopiero po tej czynności \ac{SP} jest zwiększane o 16.
 
-Jest to nazywane \IT{post-index}.
+Jest to nazywane \emph{post-index}.
 
 \myindex{ARM!\Instructions!RET}
 W ARM64 pojawia się nowa instrukcja: \RET. 

@@ -10,7 +10,7 @@ First of all, Hex-Rays is getting lost when \ac{FPU} instructions are interleave
 
 For example, this:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 f               proc    near
 
         	lea     eax, [esp+4]
@@ -34,7 +34,7 @@ f               endp
 
 \dots will be correcly decompiled to:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 signed int __cdecl f(signed int a1, signed int a2)
 {
   signed int result; // eax@2
@@ -49,7 +49,7 @@ signed int __cdecl f(signed int a1, signed int a2)
 
 But let's comment one of the instructions at the end:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 ...
 l01:
 	        ;mov    eax, 2
@@ -59,7 +59,7 @@ l01:
 
 \dots we getting an obvious bug:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 void __cdecl f(char a1, char a2)
 {
   fabs((double)a2);
@@ -68,7 +68,7 @@ void __cdecl f(char a1, char a2)
 
 This is another bug:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 extrn f1:dword
 extrn f2:dword
 
@@ -99,7 +99,7 @@ const_100       dd 42C80000h            ; 100.0
 
 Result:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 int __cdecl f(float a1, float a2, float a3, float a4)
 {
   double v5; // st7@1
@@ -115,17 +115,17 @@ int __cdecl f(float a1, float a2, float a3, float a4)
 }
 \end{lstlisting}
 
-\IT{v6} variable has \IT{char} type and if you'll try to compile this code, compiler will warn you about variable
+\emph{v6} variable has \emph{char} type and if you'll try to compile this code, compiler will warn you about variable
 usage before assignment.
 
-Another bug: \INS{FPATAN} instruction is correctly decompiled into \IT{atan2()}, but arguments are swapped.
+Another bug: \INS{FPATAN} instruction is correctly decompiled into \emph{atan2()}, but arguments are swapped.
 
 \subsection{Odd peculiarities}
 
-Hex-Rays too often promotes 32-bit \IT{int} to 64-bit one.
+Hex-Rays too often promotes 32-bit \emph{int} to 64-bit one.
 Here is example:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 f               proc    near
 
 	        mov     eax, [esp+4]
@@ -151,7 +151,7 @@ f               endp
 
 Result:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 int __cdecl f(int a1, int a2)
 {
   __int64 v2; // rax@1
@@ -162,11 +162,11 @@ int __cdecl f(int a1, int a2)
 \end{lstlisting}
 
 Perhaps, this is result of \INS{CDQ} instruction? I'm not sure.
-Anyway, whenever you see \IT{\_\_int64} type in 32-bit code, pay attention.
+Anyway, whenever you see \emph{\_\_int64} type in 32-bit code, pay attention.
 
 This is also weird:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 f               proc    near
 
 	        mov     esi, [esp+4]
@@ -190,7 +190,7 @@ f               endp
 
 Result:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 signed int __cdecl f(signed int a1)
 {
   signed int result; // eax@3
@@ -207,7 +207,7 @@ The code is correct, but needs manual intervention.
 
 Sometimes, Hex-Rays doesn't fold (or reduce) division by multiplication code:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 f               proc    near
 
         	mov     eax, [esp+4]
@@ -222,7 +222,7 @@ f               endp
 
 Result:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 int __cdecl f(int a1)
 {
   return (unsigned __int64)(715827883i64 * a1) >> 32;
@@ -236,7 +236,7 @@ and then feeding it to Hex-Rays again.
 
 \subsection{Silence}
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 extrn some_func:dword
 
 f               proc    near
@@ -257,7 +257,7 @@ f               endp
 
 Result:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 int __cdecl f(int a1, int a2)
 {
   int v2; // ecx@1
@@ -267,13 +267,13 @@ int __cdecl f(int a1, int a2)
 }
 \end{lstlisting}
 
-\IT{v2} variable (from ECX) is lost \dots
+\emph{v2} variable (from ECX) is lost \dots
 Yes, this code is incorrect (ECX value doesn't saved during call to another function),
 but it would be good for Hex-Rays to give a warning.
 
 Another one:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 extrn some_func:dword
 
 f               proc    near
@@ -292,7 +292,7 @@ f               endp
 
 Result:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 signed int f()
 {
   char v0; // zf@1
@@ -309,7 +309,7 @@ signed int f()
 
 Again, warning would be great.
 
-Anyway, whenever you see variable of \IT{char} type, or variable which is used without initialization, this is clear sign
+Anyway, whenever you see variable of \emph{char} type, or variable which is used without initialization, this is clear sign
 that something went wrong and needs manual intervention.
 
 \subsection{Comma}
@@ -319,7 +319,7 @@ Comma in C/C++ has a bad fame, because it can lead to a confusing code.
 
 Quick quiz, what does this C/C++ function return?
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 int f()
 {
 	return 1, 2;
@@ -327,11 +327,11 @@ int f()
 \end{lstlisting}
 
 It's 2: when compiler encounters comma-expression, it generates code which executes all sub-expressions, and
-\IT{returns} value of the last sub-expression.
+\emph{returns} value of the last sub-expression.
 
 I've seen something like that in production code:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 if (cond)
 	return global_var=123, 456; // 456 is returned
 else
@@ -346,24 +346,24 @@ statement/code block inside of curly brackets.
 \myindex{Racket}
 Comma in C/C++ is close to \TT{begin} in Scheme/Racket: \url{https://docs.racket-lang.org/guide/begin.html}.
 
-Perhaps, the only widely accepted usage of comma is in \IT{for()} statements:
+Perhaps, the only widely accepted usage of comma is in \emph{for()} statements:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 char *s="hello, world";
 for(int i=0; *s; s++, i++);
-; i = string length
+// i = string length
 \end{lstlisting}
 
-Both \IT{s++} and \IT{i++} are executed at each loop iteration.
+Both \emph{s++} and \emph{i++} are executed at each loop iteration.
 
-Read more: \url{http://stackoverflow.com/questions/52550/what-does-the-comma-operator-do-in-c}.
+Read more: \url{https://stackoverflow.com/q/52550}.
 
 \myindex{\CLanguageElements!Short-circuit}
 I'm writing all this because Hex-Rays produces (at least in my case) code which is rich with both commas and short-circuit
 expressions.
 For example, this is real output from Hex-Rays:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
  if ( a >= b || (c = a, (d[a] - e) >> 2 > f) )
     {
     	...
@@ -372,19 +372,19 @@ For example, this is real output from Hex-Rays:
 This is correct, it compiles and works, and let god help you to understand it.
 Here is it rewritten:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 if (cond1 || (comma_expr, cond2))
 {
 	...
 \end{lstlisting}
 
-Short-circuit is effective here: first \IT{cond1} is checked, if it's \IT{true}, \IT{if()} body is executed, the rest
-of \IT{if()} expression is ignored completely.
-If \IT{cond1} is \IT{false}, \IT{comma\_expr} is executed (in the previous example, \IT{a} gets copied to \IT{c}),
-then \IT{cond2} is checked.
-If \IT{cond2} is \IT{true}, \IT{if()} body gets executed, or not.
-In other words, \IT{if()} body gets executed if \IT{cond1} is \IT{true} or \IT{cond2} is \IT{true},
-but if the latter is \IT{true}, \IT{comma\_expr} is also executed.
+Short-circuit is effective here: first \emph{cond1} is checked, if it's \emph{true}, \emph{if()} body is executed, the rest
+of \emph{if()} expression is ignored completely.
+If \emph{cond1} is \emph{false}, \emph{comma\_expr} is executed (in the previous example, \emph{a} gets copied to \emph{c}),
+then \emph{cond2} is checked.
+If \emph{cond2} is \emph{true}, \emph{if()} body gets executed, or not.
+In other words, \emph{if()} body gets executed if \emph{cond1} is \emph{true} or \emph{cond2} is \emph{true},
+but if the latter is \emph{true}, \emph{comma\_expr} is also executed.
 
 Now you can see why comma is so notorious.
 
@@ -402,7 +402,7 @@ Same story about global arrays.
 
 Another problem is too big functions, where a single slot in local stack can be used by several variables
 across function's execution.
-It's not a rare case when a slot is used for \IT{int}-variable, then for pointer, then for \IT{float}-variable.
+It's not a rare case when a slot is used for \emph{int}-variable, then for pointer, then for \emph{float}-variable.
 Hex-Rays correctly decompiles it: it creates a variable with some type, then cast it to another type in various
 parts of functions.
 This problem has been solved by me by manual splitting big function into several smaller.
@@ -411,9 +411,9 @@ And don't forget about tests.
 
 \subsection{Long and messed expressions}
 
-Sometimes, during rewriting, you can end up with long and hard to understand expressions in \IT{if()} constructs, like:
+Sometimes, during rewriting, you can end up with long and hard to understand expressions in \emph{if()} constructs, like:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 if ((! (v38 && v30 <= 5 && v27 != -1)) && ((! (v38 && v30 <= 5) && v27 != -1) || (v24 >= 5 || v26)) && v25)
 {
 ...
@@ -443,7 +443,7 @@ Out[2]= Experimental`OptimizedExpression[
      v24 >= 5 || v26) && v25]]
 \end{lstlisting}
 
-Mathematica adds two new variables: \TT{Compile`\$1} and \TT{Compile`\$2}, values of which will be used several times in expression.
+Mathematica has added two new variables: \TT{Compile`\$1} and \TT{Compile`\$2}, values of which are to be used several times in expression.
 So we can add two additional variables.
 
 \subsection{My plan}
@@ -454,7 +454,7 @@ Sometimes it's very helpful to form new functions out of big loop bodies.
 
 \item Check/set data type of variables, arrays, etc.
 
-\item If you see odd result, \IT{dangling} variable (which used before initialization), try to swap instructions manually,
+\item If you see odd result, \emph{dangling} variable (which used before initialization), try to swap instructions manually,
 recompile it and feed to Hex-Rays again.
 \end{itemize}
 

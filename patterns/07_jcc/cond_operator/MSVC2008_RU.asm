@@ -9,7 +9,7 @@ _f	PROC
 	push	ecx
 ; сравнить входное значение с 10
 	cmp	DWORD PTR _a$[ebp], 10
-; переход на $LN3@f если не равно
+; переход на \$LN3@f если не равно
 	jne	SHORT $LN3@f
 ; сохранить указатель на строку во временной переменной:
 	mov	DWORD PTR tv65[ebp], OFFSET $SG746 ; 'it is ten'

@@ -5,7 +5,7 @@ my_atoi PROC
         MOV      r6,#0
         MOV      r5,r6
         CMP      r0,#0x2d '-'
-; R6 contiendra 1 si le signe moins a §été rencontré§, 0 sinon
+; R6 contiendra 1 si le signe moins a été rencontré, 0 sinon
         MOVEQ    r6,#1
         ADDEQ    r4,r4,#1
         B        |L0.80|

@@ -32,7 +32,7 @@ ARM uses the register \Reg{0} for returning the results of functions, so 123 is 
 \myindex{x86!\Instructions!MOV}
 It is worth noting that \MOV is a misleading name for the instruction in both the x86 and ARM \ac{ISA}s.
 
-The data is not in fact \IT{moved}, but \IT{copied}.
+The data is not in fact \emph{moved}, but \emph{copied}.
 
 \subsection{MIPS}
 
@@ -58,11 +58,11 @@ You might be wondering why the positions of the load instruction (LI) and the ju
 
 The reason this happens is a quirk in the architecture of some RISC \ac{ISA}s and isn't important for our
 purposes---we must simply keep in mind that in MIPS, the instruction following a jump or branch instruction
-is executed \IT{before} the jump/branch instruction itself.
+is executed \emph{before} the jump/branch instruction itself.
 
 As a consequence, branch instructions always swap places with the instruction executed immediately beforehand.
 
-In practice, functions which merely return 1 (\IT{true}) or 0 (\IT{false}) are very frequent.
+In practice, functions which merely return 1 (\emph{true}) or 0 (\emph{false}) are very frequent.
 
-The smallest ever of the standard UNIX utilities, \IT{/bin/true} and \IT{/bin/false} return 0 and 1 respectively, as an exit code.
+The smallest ever of the standard UNIX utilities, \emph{/bin/true} and \emph{/bin/false} return 0 and 1 respectively, as an exit code.
 (Zero as an exit code usually means success, non-zero means error.)

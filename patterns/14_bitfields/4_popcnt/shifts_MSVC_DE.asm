@@ -20,7 +20,7 @@ $LN4@f:
     shl    edx, cl                   ; EDX=EDX<<CL
     and    edx, DWORD PTR _a$[ebp]
     je     SHORT $LN1@f              ; was das Ergebnis des AND Befehls 0?
-    								 ; dann überspringe die nächsten Befehle
+                                     ; dann überspringe die nächsten Befehle
     mov    eax, DWORD PTR _rt$[ebp]  ; nein: ungleich 0
     add    eax, 1                    ; erhöhe rt
     mov    DWORD PTR _rt$[ebp], eax

@@ -74,7 +74,7 @@ In[]:= ListPlot[Entropies]
 Most values are between 5.0 and 5.4.
 This is a sign that the data is compressed and/or encrypted.
 
-To understand variance, let's calculate entropies of all lines in Conan Doyle's \IT{The Hound of the Baskervilles} book:
+To understand variance, let's calculate entropies of all lines in Conan Doyle's \emph{The Hound of the Baskervilles} book:
 
 \begin{lstlisting}
 In[]:= BaskervillesLines = Import["http://www.gutenberg.org/cache/epub/2852/pg2852.txt", "List"];
@@ -121,7 +121,7 @@ It's still possible that this is a handmade data compressor, but they are very r
 On the other hand, handmade cryptoalgorithms are much more popular, because it's very easy to make it work.
 \myindex{memfrob()}
 \myindex{ROT13}
-Even primitive keyless cryptosystems like \IT{memfrob()}\footnote{\url{http://linux.die.net/man/3/memfrob}}
+Even primitive keyless cryptosystems like \emph{memfrob()}\footnote{\url{http://linux.die.net/man/3/memfrob}}
 and ROT13 works fine without errors.
 It's a serious challenge to write data compressor from scratch using only fantasy and imagination in a way so it will have no evident bugs.
 Some programmers implements data compression functions by reading textbooks, but this is also rare.
@@ -199,10 +199,12 @@ Why \INS{AESDEC} is still not executed?
 Why the program use AES encryption in order to decrypt database?
 
 OK, it's not a problem to find a function which encrypts block.
-It is called \IT{CryptoPP::Rijndael::Enc::ProcessAndXorBlock}:\\
-\url{https://github.com/mmoss/cryptopp/blob/2772f7b57182b31a41659b48d5f35a7b6cedd34d/src/rijndael.cpp#L349},
-and it can call from another function: \IT{Rijndael::Enc::AdvancedProcessBlocks()}\\
-\url{https://github.com/mmoss/cryptopp/blob/2772f7b57182b31a41659b48d5f35a7b6cedd34d/src/rijndael.cpp#L1179},
+It is called \\
+\emph{CryptoPP::Rijndael::Enc::ProcessAndXorBlock}:
+\href{https://github.com/mmoss/cryptopp/blob/2772f7b57182b31a41659b48d5f35a7b6cedd34d/src/rijndael.cpp#L349}{src},
+and it can call from another function: \\
+\emph{Rijndael::Enc::AdvancedProcessBlocks()}
+\href{https://github.com/mmoss/cryptopp/blob/2772f7b57182b31a41659b48d5f35a7b6cedd34d/src/rijndael.cpp#L1179}{src},
 which, in turn, can be call the two functions (
 \href{https://github.com/mmoss/cryptopp/blob/2772f7b57182b31a41659b48d5f35a7b6cedd34d/src/rijndael.cpp#L1000}{AESNI\_Enc\_Block}
 and
@@ -211,7 +213,7 @@ and
 which has \INS{AESENC} instructions.
 
 So, judging by CryptoPP internals, \\
-\IT{CryptoPP::Rijndael::Enc::ProcessAndXorBlock()} encrypts one 16-byte block.
+\emph{CryptoPP::Rijndael::Enc::ProcessAndXorBlock()} encrypts one 16-byte block.
 Let's set breakpoint on it and see, what happens during decryption.
 I use my simple tracer tool again.
 The software must decrypt first data block now.
@@ -232,11 +234,11 @@ So it has 5 arguments. Possible flags are:
 enum {BT_InBlockIsCounter=1, BT_DontIncrementInOutPointers=2, BT_XorInput=4, BT_ReverseDirection=8, BT_AllowParallel=16} FlagsForAdvancedProcessBlocks;
 \end{lstlisting}
 
-OK, run tracer on \IT{ProcessAndXorBlock()} function:
+OK, run tracer on \emph{ProcessAndXorBlock()} function:
 
 \lstinputlisting{examples/encrypted_DB1/2.lst}
 
-Here we can see inputs to the \IT{ProcessAndXorBlock()} function, and outputs from it.
+Here we can see inputs to the \emph{ProcessAndXorBlock()} function, and outputs from it.
 
 This is output from the function during first call:
 
@@ -244,7 +246,7 @@ This is output from the function during first call:
 00000000: C7 39 4E 7B 33 1B D6 1F-B8 31 10 39 39 13 A5 5D ".9N{3....1.99..]"
 \end{lstlisting}
 
-Then the \IT{ProcessAndXorBlock()} is called with zero-length block, but with 8 flag (\IT{BT\_ReverseDirection}).
+Then the \emph{ProcessAndXorBlock()} is called with zero-length block, but with 8 flag (\emph{BT\_ReverseDirection}).
 
 Second call:
 
@@ -262,7 +264,7 @@ Third call:
 
 The first output is very similar to the first 16 bytes of the encrypted buffer.
 
-Output of the first call of \IT{ProcessAndXorBlock()}:
+Output of the first call of \emph{ProcessAndXorBlock()}:
 
 \begin{lstlisting}
 00000000: C7 39 4E 7B 33 1B D6 1F-B8 31 10 39 39 13 A5 5D ".9N{3....1.99..]"
@@ -301,10 +303,10 @@ And decryption:
 \label{fig:CFB_decryption}
 \end{figure}
 
-Now let's see: AES encryption operation generates 16 bytes (or 128 bits) of \IT{random} data
+Now let's see: AES encryption operation generates 16 bytes (or 128 bits) of \emph{random} data
 to be used while XOR-ing, who forces us to use all 16 bytes?
 If at the last iteration we've got 1 byte of data, let's xor 1 byte of data with 1 byte of generated
-\IT{random} data?
+\emph{random} data?
 This leads to important property of \ac{CFB} mode: data can be not padded, data of arbitrary size
 can be encrypted and decrypted.
 
@@ -312,7 +314,7 @@ Oh, that's why all encrypted blocks are not padded.
 And that's why \INS{AESDEC} instruction is never called.
 
 Let's try to decrypt first block manually, using Python.
-\ac{CFB} mode also use \ac{IV}, as a \IT{seed} for \ac{CSPRNG}.
+\ac{CFB} mode also use \ac{IV}, as a \emph{seed} for \ac{CSPRNG}.
 In our case, \ac{IV} is the block which is encrypted at first iteration:
 
 \begin{lstlisting}
@@ -322,8 +324,8 @@ In our case, \ac{IV} is the block which is encrypted at first iteration:
 Oh, and we also have to recover encryption key.
 \myindex{x86!\Instructions!AESKEYGENASSIST}
 There is \INS{AESKEYGENASSIST} is DLL, and it is called, and it is used in the \\
-\IT{Rijndael::Base::UncheckedSetKey()} function:\\
-\url{https://github.com/mmoss/cryptopp/blob/2772f7b57182b31a41659b48d5f35a7b6cedd34d/src/rijndael.cpp#L198}
+\emph{Rijndael::Base::UncheckedSetKey()} function:
+\href{https://github.com/mmoss/cryptopp/blob/2772f7b57182b31a41659b48d5f35a7b6cedd34d/src/rijndael.cpp#L198}{src}.
 It's easy to find it in IDA and set breakpoint. Let's see:
 
 \begin{lstlisting}
@@ -347,7 +349,7 @@ Argument 3/3 +0x8: software.exe!.text+0x1c101
 PID=2068|Process software.exe exited. ExitCode=0 (0x0)
 \end{lstlisting}
 
-So this is the key: \IT{CD C5 7E AD 28 5F 6D E1-CE 8F CC 29 B1 21 88 8E}.
+So this is the key: \emph{CD C5 7E AD 28 5F 6D E1-CE 8F CC 29 B1 21 88 8E}.
 
 During manual decryption we've got this:
 
@@ -470,17 +472,17 @@ Let's take first four decrypted blocks:
 
 UTF-16 encoded text strings are clearly visible, these are names and surnames.
 The first byte (or 16-bit word) is seems string length, we can visually check it.
-\IT{FF FE} is seems Unicode \ac{BOM}.
+\emph{FF FE} is seems Unicode \ac{BOM}.
 
 There are 12 more bytes after each string.
 
 Using this script
 (\url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/encrypted_DB1/dump_buffer_rest.py})
-I've got random selection of the \IT{tails}:
+I've got random selection of the \emph{tails}:
 
 \lstinputlisting{examples/encrypted_DB1/tails.lst}
 
-We first see the 0x40 and 0x07 bytes present in each \IT{tail}.
+We first see the 0x40 and 0x07 bytes present in each \emph{tail}.
 The very last byte s always in 1..0x1F (1..31) range, I've checked.
 The penultimate byte is always in 1..0xC (1..12) range.
 Wow, that looks like a date!
@@ -488,7 +490,7 @@ Year can be represented as 16-bit value, and maybe last 4 bytes is date (16 bits
 for month and 8 more for day)?
 0x7DD is 2013, 0x7D5 is 2005, etc. Seems fine. This is a date.
 There are 8 more bytes.
-Judging by the fact this is database named \IT{orders}, maybe some kind of sum is present here?
+Judging by the fact this is database named \emph{orders}, maybe some kind of sum is present here?
 I made attempt to interpret it as double-precision IEEE 754 floating point and dump all values!
 
 Some are:
@@ -560,7 +562,7 @@ This is some kind of \ac{OOP} serialization, i.e., packing differently typed val
 
 \subsection{Noise at the end}
 
-The only question remaining is that sometimes, \IT{tail} is bigger:
+The only question remaining is that sometimes, \emph{tail} is bigger:
 
 \begin{lstlisting}
 00000000: 0E 00 FF FE 54 00 48 00  45 00 52 00 45 00 53 00  ....T.H.E.R.E.S.
@@ -569,7 +571,7 @@ The only question remaining is that sometimes, \IT{tail} is bigger:
 OrderID= 172 name= THERESE TUTTLE sum= 152.95 date= 2004 / 7 / 26
 \end{lstlisting}
 
-(\IT{00 07 07 19} bytes are not used and is ballast.)
+(\emph{00 07 07 19} bytes are not used and is ballast.)
 
 \begin{lstlisting}
 00000000: 0C 00 FF FE 4D 00 45 00  4C 00 41 00 4E 00 49 00  ....M.E.L.A.N.I.
@@ -578,9 +580,9 @@ OrderID= 172 name= THERESE TUTTLE sum= 152.95 date= 2004 / 7 / 26
 OrderID= 286 name= MELANIE KIRK sum= 161.0 date= 2004 / 9 / 2
 \end{lstlisting}
 
-(\IT{00 02} are not used.)
+(\emph{00 02} are not used.)
 
-After close examination, we can see, that the noise at the end of \IT{tail} is just left
+After close examination, we can see, that the noise at the end of \emph{tail} is just left
 from previous encryption!
 
 Here are two subsequent buffers:
@@ -597,7 +599,7 @@ OrderID= 171 name= BONNIE GOLDSTEIN sum= 44.95 date= 2004 / 7 / 25
 OrderID= 172 name= THERESE TUTTLE sum= 152.95 date= 2004 / 7 / 26
 \end{lstlisting}
 
-(The last \IT{07 07 19} bytes are copied from the previous plaintext buffer.)
+(The last \emph{07 07 19} bytes are copied from the previous plaintext buffer.)
 
 Another two subsequent buffers:
 
@@ -631,7 +633,7 @@ every practicing reverse engineer should be familiar with major crypto algorithm
 also major cryptographical modes.
 Some books about it: \myref{crypto_books}.
 
-\IT{Encrypted} database contents has been artificially constructed by me for the sake of demonstration.
+\emph{Encrypted} database contents has been artificially constructed by me for the sake of demonstration.
 I've got most popular USA names and surnames from there: \url{http://stackoverflow.com/questions/1803628/raw-list-of-person-names},
 and combined them randomly.
 Dates and sums were also generated randomly.

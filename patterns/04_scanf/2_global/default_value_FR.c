@@ -1,1 +1,1 @@
-int x=10; // §valeur par défaut§
+int x=10; // valeur par défaut

@@ -36,21 +36,21 @@ $LN1@main:
 	; ecx=address of fakearray[0], ecx+1 is fakearray[1] or array[0]
 	movzx	edx, BYTE PTR [ecx+1]
 	push	edx
-	push	OFFSET $SG2751 ; 'first element %d'
+	push	OFFSET $SG2751 ; 'first element \%d'
 	call	_printf
 	add	esp, 8
 	mov	eax, DWORD PTR _fakearray$[ebp]
 	; eax=address of fakearray[0], eax+2 is fakearray[2] or array[1]
 	movzx	ecx, BYTE PTR [eax+2]
 	push	ecx
-	push	OFFSET $SG2752 ; 'second element %d'
+	push	OFFSET $SG2752 ; 'second element \%d'
 	call	_printf
 	add	esp, 8
 	mov	edx, DWORD PTR _fakearray$[ebp]
 	; edx=address of fakearray[0], edx+10 is fakearray[10] or array[9]
 	movzx	eax, BYTE PTR [edx+10]
 	push	eax
-	push	OFFSET $SG2753 ; 'last element %d'
+	push	OFFSET $SG2753 ; 'last element \%d'
 	call	_printf
 	add	esp, 8
 	; subtract 4, 3, 2 and 1 from pointer to array[0] in order to find values before array[]
@@ -66,7 +66,7 @@ $LN1@main:
 	lea	ecx, DWORD PTR _array$[ebp]
 	movzx	edx, BYTE PTR [ecx-1]
 	push	edx
-	push	OFFSET $SG2754 ; 'array[-1]=%02X, array[-2]=%02X, array[-3]=%02X, array[-4]=%02X'
+	push	OFFSET $SG2754 ; \verb|'array[-1]=%02X, array[-2]=%02X, array[-3]=%02X, array[-4]=%02X'|
 	call	_printf
 	add	esp, 20
 	xor	eax, eax

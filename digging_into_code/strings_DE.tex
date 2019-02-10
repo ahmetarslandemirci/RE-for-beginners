@@ -6,7 +6,7 @@
 \subsection{Strings in Bin\"ar finden}
 
 \myindex{UNIX!strings}
-Das Standard UNIX \IT{strings} Utility ist ein quick-n-dirty Weg um alle Strings in der 
+Das Standard UNIX \emph{strings} Utility ist ein quick-n-dirty Weg um alle Strings in der 
 Datei an zu schauen. Zum Beispiel, in der OpenSSH 7.2 sshd executable Datei gibt es einige Strings:
 
 \lstinputlisting{digging_into_code/sshd_strings.txt}
@@ -19,7 +19,7 @@ Aber sich die lesbaren Strings eines unbekannten Programms an zuschauen ist meis
 der Analyse. 
 \myindex{UNIX!grep}
 
-\IT{grep} kann genauso benutzt werden.
+\emph{grep} kann genauso benutzt werden.
 
 \myindex{Hiew}
 \myindex{Sysinternals}
@@ -31,7 +31,7 @@ Debugging Messages sind auch sehr n\"utzlich, wenn vorhanden.
 Auf gewisse weise, melden die debug Narichten was gerade
 im Programm vorgeht. Oft schreiben diese \printf-\"ahnlichen Funktionen, in
 log-Dateien oder sie schreiben nirgends hin aber die calls zu den printf-\"ahnlichen Funktionen sind noch vorhanden, 
-weil der build kein Debug build aber ein \IT{release} ist. % <-- nochmal \"uber formulierung nachdenken
+weil der build kein Debug build aber ein \emph{release} ist. % <-- nochmal \"uber formulierung nachdenken
 \myindex{\oracle}
 
 Wenn lokale oder globale Variablen in Debug messages geschrieben werden, kann das auch 

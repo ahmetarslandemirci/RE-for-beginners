@@ -46,7 +46,7 @@ voyons la valeur approximative 3.39999\ldots):
 \label{fig:FPU_simple_olly_3}
 \end{figure}
 
-En même temps, le \gls{quotient} \IT{est poussé} dans \ST{1}.
+En même temps, le \gls{quotient} \emph{est poussé} dans \ST{1}.
 Exactement maintenant, \EIP pointe sur la prochaine instruction: \FMUL.
 Ceci charge la constante 4.1 depuis la mémoire, ce que montre \olly.
 
@@ -85,7 +85,7 @@ Comme nous l'avons lu il y a quelque temps dans ce livre, les registres \ac{FPU}
 une pile: \myref{FPU_is_stack}.
 Mais ceci est une simplification.
 
-Imaginez si cela était implémenté \IT{en hardware} comme cela est décrit, alors
+Imaginez si cela était implémenté \emph{en hardware} comme cela est décrit, alors
 tout le contenu des 7 registres devrait être déplacé (ou copié) dans les registres
 adjacents lors d'un push ou d'un pop, et ceci nécessite beaucoup de travail.
 

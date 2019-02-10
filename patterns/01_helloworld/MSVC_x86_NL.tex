@@ -95,7 +95,7 @@ In de gegenereerde code wordt dit geimplementeerd door de instructie \INS{XOR EA
 \INS{MOV EAX, 0} --- wederom omdat de opcode hiervoor iets korter is (2 bytes voor \XOR tegenover 5 voor \MOV).
 
 \myindex{x86!\Instructions!SUB}
-Sommige compilers gebruiken \INS{SUB EAX, EAX}, wat staat voor \IT{verminder de waarde in} \EAX \IT{met de waarde in} \EAX, wat in elke situatie resulteert in nul.
+Sommige compilers gebruiken \INS{SUB EAX, EAX}, wat staat voor \emph{verminder de waarde in} \EAX \emph{met de waarde in} \EAX, wat in elke situatie resulteert in nul.
 
 \myindex{x86!\Instructions!RET}
 De laatste instructie \RET geeft de controle terug aan de \gls{caller}. Gewoonlijk is dit \CCpp \ac{CRT} code, die op zijn beurt de controle teruggeeft aan het \ac{OS}.

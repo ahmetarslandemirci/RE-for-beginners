@@ -4,7 +4,7 @@ body:
     ; corps de la boucle
     ; faire quelque chose ici
     ; utiliser la variable compteur dans la pile locale
-    add [counter], 1 ; §incrémenter§
+    add [counter], 1 ; incrémenter
 check:
     cmp [counter], 9
     jle body

@@ -18,7 +18,7 @@ Oui, si l'on remarque que les deux indices de tableau prennent des valeurs qui p
 
 \lstinputlisting[caption=MSVC 2013 x64 \Optimizing,style=customasmx86]{\CURPATH/MSVC_2013_x64_Ox_FR.asm}
 
-Maintenant il y a 3 itérateurs: la variable \IT{cnt} et deux indices, qui sont incrémentés
+Maintenant il y a 3 itérateurs: la variable \emph{cnt} et deux indices, qui sont incrémentés
 par 12 et 28 à chaque itération.
 Nous pouvons récrire ce code en \CCpp:
 
@@ -33,9 +33,9 @@ GCC 4.9 fait encore mieux, en ne laissant que 2 itérateurs:
 
 \lstinputlisting[caption=GCC 4.9 x64 \Optimizing,style=customasmx86]{\CURPATH/GCC491_x64_O3_FR.asm}
 
-Il n'y a plus de variable \IT{counter}: GCC en a conclu qu'elle n'étais pas nécessaire.
+Il n'y a plus de variable \emph{counter}: GCC en a conclu qu'elle n'étais pas nécessaire.
 
-Le dernier élément du tableau \IT{a2} est calculé avant le début de la boucle (ce qui
+Le dernier élément du tableau \emph{a2} est calculé avant le début de la boucle (ce qui
 est facile: $cnt*7$) et c'est ainsi que la boucle est arrêtée: itérer jusqu'à ce que
 le second index atteignent cette valeur pré-calculée.
 
@@ -48,7 +48,7 @@ Ce code peut être récrit en \CCpp comme ceci:
 \lstinputlisting[style=customc]{\CURPATH/iterators2_FR.c}
 
 GCC (Linaro) 4.9 pour ARM64 fait la même chose, mais il pré-calcule le dernier index
-de \IT{a1} au lieu de \IT{a2}, ce qui a bien sûr le même effet:
+de \emph{a1} au lieu de \emph{a2}, ce qui a bien sûr le même effet:
 
 \lstinputlisting[caption=GCC (Linaro) 4.9 ARM64 \Optimizing,label=GCC_no_number_sign,style=customasmARM]{\CURPATH/ARM64_GCC_49_O3_FR.s}
 

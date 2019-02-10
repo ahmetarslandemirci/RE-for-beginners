@@ -10,11 +10,11 @@ main:
 	mov	edi, OFFSET FLAT:.LC0 ; "Enter X:"
 	call	puts
 	lea	rsi, [rsp+12]
-	mov	edi, OFFSET FLAT:.LC1 ; "%d"
+	mov	edi, OFFSET FLAT:.LC1 ; "\%d"
 	xor	eax, eax
 	call	__isoc99_scanf
 	mov	esi, DWORD PTR [rsp+12]
-	mov	edi, OFFSET FLAT:.LC2 ; "You entered %d...\n"
+	mov	edi, OFFSET FLAT:.LC2 ; "You entered \%d...\textbackslash{}n"
 	xor	eax, eax
 	call	printf
 

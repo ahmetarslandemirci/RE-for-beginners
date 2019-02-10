@@ -75,13 +75,13 @@
 или узел-преемник, т.е. узлы содержащие предыдущий и следующий ключ.
 Алгоритмы для всех этих операций описаны в
 [Cormen, Thomas H. and Leiserson, Charles E. and Rivest, Ronald L. and Stein, Clifford,
-\IT{Introduction to Algorithms, Third Edition}, (2009)].
+\emph{Introduction to Algorithms, Third Edition}, (2009)].
 
 Итератор \TT{.end()} указывает на узел-пустышку, он имеет 1 в \TT{Isnil}, что означает, что у узла
 нет ключа и/или значения.
 
 Так что его можно рассматривать как \q{landing zone} в \ac{HDD}.
-Этот узел часто называется \IT{sentinel} [см. N. Wirth, \IT{Algorithms and Data Structures}, 1985]
+Этот узел часто называется \emph{sentinel} [см. N. Wirth, \emph{Algorithms and Data Structures}, 1985]
 \footnote{\url{http://www.ethoberon.ethz.ch/WirthPubl/AD.pdf}}.
 
 Поле \q{parent} узла-пустышки указывает на корневой узел, который служит

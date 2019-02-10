@@ -6,19 +6,19 @@ CONST    ENDS
 _main    PROC
     push   ebp
     mov    ebp, esp
-    sub    esp, 8  ; allouer de l'espace pour la premi§è§re variable
+    sub    esp, 8  ; allouer de l'espace pour la première variable
     fld    QWORD PTR __real@3ff8a3d70a3d70a4
     fstp   QWORD PTR [esp]
     sub    esp, 8  ; allouer de l'espace pour la seconde variable
     fld    QWORD PTR __real@40400147ae147ae1
     fstp   QWORD PTR [esp]
     call   _pow
-    add    esp, 8  ; §\IT{rendre}§ l'espace d'une variable.
+    add    esp, 8  ; \emph{rendre} l'espace d'une variable.
 
-; sur la pile locale, il y a ici encore 8 octets §réservés§ pour nous.
-; le r§é§sultat se trouve maintenant dans ST(0)
+; sur la pile locale, il y a ici encore 8 octets réservés pour nous.
+; le résultat se trouve maintenant dans ST(0)
 
-    fstp   QWORD PTR [esp] ; d§é§place le r§é§sultat de ST(0) vers la pile locale pour printf()
+    fstp   QWORD PTR [esp] ; déplace le résultat de ST(0) vers la pile locale pour printf()
     push   OFFSET $SG2651
     call   _printf
     add    esp, 12

@@ -16,7 +16,7 @@
 
 \begin{lstlisting}[caption=x86,style=customasmx86]
 CMP register, register/value
-Jcc true ; §cc=код условия§
+Jcc true ; cc=код условия
 false:
 ... код, исполняющийся, если сравнение ложно ...
 JMP exit 
@@ -29,7 +29,7 @@ exit:
 
 \begin{lstlisting}[caption=ARM,style=customasmARM]
 CMP register, register/value
-Bcc true ; §cc=код условия§
+Bcc true ; cc=код условия
 false:
 ... код, исполняющийся, если сравнение ложно ...
 JMP exit 

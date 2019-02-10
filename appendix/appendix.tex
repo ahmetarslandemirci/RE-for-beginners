@@ -1,13 +1,21 @@
-\part*{\RU{Приложение}\EN{Appendix}\DE{Anhang}}
+\part*{\RU{Приложение}\EN{Appendix}\DE{Anhang}\FR{Appendice}\IT{Appendice}}
 \appendix
-\addcontentsline{toc}{part}{\RU{Приложение}\EN{Appendix}\DE{Anhang}}
+\addcontentsline{toc}{part}{\RU{Приложение}\EN{Appendix}\DE{Anhang}\FR{Appendice}\IT{Appendice}}
 
 % chapters
 \EN{\input{appendix/x86/main_EN}}
 \RU{\input{appendix/x86/main_RU}}
 \DE{\input{appendix/x86/main_DE}}
-\input{appendix/ARM/main}
-\input{appendix/MIPS/main}
+\FR{\input{appendix/x86/main_FR}}
+\IT{\input{appendix/x86/main_IT}}
+
+\EN{\input{appendix/ARM/main_EN}}
+\RU{\input{appendix/ARM/main_RU}}
+\FR{\input{appendix/ARM/main_FR}}
+
+\RU{\input{appendix/MIPS/main}}
+\EN{\input{appendix/MIPS/main}}
+\FR{\input{appendix/MIPS/main_FR}}
 \input{appendix/GCC_library}
 \input{appendix/MSVC_library}
 \input{appendix/cheatsheets}

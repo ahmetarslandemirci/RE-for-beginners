@@ -16,7 +16,7 @@
 	jne	.L7
 	mov	eax, DWORD PTR checked[rip]
 	mov	esi, eax
-	mov	edi, OFFSET FLAT:.LC2 ; "checked=%d\n"
+	mov	edi, OFFSET FLAT:.LC2 ; \verb|"checked=%d\n"|
 	mov	eax, 0
 	call	printf
 .L7:

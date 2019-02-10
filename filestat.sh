@@ -22,3 +22,6 @@ find . -name '*.png' | wc -l
 echo lines in all TeX files:
 find . -name '*.tex' | xargs wc -l
 
+echo lines in all lst files:
+find . -name '*.lst' | xargs wc -l
+

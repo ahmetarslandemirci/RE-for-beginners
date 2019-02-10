@@ -4,7 +4,7 @@
 0000001B struct_0        ends
 
 dseg:3CBC 61 63 72 75+_Q   struct_0 <'hello', 01122h>
-dseg:3CBC 6E 00 00 00+       ; DATA XREF: check_dongle+2Eo
+dseg:3CBC 6E 00 00 00+       ; DATA XREF: check\_dongle+2Eo
 
 ... skipped ...
 
@@ -18,7 +18,7 @@ dseg:3EA2 64 69 72 00+     struct_0 <'dir', 0FFAEh>
 dseg:3EBD 63 6F 70 79+     struct_0 <'copy', 0F557h>
 
 
-seg030:0145             check_dongle proc far ; CODE XREF: sub_3771D+3EP
+seg030:0145             check_dongle proc far ; CODE XREF: sub\_3771D+3EP
 seg030:0145
 seg030:0145             var_6 = dword ptr -6
 seg030:0145             var_2 = word ptr -2
@@ -63,11 +63,11 @@ seg030:01A3 74 05             jz      short loc_35B0A
 seg030:01A5 B8 01 00          mov     ax, 1
 seg030:01A8 EB 02             jmp     short loc_35B0C
 seg030:01AA
-seg030:01AA             loc_35B0A: ; CODE XREF: check_dongle+1Fj
-seg030:01AA                        ; check_dongle+5Ej
+seg030:01AA             loc_35B0A: ; CODE XREF: check\_dongle+1Fj
+seg030:01AA                        ; check\_dongle+5Ej
 seg030:01AA 33 C0             xor     ax, ax
 seg030:01AC
-seg030:01AC             loc_35B0C: ; CODE XREF: check_dongle+63j
+seg030:01AC             loc_35B0C: ; CODE XREF: check\_dongle+63j
 seg030:01AC 5E                pop     si
 seg030:01AD C9                leave
 seg030:01AE CB                retf

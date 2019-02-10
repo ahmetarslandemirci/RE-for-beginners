@@ -61,7 +61,7 @@ Après l'exécution de \INS{test ah, 5}\footnote{5=101b}, seul les bits \Czero e
 \label{parity_flag}
 \myindex{x86!\Registers!\Flags!Parity flag}
 
-Parlons maintenant du \IT{parity flag} (flag de parité), un autre rudiment historique
+Parlons maintenant du \emph{parity flag} (flag de parité), un autre rudiment historique
 remarquable.
 
 Ce flag est mis à 1 si le nombre de un dans le résultat du dernier calcul est pair,
@@ -87,7 +87,7 @@ FPU, voyons comment.
 \myindex{x86!\Instructions!JP}
 
 Le flag \PF est mis à 1 si à la fois \Czero et \Ctwo sont mis à 0 ou si les deux
-sont à 1, auquel cas le \JP (\IT{jump if PF==1}) subséquent est déclenché.
+sont à 1, auquel cas le \JP (\emph{jump if PF==1}) subséquent est déclenché.
 Si l'on se rappelle les valeurs de \CThreeBits pour différents cas, nous pouvons
 voir que le saut conditionnel \JP est déclenché dans deux cas: si $b>a$ ou $a=b$
 (le bit \Cthree n'est pris en considération ici, puisqu'il a été mis à 0 par l'instruction

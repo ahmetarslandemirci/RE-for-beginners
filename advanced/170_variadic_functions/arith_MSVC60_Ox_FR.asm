@@ -6,10 +6,10 @@ _arith_mean PROC NEAR
 	lea	edx, DWORD PTR _v$[esp]   ; adresse du 1er argument
 $L838:
 	mov	ecx, DWORD PTR [edx+4]    ; charger l'argument suivant
-	add	edx, 4                    ; §décaler§ le pointeur sur l'argument suivant
+	add	edx, 4                    ; décaler le pointeur sur l'argument suivant
 	cmp	ecx, -1                   ; est-ce -1?
 	je	SHORT $L856               ; sortir si oui
-	add	eax, ecx                  ; sum = sum + argument §chargé§
+	add	eax, ecx                  ; sum = sum + argument chargé
 	inc	esi                       ; count++
 	jmp	SHORT $L838
 $L856:
@@ -32,7 +32,7 @@ _main	PROC NEAR
 	push	1
 	call	_arith_mean
 	push	eax
-	push	OFFSET FLAT:$SG851 ; '%d'
+	push	OFFSET FLAT:$SG851 ; '\%d'
 	call	_printf
 	add	esp, 32
 	ret	0

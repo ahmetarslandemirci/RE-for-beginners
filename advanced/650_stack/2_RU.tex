@@ -16,7 +16,7 @@ char* amsg(int n, char* s)
 
 int main()
 {
-        amsg ("%s\n", interim (1234, "something wrong!"));
+        printf ("%s\n", amsg (1234, "something wrong!"));
 };
 \end{lstlisting}
 
@@ -29,11 +29,15 @@ int main()
 \begin{lstlisting}
 §(низкие адреса)§
 
+...
+
 §[amsg(): 100 байт]§
 §[RA]                               <- текущий SP§
 §[два аргумента amsg]§
 §[что-то еще]§
 §[локальные переменные main()]§
+
+...
 
 §(высокие адреса)§
 \end{lstlisting}
@@ -78,12 +82,16 @@ MSVC предупредит: ``warning C4172: returning address of local variabl
 \begin{lstlisting}
 §(низкие адреса)§
 
+...
+
 §[amsg(): 100 байт]§
 §[RA]                                      <- текущий SP§
 §[два аргумента amsg()]§
 §[вледения interim(), включая 8000 байт]§
 §[еще что-то]§
 §[локальные переменные main()]§
+
+...
 
 §(высокие адреса)§
 \end{lstlisting}
@@ -93,12 +101,16 @@ MSVC предупредит: ``warning C4172: returning address of local variabl
 \begin{lstlisting}
 §(низкие адреса)§
 
+...
+
 §[amsg(): 100 байт]§
 §[RA]§
 §[два аргумента amsg()]§
 §[вледения interim(), включая 8000 байт]§
 §[еще что-то]                              <- текущий SP§
 §[локальные переменные main()]§
+
+...
 
 §(высокие адреса)§
 \end{lstlisting}

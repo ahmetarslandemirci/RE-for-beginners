@@ -457,7 +457,7 @@
 .text:00541320 ; =============== S U B R O U T I N E =======================================
 .text:00541320
 .text:00541320
-.text:00541320 ; int __cdecl crypt_file(int Str, char *Filename, int password)
+.text:00541320 ; int __cdecl crypt_file(char *Str, char *Filename, int password)
 .text:00541320 crypt_file      proc near     ; CODE XREF: _main+42
 .text:00541320
 .text:00541320 Str             = dword ptr  4
@@ -467,7 +467,7 @@
 .text:00541320                 mov     eax, [esp+Str]
 .text:00541324                 push    ebp
 .text:00541325                 push    offset Mode ; "rb"
-.text:0054132A                 push    eax         ; Filename
+.text:0054132A                 push    eax         ; Str
 .text:0054132B                 call    _fopen      ; open file
 .text:00541330                 mov     ebp, eax
 .text:00541332                 add     esp, 8

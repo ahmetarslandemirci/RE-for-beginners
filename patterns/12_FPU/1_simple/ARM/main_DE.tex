@@ -3,7 +3,7 @@
 Bis die Unterstützung für Fließkommaarithmetik in ARM standardisiert wurde,
 fügten einige Hersteller von Prozessoren ihre eigenen Befehlserweiterungen
 hinzu. 
-Schließlich wurde VFP (\IT{Vector Floating Point}) standardisiert.
+Schließlich wurde VFP (\emph{Vector Floating Point}) standardisiert.
 
 Ein wichtiger Unterschied zum x86 ist, dass in es in ARM keinen Stack gibt,
 sondern man nur mit den Registern arbeitet.
@@ -82,9 +82,9 @@ wertvollen Computern installiert waren.
 \myindex{ARM!armel}
 \myindex{ARM!armhf}
 \myindex{ARM!hard float}
-Die Emulation des FPU-Koprozessors wird \IT{soft float} oder \IT{armel} (in der
-ARM-Welt) genannt, wohingegen die FPU-Befehle des Koprozessors \IT{hard float}
-oder \IT{armhf} genannt werden.
+Die Emulation des FPU-Koprozessors wird \emph{soft float} oder \emph{armel} (in der
+ARM-Welt) genannt, wohingegen die FPU-Befehle des Koprozessors \emph{hard float}
+oder \emph{armhf} genannt werden.
 
 \iffalse
 % TODO разобраться...
@@ -92,8 +92,8 @@ oder \IT{armhf} genannt werden.
 Der Linux Kernel des Raspberry Pi beispielsweise wird in zwei Varianten
 kompiliert.
 
-Im Falle von \IT{soft float} werden Parameter über R-Register übergeben und im
-Falle von \IT{hard float} über D-Register.
+Im Falle von \emph{soft float} werden Parameter über R-Register übergeben und im
+Falle von \emph{hard float} über D-Register.
 
 Diese Tatsache hält einen davon ab armhf-Programmbibliotheken für armel-Code
 oder umgekehrt zu verwenden und dies ist der Grund warum der gesamte Code in

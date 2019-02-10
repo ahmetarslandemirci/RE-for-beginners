@@ -4,5 +4,5 @@
 .text:100113F3    call    sub_10006A90 ; ne prendre aucun argument
 .text:100113F8    push    1
 .text:100113FA    call    sub_100018B0 ; prendre un argument (1)
-.text:100113FF    add     esp, 8       ; §supprimer deux arguments de la pile à la fois§
+.text:100113FF    add     esp, 8       ; supprimer deux arguments de la pile à la fois
 

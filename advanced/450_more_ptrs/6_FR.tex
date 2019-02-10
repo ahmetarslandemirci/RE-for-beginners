@@ -1,7 +1,7 @@
 \subsection{Pointeur sur une fonction}
 
 Un nom de fonction en \CCpp sans parenthèses, comme ``printf'' est un pointeur sur
-une fonction du type \IT{void (*)()}.
+une fonction du type \emph{void (*)()}.
 Essayons de lire le contenu de la fonction et de la patcher:
 
 \lstinputlisting[style=customc]{advanced/450_more_ptrs/6.c}
@@ -9,9 +9,9 @@ Essayons de lire le contenu de la fonction et de la patcher:
 Ça dit que les 3 premiers octets de la fonction sont \TT{55 89 e5}.
 En effet, ce sont les opcodes des instructions \INS{PUSH EBP} et \INS{MOV EBP, ESP}
 (se sont des opcodes x86).
-Mais alors notre programme plante, car la section \IT{text} est en lecture seule.
+Mais alors notre programme plante, car la section \emph{text} est en lecture seule.
 
-Nous pouvons recompiler notre exemple et rendre la section \IT{text} modifiable
+Nous pouvons recompiler notre exemple et rendre la section \emph{text} modifiable
 \footnote{\url{http://stackoverflow.com/questions/27581279/make-text-segment-writable-elf}}:
 
 \begin{lstlisting}

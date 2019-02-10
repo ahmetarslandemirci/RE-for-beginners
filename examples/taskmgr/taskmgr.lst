@@ -18,13 +18,13 @@
 .text:10000B4D7          mov     eax, [rsp+0C78h+var_C50]
 .text:10000B4DB          mov     esi, ebx
 .text:10000B4DD          mov     r12d, 3E80h
-.text:10000B4E3          mov     cs:?g_PageSize@@3KA, eax ; ulong g_PageSize
+.text:10000B4E3          mov     cs:?g_PageSize@@3KA, eax ; \verb|ulong g_PageSize|
 .text:10000B4E9          shr     eax, 0Ah
 .text:10000B4EC          lea     r13, __ImageBase
 .text:10000B4F3          imul    eax, [rsp+0C78h+var_C4C]
 .text:10000B4F8          cmp     [rsp+0C78h+var_C20], bpl
-.text:10000B4FD          mov     cs:?g_MEMMax@@3_JA, rax ; __int64 g_MEMMax
+.text:10000B4FD          mov     cs:?g_MEMMax@@3_JA, rax ; \verb|__int64 g_MEMMax|
 .text:10000B504          movzx   eax, [rsp+0C78h+var_C20] ; number of CPUs
 .text:10000B509          cmova   eax, ebp
 .text:10000B50C          cmp     al, bl
-.text:10000B50E          mov     cs:?g_cProcessors@@3EA, al ; uchar g_cProcessors
+.text:10000B50E          mov     cs:?g_cProcessors@@3EA, al ; \verb|uchar g_cProcessors|

@@ -1,162 +1,19 @@
 % TODO split
-\part*{%
-	\RU{Список принятых сокращений}%
-	\EN{Acronyms used}%
-	\NL{Gebruikte afkortingen}%
-	\ES{Acr\'onimos utilizados}%
-	\PTBRph{}%
-	\DE{Verwendete Abkürzungen}%
-	\PLph{}%
-	\ITAph{}%
-	\FR{Acronymes utilisés}%
-	\JPNph{}
-}
-\addcontentsline{toc}{part}{%
-	\RU{Список принятых сокращений}%
-	\EN{Acronyms used}%
-	\ES{Acr\'onimos utilizados}%
-	\NL{Gebruikte afkortingen}%
-	\PTBRph{}%
-	\DE{Verwendete Abkürzungen}%
-	\PLph{}%
-	\ITAph{}%
-	\FR{Acronymes utilisés}%
-	\JPNph{}
-}
+\part*{\AcronymsUsed}
+
+\addcontentsline{toc}{part}{\AcronymsUsed}
+
 \begin{acronym}
-\RU{
-	\acro{OS}[ОС]{Операционная Система}
-	\acro{FAQ}[ЧаВО]{Часто задаваемые вопросы}
-	\acro{OOP}[ООП]{Объектно-Ориентированное Программирование}
-	\acro{PL}[ЯП]{Язык Программирования}
-	\acro{PRNG}[ГПСЧ]{Генератор псевдослучайных чисел}
-	\acro{ROM}[ПЗУ]{Постоянное запоминающее устройство}
-	\acro{ALU}[АЛУ]{Арифметико-логическое устройство}
-	\acro{PID}{ID программы/процесса}
-	\acro{LF}{Line feed (подача строки) (10 или '\textbackslash{}n' в \CCpp)}
-	\acro{CR}{Carriage return (возврат каретки) (13 или '\textbackslash{}r' в \CCpp)}
-	\acro{LIFO}{Last In First Out (последним вошел, первым вышел)}
-	\acro{MSB}{Most significant bit (самый старший бит)} % NOT BYTE!
-	\acro{LSB}{Least significant bit (самый младший бит)} % NOT BYTE!
-	\acro{NSA}[АНБ]{Агентство национальной безопасности}
-	\acro{CFB}{Режим обратной связи по шифротексту (Cipher Feedback)}
-	\acro{CSPRNG}{Криптографически стойкий генератор псевдослучайных чисел (cryptographically secure pseudorandom number generator)}
-	\acro{SICP}{Структура и интерпретация компьютерных программ (Structure and Interpretation of Computer Programs)}
-}%
-\EN{
-	\acro{OS}{Operating System}
-	\acro{FAQ}{Frequently Asked Questions}
-	\acro{OOP}{Object-Oriented Programming}
-	\acro{PL}{Programming Language}
-	\acro{PRNG}{Pseudorandom Number Generator}
-	\acro{ROM}{Read-Only Memory}
-	\acro{ALU}{Arithmetic Logic Unit}
-	\acro{PID}{Program/process ID}
-	\acro{LF}{Line Feed (10 or '\textbackslash{}n' in \CCpp)}
-	\acro{CR}{Carriage Return (13 or '\textbackslash{}r' in \CCpp)}
-	\acro{LIFO}{Last In First Out}
-	\acro{MSB}{Most Significant Bit} % NOT BYTE!
-	\acro{LSB}{Least Significant Bit} % NOT BYTE!
-	\acro{NSA}{National Security Agency}
-	\acro{CFB}{Cipher Feedback}
-	\acro{CSPRNG}{Cryptographically Secure Pseudorandom Number Generator}
-	\acro{SICP}{Structure and Interpretation of Computer Programs}
-	\acro{ABI}{Application Binary Interface}
-}%
-\ES{
-	\acro{OS}[SO]{Sistema Operativo}
-	\acro{FAQ}{Preguntas Frecuentes}
-	\acro{OOP}[POO]{Programaci\'on Orientada a Objetos}
-	\acro{PL}[LP]{Lenguaje de Programaci\'on}
-	\acro{PRNG}[GPAN]{Generador Pseudo-Aleatorio de N\'umeros}
-	\acro{ROM}{Memoria de Solo Lectura}
-	\acro{ALU}{Unidad Aritm\'etica L\'ogica}
-	\acro{NSA}{\ESph{}}
-}%
-\PTBR{
-	\acro{OS}{\PTBRph{}}
-	\acro{FAQ}{\PTBRph{}}
-	\acro{OOP}{\PTBRph{}}
-	\acro{PL}{\PTBRph{}}
-	\acro{PRNG}{\PTBRph{}}
-	\acro{ROM}{\PTBRph{}}
-	\acro{ALU}{\PTBRph{}}
-	\acro{NSA}{\PTBRph{}}
-}%
-\PL{
-	\acro{OS}{\PLph{}}
-	\acro{FAQ}{\PLph{}}
-	\acro{OOP}{\PLph{}}
-	\acro{PL}{\PLph{}}
-	\acro{PRNG}{\PLph{}}
-	\acro{ROM}{\PLph{}}
-	\acro{ALU}{\PLph{}}
-}%
-\DE{
-	\acro{OS}[BS]{Betriebssystem}
-	\acro{FAQ}{Häufig gestellte Fragen}
-	\acro{OOP}{Objektorientierte Programmierung}
-	\acro{PL}[PS]{Programmiersprache}
-	\acro{PRNG}{Pseudozufallszahlen-Generator}
-	\acro{ROM}{\DEph{}}
-	\acro{ALU}[ALE]{Arithmetisch-logische Einheit}
-	\acro{NSA}{\DEph{}}
-}%
-\ITA{
-	\acro{OS}{\ITAph{}}
-	\acro{FAQ}{\ITAph{}}
-	\acro{OOP}{\ITAph{}}
-	\acro{PL}{\ITAph{}}
-	\acro{PRNG}{\ITAph{}}
-	\acro{ROM}{\ITAph{}}
-	\acro{ALU}{\ITAph{}}
-}%
-\THA{
-	\acro{OS}{\THAph{}}
-	\acro{FAQ}{\THAph{}}
-	\acro{OOP}{\THAph{}}
-	\acro{PL}{\THAph{}}
-	\acro{PRNG}{\THAph{}}
-	\acro{ROM}{\THAph{}}
-	\acro{ALU}{\THAph{}}
-}%
-\NL{
-	\acro{OS}{\NL{Operating System}}
-	\acro{FAQ}{\NL{Veelvoorkomende vragen}}
-	\acro{OOP}{\NL{Object-Oriented Programmeren}}
-	\acro{PL}[PT]{\NL{Programmeertaal}}
-	\acro{PRNG}{\NL{Pseudorandom number generator}}
-	\acro{ROM}{\NL{Read-only memory}}
-	\acro{ALU}{\NL{Arithmetic logic unit}}
-}%
-\FR{
-	\acro{OS}[OS]{Système d'exploitation (Operating System)}
-	\acro{FAQ}{Foire Aux Questions}
-	\acro{OOP}[POO]{Programmation orientée objet}
-	\acro{PL}[LP]{Langage de programmation}
-	\acro{PRNG}{Nombre généré pseudo-aléatoirement}
-	\acro{ROM}{Mémoire morte}
-	\acro{ALU}[UAL]{Unité arithmétique et logique}
-	\acro{PID}{ID d'un processus}
-	\acro{LF}{Line feed (10 ou '\textbackslash{}n' en \CCpp)}
-	\acro{CR}{Carriage return (13 ou '\textbackslash{}r' en \CCpp)}
-	\acro{LIFO}{Dernier entré, premier sorti}
-	\acro{MSB}{Bit le plus significatif} % NOT BYTE!
-	\acro{LSB}{Bit le moins significatif} % NOT BYTE!
-	\acro{NSA}{National Security Agency (Agence Nationale de la Sécurité)} % translation not used in French
-	\acro{CSPRNG}{Cryptographically Secure Pseudorandom Number Generator (générateur de nombres pseudo-aléatoire cryptographiquement sûr)}
-	\acro{SICP}{Structure and Interpretation of Computer Programs}
-	\acro{ABI}{Application Binary Interface}
-}%
-\JPN{
-	\acro{OS}{\JPNph{}}
-	\acro{FAQ}{\JPNph{}}
-	\acro{OOP}{\JPNph{}}
-	\acro{PL}{\JPNph{}}
-	\acro{PRNG}{\JPNph{}}
-	\acro{ROM}{\JPNph{}}
-	\acro{ALU}{\JPNph{}}
-}%
+
+\RU{\input{acro_RU}}
+\EN{\input{acro_EN}}
+\ES{\input{acro_ES}}
+\DE{\input{acro_DE}}
+\IT{\input{acro_IT}}
+\NL{\input{acro_NL}}
+\FR{\input{acro_FR}}
+\JA{\input{acro_JA}}
+
 \acro{RA}{\ReturnAddress}
 \acro{PE}{Portable Executable}
 \acro{SP}{\gls{stack pointer}. SP/ESP/RSP \InENRU x86/x64. SP \InENRU ARM.}
@@ -166,15 +23,12 @@
 \acro{IDA}{
 	\RU{Интерактивный дизассемблер и отладчик, разработан \href{https://hex-rays.com/}{Hex-Rays}}%
 	\EN{Interactive Disassembler and Debugger developed by \href{https://hex-rays.com/}{Hex-Rays}}%
+	\IT{\ac{TBT} by \href{https://hex-rays.com/}{Hex-Rays}}%
 	\ES{Desensamblador Interactivo y depurador desarrollado por \href{https://hex-rays.com/}{Hex-Rays}}%
 	\NL{Interactive Disassembler en debugger ontwikkeld door \href{https://hex-rays.com}{Hex-Rays}}
-	\PTBRph{}%
-	\PLph{}%
 	\DE{Interaktiver Disassembler und Debugger entwickelt von \href{https://hex-rays.com/}{Hex-Rays}}%
-	\ITAph{}%
-	\THAph{}%
 	\FR{Désassembleur interactif et débogueur développé par \href{https://hex-rays.com/}{Hex-Rays}}%
-	\JPNph{}%
+	\JA{\href{https://hex-rays.com/}{Hex-Rays} によって開発されたインタラクティブなディスアセンブラ・デバッガ}%
 }
 \acro{IAT}{Import Address Table}
 \acro{INT}{Import Name Table}
@@ -192,12 +46,9 @@
 	\RU{ - (Также известный как)}%
 	\ES{ - (Tambi\'en Conocido Como)}%
 	\NL{ - (Ook gekend als)}%
-	\PTBRph{}%
-	\PLph{}%
-	\DEph{}%
-	\ITAph{}%
-	\THAph{}%
-	\JPNph{}%
+	\ITph{}
+	\JA{別名}%
+	\DEph{}
 }
 \acro{CRT}{C Runtime library}
 \acro{CPU}{Central Processing Unit}
@@ -217,9 +68,11 @@
 \acro{SOC}{System on Chip}
 \acro{SEH}{Structured Exception Handling}
 \acro{ELF}{\RU{Формат исполняемых файлов, использующийся в Linux и некоторых других *NIX}
-\EN{Executable File format widely used in *NIX systems including Linux}\ESph{}\PTBRph{}\PLph{}\ITAph{}\DEph{}\NLph{}
+\EN{Executable File format widely used in *NIX systems including Linux}
 \FR{Format de fichier exécutable couramment utilisé sur les systèmes *NIX, Linux inclus}
-\JPN{Linuxを含め*NIXシステムで広く使用される実行ファイルフォーマット}}
+\JA{Linuxを含め*NIXシステムで広く使用される実行ファイルフォーマット}
+\ITph{}
+\DEph{}}
 \acro{TIB}{Thread Information Block}
 \acro{TEA}{Tiny Encryption Algorithm}
 \acro{PIC}{Position Independent Code}
@@ -237,7 +90,7 @@
 \acro{API}{Application Programming Interface}
 \acro{ASCII}{American Standard Code for Information Interchange}
 \acro{ASCIIZ}{ASCII Zero (\RU{ASCII-строка заканчивающаяся нулем}\EN{null-terminated ASCII string}
-\FR{chaîne ASCII terminée par un octet nul (à zéro)}\ESph{}\PTBRph{}\PLph{}\ITAph{}\DEph{}\NLph{})}
+\FR{chaîne ASCII terminée par un octet nul (à zéro)}\JA{ヌル終端文字列})}
 \acro{IA64}{Intel Architecture 64 (Itanium)}
 \acro{EPIC}{Explicitly Parallel Instruction Computing}
 \acro{OOE}{Out-of-Order Execution}
@@ -257,16 +110,16 @@
 \acro{GDB}{GNU Debugger}
 \acro{FP}{Frame Pointer}
 \acro{MBR}{Master Boot Record}
-\acro{JPE}{Jump Parity Even (\RU{инструкция x86}\EN{x86 instruction}\FR{instruction x86})}
+\acro{JPE}{Jump Parity Even (\RU{инструкция x86}\EN{x86 instruction}\FR{instruction x86}\JA{x86命令}\DEph{})}
 \acro{CIDR}{Classless Inter-Domain Routing}
-\acro{STMFD}{Store Multiple Full Descending (\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM})}
-\acro{LDMFD}{Load Multiple Full Descending (\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM})}
-\acro{STMED}{Store Multiple Empty Descending (\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM})}
-\acro{LDMED}{Load Multiple Empty Descending (\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM})}
-\acro{STMFA}{Store Multiple Full Ascending (\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM})}
-\acro{LDMFA}{Load Multiple Full Ascending (\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM})}
-\acro{STMEA}{Store Multiple Empty Ascending (\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM})}
-\acro{LDMEA}{Load Multiple Empty Ascending (\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM})}
+\acro{STMFD}{Store Multiple Full Descending (\DEph{}\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM}\JA{ARM命令})}
+\acro{LDMFD}{Load Multiple Full Descending (\DEph{}\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM}\JA{ARM命令})}
+\acro{STMED}{Store Multiple Empty Descending (\DEph{}\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM}\JA{ARM命令})}
+\acro{LDMED}{Load Multiple Empty Descending (\DEph{}\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM}\JA{ARM命令})}
+\acro{STMFA}{Store Multiple Full Ascending (\DEph{}\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM}\JA{ARM命令})}
+\acro{LDMFA}{Load Multiple Full Ascending (\DEph{}\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM}\JA{ARM命令})}
+\acro{STMEA}{Store Multiple Empty Ascending (\DEph{}\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM}\JA{ARM命令})}
+\acro{LDMEA}{Load Multiple Empty Ascending (\DEph{}\RU{инструкция ARM}\EN{ARM instruction}\FR{instruction ARM}\JA{ARM命令})}
 \acro{APSR}{(ARM) Application Program Status Register}
 \acro{FPSCR}{(ARM) Floating-Point Status and Control Register}
 \acro{RFC}{Request for Comments}
@@ -277,7 +130,7 @@
 \acro{CDFS}{Compact Disc File System}
 \acro{CD}{Compact Disc}
 \acro{ADC}{Analog-to-Digital Converter}
-\acro{EOF}{End of File\RU{ (конец файла)}\FR{ (fin de fichier)}}
+\acro{EOF}{End of File\DEph{}\RU{ (конец файла)}\FR{ (fin de fichier)}\JA{（ファイル終端）}}
 \acro{TBT}{To be Translated. The presence of this acronym in this place means that the English version has some new/modified content which is to be translated and placed right here.}
 \acro{DIY}{Do It Yourself}
 \acro{MMU}{Memory Management Unit}
@@ -294,5 +147,6 @@
 \acro{GiB}{Gibibyte}
 \acro{CRC}{Cyclic redundancy check}
 \acro{AES}{Advanced Encryption Standard}
+\acro{GC}{Garbage Collector}
 
 \end{acronym}

@@ -2,7 +2,7 @@ array$ = 8
 a$ = 16
 b$ = 24
 get_by_coordinates3 PROC
-; RCX=§адрес§ §массива§
+; RCX=адрес массива
 ; RDX=a
 ; R8=b
 	movsxd	rax, r8d
@@ -10,9 +10,9 @@ get_by_coordinates3 PROC
 	movsxd	r9, edx
 ; R9=a
 	add	rax, rcx
-; RAX=b+§адрес§ §массива§
+; RAX=b+адрес массива
 	movzx	eax, BYTE PTR [rax+r9*4]
-; AL=§загрузить§ §байт§ §по§ §адресу§ RAX+R9*4=b+§адрес§ §массива§+a*4=§адрес§ §массива§+a*4+b
+; AL=загрузить байт по адресу RAX+R9*4=b+адрес массива+a*4=адрес массива+a*4+b
 	ret	0
 get_by_coordinates3 ENDP
 

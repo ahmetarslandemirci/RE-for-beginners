@@ -23,7 +23,7 @@ loc_4A0
 loc_4B0                             
             LDR     R2, [SP,R4,LSL#2]  ; (zweites printf Argument) R2=*(SP+R4<<4) (entspricht *(SP+R4*4))
             MOV     R1, R4             ; (erstes printf Argument) R1=i
-            ADR     R0, aADD           ; "a[%d]=%d\n"
+            ADR     R0, aADD           ; "a[\%d]=\%d\textbackslash{}n"
             BL      __2printf
             ADD     R4, R4, #1         ; i=i+1
 

@@ -43,7 +43,7 @@ um $n$ Bits nach rechts und schneide dann niederwertigstes Bit ab):
 In x86 Code wird dies gewöhnlich wie folgt implementiert:
 
 \begin{lstlisting}[caption=x86,style=customasmx86]
-; REG=input_value
+; REG=input\_value
 ; CL=n
 SHR REG, CL
 AND REG, 1

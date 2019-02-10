@@ -2,7 +2,7 @@
 
 Until ARM got standardized floating point support, several processor manufacturers added their own 
 instructions extensions.
-Then, VFP (\IT{Vector Floating Point}) was standardized.
+Then, VFP (\emph{Vector Floating Point}) was standardized.
 
 One important difference from x86 is that in ARM, there
 is no stack, you work just with registers.
@@ -75,8 +75,8 @@ and expensive, and were installed only on expensive computers.
 \myindex{ARM!armhf}
 \myindex{ARM!hard float}
 
-The FPU-coprocessor emulation is called \IT{soft float} or \IT{armel} (\IT{emulation}) in the ARM world, 
-while using the coprocessor's FPU-instructions is called \IT{hard float} or \IT{armhf}.
+The FPU-coprocessor emulation is called \emph{soft float} or \emph{armel} (\emph{emulation}) in the ARM world, 
+while using the coprocessor's FPU-instructions is called \emph{hard float} or \emph{armhf}.
 
 \iffalse
 % TODO разобраться...
@@ -84,7 +84,7 @@ while using the coprocessor's FPU-instructions is called \IT{hard float} or \IT{
 
 For example, the Linux kernel for Raspberry Pi is compiled in two variants.
 
-In the \IT{soft float} case, arguments are passed via R-registers, and in the \IT{hard float} case---via D-registers.
+In the \emph{soft float} case, arguments are passed via R-registers, and in the \emph{hard float} case---via D-registers.
 
 And that is what stops you from using armhf-libraries from armel-code or vice versa,
 and that is why all the code in Linux distributions must be compiled according to a single convention.

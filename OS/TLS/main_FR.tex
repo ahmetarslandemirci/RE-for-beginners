@@ -3,15 +3,15 @@
 \myindex{TLS}
 
 TLS est un espace de données propre à chaque thread, qui peut y conserver ce qu'il estime utile.
-Un exemple d'utilisation bien connu en est la variable globale \IT{errno} du standard C.
+Un exemple d'utilisation bien connu en est la variable globale \emph{errno} du standard C.
 
 Plusieurs threads peuvent invoquer simultanément différentes fonctions qui retournent toutes un code 
-erreur dans la variable \IT{errno}. L'utilisation d'une variable globale dans le contexte d'un 
+erreur dans la variable \emph{errno}. L'utilisation d'une variable globale dans le contexte d'un 
 programme comportant plusieurs threads serait donc inadaptée dans ce cas. C'est pourquoi la variable 
-\IT{errno} est conservée dans l'espace \ac{TLS}.\\
+\emph{errno} est conservée dans l'espace \ac{TLS}.\\
 \\
 \myindex{\Cpp!C++11}
-La version 11 du standard C++ a ajouté un nouveau modificateur \IT{thread\_local} qui indique que 
+La version 11 du standard C++ a ajouté un nouveau modificateur \emph{thread\_local} qui indique que 
 chaque thread possède sa propre copie de la variable décorée par ce modificateur. La variable en 
 question est alors conservée dans l'espace \ac{TLS}
 \footnote{\myindex{C11} C11 also has thread support, optional though}:
@@ -30,7 +30,7 @@ int main()
 
 Compilé avec MinGW GCC 4.8.1, mais pas avec MSVC 2012.
 
-Dans le contexte des fichiers au format PE, la variable \IT{tmp} sera allouée dans la section dédiée 
+Dans le contexte des fichiers au format PE, la variable \emph{tmp} sera allouée dans la section dédiée 
 au \ac{TLS} du fichier exécutable résultant de la compilation.
 
 \subsection{Amélioration du générateur linéaire congruent}

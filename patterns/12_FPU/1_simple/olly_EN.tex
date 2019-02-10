@@ -43,7 +43,7 @@ has been executed, loading 3.4 into \ST{0} (here we see the approximate value 3.
 \label{fig:FPU_simple_olly_3}
 \end{figure}
 
-At the same time, \gls{quotient} \IT{is pushed} into \ST{1}.
+At the same time, \gls{quotient} \emph{is pushed} into \ST{1}.
 Right now, \EIP points to the next instruction: \FMUL. 
 It loads the constant 4.1 from memory, which \olly shows.
 
@@ -79,7 +79,7 @@ Why?
 As we have read some time before in this book, the \ac{FPU} registers are a stack: \myref{FPU_is_stack}. 
 But this is a simplification.
 
-Imagine if it was implemented \IT{in hardware} as it's described, then all 7 register's
+Imagine if it was implemented \emph{in hardware} as it's described, then all 7 register's
 contents must be moved (or copied) to adjacent registers during pushing and popping, 
 and that's a lot of work.
 

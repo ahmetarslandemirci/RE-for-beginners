@@ -44,7 +44,7 @@ Hier finden wir ein paar schmutzige Tricks.
 \myindex{x86!\Instructions!SUB}
 Zunächst: der Wert von $a$ wird in \EAX abgelegt und 0 wird davon abgezogen. Klingt absurd, muss aber getan werden, um
 zu prüfen, ob der Wert in \EAX null ist. Falls ja, wird das \ZF Flag gesetzt (denn 0 minus 0 ist 0) und der erste
-bedingte Sprung \JE (\IT{Jump if Equal}) oder synonym \JZ~---\IT{Jump if Zero}) wird ausgeführt und der Control Flow
+bedingte Sprung \JE (\emph{Jump if Equal}) oder synonym \JZ~---\emph{Jump if Zero}) wird ausgeführt und der Control Flow
 wird an das Label \TT{\$LN4@f} übergeben, an dem die Nachricht \TT{'zero'} ausgegeben wird.
 Wenn der erste Sprung nicht ausgeführt wird, wird 1 vom Eingabewert abgezogen und wenn an irgendeinem Punkt der
 Ausführung ein Ergebnis von 0 auftritt, wird der zugehörige Sprung ausgeführt. 

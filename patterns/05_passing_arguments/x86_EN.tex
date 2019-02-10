@@ -12,8 +12,8 @@ What we see is that the \main function pushes 3 numbers onto the stack and calls
 
 Argument access inside \ttf is organized with the help of macros like:\\
 \TT{\_a\$ = 8}, 
-in the same way as local variables, but with positive offsets (addressed with \IT{plus}).
-So, we are addressing the \IT{outer} side of the \gls{stack frame} by adding the \TT{\_a\$} macro to the value in the \EBP register.
+in the same way as local variables, but with positive offsets (addressed with \emph{plus}).
+So, we are addressing the \emph{outer} side of the \gls{stack frame} by adding the \TT{\_a\$} macro to the value in the \EBP register.
 
 \myindex{x86!\Instructions!IMUL}
 \myindex{x86!\Instructions!ADD}

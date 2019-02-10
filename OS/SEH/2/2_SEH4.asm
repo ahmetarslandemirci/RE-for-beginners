@@ -32,18 +32,18 @@ _main    PROC
     mov    eax, DWORD PTR ___security_cookie
     xor    DWORD PTR __$SEHRec$[ebp+16], eax ; xored pointer to scope table
     xor    eax, ebp
-    push   eax                              ; ebp ^ security_cookie
-    lea    eax, DWORD PTR __$SEHRec$[ebp+8] ; pointer to VC_EXCEPTION_REGISTRATION_RECORD
+    push   eax                              ; \verb|ebp ^ security_cookie|
+    lea    eax, DWORD PTR __$SEHRec$[ebp+8] ; \verb|pointer to VC_EXCEPTION_REGISTRATION_RECORD|
     mov    DWORD PTR fs:0, eax
     mov    DWORD PTR __$SEHRec$[ebp], esp
     mov    DWORD PTR _p$[ebp], 0
     mov    DWORD PTR __$SEHRec$[ebp+20], 0 ; previous try level
-    push   OFFSET $SG85485 ; 'hello #1!'
+    push   OFFSET $SG85485 ; 'hello \#1!'
     call   _printf
     add    esp, 4
     mov    eax, DWORD PTR _p$[ebp]
     mov    DWORD PTR [eax], 13
-    push   OFFSET $SG85486 ; 'hello #2!'
+    push   OFFSET $SG85486 ; 'hello \#2!'
     call   _printf
     add    esp, 4
     mov    DWORD PTR __$SEHRec$[ebp+20], -2 ; previous try level

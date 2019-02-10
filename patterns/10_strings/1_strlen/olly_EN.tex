@@ -11,7 +11,7 @@ We can try this (optimized) example in \olly.  Here is the first iteration:
 \label{fig:strlen_olly_1}
 \end{figure}
 
-We see that \olly found a loop and, for convenience, \IT{wrapped} its instructions in brackets.
+We see that \olly found a loop and, for convenience, \emph{wrapped} its instructions in brackets.
 By clicking the right button on \EAX, we can choose 
 \q{Follow in Dump} and the memory window scrolls to the right place.
 Here we can see the string \q{hello!} in memory.
@@ -44,7 +44,8 @@ We have to press F8 enough number of times in order to escape from the loop:
 \label{fig:strlen_olly_3}
 \end{figure}
 
-We see that \EAX now contains the address of zero byte that's right after the string.
+We see that \EAX now contains the address of zero byte that's right after the string plus 1 (because INC EAX was executed regardless of whether
+we exit from the loop or not).
 Meanwhile, \EDX hasn't changed,
 so it still pointing to the start of the string.
 

@@ -9,7 +9,7 @@ _main:
 	mov	DWORD PTR [esp], eax
 	call	_atol
 	mov	edx, 1717986919
-	mov	DWORD PTR [esp], OFFSET FLAT:LC2 ; "%d\12\0"
+	mov	DWORD PTR [esp], OFFSET FLAT:LC2 ; \verb|"%d\n"|
 	lea	ecx, [eax+eax*8]
 	mov	eax, ecx
 	imul	edx

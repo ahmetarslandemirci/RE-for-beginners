@@ -128,7 +128,7 @@ dans \XMM{0}}
 \end{figure}
 
 Nous voyons qu'\olly montre les registres XMM comme des paires de nombres \Tdouble,
-mais seule la partie \IT{basse} est utilisée.
+mais seule la partie \emph{basse} est utilisée.
 
 Apparemment, \olly les montre dans ce format car les instructions SSE2 (suffixées
 avec \TT{-SD}) sont exécutées actuellement.
@@ -228,7 +228,7 @@ Maintenant nous compilons pour x64:
 Il n'y a pas moyen d'ajouter 1 à une valeur dans un registre XMM 128-bit, donc il
 doit être placé en mémoire.
 
-Il y a toutefois l'instruction \INS{ADDSD} (\IT{Add Scalar Double-Precision Floating-Point
+Il y a toutefois l'instruction \INS{ADDSD} (\emph{Add Scalar Double-Precision Floating-Point
 Values} ajouter des valeurs scalaires à virgule flottante double-précision), qui
 peut ajouter une valeur dans la moitié 64-bit basse d'un registre XMM en ignorant
 celle du haut, mais MSVC 2012 n'est probablement pas encore assez bon \footnote{À

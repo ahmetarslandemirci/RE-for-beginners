@@ -18,7 +18,7 @@ _main      PROC
     push   edx
     movzx  eax, WORD PTR _t$[ebp] ; wYear
     push   eax
-    push   OFFSET $SG78811 ; '%04d-%02d-%02d %02d:%02d:%02d', 0aH, 00H
+    push   OFFSET $SG78811 ; '\%04d-\%02d-\%02d \%02d:\%02d:\%02d', 0aH, 00H
     call   _printf
     add    esp, 28
     xor    eax, eax

@@ -3,7 +3,7 @@ my_max PROC
 ; R1=B
 ; comparer A et B:
         CMP      r0,r1
-; §branchement si A est supérieur à B:§
+; branchement si A est supérieur à B:
         BGT      |L0.6|
 ; autrement (A<=B) renvoyer R1 (B):
         MOVS     r0,r1
@@ -17,7 +17,7 @@ my_min PROC
 ; R1=B
 ; comparer A et B:
         CMP      r0,r1
-; §branchement si A est inférieur à B:§
+; branchement si A est inférieur à B:
         BLT      |L0.14|
 ; autrement (A>=B) renvoyer R1 (B):
         MOVS     r0,r1

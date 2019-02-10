@@ -4,23 +4,7 @@ Nu zullen we dezelfde \CCpp code compileren in de GCC 4.4.1 compiler in Linux: \
 Vervolgens, met de assistentie van de \IDA disassembler, zullen we kijken hoe de \main functie gemaakt is.
 \IDA, maakt net als MSVC gebruik van de Intel-syntax\footnote{We hadden GCC ook assembly listings kunnen laten gereren in Intel-syntax door gebruik te maken van de opties \TT{-S -masm=intel}.}.
 
-\begin{lstlisting}[caption=code in \IDA,style=customasmx86]
-main            proc near
-
-var_10          = dword ptr -10h
-
-                push    ebp
-                mov     ebp, esp
-                and     esp, 0FFFFFFF0h
-                sub     esp, 10h
-                mov     eax, offset aHelloWorld ; "hello, world\n"
-                mov     [esp+10h+var_10], eax
-                call    _printf
-                mov     eax, 0
-                leave
-                retn
-main            endp
-\end{lstlisting}
+\lstinputlisting[caption=code in \IDA,style=customasmx86]{patterns/01_helloworld/IDA_x86.asm}
 
 \myindex{Function prologue}
 \myindex{x86!\Instructions!AND}
@@ -39,7 +23,7 @@ Dit komt doordat de grootte van de gereserveerde stack ook uitgelijnd is op een 
 % TODO1: rewrite.
 \myindex{x86!\Instructions!PUSH}
 Het string adres (of een pointer naar de string) wordt dan rechtstreeks op de stack geplaatst zonder gebruik te maken van de \PUSH instructie.
-\IT{var\_10}~---is een lokale variabele en is ook een argument voor \printf{}.
+\emph{var\_10}~---is een lokale variabele en is ook een argument voor \printf{}.
 Lees er hieronder meer over.
 
 \NLph{}
@@ -68,9 +52,9 @@ We krijgen dit resultaat:
 
 De lijst bevat vele macros (die beginnen met een punt). Maar deze zijn niet interessant voor ons momenteel.
 
-Voorlopig, om het simpel te houden, kunnen we deze negeren (buiten de \IT{.string} macro, dewelke
+Voorlopig, om het simpel te houden, kunnen we deze negeren (buiten de \emph{.string} macro, dewelke
 een null-terminated karakter reeks encodeert net als een C-string). Daarna zien we dit
-\footnote{Deze GCC optie kan gebruikt worden om alle \q{onnodige} macros te elimineren: \IT{-fno-asynchronous-unwind-tables}}:
+\footnote{Deze GCC optie kan gebruikt worden om alle \q{onnodige} macros te elimineren: \emph{-fno-asynchronous-unwind-tables}}:
 
 \lstinputlisting[caption=GCC 4.7.3,style=customasmx86]{patterns/01_helloworld/GCC_refined.s}
 

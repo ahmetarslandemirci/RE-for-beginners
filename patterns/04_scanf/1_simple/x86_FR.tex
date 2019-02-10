@@ -33,7 +33,7 @@ fonction via \TT{EBP+offset}.
 \myindex{x86!\Registers!ESP}
 Il est aussi possible d'utiliser \ESP dans le même but, bien que ça ne soit pas
 très commode, car il change fréquemment.
-La valeur de \EBP peut être perçue comme un \IT{état figé} de la valeur de \ESP
+La valeur de \EBP peut être perçue comme un \emph{état figé} de la valeur de \ESP
 au début de l'exécution de la fonction.
 
 % FIXME1 это уже было в 02_stack?
@@ -72,7 +72,7 @@ de la variable \TT{x}.
 Tout d'abord, l'adresse de la variable \TT{x} est chargée dans le registre \EAX
 par l'instruction \\ \TT{lea eax, DWORD PTR \_x\$[ebp]}.
 
-\LEA signifie \IT{load effective address} (charger l'adresse effective) et est souvent
+\LEA signifie \emph{load effective address} (charger l'adresse effective) et est souvent
 utilisée pour composer une adresse ~(\myref{sec:LEA}).
 
 Nous pouvons dire que dans ce cas, \LEA stocke simplement la somme de la valeur du

@@ -16,7 +16,7 @@ f12:
 	cmp	w0, 2
 	beq	.L35
 	cmp	w0, wzr
-	bne	.L38		; §sauter au label par défaut§
+	bne	.L38		; sauter au label par défaut
 	adrp	x0, .LC12	; "zero"
 	add	x0, x0, :lo12:.LC12
 	bl	puts

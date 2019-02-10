@@ -17,8 +17,8 @@ Here's what's going on.
 For each object (instance of class $c$) 8 bytes are allocated,
 exactly the size needed to store the 2 variables.
 
-For \IT{c1} a default argumentless constructor \TT{??0c@@QAE@XZ} is called.
-For \IT{c2} another constructor \TT{??0c@@QAE@HH@Z} is called and two numbers are passed as arguments.
+For \emph{c1} a default argumentless constructor \TT{??0c@@QAE@XZ} is called.
+For \emph{c2} another constructor \TT{??0c@@QAE@HH@Z} is called and two numbers are passed as arguments.
 
 \myindex{thiscall}
 \label{thiscall}
@@ -43,7 +43,7 @@ And of course, different classes may have their own methods with the same name.
 
 \myindex{Linker}
 
-\IT{Name mangling} enable us to encode the class name + method name + all method argument types
+\emph{Name mangling} enable us to encode the class name + method name + all method argument types
 in one ASCII string, which is then used as an internal function name.
 That's all because neither the linker, nor the DLL \ac{OS} loader (mangled names may be among 
 the DLL exports as well) knows anything about \Cpp or \ac{OOP}.
@@ -106,7 +106,7 @@ The \Tint data type is still 32-bit in x64
 \footnote{Apparently, for easier porting of 32-bit \CCpp code to x64.}, 
 so that is why 32-bit register parts are used here.
 
-We also see \TT{JMP printf} instead of \RET in the \TT{dump()} method, that \IT{hack} we already saw
+We also see \TT{JMP printf} instead of \RET in the \TT{dump()} method, that \emph{hack} we already saw
 earlier: \myref{JMP_instead_of_RET}.
 
 \myparagraph{GCC: x86}
@@ -115,7 +115,7 @@ It is almost the same story in GCC 4.4.1, with a few exceptions.
 
 \lstinputlisting[caption=GCC 4.4.1,style=customasmx86]{\CURPATH/classes/simple_GCC.asm}
 
-Here we see another \IT{name mangling} style, specific to GNU
+Here we see another \emph{name mangling} style, specific to GNU
 \footnote{There is a good document about the various name mangling conventions in different compilers:\\
 \InSqBrackets{\AgnerFogCC}.}.
 It can also be noted that the pointer to the object is passed as the first function 
@@ -179,32 +179,9 @@ void ZN1cC1Eii (int *obj, int a, int b)
 
 Now the \TT{dump()} function:
 
-\begin{lstlisting}[style=customasmx86]
-                public _ZN1c4dumpEv
-_ZN1c4dumpEv    proc near
+\lstinputlisting[style=customasmx86]{\CURPATH/classes/tmp1.asm}
 
-var_18          = dword ptr -18h
-var_14          = dword ptr -14h
-var_10          = dword ptr -10h
-arg_0           = dword ptr  8
-
-                push    ebp
-                mov     ebp, esp
-                sub     esp, 18h
-                mov     eax, [ebp+arg_0]
-                mov     edx, [eax+4]
-                mov     eax, [ebp+arg_0]
-                mov     eax, [eax]
-                mov     [esp+18h+var_10], edx
-                mov     [esp+18h+var_14], eax
-                mov     [esp+18h+var_18], offset aDD ; "%d; %d\n"
-                call    _printf
-                leave
-                retn
-_ZN1c4dumpEv    endp
-\end{lstlisting}
-
-This function in its \IT{internal representation} has only one argument, 
+This function in its \emph{internal representation} has only one argument, 
 used as pointer to the object (\ITthis).
 
 This function could be rewritten in C like this:
@@ -217,7 +194,7 @@ void ZN1c4dumpEv (int *obj)
 \end{lstlisting}
 
 Thus, if we base our judgment on these simple examples, the difference between MSVC and GCC
-is the style of the encoding of function names (\IT{name mangling}) and the method for passing a pointer to the object
+is the style of the encoding of function names (\emph{name mangling}) and the method for passing a pointer to the object
 (via the \ECX register or via the first argument).
 
 \myparagraph{GCC: x86-64}
@@ -227,7 +204,7 @@ The first 6 arguments, as we already know, are passed in the \RDI, \RSI, \RDX, \
 and the pointer to \ITthis via the first one (\RDI) and that is what we see here.
 The \Tint data type is also 32-bit here.
 
-The \JMP instead of \RET \IT{hack} is also used here.
+The \JMP instead of \RET \emph{hack} is also used here.
 
 \lstinputlisting[caption=GCC 4.4.6 x64,style=customasmx86]{\CURPATH/classes/simple_GCC_x64_EN.s}
 

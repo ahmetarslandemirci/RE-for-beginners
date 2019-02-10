@@ -1,7 +1,7 @@
 printing_function:
 ; prepare second argument of printf():
 	mov	w1, w0
-; load address of the "f(%d)\n" string
+; load address of the "f(\%d)\textbackslash{}n" string
 	adrp	x0, .LC0
 	add	x0, x0, :lo12:.LC0
 ; just branch here instead of branch with link and return:
@@ -17,7 +17,7 @@ main:
 ; set initial value of 2 to it:
 	mov	w19, 2
 .L3:
-; prepare first argument of printing_function():
+; prepare first argument of printing\_function():
 	mov	w0, w19
 ; increment counter register.
 	add	w19, w19, 1

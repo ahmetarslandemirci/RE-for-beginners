@@ -8,7 +8,7 @@ This operation is also called \q{population count}\footnote{modern x86 CPUs (sup
 
 In this loop, the iteration count value $i$ is counting from 0 to 31, 
 so the $1 \ll i$ statement is counting from 1 to \TT{0x80000000}.
-Describing this operation in natural language, we would say \IT{shift 1 by n bits left}.
+Describing this operation in natural language, we would say \emph{shift 1 by n bits left}.
 In other words, $1 \ll i$ statement consequently produces all possible bit positions in a 32-bit number.
 The freed bit at right is always cleared.
 
@@ -16,7 +16,7 @@ The freed bit at right is always cleared.
 Here is a table of all possible $1 \ll i$ 
 for $i=0 \ldots 31$:
 
-\small
+%\small
 \begin{center}
 \begin{tabular}{ | l | l | l | l | }
 \hline
@@ -91,7 +91,7 @@ $1 \ll 31$ & $2^{31}$ & 2147483648 & 0x80000000 \\
 \hline
 \end{tabular}
 \end{center}
-\normalsize
+%\normalsize
 
 These constant numbers (bit masks) very often appear in code and a practicing reverse engineer 
 must be able to spot them quickly.
@@ -122,10 +122,10 @@ Let's get back to our example.
 The \TT{IS\_SET} macro checks bit presence in $a$.
 \myindex{x86!\Instructions!AND}
 
-The \TT{IS\_SET} macro is in fact the logical AND operation (\IT{AND}) 
+The \TT{IS\_SET} macro is in fact the logical AND operation (\emph{AND}) 
 and it returns 0 if the specific bit is absent there,
 or the bit mask, if the bit is present.
-\IT{The if()} operator in \CCpp triggers if the expression in it is not zero, it might be even 123456, that is why
+\emph{The if()} operator in \CCpp triggers if the expression in it is not zero, it might be even 123456, that is why
 it always works correctly.
 
 % subsections

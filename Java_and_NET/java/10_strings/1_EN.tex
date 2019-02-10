@@ -37,10 +37,10 @@ Strings are objects and are constructed in the same way as other objects (and ar
         40: return        
 \end{lstlisting}
 
-The \TT{readLine()} method is called at offset 11, a \IT{reference} to string (which is supplied by the user) 
+The \TT{readLine()} method is called at offset 11, a \emph{reference} to string (which is supplied by the user) 
 is then stored at \ac{TOS}.
 
-At offset 14 the \IT{reference} to string is stored in slot 1 of \ac{LVA}.
+At offset 14 the \emph{reference} to string is stored in slot 1 of \ac{LVA}.
 
 The string the user entered is reloaded at offset 30 and concatenated with the \q{Hello, } string
 using the \TT{StringBuilder} class.

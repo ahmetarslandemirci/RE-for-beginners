@@ -16,7 +16,7 @@
 .text:0000000C                 move    $fp, $sp
 .text:00000010                 la      $gp, __gnu_local_gp
 .text:00000018                 sw      $gp, 0x38+var_10($sp)
-.text:0000001C                 la      $v0, aADBDCDDDEDFDGD  # "a=%d; b=%d; c=%d; d=%d; e=%d; f=%d; g=%"...
+.text:0000001C                 la      $v0, aADBDCDDDEDFDGD  # "a=\%d; b=\%d; c=\%d; d=\%d; e=\%d; f=\%d; g=\%"...
 ; pass 5th argument in stack:
 .text:00000024                 li      $v1, 4
 .text:00000028                 sw      $v1, 0x38+var_28($sp)
@@ -32,13 +32,13 @@
 ; pass 9th argument in stack:
 .text:00000044                 li      $v1, 8
 .text:00000048                 sw      $v1, 0x38+var_18($sp)
-; pass 1st argument in $a0: 
+; pass 1st argument in \$a0: 
 .text:0000004C                 move    $a0, $v0
-; pass 2nd argument in $a1:
+; pass 2nd argument in \$a1:
 .text:00000050                 li      $a1, 1
-; pass 3rd argument in $a2:
+; pass 3rd argument in \$a2:
 .text:00000054                 li      $a2, 2
-; pass 4th argument in $a3:
+; pass 4th argument in \$a3:
 .text:00000058                 li      $a3, 3
 ; call printf():
 .text:0000005C                 lw      $v0, (printf & 0xFFFF)($gp)

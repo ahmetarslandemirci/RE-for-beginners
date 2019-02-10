@@ -1,4 +1,4 @@
-\subsection{Cas de la fonction \IT{vprintf()}}
+\subsection{Cas de la fonction \emph{vprintf()}}
 \myindex{\CStandardLibrary!vprintf}
 \myindex{\CStandardLibrary!va\_list}
 
@@ -13,7 +13,7 @@ Mais comment?
 
 À l'aide des fonctions avec un \q{v} dans le nom.
 
-Une d'entre elles est \IT{vprintf()}: elle prend une chaîne de format et un pointeur
+Une d'entre elles est \emph{vprintf()}: elle prend une chaîne de format et un pointeur
 sur une variable du type \TT{va\_list}:
 
 \lstinputlisting[style=customc]{\CURPATH/die.c}
@@ -25,7 +25,7 @@ Compilons:
 \lstinputlisting[caption=MSVC 2010 \Optimizing,style=customasmx86]{\CURPATH/die_MSVC2010_Ox_FR.asm}
 
 Nous voyons que tout ce que fait notre fonction est de prendre un pointeur sur les
-arguments et le passe à la fonction \IT{vprintf()}, et que cette fonction le traite
+arguments et le passe à la fonction \emph{vprintf()}, et que cette fonction le traite
 comme un tableau infini d'arguments!
 
 \lstinputlisting[caption=MSVC 2012 x64 \Optimizing,style=customasmx86]{\CURPATH/die_MSVC2012_x64_Ox_FR.asm}

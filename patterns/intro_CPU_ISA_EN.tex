@@ -27,7 +27,7 @@ One might wonder why there needs to be a difference between machine code and a \
 it is much easier for humans to use a high-level \ac{PL} like \CCpp, Java, or Python, but it is easier for a \ac{CPU} to use a much lower level of abstraction.
 Perhaps it would be possible to invent a \ac{CPU} that can execute high-level \ac{PL} code, but it would be many times more complex than the \ac{CPU}s we know of today.
 In a similar fashion, it is very inconvenient for humans to write in assembly language, due to it being so low-level and difficult to write in without making a huge number of annoying mistakes.
-The program that converts the high-level \ac{PL} code into assembly is called a \IT{compiler}.
+The program that converts the high-level \ac{PL} code into assembly is called a \emph{compiler}.
 \footnote{Old-school Russian literature also uses the term \q{translator}.}.
 
 \myindex{ARM!\ARMMode}%
@@ -47,7 +47,7 @@ Then they realized it wasn't as frugal as they first imagined.
 In fact, the most common \ac{CPU} instructions\footnote{e.g. MOV/PUSH/CALL/Jcc} in real world applications can be encoded using less information.
 They therefore added another \ac{ISA}, called Thumb, in which each instruction was encoded in just 2 bytes.
 This is now referred to as \q{Thumb mode}.
-However, not \IT{all} ARM instructions can be encoded in just 2 bytes, so the Thumb instruction set is somewhat limited.
+However, not \emph{all} ARM instructions can be encoded in just 2 bytes, so the Thumb instruction set is somewhat limited.
 It is worth noting that code compiled for ARM mode and Thumb mode can coexist within one single program.
 The ARM creators thought Thumb could be extended, giving rise to Thumb-2, which appeared in ARMv7.
 Thumb-2 still uses 2-byte instructions, but has some new instructions which have the size of 4 bytes.

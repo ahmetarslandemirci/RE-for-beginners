@@ -16,9 +16,9 @@ f:
 	mov	rax, rdx
 ; RAX = RDX = a>>i
 	and	eax, 1
-; EAX = EAX&1 = (a>>i)&1
+; EAX = EAX\&1 = (a>>i)\&1
 	test	rax, rax
-; est-ce que le dernier bit est §zéro§?
+; est-ce que le dernier bit est zéro?
 ; passer l'instruction ADD suivante, si c'est le cas.
 	je	.L3
 	add	DWORD PTR [rbp-12], 1	; rt++
@@ -26,7 +26,7 @@ f:
 	add	QWORD PTR [rbp-8], 1	; i++
 .L2:
 	cmp	QWORD PTR [rbp-8], 63	; i<63?
-	jbe	.L4			; sauter au §début§ du corps de la boucle, si oui
+	jbe	.L4			; sauter au début du corps de la boucle, si oui
 	mov	eax, DWORD PTR [rbp-12]	; renvoyer rt
 	pop	rbp
 	ret

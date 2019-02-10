@@ -39,32 +39,12 @@ c:\tmp6\ss.cpp(4) : warning C4717: 'f' : recursive on all control paths, functio
 
 \dots ale, niemniej jednak, tworzy potrzebny kod:
 
-\begin{lstlisting}[style=customasmx86]
-?f@@YAXXZ PROC			; f
-; File c:\tmp6\ss.cpp
-; Line 2
-	push	ebp
-	mov	ebp, esp
-; Line 3
-	call	?f@@YAXXZ	; f
-; Line 4
-	pop	ebp
-	ret	0
-?f@@YAXXZ ENDP			; f
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{patterns/02_stack/1.asm}
 
 \dots do tego, jeśli optymalizacja jest wyłączona (\TT{\Ox}), to będzie ciekawiej, bez przepełnienia stosu, 
-ale będzie działało \IT{poprawnie}\footnote{ironia}:
+ale będzie działało \emph{poprawnie}\footnote{ironia}:
 
-\begin{lstlisting}[style=customasmx86]
-?f@@YAXXZ PROC			; f
-; File c:\tmp6\ss.cpp
-; Line 2
-$LL3@f:
-; Line 3
-	jmp	SHORT $LL3@f
-?f@@YAXXZ ENDP			; f
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{patterns/02_stack/2.asm}
 
 GCC 4.4.1 generuje taki sam kod w obu przypadkach, chociaż i nie wydaje stosownego komunikatu.
 
@@ -85,7 +65,7 @@ Zwykle to się odbywa w prologu funkcji, często widzimy tam instrukcje w stylu 
 
 \myindex{ARM!Leaf function}
 Niemniej jednak, jeśli jakaś funkcja nie wywołuje żadnych innych funkcji w trakcie swojej roboty, według terminologii \ac{RISC} jest ona nazywana
-\IT{\gls{leaf function}}\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}. 
+\emph{\gls{leaf function}}\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}. 
 Wskutek tego, \q{leaf}-funkcja nie zapisuje rejestru \ac{LR} (dlatego że ona go nie zmienia).
 A jeśli funkcja jest niewielkich rozmiarów, korzysta z małej ilości rejestrów, to może nie korzystać ze stosu w ogóle.
 W ten sposób, w ARM możliwe jest wywoływanie małych leaf-funkcji nie korzystając ze stosu.

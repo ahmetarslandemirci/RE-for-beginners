@@ -20,7 +20,7 @@ float f(float _in)
     memcpy (&t, &f, sizeof (float));
 
     t.sign=1; // Positionnons le bit de signe
-    t.exponent=t.exponent+2; // multiplions d par §$2^{n}$§(n vaut 2 ici)
+    t.exponent=t.exponent+2; // multiplions d par $2^{n}$(n vaut 2 ici)
 
     memcpy (&f, &t, sizeof (float));
 

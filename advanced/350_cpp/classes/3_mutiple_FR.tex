@@ -21,7 +21,7 @@ Compilons-le avec MSVC 2008 avec les options \Ox et \Obzero et regardons le code
 
 Donc, la disposition de la mémoire pour ces trois classes est:
 
-Classe \IT{box}:
+Classe \emph{box}:
 
 \begin{center}
 \begin{tabular}{ | l | l | }
@@ -37,7 +37,7 @@ Classe \IT{box}:
 \end{tabular}
 \end{center}
 
-Classe \IT{solid\_object}:
+Classe \emph{solid\_object}:
 
 \begin{center}
 \begin{tabular}{ | l | l | }
@@ -50,9 +50,9 @@ Classe \IT{solid\_object}:
 \end{center}
 
 
-On peut dire que la disposition de la mémoire de la classe \IT{solid\_box} est \IT{unifiée}:
+On peut dire que la disposition de la mémoire de la classe \emph{solid\_box} est \emph{unifiée}:
 
-Classe \IT{solid\_box}:
+Classe \emph{solid\_box}:
 
 \begin{center}
 \begin{tabular}{ | l | l | }
@@ -96,7 +96,7 @@ ses trois champs, croyant que c'est juste un objet usuel de la classe \TT{box}.
 
 
 Ainsi, on peut dire, un objet d'une classe, qui hérite de plusieurs autres classes,
-est représenté en mémoire comme une classe \IT{unifiée}, qui contient tous les champs
+est représenté en mémoire comme une classe \emph{unifiée}, qui contient tous les champs
 hérités.
 Et chaque méthode héritée est appelée avec un pointeur sur la partie correspondante
 de la structure.

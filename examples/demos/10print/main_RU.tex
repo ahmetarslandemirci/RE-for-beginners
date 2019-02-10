@@ -4,7 +4,7 @@
 %FIXME1 -> about .COM files
 
 \myindex{MS-DOS}
-В [Nick Montfort et al, \IT{10 PRINT CHR\$(205.5+RND(1)); : GOTO 10}, (The MIT Press:2012)]
+В [Nick Montfort et al, \emph{10 PRINT CHR\$(205.5+RND(1)); : GOTO 10}, (The MIT Press:2012)]
 \footnote{\AlsoAvailableAs \url{http://go.yurichev.com/17286}}
 можно прочитать об одном из простейших генераторов случайных лабиринтов.
 Он просто бесконечно и случайно печатает символ слэша или обратный слэша, выдавая в итоге что-то вроде:
@@ -72,27 +72,8 @@
  \TT{INT 29h} которое просто печатает символ на экране
 из регистра \TT{AL}.
 
-Это то что сделали Peter Ferrie и \HERMIT{} (11 и 10 байт)
+Это то что сделал Peter Ferrie
 \footnote{\url{http://go.yurichev.com/17087}}:
-
-\lstinputlisting[caption=\HERMIT: 11 байт,style=customasmx86]{examples/demos/10print/herm1t_11_RU.lst}
-
-\myindex{x86!\Instructions!SCASB}
-\TT{SCASB} также использует значение в регистре \TT{AL}, она вычитает значение
-случайного байта в памяти из
- \TT{5Ch} в \TT{AL}.
-\myindex{x86!\Instructions!JP}
-\TT{JP} это редкая инструкция, здесь она используется для проверки флага четности (PF),
-который вычисляется по формуле в листинге.
-Как следствие, выводимый символ определяется не каким-то конкретным битом из случайного байта в памяти,
-а суммой бит, и это (надеемся) сделает результат более распределенным.
-
-\myindex{x86!\Instructions!SALC}
-\myindex{x86!\Instructions!SETALC}
-\myindex{NEC V20}
-Можно сделать еще короче, если использовать недокументированную x86-инструкцию \TT{SALC} (\ac{AKA} \TT{SETALC}) (\q{Set AL CF}).
-Она появилась в \ac{CPU} и выставляет \TT{AL} в 
-\TT{0xFF} если \TT{CF} это 1 или 0 если наоборот.
 
 \lstinputlisting[caption=Peter Ferrie: 10 байт,style=customasmx86]{examples/demos/10print/ferrie_10_RU.lst}
 
@@ -102,10 +83,8 @@
 
 Так что нам нужно конвертировать один (псевдослучайный) бит из флага \TT{CF} в значение \TT{0x5C} или \TT{0x2F}.
 
-%
 Это делается легко: применяя операцию \q{И} ко всем битам в \TT{AL} (где все 8 бит либо выставлены, либо сброшены) с \TT{0x2D} мы имеем просто 0 или \TT{0x2D}.
 
-%
 Прибавляя значение \TT{0x2F} к этому значению, мы получаем \TT{0x5C} или \TT{0x2F}.
 И просто выводим это на экран.
 

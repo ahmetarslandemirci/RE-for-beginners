@@ -103,14 +103,7 @@ retf
 The observant reader might recall that the \TT{strcpy()} C function usually requires two pointers in its arguments,
 but we see that 4 values are passed:
 
-\begin{lstlisting}[style=customasmx86]
-seg033:088F 1E                          push    ds
-seg033:0890 68 22 44                    push    offset aTrupcRequiresA ; "This Software Requires a Software Lock\n"
-seg033:0893 1E                          push    ds
-seg033:0894 68 60 E9                    push    offset byte_6C7E0 ; dest
-seg033:0897 9A 79 65 00+                call    _strcpy
-seg033:089C 83 C4 08                    add     sp, 8
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{examples/dongles/3/tmp1.lst}
 
 This is related to MS-DOS' memory model. You can read more about it here: 
 \myref{8086_memory_model}.

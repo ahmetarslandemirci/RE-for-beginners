@@ -26,27 +26,27 @@ tm_year   = dword ptr -4
           mov     eax, [esp+30h+tm_year]
           add     eax, 1900
           mov     [esp+30h+var_2C], eax
-          mov     [esp+30h+var_30], offset aYearD ; "Year: %d\n"
+          mov     [esp+30h+var_30], offset aYearD ; \verb|"Year: %d\n"|
           call    printf
           mov     eax, [esp+30h+tm_mon]
           mov     [esp+30h+var_2C], eax
-          mov     [esp+30h+var_30], offset aMonthD ; "Month: %d\n"
+          mov     [esp+30h+var_30], offset aMonthD ; \verb|"Month: %d\n"|
           call    printf
           mov     eax, [esp+30h+tm_mday]
           mov     [esp+30h+var_2C], eax
-          mov     [esp+30h+var_30], offset aDayD ; "Day: %d\n"
+          mov     [esp+30h+var_30], offset aDayD ; \verb|"Day: %d\n"|
           call    printf
           mov     eax, [esp+30h+tm_hour]
           mov     [esp+30h+var_2C], eax
-          mov     [esp+30h+var_30], offset aHourD ; "Hour: %d\n"
+          mov     [esp+30h+var_30], offset aHourD ; \verb|"Hour: %d\n"|
           call    printf
           mov     eax, [esp+30h+tm_min]
           mov     [esp+30h+var_2C], eax
-          mov     [esp+30h+var_30], offset aMinutesD ; "Minutes: %d\n"
+          mov     [esp+30h+var_30], offset aMinutesD ; \verb|"Minutes: %d\n"|
           call    printf
           mov     eax, [esp+30h+tm_sec]
           mov     [esp+30h+var_2C], eax
-          mov     [esp+30h+var_30], offset aSecondsD ; "Seconds: %d\n"
+          mov     [esp+30h+var_30], offset aSecondsD ; \verb|"Seconds: %d\n"|
           call    printf
           leave
           retn

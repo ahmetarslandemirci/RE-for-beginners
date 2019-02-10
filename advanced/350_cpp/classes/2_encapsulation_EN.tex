@@ -1,6 +1,6 @@
 \subsubsection{Encapsulation}
 
-Encapsulation is hiding the data in the \IT{private} sections of the class, 
+Encapsulation is hiding the data in the \emph{private} sections of the class, 
 e.g. to allow access to them only from this class methods.
 
 However, are there any marks in code the about the fact that some field is private and
@@ -42,13 +42,13 @@ which is not going to compile if it looked like this:
 
 \lstinputlisting[style=customc]{\CURPATH/classes/classes2_2_EN.cpp}
 
-Nevertheless, if we cast the \IT{box} type to a \IT{pointer to an int array},
+Nevertheless, if we cast the \emph{box} type to a \emph{pointer to an int array},
 and we modify the array of \Tint{}-s that we have, we can succeed.
 
 \lstinputlisting[style=customc]{\CURPATH/classes/classes2_3.cpp}
 
 This function's code is very simple---it can be said that the function takes a pointer to an array of \Tint{}-s for input
-and writes \IT{123} to the second \Tint{}:
+and writes \emph{123} to the second \Tint{}:
 
 \lstinputlisting[style=customasmx86]{\CURPATH/classes/classes2_5.asm}
 
@@ -59,13 +59,13 @@ Let's check how it works:
 Let's run:
 
 \begin{lstlisting}
-this is box. color=1, width=10, height=20, depth=30
-this is box. color=1, width=123, height=20, depth=30
+this is a box. color=1, width=10, height=20, depth=30
+this is a box. color=1, width=123, height=20, depth=30
 \end{lstlisting}
 
 We see that the encapsulation is just protection of class fields only in the compilation stage.
 
 The \Cpp compiler is not allowing the generation of code that modifies protected 
 fields straightforwardly, nevertheless,
-it is possible with the help of \IT{dirty hacks}.
+it is possible with the help of \emph{dirty hacks}.
 

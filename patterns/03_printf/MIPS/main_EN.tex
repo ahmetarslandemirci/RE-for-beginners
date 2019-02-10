@@ -13,7 +13,7 @@ That is why these registers are prefixed with A-, which implies they are used fo
 \lstinputlisting[caption=\Optimizing GCC 4.4.5 (IDA),style=customasmMIPS]{patterns/03_printf/MIPS/printf3.O3.IDA_EN.lst}
 
 \IDA has coalesced pair of \INS{LUI} and \INS{ADDIU} instructions into one \INS{LA} pseudo instruction.
-That's why there are no instruction at address 0x1C: because \INS{LA} \IT{occupies} 8 bytes.
+That's why there are no instruction at address 0x1C: because \INS{LA} \emph{occupies} 8 bytes.
 
 \myparagraph{\NonOptimizing GCC 4.4.5}
 

@@ -19,22 +19,22 @@ var_4           = -4
                 lui     $v0, ($LC1 >> 16) ; ?
 ; charger la partie 32-bit basse de 1.54:
                 lwc1    $f14, dword_A4
-                or      $at, $zero ; slot de d§é§lai de chargement, NOP
+                or      $at, $zero ; slot de délai de chargement, NOP
 ; charger la partie 32-bit haute de 1.54:
                 lwc1    $f15, $LC1
 ; appeler pow():
                 jalr    $t9
-                or      $at, $zero ; slot de d§é§lai de branchement, NOP
+                or      $at, $zero ; slot de délai de branchement, NOP
                 lw      $gp, 0x20+var_10($sp)
-; copier le r§é§sultat depuis $f0 et $f1 dans $a3 et $a2:
+; copier le résultat depuis \$f0 et \$f1 dans \$a3 et \$a2:
                 mfc1    $a3, $f0
                 lw      $t9, (printf & 0xFFFF)($gp)
                 mfc1    $a2, $f1
 ; appeler printf():
-                lui     $a0, ($LC2 >> 16)  # "32.01 ^ 1.54 = %lf\n"
+                lui     $a0, ($LC2 >> 16)  # "32.01 \verb|^| 1.54 = \%lf\textbackslash{}n"
                 jalr    $t9
-                la      $a0, ($LC2 & 0xFFFF)  # "32.01 ^ 1.54 = %lf\n"
-; §é§pilogue de la fonction:
+                la      $a0, ($LC2 & 0xFFFF)  # "32.01 \verb|^| 1.54 = \%lf\textbackslash{}n"
+; épilogue de la fonction:
                 lw      $ra, 0x20+var_4($sp)
 ; renvoyer 0:
                 move    $v0, $zero

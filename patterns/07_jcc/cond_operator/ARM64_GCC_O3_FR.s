@@ -1,6 +1,6 @@
 f:
 	cmp	x0, 10
-	beq	.L3		; §branchement si égal§
+	beq	.L3		; branchement si égal
 	adrp	x0, .LC1	; "it is ten"
 	add	x0, x0, :lo12:.LC1
 	ret

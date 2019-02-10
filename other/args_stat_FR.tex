@@ -8,8 +8,8 @@ J'ai donc analysé un bon nombre de DLLs 32 bits de Windows7\\
 (crypt32.dll, mfc71.dll, msvcr100.dll, shell32.dll, 
 user32.dll, d3d11.dll, mshtml.dll, msxml6.dll, sqlncli11.dll, wininet.dll, mfc120.dll, msvbvm60.dll, 
 ole32.dll, themeui.dll, wmp.dll) 
-(parce qu'elles utilisent la convention d'appel \IT{stdcall} et qu'il est donc facile de retrouver 
-les instructions \INS{RETN X} en utilisant la commande \IT{grep} sur leur code une fois celui-ci 
+(parce qu'elles utilisent la convention d'appel \emph{stdcall} et qu'il est donc facile de retrouver 
+les instructions \INS{RETN X} en utilisant la commande \emph{grep} sur leur code une fois celui-ci 
 désassemblé).
 
 \begin{itemize}

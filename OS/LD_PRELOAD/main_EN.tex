@@ -1,4 +1,4 @@
-\subsection{\IT{LD\_PRELOAD} hack in Linux}
+\subsection{\emph{LD\_PRELOAD} hack in Linux}
 
 \myindex{LD\_PRELOAD}
 \label{ld_preload}
@@ -10,7 +10,7 @@ For example, it is easy to intercept all calls to
 time(), read(), write(), etc. \\
 \\
 \myindex{uptime}
-Let's see if we can fool the \IT{uptime} utility.
+Let's see if we can fool the \emph{uptime} utility.
 As we know, it tells how long the computer has been working.
 \myindex{strace}
 With the help of strace(\myref{strace}), it is possible to see that the utility takes this information the \TT{/proc/uptime} file:
@@ -83,7 +83,7 @@ Let's compile it as common dynamic library:
 gcc -fpic -shared -Wall -o fool_uptime.so fool_uptime.c -ldl
 \end{lstlisting}
 
-Let's run \IT{uptime}
+Let's run \emph{uptime}
 while loading our library before the others:
 
 \begin{lstlisting}
@@ -96,7 +96,7 @@ And we see:
  01:23:02 up 24855 days,  3:14,  3 users,  load average: 0.00, 0.01, 0.05
 \end{lstlisting}
 
-If the \IT{LD\_PRELOAD} 
+If the \emph{LD\_PRELOAD} 
 
 environment variable always points to the filename and path of our library, 
 it is to be loaded for all starting programs. \\

@@ -14,8 +14,8 @@ What we do here is just treat the fraction part of the IEEE 754 number as intege
 The resulting floating number is equal to $starting\_value+machine\_epsilon$, so we just have to subtract
 the starting value (using floating point arithmetic) to measure, what difference one bit reflects
 in the single precision (\Tfloat).
-The \IT{union} serves here as a way to access IEEE 754 number as a regular integer.
-Adding 1 to it in fact adds 1 to the \IT{fraction} part of the number, however, needless to say,
+The \emph{union} serves here as a way to access IEEE 754 number as a regular integer.
+Adding 1 to it in fact adds 1 to the \emph{fraction} part of the number, however, needless to say,
 overflow is possible, which will add another 1 to the exponent part.
 
 \subsubsection{x86}
@@ -56,5 +56,5 @@ The new instruction here is \INS{MTC1} (\q{Move To Coprocessor 1}), it just tran
 
 It's hard to say whether someone may need this trickery in real-world code, 
 but as was mentioned many times in this book, this example serves well 
-for explaining the IEEE 754 format and \IT{union}s in \CCpp.
+for explaining the IEEE 754 format and \emph{union}s in \CCpp.
 

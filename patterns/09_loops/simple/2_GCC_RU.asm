@@ -10,12 +10,12 @@ var_20          = dword ptr -20h
                 mov     ebx, 2    ; i=2
                 sub     esp, 1Ch
 
-; выравнивание метки loc_80484D0 (§начало§ §тела§ §цикла§) 
-; по §16-байтной§ границе:
+; выравнивание метки loc\_80484D0 (начало тела цикла) 
+; по 16-байтной границе:
                 nop
 
 loc_80484D0:
-; передать i как первый аргумент для printing_function():
+; передать i как первый аргумент для printing\_function():
                 mov     [esp+20h+var_20], ebx 
                 add     ebx, 1    ; i++
                 call    printing_function

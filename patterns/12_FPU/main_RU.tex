@@ -14,8 +14,8 @@
 
 \subsection{IEEE 754}
 
-Число с плавающей точкой в формате IEEE 754 состоит из \IT{знака}, \IT{мантиссы}\footnote{\IT{significand} или \IT{fraction} 
-в англоязычной литературе} и \IT{экспоненты}.
+Число с плавающей точкой в формате IEEE 754 состоит из \emph{знака}, \emph{мантиссы}\footnote{\emph{significand} или \emph{fraction} 
+в англоязычной литературе} и \emph{экспоненты}.
 
 \subsection{x86}
 
@@ -56,16 +56,16 @@ FPU имеет стек из восьми 80-битных регистров: \S
 \myindex{float}
 \myindex{double}
 В стандартных \CCpp имеются два типа для работы с числами с плавающей запятой: 
-\Tfloat (\IT{число одинарной точности}\FNURLSP, 32 бита)
+\Tfloat (\emph{число одинарной точности}\FNURLSP, 32 бита)
 \footnote{Формат представления чисел с плавающей точкой одинарной точности затрагивается в разделе 
-\IT{\WorkingWithFloatAsWithStructSubSubSectionName}~(\myref{sec:floatasstruct}).}
-и \Tdouble (\IT{число двойной точности}\FNURLDP, 64 бита).
+\emph{\WorkingWithFloatAsWithStructSubSubSectionName}~(\myref{sec:floatasstruct}).}
+и \Tdouble (\emph{число двойной точности}\FNURLDP, 64 бита).
 
-В \InSqBrackets{\TAOCPvolII 246} мы можем найти что \IT{single-precision} означает, что значение с плавающей точкой может быть
-помещено в одно [32-битное] машинное слово, а \IT{doulbe-precision} означает, что оно размещено в двух словах (64 бита).
+В \InSqBrackets{\TAOCPvolII 246} мы можем найти что \emph{single-precision} означает, что значение с плавающей точкой может быть
+помещено в одно [32-битное] машинное слово, а \emph{doulbe-precision} означает, что оно размещено в двух словах (64 бита).
 
 \myindex{long double}
-GCC также поддерживает тип \IT{long double} (\IT{extended precision}\FNURLEP, 80 бит), но MSVC~--- нет.
+GCC также поддерживает тип \emph{long double} (\emph{extended precision}\FNURLEP, 80 бит), но MSVC~--- нет.
 
 Несмотря на то, что \Tfloat занимает столько же места, сколько и \Tint на 32-битной архитектуре, 
 представление чисел, разумеется, совершенно другое.
@@ -82,7 +82,7 @@ GCC также поддерживает тип \IT{long double} (\IT{extended pr
 Так что, для записи числа 0.0 в переменную в памяти или регистр, можно пользоваться инструкцией \MOV, или \TT{XOR reg, reg}.
 \myindex{\CStandardLibrary!memset()}
 Это тем может быть удобно, что если в структуре есть много переменных разных типов, то обычной ф-ций memset()
-можно установить все целочисленные переменные в 0, все булевы переменные в \IT{false}, все указатели в NULL,
+можно установить все целочисленные переменные в 0, все булевы переменные в \emph{false}, все указатели в NULL,
 и все переменные с плавающей точкой (любой точности) в 0.0.
 
 \subsection{Копирование}

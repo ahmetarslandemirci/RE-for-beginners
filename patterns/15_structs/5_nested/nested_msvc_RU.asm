@@ -15,7 +15,7 @@ _f    PROC
     push   eax
     push   ecx
     push   edx
-    push   OFFSET $SG2802 ; 'a=%d; b=%d; c.a=%d; c.b=%d; d=%d; e=%d'
+    push   OFFSET $SG2802 ; 'a=\%d; b=\%d; c.a=\%d; c.b=\%d; d=\%d; e=\%d'
     call   _printf
     add    esp, 28
     ret    0

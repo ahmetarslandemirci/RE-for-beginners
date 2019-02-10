@@ -107,9 +107,9 @@ N.B.  The 16-bit CPU 8086 accumulator was named \AX and consisted of two 8-bit
 halves---\AL (lower byte) and \AH (higher byte).
 In 80386 almost all registers were extended to 32-bit, the accumulator was named \EAX, 
 but for the sake of compatibility,
-its \IT{older parts} may be still accessed as \AX/\AH/\AL.
+its \emph{older parts} may be still accessed as \AX/\AH/\AL.
 
-Since all x86 CPUs are successors of the 16-bit 8086 CPU, these \IT{older} 16-bit opcodes are shorter 
+Since all x86 CPUs are successors of the 16-bit 8086 CPU, these \emph{older} 16-bit opcodes are shorter 
 than the newer 32-bit ones.
 That's why the \INS{or ah, 40h} instruction occupies only 3 bytes.
 It would be more logical way to emit here \INS{or eax, 04000h}
@@ -127,4 +127,4 @@ It would be even shorter if to turn on the \Othree optimization flag and also se
 Indeed, the first argument is already loaded in \EAX, so it is possible to work with it in-place.
 It is worth noting that both the function prologue (\INS{push ebp / mov ebp,esp}) and epilogue (\INS{pop ebp})
 can easily be omitted here, but GCC probably is not good enough to do such code size optimizations.
-However, such short functions are better to be \IT{inlined functions} (\myref{inline_code}).
+However, such short functions are better to be \emph{inlined functions} (\myref{inline_code}).

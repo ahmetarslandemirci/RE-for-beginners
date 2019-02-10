@@ -11,7 +11,7 @@ with a lot \JE/\JNE instructions.
 
 \subsubsection{\Conclusion{}}
 
-Rough skeleton of \IT{switch()}:
+Rough skeleton of \emph{switch()}:
 
 % TODO: ARM, MIPS skeleton
 \lstinputlisting[caption=x86,style=customasmx86]{patterns/08_switch/2_lot/skel1_EN.lst}
@@ -20,4 +20,4 @@ The jump to the address in the jump table may also be implemented using this ins
 \TT{JMP jump\_table[REG*4]}.
 Or \TT{JMP jump\_table[REG*8]} in x64.
 
-A \IT{jumptable} is just array of pointers, like the one described later: \myref{array_of_pointers_to_strings}.
+A \emph{jumptable} is just array of pointers, like the one described later: \myref{array_of_pointers_to_strings}.

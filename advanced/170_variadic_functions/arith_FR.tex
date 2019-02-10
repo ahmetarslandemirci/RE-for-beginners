@@ -24,7 +24,7 @@ ajoutés.
 
 Qu'y a-t-il à l'intérieur?
 
-\myparagraph{Convention d'appel \IT{cdecl}}
+\myparagraph{Convention d'appel \emph{cdecl}}
 
 \lstinputlisting[caption=MSVC 6.0 \Optimizing,style=customasmx86]{\CURPATH/arith_MSVC60_Ox_FR.asm}
 
@@ -47,7 +47,7 @@ et le \gls{quotient} est renvoyé.
 Donc, autrement dit, la fonction traite le morceau de pile comme un tableau de valeurs
 entières d'une longueur infinie.
 
-Maintenant nous pouvons comprendre pourquoi la convention d'appel \IT{cdecl} nous
+Maintenant nous pouvons comprendre pourquoi la convention d'appel \emph{cdecl} nous
 force à pousser le premier argument au moins sur la pile.
 
 Car sinon, il ne serait pas possible de trouver le premier argument, ou, pour les
@@ -66,8 +66,8 @@ Regardons:
 Nous voyons que les 4 premiers arguments sont passés dans des registres, et les deux
 autres---par la pile.
 
-La fonction \TT{arith\_mean()} place d'abord ces 4 arguments dans le \IT{Shadow Space}
-puis traite le \IT{Shadow Space} et la pile derrière comme s'il s'agissait d'un tableau
+La fonction \TT{arith\_mean()} place d'abord ces 4 arguments dans le \emph{Shadow Space}
+puis traite le \emph{Shadow Space} et la pile derrière comme s'il s'agissait d'un tableau
 continu!
 
 Qu'en est-il de GCC? Les choses sont légèrement plus maladroites ici, car maintenant
@@ -77,7 +77,7 @@ et la seconde partie traite la pile:
 
 \lstinputlisting[caption=GCC 4.9.1 x64 \Optimizing,style=customasmx86]{\CURPATH/arith_GCC491_x64_O3_FR.s}
 
-À propos, un usage similaire du \IT{Shadow Space} est aussi considéré ici: \myref{pointer_to_argument}.
+À propos, un usage similaire du \emph{Shadow Space} est aussi considéré ici: \myref{pointer_to_argument}.
 
 \subsubsection{Utilisation du pointeur sur le premier argument de la fonction}
 

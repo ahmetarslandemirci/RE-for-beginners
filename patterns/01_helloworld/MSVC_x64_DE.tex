@@ -9,7 +9,7 @@ Hier das gleiche Beispiel mit der 64-Bit-Variante von MSVC kompiliert:
 
 In x86-64 wurden alle Regeister auf 64-Bit erweitert und die Registernamen mit einem \TT{R-}Prefix versehen.
 Um den Stack weniger oft zu nutzen (also um auf externen Speicher / Cache selterner zuzugreifen), existiert
-ein verbreiteter Weg um Funktionsargumente per Register (\IT{fastcall}) \myref{fastcall} zu übergeben.
+ein verbreiteter Weg um Funktionsargumente per Register (\emph{fastcall}) \myref{fastcall} zu übergeben.
 Das heißt ein Teil der Funktionsargumente wird in Registern übergeben, der Rest---über den Stack.
 In Win64 werden vier Funktionsargumente in den Registern \RCX, \RDX, \Reg{8} und \Reg{9} übergeben.
 Das ist was hier sichtbar ist: der Zeiger zu der Zeichenkette für \printf ist jetzt nicht im Stack übergeben sondern im \RCX-Register.

@@ -2,7 +2,7 @@ $LC0:
     .ascii  "Hello, world!\012\000"
 main:
 ; Funktionsprolog.
-; Sichere RA ($31) und FP auf Stack:
+; Sichere RA (\$31) und FP auf Stack:
     addiu   $sp,$sp,-32
     sw  $31,28($sp)
     sw  $fp,24($sp)
@@ -24,7 +24,7 @@ main:
 
 ; GP vom lokalen Stack wiederherstellen:
     lw  $28,16($fp)
-; Setze Register $2 ($V0) zu Null:
+; Setze Register \$2 (\$V0) zu Null:
     move    $2,$0
 ; Funktionsepilog.
 ; SP wiederherstellen:

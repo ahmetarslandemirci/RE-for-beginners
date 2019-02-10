@@ -55,7 +55,7 @@ von einem vorher geladenen Modul verwendet wird.
 Viele Adressen in PE-Dateien-Tabellen nutzen \ac{RVA}-Adressen.
 
 %\item
-%Data directory\EMDASH{}...
+%Data directory --- ...
 
 \item \ac{IAT}: Ein Array von Adressen importierter Module\footnote{\PietrekPE}.
 Manchmal zeigt das \TT{IMAGE\_DIRECTORY\_ENTRY\_IAT}-Daten-Verzeichnis auf \ac{IAT}.
@@ -108,7 +108,7 @@ Mal an zufällige Basisadressen.
 
 \subsubsection{Subsystem}
 
-Es existiert auch ein \IT{Subsystem}-Feld, dass normalerweise wie folgt ist:
+Es existiert auch ein \emph{Subsystem}-Feld, dass normalerweise wie folgt ist:
 
 \myindex{Native API}
 
@@ -148,19 +148,19 @@ Abschnitte in Sektionen sind in allen Formaten für ausführbare Dateien vorhand
 Dies wurde entwickelt um Code von Daten und Daten von Konstanten zu trennen.
 
 \begin{itemize}
-\item Entweder das \IT{IMAGE\_SCN\_CNT\_CODE}- oder \IT{IMAGE\_SCN\_MEM\_EXECUTE}-Flag
+\item Entweder das \emph{IMAGE\_SCN\_CNT\_CODE}- oder \emph{IMAGE\_SCN\_MEM\_EXECUTE}-Flag
 ist in der Code-Sektion gesetzt. Dies kennzeichnet ausführbaren Code.
 
-\item In der Daten-Sektion sind die Flags \IT{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA},
-\IT{IMAGE\_SCN\_MEM\_READ} und \IT{IMAGE\_SCN\_MEM\_WRITE} gesetzt.
+\item In der Daten-Sektion sind die Flags \emph{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA},
+\emph{IMAGE\_SCN\_MEM\_READ} und \emph{IMAGE\_SCN\_MEM\_WRITE} gesetzt.
 
 \item In einer leeren Sektion mit uninitialisierten Daten sind die Flags
-\IT{IMAGE\_SCN\_CNT\_UNINITIALIZED\_DATA}, \IT{IMAGE\_SCN\_MEM\_READ} und
-\IT{IMAGE\_SCN\_MEM\_WRITE} gesetzt.
+\emph{IMAGE\_SCN\_CNT\_UNINITIALIZED\_DATA}, \emph{IMAGE\_SCN\_MEM\_READ} und
+\emph{IMAGE\_SCN\_MEM\_WRITE} gesetzt.
 
 \item In der Sektion mit konstanten Daten (die schreibgeschützt ist), sind die
-Flags \IT{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA} und \IT{IMAGE\_SCN\_MEM\_READ}
-gesetzt, nicht jedoch \IT{IMAGE\_SCN\_MEM\_WRITE}.
+Flags \emph{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA} und \emph{IMAGE\_SCN\_MEM\_READ}
+gesetzt, nicht jedoch \emph{IMAGE\_SCN\_MEM\_WRITE}.
 Ein Prozess wird abstürzen, wenn er versucht hier schreibend zuzugreifen.
 
 \end{itemize}
@@ -170,7 +170,7 @@ Ein Prozess wird abstürzen, wenn er versucht hier schreibend zuzugreifen.
 Jede Sektion in einer PE-Datei kann einen Namen haben, auch wenn dieser nicht
 unbedingt wichtig ist.
 Oft (aber nicht immer) ist die Code-Sektion mit \TT{.text} benannt, die Datensektion
-mit \TT{.data}, und die Sektion mit konstanten Daten \TT{.rdata} für \IT{(readable data)}.
+mit \TT{.data}, und die Sektion mit konstanten Daten \TT{.rdata} für \emph{(readable data)}.
 
 Andere verbreitete Sektionsnamen sind:
 
@@ -223,8 +223,8 @@ typedef struct _IMAGE_SECTION_HEADER {
 \footnote{\href{http://go.yurichev.com/17048}{MSDN}}
 
 \myindex{Hiew}
-Ein Wort zur Terminologie: \IT{PointerToRawData} wird in Hiew \q{Offset}
-und \IT{VirtualAddress} \q{RVA} genannt.
+Ein Wort zur Terminologie: \emph{PointerToRawData} wird in Hiew \q{Offset}
+und \emph{VirtualAddress} \q{RVA} genannt.
 
 \subsubsection{Datensektion}
 Die Datensektion in der Datei kann kleiner sein als im Arbeitsspeicher. Zum
@@ -232,8 +232,8 @@ Beispiel können einige Variablen initialisiert sein und andere nicht.
 Compiler und Linker sammeln diese alle in einer einzelnen Sektion, aber
 der erste Teil davon ist initialisiert und in der Datei enthalten, während
 ein anderer in der Datei fehlt um diese kleiner zu machen.
-\IT{VirtualSize} wird gleich groß sein wie die Sektion im Speicher und
-\IT{SizeOfRawData} wie die Sektion in der Datei.
+\emph{VirtualSize} wird gleich groß sein wie die Sektion im Speicher und
+\emph{SizeOfRawData} wie die Sektion in der Datei.
 
 IDA kann die Grenze der initialisierten und nicht initialisierten Teile
 wie folgt anzeigen:
@@ -307,7 +307,7 @@ Wird das Modul an der originalen Basisadresse geladen passiert nichts.
 Alle globalen Variablen können auf diese Weise behandelt werden.
 
 Relocs können verschiedene Typen haben. In Windows für x86-Prozessoren ist dieser
-üblicherweise \IT{IMAGE\_REL\_BASED\_HIGHLOW}.
+üblicherweise \emph{IMAGE\_REL\_BASED\_HIGHLOW}.
 
 \myindex{Hiew}
 
@@ -355,7 +355,7 @@ und es existieren keine \ac{MFC}-Namen wie in \ac{INT}.
 Wenn solche Programme in \IDA geladen werden, wird nach dem Pfad zu den mfc*.dll-Dateien
 gefragt um die Funktionsnamen herausfinden zu können.
 
-Wenn der Pfad zu diesen DLLs in \IDA nicht angegeben wird, erscheint \IT{mfc80\_123}
+Wenn der Pfad zu diesen DLLs in \IDA nicht angegeben wird, erscheint \emph{mfc80\_123}
 statt der Funktionsnamen.
 
 \myparagraph{Import-Sektion}
@@ -373,12 +373,12 @@ Versuchen wir alle Informationen an einer Stelle zu sammeln.
 Ein Schema dass alle PE-Datei-Strukturen im Zusammenhang mit Imports vereint}
 \end{figure}
 
-Die Hauptstruktur ist das Array \IT{IMAGE\_IMPORT\_DESCRIPTOR}. Jedes Element für
+Die Hauptstruktur ist das Array \emph{IMAGE\_IMPORT\_DESCRIPTOR}. Jedes Element für
 jede DLL wird importiert.
 
-Jedes Element hat die \ac{RVA}-Adresse der Zeichenkette (DLL-Name) (\IT{Name}).
+Jedes Element hat die \ac{RVA}-Adresse der Zeichenkette (DLL-Name) (\emph{Name}).
 
-\IT{OriginalFirstThunk} ist die \ac{RVA}-Adresse der \ac{INT}-Tabelle. Diese ist
+\emph{OriginalFirstThunk} ist die \ac{RVA}-Adresse der \ac{INT}-Tabelle. Diese ist
 ein Array von \ac{RVA}-Adressen, jede davon zeigt auf eine Zeichenkette mit einem
 Funktionsnamen. Jede Zeichenkette wird eine 16-Bit-Integerzahl voran gestellt
 (\q{hint})---\q{ordinal} der Funktion).
@@ -386,20 +386,20 @@ Funktionsnamen. Jede Zeichenkette wird eine 16-Bit-Integerzahl voran gestellt
 Während des Ladens und falls es möglich ist die Funktion anhand der Zahl zu finden,
 wird der Vergleich der Zeichenketten nicht auftauchen. Das Array ist mit Null terminiert.
 
-Es gibt auch einen Zeiger zur \ac{IAT}-Tabelle mit dem Namen \IT{FirstThunk}. Dies
+Es gibt auch einen Zeiger zur \ac{IAT}-Tabelle mit dem Namen \emph{FirstThunk}. Dies
 entspricht der \ac{RVA}-Adresse der Stelle an der der Lader die Adressen der aufgelösten
 Funktionen schreibt.
 
-Die Punkte an denen der Lader die Adressen schreibt werden in \IDA mit \IT{\_\_imp\_CreateFileA}
+Die Punkte an denen der Lader die Adressen schreibt werden in \IDA mit \emph{\_\_imp\_CreateFileA}
 und so weiter gekennzeichnet.
 
 Es gibt zumindest zwei Arten die vom Lader geschriebenen Adressen zu nutzen.
 
 \myindex{x86!\Instructions!CALL}
 \begin{itemize}
-\item Der Code enthält eine Anweisung wie \IT{call \_\_imp\_CreateFileA}. Da das Feld
+\item Der Code enthält eine Anweisung wie \emph{call \_\_imp\_CreateFileA}. Da das Feld
 mit der Adresse der importierten Funktion in gewisser Weise eine globale Variable
-ist, wird die Adresse der \IT{call}-Anweisung (plus 1 oder 2) zur Relocation-Tabelle
+ist, wird die Adresse der \emph{call}-Anweisung (plus 1 oder 2) zur Relocation-Tabelle
 hinzugefügt. Dies gilt für den Fall falls das Modul an eine andere Basisadresse
 geladen wird.
 
@@ -439,11 +439,11 @@ JMP EAX
 \end{lstlisting}
 
 FirstThunk zeigt auf die erste Anweisung. Mit anderen Worten, wenn yourdll.dll
-geladen wird, schreibt der Lader die Adresse der Funktion \IT{function} direkt
+geladen wird, schreibt der Lader die Adresse der Funktion \emph{function} direkt
 in den Code.
 
 Erwähnenswert ist, dass die Code-Sektion normalerweise schreibgeschützt ist.
-Daher fügt das Tool das \IT{IMAGE\_SCN\_MEM\_WRITE}-Flag hinzu, da andernfalls
+Daher fügt das Tool das \emph{IMAGE\_SCN\_MEM\_WRITE}-Flag hinzu, da andernfalls
 das Programm beim Laden mit dem Fehlercode 5 (Zugriff verweigert.) abstürzen
 würde.
 
@@ -452,8 +452,8 @@ sich nicht ändern (inklusive der Adressen aller DLL-Funktionen). Ist es möglic
 den Lade-Vorgang zu beschleunigen?
 
 Dies ist in der Tat möglich, wenn die Adressen der Funktionen bereits im Voraus
-in das FirstThunk-Array geschrieben werden. Das \IT{Timestamp}-Feld ist in der
-\IT{IMAGE\_IMPORT\_DESCRIPTOR}-Struktur vorhanden.
+in das FirstThunk-Array geschrieben werden. Das \emph{Timestamp}-Feld ist in der
+\emph{IMAGE\_IMPORT\_DESCRIPTOR}-Struktur vorhanden.
 
 Wenn der Wert dort verfügbar ist, vergleicht der Lader diesen Wert mit dem
 Zeitstempel der DLL-Datei.
@@ -477,7 +477,7 @@ In diesem Fall wird der Windows-Lader natürlich nicht alle notwendigen DLL-Date
 \myindex{Windows!Win32!GetProcAddress}
 
 Der Komprimierer / Verschlüsseler macht dies selber mithilfe der Funktionen
-\IT{LoadLibrary()} und \IT{GetProcAddress()}.
+\emph{LoadLibrary()} und \emph{GetProcAddress()}.
 
 Aus diesem Grund sind die beiden Funktionen oft im \ac{IAT} von gepackten Dateien.
 

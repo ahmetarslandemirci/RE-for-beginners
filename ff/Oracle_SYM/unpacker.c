@@ -33,7 +33,7 @@ int main (int argc, char *argv[])
 	assert (sig==0x4D59534F); // OSYM
 
 	// skip timedatestamp (for 11g)
-	//_lseek (h, 4, 1);
+	//\_lseek (h, 4, 1);
 
 	array_size_in_bytes=cnt*sizeof(uint32_t);
 

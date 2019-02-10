@@ -7,7 +7,7 @@ arith_mean PROC
 	mov	QWORD PTR [rsp+24], r8   ; третий аргумент
 	mov	eax, ecx                 ; sum = первый аргумент
 	lea	rcx, QWORD PTR v$[rsp+8] ; указатель на второй аргумент
-	mov	QWORD PTR [rsp+32], r9   ; §4-й аргумент§
+	mov	QWORD PTR [rsp+32], r9   ; 4-й аргумент
 	mov	edx, DWORD PTR [rcx]     ; загрузить второй аргумент
 	mov	r8d, 1                   ; count=1
 	cmp	edx, -1                  ; второй аргумент равен -1?

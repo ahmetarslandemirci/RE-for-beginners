@@ -1,7 +1,7 @@
 \subsection{Boundaries of strings}
 
 \myindex{win32!GetOpenFileName}
-It's interesting to note, how parameters are passed into win32 \IT{GetOpenFileName()} function.
+It's interesting to note, how parameters are passed into win32 \emph{GetOpenFileName()} function.
 In order to call it, one must set list of allowed file extensions:
 
 \begin{lstlisting}[style=customc]
@@ -19,7 +19,7 @@ In order to call it, one must set list of allowed file extensions:
 		...
 \end{lstlisting}
 
-What happens here is that list of strings are passed into \IT{GetOpenFileName()}.
+What happens here is that list of strings are passed into \emph{GetOpenFileName()}.
 It is not a problem to parse it: whenever you encounter single zero byte, this is an item.
 Whenever you encounter two zero bytes, this is end of the list.
 If you will pass this string into \printf, it will treat first item as a single string.
@@ -29,6 +29,6 @@ It's better say this is buffer containing several zero-terminated C-strings, whi
 as a whole.
 
 \myindex{\CStandardLibrary!strtok}
-Another exmaple is \IT{strtok()} function. It takes a string and write zero bytes in the middle of it.
+Another exmaple is \emph{strtok()} function. It takes a string and write zero bytes in the middle of it.
 It thus transforms input string into some kind of buffer, which has several zero-terminated C-strings.
 

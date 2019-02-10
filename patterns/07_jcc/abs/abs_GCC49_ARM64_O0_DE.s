@@ -3,7 +3,7 @@ my_abs:
 	str	w0, [sp,12]
 	ldr	w0, [sp,12]
 ; vergleiche Eingabewert mit dem Inhalt des WZR Registers
-; §(welches immer 0 enthält)§
+; (welches immer 0 enthält)
 	cmp	w0, wzr
 	bge	.L2
 	ldr	w0, [sp,12]

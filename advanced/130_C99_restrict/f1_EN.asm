@@ -25,13 +25,13 @@ f1:
 	mov	r10d, DWORD PTR [r10]
 	imul	r10d, DWORD PTR [r14]
 	mov	DWORD PTR [rax], r10d         ; store to product[]
-	mov	DWORD PTR [r12+r11*4], ebx    ; store to update_me[]
+	mov	DWORD PTR [r12+r11*4], ebx    ; store to update\_me[]
 	add	ebx, 123
 	mov	r10d, DWORD PTR [rsi]         ; reload sum[i]
 	add	r10d, DWORD PTR [rax]         ; reload product[i]
 	lea	rax, 1[rdi]
 	cmp	rax, r13
-	mov	DWORD PTR 0[rbp+r11*4], r10d  ; store to sum_product[]
+	mov	DWORD PTR 0[rbp+r11*4], r10d  ; store to sum\_product[]
 	jne	.L6
 .L1:
 	pop	rbx rsi rdi rbp r12 r13 r14 r15

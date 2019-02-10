@@ -1,6 +1,6 @@
 ﻿\mysection{\PrintfSeveralArgumentsSectionName}
 
-Maintenant, améliorons l'exemple \IT{\HelloWorldSectionName}~(\myref{sec:helloworld})
+Maintenant, améliorons l'exemple \emph{\HelloWorldSectionName}~(\myref{sec:helloworld})
 en remplaçant \printf dans la fonction \main par ceci:
 
 \lstinputlisting[label=hw_c,style=customc]{patterns/03_printf/1.c}
@@ -73,10 +73,10 @@ BL fonction
 
 \myindex{MIPS!O32}
 \begin{lstlisting}[caption=MIPS (O32 calling convention),style=customasmMIPS]
-LI $4, 1st argument ; AKA $A0
-LI $5, 2nd argument ; AKA $A1
-LI $6, 3rd argument ; AKA $A2
-LI $7, 4th argument ; AKA $A3
+LI $4, 1st argument ; AKA \$A0
+LI $5, 2nd argument ; AKA \$A1
+LI $6, 3rd argument ; AKA \$A2
+LI $7, 4th argument ; AKA \$A3
 ; passer le 5ème, 6ème argument, etc., dans la pile (si besoin)
 LW temp_reg, adresse de la fonction
 JALR temp_reg

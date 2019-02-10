@@ -51,7 +51,7 @@ Ici, nous voyons quelques hacks moches.
 Premièrement: la valeurs de $a$ est mise dans \EAX et 0 en est soustrait. Ça semble
 absurde, mais cela est fait pour vérifier si la valeur dans \EAX est 0. Si oui, le
 flag \ZF est mis (e.g. soustraire de 0 est 0) et le premier saut conditionnel \JE
-(\IT{Jump if Equal} saut si égal ou synonyme \JZ~---\IT{Jump if Zero} saut si zéro)
+(\emph{Jump if Equal} saut si égal ou synonyme \JZ~---\emph{Jump if Zero} saut si zéro)
 va être effectué et le déroulement du programme passera au label \TT{\$LN4@f}, où
 le message \TT{'zero'} est affiché.
 Si le premier saut n'est pas effectué, 1 est soustrait de la valeur d'entrée et si

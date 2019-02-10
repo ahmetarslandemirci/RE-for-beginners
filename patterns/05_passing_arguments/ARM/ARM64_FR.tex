@@ -8,7 +8,7 @@ Tout ce qu'il y a ici est simple.
 \TT{MADD} est juste une instruction qui effectue une multiplication/addition fusionnées
 (similaire à l'instruction \TT{MLA} que nous avons déjà vue).
 Tous les 3 arguments sont passés dans la partie 32-bit de X-registres.
-Effectivement, le type des arguments est \IT{int} 32-bit.
+Effectivement, le type des arguments est \emph{int} 32-bit.
 Le résultat est renvoyé dans \TT{W0}.
 
 \lstinputlisting[caption=GCC (Linaro) 4.9 \Optimizing,style=customasmARM]{patterns/05_passing_arguments/ARM/ARM64_O3_FR.s}
@@ -68,7 +68,7 @@ Le code sauve ses arguments en entrée dans la pile locale, dans le cas où quel
 Cela évite d'écraser les arguments originels de la fonction, qui pourraient être
 de nouveau utilisés par la suite.
 
-Cela est appelé \IT{Zone de sauvegarde de registre.} (\ARMPCS).
+Cela est appelé \emph{Zone de sauvegarde de registre.} (\ARMPCS).
 L'appelée, toutefois, n'est pas obligée de les sauvegarder.
 C'est un peu similaire au \q{Shadow Space}: \myref{shadow_space}.
 

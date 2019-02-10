@@ -28,7 +28,7 @@ _f2	PROC
 	push	ecx
 	mov	edx, DWORD PTR _a$[ebp]
 	push	edx
-	push	OFFSET $SG2752 ; '%d, %d, %d'
+	push	OFFSET $SG2752 ; '\%d, \%d, \%d'
 	call	DWORD PTR __imp__printf
 	add	esp, 16
 	mov	esp, ebp

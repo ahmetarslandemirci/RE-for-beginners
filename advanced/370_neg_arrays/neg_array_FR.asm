@@ -13,7 +13,7 @@ _main	PROC
 	mov	ebp, esp
 	sub	esp, 24
 	mov	DWORD PTR _random_value$[ebp], 287454020 ; 11223344H
-	; §définir§ fakearray[] un octet avant array[]
+	; définir fakearray[] un octet avant array[]
 	lea	eax, DWORD PTR _array$[ebp]
 	add	eax, -1 ; eax=eax-1
 	mov	DWORD PTR _fakearray$[ebp], eax
@@ -36,21 +36,21 @@ $LN1@main:
 	; ecx=adresse de fakearray[0], ecx+1 est fakearray[1] ou array[0]
 	movzx	edx, BYTE PTR [ecx+1]
 	push	edx
-	push	OFFSET $SG2751 ; 'first element %d'
+	push	OFFSET $SG2751 ; 'first element \%d'
 	call	_printf
 	add	esp, 8
 	mov	eax, DWORD PTR _fakearray$[ebp]
 	; eax=adresse de fakearray[0], eax+2 est fakearray[2] ou array[1]
 	movzx	ecx, BYTE PTR [eax+2]
 	push	ecx
-	push	OFFSET $SG2752 ; 'second element %d'
+	push	OFFSET $SG2752 ; 'second element \%d'
 	call	_printf
 	add	esp, 8
 	mov	edx, DWORD PTR _fakearray$[ebp]
 	; edx=adresse de fakearray[0], edx+10 est fakearray[10] ou array[9]
 	movzx	eax, BYTE PTR [edx+10]
 	push	eax
-	push	OFFSET $SG2753 ; 'last element %d'
+	push	OFFSET $SG2753 ; 'last element \%d'
 	call	_printf
 	add	esp, 8
 	; soustrait 4, 3, 2 et 1 du pointeur sur array[0] afin de trouver les valeurs avant array[]
@@ -66,7 +66,7 @@ $LN1@main:
 	lea	ecx, DWORD PTR _array$[ebp]
 	movzx	edx, BYTE PTR [ecx-1]
 	push	edx
-	push	OFFSET $SG2754 ; 'array[-1]=%02X, array[-2]=%02X, array[-3]=%02X, array[-4]=%02X'
+	push	OFFSET $SG2754 ; \verb|'array[-1]=%02X, array[-2]=%02X, array[-3]=%02X, array[-4]=%02X'|
 	call	_printf
 	add	esp, 20
 	xor	eax, eax

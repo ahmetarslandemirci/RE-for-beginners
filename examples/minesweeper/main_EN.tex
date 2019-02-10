@@ -11,27 +11,14 @@ As we know, Minesweeper places mines randomly, so there has to be some kind of r
 a call to the standard \TT{rand()} C-function.
 
 What is really cool about reversing Microsoft products is that there are \gls{PDB} 
-file with symbols (function names, \etc{}).
+file with symbols (function names, etc).
 When we load \TT{winmine.exe} into \IDA, it downloads the 
 \gls{PDB} file exactly for this 
 executable and shows all names.
 
 So here it is, the only call to \TT{rand()} is this function:
 
-\begin{lstlisting}[style=customasmx86]
-.text:01003940 ; __stdcall Rnd(x)
-.text:01003940 _Rnd@4          proc near               ; CODE XREF: StartGame()+53
-.text:01003940                                         ; StartGame()+61
-.text:01003940
-.text:01003940 arg_0           = dword ptr  4
-.text:01003940
-.text:01003940                 call    ds:__imp__rand
-.text:01003946                 cdq
-.text:01003947                 idiv    [esp+arg_0]
-.text:0100394B                 mov     eax, edx
-.text:0100394D                 retn    4
-.text:0100394D _Rnd@4          endp
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{examples/minesweeper/tmp1.lst}
 
 \IDA named it so, and it was the name given to it by Minesweeper's developers.
 
@@ -137,13 +124,13 @@ and trapped into mine, but now all mines are visible:
 \end{figure}
 
 By comparing the mine places and the dump, we can conclude that 0x10 stands for border, 0x0F---empty block, 0x8F---mine.
-Perhaps, 0x10 is just a \IT{sentinel value}.
+Perhaps, 0x10 is just a \emph{sentinel value}.
 
 Now we'll add comments and also enclose all 0x8F bytes into square brackets:
 
 \lstinputlisting[style=customasmx86]{examples/minesweeper/2.lst}
 
-Now we'll remove all \IT{border bytes} (0x10) and what's beyond those:
+Now we'll remove all \emph{border bytes} (0x10) and what's beyond those:
 
 \lstinputlisting[style=customasmx86]{examples/minesweeper/3.lst}
 
@@ -199,13 +186,13 @@ Full source code: \url{https://github.com/DennisYurichev/RE-for-beginners/blob/m
 \begin{itemize}
 
 \item 
-Why do the \IT{border bytes} (or \IT{sentinel values}) (0x10) exist in the array?
+Why do the \emph{border bytes} (or \emph{sentinel values}) (0x10) exist in the array?
 
 What they are for if they are not visible in Minesweeper's interface?
 How could it work without them?
 
 \item 
-As it turns out, there are more values possible (for open blocks, for flagged by user, \etc{}).
+As it turns out, there are more values possible (for open blocks, for flagged by user, etc).
 Try to find the meaning of each one.
 
 \item 

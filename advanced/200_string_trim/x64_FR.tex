@@ -49,7 +49,7 @@ Après l'exécution de \strlen{}, le contrôle est passé au label L2, et ici de
 sont vérifiées, l'une après l'autre.
 
 \myindex{\CLanguageElements!Short-circuit}
-La seconde ne sera jamais vérifiée, si la première (\IT{str\_len==0}) est fausse
+La seconde ne sera jamais vérifiée, si la première (\emph{str\_len==0}) est fausse
 (ceci est un \q{short-circuit} (court-circuit)).
 
 Maintenant regardons la forme courte de cette fonction:
@@ -86,7 +86,7 @@ La façon courante d'implémenter la boucle principale est sans doute ceci:
 
 Mais GCC a décidé d'inverser ces deux étapes.
 
-Bien sûr,  \IT{stocker le caractère zéro} ne peut pas être la première étape, donc
+Bien sûr,  \emph{stocker le caractère zéro} ne peut pas être la première étape, donc
 un autre test est nécessaire:
 
 \begin{itemize}

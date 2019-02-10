@@ -11,7 +11,7 @@ a complete list of the program’s hard-coded file name, environment variables,
 undocumented options, obscure error messages, and so forth.}{The Unix-Haters Handbook}
 
 \myindex{UNIX!strings}
-Стандартная утилита в UNIX \IT{strings} это самый простой способ увидеть строки в файле.
+Стандартная утилита в UNIX \emph{strings} это самый простой способ увидеть строки в файле.
 Например, это строки найденные в исполняемом файле sshd из OpenSSH 7.2:
 
 \lstinputlisting{digging_into_code/sshd_strings.txt}
@@ -24,7 +24,7 @@ undocumented options, obscure error messages, and so forth.}{The Unix-Haters Han
 Но изучение читаемых строк внутри некоторого неизвестного бинарного файла это зачастую самый первый шаг в анализе.
 \myindex{UNIX!grep}
 
-Также можно использовать \IT{grep}.
+Также можно использовать \emph{grep}.
 
 \myindex{Hiew}
 \myindex{Sysinternals}
@@ -36,7 +36,7 @@ undocumented options, obscure error messages, and so forth.}{The Unix-Haters Han
 это отчет о том, что сейчас происходит в программе.
 Зачастую, это \printf-подобные функции, 
 которые пишут куда-нибудь в лог, а бывает так что и не пишут ничего, но вызовы остались, так как эта сборка --- не
-отладочная, а \IT{release}.
+отладочная, а \emph{release}.
 
 \myindex{\oracle}
 Если в отладочных сообщениях дампятся значения некоторых локальных или глобальных переменных, 

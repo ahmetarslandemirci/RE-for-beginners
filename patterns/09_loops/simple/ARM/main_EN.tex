@@ -14,7 +14,7 @@ The \INS{ADD R4, R4, \#1} instruction just adds 1 to the $i$ variable at each it
 \myindex{ARM!\Instructions!CMP}
 \myindex{ARM!\Instructions!BLT}
 \INS{CMP R4, \#0xA} compares $i$ with \TT{0xA} (10). 
-The next instruction \INS{BLT} (\IT{Branch Less Than}) jumps if $i$ is less than 10.
+The next instruction \INS{BLT} (\emph{Branch Less Than}) jumps if $i$ is less than 10.
 Otherwise, 0 is to be written into \Reg{0} (since our function returns 0)
 and function execution finishes.
 
@@ -40,8 +40,8 @@ void printing_function(int i)
 
 \myindex{Unrolled loop}
 \myindex{Inline code}
-So, LLVM not just \IT{unrolled} the loop, 
-but also \IT{inlined} my 
+So, LLVM not just \emph{unrolled} the loop, 
+but also \emph{inlined} my 
 very simple function \ttf,
 and inserted its body 8 times instead of calling it. 
 
@@ -53,4 +53,4 @@ This is possible when the function is so simple (like mine) and when it is not c
 
 \myparagraph{ARM64: \NonOptimizing GCC 4.9.1}
 
-\lstinputlisting[caption=\NonOptimizing GCC 4.9.1 -fno-inline,style=customasmARM]{patterns/09_loops/simple/ARM/ARM64_GCC491_O3_EN.s}
+\lstinputlisting[caption=\NonOptimizing GCC 4.9.1 -fno-inline,style=customasmARM]{patterns/09_loops/simple/ARM/ARM64_GCC491_O0_EN.s}

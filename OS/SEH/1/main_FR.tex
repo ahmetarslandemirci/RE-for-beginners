@@ -77,10 +77,10 @@ La structure est du type \TT{\_EXCEPTION\_REGISTRATION}. Il s'agit d'une simple 
 les éléments sont conservés sur la pile.
 
 \begin{lstlisting}[caption=MSVC/VC/crt/src/exsup.inc,style=customasmx86]
-\_EXCEPTION\_REGISTRATION struc
+_EXCEPTION_REGISTRATION struc
      prev    dd      ?
      handler dd      ?
-\_EXCEPTION\_REGISTRATION ends
+_EXCEPTION_REGISTRATION ends
 \end{lstlisting}
 
 Le champ \q{handler} contient l'adresse du gestionnaire et le champ \q{prev} celle de 

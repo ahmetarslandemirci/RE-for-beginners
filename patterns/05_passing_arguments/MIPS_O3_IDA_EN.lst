@@ -1,12 +1,12 @@
 .text:00000000 f:
-; $a0=a
-; $a1=b
-; $a2=c
+; \$a0=a
+; \$a1=b
+; \$a2=c
 .text:00000000        mult    $a1, $a0
 .text:00000004        mflo    $v0
 .text:00000008        jr      $ra
 .text:0000000C        addu    $v0, $a2, $v0	; branch delay slot
-; result is in $v0 upon return
+; result is in \$v0 upon return
 .text:00000010 main:
 .text:00000010
 .text:00000010 var_10 = -0x10
@@ -24,7 +24,7 @@
 .text:0000002C        jal     f
 ; set b:
 .text:00000030        li      $a1, 2		; branch delay slot
-; result in $v0 now
+; result in \$v0 now
 .text:00000034        lw      $gp, 0x20+var_10($sp)
 .text:00000038        lui     $a0, ($LC0 >> 16)
 .text:0000003C        lw      $t9, (printf & 0xFFFF)($gp)

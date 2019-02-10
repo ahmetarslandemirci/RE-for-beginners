@@ -1,7 +1,7 @@
 % TODO proof-reading
 \subsection{Exceptions}
 
-Let's rework our \IT{Month} example (\myref{Java_2D_array_month}) a bit:
+Let's rework our \emph{Month} example (\myref{Java_2D_array_month}) a bit:
 
 \begin{lstlisting}[caption=IncorrectMonthException.java,style=customjava]
 public class IncorrectMonthException extends Exception
@@ -82,8 +82,8 @@ then it puts incoming integer value into the sole \TT{IncorrectMonthException} c
 \end{lstlisting}
 
 \TT{getIndex()} is just a getter.
-A \IT{reference} to \TT{IncorrectMonthException} is passed in the zeroth \ac{LVA} slot
-(\IT{this}), \TT{aload\_0} takes it, \TT{getfield} loads an integer value from the object, 
+A \emph{reference} to \TT{IncorrectMonthException} is passed in the zeroth \ac{LVA} slot
+(\emph{this}), \TT{aload\_0} takes it, \TT{getfield} loads an integer value from the object, 
 \TT{ireturn} returns it.
 
 \begin{lstlisting}
@@ -119,7 +119,7 @@ Now let's take a look at \TT{get\_month()} in \TT{Month2.class}:
         24: areturn       
 \end{lstlisting}
 
-\TT{iflt} at offset 1 is \IT{if less than}.
+\TT{iflt} at offset 1 is \emph{if less than}.
 
 In case of invalid index, a new object is created using the \TT{new} instruction at offset 10.
 
@@ -128,7 +128,7 @@ The object's type is passed as an operand to the instruction (which is \TT{Incor
 Then its constructor is called, and index is passed via \ac{TOS} (offset 15).
 
 When the control flow is offset 18, the object is already constructed, 
-so now the \TT{athrow} instruction takes a \IT{reference} 
+so now the \TT{athrow} instruction takes a \emph{reference} 
 to the newly constructed object and signals to \ac{JVM} to find the appropriate exception handler.
 
 The \TT{athrow} instruction doesn't return the control flow here, 
@@ -179,12 +179,12 @@ there are no conditional/unconditional jumps to this area.
 
 But \ac{JVM} will transfer the execution flow here in case of an exception.
 
-The very first \TT{astore\_1} (at 14) takes the incoming \IT{reference} to the exception object 
+The very first \TT{astore\_1} (at 14) takes the incoming \emph{reference} to the exception object 
 and stores it in \ac{LVA} slot 1.
 
 Later, the \TT{getIndex()} method (of this exception object) will be called at offset 31.
 
-The \IT{reference} to the current exception object is passed right before that (offset 30).
+The \emph{reference} to the current exception object is passed right before that (offset 30).
 
 The rest of the code is does just string manipulation: 
 first the integer value returned by \TT{getIndex()}

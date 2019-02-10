@@ -56,7 +56,7 @@ A pesar de que las funciones vacías parecen inútiles, son bastante frecuentes 
 
 En primer lugar, son bastante populares en las funciones de depuración, como la siguiente:
 
-\lstinputlisting[caption=\EN{\CCpp Code},style=customc]{patterns/00_empty/dbg_print.c}
+\lstinputlisting[caption=\CCpp code,style=customc]{patterns/00_empty/dbg_print_EN.c}
 
 En una compilación sin depuración (como en una ``versión (release)''), \TT{\_DEBUG} no está definido,
 por lo que la función \TT{dbg\_print()}, a pesar de ser llamada durante la ejecución,
@@ -65,7 +65,7 @@ estará vacío
 Del mismo modo, un método popular de protección de software es crear una compilación para clientes legales y otra compilación de demostración.
 Una compilación de demostración puede carecer de algunas funciones importantes, como en este ejemplo:
 
-\lstinputlisting[caption=\EN{\CCpp Code},style=customc]{patterns/00_empty/demo.c}
+\lstinputlisting[caption=\CCpp code,style=customc]{patterns/00_empty/demo_EN.c}
 
 Se puede invocar a la función \TT{save\_file ()} cuando el usuario hace clic en \TT{File->Save} en el menú.
 La versión demo puede entregarse con este elemento de menú deshabilitado, pero incluso si un cracker de software lo habilita,

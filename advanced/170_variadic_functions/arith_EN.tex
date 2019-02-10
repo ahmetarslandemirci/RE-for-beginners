@@ -21,7 +21,7 @@ All other arguments are loaded using the \TT{va\_arg} macro and then summed.
 
 So what is inside?
 
-\myparagraph{\IT{cdecl} calling conventions}
+\myparagraph{\emph{cdecl} calling conventions}
 
 \lstinputlisting[caption=\Optimizing MSVC 6.0,style=customasmx86]{\CURPATH/arith_MSVC60_Ox_EN.asm}
 
@@ -41,7 +41,7 @@ When it's found, the sum is divided by the number of all values (excluding $-1$)
 So, in other words, the function treats the stack fragment as an array of integer values of infinite
 length.
 
-Now we can understand why the \IT{cdecl} calling convention forces us to push the first argument 
+Now we can understand why the \emph{cdecl} calling convention forces us to push the first argument 
 into the stack as last.
 
 Because otherwise, it would not be possible to find the first argument, 
@@ -57,8 +57,8 @@ Let's see:
 
 We see that the first 4 arguments are passed in the registers and two more---in the stack.
 
-The \TT{arith\_mean()} function first places these 4 arguments into the \IT{Shadow Space} and then treats
-the \IT{Shadow Space} and stack behind it as a single continuous array!
+The \TT{arith\_mean()} function first places these 4 arguments into the \emph{Shadow Space} and then treats
+the \emph{Shadow Space} and stack behind it as a single continuous array!
 
 What about GCC? Things are slightly clumsier here, because now the function is divided in two parts:
 the first part saves the registers into the \q{red zone}, processes that space, and the second part of the function processes 
@@ -66,7 +66,7 @@ the stack:
 
 \lstinputlisting[caption=\Optimizing GCC 4.9.1 x64,style=customasmx86]{\CURPATH/arith_GCC491_x64_O3_EN.s}
 
-By the way, a similar usage of the \IT{Shadow Space} is also considered here: \myref{pointer_to_argument}.
+By the way, a similar usage of the \emph{Shadow Space} is also considered here: \myref{pointer_to_argument}.
 
 \subsubsection{Using pointer to the first function argument}
 

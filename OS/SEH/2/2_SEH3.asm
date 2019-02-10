@@ -31,12 +31,12 @@ _main    PROC NEAR
     mov    DWORD PTR __$SEHRec$[ebp], esp
     mov    DWORD PTR _p$[ebp], 0
     mov    DWORD PTR __$SEHRec$[ebp+20], 0  ; previous try level
-    push   OFFSET FLAT:$SG74605 ; 'hello #1!'
+    push   OFFSET FLAT:$SG74605 ; \verb|'hello #1!'|
     call   _printf
     add    esp, 4
     mov    eax, DWORD PTR _p$[ebp]
     mov    DWORD PTR [eax], 13
-    push   OFFSET FLAT:$SG74606 ; 'hello #2!'
+    push   OFFSET FLAT:$SG74606 ; \verb|'hello #2!'|
     call   _printf
     add    esp, 4
     mov    DWORD PTR __$SEHRec$[ebp+20], -1  ; previous try level

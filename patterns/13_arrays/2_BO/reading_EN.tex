@@ -1,8 +1,8 @@
 \subsubsection{Reading outside array bounds}
 
-So, array indexing is just \IT{array\lbrack{}index\rbrack}.
+So, array indexing is just \emph{array\lbrack{}index\rbrack}.
 If you study the generated code closely, you'll probably note the missing index bounds checking,
-which could check \IT{if it is less than 20}.
+which could check \emph{if it is less than 20}.
 What if the index is 20 or greater?
 That's the one \CCpp feature it is often blamed for.
 
@@ -18,7 +18,7 @@ The code produced this result:
 
 \lstinputlisting[caption=\olly: console output]{patterns/13_arrays/2_BO/console.txt}
 
-It is just \IT{something} that has been lying in the stack near to the array, 80 bytes away from its first element.
+It is just \emph{something} that has been lying in the stack near to the array, 80 bytes away from its first element.
 
 \clearpage
 \myindex{\olly}

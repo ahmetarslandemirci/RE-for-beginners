@@ -69,19 +69,19 @@ Voici comment chacun des éléments du tableau 3*4 sont placés en mémoire:
 
 Donc, afin de calculer l'adresse de l'élément voulu, nous devons d'abord multiplier
 le premier index par 4 (largeur du tableau) et puis ajouter le second index.
-Ceci est appelé \IT{row-major order} (ordre ligne d'abord),
+Ceci est appelé \emph{row-major order} (ordre ligne d'abord),
 et c'est la méthode de représentation des tableaux et des matrices au moins en \CCpp
 et Python.
-Le terme \IT{row-major order} est de l'anglais signifiant: \q{ d'abord, écrire les
+Le terme \emph{row-major order} est de l'anglais signifiant: \q{ d'abord, écrire les
 éléments de la première ligne, puis ceux de la seconde ligne \dots et enfin les éléments
 de la dernière ligne}.
 
 \myindex{column-major order}
 \myindex{Fortran}
-Une autre méthode de représentation est appelée \IT{column-major order} (ordre colonne
+Une autre méthode de représentation est appelée \emph{column-major order} (ordre colonne
 d'abord) (les indices du tableau sont utilisés dans l'ordre inverse) et est utilisé
 au moins en ForTran, MATLAB et R.
-Le terme \IT{column-major order} est de l'anglais signifiant: \q{ d'abord, écrire les
+Le terme \emph{column-major order} est de l'anglais signifiant: \q{ d'abord, écrire les
 éléments de la première colonne, puis ceux de la seconde colonne \dots et enfin les
 éléments de la dernière colonne}.
 
@@ -90,13 +90,14 @@ Quelle méthode est la meilleure?
 En général, en termes de performance et de mémoire cache, le meilleur schéma pour
 l'organisation des données est celui dans lequel les éléments sont accédés séquentiellement.
 
-Donc si votre fonction accède les données par ligne, \IT{row-major order} est meilleur,
+Donc si votre fonction accède les données par ligne, \emph{row-major order} est meilleur,
 et vice-versa.
 
-% subsections
+% subsubsections
 \input{patterns/13_arrays/5_multidimensional/2D_FR}
 \input{patterns/13_arrays/5_multidimensional/2D_as_1D_FR}
 \input{patterns/13_arrays/5_multidimensional/3D_FR}
+%\input{patterns/13_arrays/5_multidimensional/dimensions_FR}
 
 \subsubsection{Plus d'exemples}
 

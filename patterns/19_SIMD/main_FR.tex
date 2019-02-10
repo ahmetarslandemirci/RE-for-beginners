@@ -1,7 +1,7 @@
 \mysection{SIMD}
 
 \label{SIMD_x86}
-\ac{SIMD} est un acronyme: \IT{Single Instruction, Multiple Data} (simple instruction,
+\ac{SIMD} est un acronyme: \emph{Single Instruction, Multiple Data} (simple instruction,
 multiple données).
 
 Comme son nom le laisse entendre, cela traite des données multiples avec une seule
@@ -26,7 +26,7 @@ Dans un soucis de concision, si l'on dit que l'image est en niveau de gris et qu
 chaque pixel est défini par un octet de 8-bit, alors il est possible de changer la
 luminosité de 8 pixels simultanément.
 
-À propos, c'est la raison pour laquelle les instructions de \IT{saturation} sont
+À propos, c'est la raison pour laquelle les instructions de \emph{saturation} sont
 présentes en SIMD.
 
 Lorsque l'utilisateur change la luminosité dans l'éditeur graphique, les dépassements
@@ -67,9 +67,9 @@ fils et des portes AND/OR/NOT.
 
 Le bitslice DES\footnote{\URLBS}~---est l'idée de traiter des groupes de blocs et
 de clés simultanément.
-Disons, une variable de type \IT{unsigned int} en x86 peut contenir jusqu'à 32-bit,
+Disons, une variable de type \emph{unsigned int} en x86 peut contenir jusqu'à 32-bit,
 donc il est possible d'y stocker des résultats intermédiaires pour 32 paires de blocs-clé
-simultanément, en utilisant 64+56 variables de type \IT{unsigned int}.
+simultanément, en utilisant 64+56 variables de type \emph{unsigned int}.
 
 \myindex{\oracle}
 Il existe un utilitaire pour brute-forcer les mots de passe/hashes d'\oracle (certains

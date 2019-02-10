@@ -27,8 +27,8 @@ Dieses Codefragment nimmt Elemente aus A und B, multipliziert sie und speichert 
 
 \myindex{x86!\Instructions!PLMULLD}
 \myindex{x86!\Instructions!PLMULHW}
-\newcommand{\PMULLD}{\IT{PMULLD} (\IT{Multiply Packed Signed Dword Integers and Store Low Result})}
-\newcommand{\PMULHW}{\TT{PMULHW} (\IT{Multiply Packed Signed Integers and Store High Result})}
+\newcommand{\PMULLD}{\emph{PMULLD} (\emph{Multiply Packed Signed Dword Integers and Store Low Result})}
+\newcommand{\PMULHW}{\TT{PMULHW} (\emph{Multiply Packed Signed Integers and Store High Result})}
 Wenn jedes Arrayelement ein 32-Bit \Tint ist, ist es möglich 4 Elemente aus A in ein 128-Bit-XMM-Register zu laden, 4
 weitere Elemente aus B in ein anderes, und dann durch die Befehle \PMULLD{} und \PMULHW{} 4 64-Bit-Produkte auf einmal
 zu erzeugen.
@@ -74,10 +74,10 @@ Die SSE2-Befehle sind:
 \myindex{x86!\Instructions!PADDD}
 \begin{itemize}
 \item
-\MOVDQU (\IT{Move Unaligned Double Quadword})---lädt 16 Byte aus dem Speicher in ein XMM-Register.
+\MOVDQU (\emph{Move Unaligned Double Quadword})---lädt 16 Byte aus dem Speicher in ein XMM-Register.
 
 \item
-\PADDD (\IT{Add Packed Integers}) addiert 4 Paare von 32-Bit-Zahlen und speichert das Ergebnis im ersten Operanden.
+\PADDD (\emph{Add Packed Integers}) addiert 4 Paare von 32-Bit-Zahlen und speichert das Ergebnis im ersten Operanden.
 Hier wird übrigens bei einem Überlauf keine Exception geworfen und auch keine Flags gesetzt, aber es werden dann nur die
 niederen 23 Bit des Ergebnisses gespeichert.
 Wenn einer der Operanden von \PADDD die Speicheradresse eines Wertes ist, muss sich die Adresse auf einer 16-Byte-Grenze
@@ -85,7 +85,7 @@ befinden. Ist dies nicht der Fall, wird eine Exception ausgelöst\footnote{Mehr 
 unter:\URLWPDA}.
 
 \item
-\MOVDQA (\IT{Move Aligned Double Quadword}) entspricht \MOVDQU, verlangt aber, dass die Adresse des Wertes im Speicher
+\MOVDQA (\emph{Move Aligned Double Quadword}) entspricht \MOVDQU, verlangt aber, dass die Adresse des Wertes im Speicher
 auf einer 16-Byte-Grenze liegt. Ist dies nicht der Fall, wird eine Exception ausgelöst. \MOVDQA ist schneller als
 \MOVDQU, hat aber die genannte zusätzliche Vorbedingung.
 

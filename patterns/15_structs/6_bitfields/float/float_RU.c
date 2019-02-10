@@ -20,7 +20,7 @@ float f(float _in)
     memcpy (&t, &f, sizeof (float));
 
     t.sign=1; // установить отрицательный знак
-    t.exponent=t.exponent+2; // умножить d на §$2^{n}$§ (n §здесь§ 2)
+    t.exponent=t.exponent+2; // умножить d на $2^{n}$ (n здесь 2)
 
     memcpy (&f, &t, sizeof (float));
 

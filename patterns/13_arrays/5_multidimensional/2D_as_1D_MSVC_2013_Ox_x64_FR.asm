@@ -12,7 +12,7 @@ get_by_coordinates3 PROC
 	add	rax, rcx
 ; RAX=b+adresse du tableau
 	movzx	eax, BYTE PTR [rax+r9*4]
-; AL=charger l'octet §à§ l'adresse RAX+R9*4=b+adresse du tableau+a*4=adresse du tableau+a*4+b
+; AL=charger l'octet à l'adresse RAX+R9*4=b+adresse du tableau+a*4=adresse du tableau+a*4+b
 	ret	0
 get_by_coordinates3 ENDP
 

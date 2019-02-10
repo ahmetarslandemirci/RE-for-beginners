@@ -13,7 +13,7 @@ main:
 	call	puts
 	lea	rsi, [rsp+12]
 	xor	eax, eax
-	mov	edi, OFFSET FLAT:.LC1 ; "%d"
+	mov	edi, OFFSET FLAT:.LC1 ; "\%d"
 	call	__isoc99_scanf
 	cmp	eax, 1
 	je	.L6
@@ -24,7 +24,7 @@ main:
 	ret
 .L6:
 	mov	esi, DWORD PTR [rsp+12]
-	mov	edi, OFFSET FLAT:.LC2 ; "You entered %d...\n"
+	mov	edi, OFFSET FLAT:.LC2 ; "You entered \%d...\textbackslash{}n"
 	xor	eax, eax
 	call	printf
 	xor	eax, eax

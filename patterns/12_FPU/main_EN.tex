@@ -14,7 +14,7 @@ It was called \q{coprocessor} in the past and it stays somewhat aside of the mai
 
 \subsection{IEEE 754}
 
-A number in the IEEE 754 format consists of a \IT{sign}, a \IT{significand} (also called \IT{fraction}) and an \IT{exponent}.
+A number in the IEEE 754 format consists of a \emph{sign}, a \emph{significand} (also called \emph{fraction}) and an \emph{exponent}.
 
 \subsection{x86}
 
@@ -59,17 +59,17 @@ The same ideology is used in the SIMD extensions of x86/x64 CPUs.
 \myindex{float}
 \myindex{double}
 
-The standard \CCpp languages offer at least two floating number types, \Tfloat (\IT{single-precision}\FNURLSP, 32 bits)
+The standard \CCpp languages offer at least two floating number types, \Tfloat (\emph{single-precision}\FNURLSP, 32 bits)
 \footnote{the single precision floating point number format is also addressed in 
-the \IT{\WorkingWithFloatAsWithStructSubSubSectionName}~(\myref{sec:floatasstruct}) section}
-and \Tdouble (\IT{double-precision}\FNURLDP, 64 bits).
+the \emph{\WorkingWithFloatAsWithStructSubSubSectionName}~(\myref{sec:floatasstruct}) section}
+and \Tdouble (\emph{double-precision}\FNURLDP, 64 bits).
 
-In \InSqBrackets{\TAOCPvolII 246} we can find the \IT{single-precision} means that the floating point value can be placed into a single
-[32-bit] machine word, \IT{double-precision} means it can be stored in two words (64 bits).
+In \InSqBrackets{\TAOCPvolII 246} we can find the \emph{single-precision} means that the floating point value can be placed into a single
+[32-bit] machine word, \emph{double-precision} means it can be stored in two words (64 bits).
 
 \myindex{long double}
 
-GCC also supports the \IT{long double} type (\IT{extended precision}\FNURLEP, 80 bit), which MSVC doesn't.
+GCC also supports the \emph{long double} type (\emph{extended precision}\FNURLEP, 80 bit), which MSVC doesn't.
 
 The \Tfloat type requires the same number of bits as the \Tint type in 32-bit environments, 
 but the number representation is completely different.
@@ -86,7 +86,7 @@ It's interesting to know that 0.0 in IEEE 754 is represented as 32 zero bits (fo
 So in order to set a floating point variable to 0.0 in register or memory, one can use \MOV or \TT{XOR reg, reg} instruction.
 \myindex{\CStandardLibrary!memset()}
 This is suitable for structures where many variables present of various data types.
-With usual memset() function one can set all integer variables to 0, all boolean variables to \IT{false}, all pointers
+With usual memset() function one can set all integer variables to 0, all boolean variables to \emph{false}, all pointers
 to NULL, and all floating point variables (of any precision) to 0.0.
 
 \subsection{Copying}

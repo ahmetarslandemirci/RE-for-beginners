@@ -32,7 +32,7 @@ Wenn der \gls{stack pointer} (\ESP-Register) nach einem Funktionsaufruf durch di
 \INS{ADD ESP, X} wiederhergestellt wird, wird die Anzahl Argumente oft einfach durch
 die Division von X durch 4 abgeleitet.
 
-Natürlich ist dies eine Eigenheit der \IT{cdecl}-Aufrufkonvention und nur für 32-Bit-Umgebungen gültig
+Natürlich ist dies eine Eigenheit der \emph{cdecl}-Aufrufkonvention und nur für 32-Bit-Umgebungen gültig
 (siehe auch Abschnitt über Aufrufkonventionen~(\myref{sec:callingconventions})).
 
 In bestimmten Fällen in denen mehrere Funktionen direkt hintereinander beendet werden, kann
@@ -108,7 +108,7 @@ des Debuggers liefert die Antwort:
 \end{figure}
 
 Es sind hier drei Spalten sichtbar: Die Adresse im Stack, der Wert im Stack und einige weitere \olly-Kommentare.
-\olly versteht \printf{}-ähnliche Zeichenketten und zeigt sie zusammen mit den drei \IT{angehangenen} Werten an.
+\olly versteht \printf{}-ähnliche Zeichenketten und zeigt sie zusammen mit den drei \emph{angehangenen} Werten an.
 
 Es ist möglich einen Rechtsklick auf den Formatstring und anschließend auf \q{Follow in dump} zu klicken.
 Der Formatstring wird in dem linken-unterem Debugger erscheinen, welches immer einen Teil des Speichers zeigt.
@@ -142,7 +142,7 @@ Offensichtlich nutzt die \printf-Funktion diese für interne Zwecke.
 
 Ein wichtiger Punkt ist, dass weder der \ESP-Wert, noch der Status des Stacks sich geändert haben!
 Es ist klar erkennbar, dass der Formatstring und die drei entsprechenden Werte immer noch da sind.
-Dies ist das Verhalten der \IT{cdecl}-Aufrufkonvention: \gls{callee} setzt \ESP nicht auf den vorherigen
+Dies ist das Verhalten der \emph{cdecl}-Aufrufkonvention: \gls{callee} setzt \ESP nicht auf den vorherigen
 Wert zurück. Dies ist die Aufgabe der \gls{caller}.
 
 \clearpage
@@ -157,36 +157,14 @@ Durch erneutes Drücken von F8 wird die Anweisung \INS{ADD ESP, 10} ausgeführt:
 
 \ESP hat sich geändert, aber die Werte sind immer noch auf dem Stack!
 Das liegt natürlich daran, dass es keine Notwendigkeit gibt diese Werte auf Null zu setzen oder Ähnliches.
-Alle oberhalb des Stack-Pointers (\ac{SP}) ist \IT{Rauschen} oder \IT{\garbage{}} und hat keine Bedeutung.
+Alle oberhalb des Stack-Pointers (\ac{SP}) ist \emph{Rauschen} oder \emph{\garbage{}} und hat keine Bedeutung.
 Es wäre zeitintensiv und unnötig die ungenutzten Stack-Einträge zurück zu setzen.
 
 \myparagraph{GCC}
 
 Nun wird das gleiche Programm unter Linux mit GCC 4.4.1 kompiliert und in \IDA untersucht:
 
-\begin{lstlisting}[style=customasmx86]
-main            proc near
-
-var_10          = dword ptr -10h
-var_C           = dword ptr -0Ch
-var_8           = dword ptr -8
-var_4           = dword ptr -4
-
-                push    ebp
-                mov     ebp, esp
-                and     esp, 0FFFFFFF0h
-                sub     esp, 10h
-                mov     eax, offset aADBDCD ; "a=%d; b=%d; c=%d"
-                mov     [esp+10h+var_4], 3
-                mov     [esp+10h+var_8], 2
-                mov     [esp+10h+var_C], 1
-                mov     [esp+10h+var_10], eax
-                call    _printf
-                mov     eax, 0
-                leave
-                retn
-main            endp
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{patterns/03_printf/x86/x86_1.asm}
 
 Es ist erkennbar, dass der Unterschied zwischen MSVC- und GCC-Code lediglich die Art ist,
 auf der die Argumente auf dem Stack gespeichert werden.

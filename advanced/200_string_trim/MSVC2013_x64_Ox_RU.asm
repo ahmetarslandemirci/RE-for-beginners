@@ -18,7 +18,7 @@ $LL14@str_trim:
 ; RCX = s-1
 	mov	r8d, 1
 	add	rcx, rax
-; RCX = s-1+strlen(s), §т.е.,§ это адрес последнего символа в строке
+; RCX = s-1+strlen(s), т.е., это адрес последнего символа в строке
 	sub	r8, rdx
 ; R8 = 1-s
 $LL6@str_trim:

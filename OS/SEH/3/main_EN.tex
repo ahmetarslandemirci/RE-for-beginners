@@ -4,7 +4,7 @@
 
 As you might think, it is not very fast to set up the SEH frame at each function prologue.
 Another performance problem is changing the 
-\IT{previous try level} value many times during the function's execution.
+\emph{previous try level} value many times during the function's execution.
 
 So things are changed completely in x64: now all pointers to \TT{try} blocks, filter and handler functions are stored
 in another PE segment \TT{.pdata}, 

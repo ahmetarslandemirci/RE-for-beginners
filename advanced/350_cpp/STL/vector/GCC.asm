@@ -11,43 +11,43 @@ main proc near
      mov  dword ptr [esp+1Ch], 0
      lea  eax, [esp+14h]
      mov  [esp], eax
-     call _Z4dumpP14vector_of_ints ; dump(vector_of_ints *)
+     call _Z4dumpP14vector_of_ints ; \verb|dump(vector_of_ints *)|
      mov  dword ptr [esp+10h], 1
      lea  eax, [esp+10h]
      mov  [esp+4], eax
      lea  eax, [esp+14h]
      mov  [esp], eax
-     call _ZNSt6vectorIiSaIiEE9push_backERKi ; std::vector<int,std::allocator<int>>::push_back(int  const&)
+     call _ZNSt6vectorIiSaIiEE9push_backERKi ; \verb|std::vector<int,std::allocator<int>>::push_back(int  const&)|
      lea  eax, [esp+14h]
      mov  [esp], eax
-     call _Z4dumpP14vector_of_ints ; dump(vector_of_ints *)
+     call _Z4dumpP14vector_of_ints ; \verb|dump(vector_of_ints *)|
      mov  dword ptr [esp+10h], 2
      lea  eax, [esp+10h]
      mov  [esp+4], eax
      lea  eax, [esp+14h]
      mov  [esp], eax
-     call _ZNSt6vectorIiSaIiEE9push_backERKi ; std::vector<int,std::allocator<int>>::push_back(int  const&)
+     call _ZNSt6vectorIiSaIiEE9push_backERKi ; \verb|std::vector<int,std::allocator<int>>::push_back(int  const&)|
      lea  eax, [esp+14h]
      mov  [esp], eax
-     call _Z4dumpP14vector_of_ints ; dump(vector_of_ints *)
+     call _Z4dumpP14vector_of_ints ; \verb|dump(vector_of_ints *)|
      mov  dword ptr [esp+10h], 3
      lea  eax, [esp+10h]
      mov  [esp+4], eax
      lea  eax, [esp+14h]
      mov  [esp], eax
-     call _ZNSt6vectorIiSaIiEE9push_backERKi ; std::vector<int,std::allocator<int>>::push_back(int  const&)
+     call _ZNSt6vectorIiSaIiEE9push_backERKi ; \verb|std::vector<int,std::allocator<int>>::push_back(int  const&)|
      lea  eax, [esp+14h]
      mov  [esp], eax
-     call _Z4dumpP14vector_of_ints ; dump(vector_of_ints *)
+     call _Z4dumpP14vector_of_ints ; \verb|dump(vector_of_ints *)|
      mov  dword ptr [esp+10h], 4
      lea  eax, [esp+10h]
      mov  [esp+4], eax
      lea  eax, [esp+14h]
      mov  [esp], eax
-     call _ZNSt6vectorIiSaIiEE9push_backERKi ; std::vector<int,std::allocator<int>>::push_back(int  const&)
+     call _ZNSt6vectorIiSaIiEE9push_backERKi ; \verb|std::vector<int,std::allocator<int>>::push_back(int  const&)|
      lea  eax, [esp+14h]
      mov  [esp], eax
-     call _Z4dumpP14vector_of_ints ; dump(vector_of_ints *)
+     call _Z4dumpP14vector_of_ints ; \verb|dump(vector_of_ints *)|
      mov  ebx, [esp+14h]
      mov  eax, [esp+1Ch]
      sub  eax, ebx
@@ -84,43 +84,43 @@ loc_80001BD: ; CODE XREF: main+117
 loc_80001CF: ; CODE XREF: main+DD
      lea  eax, [esp+14h]
      mov  [esp], eax
-     call _Z4dumpP14vector_of_ints ; dump(vector_of_ints *)
+     call _Z4dumpP14vector_of_ints ; \verb|dump(vector_of_ints *)|
      mov  dword ptr [esp+10h], 5
      lea  eax, [esp+10h]
      mov  [esp+4], eax
      lea  eax, [esp+14h]
      mov  [esp], eax
-     call _ZNSt6vectorIiSaIiEE9push_backERKi ; std::vector<int,std::allocator<int>>::push_back(int  const&)
+     call _ZNSt6vectorIiSaIiEE9push_backERKi ; \verb|std::vector<int,std::allocator<int>>::push_back(int  const&)|
      lea  eax, [esp+14h]
      mov  [esp], eax
-     call _Z4dumpP14vector_of_ints ; dump(vector_of_ints *)
+     call _Z4dumpP14vector_of_ints ; \verb|dump(vector_of_ints *)|
      mov  dword ptr [esp+10h], 6
      lea  eax, [esp+10h]
      mov  [esp+4], eax
      lea  eax, [esp+14h]
      mov  [esp], eax
-     call _ZNSt6vectorIiSaIiEE9push_backERKi ; std::vector<int,std::allocator<int>>::push_back(int  const&)
+     call _ZNSt6vectorIiSaIiEE9push_backERKi ; \verb|std::vector<int,std::allocator<int>>::push_back(int  const&)|
      lea  eax, [esp+14h]
      mov  [esp], eax
-     call _Z4dumpP14vector_of_ints ; dump(vector_of_ints *)
+     call _Z4dumpP14vector_of_ints ; \verb|dump(vector_of_ints *)|
      mov  eax, [esp+14h]
      mov  edx, [esp+18h]
      sub  edx, eax
      cmp  edx, 17h
      ja   short loc_8000246
-     mov  dword ptr [esp], offset aVector_m_range ; "vector::_M_range_check"
-     call _ZSt20__throw_out_of_rangePKc ; std::__throw_out_of_range(char  const*)
+     mov  dword ptr [esp], offset aVector_m_range ; \verb|"vector::_M_range_check"|
+     call _ZSt20__throw_out_of_rangePKc ; \verb|std::__throw_out_of_range(char  const*)|
 
 loc_8000246:                            ; CODE XREF: main+19C
      mov  eax, [eax+14h]
      mov  [esp+8], eax
-     mov  dword ptr [esp+4], offset aD ; "%d\n"
+     mov  dword ptr [esp+4], offset aD ; \verb|"%d\n"|
      mov  dword ptr [esp], 1
      call __printf_chk
      mov  eax, [esp+14h]
      mov  eax, [eax+20h]
      mov  [esp+8], eax
-     mov  dword ptr [esp+4], offset aD ; "%d\n"
+     mov  dword ptr [esp+4], offset aD ; \verb|"%d\n"|
      mov  dword ptr [esp], 1
      call __printf_chk
      mov  eax, [esp+14h]
@@ -151,7 +151,7 @@ loc_80002AC: ; CODE XREF: main+1EA
      pop  edi
      pop  ebp
 
-locret_80002B8: ; DATA XREF: .eh_frame:08000510
-                ; .eh_frame:080005BC
+locret_80002B8: ; DATA XREF: .eh\_frame:08000510
+                ; .eh\_frame:080005BC
      retn
 main endp

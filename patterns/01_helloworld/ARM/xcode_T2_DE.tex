@@ -28,7 +28,7 @@ __cstring:00003E70 48 65 6C 6C 6F 20+aHelloWorld  DCB "Hello world!",0xA,0
 \myindex{ARM!\Instructions!BLX}
 
 Die \TT{BL}- und \TT{BLX}-Anweisung im Thumb-Mode ist als Paar von 16-Bit-Anweisungen kodiert.
-In Thumb-2 sind diese \IT{Ersatz}-Opcodes so erweitert, dass neue Anweisungen hier mit 32 Bit
+In Thumb-2 sind diese \emph{Ersatz}-Opcodes so erweitert, dass neue Anweisungen hier mit 32 Bit
 kodiert werden können.
 
 Offensichtlich beginnen die Opcodes der Thumb-2-Anweisungen immer mit \TT{0xFx} oder \TT{0xEx}.
@@ -71,7 +71,7 @@ Diese Anweisung ist hier eingefügt weil die Anweisung mit der die Kontrolle abg
 aussieht (im ARM-Mode kodiert):
 
 \begin{lstlisting}[style=customasmARM]
-__symbolstub1:00003FEC _puts           ; CODE XREF: _hello_world+E
+__symbolstub1:00003FEC _puts           ; CODE XREF: \_hello\_world+E
 __symbolstub1:00003FEC 44 F0 9F E5     LDR  PC, =__imp__puts
 \end{lstlisting}
 
@@ -92,7 +92,7 @@ externen Modulen importiert werden.
 Der \ac{OS}-Loader läd alle Module die gebraucht werden und bestimmt die korrekten Adressen von jedem Symbol,
 während diese in dem primärem Modul aufgelistet werden.
 
-In dem vorliegenden Fall ist \IT{\_\_imp\_\_puts} eine 32-Bit-Variable die vom \ac{OS}-Loader genutzt wird
+In dem vorliegenden Fall ist \emph{\_\_imp\_\_puts} eine 32-Bit-Variable die vom \ac{OS}-Loader genutzt wird
 um die korrekte Adresse der Funktion in der externen Bibliothek zu speichern.
 Anschließend liest die \TT{LDR}-Anweisung den 32-Bit-Wert dieser Variable und schreibt ihn in das \ac{PC}-Register
 bevor die Ausführkontrolle dorthin übergeben wird.
@@ -119,7 +119,7 @@ Der Prozessor-Modus wird hier jedoch aufgrund des Fehlens eines \q{X} im Anweisu
 Thunk-Funktionen sind aufgrund der irrtümlichen Bezeichnung schwierig zu verstehen.
 Der einfachste Weg ist es sie als Adapter oder Konverter zwischen verschiedenen Anschlüssen aufzufassen.
 Zum Beispiel wie einen Adapter zwischen einer britischen und einer amerikanischen Steckdose oder andersherum.
-Thunk-Funktionen werden manchmal auch \IT{Wrapper} genannt.
+Thunk-Funktionen werden manchmal auch \emph{Wrapper} genannt.
 
 Hier sind einige weitere Beschreibung dieser Funktionstypen:
 

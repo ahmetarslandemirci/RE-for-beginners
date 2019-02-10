@@ -9,11 +9,11 @@ behandelt \q{undefinierte Zahlenwerte} anders.
 
 
 \myindex{Non-a-numbers (NaNs)}
-Ein wenig über \IT{undefinierte Zahlenwerte}.
+Ein wenig über \emph{undefinierte Zahlenwerte}.
 
 \newcommand{\NANFN}{\footnote{\href{http://go.yurichev.com/17130}{wikipedia.org/wiki/NaN}}}
 Die FPU ist in der Lage mit speziellen undefinieten Werten, den sogenannten
-\IT{not-a-number}(kurz \gls{NaN})\NANFN umzugehen. Beispiele sind etwa der Wert
+\emph{not-a-number}(kurz \gls{NaN})\NANFN umzugehen. Beispiele sind etwa der Wert
 unendlich, das Ergebnis einer Division durch 0, etc. Undefinierte Werte können
 entwder \q{quiet} oder \q{signaling} sein. Es ist möglich mit \q{quiet} NaNs zu
 arbeiten, aber beim Versuch einen Befehl auf \q{signaling} NaNs auszuführen,
@@ -27,7 +27,7 @@ wird eine Exception geworfen.
 
 \myindex{x86!\Instructions!SAHF}
 \label{SAHF}
-Der nächste Befehl ist \SAHF (\IT{Store AH into Flags})~---es handelt sich
+Der nächste Befehl ist \SAHF (\emph{Store AH into Flags})~---es handelt sich
 hierbei um einen seltenen Befehl, der nicht mit der FPU zusammenhängt.
 8 Bits aus AH werden in die niederen 8 Bit der CPU Flags in der folgenden
 Reihenfolge verschoben:
@@ -71,7 +71,7 @@ Es ist also quasi das Gegenstück von \JNBE mit dem Unterschied, dass \SETcc
 
 Depending on the CPU flags and conditions, \SETNBE stores 1 or 0 to AL. 
 It is almost the counterpart of \JNBE, with the exception that \SETcc
-\footnote{\IT{cc} is \IT{condition code}} eine 1 oder 0 in \AL speichert, aber
+\footnote{\emph{cc} is \emph{condition code}} eine 1 oder 0 in \AL speichert, aber
 \Jcc tatsächlich auch springt.
 \SETNBE speicher 1 nur, falls \GTT{CF=0} und \GTT{ZF=0}.
 Wenn dies nicht der Fall ist, dann wird 0 in \AL gespeichert.

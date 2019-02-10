@@ -16,8 +16,8 @@ sie befindet sich neben der \ac{CPU}.
 
 \subsection{IEEE 754}
 
-Eine Zahl besteht gemäß IEEE 754 Format aus einem \IT{Vorzeichne}, einer
-\IT{Mantisse} (auch \IT{Bruch} genannt) und einem \IT{Exponenten}. 
+Eine Zahl besteht gemäß IEEE 754 Format aus einem \emph{Vorzeichne}, einer
+\emph{Mantisse} (auch \emph{Bruch} genannt) und einem \emph{Exponenten}. 
 
 \subsection{x86}
 
@@ -66,19 +66,19 @@ Das gleiche Paradigma wird in den SIMD-Erweiterungen von x86/x64 CPUs verwendet.
 \myindex{float}
 \myindex{double}
 Die Standardsparche \CCpp bietet zumindest two unterschiedliche
-Fließkommezahlentypen, \Tfloat (\IT{einfache Genauigkeit}\FNURLSP, 32 Bit)
+Fließkommezahlentypen, \Tfloat (\emph{einfache Genauigkeit}\FNURLSP, 32 Bit)
 \footnote{Fließkommazahlen mit einfacher Genauigkeit werden auch im Abschnitt
-\IT{\WorkingWithFloatAsWithStructSubSubSectionName}~(\myref{sec:floatasstruct})
-behandelt} und \Tdouble (\IT{doppelte Genauigkeit}\FNURLDP, 64 Bit).
+\emph{\WorkingWithFloatAsWithStructSubSubSectionName}~(\myref{sec:floatasstruct})
+behandelt} und \Tdouble (\emph{doppelte Genauigkeit}\FNURLDP, 64 Bit).
 
-In \InSqBrackets{\TAOCPvolII 246} können wir nachlesen, dass \IT{einfache
+In \InSqBrackets{\TAOCPvolII 246} können wir nachlesen, dass \emph{einfache
 Genauigkeit} bedeutet, dass die Fließkommazahl in ein einzelnes (32-Bit)-Wort
-hineinpasst, \IT{doppelte Genauigkeit} bedeutet dagegen, dass die Zahl in zwei
+hineinpasst, \emph{doppelte Genauigkeit} bedeutet dagegen, dass die Zahl in zwei
 Worten (64 Bit) abgelegt werden kann.
 
 \myindex{long double}
-GCC unterstützt im Gegensatz zu MSVC ebenfalls den \IT{long double} Typ
-(\IT{erweiterte Genauigkeit}\FNURLEP 80 Bit).
+GCC unterstützt im Gegensatz zu MSVC ebenfalls den \emph{long double} Typ
+(\emph{erweiterte Genauigkeit}\FNURLEP 80 Bit).
 
 Der \Tfloat Typ benötigt dieselbe Anzahl an Bits wie der \Tint Typ in
 32-Bit-Umgebungen, aber die Darstellung der Zahlen ist komplett verschieden
@@ -94,11 +94,11 @@ Es ist leicht, in Wikipedia die Darstellungen einiger Konstanten nach dem IEEE
 als 32 Nullbits (in einfacher Genauigkeit) oder 64 Nullbits (in doppelter
 Genauigkeit) dargestellt wird.
 Wenn also eine Fließkommavariable im Register oder Speicher auf 0.0 gesetzt
-werden soll, kann der Befehl \MOV oder \IT{XOR reg, reg} verwendet werden.
+werden soll, kann der Befehl \MOV oder \emph{XOR reg, reg} verwendet werden.
 \myindex{\CStandardLibrary!memset()}
 Dies ist geeignet für Strukturen, in denen viele Variable unterschiedlichster
 Datentypen vorhanden sind. Mit der gewöhnlichen memset() Funktion kann man alle
-Integervariablen auf 0, alle Booleschen Variablen auf \IT{false}, alle Pointer
+Integervariablen auf 0, alle Booleschen Variablen auf \emph{false}, alle Pointer
 auf NULL und alle Fließkommavariablen (beliebiger Genauigkeit) auf 0.0 setzen.
 
 \subsection{Kopieren}

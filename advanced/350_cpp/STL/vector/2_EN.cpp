@@ -10,7 +10,7 @@ struct vector_of_ints
     int *Mylast;
     int *Myend;
 
-    // GCC structure is the same, but names are: _M_start, _M_finish, _M_end_of_storage
+    // GCC structure is the same, but names are: \verb|_M_start, _M_finish, _M_end_of_storage|
 };
 
 void dump(struct vector_of_ints *in)

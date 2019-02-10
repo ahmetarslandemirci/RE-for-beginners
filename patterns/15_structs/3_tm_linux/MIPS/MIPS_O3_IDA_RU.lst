@@ -1,6 +1,6 @@
 main:
 
-; IDA не в курсе имен полей структуры, мы назвали их так вручную:
+; IDA не знает имен полей структуры, мы назвали их так вручную:
 
 var_40          = -0x40
 var_38          = -0x38
@@ -30,39 +30,39 @@ var_4           = -4
                 lw      $gp, 0x50+var_40($sp)
                 lw      $a1, 0x50+year($sp)
                 lw      $t9, (printf & 0xFFFF)($gp)
-                la      $a0, $LC0        # "Year: %d\n"
+                la      $a0, $LC0        # "Year: \%d\textbackslash{}n"
                 jalr    $t9
                 addiu   $a1, 1900 ; branch delay slot
                 lw      $gp, 0x50+var_40($sp)
                 lw      $a1, 0x50+month($sp)
                 lw      $t9, (printf & 0xFFFF)($gp)
-                lui     $a0, ($LC1 >> 16)  # "Month: %d\n"
+                lui     $a0, ($LC1 >> 16)  # "Month: \%d\textbackslash{}n"
                 jalr    $t9
-                la      $a0, ($LC1 & 0xFFFF)  # "Month: %d\n" ; branch delay slot
+                la      $a0, ($LC1 & 0xFFFF)  # "Month: \%d\textbackslash{}n" ; branch delay slot
                 lw      $gp, 0x50+var_40($sp)
                 lw      $a1, 0x50+day($sp)
                 lw      $t9, (printf & 0xFFFF)($gp)
-                lui     $a0, ($LC2 >> 16)  # "Day: %d\n"
+                lui     $a0, ($LC2 >> 16)  # "Day: \%d\textbackslash{}n"
                 jalr    $t9
-                la      $a0, ($LC2 & 0xFFFF)  # "Day: %d\n" ; branch delay slot
+                la      $a0, ($LC2 & 0xFFFF)  # "Day: \%d\textbackslash{}n" ; branch delay slot
                 lw      $gp, 0x50+var_40($sp)
                 lw      $a1, 0x50+hour($sp)
                 lw      $t9, (printf & 0xFFFF)($gp)
-                lui     $a0, ($LC3 >> 16)  # "Hour: %d\n"
+                lui     $a0, ($LC3 >> 16)  # "Hour: \%d\textbackslash{}n"
                 jalr    $t9
-                la      $a0, ($LC3 & 0xFFFF)  # "Hour: %d\n" ; branch delay slot
+                la      $a0, ($LC3 & 0xFFFF)  # "Hour: \%d\textbackslash{}n" ; branch delay slot
                 lw      $gp, 0x50+var_40($sp)
                 lw      $a1, 0x50+minutes($sp)
                 lw      $t9, (printf & 0xFFFF)($gp)
-                lui     $a0, ($LC4 >> 16)  # "Minutes: %d\n"
+                lui     $a0, ($LC4 >> 16)  # "Minutes: \%d\textbackslash{}n"
                 jalr    $t9
-                la      $a0, ($LC4 & 0xFFFF)  # "Minutes: %d\n" ; branch delay slot
+                la      $a0, ($LC4 & 0xFFFF)  # "Minutes: \%d\textbackslash{}n" ; branch delay slot
                 lw      $gp, 0x50+var_40($sp)
                 lw      $a1, 0x50+seconds($sp)
                 lw      $t9, (printf & 0xFFFF)($gp)
-                lui     $a0, ($LC5 >> 16)  # "Seconds: %d\n"
+                lui     $a0, ($LC5 >> 16)  # "Seconds: \%d\textbackslash{}n"
                 jalr    $t9
-                la      $a0, ($LC5 & 0xFFFF)  # "Seconds: %d\n" ; branch delay slot
+                la      $a0, ($LC5 & 0xFFFF)  # "Seconds: \%d\textbackslash{}n" ; branch delay slot
                 lw      $ra, 0x50+var_4($sp)
                 or      $at, $zero ; load delay slot, NOP
                 jr      $ra

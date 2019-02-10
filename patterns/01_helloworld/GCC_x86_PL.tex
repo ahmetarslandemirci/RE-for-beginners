@@ -4,23 +4,7 @@ Teraz chcemy skompilować to samo za pomocą GCC 4.4.1 w Linux: \TT{gcc 1.c -o 1
 Dalej za pomocą \IDA podejrzmy jak się skompilowała f-cja \main.
 \IDA, jak i MSVC, pokazuje kod w syntaksie Intel\footnote{Również możemy zmusić GCC do generowania listingów w tym formacie za pomocą kluczy \TT{-S -masm=intel}.}.
 
-\begin{lstlisting}[caption=kod w \IDA,style=customasmx86]
-main            proc near
-
-var_10          = dword ptr -10h
-
-                push    ebp
-                mov     ebp, esp
-                and     esp, 0FFFFFFF0h
-                sub     esp, 10h
-                mov     eax, offset aHelloWorld ; "hello, world\n"
-                mov     [esp+10h+var_10], eax
-                call    _printf
-                mov     eax, 0
-                leave
-                retn
-main            endp
-\end{lstlisting}
+\lstinputlisting[caption=kod w \IDA,style=customasmx86]{patterns/01_helloworld/IDA_x86.asm}
 
 \myindex{Function prologue}
 \myindex{x86!\Instructions!AND}
@@ -38,7 +22,7 @@ Tak się dzieje dlatego, że ilość przydzielanego miejsca na stosie lokalnym j
 % TODO1: rewrite.
 \myindex{x86!\Instructions!PUSH}
 Adres linii (lub wskaźnik na nią) jest zatem odkładany prosto na stos bez wykorzystywania instrukcji \PUSH.
-\IT{var\_10} jednocześnie i lokalna zmienna i argument dla \printf{}. Dokładniej to będzie omawiane w dalszym ciągu.
+\emph{var\_10} jednocześnie i lokalna zmienna i argument dla \printf{}. Dokładniej to będzie omawiane w dalszym ciągu.
 
 Dalej jest wywoływane \printf.
 
@@ -65,8 +49,8 @@ Otrzymamy taki plik:
 
 Tu jest dużo makro (rozpoczynających się z kropki). Na razie one nas nie interesują.
 
-Na razie możemy je ignorować (za wyjątkiem \IT{.string}, za pomocą którego kodujemy sekwencję znaków zakończonych znakiem null ~--- tak jak w C). Wtedy otrzymamy następujące:
-\footnote{Dla zmniejszenia liczby generowanych \q{zbędnych} makro, można skorzystać z następującego klucza GCC: \IT{-fno-asynchronous-unwind-tables}}:
+Na razie możemy je ignorować (za wyjątkiem \emph{.string}, za pomocą którego kodujemy sekwencję znaków zakończonych znakiem null ~--- tak jak w C). Wtedy otrzymamy następujące:
+\footnote{Dla zmniejszenia liczby generowanych \q{zbędnych} makro, można skorzystać z następującego klucza GCC: \emph{-fno-asynchronous-unwind-tables}}:
 
 \lstinputlisting[caption=GCC 4.7.3,style=customasmx86]{patterns/01_helloworld/GCC_refined.s}
 

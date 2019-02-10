@@ -13,7 +13,7 @@ _filter_user_exceptions PROC NEAR
     mov    ebp, esp
     mov    eax, DWORD PTR _code$[ebp]
     push   eax
-    push   OFFSET FLAT:$SG74606 ; 'in filter. code=0x%08X'
+    push   OFFSET FLAT:$SG74606 ; \verb|'in filter. code=0x%08X'|
     call   _printf
     add    esp, 8
     cmp    DWORD PTR _code$[ebp], 1122867; 00112233H

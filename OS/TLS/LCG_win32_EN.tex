@@ -68,7 +68,7 @@ This is a case in which \ac{TLS} callbacks can be used.
 
 The following code is not very portable due to the hack, but nevertheless, you get the idea.
 
-What we do here is define a function (\TT{tls\_callback()}) which is to be called \IT{before} 
+What we do here is define a function (\TT{tls\_callback()}) which is to be called \emph{before} 
 the process and/or thread start.
 
 The function initializes the \ac{PRNG} with the value returned by \TT{GetTickCount()} function.

@@ -8,6 +8,6 @@
 .tls:00404002                 db    0
 .tls:00404003                 db    0
 .tls:00404004                 dd 1234
-.tls:00404008 TlsEnd          db    0         ; DATA XREF: .rdata:TlsEnd_ptr
+.tls:00404008 TlsEnd          db    0         ; DATA XREF: .rdata:TlsEnd\_ptr
 ...
 

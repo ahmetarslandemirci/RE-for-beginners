@@ -97,14 +97,7 @@ retf
 Наблюдательный читатель может заметить, что функция Си \TT{strcpy()} имеет 2 аргумента, но здесь
 мы видим, что передается 4:
 
-\begin{lstlisting}[style=customasmx86]
-seg033:088F 1E                          push    ds
-seg033:0890 68 22 44                    push    offset aTrupcRequiresA ; "This Software Requires a Software Lock\n"
-seg033:0893 1E                          push    ds
-seg033:0894 68 60 E9                    push    offset byte_6C7E0 ; dest
-seg033:0897 9A 79 65 00+                call    _strcpy
-seg033:089C 83 C4 08                    add     sp, 8
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{examples/dongles/3/tmp1.lst}
 
 Это связано с моделью памяти в MS-DOS. Об этом больше читайте здесь: 
 \myref{8086_memory_model}.

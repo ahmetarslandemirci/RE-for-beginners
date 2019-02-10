@@ -42,7 +42,7 @@
 
 \subsection{Инструменты}
 
-Удобная утилита из Linux \IT{ent} для вычисления энтропии файла\footnote{\url{http://www.fourmilab.ch/random/}}.
+Удобная утилита из Linux \emph{ent} для вычисления энтропии файла\footnote{\url{http://www.fourmilab.ch/random/}}.
 
 Неплохой онлайновый визуализатор энтропии, сделанный Aldo Cortesi,
 которому я пытался подражать при помощи Mathematica: \url{http://binvis.io}.
@@ -52,14 +52,14 @@
 \url{http://corte.si/posts/visualisation/binvis/index.html}.
 
 \myindex{radare2}
-В фреймворке radare2 есть команда \IT{\#entropy}.
+В фреймворке radare2 есть команда \emph{\#entropy}.
 
 Для IDA есть IDAtropy\footnote{\url{https://github.com/danigargu/IDAtropy}}.
 
 \subsection{Кое-что о примитивном шифровании как XOR}
 
 Интересно, что простое шифрование при помощи XOR не меняет энтропии данных.
-В этой книге я показал это в примере с \IT{Norton Guide} (\myref{norton_guide}).
+В этой книге я показал это в примере с \emph{Norton Guide} (\myref{norton_guide}).
 
 Обобщая: шифрования при помощи шифровании с заменой также не меняет энтропии данных
 (а XOR можно рассматривать как шифрование заменой).
@@ -89,8 +89,8 @@ CALL function
 \end{lstlisting}
 
 Идеальный компрессор исполняемого кода мог бы кодировать информацию так:
-\IT{есть CALL в ``function'' по адресу X и такой же CALL по адресу Y} без необходимости кодировать
-адрес ф-ции \IT{function} дважды.
+\emph{есть CALL в ``function'' по адресу X и такой же CALL по адресу Y} без необходимости кодировать
+адрес ф-ции \emph{function} дважды.
 
 \myindex{UPX}
 Чтобы с этим разобраться, компрессоры исполняемых файлов иногда могут уменьшить энтропию здесь.

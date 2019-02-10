@@ -1,7 +1,7 @@
 % TODO proof-reading
 \subsubsection{Two-dimensional arrays}
 
-Two-dimensional arrays in Java are just one-dimensional arrays of \IT{references} to another 
+Two-dimensional arrays in Java are just one-dimensional arrays of \emph{references} to another 
 one-dimensional arrays.
 
 
@@ -39,7 +39,7 @@ as operands.
 The array's size (10*5) is left in stack (using the instructions \TT{iconst\_5} and \TT{bipush}).
 
 
-A \IT{reference} to row \#1 is loaded at offset 10 (\TT{iconst\_1} and \TT{aaload}).
+A \emph{reference} to row \#1 is loaded at offset 10 (\TT{iconst\_1} and \TT{aaload}).
 
 The column is chosen using \TT{iconst\_2} at offset 11.
 
@@ -70,6 +70,6 @@ How it is an element accessed?
          5: ireturn       
 \end{lstlisting}
 
-A \IT{Reference} to the array's row is loaded at offset 2, the column is set at offset 3, 
+A \emph{Reference} to the array's row is loaded at offset 2, the column is set at offset 3, 
 then \TT{iaload} loads the array's element.
 

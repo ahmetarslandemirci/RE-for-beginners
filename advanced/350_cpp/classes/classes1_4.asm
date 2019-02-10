@@ -15,9 +15,9 @@ _main PROC
     lea  ecx, DWORD PTR _s$[esp+32]
     call ??0sphere@@QAE@HH@Z ; sphere::sphere
     lea  ecx, DWORD PTR _b$[esp+24]
-    call ?print_color@object@@QAEXXZ ; object::print_color
+    call ?print_color@object@@QAEXXZ ; object::print\_color
     lea  ecx, DWORD PTR _s$[esp+24]
-    call ?print_color@object@@QAEXXZ ; object::print_color
+    call ?print_color@object@@QAEXXZ ; object::print\_color
     lea  ecx, DWORD PTR _b$[esp+24]
     call ?dump@box@@QAEXXZ ; box::dump
     lea  ecx, DWORD PTR _s$[esp+24]

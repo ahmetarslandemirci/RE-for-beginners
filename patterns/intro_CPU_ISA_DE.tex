@@ -33,7 +33,7 @@ Vielleicht wäre es möglich eine \ac{CPU} zu entwickeln die direkt eine Hochspr
 diese wäre aber sehr viel komplexer als es heute der Fall ist.
 In ähnlicher Weise ist es für Menschen äußerst unkomfortabel in einer Assembler-Sprache zu programmieren.
 Diese ist sehr hardwarenah und kaum zu realisieren ohne schwer zu findende Fehler zu machen.
-Das Programm, welches die Hochsprache in Assembler konvertiert nennt sich \IT{Compiler} oder Übersetzer.
+Das Programm, welches die Hochsprache in Assembler konvertiert nennt sich \emph{Compiler} oder Übersetzer.
 
 \myindex{ARM!\ARMMode}%
 \myindex{ARM!\ThumbMode}%
@@ -53,7 +53,7 @@ Irgendwann dachte ARM, dass dieser Vorgehensweise nicht so sparsam war wie zuers
 Tatsächlich, benötigen die meisten Befehle in der Praxis\footnote{zum Beispiel MOV/PUSH/CALL/Jcc} weniger Platz für die Kodierung.
 Darum wurde ein Befehlssatz, genannt Thumb, eingeführt, in dem jeder Befehl in zwei Byte kodiert wird.
 Dies ist nun als \q{Thumb-Mode} bekannt.
-Trotzdem können nicht \IT{alle} ARM-Befehle in nur zwei Byte kodiert werden, was den Thumb Befehlssatz in gewisser Weise einschränkt.
+Trotzdem können nicht \emph{alle} ARM-Befehle in nur zwei Byte kodiert werden, was den Thumb Befehlssatz in gewisser Weise einschränkt.
 Erwähnenswert ist, dass Code der für ARM- und Thumb-Mode kompiliert wurde in einem einzelnen Programm vermischt sein kann.
 Die ARM-Erfinder beschlossen den Thumb-Mode zu erweitern, was zu Thumb-2 führte, der in ARMv7 auftaucht.
 Thumb-2 nutzt immer noch 2-Byte-Befehle, enthält aber zusätzlich auch einige 4-Byte-Befehle.

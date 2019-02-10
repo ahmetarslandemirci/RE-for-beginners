@@ -8,7 +8,7 @@ str  = -4
      LDR    R0, [SP,#8+str]
      STR    R0, [SP,#8+eos]
 
-loc_2CB8 ; CODE XREF: _strlen+28
+loc_2CB8 ; CODE XREF: \_strlen+28
      LDR    R0, [SP,#8+eos]
      ADD    R1, R0, #1
      STR    R1, [SP,#8+eos]
@@ -16,10 +16,10 @@ loc_2CB8 ; CODE XREF: _strlen+28
      CMP    R0, #0
      BEQ    loc_2CD4
      B      loc_2CB8
-loc_2CD4 ; CODE XREF: _strlen+24
+loc_2CD4 ; CODE XREF: \_strlen+24
      LDR    R0, [SP,#8+eos]
      LDR    R1, [SP,#8+str]
      SUB    R0, R0, R1 ; R0=eos-str
      SUB    R0, R0, #1 ; R0=R0-1
-     ADD    SP, SP, #8 ; §libérer les 8 octets alloués§
+     ADD    SP, SP, #8 ; libérer les 8 octets alloués
      BX     LR

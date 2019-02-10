@@ -13,16 +13,16 @@
 ; save the GP to the local stack:
 ; for some reason, this instruction is missing in the GCC assembly output:
 .text:00000010                 sw      $gp, 0x20+var_10($sp)
-; load the address of the puts() function from the GP to $t9:
+; load the address of the puts() function from the GP to \$t9:
 .text:00000014                 lw      $t9, (puts & 0xFFFF)($gp)
-; form the address of the text string in $a0:
+; form the address of the text string in \$a0:
 .text:00000018                 lui     $a0, ($LC0 >> 16)  # "Hello, world!"
 ; jump to puts(), saving the return address in the link register:
 .text:0000001C                 jalr    $t9
 .text:00000020                 la      $a0, ($LC0 & 0xFFFF)  # "Hello, world!"
 ; restore the RA:
 .text:00000024                 lw      $ra, 0x20+var_4($sp)
-; copy 0 from $zero to $v0:
+; copy 0 from \$zero to \$v0:
 .text:00000028                 move    $v0, $zero
 ; return by jumping to the RA:
 .text:0000002C                 jr      $ra

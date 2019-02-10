@@ -32,13 +32,13 @@ exportieren und diese mit \TT{grep}, \TT{awk}, etc. zu untersuchen.
 Wenn man versucht zu verstehen wie ein bestimmter Code funktioniert, kann auch
 eine einfache Open-Source-Library wie libpng als Beispiel dienen.
 Wenn man also eine Konstante oder Textstrings findet die vertraut erscheinen, ist
-es immer einen Versuch wert diese zu \IT{google}n .
+es immer einen Versuch wert diese zu \emph{google}n .
 Und wenn man ein Opensource Projekt findet in dem diese Funktion benutzt wird, 
 reicht es meist aus diese Funktionen miteinander zu vergleichen.
 Es k\"onnte helfen Teile des Problems zu l\"osen.
 
 % When you try to understand what some code is doing, this easily could be some open-source library like libpng.
-% So when you see some constants or text strings which look familiar, it is always worth to \IT{google} them.
+% So when you see some constants or text strings which look familiar, it is always worth to \emph{google} them.
 % And if you find the opensource project where they are used, 
 % then it's enough just to compare the functions.
 % It may solve some part of the problem.
@@ -52,7 +52,7 @@ normal benutzt werden anstatt selbst geschriebene librarys.
 
 Zum Beispiel, der Autor dieser Zeilen wollte verstehen wie die Kompression/Dekompression von Netzwerkpaketen in SAP 6.0 funktioniert.
 SAP ist ein gewaltiges St\"uck Software, aber detaillierte -\gls{PDB} Dateien mit Debug Informationen sind vorhanden, was sehr praktisch 
-ist. Der Autor hat schließlich eine Ahnung gehabt, das eine Funktion genannt \IT{CsDecomprLZC} die Dekompression der Netzwerkpakete \"ubernahm.
+ist. Der Autor hat schließlich eine Ahnung gehabt, das eine Funktion genannt \emph{CsDecomprLZC} die Dekompression der Netzwerkpakete \"ubernahm.
 Er hat nach dem Namen der Funktion auf google gesucht und ist schnell zum schluss gekommen das diese Funktion in 
 MaxDB benutzt wurde (Das ist ein Open-Source SAP Projekt) \footnote{Mehr dar\"uber in der relevanten Sektion~(\myref{sec:SAPGbUI})}. 
 
@@ -84,7 +84,6 @@ der Funktion zu \"uberwachen hilft sofort zu verstehen was die Funktion tut.
 \input{digging_into_code/binary/main_DE}
 \input{digging_into_code/snapshots_comparing_DE}
 % TBT \input{digging_into_code/ISA_detect_DE}
-% TBT \input{digging_into_code/strings_compressed_DE}
 
 \mysection{Andere Dinge}
 

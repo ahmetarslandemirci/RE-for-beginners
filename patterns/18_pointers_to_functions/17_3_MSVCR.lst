@@ -1,4 +1,4 @@
-.text:7816CBF0 ; void __cdecl qsort(void *, unsigned int, unsigned int, int (__cdecl *)(const void *, const void *))
+.text:7816CBF0 ; void \_\_cdecl qsort(void *, unsigned int, unsigned int, int (\_\_cdecl *)(const void *, const void *))
 .text:7816CBF0                 public _qsort
 .text:7816CBF0 _qsort          proc near
 .text:7816CBF0
@@ -17,7 +17,7 @@
 
 ....
 
-.text:7816CCE0 loc_7816CCE0:                           ; CODE XREF: _qsort+B1
+.text:7816CCE0 loc_7816CCE0:                           ; CODE XREF: \_qsort+B1
 .text:7816CCE0                 shr     eax, 1
 .text:7816CCE2                 imul    eax, ebp
 .text:7816CCE5                 add     eax, ebx

@@ -1,6 +1,6 @@
 my_strlen:
 	mov	x1, x0
-	; X1 ist der temporäre Pointer (eos), verhält sich wie ein Â§\IT{Cursor}Â§
+	; X1 ist der temporäre Pointer (eos), verhält sich wie ein \emph{Cursor}
 .L58:
 	; lade Byte von X1 nach W2, erhöhe X1 (post-index)
 	ldrb	w2, [x1],1

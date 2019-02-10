@@ -7,7 +7,7 @@ armcc.exe --arm --c90 -O0 1.c
 \end{lstlisting}
 
 \myindex{\IntelSyntax}
-Kompilator \IT{armcc} generuje listing w asemblerze w formacie Intel.
+Kompilator \emph{armcc} generuje listing w asemblerze w formacie Intel.
 Ten listing zawiera niektóre wysokopoziomowe makra, powiązane z ARM
 \footnote{na przykład, korzysta on z instrukcji \PUSH/\POP, których nie ma w trybie ARM},
 dlatego zobaczmy jak wygląda skompilowany kod w \IDA.
@@ -30,7 +30,7 @@ Rzeczywiście, przecież kompilowaliśmy nasz kod dla trybu ARM, a nie Thumb.
 \myindex{ARM!\Instructions!POP}
 Pierwsza instrukcja, \INS{STMFD SP!, \{R4,LR\}}\footnote{\ac{STMFD}},
 działa jak instrukcja \PUSH w x86: odkłada wartości dwóch rejestrów (\Reg{4} i \ac{LR}) na stos.
-W listingu w asemblerze kompilator \IT{armcc}, żeby uprościć sprawę pokazuje tu instrukcję
+W listingu w asemblerze kompilator \emph{armcc}, żeby uprościć sprawę pokazuje tu instrukcję
 \INS{PUSH \{r4,lr\}}.
 Nie jest to dokładnie to co chcieliibyśmy zobaczyć. Instrukcja \PUSH jest dostępna tylko w trybie Thumb, dlatego,
  zaproponowałem pracować z kompilatorem \IDA.
@@ -85,7 +85,7 @@ To dlatego, że nasza f-cja zwraca 0, a wartość zwróconą każda f-cja zostaw
 Ostatnia instrukcja \INS{LDMFD SP!, {R4,PC}}\footnote{\ac{LDMFD}~--- jest instrukcją względem działania odwrotną do \ac{STMFD}}.
 Ona ładuje ze stosu (lub każdego innego miejsca w pamięci) wartości do zapisu w \Reg{4} i \ac{PC}, zwiększając \glslink{stack pointer}{wskaźnik stosu} \ac{SP}.
 Tutaj działa analogicznie do \POP.\\
-N.B. Pierwsza instrukcja \TT{STMFD} odłożyła na stos \Reg{4} i \ac{LR}, a \IT{przywracane} w wyniku działania \TT{LDMFD} są rejestry \Reg{4} i \ac{PC}.
+N.B. Pierwsza instrukcja \TT{STMFD} odłożyła na stos \Reg{4} i \ac{LR}, a \emph{przywracane} w wyniku działania \TT{LDMFD} są rejestry \Reg{4} i \ac{PC}.
 
 Jak już wiemy, do rejestru \ac{LR} zwykle jest zapisywany adres miejsca w pamięci, pod który f-cja będzie zwracała zarządzanie.
 Pierwsza isntrukcja odkłada tę wartość na stos, dlatego że nasza f-cja \main później sama będzie korzystała z tego rejstru w momencie wywołania f-cji \printf.

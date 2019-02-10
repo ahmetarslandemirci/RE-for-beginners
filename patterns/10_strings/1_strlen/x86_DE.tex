@@ -15,9 +15,9 @@ Wir finden hier zwei neue Befehle: \MOVSX und \TEST.
 
 Der erste --\MOVSX--nimmt ein Byte aus einer Speicheradresse und speichert den
 Wert in einem 32-bit-Register.
-\MOVSX steht für \IT{MOV with Sign-Extend}.
+\MOVSX steht für \emph{MOV with Sign-Extend}.
 \MOVSX setzt die übrigen Bits vom 8. bis zum 31. auf 1, falls das Quellbyte
-\IT{negativ} ist oder auf 0, falls es \IT{positiv} ist.
+\emph{negativ} ist oder auf 0, falls es \emph{positiv} ist.
 
 Und hier ist der Grund dafür.
 
@@ -32,7 +32,7 @@ identifizieren und den Wert entsprechend erweitern. Genau dies tut der Befehl
 \MOVSX.
 
 Weitere Informationen dazu finden sich im Abschnitt
-\q{\IT{\SignedNumbersSectionName}} ~(\myref{sec:signednumbers}).
+\q{\emph{\SignedNumbersSectionName}} ~(\myref{sec:signednumbers}).
 
 Es ist schwer zu sagen, ob der Compiler tatsächlich eine \Tchar Variable in \EDX
 speichern muss, er könnte auch einen 8-Bit-Registerteil (z.B. \DL) dafür
@@ -58,7 +58,7 @@ Schauen wir uns GCC 4.4.1 an:
 
 Das Ergebnis ist fast identisch mit dem von MSVC, aber hier finden wir \MOVZX
 anstelle von \MOVSX. 
-\MOVZX steht für \IT{MOV with Zero-Extend}. 
+\MOVZX steht für \emph{MOV with Zero-Extend}. 
 Dieser Befehl kopiert einen 8-Bit- oder 16-Bit-Wert in ein 32-Bit-Register und
 setzt die übrigen Bits auf 0.
 Tatsächlich findet dieser Befehl vor allem deshalb Anwendung, weil er es uns
@@ -80,8 +80,8 @@ verständlichen Code zu erzeugen.
 Der nächste neue Befehl für uns ist \SETNZ.
 In diesem Fall setzt \TT{test al,al} das \ZF flag auf 0, falls \AL nicht 0
 enthät, aber \SETNZ setzt \AL auf 1, falls \TT{ZF==0} (IT{NZ} steht für
-\IT{non zero}).
-In natürlicher Sprache, \IT{falls \AL ungleich 0, springe zu loc\_80483F0}. 
+\emph{non zero}).
+In natürlicher Sprache, \emph{falls \AL ungleich 0, springe zu loc\_80483F0}. 
 Der Compiler erzeugt leicht redundanten Code, aber bedenken wir, dass die
 Optimierung hier deaktiviert ist.
 
@@ -101,7 +101,7 @@ kleinen Funktionen mit einigen wenigen lokalen Variablen verwenden kann.
 \INC/\DEC---sind \glslink{increment}{inkrement}/\glslink{decrement}{dekrement} Befehle; mit anderen Worten:
 addiere oder subtrahiere 1 zu bzw. von einer Variable. 
 
-\input{patterns/10_strings/1_strlen/olly_EN.tex}
+\input{patterns/10_strings/1_strlen/olly_DE.tex}
 
 \myparagraph{\Optimizing GCC}
 
@@ -114,7 +114,7 @@ auftritt.
 In der Tat könnte \MOVZX hier durch \TT{mov dl, byte ptr [eax]} ersetzt werden.
  
 Möglicherweise ist es einfacher für den GCC Code Generator sich daran zu
-\IT{erinnern}, dass das gesamte 32-bit-\EDX Register für eine \Tchar Variable
+\emph{erinnern}, dass das gesamte 32-bit-\EDX Register für eine \Tchar Variable
 reserviert ist und so sicherzustellen, dass die oberen Bits zu keinem Zeitpunkt
 Zufallsrauschen enthalten.
 
@@ -128,7 +128,7 @@ Man kann sagen, dass es sich um ein Synonym zum Befehl \TT{XOR ECX, 0ffffffffh}
 handelt. 
 \NOT und das darauf folgende \ADD berechnen die Differenz im Pointer und
 subtrahieren 1, nur auf eine andere Art und Weise. 
-Zu Beginn wird \ECX, in dem der Pointer auf \IT{str} gespeichert ist, invertiert
+Zu Beginn wird \ECX, in dem der Pointer auf \emph{str} gespeichert ist, invertiert
 und vom Ergebnis wird 1 abgezogen.
 
 Hierzu siehe auch: \q{\SignedNumbersSectionName}~(\myref{sec:signednumbers}).

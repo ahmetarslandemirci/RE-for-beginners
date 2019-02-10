@@ -12,26 +12,26 @@ _f  PROC
     mov    ebp, esp
     fld    QWORD PTR _a$[ebp]
 
-; §é§tat courant de la pile: ST(0) = _a
+; état courant de la pile: ST(0) = \_a
 
     fdiv   QWORD PTR __real@40091eb851eb851f
 
-; §é§tat courant de la pile: ST(0) = r§é§sultat de _a divis§é§ par 3.14
+; état courant de la pile: ST(0) = résultat de \_a divisé par 3.14
 
     fld    QWORD PTR _b$[ebp]
 
-; §é§tat courant de la pile: ST(0) = _b;
-; ST(1) = r§é§sultat de  _a divis§é§ par 3.14
+; état courant de la pile: ST(0) = \_b;
+; ST(1) = résultat de  \_a divisé par 3.14
 
     fmul   QWORD PTR __real@4010666666666666
 
-; §é§tat courant de la pile:
-; ST(0) = r§é§sultat de _b * 4.1;
-; ST(1) = r§é§sultat de _a divis§é§ par 3.14
+; état courant de la pile:
+; ST(0) = résultat de \_b * 4.1;
+; ST(1) = résultat de \_a divisé par 3.14
 
     faddp  ST(1), ST(0)
 
-; §é§tat courant de la pile: ST(0) = r§é§sultat de l'addition
+; état courant de la pile: ST(0) = résultat de l'addition
 
     pop    ebp
     ret    0

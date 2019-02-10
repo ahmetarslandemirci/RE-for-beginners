@@ -9,7 +9,7 @@ Essayons MSVC 64-bit:
 
 En x86-64, tous les registres ont été étendus à 64-bit et leurs noms ont maintenant le préfixe \TT{R-}.
 Afin d'utiliser la pile moins souvent (en d'autres termes, pour accéder moins souvent à la mémoire externe/au cache),
-il existe un moyen répandu de passer les arguments aux fonctions par les registres (\IT{fastcall}) \myref{fastcall}.
+il existe un moyen répandu de passer les arguments aux fonctions par les registres (\emph{fastcall}) \myref{fastcall}.
 I.e., une partie des arguments de la fonction est passée par les registres, le reste---par la pile.
 En Win64, 4 arguments de fonction sont passés dans les registres \RCX, \RDX, \Reg{8}, \Reg{9}.
 C'est ce que l'on voit ci-dessus: un pointeur sur la chaîne pour \printf est passé non pas par la pile,

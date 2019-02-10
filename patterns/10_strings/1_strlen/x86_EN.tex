@@ -14,9 +14,9 @@ We get two new instructions here: \MOVSX and \TEST.
 \label{MOVSX}
 
 The first one---\MOVSX---takes a byte from an address in memory and stores the value in a 32-bit register. 
-\MOVSX stands for \IT{MOV with Sign-Extend}. 
+\MOVSX stands for \emph{MOV with Sign-Extend}. 
 \MOVSX sets the rest of the bits, from the 8th to the 31th, 
-to 1 if the source byte is \IT{negative} or to 0 if is \IT{positive}.
+to 1 if the source byte is \emph{negative} or to 0 if is \emph{positive}.
 
 And here is why.
 
@@ -27,7 +27,7 @@ from the point of signed \Tint view is 254, but not -2. In signed int, -2 is cod
 So if we have to transfer \TT{0xFE} from a variable of \Tchar type to \Tint, 
 we have to identify its sign and extend it. That is what \MOVSX does.
 
-You can also read about it in \q{\IT{\SignedNumbersSectionName}} section~(\myref{sec:signednumbers}).
+You can also read about it in \q{\emph{\SignedNumbersSectionName}} section~(\myref{sec:signednumbers}).
 
 It's hard to say if the compiler needs to store a \Tchar variable in \EDX, it could just take a 8-bit register part 
 (for example \DL). Apparently, the compiler's \gls{register allocator} works like that.
@@ -48,7 +48,7 @@ Let's try GCC 4.4.1:
 \myindex{x86!\Instructions!MOVZX}
 
 The result is almost the same as in MSVC, but here we see \MOVZX instead of \MOVSX. 
-\MOVZX stands for \IT{MOV with Zero-Extend}. 
+\MOVZX stands for \emph{MOV with Zero-Extend}. 
 This instruction copies a 8-bit or 16-bit value into a 32-bit register and sets the rest of the bits to 0. 
 In fact, this instruction is convenient only because it enable us to replace this instruction pair:\\
 \TT{xor eax, eax / mov al, [...]}.
@@ -63,8 +63,8 @@ Strictly speaking, the compiler is not obliged to emit understandable (to humans
 
 The next new instruction for us is \SETNZ. 
 Here, if \AL doesn't contain zero, \TT{test al, al} 
-sets the \ZF flag to 0, but \SETNZ, if \TT{ZF==0} (\IT{NZ} stands for \IT{not zero}) sets \AL to 1.
-Speaking in natural language, \IT{if \AL is not zero, let's jump to loc\_80483F0}. 
+sets the \ZF flag to 0, but \SETNZ, if \TT{ZF==0} (\emph{NZ} stands for \emph{not zero}) sets \AL to 1.
+Speaking in natural language, \emph{if \AL is not zero, let's jump to loc\_80483F0}. 
 The compiler emits some redundant code, but let's not forget that the optimizations are turned off.
 
 \myparagraph{\Optimizing MSVC}
@@ -94,7 +94,7 @@ Here GCC is almost the same as MSVC, except for the presence of \MOVZX.
 However, here \MOVZX could be replaced with\\
 \TT{mov dl, byte ptr [eax]}.
 
-Perhaps it is simpler for GCC's code generator to \IT{remember} 
+Perhaps it is simpler for GCC's code generator to \emph{remember} 
 the whole 32-bit \EDX register 
 is allocated for a \Tchar variable and it then can be sure that the highest bits has no any noise 
 at any point.
@@ -106,7 +106,7 @@ at any point.
 After that we also see a new instruction---\NOT. This instruction inverts all bits in the operand. \\
 You can say that it is a synonym to the \TT{XOR ECX, 0ffffffffh} instruction. 
 \NOT and the following \ADD calculate the pointer difference and subtract 1, just in a different way. 
-At the start \ECX, where the pointer to \IT{str} is stored, gets inverted and 1 is subtracted from it.
+At the start \ECX, where the pointer to \emph{str} is stored, gets inverted and 1 is subtracted from it.
 
 See also: \q{\SignedNumbersSectionName}~(\myref{sec:signednumbers}).
  

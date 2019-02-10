@@ -105,7 +105,7 @@ In ARM64, there are 8 bits in the \TT{FMOV} instruction for encoding some floati
 
 The algorithm is called \TT{VFPExpandImm()} in \ARMSixFourRefURL.
 \myindex{minifloat}
-This is also called \IT{minifloat}\footnote{\href{http://go.yurichev.com/17139}{wikipedia}}.
+This is also called \emph{minifloat}\footnote{\href{http://go.yurichev.com/17139}{wikipedia}}.
 
 We can try different values: the compiler is able to encode $30.0$ and $31.0$, but it couldn't encode $32.0$,
 as 8 bytes have to be allocated for this number in the IEEE 754 format:

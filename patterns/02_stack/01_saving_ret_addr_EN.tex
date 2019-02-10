@@ -39,32 +39,12 @@ c:\tmp6\ss.cpp(4) : warning C4717: 'f' : recursive on all control paths, functio
 
 \dots but generates the right code anyway:
 
-\begin{lstlisting}[style=customasmx86]
-?f@@YAXXZ PROC			; f
-; File c:\tmp6\ss.cpp
-; Line 2
-	push	ebp
-	mov	ebp, esp
-; Line 3
-	call	?f@@YAXXZ	; f
-; Line 4
-	pop	ebp
-	ret	0
-?f@@YAXXZ ENDP			; f
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{patterns/02_stack/1.asm}
 
 \dots Also if we turn on the compiler optimization (\TT{\Ox} option) the optimized code will not overflow the stack 
-and will work \IT{correctly}\footnote{irony here} instead:
+and will work \emph{correctly}\footnote{irony here} instead:
 
-\begin{lstlisting}[style=customasmx86]
-?f@@YAXXZ PROC			; f
-; File c:\tmp6\ss.cpp
-; Line 2
-$LL3@f:
-; Line 3
-	jmp	SHORT $LL3@f
-?f@@YAXXZ ENDP			; f
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{patterns/02_stack/2.asm}
 
 GCC 4.4.1 generates similar code in both cases without, however,  issuing any warning about the problem.
 
@@ -86,7 +66,7 @@ Often, we see instructions like \INS{PUSH {R4-R7,LR}} along with this instructio
 
 \myindex{ARM!Leaf function}
 Nevertheless, if a function never calls any other function, in \ac{RISC} terminology it is called a
-\IT{\gls{leaf function}}\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}. 
+\emph{\gls{leaf function}}\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}. 
 As a consequence, leaf functions do not save the \ac{LR} register (because they don't modify it).
 If such function is small and uses a small number of registers, it may not use the stack at all.
 Thus, it is possible to call leaf functions without using the stack,

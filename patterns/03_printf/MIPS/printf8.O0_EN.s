@@ -25,13 +25,13 @@ main:
 ; pass 9th argument in stack:
 	li	$3,8			# 0x8
 	sw	$3,32($sp)
-; pass 1st argument in $a0: 
+; pass 1st argument in \$a0: 
 	move	$4,$2
-; pass 2nd argument in $a1:
+; pass 2nd argument in \$a1:
 	li	$5,1			# 0x1
-; pass 3rd argument in $a2:
+; pass 3rd argument in \$a2:
 	li	$6,2			# 0x2
-; pass 4th argument in $a3:
+; pass 4th argument in \$a3:
 	li	$7,3			# 0x3
 ; call printf():
 	lw	$2,%call16(printf)($28)

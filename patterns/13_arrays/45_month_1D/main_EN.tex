@@ -46,7 +46,7 @@ For 1, an element would be a pointer to a string that contains \q{February}, etc
 
 \Optimizing GCC 4.9 can do the job even better
 \footnote{\q{0+} was left in the listing because GCC assembler output is not tidy enough to eliminate it.
-It's \IT{displacement}, and it's zero here.}:
+It's \emph{displacement}, and it's zero here.}:
 
 \begin{lstlisting}[caption=\Optimizing GCC 4.9 x64,style=customasmx86]
 	movsx	rdi, edi
@@ -130,7 +130,7 @@ Month names are came right after.
 
 Our program is tiny, so there isn't much data to pack in the data segment, 
 so it just the month names.
-But it has to be noted that there might be really \IT{anything} that linker has decided to put by chance.
+But it has to be noted that there might be really \emph{anything} that linker has decided to put by chance.
 
 So what if 12 is passed to the function?
 The 13th element will be returned.
@@ -201,10 +201,10 @@ An array of pointers to strings can be accessed like this:
 
 \lstinputlisting[style=customc]{patterns/13_arrays/45_month_1D/month2_EN.c}
 
-\dots since \IT{month[3]} expression has a \IT{const char*} type.
+\dots since \emph{month[3]} expression has a \emph{const char*} type.
 And then, 5th character is taken from that expression by adding 4 bytes to its address.
 
-By the way, arguments list passed to \IT{main()} function has the same data type:
+By the way, arguments list passed to \emph{main()} function has the same data type:
 
 \lstinputlisting[style=customc]{patterns/13_arrays/45_month_1D/argv_EN.c}
 

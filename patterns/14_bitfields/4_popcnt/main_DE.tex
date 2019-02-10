@@ -9,7 +9,7 @@ genannt.
 \lstinputlisting[style=customc]{patterns/14_bitfields/4_popcnt/shifts.c}
 In dieser Schleife wird der Wert von $i$ schrittweise von 0 bis 31 erhöht,
 sodass der Ausdruck $1 \ll i$ von 1 bis \TT{0x80000000} zählt.
-In natürlicher Sprache würden wir diese Operation als \IT{verschiebe 1 um n
+In natürlicher Sprache würden wir diese Operation als \emph{verschiebe 1 um n
 Bits nach links} beschreiben.
 Mit anderen Worten: Der Ausdruck $1 \ll i$ erzeugt alle möglichen Bitpositionen
 in einer 32-Bit-Zahl.
@@ -19,7 +19,7 @@ Das freie Bit auf der rechten Seite wird jeweils gelöscht.
 Hier ist eine Tabelle mit allen Werten von $1 \ll i$ 
 für $i=0 \ldots 31$:
 
-\small
+%\small
 \begin{center}
 \begin{tabular}{ | l | l | l | l | }
 \hline
@@ -94,7 +94,8 @@ $1 \ll 31$ & $2^{31}$ & 2147483648 & 0x80000000 \\
 \hline
 \end{tabular}
 \end{center}
-\normalsize
+%\normalsize
+
 Diese Konstanten (Bitmasken) tauchen im Code oft auf und ein Reverse Engineer
 muss in der Lage sein, sie schnell und sicher zu erkennen.
 
@@ -125,10 +126,10 @@ Zurück zu unserem Beispiel.
 Das Makro \TT{IS\_SET} prüft auf Anwesenheit von Bits in $a$.
 \myindex{x86!\Instructions!AND}
 
-Das Makro \TT{IS\_SET} entspricht dabei dem logischen (\IT{AND})
+Das Makro \TT{IS\_SET} entspricht dabei dem logischen (\emph{AND})
 und gibt 0 zurück, wenn das entsprechende Bit nicht gesetzt ist, oder die
 Bitmaske, wenn das Bit gesetzt ist.
-Der Operator \IT{if()} wird in \CCpp ausgeführt, wenn der boolesche Ausdruck
+Der Operator \emph{if()} wird in \CCpp ausgeführt, wenn der boolesche Ausdruck
 nicht null ist (er könnte sogar 123456 sein), weshalb es meistens richtig
 funktioniert.
 

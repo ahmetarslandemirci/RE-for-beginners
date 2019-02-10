@@ -1,12 +1,12 @@
 my_max:
-; setze $v1 auf 1 ,falls $a1<$a0, ansonsten (falls $a1>$a0) §lösche:§
+; setze \$v1 auf 1 ,falls \$a1<\$a0, ansonsten (falls \$a1>\$a0) lösche:
                 slt     $v1, $a1, $a0
-; springe, falls $v1 ist 0 (oder $a1>$a0):
+; springe, falls \$v1 ist 0 (oder \$a1>\$a0):
                 beqz    $v1, locret_10
 ; dies ist der branch delay slot
-; bereite $a1 in $v0 vor, falls verzweigt wird
+; bereite \$a1 in \$v0 vor, falls verzweigt wird
                 move    $v0, $a1 
-; wird nicht verzweigt, bereite $a0 in $v0 vor:
+; wird nicht verzweigt, bereite \$a0 in \$v0 vor:
                 move    $v0, $a0
 
 locret_10:

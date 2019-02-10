@@ -4,7 +4,7 @@ f12:
 	cmp	w0, 2
 	beq	.L32
 	cbz	w0, .L35
-; §cas par défaut§
+; cas par défaut
 	adrp	x0, .LC15	; "something unknown"
 	add	x0, x0, :lo12:.LC15
 	b	puts

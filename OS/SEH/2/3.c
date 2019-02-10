@@ -36,7 +36,7 @@ int main()
     }
     __except(filter_user_exceptions(GetExceptionCode(), GetExceptionInformation()))
     {
-        // the filter_user_exceptions() function answering to the question 
+        // the filter\_user\_exceptions() function answering to the question 
         // "is this exception belongs to this block?"
         // if yes, do the follow:
         printf("user exception caught\n");

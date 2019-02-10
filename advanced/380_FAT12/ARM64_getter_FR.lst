@@ -3,11 +3,11 @@
    0:           lsr     w2, w0, #1
 ; W2 = W0>>1 = idx>>1
    4:           lsl     w1, w2, #2
-; W1 = W2<<2 = (W0>>1)<<2 = (idx&(~1))<<1
+; \verb|W1 = W2<<2 = (W0>>1)<<2 = (idx&(~1))<<1|
    8:           sub     w1, w1, w2
-; W1 = W1-W2 = (idx&(~1))<<1 - idx>>1 = idx*1.5
-; maintenant tester le bit le plus bas d'idx et sauter s'il est §présent§.
-; (ARM64 a une instruction unique pour ces §opérations§: TBNZ (Test and Branch Not Zero)).
+; \verb|W1 = W1-W2 = (idx&(~1))<<1 - idx>>1 = idx*1.5|
+; maintenant tester le bit le plus bas d'idx et sauter s'il est présent.
+; (ARM64 a une instruction unique pour ces opérations: TBNZ (Test and Branch Not Zero)).
    c:           tbnz    w0, #0, 30 <get_from_array+0x30>
 
 ; idx est pair, continuer:
@@ -22,11 +22,11 @@
 ; W0 = octet de gauche
 ; W1 = octet du milieu
   24:           lsl     w0, w0, #4
-; W0 = W0<<4 = left_byte << 4
+; \verb|W0 = W0<<4 = left_byte << 4|
 ; fusionner les parties:
   28:           orr     w0, w0, w1, lsr #4
-; W0 = W0 | W1>>4 = left_byte << 4 | middle_byte >> 4
-; la valeur dans W0 est §renvoyée§
+; \verb!W0 = W0 | W1>>4 = left_byte << 4 | middle_byte >> 4!
+; la valeur dans W0 est renvoyée
   2c:           ret
 
 ; idx est impair, continuer:
@@ -43,10 +43,10 @@
 ; W0 = octet du milieu
 ; W1 = octet de droite
   48:           ubfiz   w0, w0, #8, #4
-; W0 = middle_byte<<8
+; \verb|W0 = middle_byte<<8|
 ; maintenant fusionner les parties:
   4c:           orr     w0, w0, w1
-; W0 = W0 | W1 = middle_byte<<8 | right_byte
-; la valeur dans W0 est §renvoyée§
+; \verb!W0 = W0 | W1 = middle_byte<<8 | right_byte!
+; la valeur dans W0 est renvoyée
   50:           ret
 

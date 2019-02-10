@@ -42,7 +42,7 @@ That's what was done by author for this example.}:
 
 The function is recursive \footnote{i.e., it calls itself}, hence stack looks like a \q{sandwich}.
 
-We see that the \IT{limit} argument is always the same (\TT{0x14} or 20), but the $a$ and $b$ arguments are different for each call.
+We see that the \emph{limit} argument is always the same (\TT{0x14} or 20), but the $a$ and $b$ arguments are different for each call.
 
 There are also the \ac{RA}-s and the saved \EBP values.
 \olly is able to determine the EBP-based frames, so it draws these brackets.
@@ -70,11 +70,11 @@ exception \TT{0xC00000FD} (stack overflow.)
 
 \subsection{Example \#2}
 
-My function has some redundancy, so let's add a new local variable \IT{next} and replace all \q{a+b} with it:
+My function has some redundancy, so let's add a new local variable \emph{next} and replace all \q{a+b} with it:
 
 \lstinputlisting[style=customc]{\CURPATH/fib2.c}
 
-This is the output of non-optimizing MSVC, so the \IT{next} variable is actually allocated 
+This is the output of non-optimizing MSVC, so the \emph{next} variable is actually allocated 
 in the local stack:
 
 \lstinputlisting[caption=MSVC 2010 x86,style=customasmx86]{\CURPATH/fib2.asm}
@@ -89,7 +89,7 @@ Let's load it in \olly once again:
 \label{fig:fib_olly2}
 \end{figure}
 
-Now the \IT{next} variable is present in each frame.
+Now the \emph{next} variable is present in each frame.
 
 \clearpage
 
@@ -98,7 +98,7 @@ Let's investigate the stack more closely. The author has again added his comment
 \lstinputlisting{\CURPATH/stack2_EN.txt}
 
 % FIXME what a word! hmmm...
-Here we see it: the \IT{next} value is calculated in each function incarnation, then passed as
+Here we see it: the \emph{next} value is calculated in each function incarnation, then passed as
 argument $b$ to the next incarnation.
 
 \subsection{Summary}

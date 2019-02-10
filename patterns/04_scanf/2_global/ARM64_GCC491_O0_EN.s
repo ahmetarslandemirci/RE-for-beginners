@@ -14,7 +14,7 @@ f5:
 	adrp	x0, .LC0
 	add	x0, x0, :lo12:.LC0
 	bl	puts
-; load pointer to the "%d" string:
+; load pointer to the "\%d" string:
 	adrp	x0, .LC1
 	add	x0, x0, :lo12:.LC1
 ; form address of x global variable:
@@ -26,7 +26,7 @@ f5:
 	add	x0, x0, :lo12:x
 ; load value from memory at this address:
 	ldr	w1, [x0]
-; load pointer to the "You entered %d...\n" string:
+; load pointer to the \verb|"You entered %d...\n" string:|
 	adrp	x0, .LC2
 	add	x0, x0, :lo12:.LC2
 	bl	printf

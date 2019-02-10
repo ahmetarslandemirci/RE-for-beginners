@@ -26,7 +26,7 @@ WinMain         proc near
                 push    ds
                 mov     ax, offset aCaption ; 0x10. "caption"
                 push    ax
-                mov     ax, 3           ; MB_YESNOCANCEL
+                mov     ax, 3           ; MB\_YESNOCANCEL
                 push    ax
                 call    MESSAGEBOX
                 xor     ax, ax          ; return 0
@@ -42,7 +42,7 @@ dseg02:0018 aHelloWorld     db 'hello, world',0
 \RU{Пара важных моментов: соглашение о передаче аргументов здесь \TT{PASCAL}: оно указывает что самый
 первый аргумент должен передаваться первым}
 \EN{Couple important things here: the \TT{PASCAL} calling convention dictates passing the first argument first} 
-(\TT{MB\_YESNOCANCEL}), \RU{а самый последний аргумент --- последним}\EN{and the last argument\EMDASH{}last} (NULL).
+(\TT{MB\_YESNOCANCEL}), \RU{а самый последний аргумент --- последним}\EN{and the last argument---last} (NULL).
 \RU{Это соглашение также указывает вызываемой функции восстановить}
 \EN{This convention also tells the \gls{callee} to restore the} \gls{stack pointer}:
 \RU{поэтому инструкция}\EN{hence the} \TT{RETN} \RU{имеет аргумент}\EN{instruction has} \TT{0Ah} 

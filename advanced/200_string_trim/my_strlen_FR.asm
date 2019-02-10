@@ -1,5 +1,5 @@
-; RCX = pointeur sur la §chaîne en entrée§
-; RAX = longueur actuelle de la §chaîne§
+; RCX = pointeur sur la chaîne en entrée
+; RAX = longueur actuelle de la chaîne
         xor     rax, rax
 label:
         cmp     byte ptr [rcx+rax], 0
@@ -7,4 +7,4 @@ label:
         inc     rax
         jmp     label
 exit:
-; RAX = longueur de la §chaîne§
+; RAX = longueur de la chaîne

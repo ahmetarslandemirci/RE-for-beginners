@@ -13,7 +13,7 @@ et \RegD{1} (qui sont le premier et le second argument de la fonction) et met le
 flags \ac{APSR} (N, Z, C, V).
 
 \myindex{ARM!\Instructions!FCSEL}
-\INS{FCSEL} (\IT{Floating Conditional Select} (sélection de flottant conditionnelle)
+\INS{FCSEL} (\emph{Floating Conditional Select} (sélection de flottant conditionnelle)
 copie la valeur de \RegD{0} ou \RegD{1} dans \RegD{0} suivant le résultat de la comparaison
 (\GTT{GT}---Greater Than), et de nouveau, il utilise les flags dans le registre \ac{APSR}
 au lieu de \ac{FPSCR}.
@@ -31,7 +31,7 @@ Si la condition n'est pas vraie, la valeur de \RegD{1} est copiée dans \RegD{0}
 GCC sans optimisation est plus verbeux.
 
 Tout d'abord, la fonction sauve la valeur de ses arguments en entrée dans la pile
-locale (\IT{Register Save Area}, espace de sauvegarde des registres).
+locale (\emph{Register Save Area}, espace de sauvegarde des registres).
 Ensuite, le code recharge ces valeurs dans les registres \RegX{0}/\RegX{1} et finalement
 les copie dans \RegD{0}/\RegD{1} afin de les comparer en utilisant \INS{FCMPE}.
 Beaucoup de code redondant, mais c'est ainsi que fonctionne les compilateurs sans
@@ -39,7 +39,7 @@ optimisation.
 \INS{FCMPE} compare les valeurs et met les flags du registre \ac{APSR}.
 À ce moment, le compilateur ne pense pas encore à l'instruction plus commode \INS{FCSEL},
 donc il procède en utilisant de vieilles méthodes:
-en utilisant l'instruction \INS{BLE} (\IT{Branch if Less than or Equal} branchement si
+en utilisant l'instruction \INS{BLE} (\emph{Branch if Less than or Equal} branchement si
 inférieur ou égal).
 Dans le premier cas ($a>b$), la valeur de $a$ est chargée dans \RegX{0}.
 Dans les autres cas ($a<=b$), la valeur de $b$ est chargée dans \RegX{0}.

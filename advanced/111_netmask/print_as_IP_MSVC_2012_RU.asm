@@ -28,7 +28,7 @@ _print_as_IP PROC
 	and	eax, 255 ; возможно, избыточная инструкция
 	; EAX=000000dd
 	push	eax
-	push	OFFSET $SG2973 ; '%d.%d.%d.%d'
+	push	OFFSET $SG2973 ; \verb|'%d.%d.%d.%d'|
 	call	DWORD PTR __imp__printf
 	add	esp, 20
 	pop	ebp

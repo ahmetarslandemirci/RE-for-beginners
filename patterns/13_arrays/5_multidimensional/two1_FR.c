@@ -11,7 +11,7 @@ int main()
 		for (y=0; y<4; y++)
 			a[x][y]=0;
 
-	// remplir la §2ème§ ligne avec 0..3
+	// remplir la 2ème ligne avec 0..3
 	for (y=0; y<4; y++)
 		a[1][y]=y;
 };

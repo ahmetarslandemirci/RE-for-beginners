@@ -8,7 +8,7 @@
 
 \subsubsection{\RU{Регистры общего пользования}\EN{General purpose registers} \ac{GPR}}
 
-\small
+%\small
 \begin{center}
 \begin{tabular}{ | l | l | l | }
 \hline
@@ -49,7 +49,7 @@ n/a             & LO              & \RU{младшие 32 бита резуль�
 \hline
 \end{tabular}
 \end{center}
-\normalsize
+%\normalsize
 
 \subsubsection{\RU{Регистры для работы с числами с плавающей точкой}\EN{Floating-point registers}}
 \label{MIPS_FPU_registers}
@@ -76,12 +76,12 @@ n/a             & LO              & \RU{младшие 32 бита резуль�
 \end{tabular}
 \end{center}
 
-\AsteriskOne{}\EMDASH{}\Gls{callee} \RU{должен сохранять}\EN{must preserve the value}.\\
-\AsteriskTwo{}\EMDASH{}\Gls{callee} \RU{должен сохранять}\EN{must preserve the value} (\RU{кроме \ac{PIC}-кода}
+\AsteriskOne{} --- \Gls{callee} \RU{должен сохранять}\EN{must preserve the value}.\\
+\AsteriskTwo{} --- \Gls{callee} \RU{должен сохранять}\EN{must preserve the value} (\RU{кроме \ac{PIC}-кода}
 \EN{except in \ac{PIC} code}).\\
 \myindex{MIPS!\Instructions!MFLO}
 \myindex{MIPS!\Instructions!MFHI}
-\AsteriskThree{}\EMDASH{}\RU{доступны используя инструкции}\EN{accessible using the} \TT{MFHI} \AndENRU \TT{MFLO}\EN{ instructions}.\\
+\AsteriskThree{} --- \RU{доступны используя инструкции}\EN{accessible using the} \TT{MFHI} \AndENRU \TT{MFLO}\EN{ instructions}.\\
 
 \subsection{\Instructions}
 

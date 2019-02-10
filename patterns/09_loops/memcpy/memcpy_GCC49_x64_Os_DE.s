@@ -3,7 +3,7 @@ my_memcpy:
 ; RSI = Quelladresse
 ; RDX = Blockgröße
 
-; §initialisiere Zähler (i) mit 0§
+; initialisiere Zähler (i) mit 0
 	xor	eax, eax
 .L2:
 ; alles kopiert? dann verlassen:

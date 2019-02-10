@@ -34,17 +34,17 @@ Spróbujmy spatchować plik wykonywalny dla Linux x64 korzystając z \radare{}:
 \lstinputlisting[caption=Sesja w \radare{}]{patterns/01_helloworld/radare.lst}
 
 Co się tu dzieje: szukam linii \q{hello} korzystając z komendy \TT{/}, 
-zatem ustawiam \IT{kursor} (\IT{seek} w terminach \radare{}) pod ten adres.
+zatem ustawiam \emph{kursor} (\emph{seek} w terminach \radare{}) pod ten adres.
 Następnie chcę się upewnić, że jest to rzeczywiście potrzebne miejsce: \TT{px} wylistowuje bajty pod tym adresem.
-\TT{oo+} przełącza \radare{} w tryb \IT{odczytu-zapisu}.
-\TT{w} zapisuje ASCII-linię w miejscu kursora (\IT{seek}).
+\TT{oo+} przełącza \radare{} w tryb \emph{odczytu-zapisu}.
+\TT{w} zapisuje ASCII-linię w miejscu kursora (\emph{seek}).
 Warto zauważyć, iż \TT{\textbackslash{}00} na końcu jest bajtem zerowym.
 \TT{q} kończy pracę.
 
 \subsubsection{Lokalizacja oprogramowania za czasów MS-DOS}
 
 Sposób przedstawiony wyżej był rozpowszechniony przy tłumaczeniu oprogramowania pod MS-DOS na język rosyjski w latach 80 i 90.
-Rosyjskie słowa i zdania zwykle dą trochę dłuższe od odpowiedników w j. angielskim, dlatego \IT{lokalne} oprogramowanie zawierało 
+Rosyjskie słowa i zdania zwykle dą trochę dłuższe od odpowiedników w j. angielskim, dlatego \emph{lokalne} oprogramowanie zawierało 
 sporo dziwnych akronimów i ciężkich w zrozumieniu skrótów.
 
 Prawdopodobnie, sytuacja wyglądała podobnie z tłumaczeniem na inne języki.

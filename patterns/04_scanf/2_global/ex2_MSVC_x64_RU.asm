@@ -13,10 +13,10 @@ $LN3:
 	lea	rcx, OFFSET FLAT:$SG2924 ; 'Enter X:'
 	call	printf
 	lea	rdx, OFFSET FLAT:x
-	lea	rcx, OFFSET FLAT:$SG2925 ; '%d'
+	lea	rcx, OFFSET FLAT:$SG2925 ; '\%d'
 	call	scanf
 	mov	edx, DWORD PTR x
-	lea	rcx, OFFSET FLAT:$SG2926 ; 'You entered %d...'
+	lea	rcx, OFFSET FLAT:$SG2926 ; 'You entered \%d...'
 	call	printf
 	
 	; возврат 0

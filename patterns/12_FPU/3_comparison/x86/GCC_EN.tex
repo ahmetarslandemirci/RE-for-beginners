@@ -8,11 +8,11 @@
 \q{not-a-numbers} differently.
 
 \myindex{Non-a-numbers (NaNs)}
-A bit about \IT{not-a-numbers}.
+A bit about \emph{not-a-numbers}.
 
 \newcommand{\NANFN}{\footnote{\href{http://go.yurichev.com/17130}{wikipedia.org/wiki/NaN}}}
 
-The FPU is able to deal with special values which are \IT{not-a-numbers} or \gls{NaN}s\NANFN. 
+The FPU is able to deal with special values which are \emph{not-a-numbers} or \gls{NaN}s\NANFN. 
 These are infinity, result of division by 0, etc.
 Not-a-numbers can be \q{quiet} and \q{signaling}. It is possible to continue to work with \q{quiet} NaNs, 
 but if one tries to do any operation with \q{signaling} NaNs, an exception is to be raised.
@@ -26,7 +26,7 @@ but if one tries to do any operation with \q{signaling} NaNs, an exception is to
 \myindex{x86!\Instructions!SAHF}
 \label{SAHF}
 
-The next instruction is \SAHF (\IT{Store AH into Flags})~---this is a rare 
+The next instruction is \SAHF (\emph{Store AH into Flags})~---this is a rare 
 instruction in code not related to the FPU. 
 8 bits from AH are moved into the lower 8 bits of the CPU flags in the following order:
 
@@ -66,7 +66,7 @@ after three \\
 
 Depending on the CPU flags and conditions, \SETNBE stores 1 or 0 to AL. 
 It is almost the counterpart of \JNBE, with the exception that \SETcc 
-\footnote{\IT{cc} is \IT{condition code}} stores 1 or 0 in \AL, 
+\footnote{\emph{cc} is \emph{condition code}} stores 1 or 0 in \AL, 
 but \Jcc does actually jump or not. 
 \SETNBE stores 1 only if \GTT{CF=0} and \GTT{ZF=0}. 
 If it is not true, 0 is to be stored into \AL.

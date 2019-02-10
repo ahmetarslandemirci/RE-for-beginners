@@ -57,7 +57,7 @@
 
 Во-первых, популярны функции, выводящие информацию в отладочный лог, например:
 
-\lstinputlisting[caption=Код на \CCpp,style=customc]{patterns/00_empty/dbg_print.c}
+\lstinputlisting[caption=Код на \CCpp,style=customc]{patterns/00_empty/dbg_print_RU.c}
 
 В не-отладочной сборке (например, ``release''), \TT{\_DEBUG} не определен, так что функция \TT{dbg\_print()},
 не смотря на то, что будет продолжать вызываться в процессе исполнения, будет пустой.
@@ -66,7 +66,7 @@
 второй --- демонстрационной.
 Демонстрационная сборка может не иметь каких-то важных функций, например:
 
-\lstinputlisting[caption=Код на \CCpp,style=customc]{patterns/00_empty/demo.c}
+\lstinputlisting[caption=Код на \CCpp,style=customc]{patterns/00_empty/demo_RU.c}
 
 Функция \TT{save\_file()} может быть вызвана, когда пользователь кликает меню \TT{File->Save}.
 Демо-версия может поставляться с отключенным пунктом меню, но даже если кракер разрешит этот пункт,

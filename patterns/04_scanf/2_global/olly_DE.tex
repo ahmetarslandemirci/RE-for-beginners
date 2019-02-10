@@ -20,7 +20,7 @@ Screenshot).
 
 Warum ist das erste Byte \TT{7B}?
 Logisch gedacht müsste dort \TT{00 00 00 7B} sein. 
-Der Grund dafür ist die sogenannte \glslink{endianness}{Endianess} und x86 verwendet \IT{litte Endian}. 
+Der Grund dafür ist die sogenannte \glslink{endianness}{Endianess} und x86 verwendet \emph{litte Endian}. 
 Dies bedeutet, dass das niederwertigste Byte zuerst und das höchstwertigste zuletzt geschrieben werden.
 Für mehr Informationen dazu siehe: \myref{sec:endianness}.
 Zurück zu Beispiel: der 32-Bit-Wert wird von dieser Speicheradresse nach \EAX geladen und an \printf übergeben. 

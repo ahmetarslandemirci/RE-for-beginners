@@ -14,7 +14,7 @@ L'instruction \INS{ADD R4, R4, \#1} ajoute 1 à la variable $i$ à chaque itéra
 \myindex{ARM!\Instructions!CMP}
 \myindex{ARM!\Instructions!BLT}
 \INS{CMP R4, \#0xA} compare $i$ avec \TT{0xA} (10). 
-L'instruction suivante, \INS{BLT} (\IT{Branch Less Than}) saute si $i$ est inférieur
+L'instruction suivante, \INS{BLT} (\emph{Branch Less Than}) saute si $i$ est inférieur
 à 10.
 Autrement, 0 est écrit dans \Reg{0} (puisque notre fonction renvoie 0) et l'exécution
 de la fonction se termine.
@@ -41,7 +41,7 @@ void printing_function(int i)
 
 \myindex{Unrolled loop}
 \myindex{Inline code}
-Donc, non seulement LLVM \IT{déroule} la boucle, mais aussi \IT{inline} ma fonction
+Donc, non seulement LLVM \emph{déroule} la boucle, mais aussi \emph{inline} ma fonction
 très simple et insère son corps 8 fois au lieu de l'appeler.
 
 Ceci est possible lorsque la fonction est très simple (comme la mienne) et lorsqu'elle
@@ -53,4 +53,4 @@ n'est pas trop appelée (comme ici).
 
 \myparagraph{ARM64: GCC 4.9.1 \NonOptimizing}
 
-\lstinputlisting[caption=GCC 4.9.1 -fno-inline \NonOptimizing,style=customasmARM]{patterns/09_loops/simple/ARM/ARM64_GCC491_O3_FR.s}
+\lstinputlisting[caption=GCC 4.9.1 -fno-inline \NonOptimizing,style=customasmARM]{patterns/09_loops/simple/ARM/ARM64_GCC491_O0_FR.s}

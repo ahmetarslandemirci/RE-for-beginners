@@ -29,7 +29,7 @@ _f_div	PROC
 	push	edx
 	mov	eax, DWORD PTR _a$[ebp]
 	push	eax
-	call	__aulldiv ; division long long non §signée§
+	call	__aulldiv ; division long long non signée
 	pop	ebp
 	ret	0
 _f_div	ENDP
@@ -47,7 +47,7 @@ _f_rem	PROC
 	push	edx
 	mov	eax, DWORD PTR _a$[ebp]
 	push	eax
-	call	__aullrem ; reste long long non §signé§
+	call	__aullrem ; reste long long non signé
 	pop	ebp
 	ret	0
 _f_rem	ENDP

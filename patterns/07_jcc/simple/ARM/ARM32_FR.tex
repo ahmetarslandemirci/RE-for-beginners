@@ -16,12 +16,12 @@ E.g, ceci est souvent utilisé lorsque l'on compare les nombres
 \myindex{ARM!\Instructions!ADDAL}
 
 Par exemple, l'instruction \ADD est en fait appelée \TT{ADDAL} en interne, où \TT{AL}
-signifie \IT{Always}, i.e., toujours exécuter.
-Les prédicats sont encodés dans les 4 bits du haut des instructions ARM 32-bit. (\IT{condition field}).
+signifie \emph{Always}, i.e., toujours exécuter.
+Les prédicats sont encodés dans les 4 bits du haut des instructions ARM 32-bit. (\emph{condition field}).
 \myindex{ARM!\Instructions!B}
 L'instruction de saut inconditionnel \TT{B} est en fait conditionnelle et encodée
 comme toutes les autres instructions de saut conditionnel, mais a \TT{AL} dans le
-\IT{champ de condition}, et \IT{s'exécute toujours} (ALways), ignorants les flags.
+\emph{champ de condition}, et \emph{s'exécute toujours} (ALways), ignorants les flags.
 
 \myindex{ARM!\Instructions!ADR}
 \myindex{ARM!\Instructions!ADRcc}
@@ -29,13 +29,13 @@ comme toutes les autres instructions de saut conditionnel, mais a \TT{AL} dans l
 
 L'instruction \TT{ADRGT} fonctionne comme \TT{ADR} mais ne s'exécute que dans le
 cas où l'instruction \CMP précédente a trouvé un des nombres plus grand que l'autre,
-en comparant les deux (\IT{Greater Than}).
+en comparant les deux (\emph{Greater Than}).
 
 \myindex{ARM!\Instructions!BL}
 \myindex{ARM!\Instructions!BLcc}
 
 L'instruction \TT{BLGT} se comporte exactement comme \TT{BL} et n'est effectuée
-que si le résultat de la comparaison était \IT{Greater Than} (plus grand).
+que si le résultat de la comparaison était \emph{Greater Than} (plus grand).
 \TT{ADRGT} écrit un pointeur sur la chaîne \TT{a>b\textbackslash{}n} dans \Reg{0}
 et \TT{BLGT} appelle \printf.
 Donc, les instructions suffixées par \TT{-GT} ne sont exécutées que si la valeur
@@ -55,7 +55,7 @@ modifiée les flags).
 
 Ensuite nous voyons \TT{LDMGEFD}, cette instruction fonctionne comme \TT{LDMFD}\footnote{\ac{LDMFD}},
 mais n'est exécutée que si l'une des valeurs est supérieure ou égale à l'autre
-(\IT{Greater or Equal}).\\
+(\emph{Greater or Equal}).\\
 L'instruction \TT{LDMGEFD SP!, \{R4-R6,PC\}} se comporte comme une fonction épilogue,
 mais elle ne sera exécutée que si $a>=b$, et seulement lorsque l'exécution de la
 fonction se terminera.
@@ -76,7 +76,7 @@ d'un appel avec retour dans <<\PrintfSeveralArgumentsSectionName>> section~(\myr
 \myindex{ARM!\Instructions!BLcc}
 \myindex{ARM!\Instructions!LDMccFD}
 \TT{f\_unsigned} est très similaire, à part les instructions \TT{ADRHI}, \TT{BLHI},
-et \TT{LDMCSFD} utilisées ici, ces prédicats (\IT{HI = Unsigned higher, CS = Carry
+et \TT{LDMCSFD} utilisées ici, ces prédicats (\emph{HI = Unsigned higher, CS = Carry
 Set (greater than or equal)}) sont analogues à ceux examinés avant, mais pour des
 valeurs non signées.
 
@@ -108,13 +108,13 @@ en général mis par \CMP.
 \myindex{ARM!\ThumbMode}
 
 En mode Thumb, seules les instructions \TT{B} peuvent être complétées par un
-\IT{condition codes}, (code de condition) donc le code Thumb paraît plus ordinaire.
+\emph{condition codes}, (code de condition) donc le code Thumb paraît plus ordinaire.
 
-\TT{BLE} est un saut conditionnel normal \IT{Less than or Equal} (inférieur ou égal),
-\TT{BNE}---\IT{Not Equal} (non égal),
-\TT{BGE}---\IT{Greater than or Equal} (supérieur ou égal).
+\TT{BLE} est un saut conditionnel normal \emph{Less than or Equal} (inférieur ou égal),
+\TT{BNE}---\emph{Not Equal} (non égal),
+\TT{BGE}---\emph{Greater than or Equal} (supérieur ou égal).
 
 \TT{f\_unsigned} est similaire, seules d'autres instructions sont utilisées
 pour travailler avec des valeurs non-signées: \TT{BLS}
-(\IT{Unsigned lower or same} non signée, inférieur ou égal) et \TT{BCS} (\IT{Carry
+(\emph{Unsigned lower or same} non signée, inférieur ou égal) et \TT{BCS} (\emph{Carry
 Set (Greater than or equal)} supérieur ou égal).

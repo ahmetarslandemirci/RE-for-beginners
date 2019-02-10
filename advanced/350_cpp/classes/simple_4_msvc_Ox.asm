@@ -1,5 +1,5 @@
 ??0c@@QAE@XZ PROC ; c::c, COMDAT
-; _this$ = ecx
+; \_this\$ = ecx
     mov  eax, ecx
     mov  DWORD PTR [eax], 667
     mov  DWORD PTR [eax+4], 999
@@ -9,7 +9,7 @@
 _a$ = 8  ; size = 4
 _b$ = 12 ; size = 4
 ??0c@@QAE@HH@Z PROC ; c::c, COMDAT
-; _this$ = ecx
+; \_this\$ = ecx
     mov  edx, DWORD PTR _b$[esp-4]
     mov  eax, ecx
     mov  ecx, DWORD PTR _a$[esp-4]
@@ -19,7 +19,7 @@ _b$ = 12 ; size = 4
 ??0c@@QAE@HH@Z ENDP ; c::c
 
 ?dump@c@@QAEXXZ PROC ; c::dump, COMDAT
-; _this$ = ecx
+; \_this\$ = ecx
     mov  eax, DWORD PTR [ecx+4]
     mov  ecx, DWORD PTR [ecx]
     push eax

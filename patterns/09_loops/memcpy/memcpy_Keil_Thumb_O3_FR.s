@@ -4,9 +4,9 @@ my_memcpy PROC
 ; R2 = taille de bloc
 
         PUSH     {r4,lr}
-; initialiser le compteur (i) §à§ 0
+; initialiser le compteur (i) à 0
         MOVS     r3,#0
-; la condition est §testée à§ la fin de la fonction, donc y sauter:
+; la condition est testée à la fin de la fonction, donc y sauter:
         B        |L0.12|
 |L0.6|
 ; charger l'octet en R1+i:
@@ -18,7 +18,7 @@ my_memcpy PROC
 |L0.12|
 ; i<taille?
         CMP      r3,r2
-; sauter au §début§ de la boucle si c'est le cas:
+; sauter au début de la boucle si c'est le cas:
         BCC      |L0.6|
         POP      {r4,pc}
         ENDP

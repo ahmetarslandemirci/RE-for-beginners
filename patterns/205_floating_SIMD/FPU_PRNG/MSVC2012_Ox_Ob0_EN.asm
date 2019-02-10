@@ -8,7 +8,7 @@ _tmp$ = -4
 ; EAX=pseudorandom value
 	and	eax, 8388607	; 007fffffH
 	or	eax, 1065353216	; 3f800000H
-; EAX=pseudorandom value & 0x007fffff | 0x3f800000
+; EAX=pseudorandom value \& 0x007fffff | 0x3f800000
 ; store it into local stack:
 	mov	DWORD PTR _tmp$[esp+4], eax
 ; reload it as float point number:

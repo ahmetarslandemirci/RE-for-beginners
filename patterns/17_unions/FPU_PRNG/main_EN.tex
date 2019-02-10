@@ -29,10 +29,10 @@ A very simple linear congruential random numbers generator is used in my
 example\footnote{the idea was taken from: \URLXOR}, it produces 32-bit numbers. 
 The \ac{PRNG} is initialized with the current time in UNIX timestamp format.
 
-Here we represent the \Tfloat type as an \IT{union}---it is the \CCpp construction that enables us
+Here we represent the \Tfloat type as an \emph{union}---it is the \CCpp construction that enables us
 to interpret a piece of memory as different types.
 In our case, we are able to create a variable
-of type \IT{union} and then access to it as it is \Tfloat or as it is \IT{uint32\_t}. 
+of type \emph{union} and then access to it as it is \Tfloat or as it is \emph{uint32\_t}. 
 It can be said, it is just a hack. A dirty one.
 
 % WTF?
@@ -50,12 +50,15 @@ Function names are so strange here because this example was compiled as C++ and 
 we will talk about it later: \myref{namemangling}.
 If we compile this in MSVC 2012, it uses the SIMD instructions for the FPU, read more about it here: \myref{FPU_PRNG_SIMD}.
 
+\iffalse
+A BUG HERE
 \subsubsection{MIPS}
 
 \lstinputlisting[caption=\Optimizing GCC 4.4.5,style=customasmMIPS]{patterns/17_unions/FPU_PRNG/MIPS_O3_IDA_EN.lst}
 
 There is also an useless \INS{LUI} instruction added for some weird reason.
 We considered this artifact earlier: \myref{MIPS_FPU_LUI}.
+\fi
 
 \subsubsection{ARM (\ARMMode)}
 

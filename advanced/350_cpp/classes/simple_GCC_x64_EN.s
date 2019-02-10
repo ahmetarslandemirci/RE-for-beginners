@@ -18,5 +18,5 @@ _ZN1c4dumpEv:
     mov  edx, DWORD PTR [rdi+4]
     mov  esi, DWORD PTR [rdi]
     xor  eax, eax
-    mov  edi, OFFSET FLAT:.LC0 ; "%d; %d\n"
+    mov  edi, OFFSET FLAT:.LC0 ; \verb|"%d; %d\n"|
     jmp  printf

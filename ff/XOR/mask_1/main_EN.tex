@@ -2,7 +2,7 @@
 \subsection{Simple encryption using XOR mask}
 \label{XOR_mask_1}
 
-I've found an old interactive fiction game while diving deep into \IT{if-archive}\footnote{\url{http://www.ifarchive.org/}}:
+I've found an old interactive fiction game while diving deep into \emph{if-archive}\footnote{\url{http://www.ifarchive.org/}}:
 
 \begin{lstlisting}
 The New Castle v3.5 - Text/Adventure Game
@@ -16,7 +16,7 @@ Software Customization [ASP] Version 3.5 Feb. 2000
 
 It's downloadable here: \url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/ff/XOR/mask_1/files/newcastle.tgz}.
 
-There is a file inside (named \IT{castle.dbf}) which is clearly encrypted, but not by a real crypto algorithm, nor it's compressed, this is something rather simpler.
+There is a file inside (named \emph{castle.dbf}) which is clearly encrypted, but not by a real crypto algorithm, nor it's compressed, this is something rather simpler.
 I wouldn't even measure entropy level (\myref{entropy}) of the file, because I'm sure it's low.
 Here is how it looks like in Midnight Commander:
 
@@ -38,7 +38,7 @@ of zero bytes,
 which, in turn, are present in many executable files as well as in binary data files.
 
 \myindex{UNIX!xxd}
-Here I'll dump the file's beginning using \IT{xxd} UNIX utility:
+Here I'll dump the file's beginning using \emph{xxd} UNIX utility:
 
 \lstinputlisting{ff/XOR/mask_1/xxd_result.txt}
 
@@ -49,9 +49,9 @@ The size of the file is 1658961, and it can be divided evenly by 81 (and there a
 
 Now I'll use Mathematica to analyze, are there repeating 81-byte blocks in the file?
 I'll split input file by 81-byte blocks and then I'll use 
-\IT{Tally[]}\footnote{\url{https://reference.wolfram.com/language/ref/Tally.html}}
+\emph{Tally[]}\footnote{\url{https://reference.wolfram.com/language/ref/Tally.html}}
 function which just counts, how many times some item has been occurred in the input list.
-Tally's output is not sorted, so I also add \IT{Sort[]} function to sort it by number of occurrences in descending order.
+Tally's output is not sorted, so I also add \emph{Sort[]} function to sort it by number of occurrences in descending order.
 
 \begin{lstlisting}[style=custommath]
 input = BinaryReadList["/home/dennis/.../castle.dbf"];
@@ -334,7 +334,7 @@ hence, they are differ only at the second byte.
 
 That's all! Now we can write an utility to encrypt the file back, and maybe modify it before.
 
-Mathematica notebook file is downloadable here:
+Mathematica notebook file is downloadable here:\\
 \url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/ff/XOR/mask_1/files/XOR_mask_1.nb}.
 
 Summary: XOR encryption like that is not robust at all. It has been intended by game's developer(s), probably, just to prevent gamer(s) to peek into internals of game, nothing else more serious.

@@ -7,18 +7,18 @@ Die Funktions \TT{f\_signed()} sieht folgendermaßen aus:
 \lstinputlisting[caption=\NonOptimizing MSVC 2010,style=customasmx86]{patterns/07_jcc/simple/signed_MSVC.asm}
 
 \myindex{x86!\Instructions!JLE}
-Der erste Befehl, \JLE steht für \IT{Jump if Less or Equal}.
+Der erste Befehl, \JLE steht für \emph{Jump if Less or Equal}.
 Mit anderen Worten, wenn der zweite Operand größer gleich dem ersten ist, wird der Control Flow an die angegebene
 Adresse bzw. das angegebene Label übergeben.
 Wenn die Bedingung falsch ist, weil der zweite Operand kleiner ist als der erste, wird der Control Flow nicht verändert
 und das erste \printf wird ausgeführt.
 
 Tmyindex{x86!\Instructions!JNE}
-Der zweite Check ist \JNE: \IT{Jump if Not Equal}.
+Der zweite Check ist \JNE: \emph{Jump if Not Equal}.
 Der Control Flow wird nicht verändert, wenn die Operanden gleich sind.
 
 \myindex{x86!\Instructions!JGE}
-Der dritte Check ist \JGE: \IT{Jump if Greater or Equal}---springe, falls der erste Operand größer gleich dem zweiten
+Der dritte Check ist \JGE: \emph{Jump if Greater or Equal}---springe, falls der erste Operand größer gleich dem zweiten
 ist.
 Wenn also alle drei bedingten Sprünge ausgeführt werden, wird also kein Aufruf von \printf ausgeführt.
 Dies ist ohne manuellen Eingriff unmöglich.
@@ -31,8 +31,8 @@ anstelle von \JLE und \JGE wie folgt verwendet werden:
 \myindex{x86!\Instructions!JBE}
 \myindex{x86!\Instructions!JAE}
 Wie bereits erwähnt unterscheiden sich die Verzweigungsbefehle:
-\JBE---\IT{Jump if Below or Equal} und \JAE---\IT{Jump if Above or Equal}.
-Diese Befehle (\JA/\JAE/\JB/\JBE) unterscheiden sich von \JG/\JGE/\JL/\JLE dadurch, dass sie mit vorzeichenlosen Zahlen
+\JBE---\emph{Jump if Below or Equal} und \JAE---\emph{Jump if Above or Equal}.
+Diese Befehle (\INS{JA}/\JAE/\JB/\JBE) unterscheiden sich von \JG/\JGE/\JL/\JLE dadurch, dass sie mit vorzeichenlosen Zahlen
 arbeiten.
 
 \myindex{x86!\Instructions!JA}
@@ -41,7 +41,7 @@ arbeiten.
 \myindex{x86!\Instructions!JL}
 \myindex{Signed numbers}
 Siehe hierzu auch den Abschnitt über Darstellung vorzeichenbehafteter Zahlen~(\myref{sec:signednumbers}).
-Das ist der Grund warum wir, wenn wir \JG/\JL anstelle von \JA/\JB und umgekehrt finden, fast mit Gewissheit sagen
+Das ist der Grund warum wir, wenn wir \JG/\JL anstelle von \INS{JA}/\JB und umgekehrt finden, fast mit Gewissheit sagen
 können, dass die Variablen vorzeichenbehaftet bzw. vorzeichenlos sind.
 Hier befindet sich auch die Funktion \main, welche für uns nichts Neues bereithält:
 

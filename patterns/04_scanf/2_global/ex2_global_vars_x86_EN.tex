@@ -23,10 +23,10 @@ _x	DD	0aH
 
 Here we see a value \TT{0xA} of DWORD type (DD stands for DWORD = 32 bit) for this variable.
 
-If you open the compiled .exe in \IDA, you can see the \IT{x} variable placed at the beginning of 
+If you open the compiled .exe in \IDA, you can see the \emph{x} variable placed at the beginning of 
 the \TT{\_DATA} segment, and after it you can see text strings.
 
-If you open the compiled .exe from the previous example in \IDA, where the value of \IT{x} hasn't been set, you would see something like this:
+If you open the compiled .exe from the previous example in \IDA, where the value of \emph{x} hasn't been set, you would see something like this:
 
 \lstinputlisting[caption=\IDA,style=customasmx86]{patterns/04_scanf/2_global/IDA.lst}
 

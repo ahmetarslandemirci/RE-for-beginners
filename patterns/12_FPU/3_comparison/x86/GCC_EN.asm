@@ -29,7 +29,7 @@ b_second_half   = dword ptr  14h
 
 ; current stack state: ST(0) - b; ST(1) - a
 
-    fxch    st(1) ; this instruction swapping ST(1) and ST(0)
+    fxch    st(1) ; this instruction swaps ST(1) and ST(0)
 
 ; current stack state: ST(0) - a; ST(1) - b
 

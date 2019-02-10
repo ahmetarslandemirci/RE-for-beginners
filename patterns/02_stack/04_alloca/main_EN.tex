@@ -11,9 +11,9 @@ This function works like \TT{malloc()}, but allocates memory directly on the sta
 % page break added to prevent "\vref on page boundary" error. it may be dropped in future.
 The allocated memory chunk does not have to be freed via a \TT{free()} function call, \\
 since the function epilogue (\myref{sec:prologepilog}) returns \ESP back to its initial state and 
-the allocated memory is just \IT{dropped}.
+the allocated memory is just \emph{dropped}.
 It is worth noting how \TT{alloca()} is implemented.
-In simple terms, this function just shifts \ESP downwards toward the stack bottom by the number of bytes you need and sets \ESP as a pointer to the \IT{allocated} block.
+In simple terms, this function just shifts \ESP downwards toward the stack bottom by the number of bytes you need and sets \ESP as a pointer to the \emph{allocated} block.
 
 Let's try:
 

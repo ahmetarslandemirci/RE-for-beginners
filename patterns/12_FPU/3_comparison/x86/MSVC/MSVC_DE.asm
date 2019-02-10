@@ -7,8 +7,8 @@ _d_max     PROC
     mov    ebp, esp
     fld    QWORD PTR _b$[ebp]
 
-; Zustand des Stacks: ST(0) = _b
-; vergleiche _b (ST(0)) und _a, und hole Register vom Stack
+; Zustand des Stacks: ST(0) = \_b
+; vergleiche \_b (ST(0)) und \_a, und hole Register vom Stack
 
     fcomp  QWORD PTR _a$[ebp] 
 

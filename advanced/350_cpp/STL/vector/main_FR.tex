@@ -28,7 +28,7 @@ Voici la sortie de ce programme lorsqu'il est compilé dans MSVC:
 On voit qu'il n'y a pas de buffer alloué lorsque \main débute.
 Après le premier appel à \TT{push\_back()}, un buffer est alloué.
 Et puis, après chaque appel à \TT{push\_back()}, la taille du tableau et la taille
-du buffer (\IT{capacity}) sont augmentées.
+du buffer (\emph{capacity}) sont augmentées.
 Mais l'adresse du buffer change aussi, car \TT{push\_back()} ré-alloue le buffer dans
 le \gls{heap} à chaque fois.
 C'est une opération coûteuse, c'est pourquoi il est très important de prévoir la

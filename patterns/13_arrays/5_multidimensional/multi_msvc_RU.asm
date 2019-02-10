@@ -17,7 +17,7 @@ _insert    PROC
     lea    edx, DWORD PTR _a[eax+ecx]   ; edx=a + 600*4*x + 30*4*y
     mov    eax, DWORD PTR _z$[ebp]
     mov    ecx, DWORD PTR _value$[ebp]
-    mov    DWORD PTR [edx+eax*4], ecx   ; *(edx+z*4)=§значение§
+    mov    DWORD PTR [edx+eax*4], ecx   ; *(edx+z*4)=значение
     pop    ebp
     ret    0
 _insert    ENDP

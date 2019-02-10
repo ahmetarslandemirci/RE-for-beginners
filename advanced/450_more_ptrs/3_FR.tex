@@ -19,7 +19,7 @@ HRSRC WINAPI FindResource(
 );
 \end{lstlisting}
 
-\IT{lpName} et \IT{lpType} ont un type \IT{char*} ou \IT{wchar*}, et lorsque quelqu'un 
+\emph{lpName} et \emph{lpType} ont un type \emph{char*} ou \emph{wchar*}, et lorsque quelqu'un 
 veut encore passer un ID, il doit utiliser la macro
 \href{https://msdn.microsoft.com/en-us/library/windows/desktop/ms648029\%28v=vs.85\%29.aspx}{MAKEINTRESOURCE},
 comme ceci:
@@ -31,7 +31,7 @@ result = FindResource(..., MAKEINTRESOURCE(1234), ...);
 \end{lstlisting}
 
 C'est un fait intéressant que MAKEINTRESOURCE est juste un casting d'entier vers un pointeur.
-Dans MSVC 2013, dans le fichier\\\IT{Microsoft SDKs\textbackslash{}Windows\textbackslash{}v7.1A\textbackslash{}Include\textbackslash{}Ks.h}
+Dans MSVC 2013, dans le fichier\\\emph{Microsoft SDKs\textbackslash{}Windows\textbackslash{}v7.1A\textbackslash{}Include\textbackslash{}Ks.h}
 nous pouvons voir ceci:
 
 \begin{lstlisting}[style=customc]
@@ -45,8 +45,8 @@ nous pouvons voir ceci:
 \end{lstlisting}
 
 Ça semble fou. Regardons dans l'ancien code source de Windows NT4 qui avait fuité.\\
-Dans \IT{private/windows/base/client/module.c} nous pouvons trouver le source code
-de \IT{FindResource()}:
+Dans \emph{private/windows/base/client/module.c} nous pouvons trouver le source code
+de \emph{FindResource()}:
 
 \begin{lstlisting}[style=customc]
 HRSRC
@@ -75,7 +75,7 @@ FindResourceA(
 ...
 \end{lstlisting}
 
-Continuons avec \IT{BaseDllMapResourceIdA()} dans le même fichier source:
+Continuons avec \emph{BaseDllMapResourceIdA()} dans le même fichier source:
 
 \begin{lstlisting}[style=customc]
 ULONG
@@ -134,8 +134,8 @@ BaseDllMapResourceIdA(
 }
 \end{lstlisting}
 
-\IT{lpId} est ANDé avec \IT{LDR\_RESOURCE\_ID\_NAME\_MASK}. Que nous pouvons trouver
-dans \IT{public/sdk/inc/ntldr.h}:
+\emph{lpId} est ANDé avec \emph{LDR\_RESOURCE\_ID\_NAME\_MASK}. \\
+ Que nous pouvons trouver dans \emph{public/sdk/inc/ntldr.h}:
 
 \begin{lstlisting}[style=customc]
 ...
@@ -145,76 +145,20 @@ dans \IT{public/sdk/inc/ntldr.h}:
 ...
 \end{lstlisting}
 
-Donc \IT{lpId} est ANDé avec \IT{0xFFFF0000} et si des bits sont encore présents
-dans la partie 16-bit basse, la première partie de la fonction est exécutée (\IT{lpId} 
+Donc \emph{lpId} est ANDé avec \emph{0xFFFF0000} et si des bits sont encore présents
+dans la partie 16-bit basse, la première partie de la fonction est exécutée (\emph{lpId} 
 est traité comme une adresse de chaîne).
-Autrement---la seconde moitié (\IT{lpId} est traitée comme une valeur 16-bit).
+Autrement---la seconde moitié (\emph{lpId} est traitée comme une valeur 16-bit).
 
 Encore, ce code peut être trouvé dans le fichier kernel32.dll de Windows 7:
 
-\begin{lstlisting}[style=customasmx86]
-....
-
-.text:0000000078D24510 ; __int64 __fastcall BaseDllMapResourceIdA(PCSZ SourceString)
-.text:0000000078D24510 BaseDllMapResourceIdA proc near         ; CODE XREF: FindResourceExA+34
-.text:0000000078D24510                                         ; FindResourceExA+4B
-.text:0000000078D24510
-.text:0000000078D24510 var_38          = qword ptr -38h
-.text:0000000078D24510 var_30          = qword ptr -30h
-.text:0000000078D24510 var_28          = _UNICODE_STRING ptr -28h
-.text:0000000078D24510 DestinationString= _STRING ptr -18h
-.text:0000000078D24510 arg_8           = dword ptr  10h
-.text:0000000078D24510
-.text:0000000078D24510 ; FUNCTION CHUNK AT .text:0000000078D42FB4 SIZE 000000D5 BYTES
-.text:0000000078D24510
-.text:0000000078D24510                 push    rbx
-.text:0000000078D24512                 sub     rsp, 50h
-.text:0000000078D24516                 cmp     rcx, 10000h
-.text:0000000078D2451D                 jnb     loc_78D42FB4
-.text:0000000078D24523                 mov     [rsp+58h+var_38], rcx
-.text:0000000078D24528                 jmp     short $+2
-.text:0000000078D2452A ; ---------------------------------------------------------------------------
-.text:0000000078D2452A
-.text:0000000078D2452A loc_78D2452A:                           ; CODE XREF: BaseDllMapResourceIdA+18
-.text:0000000078D2452A                                         ; BaseDllMapResourceIdA+1EAD0
-.text:0000000078D2452A                 jmp     short $+2
-.text:0000000078D2452C ; ---------------------------------------------------------------------------
-.text:0000000078D2452C
-.text:0000000078D2452C loc_78D2452C:                           ; CODE XREF: BaseDllMapResourceIdA:loc_78D2452A
-.text:0000000078D2452C                                         ; BaseDllMapResourceIdA+1EB74
-.text:0000000078D2452C                 mov     rax, rcx
-.text:0000000078D2452F                 add     rsp, 50h
-.text:0000000078D24533                 pop     rbx
-.text:0000000078D24534                 retn
-.text:0000000078D24534 ; ---------------------------------------------------------------------------
-.text:0000000078D24535                 align 20h
-.text:0000000078D24535 BaseDllMapResourceIdA endp
-
-....
-
-.text:0000000078D42FB4 loc_78D42FB4:                           ; CODE XREF: BaseDllMapResourceIdA+D
-.text:0000000078D42FB4                 cmp     byte ptr [rcx], '#'
-.text:0000000078D42FB7                 jnz     short loc_78D43005
-.text:0000000078D42FB9                 inc     rcx
-.text:0000000078D42FBC                 lea     r8, [rsp+58h+arg_8]
-.text:0000000078D42FC1                 mov     edx, 0Ah
-.text:0000000078D42FC6                 call    cs:__imp_RtlCharToInteger
-.text:0000000078D42FCC                 mov     ecx, [rsp+58h+arg_8]
-.text:0000000078D42FD0                 mov     [rsp+58h+var_38], rcx
-.text:0000000078D42FD5                 test    eax, eax
-.text:0000000078D42FD7                 js      short loc_78D42FE6
-.text:0000000078D42FD9                 test    rcx, 0FFFFFFFFFFFF0000h
-.text:0000000078D42FE0                 jz      loc_78D2452A
-
-....
-
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{advanced/450_more_ptrs/tmp1.lst}
 
 Si la valeur du pointeur en entrée est plus grande que 0x10000, un saut au traitement
 de chaînes se produit.
-Autrement, la valeur en entrée du \IT{lpId} est renvoyée telle quelle.
-Le masque \IT{0xFFFF0000} n'est plus utilisé ici, car ceci est du code 64-bit, mais
-encore, \IT{0xFFFFFFFFFFFF0000} pourrait fonctionner ici.
+Autrement, la valeur en entrée du \emph{lpId} est renvoyée telle quelle.
+Le masque \emph{0xFFFF0000} n'est plus utilisé ici, car ceci est du code 64-bit, mais
+encore, \emph{0xFFFFFFFFFFFF0000} pourrait fonctionner ici.
 
 Le lecteur attentif pourrait demander ce qui se passe si l'adresse de la chaîne en
 entrée est plus petite que 0x10000?
@@ -231,7 +175,7 @@ How does MAKE­INT­RESOURCE work? It just stashes the integer in the bottom 16 
 
 En quelques mots, ceci est un sale hack et probablement qu'il ne devrait être utilisé
 qu'en cas de réelle nécessité.
-Peut-être que la fonction \IT{FindResource()} avait un type \IT{SHORT} pour ses arguments,
+Peut-être que la fonction \emph{FindResource()} avait un type \emph{SHORT} pour ses arguments,
 et puis Microsoft a ajouté un moyen de passer des chaînes ici, mais que le code ancien
 devait toujours être supporté.
 
@@ -293,7 +237,7 @@ struct kernfs_node *kernfs_create_link(struct kernfs_node *parent,
 
 ( \url{https://github.com/torvalds/linux/blob/fceef393a538134f03b778c5d2519e670269342f/fs/kernfs/symlink.c#L25} )
 
-\IT{ERR\_PTR} est une macro pour caster un entier en un pointeur:
+\emph{ERR\_PTR} est une macro pour caster un entier en un pointeur:
 
 \begin{lstlisting}[style=customc]
 static inline void * __must_check ERR_PTR(long error)
@@ -315,11 +259,11 @@ Ceci signifie que les codes erreurs sont les ``pointeurs'' qui sont très proche
 -1, et, heureusement, il n'y a rien dans la mémoire du noyau à des adresses comme
 0xFFFFFFFFFFFFFFFF, 0xFFFFFFFFFFFFFFFE, 0xFFFFFFFFFFFFFFFD, etc.
 
-Une méthode bien plus répandue est de renvoyer \IT{NULL} en cas d'erreur et de passer
+Une méthode bien plus répandue est de renvoyer \emph{NULL} en cas d'erreur et de passer
 le code d'erreur par un argument supplémentaire.
 Les auteurs du noyau Linux ne font pas ça, mais quiconque veut utiliser ces fonctions
 doit toujours garder en mémoire que le pointeur renvoyé doit toujours être testé avec
-\IT{IS\_ERR\_VALUE} avant d'être déréférencé.
+\emph{IS\_ERR\_VALUE} avant d'être déréférencé.
 
 Par exemple:
 

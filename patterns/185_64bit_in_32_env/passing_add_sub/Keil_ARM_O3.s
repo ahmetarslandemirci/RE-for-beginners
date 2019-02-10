@@ -20,7 +20,7 @@ f_add_test PROC
         POP      {r4,lr}
         MOV      r2,r0
         MOV      r3,r1
-        ADR      r0,|L0.84| ; "%I64d\n"
+        ADR      r0,|L0.84| ; \verb|"%I64d\n"|
         B        __2printf
         ENDP
 

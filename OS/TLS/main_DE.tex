@@ -4,14 +4,14 @@
 
 TLS ist ein Datenbereich der für jeden einzelnen Thread spezifisch ist.
 Jeder Thread kann hier alles speichern was er möchte.
-Eine bekanntes Beispiel ist die globale C-Standardvariable \IT{errno}.
+Eine bekanntes Beispiel ist die globale C-Standardvariable \emph{errno}.
 
-Mehrere Threads können Funktionen simultan aufrufen, die einen Fehlercode in \IT{errno} zurückgeben.
+Mehrere Threads können Funktionen simultan aufrufen, die einen Fehlercode in \emph{errno} zurückgeben.
 Eine globale Variable würde hier nicht korrekt für Multithread-Programme funktionieren,
-aus diesem Grund muss \IT{errno} im \ac{TLS} gesichert.
+aus diesem Grund muss \emph{errno} im \ac{TLS} gesichert.
 
 \myindex{\Cpp!C++11}
-Im C++11-Standard wurde ein neues Schlüsselwort \IT{thread\_local} eingeführt,
+Im C++11-Standard wurde ein neues Schlüsselwort \emph{thread\_local} eingeführt,
 um anzuzeigen, dass jeder Thread eine eigene Kopie dieser Variable, die initialisiert werde kann
 und sich auf dem \ac{TLS} befindet\footnote{\myindex{C11} C11 hat ebenfalls einen (optionalen) Thread-Support}:
 
@@ -29,7 +29,7 @@ int main()
 
 Kompiliert mit MinGW GCC 4.8.1 jedoch nicht MSVC 2012.
 
-Wenn es um PE-Dateien geht, also die ausführbaren Dateien, wird die \IT{tmp}-Variable
+Wenn es um PE-Dateien geht, also die ausführbaren Dateien, wird die \emph{tmp}-Variable
 in der Sektion mit dem Namen \ac{TLS} gesichert.
 
 \subsection{Nochmals Linearer Kongruenzgenerator}

@@ -4,35 +4,35 @@ var_34 = -0x34
        PUSH {R7,LR}
        MOV  R7, SP
        SUB  SP, SP, #0x30
-       MOVS R0, #0  ; time_t *
+       MOVS R0, #0  ; time\_t *
        BLX  _time
        ADD  R1, SP, #0x38+var_34 ; struct tm *
        STR  R0, [SP,#0x38+var_38]
-       MOV  R0, SP  ; time_t *
+       MOV  R0, SP  ; time\_t *
        BLX  _localtime_r
        LDR  R1, [SP,#0x38+var_34.tm_year]
-       MOV  R0, 0xF44 ; "Year: %d\n"
+       MOV  R0, 0xF44 ; "Year: \%d\textbackslash{}n"
        ADD  R0, PC  ; char *
        ADDW R1, R1, #0x76C
        BLX  _printf
        LDR  R1, [SP,#0x38+var_34.tm_mon]
-       MOV  R0, 0xF3A ; "Month: %d\n"
+       MOV  R0, 0xF3A ; "Month: \%d\textbackslash{}n"
        ADD  R0, PC  ; char *
        BLX  _printf
        LDR  R1, [SP,#0x38+var_34.tm_mday]
-       MOV  R0, 0xF35 ; "Day: %d\n"
+       MOV  R0, 0xF35 ; "Day: \%d\textbackslash{}n"
        ADD  R0, PC  ; char *
        BLX  _printf
        LDR  R1, [SP,#0x38+var_34.tm_hour]
-       MOV  R0, 0xF2E ; "Hour: %d\n"
+       MOV  R0, 0xF2E ; "Hour: \%d\textbackslash{}n"
        ADD  R0, PC  ; char *
        BLX  _printf
        LDR  R1, [SP,#0x38+var_34.tm_min]
-       MOV  R0, 0xF28 ; "Minutes: %d\n"
+       MOV  R0, 0xF28 ; "Minutes: \%d\textbackslash{}n"
        ADD  R0, PC  ; char *
        BLX  _printf
        LDR  R1, [SP,#0x38+var_34]
-       MOV  R0, 0xF25 ; "Seconds: %d\n"
+       MOV  R0, 0xF25 ; "Seconds: \%d\textbackslash{}n"
        ADD  R0, PC  ; char *
        BLX  _printf
        ADD  SP, SP, #0x30

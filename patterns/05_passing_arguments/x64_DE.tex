@@ -10,7 +10,7 @@ zu lesen.
 
 \Optimizing MSVC:
 
-\lstinputlisting[caption=\Optimizing MSVC 2012 x64]{patterns/05_passing_arguments/x64_MSVC_Ox_EN.asm}
+\lstinputlisting[caption=\Optimizing MSVC 2012 x64,style=customasmx86]{patterns/05_passing_arguments/x64_MSVC_Ox_EN.asm}
 
 Wie wir sehen können, die compact Funktion \ttf nimmt alle Argumente aus den Registern.
 
@@ -26,7 +26,7 @@ zu laden mit der \MOV Instruktion.
 
 Lasst uns einen Blick auf nicht optimierte MSVC Ausgabe werfen:
 
-\lstinputlisting[caption=MSVC 2012 x64]{patterns/05_passing_arguments/x64_MSVC_IDA_EN.asm}
+\lstinputlisting[caption=MSVC 2012 x64,style=customasmx86]{patterns/05_passing_arguments/x64_MSVC_IDA_EN.asm}
 
 Es sieht ein bisschen wie ein Puzzle aus, weil alle drei Argumente aus den Registern auf dem Stack
 gespeichert werden aus irgend einem Grund.
@@ -55,11 +55,11 @@ Es liegt in der Verantwortung vom \gls{caller} den \q{shadow space} auf dem Stac
 
 Optimierter GCC generiert mehr oder minder verständlichen Code:
 
-\lstinputlisting[caption=\Optimizing GCC 4.4.6 x64]{patterns/05_passing_arguments/x64_GCC_O3_EN.s}
+\lstinputlisting[caption=\Optimizing GCC 4.4.6 x64,style=customasmx86]{patterns/05_passing_arguments/x64_GCC_O3_EN.s}
 
 \NonOptimizing GCC:
 
-\lstinputlisting[caption=GCC 4.4.6 x64]{patterns/05_passing_arguments/x64_GCC_EN.s}
+\lstinputlisting[caption=GCC 4.4.6 x64,style=customasmx86]{patterns/05_passing_arguments/x64_GCC_EN.s}
 
 \myindex{Shadow space}
 
@@ -74,7 +74,7 @@ Es lassen sich auch ohne Probleme 64-Bit Werte benutzen:
 
 \lstinputlisting{patterns/05_passing_arguments/ex64.c}
 
-\lstinputlisting[caption=\Optimizing GCC 4.4.6 x64]{patterns/05_passing_arguments/ex64_GCC_O3_IDA_EN.asm}
+\lstinputlisting[caption=\Optimizing GCC 4.4.6 x64,style=customasmx86]{patterns/05_passing_arguments/ex64_GCC_O3_IDA_EN.asm}
 
-Der Code ist der gleiche, aber diesmal werden die \IT{full size} 64-Bit Register benutzt (mit dem \TT{R-} Präfix).
+Der Code ist der gleiche, aber diesmal werden die \emph{full size} 64-Bit Register benutzt (mit dem \TT{R-} Präfix).
 

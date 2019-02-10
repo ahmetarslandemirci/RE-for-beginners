@@ -6,7 +6,7 @@ _f	PROC
 ; vergleiche Eingabewert mit 10
 	cmp	DWORD PTR _a$[esp-4], 10
 	mov	eax, OFFSET $SG792 ; 'it is ten'
-; springe zu $LN4@f , falls gleich
+; springe zu \$LN4@f , falls gleich
 	je	SHORT $LN4@f
 	mov	eax, OFFSET $SG793 ; 'it is not ten'
 $LN4@f:

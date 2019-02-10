@@ -17,11 +17,11 @@ es gibt auch hier die Notwendigkeit die spezifischen Flags des Koprozessors zu s
 \myindex{ARM!\Instructions!VMRS}
 Und genau wie beim x86 gibt es auch in ARM keine Befehle für bedingte Sprünge, die die Bits im Statusregister des
 Koprozessors abfragen können. So gibt es den Befehl \INS{VMRS}, um 4 Bits (N, Z, C, V) vom Statusregister des
-Koprozessors in das \IT{allgemeine} Statusregister (\ac{APSR}) zu kopieren.
+Koprozessors in das \emph{allgemeine} Statusregister (\ac{APSR}) zu kopieren.
 
 \myindex{ARM!\Instructions!VMOVGT}
 \INS{VMOVGT} ist das Analogon zum \INS{MOVGT} Befehl für D-Register: er wird ausgeführt, wenn ein Operand bezüglich
-eines \IT{GT---Greater Than (dt. größer als)} Vergleichs größer ist als der andere.
+eines \emph{GT---Greater Than (dt. größer als)} Vergleichs größer ist als der andere.
 
 Wenn er ausgeführt wird, wird der Wert von $a$ nach \GTT{D16} geschrieben (dieser wird aktuell in \GTT{D17}
 gespeichert). Andernfalls bleibt der Wert von $b$ im \GTT{D16} Register.
@@ -58,11 +58,11 @@ eine \INS{IT GT} Befehl befindet.
 \label{ARM_Thumb_IT}
 \myindex{ARM!\Instructions!IT}
 \myindex{ARM!if-then block}
-Der \INS{IT} Befehl definiert einen sogenannten \IT{If-Then-Block}.
+Der \INS{IT} Befehl definiert einen sogenannten \emph{If-Then-Block}.
 
 Nach dem Befehl können bis zu 4 weitere Befehle, jeder mit einem beschreibenden Suffix, verwendet werden.
 In unserem Beispiel impliziert \INS{IT GT}, dass der Folgebefehl genau dann ausgeführt werden soll, wenn die IT{GT}
-(\IT{Greater Than}) Bedingung wahr ist.
+(\emph{Greater Than}) Bedingung wahr ist.
 
 \myindex{Angry Birds}
 Hier ist ein komplexeres Codefragment, welches aus Angry Birds (für iOS) stammt:
@@ -76,10 +76,10 @@ BLX             _objc_msgSend ; ohne Suffix
 ...
 \end{lstlisting}
 
-\INS{ITE} steht für \IT{if-then-else} und kodiert Suffixe für die beiden folgenden Befehle.
+\INS{ITE} steht für \emph{if-then-else} und kodiert Suffixe für die beiden folgenden Befehle.
 
-Der erste Befehl wird ausgeführt, wenn die durch \INS{ITE} (\IT{NE, not ewual}, dt. ungleich) kodierte Bedingung wahr
-ist und der zweite wenn die Bedingung falsch ist (die inverse Bedingung zu \GTT{NE} ist \GTT{EQ} (\IT{equal}, dt.
+Der erste Befehl wird ausgeführt, wenn die durch \INS{ITE} (\emph{NE, not ewual}, dt. ungleich) kodierte Bedingung wahr
+ist und der zweite wenn die Bedingung falsch ist (die inverse Bedingung zu \GTT{NE} ist \GTT{EQ} (\emph{equal}, dt.
 gleich)).
 
 Der dem zweiten Befehl folgende \INS{VMOV} (oder \INS{VMOVEQ}) ist ein gewöhnlicher Befehl ohne Suffix (\INS{BLX}).
@@ -102,7 +102,7 @@ die Bedingung wahr ist.
 
 Aus diesem Grund fügt \IDA den \GTT{-EQ} Suffix an jeden der vier Befehle an.
 
-Gäbe es beispielsweise \INS{ITEEE EQ} (\IT{if-then-else-else-else}), dann würden wie folgt Suffixe angehängt werden:
+Gäbe es beispielsweise \INS{ITEEE EQ} (\emph{if-then-else-else-else}), dann würden wie folgt Suffixe angehängt werden:
 
 \begin{lstlisting}
 -EQ
@@ -126,13 +126,13 @@ CBZ             R0, loc_1E7E32 ; ohne Suffix
 ...
 \end{lstlisting}
 
-\INS{ITTE} (\IT{if-then-then-else}) impliziert, dass der erste und zweite Befehl ausgeführt werden, wenn die \GTT{LE}
-(\IT{Less or Equal}, dt. mindestens) Bedingung wahr ist und der dritte, wenn die inverse Bedingung
-(\GTT{GT}---\IT{Greater Than}, dt. mehr als) wahr ist.
+\INS{ITTE} (\emph{if-then-then-else}) impliziert, dass der erste und zweite Befehl ausgeführt werden, wenn die \GTT{LE}
+(\emph{Less or Equal}, dt. mindestens) Bedingung wahr ist und der dritte, wenn die inverse Bedingung
+(\GTT{GT}---\emph{Greater Than}, dt. mehr als) wahr ist.
 
 Für gewöhnlich erzeugen Compiler nicht alle denkbaren Kombinationen.
 \myindex{Angry Birds}
-Im betrachteten Spiel Angry Birds beispielsweise (\IT{classic} Version für iOS) werden nur die folgenden Variationen des
+Im betrachteten Spiel Angry Birds beispielsweise (\emph{classic} Version für iOS) werden nur die folgenden Variationen des
 \INS{IT} Befehls verwendet:
 \INS{IT}, \INS{ITE}, \INS{ITT}, \INS{ITTE}, \INS{ITTT}, \INS{ITTTT}.
 \myindex{\GrepUsage}
@@ -216,6 +216,6 @@ und dies nicht durch einfache bitweisen Vergleich erledigt werden kann.
 Keil ruft also eine Funktion einer externen Programmbibliothek (\GTT{\_\_aeabi\_cdrcmple}) auf, um den Vergleich
 durchzuführen.
 \myindex{ARM!\Instructions!BCS}
-Das Ergebnis des Vergleich wird von der Funktion in den Flags belassen, sodass der folgende \INS{BCS} (\IT{Carry
+Das Ergebnis des Vergleich wird von der Funktion in den Flags belassen, sodass der folgende \INS{BCS} (\emph{Carry
 set---Greater than or equal}) Befehl ohne zusätzlichen Code funktioniert.
 

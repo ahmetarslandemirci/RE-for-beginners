@@ -6,7 +6,7 @@ my_max:
 ; vergleiche A und B:
 	cmp	edx, eax
 ; falls A>=B, lade Wert A nach EAX
-; §ansonsten (falls A<B) führe Befehl ohne Auswirkung aus§
+; ansonsten (falls A<B) führe Befehl ohne Auswirkung aus
 	cmovge	eax, edx
 	ret
 
@@ -18,6 +18,6 @@ my_min:
 ; vergleiche A und B:
 	cmp	edx, eax
 ; falls A<=B, lade Wert A nach EAX
-; §ansonsten (falls A>B) führe Befehl ohne Auswirkung aus§
+; ansonsten (falls A>B) führe Befehl ohne Auswirkung aus
 	cmovle	eax, edx
 	ret

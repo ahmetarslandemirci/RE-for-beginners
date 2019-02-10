@@ -5,7 +5,7 @@
 
 \lstinputlisting[style=customasmx86]{\CURPATH/ex5.lst}
 
-\myindex{Intel!8086!Modèle de mémoire}%%\EN{Memory model}}
+\myindex{Intel!8086!Modèle de mémoire}
 Nous voyons ici une différence entre les pointeurs appelés \q{near} et \q{far}: un
 autre effet bizarre de la mémoire segmentée en 16-bit 8086.
 
@@ -14,7 +14,7 @@ Vous pouvez en lire plus à ce sujet ici: \myref{8086_memory_mode}.
 Les pointeurs \q{near} sont ceux qui pointent dans le segment de données courant.
 C'est pourquoi la fonction \TT{string\_compare()} prend seulement deux pointeurs 16-bit,
 et accède des données dans le segment sur lequel \TT{DS} pointe (L'instruction \TT{mov al, [bx]}
-fonctionne en fait comme \TT{mov al, ds:[bx]}\EMDASH{}\TT{DS} est implicite ici).
+fonctionne en fait comme \TT{mov al, ds:[bx]}---\TT{DS} est implicite ici).
 
 Les pointeurs \q{far} sont ceux qui pointent sur des données dans un autre segment
 de mémoire.

@@ -38,9 +38,9 @@ _main    PROC
     push   edi
     mov    eax, DWORD PTR ___security_cookie
     xor    DWORD PTR __$SEHRec$[ebp+16], eax       ; xored pointer to scope table
-    xor    eax, ebp                                ; ebp ^ security_cookie
+    xor    eax, ebp                                ; \verb|ebp ^ security_cookie|
     push   eax
-    lea    eax, DWORD PTR __$SEHRec$[ebp+8]        ; pointer to VC_EXCEPTION_REGISTRATION_RECORD
+    lea    eax, DWORD PTR __$SEHRec$[ebp+8]        ; \verb|pointer to VC_EXCEPTION_REGISTRATION_RECORD|
     mov    DWORD PTR fs:0, eax
     mov    DWORD PTR __$SEHRec$[ebp], esp
     mov    DWORD PTR _p$[ebp], 0
@@ -136,7 +136,7 @@ _filter_user_exceptions PROC
     mov    ebp, esp
     mov    eax, DWORD PTR _code$[ebp]
     push   eax
-    push   OFFSET $SG85486 ; 'in filter. code=0x%08X'
+    push   OFFSET $SG85486 ; \verb|'in filter. code=0x%08X'|
     call   _printf
     add    esp, 8
     cmp    DWORD PTR _code$[ebp], 1122867 ; 00112233H

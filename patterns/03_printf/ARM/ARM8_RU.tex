@@ -6,31 +6,7 @@
 
 \myparagraph{\OptimizingKeilVI: \ARMMode}
 
-\begin{lstlisting}[style=customasmARM]
-.text:00000028             main
-.text:00000028
-.text:00000028             var_18 = -0x18
-.text:00000028             var_14 = -0x14
-.text:00000028             var_4  = -4
-.text:00000028
-.text:00000028 04 E0 2D E5  STR    LR, [SP,#var_4]!
-.text:0000002C 14 D0 4D E2  SUB    SP, SP, #0x14
-.text:00000030 08 30 A0 E3  MOV    R3, #8
-.text:00000034 07 20 A0 E3  MOV    R2, #7
-.text:00000038 06 10 A0 E3  MOV    R1, #6
-.text:0000003C 05 00 A0 E3  MOV    R0, #5
-.text:00000040 04 C0 8D E2  ADD    R12, SP, #0x18+var_14
-.text:00000044 0F 00 8C E8  STMIA  R12, {R0-R3}
-.text:00000048 04 00 A0 E3  MOV    R0, #4
-.text:0000004C 00 00 8D E5  STR    R0, [SP,#0x18+var_18]
-.text:00000050 03 30 A0 E3  MOV    R3, #3
-.text:00000054 02 20 A0 E3  MOV    R2, #2
-.text:00000058 01 10 A0 E3  MOV    R1, #1
-.text:0000005C 6E 0F 8F E2  ADR    R0, aADBDCDDDEDFDGD ; "a=%d; b=%d; c=%d; d=%d; e=%d; f=%d; g=%"...
-.text:00000060 BC 18 00 EB  BL     __2printf
-.text:00000064 14 D0 8D E2  ADD    SP, SP, #0x14
-.text:00000068 04 F0 9D E4  LDR    PC, [SP+4+var_4],#4
-\end{lstlisting}
+\lstinputlisting[style=customasmARM]{patterns/03_printf/ARM/tmp1.asm}
 
 Этот код можно условно разделить на несколько частей:
 
@@ -41,7 +17,7 @@
 \myindex{ARM!\Instructions!STR}
 Самая первая инструкция \INS{STR LR, [SP,\#var\_4]!} 
 сохраняет в стеке \ac{LR}, ведь нам придется использовать этот регистр для вызова \printf.
-Восклицательный знак в конце означает \IT{pre-index}.
+Восклицательный знак в конце означает \emph{pre-index}.
 Это значит, что в начале \ac{SP} должно быть уменьшено на 4, затем по адресу в \ac{SP} должно быть записано значение \ac{LR}.
 
 Это аналог знакомой в x86 инструкции \PUSH. Читайте больше об этом: \myref{ARM_postindex_vs_preindex}.
@@ -56,20 +32,20 @@
 Затем инструкция \INS{ADD R12, SP, \#0x18+var\_14} 
 записывает в регистр \Reg{12} адрес места в стеке, куда будут помещены эти 4 значения.
 \myindex{IDA!var\_?}
-\IT{var\_14}~--- это макрос ассемблера, равный -0x14.
+\emph{var\_14}~--- это макрос ассемблера, равный -0x14.
 Такие макросы создает \IDA, чтобы удобнее было показывать, как код обращается к стеку.
 
-Макросы \IT{var\_?}, создаваемые \IDA, отражают локальные переменные в стеке. Так что в \Reg{12} будет записано \GTT{SP+4}.
+Макросы \emph{var\_?}, создаваемые \IDA, отражают локальные переменные в стеке. Так что в \Reg{12} будет записано \GTT{SP+4}.
 
 \myindex{ARM!\Instructions!STMIA}
 Следующая инструкция \INS{STMIA R12, {R0-R3}} записывает содержимое регистров \Reg{0}-\Reg{3} по адресу в памяти, на который указывает \Reg{12}.
 
-Инструкция \INS{STMIA} означает \IT{Store Multiple Increment After}.\\
-\IT{Increment After} означает, что \Reg{12} будет увеличиваться на 4 после записи каждого значения регистра.
+Инструкция \INS{STMIA} означает \emph{Store Multiple Increment After}.\\
+\emph{Increment After} означает, что \Reg{12} будет увеличиваться на 4 после записи каждого значения регистра.
 
 \item Передача 4 через стек:
 4 записывается в \Reg{0}, затем инструкция \INS{STR R0, [SP,\#0x18+var\_18]} записывает его в стек.
-\IT{var\_18} равен -0x18, смещение будет 0, 
+\emph{var\_18} равен -0x18, смещение будет 0, 
 так что значение из регистра \Reg{0} (4) запишется туда, куда указывает \ac{SP}.
 
 \item Передача 1, 2 и 3 через регистры:
@@ -94,7 +70,7 @@
 Здесь нет восклицательного знака~--- действительно, сначала \ac{PC} загружается из места, куда указывает \ac{SP}
 ($4+var\_4=4+(-4)=0$, так что эта инструкция аналогична \INS{LDR PC, [SP],\#4}), затем \ac{SP} увеличивается 
 на 4.
-Это называется \IT{post-index}\footnote{Читайте больше об этом: \myref{ARM_postindex_vs_preindex}.}.
+Это называется \emph{post-index}\footnote{Читайте больше об этом: \myref{ARM_postindex_vs_preindex}.}.
 Почему \IDA показывает инструкцию именно так?
 Потому что она хочет показать разметку стека и тот факт, что \GTT{var\_4} выделена в локальном стеке именно для сохраненного
 значения \ac{LR}.
@@ -105,34 +81,7 @@
 
 \myparagraph{\OptimizingKeilVI: \ThumbMode}
 
-\begin{lstlisting}[style=customasmARM]
-.text:0000001C             printf_main2
-.text:0000001C
-.text:0000001C             var_18 = -0x18
-.text:0000001C             var_14 = -0x14
-.text:0000001C             var_8  = -8
-.text:0000001C
-.text:0000001C 00 B5        PUSH    {LR}
-.text:0000001E 08 23        MOVS    R3, #8
-.text:00000020 85 B0        SUB     SP, SP, #0x14
-.text:00000022 04 93        STR     R3, [SP,#0x18+var_8]
-.text:00000024 07 22        MOVS    R2, #7
-.text:00000026 06 21        MOVS    R1, #6
-.text:00000028 05 20        MOVS    R0, #5
-.text:0000002A 01 AB        ADD     R3, SP, #0x18+var_14
-.text:0000002C 07 C3        STMIA   R3!, {R0-R2}
-.text:0000002E 04 20        MOVS    R0, #4
-.text:00000030 00 90        STR     R0, [SP,#0x18+var_18]
-.text:00000032 03 23        MOVS    R3, #3
-.text:00000034 02 22        MOVS    R2, #2
-.text:00000036 01 21        MOVS    R1, #1
-.text:00000038 A0 A0        ADR     R0, aADBDCDDDEDFDGD ; "a=%d; b=%d; c=%d; d=%d; e=%d; f=%d; g=%"...
-.text:0000003A 06 F0 D9 F8  BL      __2printf
-.text:0000003E
-.text:0000003E             loc_3E   ; CODE XREF: example13_f+16
-.text:0000003E 05 B0        ADD     SP, SP, #0x14
-.text:00000040 00 BD        POP     {PC}
-\end{lstlisting}
+\lstinputlisting[style=customasmARM]{patterns/03_printf/ARM/tmp2.asm}
 
 Это почти то же самое что и в предыдущем примере, только код для Thumb и значения помещаются в 
 стек немного иначе: сначала 8 за первый раз, затем 5, 6, 7 за второй раз и 4 за третий раз.

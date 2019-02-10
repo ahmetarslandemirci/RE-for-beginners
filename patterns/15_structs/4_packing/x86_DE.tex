@@ -19,7 +19,7 @@ Adressen zuzugreifen und Daten von dort im Cache zwischenzuspeichern.
 
 Trotzdem ist dieses Vorgehen nicht besonders ökonomisch.
 
-Komplieren wir mit der Option (\TT{/Zp1})(\IT{/Zp[n] pack structures on n-byte boundary}).
+Komplieren wir mit der Option (\TT{/Zp1})(\emph{/Zp[n] pack structures on n-byte boundary}).
 
 \lstinputlisting[caption=MSVC 2012 /GS-
 /Zp1,label=src:struct_packing_1,numbers=left,style=customasmx86]{patterns/15_structs/4_packing/packing_msvc_Zp1_DE.asm}
@@ -65,20 +65,8 @@ Und dies:
 
 Die Datei PshPack1.h sieht wie folgt aus:
 
-\begin{lstlisting}[caption=PshPack1.h,style=customc]
-#if ! (defined(lint) || defined(RC_INVOKED))
-#if ( _MSC_VER >= 800 && !defined(_M_I86)) || defined(_PUSHPOP_SUPPORTED)
-#pragma warning(disable:4103)
-#if !(defined( MIDL_PASS )) || defined( __midl )
-#pragma pack(push,1)
-#else
-#pragma pack(1)
-#endif
-#else
-#pragma pack(1)
-#endif
-#endif /* ! (defined(lint) || defined(RC_INVOKED)) */
-\end{lstlisting}
+\lstinputlisting[caption=PshPack1.h,style=customc]{patterns/15_structs/4_packing/tmp1.c}
+
 Dies sagt dem Compiler wie die structs, die hinter \TT{\#pragma pack} definiert werden, gepackt werden müssen.
 
 \input{patterns/15_structs/4_packing/olly_DE.tex}

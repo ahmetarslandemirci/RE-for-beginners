@@ -112,10 +112,10 @@ et 15ème bits inclus.
 N.B.  L'accumulateur du CPU 16-bit 8086 était appelé \AX et consistait en deux moitiés
 de 8-bit---\AL (octet bas) et \AH (octet haut).
 Dans le 80386, presque tous les registres ont été étendus à 32-bit, l'accumulateur
-a été appelé \EAX, mais pour des raisons de compatibilité, ses \IT{anciennes parties}
+a été appelé \EAX, mais pour des raisons de compatibilité, ses \emph{anciennes parties}
 peuvent toujours être accédées par \AX/\AH/\AL.
 
-Puisque tous les CPUs x86 sont des descendants du CPU 16-bit 8086, ces \IT{anciens}
+Puisque tous les CPUs x86 sont des descendants du CPU 16-bit 8086, ces \emph{anciens}
 opcodes 16-bit sont plus courts que les nouveaux sur 32-bit.
 C'est pourquoi l'instruction \INS{or ah, 40h} occupe seulement 3 octets.
 Il serait plus logique de générer ici \INS{or eax, 04000h}  mais ça fait 5 octets,
@@ -135,5 +135,5 @@ Il est intéressant de noter qu'à la fois le prologue (\INS{push ebp / mov ebp,
 et l'épilogue (\INS{pop ebp}) de la fonction peuvent être facilement omis ici, mais
 sans doute que GCC n'est pas assez bon pour effectuer une telle optimisation de la
 taille du code.
-Toutefois, il est préférable que de telles petites fonctions soient des \IT{fonctions
+Toutefois, il est préférable que de telles petites fonctions soient des \emph{fonctions
 inlined} (\myref{inline_code}).

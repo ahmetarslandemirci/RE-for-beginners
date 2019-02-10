@@ -24,9 +24,9 @@ get_from_array PROC
         LDRBNE   r0,[r0,#2]
 ; R0 = right byte
         ANDNE    r1,r3,#0xf
-; R1 = R3&0xF = middle_byte&0xF
+; \verb|R1 = R3&0xF = middle_byte&0xF|
         ORRNE    r0,r0,r1,LSL #8
-; R0 = R0|(R1<<8) = right_byte | (middle_byte&0xF)<<8
+; R0 = R0|(R1<<8) = right\_byte | (middle\_byte\&0xF)<<8
 ; this is the result returned
 
 ; the following 3 instructions executed if index is even, otherwise all of them are skipped:
@@ -34,9 +34,9 @@ get_from_array PROC
         LDRBEQ   r0,[r1,r2]
 ; R0 = left byte
         LSLEQ    r0,r0,#4
-; R0 = R0<<4 = left_byte << 4
+; \verb|R0 = R0<<4 = left_byte << 4|
         ORREQ    r0,r0,r3,LSR #4
-; R0 = R0 | R3>>4 = left_byte << 4 | middle_byte >> 4
+; R0 = R0 | R3>>4 = left\_byte << 4 | middle\_byte >> 4
 ; this is the result returned
         BX       lr
         ENDP

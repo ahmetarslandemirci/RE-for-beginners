@@ -8,8 +8,8 @@ or just a pack of if() statements.
 
 \myindex{ARM!\Instructions!ADRcc}
 
-Anyway, we see here predicated instructions again (like \ADREQ (\IT{Equal}))
-which is triggered only in case $R0=0$, and then loads the address of the string \IT{<<zero\textbackslash{}n>>}
+Anyway, we see here predicated instructions again (like \ADREQ (\emph{Equal}))
+which is triggered only in case $R0=0$, and then loads the address of the string \emph{<<zero\textbackslash{}n>>}
 into \Reg{0}.
 \myindex{ARM!\Instructions!BEQ}
 The next instruction \ac{BEQ} redirects control flow to \TT{loc\_170}, if $R0=0$.
@@ -28,11 +28,11 @@ At the end, there are three paths to \printf{}.
 \myindex{ARM!\Instructions!CMP}
 The last instruction, \TT{CMP R0, \#2}, is needed to check if $a=2$.
 
-If it is not true, then \ADRNE loads a pointer to the string \IT{<<something unknown \textbackslash{}n>>}
+If it is not true, then \ADRNE loads a pointer to the string \emph{<<something unknown \textbackslash{}n>>}
 into \Reg{0}, since $a$ has already been checked to be equal to 0 or 1,
 and we can sure that the $a$ variable is not equal to these numbers at this point.
 And if $R0=2$, 
-a pointer to the string \IT{<<two\textbackslash{}n>>}
+a pointer to the string \emph{<<two\textbackslash{}n>>}
 will be loaded by \ADREQ into \Reg{0}.
 
 \subsubsection{ARM: \OptimizingKeilVI (\ThumbMode)}
@@ -59,6 +59,6 @@ The string pointers are passed to \puts using an \INS{ADRP}/\INS{ADD} instructio
 \lstinputlisting[style=customasmARM]{patterns/08_switch/1_few/ARM64_GCC_O3_EN.lst}
 
 Better optimized piece of code.
-\TT{CBZ} (\IT{Compare and Branch on Zero}) instruction does jump if \RegW{0} is zero.
+\TT{CBZ} (\emph{Compare and Branch on Zero}) instruction does jump if \RegW{0} is zero.
 There is also a direct jump to \puts instead of calling it, like it was explained before:~\myref{JMP_instead_of_RET}.
 

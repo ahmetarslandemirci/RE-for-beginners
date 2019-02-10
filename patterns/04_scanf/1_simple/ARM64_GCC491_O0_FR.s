@@ -9,13 +9,13 @@ scanf_main:
 	stp	x29, x30, [sp, -32]!
 ; utiliser la partie de pile (FP=SP)
 	add	x29, sp, 0
-; §charger le pointeur sur la chaîne§  "Enter X:":
+; charger le pointeur sur la chaîne  "Enter X:":
 	adrp	x0, .LC0
 	add	x0, x0, :lo12:.LC0
-; §X0=pointeur sur la chaîne§ "Enter X:"
+; X0=pointeur sur la chaîne "Enter X:"
 ; l'afficher:
 	bl	puts
-; §charger le pointeur sur la chaîne§ "%d":
+; charger le pointeur sur la chaîne "\%d":
 	adrp	x0, .LC1
 	add	x0, x0, :lo12:.LC1
 ; trouver de l'espace dans la structure de pile pour la variable "x" (X1=FP+28):
@@ -26,13 +26,13 @@ scanf_main:
 ; charger la valeur 32-bit de la variable dans la partie de pile:
 	ldr	w1, [x29,28]
 ; W1=x
-; §charger le pointeur sur la chaîne§ "You entered %d...\n"
-; §printf() va prendre la chaîne de texte de  X0 et de la variable "x" de X1 (ou W1)§
+; charger le pointeur sur la chaîne \verb|"You entered %d...\n"|
+; printf() va prendre la chaîne de texte de  X0 et de la variable "x" de X1 (ou W1)
 	adrp	x0, .LC2
 	add	x0, x0, :lo12:.LC2
 	bl	printf
 ; retourner 0
 	mov	w0, 0
-; §restaurer FP et LR, puis ajouter 32 à SP:§
+; restaurer FP et LR, puis ajouter 32 à SP:
 	ldp	x29, x30, [sp], 32
 	ret

@@ -16,8 +16,8 @@ Nous atteignons le label \TT{.L5} si la fonction a reçue le nombre 3250 en entr
 Mais nous pouvons atteindre ce label d'une autre façon:
 nous voyons qu'il n'y a pas de saut entre l'appel à \printf et le label \TT{.L5}.
 
-Nous comprenons maintenant pourquoi la déclaration \IT{switch()} est parfois une
+Nous comprenons maintenant pourquoi la déclaration \emph{switch()} est parfois une
 source de bug:
-un \IT{break} oublié va transformer notre déclaration \IT{switch()} en un \IT{fallthrough},
+un \emph{break} oublié va transformer notre déclaration \emph{switch()} en un \emph{fallthrough},
 et plusieurs blocs seront exécutés au lieu d'un seul.
 

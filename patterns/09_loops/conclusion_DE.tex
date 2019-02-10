@@ -20,19 +20,19 @@ generiert werden:
 
 \lstinputlisting[caption=x86,style=customasmx86]{patterns/09_loops/skeleton_x86_2_9_order_DE.lst}
 
-Normalerweise wird die Bedingung \IT{vor} dem Körper geprüft, aber der Compiler
-kann den Code auch so anordnen, dass die Bedingung \IT{nach} dem Körper geprüft
+Normalerweise wird die Bedingung \emph{vor} dem Körper geprüft, aber der Compiler
+kann den Code auch so anordnen, dass die Bedingung \emph{nach} dem Körper geprüft
 wird.
 
 Dies geschieht dann, wenn der Compiler sicher sein kann, dass die Bedingung im
-ersten Durchlauf stets \IT{wahr} ist, sodass der Körper der Schleife mindestens
+ersten Durchlauf stets \emph{wahr} ist, sodass der Körper der Schleife mindestens
 einmal tatsächlich ausgeführt wird:
 
 \lstinputlisting[caption=x86,style=customasmx86]{patterns/09_loops/skeleton_x86_2_9_reorder_DE.lst}
 
 \myindex{x86!\Instructions!LOOP}
 
-Verwendung des \IT{LOOP} Befehls. Sehr selten, Compiler verwenden ihn nicht.
+Verwendung des \emph{LOOP} Befehls. Sehr selten, Compiler verwenden ihn nicht.
 Wenn er auftaucht, ist dies ein Zeichen dafür, dass das entsprechende
 Codesegment von Hand geschrieben worden ist:
 

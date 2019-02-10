@@ -26,8 +26,8 @@ for (i = 0; i < 1024; i++)
 
 \myindex{x86!\Instructions!PLMULLD}
 \myindex{x86!\Instructions!PLMULHW}
-\newcommand{\PMULLD}{\IT{PMULLD} (\IT{Перемножить запакованные знаковые DWORD и сохранить младшую часть результата})}
-\newcommand{\PMULHW}{\TT{PMULHW} (\IT{Перемножить запакованные знаковые DWORD и сохранить старшую часть результата})}
+\newcommand{\PMULLD}{\emph{PMULLD} (\emph{Перемножить запакованные знаковые DWORD и сохранить младшую часть результата})}
+\newcommand{\PMULHW}{\TT{PMULHW} (\emph{Перемножить запакованные знаковые DWORD и сохранить старшую часть результата})}
 
 Если представить, что каждый элемент массива ~--- это 32-битный \Tint, то их можно загружать сразу 
 по 4 из А в 128-битный XMM-регистр, 
@@ -74,10 +74,10 @@ icl intel.cpp /QaxSSE2 /Faintel.asm /Ox
 \myindex{x86!\Instructions!PADDD}
 \begin{itemize}
 \item
-\MOVDQU (\IT{Move Unaligned Double Quadword}) --- она просто загружает 16 байт из памяти в XMM-регистр.
+\MOVDQU (\emph{Move Unaligned Double Quadword}) --- она просто загружает 16 байт из памяти в XMM-регистр.
 
 \item
-\PADDD (\IT{Add Packed Integers}) --- складывает сразу 4 пары 32-битных чисел и оставляет в первом операнде результат. 
+\PADDD (\emph{Add Packed Integers}) --- складывает сразу 4 пары 32-битных чисел и оставляет в первом операнде результат. 
 Кстати, если произойдет переполнение, то исключения не произойдет и никакие флаги не установятся, 
 запишутся просто младшие 32 бита результата. 
 Если один из операндов \PADDD ~--- адрес значения в памяти, 
@@ -85,7 +85,7 @@ icl intel.cpp /QaxSSE2 /Faintel.asm /Ox
 \footnote{О выравнивании данных см. также: \URLWPDA}.
 
 \item
-\MOVDQA (\IT{Move Aligned Double Quadword}) --- тоже что и \MOVDQU, только подразумевает 
+\MOVDQA (\emph{Move Aligned Double Quadword}) --- тоже что и \MOVDQU, только подразумевает 
 что адрес в памяти выровнен по 16-байтной границе. 
 Если он не выровнен, произойдет исключение. 
 \MOVDQA работает быстрее чем \MOVDQU, но требует вышеозначенного.

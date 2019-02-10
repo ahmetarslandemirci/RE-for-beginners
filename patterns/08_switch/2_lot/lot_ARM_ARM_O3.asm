@@ -25,31 +25,31 @@
 
 00000194
 00000194             zero_case ; CODE XREF: f2+4
-00000194                       ; f2:loc_180
+00000194                       ; f2:loc\_180
 00000194 EC 00 8F E2     ADR     R0, aZero       ; jumptable 00000178 case 0
 00000198 06 00 00 EA     B       loc_1B8
 
 0000019C
 0000019C             one_case ; CODE XREF: f2+4
-0000019C                      ; f2:loc_184
+0000019C                      ; f2:loc\_184
 0000019C EC 00 8F E2     ADR     R0, aOne        ; jumptable 00000178 case 1
 000001A0 04 00 00 EA     B       loc_1B8
 
 000001A4
 000001A4             two_case ; CODE XREF: f2+4
-000001A4                      ; f2:loc_188
+000001A4                      ; f2:loc\_188
 000001A4 01 0C 8F E2     ADR     R0, aTwo        ; jumptable 00000178 case 2
 000001A8 02 00 00 EA     B       loc_1B8
 
 000001AC
 000001AC             three_case ; CODE XREF: f2+4
-000001AC                        ; f2:loc_18C
+000001AC                        ; f2:loc\_18C
 000001AC 01 0C 8F E2     ADR     R0, aThree      ; jumptable 00000178 case 3
 000001B0 00 00 00 EA     B       loc_1B8
 
 000001B4
 000001B4             four_case ; CODE XREF: f2+4
-000001B4                       ; f2:loc_190
+000001B4                       ; f2:loc\_190
 000001B4 01 0C 8F E2     ADR     R0, aFour       ; jumptable 00000178 case 4
 000001B8
 000001B8             loc_1B8   ; CODE XREF: f2+24

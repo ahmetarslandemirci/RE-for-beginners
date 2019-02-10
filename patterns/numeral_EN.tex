@@ -1,17 +1,22 @@
 \subsection{Numeral Systems}
 
+\epigraph{Nowadays octal numbers seem to be
+used for exactly one purpose---file permissions on POSIX systems---but hexadecimal numbers
+are widely used to emphasize the bit pattern of a number over its numeric value.}
+{Alan A. A. Donovan, Brian W. Kernighan ---  The Go Programming Language}
+
 Humans have become accustomed to a decimal numeral system, probably because almost everyone has 10 fingers.
 Nevertheless, the number \q{10} has no significant meaning in science and mathematics.
 The natural numeral system in digital electronics is binary: 0 is for an absence of current in the wire, and 1 for presence.
 10 in binary is 2 in decimal, 100 in binary is 4 in decimal, and so on.
 
 % This sentence is a bit unweildy - maybe try 'Our ten-digit system would be described as having a radix...' - Renaissance
-If the numeral system has 10 digits, it has a \IT{radix} (or \IT{base}) of 10.
-The binary numeral system has a \IT{radix} of 2.
+If the numeral system has 10 digits, it has a \emph{radix} (or \emph{base}) of 10.
+The binary numeral system has a \emph{radix} of 2.
 
 Important things to recall:
 
-1) A \IT{number} is a number, while a \IT{digit} is a term from writing systems, and is usually one character
+1) A \emph{number} is a number, while a \emph{digit} is a term from writing systems, and is usually one character
 
 % The original is 'number' is not changed; I think the intent is value, and changed it - Renaissance
 2) The value of a number does not change when converted to another radix; only the writing notation for that value has changed (and therefore the way of representing it in \ac{RAM}).
@@ -74,13 +79,13 @@ Decimal numbers are usually written as is, i.e., 1234. Some assemblers allow an 
 
 Binary numbers are sometimes prepended with the "0b" prefix: 0b100110111 (\ac{GCC} has a non-standard language extension for this\footnote{\url{https://gcc.gnu.org/onlinedocs/gcc/Binary-constants.html}}).
 There is also another way: using a "b" suffix, for example: 100110111b.
-This book tries to use the "0b" prefix consistently throughout the book for binary numbers.
+This book tries to use the "0b" prefix consistently throughout the book for binary numbers. % I would rephrase the sentence to get rid of the "book" repetition
 
 Hexadecimal numbers are prepended with "0x" prefix in \CCpp and other \ac{PL}s: 0x1234ABCD.
 Alternatively, they are given a "h" suffix: 1234ABCDh. This is common way of representing them in assemblers and debuggers.
 In this convention, if the number is started with a Latin (A..F) digit, a 0 is added at the beginning: 0ABCDEFh.
 There was also convention that was popular in 8-bit home computers era, using \$ prefix, like \$ABCD.
-The book will try to stick to "0x" prefix throughout the book for hexadecimal numbers.
+The book will try to stick to "0x" prefix throughout the book for hexadecimal numbers. % same comment as before for the repetition of "book"
 
 Should one learn to convert numbers mentally? A table of 1-digit hexadecimal numbers can easily be memorized.
 As for larger numbers, it's probably not worth tormenting yourself.

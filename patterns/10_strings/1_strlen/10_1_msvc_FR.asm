@@ -13,14 +13,14 @@ $LN2@strlen_:
 
     movsx   edx, BYTE PTR [ecx]
     mov     eax, DWORD PTR _eos$[ebp]  ; EAX=eos
-    add     eax, 1                     ; §incrémenter§ EAX
+    add     eax, 1                     ; incrémenter EAX
     mov     DWORD PTR _eos$[ebp], eax  ; remettre EAX dans "eos"
-    test    edx, edx                   ; est-ce que EDX est §à zéro§?
+    test    edx, edx                   ; est-ce que EDX est à zéro?
     je      SHORT $LN1@strlen_         ; oui, alors finir la boucle
     jmp     SHORT $LN2@strlen_         ; continuer la boucle
 $LN1@strlen_:
 
-    ; ici nous calculons la §différence§ entre deux pointeurs
+    ; ici nous calculons la différence entre deux pointeurs
 
     mov    eax, DWORD PTR _eos$[ebp]
     sub    eax, DWORD PTR _str$[ebp]

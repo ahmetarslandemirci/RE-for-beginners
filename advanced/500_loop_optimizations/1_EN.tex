@@ -16,18 +16,18 @@ At least MSVC 6.0 from the end of 1990s till MSVC 2013 can produce a really weir
 \lstinputlisting[style=customasmx86]{advanced/500_loop_optimizations/1_1_EN.lst}
 
 This is weird, because how humans work with two pointers? They store two addresses in two registers or two memory cells.
-MSVC compiler in this case stores two pointers as one pointer (\IT{sliding dst} in \EAX) 
-and difference between \IT{src} and \IT{dst} pointers (left unchanged over the span of loop body execution in \ESI).
+MSVC compiler in this case stores two pointers as one pointer (\emph{sliding dst} in \EAX) 
+and difference between \emph{src} and \emph{dst} pointers (left unchanged over the span of loop body execution in \ESI).
 \myindex{\CLanguageElements!ptrdiff\_t}
 (By the way, this is a rare case when ptrdiff\_t data type can be used.)
-When it needs to load a byte from \IT{src}, it loads it at \IT{diff + sliding dst} and stores byte
-at just \IT{sliding dst}.
+When it needs to load a byte from \emph{src}, it loads it at \emph{diff + sliding dst} and stores byte
+at just \emph{sliding dst}.
 
 This has to be some optimization trick. But I've rewritten this function to:
 
 \lstinputlisting[style=customasmx86]{advanced/500_loop_optimizations/1_2.lst}
 
-\dots and it works as efficient as the \IT{optimized} version on my Intel Xeon E31220 @ 3.10GHz.
+\dots and it works as efficient as the \emph{optimized} version on my Intel Xeon E31220 @ 3.10GHz.
 Maybe, this optimization was targeted some older x86 CPUs of 1990s era, since this trick is used at least by ancient MS VC 6.0?
 
 Any idea?
@@ -48,7 +48,7 @@ void __cdecl f1(char *dst, char *src, size_t size)
     sliding_dst = dst;
     do
     {
-      tmp = (sliding_dst++)[src - dst];         // difference (src-dst) is calculated once, before loop body
+      tmp = (sliding_dst++)[src - dst];         // difference (src-dst) is calculated once, at the beginning
       *(sliding_dst - 1) = tmp;
       --counter;
     }
@@ -57,7 +57,7 @@ void __cdecl f1(char *dst, char *src, size_t size)
 }
 \end{lstlisting}
 
-Nevertheless, this optimization trick is often used by MSVC (not just in \ac{DIY} homebrew \IT{memcpy()} routines,
+Nevertheless, this optimization trick is often used by MSVC (not just in \ac{DIY} homebrew \emph{memcpy()} routines,
 but in many loops which uses two or more arrays),
 so it's worth for reverse engineers to keep it in mind.
 

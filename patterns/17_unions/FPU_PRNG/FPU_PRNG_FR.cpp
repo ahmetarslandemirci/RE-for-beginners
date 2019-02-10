@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <time.h>
 
-// PRNG entier §définitions, données§ et routines:
+// PRNG entier définitions, données et routines:
 
 // constantes provenant du livre Numerical Recipes
 const uint32_t RNG_a=1664525;
@@ -20,7 +20,7 @@ uint32_t my_rand()
         return RNG_state;
 };
 
-// PRNG FPU §définitions§ et routines:
+// PRNG FPU définitions et routines:
 
 union uint32_t_float
 {

@@ -20,7 +20,7 @@ _main	PROC
 	push	edx
 	movzx	eax, WORD PTR _array$[ebp] ; wYear
 	push	eax
-	push	OFFSET $SG78573
+	push	OFFSET $SG78573 ; '\%04d-\%02d-\%02d \%02d:\%02d:\%02d', 0aH, 00H
 	call	_printf
 	add	esp, 28
 	xor	eax, eax

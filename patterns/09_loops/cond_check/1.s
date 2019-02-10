@@ -10,7 +10,7 @@ f:
 .L5:
 	mov	edx, ebx
 	xor	eax, eax
-	mov	esi, OFFSET FLAT:.LC0 ; '%d\n"
+	mov	esi, OFFSET FLAT:.LC0 ; "\%d\textbackslash n"
 	mov	edi, 1
 	add	ebx, 1
 	call	__printf_chk

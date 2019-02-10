@@ -18,7 +18,7 @@ So what we get is:
 Hard to guess why \INS{FXCH} (swap operands) is here.
 
 It's possible to get rid of it easily by swapping the first two \FLD instructions or by replacing 
-\INS{FCMOVBE} (\IT{below or equal}) by \INS{FCMOVA} (\IT{above}).
+\INS{FCMOVBE} (\emph{below or equal}) by \INS{FCMOVA} (\emph{above}).
 Probably it's a compiler inaccuracy.
 
 So \INS{FUCOMI} compares \ST{0} ($a$) and \ST{1} ($b$) 
@@ -43,7 +43,7 @@ As it was mentioned before, the FPU registers set is a circular buffer rather th
 And GDB doesn't show \GTT{STx} registers, but internal the FPU registers (\GTT{Rx}). 
 The arrow (at line 35) points to the current top of the stack.
 
-You can also see the \GTT{TOP} register contents in \IT{Status Word} (line 44)---it is 6 now, 
+You can also see the \GTT{TOP} register contents in \emph{Status Word} (line 44)---it is 6 now, 
 so the stack top is now pointing to internal register 6.
 
 The values of $a$ and $b$ are swapped after \INS{FXCH} is executed (line 54).

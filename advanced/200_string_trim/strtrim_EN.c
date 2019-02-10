@@ -6,7 +6,7 @@ char* str_trim (char *s)
 	char c;
 	size_t str_len;
 	
-	// work as long as \r or \n is at the end of string
+	// \verb|work as long as \r or \n is at the end of string|
 	// stop if some other character there or its an empty string
 	// (at start or due to our operation)
 	for (str_len=strlen(s); str_len>0 && (c=s[str_len-1]); str_len--)

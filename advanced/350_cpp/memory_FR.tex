@@ -3,7 +3,7 @@
 Vous pouvez parfois entendre de la part de programmeurs C++ \q{allouer la mémoire sur la pile}
 et/ou \q{allouer la mémoire sur le \gls{heap}}.
 
-Allouer un objet \IT{sur la pile}:
+Allouer un objet \emph{sur la pile}:
 
 \begin{lstlisting}[style=customc]
 void f()
@@ -19,12 +19,12 @@ void f()
 La mémoire de l'objet (ou de la structure) est allouée sur le pile, en utilisant
 un simple décalage de \ac{SP}.
 La mémoire est allouée jusqu'à la sortie de la fonction, ou, plus précisément, à
-la fin du \IT{scope}---\ac{SP} est remis à son état (comme au début de la fonction)
-et le destructeur de \IT{Class} est appelé.
+la fin du \emph{scope}---\ac{SP} est remis à son état (comme au début de la fonction)
+et le destructeur de \emph{Class} est appelé.
 De la même manière, la mémoire allouée pour une structure en C est désallouée à la
 sortie de la fonction.
 
-Allouer un objet \IT{dans le \gls{heap}}:
+Allouer un objet \emph{dans le \gls{heap}}:
 
 \begin{lstlisting}[style=customc]
 void f1()
@@ -49,18 +49,18 @@ void f2()
 \myindex{\CStandardLibrary!malloc()}
 \myindex{\CStandardLibrary!free()}
 Ceci est la même chose que d'allouer de la mémoire pour une structure en utilisant
-un appel à \IT{malloc()}.
-En fait, \IT{new} en C++ est un wrapper pour \IT{malloc()}, et \IT{delete} est un
-wrapper pour \IT{free()}.
+un appel à \emph{malloc()}.
+En fait, \emph{new} en C++ est un wrapper pour \emph{malloc()}, et \emph{delete} est un
+wrapper pour \emph{free()}.
 Puisque le bloc de mémoire a été allouée sur le \gls{heap}, il doit être désalloué
-explicitement, en utilisant \IT{delete}.
+explicitement, en utilisant \emph{delete}.
 Le destructeur de classe sera appelé automatiquement juste avant ce moment.
 
 Quelle méthode est la meilleure?
-L'allocation \IT{isur la pile} est très rapide, et bon pour les petits, à durée de
+L'allocation \emph{isur la pile} est très rapide, et bon pour les petits, à durée de
 vie courte objets, qui seront utilisés seulement dans la fonction courante.
 
-L'allocation \IT{sur le heap} est plus lente, et meilleure pour des objets à longue
+L'allocation \emph{sur le heap} est plus lente, et meilleure pour des objets à longue
 durée de vie, qui seront utilisés dans plusieurs fonctions.
 Aussi, les objets alloués sur le \gls{heap} sont sujets à la fuite de mémoire, car
 ils doivent être libérés explicitement, mais on peut oublier de le faire.

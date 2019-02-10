@@ -19,7 +19,7 @@ _calc_network_address PROC
 	push	DWORD PTR _ip2$[esp+24]
 	push	DWORD PTR _ip1$[esp+28]
 	call	_form_IP
-	and	eax, edi	; network address = host address & netmask
+	and	eax, edi	; network address = host address \& netmask
 	push	eax
 	call	_print_as_IP
 	add	esp, 36

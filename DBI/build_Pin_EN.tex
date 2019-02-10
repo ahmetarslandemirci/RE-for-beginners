@@ -1,0 +1,40 @@
+\section{Building Pin}
+
+Building Pin for Windows may be tricky.
+This is my working recipe.
+
+\begin{itemize}
+
+\item Unpack latest Pin to, say, \verb|C:\pin-3.7\|
+
+\item Install latest Cygwin, to, say, \verb|c:\cygwin64|
+
+\item Install MSVC 2015 or newer.
+
+\item Open file \verb|C:\pin-3.7\source\tools\Config\makefile.default.rules|, replace \verb|mkdir -p $@| to \verb|/bin/mkdir -p $@|
+
+\item (If needed) in \verb|C:\pin-3.7\source\tools\SimpleExamples\makefile.rules|, add your pintool to the \verb|TEST_TOOL_ROOTS| list.
+
+\item Open "VS2015 x86 Native Tools Command Prompt". Type:
+
+\begin{lstlisting}
+cd c:\pin-3.7\source\tools\SimpleExamples
+c:\cygwin64\bin\make all TARGET=ia32
+\end{lstlisting}
+
+Now pintools are in \verb|c:\pin-3.7\source\tools\SimpleExamples\obj-ia32|
+
+\item For winx64, use "x64 Native Tools Command Prompt" and run:
+
+\begin{lstlisting}
+c:\cygwin64\bin\make all TARGET=intel64
+\end{lstlisting}
+
+\item Run pintool:
+
+\begin{lstlisting}
+c:\pin-3.7\pin.exe -t C:\pin-3.7\source\tools\SimpleExamples\obj-ia32\XOR_ins.dll -- program.exe arguments
+\end{lstlisting}
+
+\end{itemize}
+

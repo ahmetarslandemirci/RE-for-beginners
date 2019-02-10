@@ -32,7 +32,7 @@ _width$ = 12  ; size = 4
 _height$ = 16 ; size = 4
 _depth$ = 20  ; size = 4
 ??0box@@QAE@HHHH@Z PROC ; box::box, COMDAT
-; _this$ = ecx
+; \_this\$ = ecx
     push esi
     mov  esi, ecx
     call ??0object@@QAE@XZ ; object::object

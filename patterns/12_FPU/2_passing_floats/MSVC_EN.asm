@@ -13,7 +13,7 @@ _main    PROC
     fld    QWORD PTR __real@40400147ae147ae1
     fstp   QWORD PTR [esp]
     call   _pow
-    add    esp, 8  ; §\IT{return back}§ place of one variable.
+    add    esp, 8  ; \emph{return back} place of one variable.
 
 ; in local stack here 8 bytes still reserved for us.
 ; result now in ST(0)

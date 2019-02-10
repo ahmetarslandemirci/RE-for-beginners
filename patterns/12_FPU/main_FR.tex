@@ -15,8 +15,8 @@ Il était appelé \q{coprocesseur} dans le passé et il était en dehors du \ac{
 
 \subsection{IEEE 754}
 
-Un nombre au format IEEE 754 consiste en un \IT{signe}, un \IT{significande} (aussi
-appelé \IT{fraction}) et un \IT{exposant}.
+Un nombre au format IEEE 754 consiste en un \emph{signe}, un \emph{significande} (aussi
+appelé \emph{fraction}) et un \emph{exposant}.
 
 \subsection{x86}
 
@@ -67,17 +67,17 @@ La même idéologie est utilisée dans l'extension SIMD des CPUs x86/x64.
 \myindex{double}
 
 Le standard des langages \CCpp offre au moins deux types de nombres à virgule flottante,
-\Tfloat (\IT{simple-précision}\FNURLSP, 32 bits) \footnote{le format des nombres
-à virgule flottante simple précision est aussi abordé dans la section \IT{\WorkingWithFloatAsWithStructSubSubSectionName}~(\myref{sec:floatasstruct})}
-et \Tdouble  (\IT{double-précision}\FNURLDP, 64 bits).
+\Tfloat (\emph{simple-précision}\FNURLSP, 32 bits) \footnote{le format des nombres
+à virgule flottante simple précision est aussi abordé dans la section \emph{\WorkingWithFloatAsWithStructSubSubSectionName}~(\myref{sec:floatasstruct})}
+et \Tdouble  (\emph{double-précision}\FNURLDP, 64 bits).
 
-Dans \InSqBrackets{\TAOCPvolII 246} nous pouvons trouver que \IT{simple-précision}
+Dans \InSqBrackets{\TAOCPvolII 246} nous pouvons trouver que \emph{simple-précision}
 signifie que la valeur flottante peut être stockée dans un simple mot machine [32-bit],
-\IT{double-précision} signifie qu'elle peut être stockée dans deux mots (64 bits).
+\emph{double-précision} signifie qu'elle peut être stockée dans deux mots (64 bits).
 
 \myindex{long double}
 
-GCC supporte également le type \IT{long double} (\IT{précision étendue}\FNURLEP,
+GCC supporte également le type \emph{long double} (\emph{précision étendue}\FNURLEP,
 80 bit), que MSVC ne supporte pas.
 
 Le type \Tfloat nécessite le même nombre de bits que le type \Tint dans les environnements
@@ -98,7 +98,7 @@ peut utiliser l'instruction \MOV ou \TT{XOR reg, reg}.
 \myindex{\CStandardLibrary!memset()}
 Ceci est utilisable pour les structures où des variables de types variés sont présentes.
 Avec la fonction usuelle memset() il est possible de mettre toutes les variables
-entières à 0, toutes les variables booléennes à \IT{false}, tous les pointeurs à
+entières à 0, toutes les variables booléennes à \emph{false}, tous les pointeurs à
 NULL, et toutes les variables flottantes (de n'importe quelle précision) à 0,0.
 
 \subsection{Copie}

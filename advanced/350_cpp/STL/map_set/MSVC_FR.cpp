@@ -12,8 +12,8 @@ struct tree_node
     char Color; // 0 - Red, 1 - Black
     char Isnil;
     //std::pair Myval;
-    unsigned int first; // §appelé§ Myval dans std::set
-    const char *second; // non §présent§ dans std::set
+    unsigned int first; // appelé Myval dans std::set
+    const char *second; // non présent dans std::set
 };
 
 struct tree_struct

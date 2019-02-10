@@ -34,8 +34,8 @@ f:
 	fadd	d0, d0, d1
 ; D0 = D0+D1 = a/3.14 + b*4.1
 
-	fmov	x0, d0 ; \ избыточный код
-	fmov	d0, x0 ; /
+	fmov	x0, d0 ; \verb|\ избыточный код|
+	fmov	d0, x0 ; \verb|/               |
 	add	sp, sp, 16
 	ret
 .LC25:

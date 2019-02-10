@@ -42,7 +42,7 @@ in executable code (keys has high entropy as well), but I didn't try this myself
 
 \subsection{Tools}
 
-Handy Linux \IT{ent} utility to measure entropy of a file\footnote{\url{http://www.fourmilab.ch/random/}}.
+Handy Linux \emph{ent} utility to measure entropy of a file\footnote{\url{http://www.fourmilab.ch/random/}}.
 
 There is a great online entropy visualizer made by Aldo Cortesi, 
 which I tried to mimic using Mathematica: \url{http://binvis.io}.
@@ -52,14 +52,14 @@ His articles about entropy visualization are worth reading:
 \url{http://corte.si/posts/visualisation/binvis/index.html}.
 
 \myindex{radare2}
-radare2 framework has \IT{\#entropy} command for this.
+radare2 framework has \emph{\#entropy} command for this.
 
 A tool for IDA: IDAtropy\footnote{\url{https://github.com/danigargu/IDAtropy}}.
 
 \subsection{A word about primitive encryption like XORing}
 
 It's interesting that simple XOR encryption doesn't affect entropy of data.
-I've shown this in \IT{Norton Guide} example in the book (\myref{norton_guide}).
+I've shown this in \emph{Norton Guide} example in the book (\myref{norton_guide}).
 
 Generalizing: encryption by substitution cipher also doesn't affect entropy of data
 (and XOR can be viewed as substitution cipher).
@@ -89,8 +89,8 @@ CALL function
 \end{lstlisting}
 
 Ideal executable code compressor would encode information like this:
-\IT{there is a CALL to a ``function'' at address X and the same CALL at address Y} without necessity to encode
-address of the \IT{function} twice.
+\emph{there is a CALL to a ``function'' at address X and the same CALL at address Y} without necessity to encode
+address of the \emph{function} twice.
 
 \myindex{UPX}
 To deal with this, executable compressors are sometimes able to reduce entropy here.

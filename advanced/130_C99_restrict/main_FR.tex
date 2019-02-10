@@ -42,17 +42,17 @@ Ceci est appelé \q{pointer aliasing},
 une situation dans laquelle le compilateur ne peut pas être sûr que la mémoire sur
 laquelle le pointeur pointe n'a pas été modifiée.
 
-\IT{restrict} dans le standard C99 \InSqBrackets{\CNineNineStd{} 6.7.3/1}
+\emph{restrict} dans le standard C99 \InSqBrackets{\CNineNineStd{} 6.7.3/1}
 est une promesse faite par le programmeur au compilateur que les arguments de la
 fonction marqués par ce mot-clef vont toujours pointer vers des case mémoire différentes
 et ne vont jamais se recouper.
 
-Pour être plus précis et décrire ceci formellement, \IT{restrict} indique que seul
+Pour être plus précis et décrire ceci formellement, \emph{restrict} indique que seul
 ce pointeur est utilisé pour accéder un objet, et qu'aucun autre pointeur ne sera
 utilisé pour ceci.
 
 On peut même dire que l'objet ne sera accéder que par un seul pointeur, si il est
-marqué comme \IT{restrict}.
+marqué comme \emph{restrict}.
 
 Ajoutons ce mot-clef à chaque argument pointeur:
 
@@ -93,7 +93,7 @@ Ceci est du ressort de la conscience du programmeur, et le résultat sera incorr
 Retournons au Fortran.
 
 Les compilateurs de ce langage traitent tous les pointeurs de cette façon, donc lorsqu'il
-n'est pas possible d'utiliser \IT{restrict} en C, Fortran peut générer du code plus
+n'est pas possible d'utiliser \emph{restrict} en C, Fortran peut générer du code plus
 rapide dans ces cas.
 
 À quel point est-ce pratique?
@@ -104,7 +104,7 @@ C'est le cas en algèbre linéaire, par exemple.
 
 Les superordinateurs/\ac{HPC} utilisent beaucoup d'algèbre linéaire, c'est probablement
 pourquoi,\\
-traditionnellement, Fortran y est encore utilisé [Eugene Loh, \IT{The Ideal HPC Programming Language}, (2010)].
+traditionnellement, Fortran y est encore utilisé [Eugene Loh, \emph{The Ideal HPC Programming Language}, (2010)].
 
 Mais lorsque le nombre d'itérations n'est pas très important, certainement, le gain
 en vitesse ne doit pas être significatif.

@@ -1,4 +1,4 @@
-seg030:01BF             get_rand proc far ; CODE XREF: check_dongle+25p
+seg030:01BF             get_rand proc far ; CODE XREF: check\_dongle+25p
 seg030:01BF
 seg030:01BF             arg_0    = word ptr  6
 seg030:01BF

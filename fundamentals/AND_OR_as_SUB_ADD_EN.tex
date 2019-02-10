@@ -25,7 +25,7 @@ Presumably, it was done to save some space?
 Old 8-bit computers have very tight environment.
 
 Characters of all messages are always in standard 7-bit \ac{ASCII} table,
-so it's guaranteed 8th bit is never used for characters.
+so it's guaranteed 7th bit is never used for characters.
 
 To print such string, we must check \ac{MSB} of each byte, and if it's set, we must clear it, then print character,
 and then stop.
@@ -58,7 +58,7 @@ void print_string()
 };
 \end{lstlisting}
 
-Now what is interesting, since 8th bit is the most significant bit (in byte), we can check it, set it and remove it using
+Now what is interesting, since 7th bit is the most significant bit (in byte), we can check it, set it and remove it using
 arithmetical operations instead of logical.
 
 I can rewrite my C example:
@@ -89,17 +89,17 @@ void print()
 };
 \end{lstlisting}
 
-By default, \IT{char} is signed type in C/C++, so to compare it with variable like 0x80 (which is negative ($-128$)
+By default, \emph{char} is signed type in C/C++, so to compare it with variable like 0x80 (which is negative ($-128$)
 if treated as signed),
 we must treat each character in text message as unsigned.
 
-Now if 8th bit is set, the number is always larger or equal to 0x80.
-If 8th bit is clear, the number is always smaller than 0x80.
+Now if 7th bit is set, the number is always larger or equal to 0x80.
+If 7th bit is clear, the number is always smaller than 0x80.
 
-Even more than that: if 8th bit is set, it can be cleared by subtracting 0x80, nothing else.
+Even more than that: if 7th bit is set, it can be cleared by subtracting 0x80, nothing else.
 If it's not set beforehand, however, subtracting will destruct other bits.
 
-Likewise, if 8th bit is clear, it's possible to set it by adding 0x80.
+Likewise, if 7th bit is clear, it's possible to set it by adding 0x80.
 But if it's set beforehand, addition operation will destruct some other bits.
 
 In fact, this is valid for any bit.

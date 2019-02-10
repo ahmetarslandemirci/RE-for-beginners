@@ -1,6 +1,6 @@
 \mysection{\PrintfSeveralArgumentsSectionName}
 
-Spróbujmy trochę rozszerzyć przykład \IT{\HelloWorldSectionName}~(\myref{sec:helloworld}),
+Spróbujmy trochę rozszerzyć przykład \emph{\HelloWorldSectionName}~(\myref{sec:helloworld}),
 pisząc w funkcji \main:
 
 \lstinputlisting[label=hw_c,style=customc]{patterns/03_printf/1.c}
@@ -73,10 +73,10 @@ BL funkcja
 
 \myindex{MIPS!O32}
 \begin{lstlisting}[caption=MIPS,style=customasmMIPS]
-LI $4, pierwszy argument ; AKA $A0
-LI $5, drugi argument ; AKA $A1
-LI $6, trzeci argument ; AKA $A2
-LI $7, §4-y argument §; AKA $A3
+LI $4, pierwszy argument ; AKA \$A0
+LI $5, drugi argument ; AKA \$A1
+LI $6, trzeci argument ; AKA \$A2
+LI $7, §4-y argument §; AKA \$A3
 ; §przekazać 5-y, 6-y argument, itd, przez stos (jeśli trzeba)§
 LW temp_reg, adress funkcji
 JALR temp_reg

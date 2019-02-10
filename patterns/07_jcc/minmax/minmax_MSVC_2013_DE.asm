@@ -6,7 +6,7 @@ _my_min	PROC
 	mov	eax, DWORD PTR _a$[ebp]
 ; vergleiche A und B:
 	cmp	eax, DWORD PTR _b$[ebp]
-; §springe, falls A größer gleich B:§
+; springe, falls A größer gleich B:
 	jge	SHORT $LN2@my_min
 ; lade A ansonsten erneut nach EAX und springe zum Ende
 	mov	eax, DWORD PTR _a$[ebp]

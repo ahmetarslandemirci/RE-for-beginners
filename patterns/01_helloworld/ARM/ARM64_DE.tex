@@ -11,7 +11,7 @@ Die Register-Anzahl ist verdoppelt: \myref{ARM64_GPRs}.
 64-Bit-Register haben einen \TT{X-}Prefix, 32-Bit-Teile ein \TT{W-}.
 
 \myindex{ARM!\Instructions!STP}
-Die \TT{STP}-Anweisung (\IT{Store Pair}) speichert zwei Register auf dem Stack gleichzeitig:
+Die \TT{STP}-Anweisung (\emph{Store Pair}) speichert zwei Register auf dem Stack gleichzeitig:
 \RegX{29} und \RegX{30}.
 
 Natürlich kann diese Anweisung dieses Registerpaar an einer beliebigen Stelle im Speicher
@@ -22,8 +22,8 @@ für das Speichern zweier Register benötigt.
 
 Das Ausrufungszeichen (``!'')  nach dem Operanden bedeutet, dass zunächst der Wert 16 vom \ac{SP}
 subtrahiert werden muss und erst dann die Werte vom Register-Paar auf den Stack geschrieben werden.
-Dies wird auch \IT{pre-index} genannt.
-Mehr über den Unterschied von \IT{post-index} und \IT{pre-index} ist im Abschnitt
+Dies wird auch \emph{pre-index} genannt.
+Mehr über den Unterschied von \emph{post-index} und \emph{pre-index} ist im Abschnitt
 \myref{ARM_postindex_vs_preindex} zu finden.
 
 Im Sprachgebrauch des gebräuchlicheren x86, ist die erste Anweisung analog zu den Anweisungen
@@ -87,15 +87,15 @@ Das Ergebnis ist das gleiche, allerdings sieht \MOV nun wie folgt aus:
 
 \myindex{ARM!\Instructions!LDP}
 
-\INS{LDP} (\IT{Load Pair}) stellt anschließend die Register \RegX{29} und \RegX{30} wieder her.
+\INS{LDP} (\emph{Load Pair}) stellt anschließend die Register \RegX{29} und \RegX{30} wieder her.
 
 An dieser Stelle steht kein Ausrufungszeichen nach der Anweisung: dies impliziert, dass der Wert zunächst
 vom Stack gelesen wird und erst dann wird \ac{SP} um den Wert 16 verringert.
-Dies wird \IT{post-index} genannt.
+Dies wird \emph{post-index} genannt.
 
 \myindex{ARM!\Instructions!RET}
 Eine neue Anweisung taucht hier in ARM64 auf \RET.
-Diese arbeitet wie \TT{BX LR}, jedoch wird ein spezielles \IT{Hinweis-}Bit hinzugefügt, welches die \ac{CPU}
+Diese arbeitet wie \TT{BX LR}, jedoch wird ein spezielles \emph{Hinweis-}Bit hinzugefügt, welches die \ac{CPU}
 darüber informiert, dass dies ein Rücksprung aus einer Funktion ist und kein anderer Sprung, so dass die
 Ausführung optimiert werden kann.
 

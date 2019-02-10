@@ -1,11 +1,11 @@
 get_month1:
-; lade Adresse der Tabelle nach $v0:
+; lade Adresse der Tabelle nach \$v0:
                 la      $v0, month1
 ; nimm den Eingabewert und multipliziere mit 4:
                 sll     $a0, 2
 ; addiere Adresse der Tabelle und berechneten Wert:
                 addu    $a0, $v0
-; lade Tabellenelement an dieser Adresse nach $v0:
+; lade Tabellenelement an dieser Adresse nach \$v0:
                 lw      $v0, 0($a0)
 ; Rückgabe
                 jr      $ra

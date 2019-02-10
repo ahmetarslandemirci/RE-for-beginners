@@ -1,13 +1,13 @@
 \mysection{Negative array indices}
 \label{negative_array_indices}
 
-It's possible to address the space \IT{before} an array by supplying a negative index, e.g., $array[-1]$.
+It's possible to address the space \emph{before} an array by supplying a negative index, e.g., $array[-1]$.
 
 \subsection{Addressing string from the end}
 
 \myindex{Python}
 Python \ac{PL} allows to address arrays and strings from the end.
-For example, \IT{string[-1]} returns the last character, \IT{string[-2]} returns penultimate, etc.
+For example, \emph{string[-1]} returns the last character, \emph{string[-2]} returns penultimate, etc.
 Hard to believe, but this is also possible in C/C++:
 
 \lstinputlisting[style=customc]{\CURPATH/pythonesque_addressing.c}
@@ -23,15 +23,15 @@ Let's first recall why stack grows backwards (\myref{stack_grow_backwards}).
 There is some kind of block in memory and you want to store both heap and stack there, and you are not sure,
 how big they both can grow during runtime.
 
-You can set a \IT{heap} pointer to the beginning of the block,
-then you can set a \IT{stack} pointer to the end of the block (\IT{heap + size\_of\_block}),
-and then you can address \IT{nth} element of stack like \IT{stack[-n]}.
-For example, \IT{stack[-1]} for 1st element, \IT{stack[-2]} for 2nd, etc.
+You can set a \emph{heap} pointer to the beginning of the block,
+then you can set a \emph{stack} pointer to the end of the block (\emph{heap + size\_of\_block}),
+and then you can address \emph{nth} element of stack like \emph{stack[-n]}.
+For example, \emph{stack[-1]} for 1st element, \emph{stack[-2]} for 2nd, etc.
 
 This will work in the same fashion, as our trick of addressing string from the end.
 
 You can easily check if the structures has not begun to overlap each other:
-just be sure that address of the last element in \IT{heap} is below the address of the last element of \IT{stack}.
+just be sure that address of the last element in \emph{heap} is below the address of the last element of \emph{stack}.
 
 Unfortunately, $-0$ as index will not work,
 since two's complement way of representing negative numbers (\myref{sec:signednumbers}) don't allow negative zero,

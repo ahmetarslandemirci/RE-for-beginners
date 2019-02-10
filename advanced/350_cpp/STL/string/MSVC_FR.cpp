@@ -26,7 +26,7 @@ int main()
     dump_std_string(s1);
     dump_std_string(s2);
 
-    // cela fonctionne sans utiliser c_str()
+    // cela fonctionne sans utiliser c\_str()
     printf ("%s\n", &s1);
     printf ("%s\n", s2);
 };

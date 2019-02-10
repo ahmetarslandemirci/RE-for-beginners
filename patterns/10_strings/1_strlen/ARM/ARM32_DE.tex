@@ -7,17 +7,17 @@
 
 Der nicht optimierende LLVM erzeugt zu viel Code, aber wir können wir erkennen
 wir die Funktion mit lokalen Variablen auf dem Stack arbeitet. 
-Es gibt nur zwei lokale Variablen in unserer Funktion: \IT{eos} und \IT{str}.
-In folgenden von \IDA erzeugten Listing, sind die Variablen \IT{var\_8} und
-\IT{var\_4} in \IT{eos} bzw. \IT{str} umbenannt.
+Es gibt nur zwei lokale Variablen in unserer Funktion: \emph{eos} und \emph{str}.
+In folgenden von \IDA erzeugten Listing, sind die Variablen \emph{var\_8} und
+\emph{var\_4} in \emph{eos} bzw. \emph{str} umbenannt.
 
-Der erste Befehl speichert lediglich bei Eingabewerte in \IT{str} und \IT{eos}.
+Der erste Befehl speichert lediglich bei Eingabewerte in \emph{str} und \emph{eos}.
 
-Der Körper der Schleife startet beim Label \IT{loc\_2CB8}.
+Der Körper der Schleife startet beim Label \emph{loc\_2CB8}.
 
 Die ersten drei Befehle des Schleifenkörpers (\TT{LDR}, \ADD, \TT{STR}) laden
-den Wert von \IT{eos} nach \Reg{0}. 
-Anschließend wird der Wert erhöht und zurück in \IT{eos} auf den Stack
+den Wert von \emph{eos} nach \Reg{0}. 
+Anschließend wird der Wert erhöht und zurück in \emph{eos} auf den Stack
 geschrieben.
 
 \myindex{ARM!\Instructions!LDRSB}
@@ -54,7 +54,7 @@ Die nachfolgenden \CMP und \ac{BEQ} Befehle prüfen, ob das aktuelle Byte 0 ist.
 Wenn nicht, beginnt der Körper der Schleife erneut.
 Und wenn das aktuelle Byte 0 ist, dann wird die Schleife beendet.
 
-Am Ende der Funktion wird die Differenz zwischen \IT{eos} und \IT{str}
+Am Ende der Funktion wird die Differenz zwischen \emph{eos} und \emph{str}
 berechnet, 1 vom Ergebnis abgezogen und das Resultat über das Register \Reg{0}
 zurückgegeben.
 
@@ -76,11 +76,11 @@ aufrufende Funktion an der Adresse im \ac{LR} Register übergeben werden.
 \mysubparagraph{\OptimizingXcodeIV (\ThumbMode)}
 
 \lstinputlisting[caption=\OptimizingXcodeIV (\ThumbMode),style=customasmARM]{patterns/10_strings/1_strlen/ARM/xcode_thumb_O3.asm}
-Der optimierende LLVM entscheidet also, dass \IT{eos} und \IT{str} keinen Platz
+Der optimierende LLVM entscheidet also, dass \emph{eos} und \emph{str} keinen Platz
 auf dem Stack benötigen, sondern stets in Registern gespeichert werden können. 
 
-Vor dem Anfang des Schleifenkörpers befindet sich \IT{str} stets in \Reg{0} und
-\IT{eos} in \Reg{1}.
+Vor dem Anfang des Schleifenkörpers befindet sich \emph{str} stets in \Reg{0} und
+\emph{eos} in \Reg{1}.
 
 \myindex{ARM!\Instructions!LDRB.W}
 Der Befehl \TT{LDRB.W R2, [R1],\#1} lädt ein Byte aus dem Speicher von der

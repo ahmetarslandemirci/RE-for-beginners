@@ -2,7 +2,7 @@
 import sys, hexdump, array
 
 def xor_strings(s,t):
-    # https://en.wikipedia.org/wiki/XOR_cipher#Example_implementation
+    # \verb|https://en.wikipedia.org/wiki/XOR_cipher#Example_implementation|
     """xor two strings together"""
     return "".join(chr(ord(a)^ord(b)) for a,b in zip(s,t))
 

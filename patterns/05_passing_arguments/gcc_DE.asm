@@ -29,7 +29,7 @@ var_8   = dword ptr -8
         mov     [esp+10h+var_C], 2 ; zweites Argument
         mov     [esp+10h+var_10], 1 ; erstes Argument
         call    f
-        mov     edx, offset aD  ; "%d\n"
+        mov     edx, offset aD  ; "\%d\textbackslash{}n"
         mov     [esp+10h+var_C], eax
         mov     [esp+10h+var_10], edx
         call    _printf

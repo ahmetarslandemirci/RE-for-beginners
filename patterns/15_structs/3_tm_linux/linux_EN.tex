@@ -20,13 +20,13 @@ but doesn't modify any flags. See also the relevant section about \LEA{}~(\myref
 \myparagraph{GDB}
 
 Let's try to load the example into GDB
-\footnote{The \IT{date} result is slightly corrected for demonstration purposes.
+\footnote{The \emph{date} result is slightly corrected for demonstration purposes.
 Of course, it's not possible to run GDB that quickly, in the same second.}:
 
 \lstinputlisting[caption=GDB]{patterns/15_structs/3_tm_linux/GCC_tm_GDB.txt}
 
 We can easily find our structure in the stack.
-First, let's see how it's defined in \IT{time.h}:
+First, let's see how it's defined in \emph{time.h}:
 
 \begin{lstlisting}[caption=time.h, label=struct_tm,style=customc]
 struct tm

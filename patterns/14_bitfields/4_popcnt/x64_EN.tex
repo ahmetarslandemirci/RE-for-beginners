@@ -20,7 +20,7 @@ This code is terser, but has a quirk.
 In all examples that we see so far, we were incrementing the \q{rt} value after comparing a specific bit,
 but the code here increments \q{rt} before (line 6), writing the new value into register \EDX .
 Thus, if the last bit is 1, the \CMOVNE\footnote{Conditional MOVe if Not Equal} instruction
-(which is a synonym for \CMOVNZ\footnote{Conditional MOVe if Not Zero}) \IT{commits} 
+(which is a synonym for \CMOVNZ\footnote{Conditional MOVe if Not Zero}) \emph{commits} 
 the new value of \q{rt}
 by moving \EDX (\q{proposed rt value}) into \EAX (\q{current rt} to be returned at the end).
 

@@ -8,7 +8,7 @@ seg000:00118684             .set arg_8,  8
 seg000:00118684
 seg000:00118684 93 E1 FF FC   stw     %r31, var_4(%sp)
 seg000:00118688 7C 08 02 A6   mflr    %r0
-seg000:0011868C 83 E2 95 A8   lwz     %r31, off_1485E8 # dword_24B704
+seg000:0011868C 83 E2 95 A8   lwz     %r31, off_1485E8 # dword\_24B704
 seg000:00118690               .using dword_24B704, %r31
 seg000:00118690 93 C1 FF F8   stw     %r30, var_8(%sp)
 seg000:00118694 93 A1 FF F4   stw     %r29, var_C(%sp)

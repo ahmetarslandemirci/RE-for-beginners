@@ -12,7 +12,7 @@ Here we see \INS{FCMPE}. It compares the two values passed in \RegD{0} and \RegD
 and sets \ac{APSR} flags (N, Z, C, V).
 
 \myindex{ARM!\Instructions!FCSEL}
-\INS{FCSEL} (\IT{Floating Conditional Select}) copies the value of \RegD{0} or \RegD{1} into \RegD{0} depending on the condition (\GTT{GT}---Greater Than),
+\INS{FCSEL} (\emph{Floating Conditional Select}) copies the value of \RegD{0} or \RegD{1} into \RegD{0} depending on the condition (\GTT{GT}---Greater Than),
 and again, it uses flags in \ac{APSR} register instead of \ac{FPSCR}.
 
 This is much more convenient, compared to the instruction set in older CPUs.
@@ -28,7 +28,7 @@ is copied into \RegD{0}.
 
 Non-optimizing GCC is more verbose.
 
-First, the function saves its input argument values in the local stack (\IT{Register Save Area}).
+First, the function saves its input argument values in the local stack (\emph{Register Save Area}).
 Then the code reloads these values into registers
 \RegX{0}/\RegX{1} and finally copies them to 
 \RegD{0}/\RegD{1} to be compared using \INS{FCMPE}. 
@@ -37,7 +37,7 @@ but that is how non-optimizing compilers work.
 \INS{FCMPE} compares the values and sets the \ac{APSR} flags.
 At this moment, 
 the compiler is not thinking yet about the more convenient \INS{FCSEL} instruction, so it proceed using old methods: 
-using the \INS{BLE} instruction (\IT{Branch if Less than or Equal}).
+using the \INS{BLE} instruction (\emph{Branch if Less than or Equal}).
 In the first case ($a>b$), the value of $a$ gets loaded 
 into \RegX{0}.
 In the other case ($a<=b$), the value of $b$ gets loaded into 

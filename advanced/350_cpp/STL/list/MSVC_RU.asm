@@ -9,8 +9,8 @@ _main    PROC
     push 0
     lea  ecx, DWORD PTR _l$[esp+36]
     mov  DWORD PTR _l$[esp+40], 0
-    ; выделить первый §\IT{мусорный}§ элемент
-    call ?_Buynode0@?$_List_alloc@$0A@U?$_List_base_types@Ua@@V?$allocator@Ua@@@std@@@std@@@std@@QAEPAU?$_List_node@Ua@@PAX@2@PAU32@0@Z ; std::_List_alloc<0,std::_List_base_types<a,std::allocator<a> > >::_Buynode0
+    ; выделить первый \emph{мусорный} элемент
+    call ?_Buynode0@?$_List_alloc@$0A@U?$_List_base_types@Ua@@V?$allocator@Ua@@@std@@@std@@@std@@QAEPAU?$_List_node@Ua@@PAX@2@PAU32@0@Z ; \verb|std::_List_alloc<0,std::_List_base_types<a,std::allocator<a> > >::_Buynode0|
     mov  edi, DWORD PTR __imp__printf
     mov  ebx, eax
     push OFFSET $SG40685 ; '* empty list:'
@@ -18,7 +18,7 @@ _main    PROC
     call edi  ; printf
     lea  eax, DWORD PTR _l$[esp+32]
     push eax
-    call ?dump_List_val@@YAXPAI@Z ; dump_List_val
+    call ?dump_List_val@@YAXPAI@Z ; \verb|dump_List_val|
     mov  esi, DWORD PTR [ebx]
     add  esp, 8
     lea  eax, DWORD PTR _t1$[esp+28]
@@ -29,7 +29,7 @@ _main    PROC
     mov  DWORD PTR _t1$[esp+40], 1 ; данные для нового узла
     mov  DWORD PTR _t1$[esp+44], 2 ; данные для нового узла
     ; allocate new node
-    call ??$_Buynode@ABUa@@@?$_List_buy@Ua@@V?$allocator@Ua@@@std@@@std@@QAEPAU?$_List_node@Ua@@PAX@1@PAU21@0ABUa@@@Z ; std::_List_buy<a,std::allocator<a> >::_Buynode<a const &>
+    call ??$_Buynode@ABUa@@@?$_List_buy@Ua@@V?$allocator@Ua@@@std@@@std@@QAEPAU?$_List_node@Ua@@PAX@1@PAU21@0ABUa@@@Z ; \verb|std::_List_buy<a,std::allocator<a> >::_Buynode<a const &>|
     mov  DWORD PTR [esi+4], eax
     mov  ecx, DWORD PTR [eax+4]
     mov  DWORD PTR _t1$[esp+28], 3 ; данные для нового узла
@@ -42,7 +42,7 @@ _main    PROC
     push esi
     mov  DWORD PTR _t1$[esp+44], 4 ; данные для нового узла
     ; allocate new node
-    call ??$_Buynode@ABUa@@@?$_List_buy@Ua@@V?$allocator@Ua@@@std@@@std@@QAEPAU?$_List_node@Ua@@PAX@1@PAU21@0ABUa@@@Z ; std::_List_buy<a,std::allocator<a> >::_Buynode<a const &>
+    call ??$_Buynode@ABUa@@@?$_List_buy@Ua@@V?$allocator@Ua@@@std@@@std@@QAEPAU?$_List_node@Ua@@PAX@1@PAU21@0ABUa@@@Z ; \verb|std::_List_buy<a,std::allocator<a> >::_Buynode<a const &>|
     mov  DWORD PTR [esi+4], eax
     mov  ecx, DWORD PTR [eax+4]
     mov  DWORD PTR _t1$[esp+28], 5 ; данные для нового узла
@@ -54,7 +54,7 @@ _main    PROC
     push ebx
     mov  DWORD PTR _t1$[esp+44], 6 ; данные для нового узла
     ; allocate new node
-    call ??$_Buynode@ABUa@@@?$_List_buy@Ua@@V?$allocator@Ua@@@std@@@std@@QAEPAU?$_List_node@Ua@@PAX@1@PAU21@0ABUa@@@Z ; std::_List_buy<a,std::allocator<a> >::_Buynode<a const &>
+    call ??$_Buynode@ABUa@@@?$_List_buy@Ua@@V?$allocator@Ua@@@std@@@std@@QAEPAU?$_List_node@Ua@@PAX@1@PAU21@0ABUa@@@Z ; \verb|std::_List_buy<a,std::allocator<a> >::_Buynode<a const &>|
     mov  DWORD PTR [ebx+4], eax
     mov  ecx, DWORD PTR [eax+4]
     push OFFSET $SG40689 ; '* 3-elements list:'
@@ -63,58 +63,58 @@ _main    PROC
     call edi ; printf
     lea  eax, DWORD PTR _l$[esp+32]
     push eax
-    call ?dump_List_val@@YAXPAI@Z ; dump_List_val
+    call ?dump_List_val@@YAXPAI@Z ; \verb|dump_List_val|
     push OFFSET $SG40831 ; 'node at .begin:'
     call edi ; printf
-    push DWORD PTR [ebx] ; взять поле следующего узла, на который указывает $l$
-    call ?dump_List_node@@YAXPAUList_node@@@Z ; dump_List_node
+    push DWORD PTR [ebx] ; взять поле следующего узла, на который указывает "l"
+    call ?dump_List_node@@YAXPAUList_node@@@Z ; \verb|dump_List_node|
     push OFFSET $SG40835 ; 'node at .end:'
     call edi ; printf
     push ebx ; pointer to the node $l$ variable points to!
-    call ?dump_List_node@@YAXPAUList_node@@@Z ; dump_List_node
+    call ?dump_List_node@@YAXPAUList_node@@@Z ; \verb|dump_List_node|
     push OFFSET $SG40839 ; '* let''s count from the begin:'
     call edi ; printf
     mov  esi, DWORD PTR [ebx] ; operator++: get ->next pointer
     push DWORD PTR [esi+12]
     push DWORD PTR [esi+8]
-    push OFFSET $SG40846 ; '1st element: %d %d'
+    push OFFSET $SG40846 ; \verb|'1st element: %d %d'|
     call edi ; printf
     mov  esi, DWORD PTR [esi] ; operator++: get ->next pointer
     push DWORD PTR [esi+12]
     push DWORD PTR [esi+8]
-    push OFFSET $SG40848 ; '2nd element: %d %d'
+    push OFFSET $SG40848 ; \verb|'2nd element: %d %d'|
     call edi ; printf
     mov  esi, DWORD PTR [esi] ; operator++: get ->next pointer
     push DWORD PTR [esi+12]
     push DWORD PTR [esi+8]
-    push OFFSET $SG40850 ; '3rd element: %d %d'
+    push OFFSET $SG40850 ; \verb|'3rd element: %d %d'|
     call edi ; printf
     mov  eax, DWORD PTR [esi] ; operator++: get ->next pointer
     add  esp, 64
     push DWORD PTR [eax+12]
     push DWORD PTR [eax+8]
-    push OFFSET $SG40852 ; 'element at .end(): %d %d'
+    push OFFSET $SG40852 ; \verb|'element at .end(): %d %d'|
     call edi ; printf
     push OFFSET $SG40853 ; '* let''s count from the end:'
     call edi ; printf
     push DWORD PTR [ebx+12] ; использовать поля x и y того узла, на который указывает переменная $l$
     push DWORD PTR [ebx+8]
-    push OFFSET $SG40860 ; 'element at .end(): %d %d'
+    push OFFSET $SG40860 ; \verb|'element at .end(): %d %d'|
     call edi ; printf
     mov  esi, DWORD PTR [ebx+4] ; operator--: get ->prev pointer
     push DWORD PTR [esi+12]
     push DWORD PTR [esi+8]
-    push OFFSET $SG40862 ; '3rd element: %d %d'
+    push OFFSET $SG40862 ; \verb|'3rd element: %d %d'|
     call edi ; printf
     mov  esi, DWORD PTR [esi+4] ; operator--: get ->prev pointer
     push DWORD PTR [esi+12]
     push DWORD PTR [esi+8]
-    push OFFSET $SG40864 ; '2nd element: %d %d'
+    push OFFSET $SG40864 ; \verb|'2nd element: %d %d'|
     call edi ; printf
     mov  eax, DWORD PTR [esi+4] ; operator--: get ->prev pointer
     push DWORD PTR [eax+12]
     push DWORD PTR [eax+8]
-    push OFFSET $SG40866 ; '1st element: %d %d'
+    push OFFSET $SG40866 ; \verb|'1st element: %d %d'|
     call edi ; printf
     add  esp, 64
     push OFFSET $SG40867 ; 'removing last element...'
@@ -123,7 +123,7 @@ _main    PROC
     add  esp, 4
     
     ; prev=next? 
-    ; это единственный элемент, §\IT{мусор}§?
+    ; это единственный элемент, \emph{мусор}?
     ; если да, не удаляем его!
     cmp  edx, ebx
     je   SHORT $LN349@main
@@ -140,7 +140,7 @@ _main    PROC
 $LN349@main:
     lea  eax, DWORD PTR _l$[esp+28]
     push eax
-    call ?dump_List_val@@YAXPAI@Z ; dump_List_val
+    call ?dump_List_val@@YAXPAI@Z ; \verb|dump_List_val|
     mov  eax, DWORD PTR [ebx]
     add  esp, 4
     mov  DWORD PTR [ebx], ebx

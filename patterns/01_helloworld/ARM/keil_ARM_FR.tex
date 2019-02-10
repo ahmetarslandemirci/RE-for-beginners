@@ -7,7 +7,7 @@ armcc.exe --arm --c90 -O0 1.c
 \end{lstlisting}
 
 \myindex{\IntelSyntax}
-Le compilateur \IT{armcc} produit un listing assembleur en syntaxe Intel, mais il dispose de macros
+Le compilateur \emph{armcc} produit un listing assembleur en syntaxe Intel, mais il dispose de macros
 de haut niveau liées au processeur ARM\footnote{e.g. les instructions \PUSH/\POP manquent en mode
 ARM}. Comme il est plus important pour nous de voir les instructions \q{telles quelles}, nous
 regardons le résultat compilé dans \IDA.
@@ -32,7 +32,7 @@ La toute première instruction, \INS{STMFD SP!, \{R4,LR\}}\footnote{\ac{STMFD}},
 fonctionne comme une instruction \PUSH en x86, écrivant la valeur de deux registres
 (\Reg{4} et \ac{LR}) sur la pile.
 
-En effet, dans le listing de la sortie du compilateur \IT{armcc}, dans un souci
+En effet, dans le listing de la sortie du compilateur \emph{armcc}, dans un souci
 de simplification, il montre l'instruction \INS{PUSH \{r4,lr\}}.
 Mais ce n'est pas très précis. L'instruction \PUSH est seulement disponible dans
 le mode Thumb.  Donc, pour rendre les choses moins confuses, nous faisons cela
@@ -114,7 +114,7 @@ afin de les sauver dans \Reg{4} et \ac{PC}, et \glslink{increment}{incrémente}
 le \glslink{stack pointer}{pointeur de pile} \ac{SP}.
 Cela fonctionne ici comme \POP.\\
 N.B. La toute première instruction \TT{STMFD} a sauvé la paire de registres
-\Reg{4} et \ac{LR} sur la pile, mais \Reg{4} et \ac{PC} sont \IT{restaurés}
+\Reg{4} et \ac{LR} sur la pile, mais \Reg{4} et \ac{PC} sont \emph{restaurés}
 pendant l'exécution de \TT{LDMFD}.
 
 Comme nous le savons déjà, l'adresse où chaque fonction doit redonner le

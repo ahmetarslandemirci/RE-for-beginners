@@ -9,7 +9,7 @@ WinMain         proc near
                 push    ds
                 mov     ax, offset aCaption ; "caption"
                 push    ax
-                mov     ax, 3           ; MB_YESNOCANCEL
+                mov     ax, 3           ; MB\_YESNOCANCEL
                 push    ax
                 call    MESSAGEBOX
                 cmp     ax, 2           ; IDCANCEL

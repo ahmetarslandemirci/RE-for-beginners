@@ -21,8 +21,8 @@ Le nombre flottant en résultant est égal à $starting\_value+machine\_epsilon$
 il suffit de soustraire $starting\_value$ (en utilisant l'arithmétique flottante)
 pour mesurer ce que la différence d'un bit représente dans un nombre flottant simple
 précision(\Tfloat).
-L' \IT{union} permet ici d'accéder au nombre IEEE 754 comme à un entier normal.
-Lui ajouter 1 ajoute en fait 1 au \IT{significande} du nombre, toutefois, inutile
+L' \emph{union} permet ici d'accéder au nombre IEEE 754 comme à un entier normal.
+Lui ajouter 1 ajoute en fait 1 au \emph{significande} du nombre, toutefois, inutile
 de dire, un débordement est possible, qui ajouterait 1 à l'exposant.
 
 \subsubsection{x86}
@@ -66,4 +66,4 @@ simplement des données vers les registres du FPU.
 
 Il est difficile de dire si quelqu'un pourrait avoir besoin de cette astuce dans
 du code réel, mais comme cela a été mentionné plusieurs fois dans ce livre, cet exemple
-est utile pour expliquer le format IEEE 754 et les \IT{union}s en \CCpp.
+est utile pour expliquer le format IEEE 754 et les \emph{union}s en \CCpp.

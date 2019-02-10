@@ -73,9 +73,9 @@ keine generelle Anforderung. Jemand könnte auch einfach eine andere Methode imp
 
 Ein ziemlich beliebter Weg Argumente zu übergeben unter Assembler Neulingen ist über globale Variablen wie z.B:
 
-\lstinputlisting[caption=Assembly code]{patterns/02_stack/global_args.asm}
+\lstinputlisting[caption=Assembly code,style=customasmx86]{patterns/02_stack/global_args.asm}
 
-Aber diese Methode hat Nachteile: Die \IT{do\_something()} Funktion kann sich selbst nicht rekursiv aufrufen (aber auch keine andere Funktion),
+Aber diese Methode hat Nachteile: Die \emph{do\_something()} Funktion kann sich selbst nicht rekursiv aufrufen (aber auch keine andere Funktion),
 weil sie ihre eigenen Argumente löschen muss.
 Die gleiche Geschichte mit lokalen Variablen: Wenn die Werte in globalen Variablen gespeichert sind, kann die Funktion sich nicht selbst aufrufen.
 Und das bedeutet wiederum das die Funktion nicht thread-Safe ist.
@@ -128,7 +128,7 @@ Im Falle eines Fehlers, wird das \TT{CF} Flag gesetzt. Anderenfalls wird ein han
 
 Diese Methode wird heute immer noch von Assembler Programmierern benutzt.
 Im Windows Reseearch Kernel source Code (der sehr ähnlich zum Windows 2003 Kernel ist) können wir folgenden Code
-finden (file \IT{base/ntos/ke/i386/cpu.asm}):
+finden (file \emph{base/ntos/ke/i386/cpu.asm}):
 
 % muss noch die kommentare geändert werden
 \begin{lstlisting}[style=customasmx86]

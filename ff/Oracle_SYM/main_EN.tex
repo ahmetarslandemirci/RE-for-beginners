@@ -69,7 +69,7 @@ We will mark the OSYM signatures and strings here:
 
 Well, let's see. 
 In Hiew, we will mark the whole strings block (except the trailing OSYM signatures) and put it into a separate file.
-Then we run UNIX \IT{strings} and \IT{wc} utilities to count the text strings:
+Then we run UNIX \emph{strings} and \emph{wc} utilities to count the text strings:
 
 \begin{lstlisting}
 strings strings_block | wc -l
@@ -79,7 +79,7 @@ strings strings_block | wc -l
 So there are 66 text strings.
 Please note that number.
 
-We can say, in general, as a rule, the number of \IT{anything} is often stored separately in binary files.
+We can say, in general, as a rule, the number of \emph{anything} is often stored separately in binary files.
 
 It's indeed so, we can find the 66 value (0x42) at the file's start, right after the OSYM signature:
 
@@ -103,7 +103,7 @@ about the file.
 
 Now let's investigate closer what this binary block is.
 
-Using Hiew again, we put the block starting at address 8 (i.e., after the 32-bit \IT{count} value) 
+Using Hiew again, we put the block starting at address 8 (i.e., after the 32-bit \emph{count} value) 
 ending at the strings block, into a separate binary file.
 
 \clearpage
@@ -175,10 +175,10 @@ When we open the orawtc8.dll file in \IDA, the base address is different, but ne
 .text:60351026          mov     eax, dword_60353014
 .text:6035102B          mov     hModule, ecx
 .text:60351031
-.text:60351031 loc_60351031:    ; CODE XREF: sub_60351000+1D
+.text:60351031 loc_60351031:    ; CODE XREF: sub\_60351000+1D
 .text:60351031          test    ecx, ecx
 .text:60351033          jbe     short loc_6035104F
-.text:60351035          push    offset ProcName ; "ax_reg"
+.text:60351035          push    offset ProcName ; "ax\_reg"
 .text:6035103A          push    ecx             ; hModule
 .text:6035103B          call    ds:GetProcAddress
 ...
@@ -212,10 +212,10 @@ The second function is:
 .text:603510A6          mov     eax, dword_60353018
 .text:603510AB          mov     hModule, ecx
 .text:603510B1
-.text:603510B1 loc_603510B1:    ; CODE XREF: sub_60351080+1D
+.text:603510B1 loc_603510B1:    ; CODE XREF: sub\_60351080+1D
 .text:603510B1          test    ecx, ecx
 .text:603510B3          jbe     short loc_603510CF
-.text:603510B5          push    offset aAx_unreg ; "ax_unreg"
+.text:603510B5          push    offset aAx_unreg ; "ax\_unreg"
 .text:603510BA          push    ecx             ; hModule
 .text:603510BB          call    ds:GetProcAddress
 ...
@@ -229,7 +229,7 @@ So this is the address,
 but for a DLL with the default base address.
 
 We can quickly check and be sure that the first 66 values in the array (i.e., the first half of the array) 
-are just function addresses in the DLL, including some labels, \etc{}.
+are just function addresses in the DLL, including some labels, etc.
 Well, what's the other part of array then? 
 The other 66 values that start with \TT{0x0000}? 
 These seem to be in range \TT{[0...0x3F8]}. 

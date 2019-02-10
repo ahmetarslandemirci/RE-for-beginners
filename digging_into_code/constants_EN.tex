@@ -53,7 +53,7 @@ In tableless CRC algorithms well-known polynomials are used, for example, 0xEDB8
 
 \newcommand{\FNURLMAGIC}{\footnote{\href{http://go.yurichev.com/17112}{wikipedia}}}
 
-A lot of file formats define a standard file header where a \IT{magic number(s)}\FNURLMAGIC{} is used, single one or even several.
+A lot of file formats define a standard file header where a \emph{magic number(s)}\FNURLMAGIC{} is used, single one or even several.
 
 \myindex{MS-DOS}
 
@@ -66,7 +66,7 @@ If we have a program which uses MIDI files for something,
 it's very likely that it must check the file for validity by checking at least the first 4 bytes.
 
 This could be done like this:
-(\IT{buf} points to the beginning of the loaded file in memory)
+(\emph{buf} points to the beginning of the loaded file in memory)
 
 \begin{lstlisting}[style=customasmx86]
 cmp [buf], 0x6468544D ; "MThd"
@@ -101,7 +101,7 @@ Stuxnet uses the number ``19790509'' (not as 32-bit number, but as string, thoug
 that the malware is connected to Israel
 \footnote{This is a date of execution of Habib Elghanian, persian jew.}
 
-Also, numbers like those are very popular in amateur-grade cryptography, for example, excerpt from the \IT{secret function} internals from HASP3 dongle
+Also, numbers like those are very popular in amateur-grade cryptography, for example, excerpt from the \emph{secret function} internals from HASP3 dongle
 \footnote{\url{https://web.archive.org/web/20160311231616/http://www.woodmann.com/fravia/bayu3.htm}}:
 
 \begin{lstlisting}[style=customc]
@@ -136,10 +136,10 @@ void emulate_func2(unsigned short seed)
 \subsubsection{DHCP}
 
 This applies to network protocols as well.
-For example, the DHCP protocol's network packets contains the so-called \IT{magic cookie}: \TT{0x63538263}.
+For example, the DHCP protocol's network packets contains the so-called \emph{magic cookie}: \TT{0x63538263}.
 Any code that generates DHCP packets somewhere must embed this constant into the packet.
 If we find it in the code we may find where this happens and, not only that.
-Any program which can receive DHCP packet must verify the \IT{magic cookie}, comparing it with the constant.
+Any program which can receive DHCP packet must verify the \emph{magic cookie}, comparing it with the constant.
 
 For example, let's take the dhcpcore.dll file from Windows 7 x64 and search for the constant.
 And we can find it, twice:
@@ -189,5 +189,5 @@ this may be encryption/decryption routine.
 It is easy in \IDA: Alt-B or Alt-I.
 \myindex{binary grep}
 And for searching for a constant in a big pile of files, or for searching in non-executable files,
-there is a small utility called \IT{binary grep}\footnote{\BGREPURL}.
+there is a small utility called \emph{binary grep}\footnote{\BGREPURL}.
 

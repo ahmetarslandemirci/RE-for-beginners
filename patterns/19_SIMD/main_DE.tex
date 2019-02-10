@@ -1,7 +1,7 @@
 \mysection{SIMD}
 
 \label{SIMD_x86}
-\ac{SIMD} ist ein Akronym: \IT{Single Instruction, Multiple Data}.
+\ac{SIMD} ist ein Akronym: \emph{Single Instruction, Multiple Data}.
 Wie der Name schon sagt, verarbeitet SIMD mehrere Daten in nur einem Befehl.
 
 Wie die \ac{FPU} sieht das \ac{CPU}-Subsystem wie ein separater Prozessor innerhalb von x86 aus.
@@ -48,9 +48,9 @@ Der DES-Algorithmus kann als sehr großer Schaltkreis aus Drähten und AND/OR/NO
 \label{bitslicedes}
 \newcommand{\URLBS}{\url{http://go.yurichev.com/17329}}
 Hinter Bitslice DES\footnote{\URLBS}~---steckt die Idee, mehrere Gruppen von Blöcken und Schlüsseln simultan zu
-verarbeiten. Eine Variable vom Typ \IT{unsigned int} umfasst in x86 beispielsweise 32 Bit, sodass es möglich ist, in ihr
+verarbeiten. Eine Variable vom Typ \emph{unsigned int} umfasst in x86 beispielsweise 32 Bit, sodass es möglich ist, in ihr
 die Zwischenergebnisse für 32 Block-Schlüssel-Paare gleichzeitig zu speichern, indem $64+56$ Variablen vom Typ
-\IT{unsigned int} verwendet werden.
+\emph{unsigned int} verwendet werden.
 
 \myindex{\oracle}
 Es gibt es Tool um \oracle Passwörter und Hashes (die auf DES basieren) per Brute-Force zu knacken. Hierbei wird ein nur

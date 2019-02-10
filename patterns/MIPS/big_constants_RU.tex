@@ -38,7 +38,7 @@ unsigned int f()
 В выводе на ассемблере от GCC есть псевдоинструкция \INS{LI}, но на самом деле, 
 там \INS{LUI} (\q{Load Upper Immediate}), загружающая 16-битное значение в старшую часть регистра.
 
-Посмотрим в выводе \IT{objdump}:
+Посмотрим в выводе \emph{objdump}:
 
 \begin{lstlisting}[caption=objdump,style=customasmMIPS]
 00000000 <f>:
@@ -60,7 +60,7 @@ unsigned int f2()
 
 \myindex{MIPS!\Instructions!LW}
 
-Тут немного иначе: \INS{LUI} загружает старшие 16 бит из \IT{global\_var} в \$2 (или \$V0) и затем \INS{LW} загружает младшие
+Тут немного иначе: \INS{LUI} загружает старшие 16 бит из \emph{global\_var} в \$2 (или \$V0) и затем \INS{LW} загружает младшие
 16 бит суммируя их с содержимым \$2:
 
 \begin{lstlisting}[caption=GCC 4.4.5 -O3 (\assemblyOutput),style=customasmMIPS]
@@ -88,10 +88,10 @@ _f2:
 
                 .data
                 .globl global_var
-global_var:     .word 0x12345678         # DATA XREF: _f2
+global_var:     .word 0x12345678         # DATA XREF: \_f2
 \end{lstlisting}
 
-Вывод \IT{objdump} почти такой же, как ассемблерный вывод GCC.
+Вывод \emph{objdump} почти такой же, как ассемблерный вывод GCC.
 Посмотрим также релоки в объектном файле:
 
 \begin{lstlisting}[caption=objdump,style=customasmMIPS]
@@ -126,8 +126,8 @@ OFFSET   TYPE              VALUE
 
 \end{lstlisting}
 
-Можем увидеть, что адрес \IT{global\_var} будет записываться прямо в инструкции \INS{LUI} и \INS{LW} во время загрузки исполняемого
+Можем увидеть, что адрес \emph{global\_var} будет записываться прямо в инструкции \INS{LUI} и \INS{LW} во время загрузки исполняемого
 файла:
-старшая 16-битная часть \IT{global\_var} записывается в первую инструкцию (\INS{LUI}), младшая 16-битная часть ---
+старшая 16-битная часть \emph{global\_var} записывается в первую инструкцию (\INS{LUI}), младшая 16-битная часть ---
 во вторую (\INS{LW}).
 

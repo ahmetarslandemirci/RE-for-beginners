@@ -56,10 +56,11 @@ Mimo że puste funkcje są bezużyteczne, są one dość często spotykane w nis
 
 Po pierwsze, popularne są funkcje wyprowadzające informację do logów, na przykład:
 
-\lstinputlisting[caption=Kod w \CCpp,style=customc]{patterns/00_empty/dbg_print.c}
+\lstinputlisting[caption=Kod w \CCpp,style=customc]{patterns/00_empty/dbg_print_EN.c}
 
 Po drugie, popularnym sposobem na ochronę oprogramowania jest kompilacja kilku wersji: pierwsza dla legalnych konsumentów, druga - demonstracyjna. Demonstracyjna wersja może nie zawierać jakiejś ważnej funkcjonalności, naprzykład:
-\lstinputlisting[caption=Kod w \CCpp,style=customc]{patterns/00_empty/demo.c}
+
+\lstinputlisting[caption=Kod w \CCpp,style=customc]{patterns/00_empty/demo_EN.c}
 
 Funkcja \TT{save\_file()} może być wywołana, kiedy użytkownik klika na menu \TT{File->Save}.
 Demo-wersja może zawierać wyłączony przycisk menu, ale nawet jeśli kraker go włączy, to będzie wywoływana pusta funkcja w której nie ma użytecznego kodu.

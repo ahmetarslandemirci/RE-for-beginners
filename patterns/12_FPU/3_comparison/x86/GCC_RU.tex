@@ -7,7 +7,7 @@
 а также несколько иначе реагирует на \q{не-числа}.
 
 \myindex{Не-числа (NaNs)}
-Немного о \IT{не-числах}.
+Немного о \emph{не-числах}.
 
 \newcommand{\NANFN}{\footnote{\href{http://go.yurichev.com/17129}{ru.wikipedia.org/wiki/NaN}}}
 
@@ -24,7 +24,7 @@ FPU умеет работать со специальными переменны
 
 \myindex{x86!\Instructions!SAHF}
 \label{SAHF}
-Далее мы видим \SAHF (\IT{Store AH into Flags})~--- это довольно редкая инструкция в коде, не использующим FPU. 
+Далее мы видим \SAHF (\emph{Store AH into Flags})~--- это довольно редкая инструкция в коде, не использующим FPU. 
 8 бит из \AH перекладываются в младшие 8 бит регистра статуса процессора в таком порядке:
 
 \input{SAHF_LAHF}
@@ -59,7 +59,7 @@ FPU умеет работать со специальными переменны
 \myindex{x86!\Instructions!JNBE}
 Инструкция \SETNBE выставит в \AL единицу или ноль в зависимости от флагов и условий. 
 Это почти аналог \JNBE, за тем лишь исключением, что \SETcc
-\footnote{\IT{cc} это \IT{condition code}}
+\footnote{\emph{cc} это \emph{condition code}}
 выставляет 1 или 0 в \AL, а \Jcc делает переход или нет. 
 \SETNBE запишет 1 только если \GTT{CF=0} и \GTT{ZF=0}. Если это не так, то запишет 0 в \AL.
 

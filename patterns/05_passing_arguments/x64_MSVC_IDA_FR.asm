@@ -6,8 +6,8 @@ arg_8           = dword ptr  10h
 arg_10          = dword ptr  18h
 
 		; ECX - 1er argument
-		; EDX - §2ème argument§
-		; R8D - §3ème argument§
+		; EDX - 2ème argument
+		; R8D - 3ème argument
                 mov     [rsp+arg_10], r8d
                 mov     [rsp+arg_8], edx
                 mov     [rsp+arg_0], ecx
@@ -24,7 +24,7 @@ main            proc near
                 mov     ecx, 1 ; 1st argument
                 call    f
                 mov     edx, eax
-                lea     rcx, $SG2931    ; "%d\n"
+                lea     rcx, $SG2931    ; "\%d\textbackslash{}n"
                 call    printf
 
                 ; retourner 0

@@ -5,7 +5,7 @@ Yet another simple example:
 \lstinputlisting[style=customc]{\CURPATH/classes/classes4_virtual.cpp}
 
 
-Class \IT{object} has a virtual method \TT{dump()} that is being replaced in the inheriting \IT{box} and \IT{sphere} classes.
+Class \emph{object} has a virtual method \TT{dump()} that is being replaced in the inheriting \emph{box} and \emph{sphere} classes.
 
 
 If we are in an environment where it is not known the type of an object, as in the \main function in example,
@@ -24,7 +24,7 @@ Only somewhere in the constructors: there is no other place since nothing else i
 \footnote{You can read more about pointers to functions in the relevant section:(\myref{sec:pointerstofunctions})}
 
 
-Let's see the code of the constructor of the \IT{box} class:
+Let's see the code of the constructor of the \emph{box} class:
 
 \lstinputlisting[style=customasmx86]{\CURPATH/classes/classes4_2.asm}
 
@@ -43,10 +43,10 @@ to the \TT{box::dump()} method.
 These are called virtual methods table and \ac{RTTI}.
 The table of virtual methods has the addresses of methods and the \ac{RTTI} table contains information about types.
 
-By the way, the \ac{RTTI} tables are used while calling \IT{dynamic\_cast} and \IT{typeid} in \Cpp.
+By the way, the \ac{RTTI} tables are used while calling \emph{dynamic\_cast} and \emph{typeid} in \Cpp.
 You can also see here the class name as a plain text string.
 
-Thus, a method of the base \IT{object} class may call the virtual method \IT{object::dump()}, which in turn will call
+Thus, a method of the base \emph{object} class may call the virtual method \emph{object::dump()}, which in turn will call
 a method of an inherited class, since that information is present right in the object's structure.
 
 

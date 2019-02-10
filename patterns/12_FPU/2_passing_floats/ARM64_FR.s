@@ -4,7 +4,7 @@ f:
 	ldr	d1, .LC1 ; charger 1.54 dans D1
 	ldr	d0, .LC0 ; charger 32.01 dans D0
 	bl	pow
-; r§é§sultat de pow() dans D0
+; résultat de pow() dans D0
 	adrp	x0, .LC2
 	add	x0, x0, :lo12:.LC2
 	bl	printf

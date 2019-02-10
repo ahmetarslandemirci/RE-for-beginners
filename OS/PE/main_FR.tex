@@ -53,7 +53,7 @@ est occupée par un module déjà chargé.
 De nombreuses adresses dans les fichiers PE utilisent l'adresse \ac{RVA}.
 
 %\item
-%Data directory\EMDASH{}...
+%Data directory --- ...
 
 \item \ac{IAT}---un tableau d'adresses des symboles importés \footnote{\PietrekPE}. 
 Parfois, le répertoire de données \TT{IMAGE\_DIRECTORY\_ENTRY\_IAT} pointe sur l'\ac{IAT}.
@@ -108,7 +108,7 @@ Le support de l'\ac{ASLR} est indiqué dans un fichier PE en mettant le flag
 
 \subsubsection{Sous-système}
 
-Il a aussi un champ \IT{sous-système}, d'habitude c'est:
+Il a aussi un champ \emph{sous-système}, d'habitude c'est:
 
 \myindex{Native API}
 
@@ -149,19 +149,19 @@ exécutable.
 C'est divisé afin de séparer le code des données, et les données---des données constantes.
 
 \begin{itemize}
-\item Si l'un des flags \IT{IMAGE\_SCN\_CNT\_CODE} ou \IT{IMAGE\_SCN\_MEM\_EXECUTE}
+\item Si l'un des flags \emph{IMAGE\_SCN\_CNT\_CODE} ou \emph{IMAGE\_SCN\_MEM\_EXECUTE}
 est mis dans la section de code---c'est de code exécutable.
 
-\item Dans la section de données---les flags \IT{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA},\\
-\IT{IMAGE\_SCN\_MEM\_READ} et \IT{IMAGE\_SCN\_MEM\_WRITE}.
+\item Dans la section de données---les flags \emph{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA},\\
+\emph{IMAGE\_SCN\_MEM\_READ} et \emph{IMAGE\_SCN\_MEM\_WRITE}.
 
 \item Dans une section vide avec des données non initialisées---\\
-\IT{IMAGE\_SCN\_CNT\_UNINITIALIZED\_DATA}, \IT{IMAGE\_SCN\_MEM\_READ} \\
-et \IT{IMAGE\_SCN\_MEM\_WRITE}.
+\emph{IMAGE\_SCN\_CNT\_UNINITIALIZED\_DATA}, \emph{IMAGE\_SCN\_MEM\_READ} \\
+et \emph{IMAGE\_SCN\_MEM\_WRITE}.
 
 \item Dans une section de données constantes (une qui est protégée contre l'écriture),
-les flags \IT{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA} et \IT{IMAGE\_SCN\_MEM\_READ} peuvent
-être mis, mais pas \IT{IMAGE\_SCN\_MEM\_WRITE}.
+les flags \emph{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA} et \emph{IMAGE\_SCN\_MEM\_READ} peuvent
+être mis, mais pas \emph{IMAGE\_SCN\_MEM\_WRITE}.
 Un process plantera s'il essaye d'écrire dans cette section.
 \end{itemize}
 
@@ -170,7 +170,7 @@ Un process plantera s'il essaye d'écrire dans cette section.
 Chaque section dans un fichier PE peut avoir un nom, toutefois, ce n'est pas très
 important.
 Souvent (mais pas toujours) la section de code est appelée \TT{.text}, la section
-de données---\TT{.data}, la section de données constante --- \TT{.rdata} \IT{(readable data)}.
+de données---\TT{.data}, la section de données constante --- \TT{.rdata} \emph{(readable data)}.
 D'autres noms de section courants sont:
 
 \myindex{MIPS}
@@ -222,8 +222,8 @@ typedef struct _IMAGE_SECTION_HEADER {
 \footnote{\href{http://go.yurichev.com/17048}{MSDN}}
 
 \myindex{Hiew}
-Un mot à propos de le terminilogie: \IT{PointerToRawData} est appelé \q{Offset} dans
-Hiew et \IT{VirtualAddress} est appelé \q{RVA} ici.
+Un mot à propos de le terminilogie: \emph{PointerToRawData} est appelé \q{Offset} dans
+Hiew et \emph{VirtualAddress} est appelé \q{RVA} ici.
 
 \subsubsection{Relocs (relocalisation)}
 \label{subsec:relocs}
@@ -278,7 +278,7 @@ Si un module est chargé à son adresse de base originale, rien ne se passe.
 Toutes les variables globales sont traitées ainsi.
 
 Relocs peut avoir différent types, toutefois, dans Windows pour processeurs x86, le type est généralement \\
-\IT{IMAGE\_REL\_BASED\_HIGHLOW}.
+\emph{IMAGE\_REL\_BASED\_HIGHLOW}.
 
 \myindex{Hiew}
 
@@ -327,7 +327,7 @@ par ordinaux, et dans un programme n'ayant aucun nom de fonction \ac{MFC} dans \
 Lors du chargement d'un tel programme dans \IDA, il va demander le chemin vers les
 fichiers mfc*.dll, afin de déterminer le nom des fonctions.
 
-Si vous ne donnez pas le chemin vers ces DLLs à \IDA, il y aura \IT{mfc80\_123} à
+Si vous ne donnez pas le chemin vers ces DLLs à \IDA, il y aura \emph{mfc80\_123} à
 la place des noms de fonctions.
 
 \myparagraph{Section d'imports}
@@ -345,12 +345,12 @@ Essayons de regrouper toutes les informations au même endroit.
 Un schéma qui regroupe toutes les structures concernant les imports d'un fichier PE}
 \end{figure}
 
-La structure principale est le tableau \IT{IMAGE\_IMPORT\_DESCRIPTOR}, qui comprend
+La structure principale est le tableau \emph{IMAGE\_IMPORT\_DESCRIPTOR}, qui comprend
 un élément pour chaque DLL importée.
 
-Chaque élément contient l'adresse \ac{RVA} de la chaîne de texte (nom de la DLL) (\IT{Name}).
+Chaque élément contient l'adresse \ac{RVA} de la chaîne de texte (nom de la DLL) (\emph{Name}).
 
-\IT{OriginalFirstThunk} est l'adresse \ac{RVA} de la table \ac{INT}.
+\emph{OriginalFirstThunk} est l'adresse \ac{RVA} de la table \ac{INT}.
 C'est un tableau d'adresses \ac{RVA}, qui pointe chacune sur une chaîne de texte
 avec le nom d'une fonction.
 Chaque chaîne est préfixée par un entier 16-bit (\q{hint})---\q{ordinal} de la fonction.
@@ -358,19 +358,19 @@ Chaque chaîne est préfixée par un entier 16-bit (\q{hint})---\q{ordinal} de l
 Pendant le chargement, s'il est possible de trouver une fonction par ordinal, la
 comparaison de chaînes n'a pas lieu. Le tableau est terminé par zéro.
 
-Il y a aussi un pointeur sur la table \ac{IAT} appelé \IT{FirstThunk}, qui est juste
+Il y a aussi un pointeur sur la table \ac{IAT} appelé \emph{FirstThunk}, qui est juste
 l'adresse \ac{RVA} de l'endroit où le chargeur écrit l'adresse résolue de la fonction.
 
 Les endroits où le chargeur écrit les adresses sont marqués par \IDA comme ceci:
-\IT{\_\_imp\_CreateFileA}, etc.
+\emph{\_\_imp\_CreateFileA}, etc.
 
 Il y a au moins deux façons d'utiliser les adresses écritent par le chargeur.
 
 \myindex{x86!\Instructions!CALL}
 \begin{itemize}
-\item Le code aura des instructions comme \IT{call \_\_imp\_CreateFileA}, et puisque
+\item Le code aura des instructions comme \emph{call \_\_imp\_CreateFileA}, et puisque
 le champ avec l'adresse de la fonction importée est en un certain sens une variable
-globale, l'adresse de l'instruction \IT{call} (plus 1 ou 2) doit être ajoutée à la
+globale, l'adresse de l'instruction \emph{call} (plus 1 ou 2) doit être ajoutée à la
 table de relocs, pour le cas où le module est chargé à une adresse de base différente.
 
 Mais, évidemment, ceci augmente significativement la table de relocs.
@@ -410,11 +410,11 @@ JMP EAX
 \end{lstlisting}
 
 FirstThunk pointe sur la première instruction. En d'autres mots, en chargeant yourdll.dll,
-le chargeur écrit l'adresse de la fonction \IT{function} juste après le code.
+le chargeur écrit l'adresse de la fonction \emph{function} juste après le code.
 
 Il est à noter qu'une section de code est en général protégée contre l'écriture,
 donc mon utilitaire ajoute le flag \\
-\IT{IMAGE\_SCN\_MEM\_WRITE}
+\emph{IMAGE\_SCN\_MEM\_WRITE}
 pour la section de code. Autrement, le programme planterait pendant le chargement
 avec le code d'erreur 5 (access denied). \\
 \\
@@ -423,8 +423,8 @@ DLL qui n'est pas supposé changer (incluant les adresses des fonctions DLL), es
 possible d'accélèrer le processus de chargement?
 
 Oui, il est possible d'écrire les adresses des fonctions qui doivent être importées
-en avance dans le tableau FirstThunk. Le champ \IT{Timestamp} est présent dans la
-structure \IT{IMAGE\_IMPORT\_DESCRIPTOR}.
+en avance dans le tableau FirstThunk. Le champ \emph{Timestamp} est présent dans la
+structure \emph{IMAGE\_IMPORT\_DESCRIPTOR}.
 
 Si une valeur est présente ici, alors le loader compare cette valeur avec la date
 et l'heure du fichier DLL.
@@ -448,7 +448,7 @@ Dans ce cas, le loader de Windows, bien sûr, ne va pas charger les DLLs nécess
 \myindex{Windows!Win32!GetProcAddress}
 
 Par conséquent, le packeur/chiffreur fait cela lui même, avec l'aide des fonctions
-\IT{LoadLibrary()} et \IT{GetProcAddress()}.
+\emph{LoadLibrary()} et \emph{GetProcAddress()}.
 
 C'est pourquoi ces deux fonctions sont souvent présentes dans l'\ac{IAT} des fichiers
 packés.\\

@@ -7,7 +7,7 @@ armcc.exe --arm --c90 -O0 1.c
 \end{lstlisting}
 
 \myindex{\IntelSyntax}
-The \IT{armcc} compiler produces assembly listings in Intel-syntax, but it has high-level ARM-processor related macros
+The \emph{armcc} compiler produces assembly listings in Intel-syntax, but it has high-level ARM-processor related macros
 \footnote{e.g. ARM mode lacks \PUSH/\POP instructions}, 
 but it is more important for us to see the instructions \q{as is} so let's see the compiled result in \IDA.
 
@@ -30,7 +30,7 @@ Indeed, we compiled our code for ARM mode, not for Thumb.
 The very first instruction, \INS{STMFD SP!, \{R4,LR\}}\footnote{\ac{STMFD}}, 
 works as an x86 \PUSH instruction, writing the values of two registers (\Reg{4} and \ac{LR}) into the stack.
 
-Indeed, in the output listing from the \IT{armcc} compiler, for the sake of simplification, 
+Indeed, in the output listing from the \emph{armcc} compiler, for the sake of simplification, 
 actually shows the \INS{PUSH \{r4,lr\}} instruction.
 But that is not quite precise. The \PUSH instruction is only available in Thumb mode.
 So, to make things less confusing, we're doing this in \IDA.
@@ -92,7 +92,7 @@ That's because our C-function returns 0 and the return value is to be placed in 
 The last instruction \INS{LDMFD SP!, {R4,PC}}\footnote{\ac{LDMFD} is an inverse instruction of \ac{STMFD}}.
 It loads values from the stack (or any other memory place) in order to save them into \Reg{4} and \ac{PC}, and \glslink{increment}{increments} the \gls{stack pointer} \ac{SP}.
 It works like \POP here.\\
-N.B. The very first instruction \TT{STMFD} saved the \Reg{4} and \ac{LR} registers pair on the stack, but \Reg{4} and \ac{PC} are \IT{restored} during the \TT{LDMFD} execution.
+N.B. The very first instruction \TT{STMFD} saved the \Reg{4} and \ac{LR} registers pair on the stack, but \Reg{4} and \ac{PC} are \emph{restored} during the \TT{LDMFD} execution.
 
 As we already know, the address of the place where each function must return control to is usually saved in the \ac{LR} register.
 The very first instruction saves its value in the stack because the same register will be used by our

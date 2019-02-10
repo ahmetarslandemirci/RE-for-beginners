@@ -13,7 +13,7 @@ f:
 	ldr	x0, [sp,8]
 ; X0 = a
 	and	x0, x1, x0
-; X0 = X1&X0 = (1<<i) & a
+; X0 = X1\&X0 = (1<<i) \& a
 ; X0 contain zero? then jump to .L3, skipping "rt" increment
 	cmp	x0, xzr
 	beq	.L3

@@ -52,7 +52,7 @@ my_atoi:
 .L4:
 ; сообщить об ошибке. символ в EDX
 	mov	edi, 1
-	mov	esi, OFFSET FLAT:.LC0 ; "Error! Unexpected char: '%c'\n"
+	mov	esi, OFFSET FLAT:.LC0 ; \verb|"Error! Unexpected char: '%c'\n"|
 	xor	eax, eax
 	call	__printf_chk
 	xor	edi, edi

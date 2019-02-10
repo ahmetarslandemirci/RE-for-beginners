@@ -95,13 +95,7 @@ void main()
 Заглянем в реализацию функции \TT{open()} в библиотеке \TT{libc.so.6}, но обнаружим что там 
 только системный вызов:
 
-\begin{lstlisting}[caption=open() (libc.so.6),style=customasmx86]
-.text:000BE69B      mov     edx, [esp+4+mode] ; mode
-.text:000BE69F      mov     ecx, [esp+4+flags] ; flags
-.text:000BE6A3      mov     ebx, [esp+4+filename] ; filename
-.text:000BE6A7      mov     eax, 5
-.text:000BE6AC      int     80h             ; LINUX - sys_open
-\end{lstlisting}
+\lstinputlisting[caption=open() (libc.so.6),style=customasmx86]{patterns/14_bitfields/1_check/tmp1.asm}
 
 Значит, битовые поля флагов \TT{open()} проверяются где-то в ядре Linux.
 
@@ -118,7 +112,7 @@ void main()
 N.B. Помимо передачи параметров функции через стек, существует также возможность передавать 
 некоторые из них через регистры. Такое соглашение о вызове называется fastcall~(\myref{fastcall}).
 Оно работает немного быстрее, так как для чтения аргументов процессору не нужно обращаться к стеку, лежащему в памяти. 
-В GCC есть опция \IT{regparm}\footnote{\URLREGPARM}, 
+В GCC есть опция \emph{regparm}\footnote{\URLREGPARM}, 
 и с её помощью можно задать, сколько аргументов можно передать через регистры.
 
 \newcommand{\URLKERNELNEWB}{\href{http://go.yurichev.com/17066}{kernelnewbies.org/Linux\_2\_6\_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}}

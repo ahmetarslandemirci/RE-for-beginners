@@ -4,7 +4,7 @@
 	mov	DWORD PTR [rbp-4], edi
 	mov	eax, DWORD PTR [rbp-4]
 	movsx	rdx, eax
-; RDX = valeur §entrée§ avec signe §étendu§
+; RDX = valeur entrée avec signe étendu
 	mov	rax, rdx
 ; RAX = mois
 	sal	rax, 2

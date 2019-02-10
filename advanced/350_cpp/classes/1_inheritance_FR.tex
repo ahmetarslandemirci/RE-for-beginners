@@ -29,7 +29,7 @@ la mise en ligne de fonctions peut rendre notre expérience plus difficile.}.
 
 Donc, voici la disposition de la mémoire:
 
-(classe de base \IT{object})
+(classe de base \emph{object})
 
 \begin{center}
 \begin{tabular}{ | l | l | }
@@ -43,7 +43,7 @@ Donc, voici la disposition de la mémoire:
 
 (classes héritées)
 
-\IT{box}:
+\emph{box}:
 
 \begin{center}
 \begin{tabular}{ | l | l | }
@@ -61,7 +61,7 @@ Donc, voici la disposition de la mémoire:
 \end{tabular}
 \end{center}
 
-\IT{sphere}:
+\emph{sphere}:
 
 \begin{center}
 \begin{tabular}{ | l | l | }
@@ -86,23 +86,23 @@ ses propres champs.
 
 
 Lorsque la méthode \TT{object::print\_color()} est appelée, un pointeur sur les deux
-objets \IT{box} et \IT{sphere} est passé en \TT{this}, et il peut travailler facilement
-avec ces objets puisque le champ \IT{color} dans ces objets est toujours à l'adresse
-épinglée (à l'offset \IT{+0x0}).
+objets \emph{box} et \emph{sphere} est passé en \TT{this}, et il peut travailler facilement
+avec ces objets puisque le champ \emph{color} dans ces objets est toujours à l'adresse
+épinglée (à l'offset \emph{+0x0}).
 %TODO better translation of "pinned"
 
 On peut dire que la méthode \TT{object::print\_color()} est agnostique en relation
-avec le type d'objet en entrée tant que les champs sont \IT{épinglés} à la même adresse
+avec le type d'objet en entrée tant que les champs sont \emph{épinglés} à la même adresse
 et cette condition est toujours vraie.
 
 
-Et si vous créez une classe héritée de la classe \IT{box}, le compilateur ajoutera
-les nouveaux champs après le champ \IT{depth}, laissant les champs de la classe
-\IT{box} à l'adresse épinglée.
+Et si vous créez une classe héritée de la classe \emph{box}, le compilateur ajoutera
+les nouveaux champs après le champ \emph{depth}, laissant les champs de la classe
+\emph{box} à l'adresse épinglée.
 
 
 Ainsi, la méthode \TT{box::dump()} fonctionnera correctement pour accéder aux champs
-\IT{color}, \IT{width}, \IT{height} et \IT{depth}, qui sont toujours positionnés
+\emph{color}, \emph{width}, \emph{height} et \emph{depth}, qui sont toujours positionnés
 à l'adresse connue.
 
 Le code généré par GCC est presque le même, avec la seule exception du passage du

@@ -65,7 +65,7 @@ double dbl_2n_v2(int N)
 
 int main()
 {
-	// 2^11=2048
+	// $2^{11}=2048$
 	printf ("%f\n", flt_2n(11));
 	printf ("%f\n", flt_2n_v2(11));
 	printf ("%lf\n", dbl_2n(11));

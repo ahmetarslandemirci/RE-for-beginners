@@ -1,7 +1,7 @@
 \subsubsection{Lesezugriff außerhalb von Arraygrenzen}
-Der indizierte Zugriff auf ein Array wird durch \IT{array\lbrack{}index\rbrack} realisiert.
+Der indizierte Zugriff auf ein Array wird durch \emph{array\lbrack{}index\rbrack} realisiert.
 Wenn man sich den erzeugten Code genau ansieht, bemerkt man, dass eine Prüfung der Indexgrenzen fehlt, welche die
-Bedingung \IT{kleiner als 20} validiert.
+Bedingung \emph{kleiner als 20} validiert.
 Was also passiert, wenn der Index 20 oder größer ist? 
 Hier haben wir es mit einem unschönen Feature von \CCpp zu tun
 
@@ -16,7 +16,7 @@ Ergebnis des Kompiliervorgangs (MSVC 2008):
 Der Code produziert dieses Ergebnis:
 
 \lstinputlisting[caption=\olly: console output]{patterns/13_arrays/2_BO/console.txt}
-Es handelt sich um \IT{irgendetwas}, das auf dem Stack in der Nähe des Arrays gelegen hat, 80 Byte von dessen erstem
+Es handelt sich um \emph{irgendetwas}, das auf dem Stack in der Nähe des Arrays gelegen hat, 80 Byte von dessen erstem
 Element entfernt.
 
 \clearpage

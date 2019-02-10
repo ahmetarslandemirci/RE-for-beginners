@@ -26,14 +26,14 @@ var_4           = -4
                 jalr    $t9
                 or      $at, $zero ; branch delay slot, NOP
                 lw      $gp, 0x20+var_10($sp)
-; copy result from $f0 and $f1 to $a3 and $a2:
+; copy result from \$f0 and \$f1 to \$a3 and \$a2:
                 mfc1    $a3, $f0
                 lw      $t9, (printf & 0xFFFF)($gp)
                 mfc1    $a2, $f1
 ; call printf():
-                lui     $a0, ($LC2 >> 16)  # "32.01 ^ 1.54 = %lf\n"
+                lui     $a0, ($LC2 >> 16)  # "32.01 \verb|^| 1.54 = \%lf\textbackslash{}n"
                 jalr    $t9
-                la      $a0, ($LC2 & 0xFFFF)  # "32.01 ^ 1.54 = %lf\n"
+                la      $a0, ($LC2 & 0xFFFF)  # "32.01 \verb|^| 1.54 = \%lf\textbackslash{}n"
 ; function epilogue:
                 lw      $ra, 0x20+var_4($sp)
 ; return 0:

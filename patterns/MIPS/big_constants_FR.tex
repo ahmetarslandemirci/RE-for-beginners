@@ -39,7 +39,7 @@ La sortie de l'assembleur GCC a la pseudo instruction LI, mais il s'agit en fait
 ici de \INS{LUI} (\q{Load Upper Immediate} charger la valeur immédiate en partie
 haute), qui stocke une valeur 16-bit dans la partie haute du registre.
 
-Regardons la sortie de \IT{objdump}:
+Regardons la sortie de \emph{objdump}:
 
 \begin{lstlisting}[caption=objdump,style=customasmMIPS]
 00000000 <f>:
@@ -61,7 +61,7 @@ unsigned int f2()
 
 \myindex{MIPS!\Instructions!LW}
 
-Ceci est légèrement différent: \INS{LUI} charge les 16-bit haut de \IT{global\_var}
+Ceci est légèrement différent: \INS{LUI} charge les 16-bit haut de \emph{global\_var}
 dans \$2 (ou \$V0) et ensuite \INS{LW} charge les 16-bit bas en l'ajoutant au contenu
 de \$2:
 
@@ -91,10 +91,10 @@ _f2:
 
                 .data
                 .globl global_var
-global_var:     .word 0x12345678         # DATA XREF: _f2
+global_var:     .word 0x12345678         # DATA XREF: \_f2
 \end{lstlisting}
 
-La sortie d'\IT{objdump} est la même que la sortie assembleur de GCC:
+La sortie d'\emph{objdump} est la même que la sortie assembleur de GCC:
 Affichons le code de relocation du fichier objet:
 
 \begin{lstlisting}[caption=objdump,style=customasmMIPS]
@@ -129,8 +129,8 @@ OFFSET   TYPE              VALUE
 
 \end{lstlisting}
 
-Nous voyons que l'adresse de \IT{global\_var} est écrite dans les instructions \INS{LUI}
+Nous voyons que l'adresse de \emph{global\_var} est écrite dans les instructions \INS{LUI}
 et \INS{LW} lors du chargement de l'exécutable:
-la partie haute de \IT{global\_var} se trouve dans la première (\INS{LUI}), la partie
+la partie haute de \emph{global\_var} se trouve dans la première (\INS{LUI}), la partie
 basse dans la seconde (\INS{LW}).
 

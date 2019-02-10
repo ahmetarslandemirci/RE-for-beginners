@@ -1,15 +1,15 @@
 get_month1:
-; charger l'adresse de la table dans $v0:
+; charger l'adresse de la table dans \$v0:
                 la      $v0, month1
-; prendre la valeur en §entrée§ et la multiplier par 4:
+; prendre la valeur en entrée et la multiplier par 4:
                 sll     $a0, 2
-; ajouter l'adresse de la table et la valeur §multipliée§:
+; ajouter l'adresse de la table et la valeur multipliée:
                 addu    $a0, $v0
-; charger §l'élément§ de la table §à§ cette adresse dans $v0:
+; charger l'élément de la table à cette adresse dans \$v0:
                 lw      $v0, 0($a0)
 ; sortir
                 jr      $ra
-                or      $at, $zero ; slot de §délai§ de branchement, NOP
+                or      $at, $zero ; slot de délai de branchement, NOP
 
                 .data # .data.rel.local
                 .globl month1

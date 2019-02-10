@@ -21,16 +21,16 @@ loc_20:
                 lw      $v0, 0x18+i($fp)
                 or      $at, $zero ; load delay slot, NOP
                 sllv    $v0, $v1, $v0
-; $v0 = 1<<i
+; \$v0 = 1<<i
                 move    $v1, $v0
                 lw      $v0, 0x18+a($fp)
                 or      $at, $zero ; load delay slot, NOP
                 and     $v0, $v1, $v0
-; $v0 = a&(1<<i)
-; a&(1<<i) равен нулю? тогда перейти на loc_58:
+; \$v0 = a \& (1<<i)
+; a \& (1<<i) равен нулю? тогда перейти на loc\_58:
                 beqz    $v0, loc_58
                 or      $at, $zero
-; переход не случился, это значит что a&(1<<i)!=0, так что инкрементируем "rt":
+; переход не случился, это значит что a \& (1<<i)!=0, так что инкрементируем "rt":
                 lw      $v0, 0x18+rt($fp)
                 or      $at, $zero ; load delay slot, NOP
                 addiu   $v0, 1
@@ -45,7 +45,7 @@ loc_58:
 
 loc_68:
 ; загрузить i и сравнить его с 0x20 (32).
-; перейти на loc_20, если это меньше чем 0x20 (32):
+; перейти на loc\_20, если это меньше чем 0x20 (32):
                 lw      $v0, 0x18+i($fp)
                 or      $at, $zero ; load delay slot, NOP
                 slti    $v0, 0x20  # ' '

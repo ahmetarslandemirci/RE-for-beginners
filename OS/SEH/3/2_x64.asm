@@ -31,10 +31,10 @@ $LN9:
 	push	rbx
 	sub	rsp, 32
 	xor	ebx, ebx
-	lea	rcx, OFFSET FLAT:$SG86276 ; 'hello #1!'
+	lea	rcx, OFFSET FLAT:$SG86276 ; 'hello \#1!'
 	call	printf
 	mov	DWORD PTR [rbx], 13
-	lea	rcx, OFFSET FLAT:$SG86277 ; 'hello #2!'
+	lea	rcx, OFFSET FLAT:$SG86277 ; 'hello \#2!'
 	call	printf
 	jmp	SHORT $LN8@main
 $LN6@main:

@@ -6,7 +6,7 @@ and by direct computation.}{\KRBook}
 
 \subsubsection{Das Maximum eines \gls{word} finden}
 Die maximale Zahl in vorzeichenloser Form ist lediglich eine Zahl in der alle
-Bits gesetzt sind: \IT{0xFF....FF}
+Bits gesetzt sind: \emph{0xFF....FF}
 (das entspricht -1 wenn das \gls{word} als vorzeichenbehaftete Zahl behandelt wird).
 Also nimmt man ein \gls{word}, setzt alle Bits und bekommt den Wert:
 
@@ -25,8 +25,8 @@ Dies entspricht 4294967295 für 32-Bit-Integer.
 
 \subsubsection{Das Minimum eines vorzeichenbehafteten \gls{word} finden}
 
-%Minimum signed number has form of \IT{0x80....00}, i.e., most significant bit is set, while others are cleared.
-%Maximum signed number has the same form, but all bits are inverted: \IT{0x7F....FF}.
+%Minimum signed number has form of \emph{0x80....00}, i.e., most significant bit is set, while others are cleared.
+%Maximum signed number has the same form, but all bits are inverted: \emph{0x7F....FF}.
 
 %Let's shift a lone bit left until it disappears:
 
@@ -54,4 +54,4 @@ Die Ausgabe ist:
 -2147483648 2147483647
 \end{lstlisting}
 
-Die letzten beiden Zahlen sind minimaler beziehungsweise maximaler Wert eines 32-Bit \IT{int}.
+Die letzten beiden Zahlen sind minimaler beziehungsweise maximaler Wert eines 32-Bit \emph{int}.

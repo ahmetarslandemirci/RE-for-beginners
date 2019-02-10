@@ -75,7 +75,7 @@ typedef struct _SYSTEM_BASIC_INFORMATION {
 
 This is a x64 system, so each PVOID takes 8 bytes.
 
-All \IT{reserved} fields in the structure take $24+4*8=56$ bytes.
+All \emph{reserved} fields in the structure take $24+4*8=56$ bytes.
 
 Oh yes, this implies that \TT{var\_C20} is the local stack is exactly the
 \TT{NumberOfProcessors} field of the \TT{SYSTEM\_BASIC\_INFORMATION} structure.
@@ -83,7 +83,7 @@ Oh yes, this implies that \TT{var\_C20} is the local stack is exactly the
 Let's check our guess.
 Copy \TT{taskmgr.exe} from \TT{C:\textbackslash{}Windows\textbackslash{}System32} 
 to some other folder 
-(so the \IT{Windows Resource Protection} 
+(so the \emph{Windows Resource Protection} 
 will not try to restore the patched \TT{taskmgr.exe}).
 
 Let's open it in Hiew and find the place:

@@ -41,9 +41,7 @@ In der Regel hat jeder Compiler seinen eigenen CRT-Code.
 
 Nachfolgend eine typischer CRT-Code für MSVC 2008.
 
-%TODO In german translation the customasm style can not be compiled.
-%\lstinputlisting[numbers=left,style=customasm]{OS/win32_CRT/crt_msvc_2008.asm}
-\lstinputlisting[numbers=left]{OS/win32_CRT/crt_msvc_2008.asm}
+\lstinputlisting[numbers=left,style=customasmx86]{OS/win32_CRT/crt_msvc_2008.asm}
 
 Wir sehen hier die Aufrufe zu \TT{GetCommandLineA()} (Zeile 62), anschließend zu \TT{setargv()}
 (Zeile 66) und \TT{setenvp()} (Zeile 74), was offensichtlich die globalen Variablen \TT{argc},

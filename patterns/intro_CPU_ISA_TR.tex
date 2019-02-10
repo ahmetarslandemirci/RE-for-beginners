@@ -27,7 +27,7 @@ Makine kodu ile bir \ac{PL} arasında neden fark olduğunu merak edebilirsiniz. 
 İnsanlar için \CCpp, Java, or Python, gibi yüksek-seviyeli \ac{PL}'leri algılamaları daha kolay olmasına karşın \ac{CPU}'ler daha alçak-seviyeli soyutlamaları algılayabiliyor.
 Muhtemelen \ac{CPU}'nun algılayabileceği yüksek-seviyeli bir dil icat etmek mümkün ama o zaman kullanılacak \ac{CPU}'ler günümüzdekilerden çok daha karmaşık olurlardı. 
 Benzer olarak insanların düşük seviyeli bir dil olan assembly'de program yazması can sıkıcı hatalar ve buglar olmadan pek mümkün değil.
-Yüksek seviyeli bir \ac{PL}'den assembly'e çevirme işlemini yapan programlara  \IT{compiler} denir.
+Yüksek seviyeli bir \ac{PL}'den assembly'e çevirme işlemini yapan programlara  \emph{compiler} denir.
 \footnote{Old-school Russian literatöründe bu terim \q{translator} olarak kullanılır.}.
 
 \myindex{ARM!\ARMMode}%
@@ -46,7 +46,7 @@ Sonraları bunun başta sandıkları gibi tutumlu bir yöntem olmadığını anl
 Aslında, en çok kullanılan \ac{CPU} instruction'ları \footnote{e.g. MOV/PUSH/CALL/Jcc} gerçek dünya uygulamalarında daha az bilgi ile kodlanabilmektedir.
 Bu yüzden her instruction'un 2 byte yer kapladığı Thumb adında yeni bir \ac{ISA} eklediler
 Şu an bu \q{Thumb mode} olarak geçiyor.
-Malesef \IT{tüm} ARM instruction'ları 2 byte ile temsil edilemiyordu bu yüzden Thumb instruction set biraz sınırlı kaldı.
+Malesef \emph{tüm} ARM instruction'ları 2 byte ile temsil edilemiyordu bu yüzden Thumb instruction set biraz sınırlı kaldı.
 Tabi bir programda hem ARM modunun hem de Thumb modunun bir arada kullanılabileceğini belirtmek gerekir.
 ARM'ın yaratıcıları Thumb'ın genişletilebileceğini düşündüler ve ARMv7'de kullanılan Thumb-2'yi oluşturdular. 
 Thumb-2'de de 2-byte uzunluğundaki instruction'lar kullanılıyor ancak bazı instructionlar 4-byte uzunluğunda olabilmektedir.

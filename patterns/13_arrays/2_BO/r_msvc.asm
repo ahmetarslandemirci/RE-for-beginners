@@ -23,7 +23,7 @@ $LN3@main:
 $LN1@main:
     mov    eax, DWORD PTR _a$[ebp+80]
     push   eax
-    push   OFFSET $SG2474 ; 'a[20]=%d'
+    push   OFFSET $SG2474 ; 'a[20]=\%d'
     call   DWORD PTR __imp__printf
     add    esp, 8
     xor    eax, eax

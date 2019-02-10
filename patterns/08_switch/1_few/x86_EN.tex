@@ -48,7 +48,7 @@ Here we can see some dirty hacks.
 
 First: the value of $a$ is placed in \EAX and 0 is subtracted from it. Sounds absurd, but it is done to check if 
 the value in \EAX is 0. If yes, the \ZF flag is to be set (e.g. subtracting from 0 is 0) 
-and the first conditional jump \JE (\IT{Jump if Equal} or synonym \JZ~---\IT{Jump if Zero}) is to be triggered 
+and the first conditional jump \JE (\emph{Jump if Equal} or synonym \JZ~---\emph{Jump if Zero}) is to be triggered 
 and control flow is to be passed to the \TT{\$LN4@f} label, where the \TT{'zero'} message is being printed. 
 If the first jump doesn't get triggered, 1 is subtracted from the input value and if at some stage the result is 0, 
 the corresponding jump is to be triggered.

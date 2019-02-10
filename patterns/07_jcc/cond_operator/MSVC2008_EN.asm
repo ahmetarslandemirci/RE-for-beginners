@@ -9,7 +9,7 @@ _f	PROC
 	push	ecx
 ; compare input value with 10
 	cmp	DWORD PTR _a$[ebp], 10
-; jump to $LN3@f if not equal
+; jump to \$LN3@f if not equal
 	jne	SHORT $LN3@f
 ; store pointer to the string into temporary variable:
 	mov	DWORD PTR tv65[ebp], OFFSET $SG746 ; 'it is ten'

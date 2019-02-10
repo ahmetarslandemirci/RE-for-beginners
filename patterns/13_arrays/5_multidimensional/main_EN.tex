@@ -66,17 +66,17 @@ Here is how each cell of 3*4 array are placed in memory:
 
 So, in order to calculate the address of the element we need, we first multiply the first index by
 4 (array width) and then add the second index.
-That's called \IT{row-major order}, 
+That's called \emph{row-major order}, 
 and this method of array and matrix representation is used in at least \CCpp and Python. 
-The term \IT{row-major order} 
+The term \emph{row-major order} 
 in plain English language means: \q{first, write the elements of the first row, then the second row \dots 
 and finally the elements of the last row}.
 
 \myindex{column-major order}
 \myindex{Fortran}
-Another method for representation is called \IT{column-major order} (the array indices are used in reverse order) 
+Another method for representation is called \emph{column-major order} (the array indices are used in reverse order) 
 and it is used at least in Fortran, MATLAB and R. 
-\IT{column-major order} term in plain English language means: \q{first, write the elements of the first column, then the second column \dots
+\emph{column-major order} term in plain English language means: \q{first, write the elements of the first column, then the second column \dots
 and finally the elements of the last column}.
 
 Which method is better?
@@ -85,12 +85,13 @@ In general, in terms of performance and cache memory,
 the best scheme for data organization is the one,
 in which the elements are accessed sequentially.
 
-So if your function accesses data per row, \IT{row-major order} is better, and vice versa.
+So if your function accesses data per row, \emph{row-major order} is better, and vice versa.
 
-% subsections
+% subsubsections
 \input{patterns/13_arrays/5_multidimensional/2D_EN}
 \input{patterns/13_arrays/5_multidimensional/2D_as_1D_EN}
 \input{patterns/13_arrays/5_multidimensional/3D_EN}
+\input{patterns/13_arrays/5_multidimensional/dimensions_EN}
 
 \subsubsection{More examples}
 

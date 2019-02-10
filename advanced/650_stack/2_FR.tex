@@ -16,7 +16,7 @@ char* amsg(int n, char* s)
 
 int main()
 {
-        amsg ("%s\n", interim (1234, "something wrong!"));
+        printf ("%s\n", amsg (1234, "something wrong!"));
 };
 \end{lstlisting}
 
@@ -28,11 +28,15 @@ Ceci est l'état de la pile avant le retour de amsg():
 \begin{lstlisting}
 (lower addresses)
 
+...
+
 [amsg(): 100 bytes]
 [RA]                   <- current SP
 [two amsg arguments]
 [something else]
 [main() local variables]
+
+...
 
 (upper addresses)
 \end{lstlisting}
@@ -80,12 +84,16 @@ Regardons l'état de la pile au moment où amsg() renvoie le contrôle à interi
 \begin{lstlisting}
 (lower addresses)
 
+...
+
 [amsg(): 100 bytes]
 [RA]                                     <- current SP
 [two amsg() arguments]
 [interim() stuff, incl. 8000 bytes]
 [something else]
 [main() local variables]
+
+...
 
 (upper addresses)
 \end{lstlisting}
@@ -95,12 +103,16 @@ Maintenant, l'état de la pile au moment où interim() rend le contrôle à \mai
 \begin{lstlisting}
 (lower addresses)
 
+...
+
 [amsg(): 100 bytes]
 [RA]
 [two amsg() arguments]
 [interim() stuff, incl. 8000 bytes]
 [something else]                         <- current SP
 [main() local variables]
+
+...
 
 (upper addresses)
 \end{lstlisting}

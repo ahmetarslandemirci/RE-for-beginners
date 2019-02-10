@@ -6,7 +6,7 @@ _calculate_machine_epsilon PROC
 	fst	DWORD PTR _v$[esp-4]     ; dieser Befehl ist redundant
 	inc	DWORD PTR _v$[esp-4]
 	fsubr	DWORD PTR _v$[esp-4]
-	fstp	DWORD PTR tv130[esp-4]   ; \ dieses Befehlspaar ist auch redundant
-	fld	DWORD PTR tv130[esp-4]   ; /
+	fstp	DWORD PTR tv130[esp-4]   ; \verb|\ dieses Befehlspaar ist auch redundant|
+	fld	DWORD PTR tv130[esp-4]   ; \verb|/                                      |
 	ret	0
 _calculate_machine_epsilon ENDP

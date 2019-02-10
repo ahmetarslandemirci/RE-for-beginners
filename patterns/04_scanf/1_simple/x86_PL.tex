@@ -25,7 +25,7 @@ umożliwiając dostęp do zmiennych lokalnych i argumentów funkcji poprzez \TT{
 
 \myindex{x86!\Registers!ESP}
 Możliwe jest także użycie \ESP w takim samym celu, le nie jest to zbyt wygodne, ponieważ wartość tego rejestru często się zmienia.
-Wartość \EBP może być postrzegana jako \IT{frozen state} wartości w \ESP z początku wykonania funkcji.
+Wartość \EBP może być postrzegana jako \emph{frozen state} wartości w \ESP z początku wykonania funkcji.
 
 % FIXME1 это уже было в 02_stack?
 Tutaj znajduje się typowa ramka stosu w układzie środowiska 32-bitowego:
@@ -62,7 +62,7 @@ Pierwszy jest wskaźnikiem na string \TT{\%d} a drugi jest adresem zmiennej \TT{
 Na początku adres zmiennej \TT{x} jest ładowany do rejestru \EAX przy pomocy instrukcji \\
 \TT{lea eax, DWORD PTR \_x\$[ebp]}.
 
-\LEA oznacza \IT{load effective address} i jest często używana do formowania adresów ~(\myref{sec:LEA}).
+\LEA oznacza \emph{load effective address} i jest często używana do formowania adresów ~(\myref{sec:LEA}).
 
 Można powiedzieć, że w tym przypadku \LEA po prostu umieszcza sumę rejestru \EBP i makra \TT{\_x\$} w rejestrze \EAX.
 

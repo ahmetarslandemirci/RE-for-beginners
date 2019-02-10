@@ -16,8 +16,8 @@ Voici ce qui se passe.
 Pour chaque objet (instance de la classe $c$) 8 octets sont alloués, exactement la
 taille requise pour stocker les deux variables.
 
-Pour \IT{c1} un constructeur par défaut sans argument \TT{??0c@@QAE@XZ} est appelé.
-Pour \IT{c2} un autre constructeur \TT{??0c@@QAE@HH@Z} est appelé et deux nombres
+Pour \emph{c1} un constructeur par défaut sans argument \TT{??0c@@QAE@XZ} est appelé.
+Pour \emph{c2} un autre constructeur \TT{??0c@@QAE@HH@Z} est appelé et deux nombres
 sont passés comme arguments.
 
 \myindex{thiscall}
@@ -45,7 +45,7 @@ Et bien sûr, différentes classes peuvent avoir leurs propres méthodes avec le
 
 \myindex{Linker}
 
-Le \IT{Name mangling} nous permet d'encoder le nom de la classe + le nom de la méthode +
+Le \emph{Name mangling} nous permet d'encoder le nom de la classe + le nom de la méthode +
 tous les types des arguments de la méthode dans une chaîne ASCII, qui est ensuite
 utilisée comme le nom interne de la fonction.
 C'est ainsi car ni le linker, ni le chargeur de DLL de l'\ac{OS} (les mangled names
@@ -115,7 +115,7 @@ Le type de donnée \Tint est toujours 32-bit en x64
 c'est donc pourquoi les parties 32-bit des registres sont utilisées ici.
 
 Nous voyons également \TT{JMP printf} au lieu de \RET dans la méthode \TT{dump()},
-\IT{astuce} que nous avons déjà vu plus tôt: \myref{JMP_instead_of_RET}.
+\emph{astuce} que nous avons déjà vu plus tôt: \myref{JMP_instead_of_RET}.
 
 \myparagraph{GCC: x86}
 
@@ -123,7 +123,7 @@ C'est presque la même chose avec GCC 4.4.1, avec quelques exceptions.
 
 \lstinputlisting[caption=GCC 4.4.1,style=customasmx86]{\CURPATH/classes/simple_GCC.asm}
 
-Ici, nous voyons un autre style de \IT{name mangling}, spécifique à GNU
+Ici, nous voyons un autre style de \emph{name mangling}, spécifique à GNU
 \footnote{Il y a un bon document à propos des différentes conventions de name mangling
 dans différent compilateurs:\\
 \InSqBrackets{\AgnerFogCC}.}.
@@ -190,32 +190,9 @@ void ZN1cC1Eii (int *obj, int a, int b)
 
 Maintenant, la fonction \TT{dump()}:
 
-\begin{lstlisting}[style=customasmx86]
-                public _ZN1c4dumpEv
-_ZN1c4dumpEv    proc near
+\lstinputlisting[style=customasmx86]{\CURPATH/classes/tmp1.asm}
 
-var_18          = dword ptr -18h
-var_14          = dword ptr -14h
-var_10          = dword ptr -10h
-arg_0           = dword ptr  8
-
-                push    ebp
-                mov     ebp, esp
-                sub     esp, 18h
-                mov     eax, [ebp+arg_0]
-                mov     edx, [eax+4]
-                mov     eax, [ebp+arg_0]
-                mov     eax, [eax]
-                mov     [esp+18h+var_10], edx
-                mov     [esp+18h+var_14], eax
-                mov     [esp+18h+var_18], offset aDD ; "%d; %d\n"
-                call    _printf
-                leave
-                retn
-_ZN1c4dumpEv    endp
-\end{lstlisting}
-
-La \IT{représentation interne} de cette fonction a un seul argument, utilisé comme
+La \emph{représentation interne} de cette fonction a un seul argument, utilisé comme
 pointeur sur l'objet (\ITthis).
 
 Cette fonction pourrait être récrite en C comme ceci:
@@ -228,7 +205,7 @@ void ZN1c4dumpEv (int *obj)
 \end{lstlisting}
 
 Ainsi, si nous basons notre jugement sur ces simples exemples, la différence entre
-MSVC et GCC est le style d'encodage des noms de fonctions (\IT{name mangling}) et
+MSVC et GCC est le style d'encodage des noms de fonctions (\emph{name mangling}) et
 la méthode pour passer un pointeur sur l'objet (via le registre \ECX ou via le premier
 argument).
 
@@ -239,7 +216,7 @@ Les 6 premiers arguments, comme nous le savons déjà, sont passés par les regi
 et le pointeur sur \ITthis via le premier (\RDI) et c'est ce que l'on voit ici.
 Le type de donnée \Tint est aussi 32-bit ici.
 
-L'\IT{astuce} du \JMP au lieu de \RET est aussi utilisée ici.
+L'\emph{astuce} du \JMP au lieu de \RET est aussi utilisée ici.
 
 \lstinputlisting[caption=GCC 4.4.6 x64,style=customasmx86]{\CURPATH/classes/simple_GCC_x64_FR.s}
 

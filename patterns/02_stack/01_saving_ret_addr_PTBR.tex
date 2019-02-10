@@ -38,32 +38,12 @@ c:\tmp6\ss.cpp(4) : warning C4717: 'f' : recursive on all control paths, functio
 
 \dots mas gera o código de qualquer maneira:
 
-\begin{lstlisting}[style=customasmx86]
-?f@@YAXXZ PROC			; f
-; File c:\tmp6\ss.cpp
-; Line 2
-	push	ebp
-	mov	ebp, esp
-; Line 3
-	call	?f@@YAXXZ	; f
-; Line 4
-	pop	ebp
-	ret	0
-?f@@YAXXZ ENDP			; f
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{patterns/02_stack/1.asm}
 
 \dots também, se ativarmos a otimização do compilador (opção \TT{/Ox}) 
-o código otimizado não vai estourar a pilha e funcionará \IT{corretamente} \footnote{ironia aqui}:
+o código otimizado não vai estourar a pilha e funcionará \emph{corretamente} \footnote{ironia aqui}:
 
-\begin{lstlisting}[style=customasmx86]
-?f@@YAXXZ PROC			; f
-; File c:\tmp6\ss.cpp
-; Line 2
-$LL3@f:
-; Line 3
-	jmp	SHORT $LL3@f
-?f@@YAXXZ ENDP			; f
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{patterns/02_stack/2.asm}
 
 \PTBRph{}
 

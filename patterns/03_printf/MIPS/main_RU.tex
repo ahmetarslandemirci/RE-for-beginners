@@ -13,7 +13,7 @@
 \lstinputlisting[caption=\Optimizing GCC 4.4.5 (IDA),style=customasmMIPS]{patterns/03_printf/MIPS/printf3.O3.IDA_RU.lst}
 
 \IDA объединила пару инструкций \INS{LUI} и \INS{ADDIU} в одну псевдоинструкцию \INS{LA}.
-Вот почему здесь нет инструкции по адресу 0x1C: потому что \INS{LA} \IT{занимает} 8 байт.
+Вот почему здесь нет инструкции по адресу 0x1C: потому что \INS{LA} \emph{занимает} 8 байт.
 
 \myparagraph{\NonOptimizing GCC 4.4.5}
 

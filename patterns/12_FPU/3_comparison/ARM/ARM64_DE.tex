@@ -12,7 +12,7 @@ Wir finden hier \INS{FCMPE}. Er vergleicht die beiden über \RegD{0} und \RegD{1
 sich um das erste und zweite Argument der Funktion) und setzt \ac{APSR} die Flags (N, Z, C, V).
 
 \myindex{ARM!\Instructions!FCSEL}
-\INS{FCSEL} (\IT{Floating Conditional Select}) kopiert den Wert von \RegD{0} oder \RegD{1} nach \RegD{0}, abhängig von
+\INS{FCSEL} (\emph{Floating Conditional Select}) kopiert den Wert von \RegD{0} oder \RegD{1} nach \RegD{0}, abhängig von
 der Bedingung (\GTT{GT}---Greater Than), und verwendet wiederum Flags im \ac{APSR} Register anstatt derer von
 \ac{FPSCR}.
 
@@ -27,14 +27,14 @@ Falls die Bedingung falsch ist, wird der Wert von \RegD{1} nach \RegD{0} kopiert
 \lstinputlisting[style=customasmARM]{patterns/12_FPU/3_comparison/ARM/ARM64_GCC_DE.lst}
 Der nicht optimierende GCC ist weniger kompakt.
 
-Zunächst speichert die Funktion ihre Eingabewerte auf dem lokalen Stack (\IT{Register Save Area}), danach lädt der Code
+Zunächst speichert die Funktion ihre Eingabewerte auf dem lokalen Stack (\emph{Register Save Area}), danach lädt der Code
 die Werte erneut in die Register \RegX{0}/\RegX{1} und kopiert sie schließlich nach \RegD{0}/\RegD{1}, um sie mittels
 \INS{FCMPE} zu vergleichen.
 Eine Menge redundanter Code, aber so arbeitet ein nicht optimierender Compiler nun einmal.
 \INS{FCMPE} vergleich die Werte und setzt die \ac{APSR} Flags.
 Zu diesem Zeitpunkt entscheidet sich der Compiler noch nicht für den praktischeren \INS{FCSEL} Befehl und arbeitet
 stattdessen mit herkömmlichen Methoden:
-er verwendet den \INS{BLE} Befehl (\IT{Branch if Less than or Equal}).
+er verwendet den \INS{BLE} Befehl (\emph{Branch if Less than or Equal}).
 Im ersten Fall ($a>b$) wird der Wert von $a$ nach \RegX{0} geladen. 
 Im anderen Fall ($a<=b$) wird der Wert von $b$ nach \RegX{0} geladen.
 Schließlich wird der Wert aus \RegX{0} nach \RegD{0} kopiert, denn der Rückgabewert muss sich in diesem Register

@@ -1,4 +1,4 @@
-\subsection{\IT{vprintf()} function case}
+\subsection{\emph{vprintf()} function case}
 \myindex{\CStandardLibrary!vprintf}
 \myindex{\CStandardLibrary!va\_list}
 
@@ -12,7 +12,7 @@ But how?
 
 That's why there are functions with \q{v} in name.
 
-One of them is \IT{vprintf()}: it takes a format-string and a pointer to a variable of type \TT{va\_list}:
+One of them is \emph{vprintf()}: it takes a format-string and a pointer to a variable of type \TT{va\_list}:
 
 \lstinputlisting[style=customc]{\CURPATH/die.c}
 
@@ -22,6 +22,6 @@ Let's compile:
 \lstinputlisting[caption=\Optimizing MSVC 2010,style=customasmx86]{\CURPATH/die_MSVC2010_Ox_EN.asm}
 
 We see that all our function does is just taking a pointer to the arguments and
-passing it to \IT{vprintf()}, and that function is treating it like an infinite array of arguments!
+passing it to \emph{vprintf()}, and that function is treating it like an infinite array of arguments!
 
 \lstinputlisting[caption=\Optimizing MSVC 2012 x64,style=customasmx86]{\CURPATH/die_MSVC2012_x64_Ox_EN.asm}

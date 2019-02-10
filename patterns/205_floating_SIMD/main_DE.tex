@@ -194,7 +194,7 @@ Wir kompilieren es jetzt für x64:
 Es gibt keinen Weg 1 zum einem Wert in einem 128-Bit XMM Register zu addieren, also muss der Wert im Speicher abgelegt
 werden.
 
-Es gibt zwar den Befehl \INS{ADDSD} (\IT{Add Scalar Double-Precision Floating-Point Values}), der einen Wert zu niederen
+Es gibt zwar den Befehl \INS{ADDSD} (\emph{Add Scalar Double-Precision Floating-Point Values}), der einen Wert zu niederen
 64-Bit-Hälfte eines XMM Registers addieren kann und die höheren Bits ignoriert, aber MSVC 2012 scheint an dieser Stelle
 nicht gut genug zu sein, um diese Möglichkeit zu erkennen\footnote{Als Übung können Sie versuchen, den Code so
 umzugestalten, dass der lokale Stack nicht mehr verwendet wird}.

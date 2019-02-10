@@ -39,17 +39,17 @@ Voici ce que GCC 4.4.1 génère:
 
 \lstinputlisting[caption=GCC 4.4.1,style=customasmx86]{patterns/13_arrays/1_simple/simple_gcc.asm}
 
-À propos, la variable $a$ est de type \IT{int*} (un pointeur sur un \Tint{})---vous
+À propos, la variable $a$ est de type \emph{int*} (un pointeur sur un \Tint{})---vous
 pouvez passer un pointeur sur un tableau à une autre fonction, mais c'est plus juste
 de dire qu'un pointeur sur le premier élément du tableau est passé (les adresses
 du reste des éléments sont calculées de manière évidente).
 
 % TODO: clarifier
-Si vous indexez ce pointeur en \IT{a[idx]}, il suffit d'ajouter \IT{idx} au pointeur
+Si vous indexez ce pointeur en \emph{a[idx]}, il suffit d'ajouter \emph{idx} au pointeur
 et l'élément placé ici (sur lequel pointe le pointeur calculé) est renvoyé.
 
-Un exemple intéressant: une chaîne de caractères comme \IT{\q{string}} est un tableau
-de caractères et a un type \IT{const char[]}.
+Un exemple intéressant: une chaîne de caractères comme \emph{string} est un tableau
+de caractères et a un type \emph{const char[]}.
 
 Un index peut aussi être appliqué à ce pointeur.
 

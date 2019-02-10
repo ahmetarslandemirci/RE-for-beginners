@@ -41,7 +41,7 @@ Następnie adres linii tekstowej jest ładowany do \$4 za pomocą pary instrukcj
 \INS{ADDIU} (\q{Add Immediate Unsigned Word}).
 \INS{LUI} ustawia starsze 16 bitów rejestru (dlatego w nazwie jest obecne \q{upper}) i \INS{ADDIU}
 dodaje młodsze 16 bitów do adresu.
-\INS{ADDIU} idzie za \INS{JALR} (pamiętając o \IT{branch delay slots}).
+\INS{ADDIU} idzie za \INS{JALR} (pamiętając o \emph{branch delay slots}).
 Rejestr \$4 także jest nazywany \$A0, który jest wykorzystywany do przekazywania pierwszego argumentu funkcji
 \footnote{Tablica rejestrów MIPS jest dostępna w dodatku \myref{MIPS_registers_ref}}.
 \myindex{MIPS!\Instructions!JALR}
@@ -49,8 +49,8 @@ Rejestr \$4 także jest nazywany \$A0, który jest wykorzystywany do przekazywan
 jednocześnie zapisując adres następnej instrukcji (\INS{LW}) w \ac{RA}.
 Wygląda to tak samo jak w ARM.
 I jeszcze jedna bardzo ważna rzecz: adres zapisywany do \ac{RA} nie jest adresem następnej instrukcji (dlatego, że jest to
-\IT{delay slot} i wykonuje się przed instrukcją przejścia),
-a instrukcji następującej po \IT{delay slot}.
+\emph{delay slot} i wykonuje się przed instrukcją przejścia),
+a instrukcji następującej po \emph{delay slot}.
 W ten sposób podczas wykonania \INS{JALR} do \ac{RA} jest zapisywane $PC + 8$.
 W naszym wypadku jest to adres instrukcji \INS{LW} kolejnej po \INS{ADDIU}.
 
@@ -71,7 +71,7 @@ Prawdopodobnie, te pseudo-instrukcje są optymalizowane w \ac{CPU} i \ac{ALU} ni
 
 \myindex{MIPS!\Instructions!J}
 \INS{J} w linii 24 robi przejście pod adres w \ac{RA}, i to działa jako wyjście z funkcji.
-\INS{ADDIU} po \INS{J} wprawdzie jest wykonywane przed \INS{J} (\IT{branch delay slots}?) 
+\INS{ADDIU} po \INS{J} wprawdzie jest wykonywane przed \INS{J} (\emph{branch delay slots}?) 
 jest to częścią epilogu funkcji.
 
 To jest listing wygenerowany w \IDA. Każdy rejestr posiada swoją pseudonazwę:
@@ -93,7 +93,7 @@ Rejestr, zawierający adres \puts to \$T9, dlatego że rejestry z prefiksem T- n
 Widzimy, że FP jest wykorzystywany jako frame pointer.
 Również widzimy 3 instrukcje \ac{NOP}.
 Drugi i trzeci \ac{NOP} występują po instrukcjach skoku.
-Najwidoczniej, kompilator GCC zawsze dodaje \ac{NOP}-y (przez \IT{branch delay slots})
+Najwidoczniej, kompilator GCC zawsze dodaje \ac{NOP}-y (przez \emph{branch delay slots})
 po instrukcjach skoku i następnie, jeśli optymalizacja jest włączona, może się od nich pozbywać.
 Także one tutaj zostały.
 
@@ -105,14 +105,14 @@ Jeszcze jeden listing w \IDA:
 Ciekawe, że \IDA zebrała parę instrukcji \INS{LUI}/\INS{ADDIU} w jedną pseudoinstrukcję 
 \INS{LA} (\q{Load Address}) w linii 15.
 Również widzimy, że długość tej pseudoinstrukcji to 8 bajt!
-Jest to pseudoinstrukcja (lub \IT{makro}), dlatego że nie jest to typowa instrukcja MIPS, a raczej wygodna nazwa zbiorowa dla tych dwóch instrukcji.
+Jest to pseudoinstrukcja (lub \emph{makro}), dlatego że nie jest to typowa instrukcja MIPS, a raczej wygodna nazwa zbiorowa dla tych dwóch instrukcji.
 
 \myindex{MIPS!\Pseudoinstructions!NOP}
 \myindex{MIPS!\Instructions!OR}
 Jeszcze coś: \IDA nie rozpoznała \ac{NOP}-instrukcje w liniach 22, 26 i 41.
 
 Jest to \TT{OR \$AT, \$ZERO}.
-Generalnie, jest to instrukcja \IT{LUB} stosowana do zawartości rejestru \$AT z zerem,
+Generalnie, jest to instrukcja \emph{LUB} stosowana do zawartości rejestru \$AT z zerem,
 co, oczywiście, jest pustą instrukcją.
 MIPS, jak i inne \ac{ISA}, nie posiada oddzielnej \ac{NOP}-instrukcji.
 

@@ -14,7 +14,7 @@ Der Kernel des Betriebssystems sowie die Treiber gehören in der Regel zur erste
 Alle Anwendungen gehören in der Regel der zweiten Kategorie an.
 
 \myindex{Glibc}
-Beispielsweise gehört der Linux-Kernel in den \IT{kernel space} während Glibc im \IT{user space}
+Beispielsweise gehört der Linux-Kernel in den \emph{kernel space} während Glibc im \emph{user space}
 ausgeführt wird.
 
 Diese Unterscheidung ist von großer Bedeutung für die Sicherheit eines \ac{OS}:
@@ -55,7 +55,7 @@ Die Nummer des Aufrufs wird im \EAX-Register übergeben und die restlichen Param
 
 %TODO: style=customasm does not compile in german version
 %\lstinputlisting[caption=A simple example of the usage of two syscalls,style=customasm]{OS/linux_syscall.s}
-\lstinputlisting[caption=Ein einfaches Beispiel zur Nutzung zweier Systemaufrufe]{OS/linux_syscall.s}
+\lstinputlisting[caption=Ein einfaches Beispiel zur Nutzung zweier Systemaufrufe,style=customasmx86]{OS/linux_syscall.s}
 
 Kompilation:
 

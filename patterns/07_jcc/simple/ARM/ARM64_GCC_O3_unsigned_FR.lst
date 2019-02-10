@@ -6,14 +6,14 @@ f_unsigned:
 	str	x19, [sp,16]
 	mov	w19, w0
 	bhi	.L25	; Branch if HIgher
-                ; §branchement si supérieur (a>b)§
+                ; branchement si supérieur (a>b)
 	cmp	w19, w1
 	beq	.L26	; Branch if Equal
-	          ; §branchement si égal (a==b)§
+	          ; branchement si égal (a==b)
 .L23:
 	bcc	.L27	; Branch if Carry Clear
-	          ; §branchement si le flag de retenue est à zéro (si inférieur) (a<b)§
-; §épilogue de la fonction, impossible d'arriver ici§
+	          ; branchement si le flag de retenue est à zéro (si inférieur) (a<b)
+; épilogue de la fonction, impossible d'arriver ici
 	ldr	x19, [sp,16]
 	ldp	x29, x30, [sp], 48
 	ret
@@ -31,7 +31,7 @@ f_unsigned:
 	ldr	x1, [x29,40]
 	cmp	w19, w1
 	bne	.L23	; Branch if Not Equal
-            ; §branchement si non égal§
+            ; branchement si non égal
 .L26:
 	ldr	x19, [sp,16]
 	adrp	x0, .LC10	; "a==b"

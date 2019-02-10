@@ -28,7 +28,7 @@ making it possible to access local variables and function arguments via \TT{EBP+
 
 \myindex{x86!\Registers!ESP}
 It is also possible to use \ESP for the same purpose, although that is not very convenient since it changes frequently.
-The value of the \EBP could be perceived as a \IT{frozen state} of the value in \ESP at the start of the function's execution.
+The value of the \EBP could be perceived as a \emph{frozen state} of the value in \ESP at the start of the function's execution.
 
 % FIXME1 это уже было в 02_stack?
 Here is a typical \gls{stack frame} layout in 32-bit environment:
@@ -65,7 +65,7 @@ The first one is a pointer to the string containing \TT{\%d} and the second is t
 First, the \TT{x} variable's address is loaded into the \EAX register by the \\
 \TT{lea eax, DWORD PTR \_x\$[ebp]} instruction.
 
-\LEA stands for \IT{load effective address}, and is often used for forming an address ~(\myref{sec:LEA}).
+\LEA stands for \emph{load effective address}, and is often used for forming an address ~(\myref{sec:LEA}).
 
 We could say that in this case \LEA simply stores the sum of the \EBP register value and the \TT{\_x\$} macro in the \EAX register.
 

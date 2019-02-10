@@ -1,6 +1,6 @@
 \subsubsection{Écrire hors des bornes du tableau}
 
-Ok, nous avons lu quelques valeurs de la pile \IT{illégalement}, mais que se passe-t-il
+Ok, nous avons lu quelques valeurs de la pile \emph{illégalement}, mais que se passe-t-il
 si nous essayons d'écrire quelque chose?
 
 Voici ce que nous avons:
@@ -55,7 +55,7 @@ a été sauvée sur la pile.
 Puis, 84 octets ont été alloués pour le tableau et la variable $i$.
 C'est \TT{(20+1)*sizeof(int)}.
 \ESP pointe maintenant sur la variable \TT{\_i} dans la pile locale et après l'exécution
-du \TT{PUSH quelquechose} suivant, \IT{quelquechose} apparaît à côté de \TT{\_i}.
+du \TT{PUSH quelquechose} suivant, \emph{quelquechose} apparaît à côté de \TT{\_i}.
 
 C'est la structure de la pile pendant que le contrôle est dans \main:
 
@@ -76,7 +76,7 @@ C'est la structure de la pile pendant que le contrôle est dans \main:
 L'expression \TT{a[19]=quelquechose} écrit le dernier \Tint dans des bornes du tableau
 (dans les limites jusqu'ici!)
 
-L'expression \TT{a[20]=quelquechose} écrit \IT{quelquechose} à l'endroit où la valeur
+L'expression \TT{a[20]=quelquechose} écrit \emph{quelquechose} à l'endroit où la valeur
 sauvegardée de \EBP se trouve.
 
 S'il vous plaît, regardez l'état du registre lors du plantage. Dans notre cas,
@@ -93,7 +93,7 @@ une exception est levée.
 
 \myindex{\BufferOverflow}
 
-Bienvenu! Ça s'appelle un \IT{buffer overflow (débordement de tampon)}\footnote{\href{http://go.yurichev.com/17132}{Wikipédia}}.
+Bienvenu! Ça s'appelle un \emph{buffer overflow (débordement de tampon)}\footnote{\href{http://go.yurichev.com/17132}{Wikipédia}}.
 
 Remplacez la tableau de \Tint avec une chaîne (\Tchar array), créez délibérément
 une longue chaîne et passez-là au programme, à la fonction, qui ne teste pas la longueur

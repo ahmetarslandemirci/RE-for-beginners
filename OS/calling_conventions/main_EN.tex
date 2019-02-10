@@ -23,7 +23,7 @@ add esp, 12 ; returns ESP
 
 \newcommand{\SIZEOFINT}{The size of an \Tint type variable is 4 in x86 systems and 8 in x64 systems}
 
-It's almost the same as \IT{cdecl}, with the exception that the \gls{callee} must set \ESP to the initial state by executing the \TT{RET x} instruction instead of \RET, \\
+It's almost the same as \emph{cdecl}, with the exception that the \gls{callee} must set \ESP to the initial state by executing the \TT{RET x} instruction instead of \RET, \\
 where \TT{x = arguments number * sizeof(int)\footnote{\SIZEOFINT}}.
 The \gls{caller} is not adjusting the \gls{stack pointer}, 
 there are no \TT{add esp, x} instruction.
@@ -61,33 +61,33 @@ the number of function arguments can be easily deduced from the \TT{RETN n} inst
 \subsubsection{Functions with variable number of arguments}
 
 \printf-like functions are, probably, the only case of functions with a variable number of arguments in \CCpp,
-but it is easy to illustrate an important difference between \IT{cdecl} and \IT{stdcall} with their help.
+but it is easy to illustrate an important difference between \emph{cdecl} and \emph{stdcall} with their help.
 Let's start with the idea that the compiler knows the argument count of each \printf function call.
 
 However, the called \printf, which is already compiled and located in MSVCRT.DLL (if we talk about Windows),
 does not have any information about how much arguments were passed, however it can determine it from the format string.
 
-Thus, if \printf would be a \IT{stdcall} function and restored \gls{stack pointer} to its initial state by counting
+Thus, if \printf would be a \emph{stdcall} function and restored \gls{stack pointer} to its initial state by counting
 the number of arguments in the format string, this could be a dangerous situation, when one programmer's typo can
 provoke a sudden program crash.
-Thus it is not suitable for such functions to use \IT{stdcall}, \IT{cdecl} is better.
+Thus it is not suitable for such functions to use \emph{stdcall}, \emph{cdecl} is better.
 
 \subsection{fastcall}
 \label{fastcall}
 \myindex{fastcall}
 
 That's the general naming for the method of passing some arguments via registers and the 
-rest via the stack. It worked faster than \IT{cdecl}/\IT{stdcall} on older CPUs 
+rest via the stack. It worked faster than \emph{cdecl}/\emph{stdcall} on older CPUs 
 (because of smaller stack pressure).
 It may not help to gain any significant performance on latest (much more complex) \ac{CPU}s, however.
 
 It is not standardized, so the various compilers can do it differently.
 It's a well known caveat: if you have two DLLs and the one uses another one, and they are built by different compilers with 
-different \IT{fastcall} calling conventions, you can expect problems.
+different \emph{fastcall} calling conventions, you can expect problems.
 
 Both MSVC and GCC pass the first and second arguments via \ECX and \EDX and the rest of the arguments via the stack.
 
-The \gls{stack pointer} must be restored to its initial state by the \gls{callee} (like in \IT{stdcall}).
+The \gls{stack pointer} must be restored to its initial state by the \gls{callee} (like in \emph{stdcall}).
 
 \begin{lstlisting}[caption=fastcall,style=customasmx86]
 push arg3
@@ -121,7 +121,7 @@ Which implies that the number of arguments can be deduced easily here as well.
 
 \newcommand{\URLREGPARMM}{\url{http://go.yurichev.com/17040}}
 
-It is the evolution of \IT{fastcall}\footnote{\URLREGPARMM} in some sense.
+It is the evolution of \emph{fastcall}\footnote{\URLREGPARMM} in some sense.
 With the \TT{-mregparm} option it is possible to set how many arguments are to be passed via registers (3 is the maximum).
 Thus, the \EAX, \EDX and \ECX registers are to be used.
 
@@ -169,7 +169,7 @@ but larger ones may save their values for further use.
 The \gls{caller} also must return the \gls{stack pointer} into its initial state.
 
 This calling convention is also used in Windows x86-64 system DLLs 
-(instead of \IT{stdcall} in win32).
+(instead of \emph{stdcall} in win32).
 
 Example:
 
@@ -248,7 +248,7 @@ The calling functions is not using them after the \gls{callee}'s exit (the autho
 % TODO (OllyDbg) пример как в стеке меняется $a$
 
 So yes, one can modify the arguments easily.
-Of course, if it is not \IT{references} in \Cpp{} (\myref{cpp_references}),
+Of course, if it is not \emph{references} in \Cpp{} (\myref{cpp_references}),
 and if you don't modify data to which a pointer points to, 
 then the effect will not propagate outside the current function.
 

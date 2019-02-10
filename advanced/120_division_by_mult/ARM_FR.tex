@@ -5,7 +5,7 @@ pour la division.
 Il manque aussi une simple instruction pour la multiplication avec une constante 32-bit
 (rappelez-vous qu'une constante 32-bit ne tient pas dans un opcode 32-bit).
 
-En utilisant de cette astuce intelligente (ou \IT{hack}), il est possible d'effectuer
+En utilisant de cette astuce intelligente (ou \emph{hack}), il est possible d'effectuer
 la division en utilisant seulement trois instructions: addition, soustraction et
 décalages de bit~(\myref{sec:bitfields}).
 
@@ -60,7 +60,7 @@ du registre.
 \q{pseudo-instruction}.
 
 \myindex{ARM!\Instructions!SMMUL}
-L'instruction \TT{SMMUL} (\IT{Signed Most Significant Word Multiply} mot le plus
+L'instruction \TT{SMMUL} (\emph{Signed Most Significant Word Multiply} mot le plus
 significatif d'une multiplication signée), multiplie deux nombres, les traitant comme
 des nombres signés et laisse la partie 32-bit haute dans le registre \Reg{0},
 en ignorant la partie 32-bit basse du résultat.
@@ -81,7 +81,7 @@ A la place, des instructions comme
 (\MOV, \ADD, \SUB, \TT{RSB})\footnote{\DataProcessingInstructionsFootNote}
 peuvent avoir un suffixe, indiquant si le second argument doit être décalé, et si
 oui, de quelle valeur et comment.
-\TT{ASR} signifie \IT{Arithmetic Shift Right}, \TT{LSR}---\IT{Logical Shift Right}.
+\TT{ASR} signifie \emph{Arithmetic Shift Right}, \TT{LSR}---\emph{Logical Shift Right}.
 
 
 \subsubsection{\OptimizingXcodeIV (\ThumbTwoMode)}
@@ -103,7 +103,7 @@ utilisée ici---\TT{ASRS} (arithmetic shift right).
 
 LLVM \NonOptimizing
 ne génère pas le code que nous avons vu avant dans cette section, mais insère à la
-place un appel à la fonction de bibliothèque \IT{\_\_\_divsi3}.
+place un appel à la fonction de bibliothèque \emph{\_\_\_divsi3}.
 
-À propos de Keil: il insère un appel à la fonction de bibliothèque \IT{\_\_aeabi\_idivmod}
+À propos de Keil: il insère un appel à la fonction de bibliothèque \emph{\_\_aeabi\_idivmod}
 dans tous les cas.

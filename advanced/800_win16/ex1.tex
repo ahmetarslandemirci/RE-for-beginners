@@ -17,7 +17,7 @@ int PASCAL WinMain( HINSTANCE hInstance,
 WinMain         proc near
                 push    bp
                 mov     bp, sp
-                mov     ax, 30h ; '0'   ; MB_ICONEXCLAMATION constant
+                mov     ax, 30h ; '0'   ; MB\_ICONEXCLAMATION constant
                 push    ax
                 call    MESSAGEBEEP
                 xor     ax, ax          ; return 0

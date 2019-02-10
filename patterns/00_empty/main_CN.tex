@@ -53,7 +53,7 @@
 
 首先，用于调试的函数是很常见的，像下面这个函数:
 
-\lstinputlisting[caption=\EN{\CCpp Code},style=customc]{patterns/00_empty/dbg_print.c}
+\lstinputlisting[caption=\CCpp Code,style=customc]{patterns/00_empty/dbg_print_EN.c}
 
 在非DEBUG构建中 (例如，RELEASE构建), \TT{\_DEBUG}未被定义，
 所以尽管在执行中\TT{dbg\_print()}函数仍会被调用，但函数体为空。
@@ -61,7 +61,7 @@
 另外一种常见的软件保护方式是做出多种构建，一种提供给正版用户，一种作为试用版本。
 在试用版本的构建中，会缺少一些重要的函数，像下面这样:
 
-\lstinputlisting[caption=\EN{\CCpp代码},style=customc]{patterns/00_empty/demo.c}
+\lstinputlisting[caption=\CCpp代码,style=customc]{patterns/00_empty/demo_EN.c}
 
 \TT{save\_file()} 函数会在用户点击\TT{文件->保存}菜单时被调用。
 试用版本中，会禁用该菜单项，但即使破解者强行启用了这一项，也只有空函数会被调用。

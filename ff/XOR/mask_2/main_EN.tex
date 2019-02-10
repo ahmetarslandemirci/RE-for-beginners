@@ -12,7 +12,7 @@ I've got another encrypted file, which is clearly encrypted by something simple,
 
 The encrypted file can be downloaded \href{https://github.com/DennisYurichev/RE-for-beginners/blob/master/ff/XOR/mask_2/files/cipher.txt}{here}.
 
-\IT{ent} Linux utility reports about $\textasciitilde{}7.5$ bits per byte, and this is high level of entropy (\myref{entropy}),
+\emph{ent} Linux utility reports about $\textasciitilde{}7.5$ bits per byte, and this is high level of entropy (\myref{entropy}),
 close to compressed or properly encrypted file.
 But still, we clearly see some pattern, there are some blocks with size of 17 bytes, and you can see some kind of ladder,
 shifting by 1 byte at each 16-byte line.
@@ -215,7 +215,7 @@ The result is different probably because of different formatting of these texts 
 OK, so let's assume the average frequency of space in English language is 1 space per 4..7 characters.
 
 Now the good news again: we can measure frequency of spaces while decrypting our file gradually.
-Now I count spaces in each \IT{slice} and throw away 1-byte keys which produce results with too small number of spaces
+Now I count spaces in each \emph{slice} and throw away 1-byte keys which produce results with too small number of spaces
 (or too large, but this is almost impossible given so short key):
 
 \begin{lstlisting}[caption=Python script,style=custompy]

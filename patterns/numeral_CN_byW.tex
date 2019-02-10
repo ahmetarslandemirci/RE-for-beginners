@@ -1,15 +1,20 @@
 \subsection{数制系统}
 
+\epigraph{Nowadays octal numbers seem to be
+used for exactly one purpose---file permissions on POSIX systems---but hexadecimal numbers
+are widely used to emphasize the bit pattern of a number over its numeric value.}
+{Alan A. A. Donovan, Brian W. Kernighan ---  The Go Programming Language}
+
 因为大多数人都有10根手指，所以人们可能已经习惯了十进制的数值系统。
 尽管，在自然界和数学界，10是一个毫无特殊意义的数值。
 数字电路使用二进制作为其数制系统: 0表示线路中没有电流，而1表示线路中存在电流。
 二进制中的10对应于十进制的2; 二进制中的100对应于十进制的4，等等。
 
-如果数制系统使用了10种不同的数字作为数位，那么我们说，它以10为\IT{基数}(radix/base)。
-二进制系统以2为\IT{基数}。
+如果数制系统使用了10种不同的数字作为数位，那么我们说，它以10为\emph{基数}(radix/base)。
+二进制系统以2为\emph{基数}。
 
 重申一下:
-1) \IT{数字}指的就是数值，而\IT{数位}是书写系统中的一个术语，并且通常只有一位。
+1) \emph{数字}指的就是数值，而\emph{数位}是书写系统中的一个术语，并且通常只有一位。
 2) 在转换到其他基数的数制系统时，数字(数值)本身没有改变，改变的是表示方法。
 
 如何将一个数字从转换为其他基数的数制系统呢?

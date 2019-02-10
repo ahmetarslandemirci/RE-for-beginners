@@ -2,10 +2,10 @@
 
 \lstinputlisting[caption=IDA,style=customasmARM]{patterns/04_scanf/2_global/ARM.lst}
 Nun ist \TT{x} eine globale Variable und aus diesem Grund in einem anderen Segment, nämlich dem Datensegment
-(\IT{.data}) angelegt. Man könnte sich fragen, warum die Textstrings sich im Codesegment (\IT{.text}) befindet und
+(\emph{.data}) angelegt. Man könnte sich fragen, warum die Textstrings sich im Codesegment (\emph{.text}) befindet und
 \TT{x} nicht. Das liegt daran, dass \TT{x} eine Variable ist und sich damit per definitionem ihr Wert ändern kann; mehr
 noch, er kann sich möglicherweise oft ändern. Textstrings dagegen sind Konstanten, können also nicht geändert werden,
-und befinden sich deshalb im \IT{.text} Segment.
+und befinden sich deshalb im \emph{.text} Segment.
 \myindex{\RAM}
 \myindex{\ROM}
 Das Codesegment kann manchmal in einem \ac{ROM} Chip liegen (erinnern wir uns, dass wir es hier mit eingebetteter
@@ -33,7 +33,7 @@ befinden.
 
 \myindex{\CLanguageElements!const}
 \myindex{\ROM}
-Eine weitere Sache: wenn eine Variable as \IT{konstant} deklariert wird, legt der Keil Compiler sie im \TT{.constdata}
+Eine weitere Sache: wenn eine Variable as \emph{konstant} deklariert wird, legt der Keil Compiler sie im \TT{.constdata}
 Segment ab.
 
 Möglicherweise könnte der Linker dieses Segment anschließend gemeinsam mit dem Codesegment im ROM ablegen.

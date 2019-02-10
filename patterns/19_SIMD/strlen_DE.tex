@@ -138,12 +138,12 @@ XMM1: 0x0000ff00000000000000ff0000000000
 Das bedeutet, dass der Befehl zwei Nullbytes gefunden hat. Dieses Ergebnis war zu erwarten.
  
 \TT{PMOVMSKB} in our case will set \EAX to\\
-\IT{0b0010000000100000}.
+\emph{0b0010000000100000}.
 Offensichtlich muss unsere Funktion nur das erste Nullbit nehmen und den Rest ignorieren.
 
 \myindex{x86!\Instructions!BSF}
 \label{instruction_BSF}
-Der nächste Befehl ist \TT{BSF} (\IT{Bit Scan Forward}). 
+Der nächste Befehl ist \TT{BSF} (\emph{Bit Scan Forward}). 
 Dieser Befehl erkennt, dass das erste Bit auf 1 gesetzt ist und speichert dessen Position im ersten Operanden.
 
 \begin{verbatim}

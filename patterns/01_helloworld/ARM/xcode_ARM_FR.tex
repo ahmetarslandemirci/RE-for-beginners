@@ -65,8 +65,8 @@ L'instruction \INS{BL} appelle la fonction \puts au lieu de \printf.
 GCC a remplacé le premier appel à \printf par un à \puts.
 Effectivement: \printf avec un unique argument est presque analogue à \puts.
 
-\IT{Presque}, car les deux fonctions produisent le même résultat uniquement dans
-le cas où la chaîne ne contient pas d'identifiants de format débutant par \IT{\%}.
+\emph{Presque}, car les deux fonctions produisent le même résultat uniquement dans
+le cas où la chaîne ne contient pas d'identifiants de format débutant par \emph{\%}.
 Dans le cas où elle en contient, l'effet de ces deux fonctions est différent\footnote{Il
 est à noter que \puts ne nécessite pas un `\textbackslash{}n'
 symbole de retour à la ligne à la fin de la chaîne, donc nous ne le voyons pas ici.}.
@@ -76,7 +76,7 @@ Pourquoi est-ce que le compilateur a remplacé \printf par \puts? Probablement c
 rapide\footnote{\href{http://go.yurichev.com/17063}{ciselant.de/projects/gcc\_printf/gcc\_printf.html}}. 
 
 Car il envoie seulement les caractères dans \glslink{stdout}{sortie standard}
-sans comparer chacun d'entre eux avec le symbole \IT{\%}.
+sans comparer chacun d'entre eux avec le symbole \emph{\%}.
 
 Ensuite, nous voyons l'instruction familière \TT{MOV R0, \#0} pour mettre le
 registre \Reg{0} à 0.

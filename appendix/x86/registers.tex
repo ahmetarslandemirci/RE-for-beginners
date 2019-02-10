@@ -28,7 +28,7 @@ is usually not present in \ac{RISC} CPUs}.
 \myindex{x86-64}
 \RU{Регистры, имеющие префикс \TT{R-} появились только в x86-64, а префикс \TT{E-} ---в 80386.}
 \EN{Registers prefixed with \TT{R-} appeared in x86-64, and those prefixed with \TT{E-}---in 80386.}
-\DE{Register mit dem Präfix \TT{R-} tauschen bei x86-64 auf; der Präfix \TT{E-}---bei 80386.}
+\DE{Register mit dem Präfix \TT{R-} tauchen bei x86-64 auf; der Präfix \TT{E-}---bei 80386.}
 
 \RU{Таким образом, R-регистры 64-битные, а E-регистры --- 32-битные.}
 \EN{Thus, R-registers are 64-bit, and E-registers---32-bit.}
@@ -39,9 +39,9 @@ is usually not present in \ac{RISC} CPUs}.
 \DE{8 weitere \ac{GPR}'s wurden bei x86-86 hinzugefügt: R8-R15}.
 
 N.B.: \RU{В документации от Intel, для обращения к самому младшему байту к имени регистра
-нужно добавлять суффикс \IT{L}: \IT{R8L}, но \ac{IDA} называет эти регистры добавляя суффикс \IT{B}: \IT{R8B}}
-\EN{In the Intel manuals the byte parts of these registers are prefixed by \IT{L}, e.g.: \IT{R8L}, but \ac{IDA}
-names these registers by adding the \IT{B} suffix, e.g.: \IT{R8B}}.
+нужно добавлять суффикс \emph{L}: \emph{R8L}, но \ac{IDA} называет эти регистры добавляя суффикс \emph{B}: \emph{R8B}}
+\EN{In the Intel manuals the byte parts of these registers are prefixed by \emph{L}, e.g.: \emph{R8L}, but \ac{IDA}
+names these registers by adding the \emph{B} suffix, e.g.: \emph{R8B}}.
 
 \subsubsection{RAX/EAX/AX/AL}
 \RegTableOne{RAX}{EAX}{AX}{AH}{AL}
@@ -60,6 +60,7 @@ names these registers by adding the \IT{B} suffix, e.g.: \IT{R8B}}.
 \ac{AKA} \RU{счетчик}\EN{counter}\DE{Zähler}:
 \RU{используется в этой роли в инструкциях с префиксом REP и в инструкциях сдвига}
 \EN{in this role it is used in REP prefixed instructions and also in shift instructions}
+\DE{in dieser Rolle in REP Befehlen und auch als Schiebeoperationen verwendet}
 (SHL/SHR/RxL/RxR).
 
 \subsubsection{RDX/EDX/DX/DL}
@@ -68,14 +69,16 @@ names these registers by adding the \IT{B} suffix, e.g.: \IT{R8B}}.
 \subsubsection{RSI/ESI/SI/SIL}
 \RegTableTwo{RSI}{ESI}{SI}{SIL}
 
-\ac{AKA} \q{source index}. \RU{Используется как источник в инструкциях}\EN{Used as source in the instructions} 
+\ac{AKA} \q{source index}. \RU{Используется как источник в инструкциях}\EN{Used as source in the instructions}
+\DE{Als Quelle der Befehle verwendet}
 REP MOVSx, REP CMPSx.
 
 \subsubsection{RDI/EDI/DI/DIL}
 \RegTableTwo{RDI}{EDI}{DI}{DIL}
 
 \ac{AKA} \q{destination index}. \RU{Используется как указатель на место назначения в инструкции}
-\EN{Used as a pointer to the destination in the instructions} REP MOVSx, REP STOSx.
+\EN{Used as a pointer to the destination in the instructions}
+\DE{Als Zeiger auf das Ziel der Befehle verwendet}REP MOVSx, REP STOSx.
 
 % TODO навести тут порядок
 \subsubsection{R8/R8D/R8W/R8L}
@@ -202,7 +205,7 @@ FS \InENRU win32 \RU{указывает на}\EN{points to} \ac{TLS}, \RU{а в 
           &                       & \RU{Инструкции}\EN{The} CLI/STI \RU{используются}\EN{instructions are used} \\
 	  &                       & \RU{для установки/сброса этого флага}\EN{for setting/resetting the flag} \\
 \hline
-10 (0x400) & DF (Direction) & \RU{Задается направление для инструкций}\EN{A directions is set for the} \\
+10 (0x400) & DF (Direction) & \RU{Задается направление для инструкций}\EN{A direction is set for the} \\
            &                & REP MOVSx/CMPSx/LODSx/SCASx\EN{ instructions}.\\
            &                & \RU{Инструкции}\EN{The} CLD/STD \RU{используются}\EN{instructions are used} \\
 	   &                & \RU{для установки/сброса этого флага}\EN{for setting/resetting the flag} \\
@@ -241,7 +244,7 @@ FS \InENRU win32 \RU{указывает на}\EN{points to} \ac{TLS}, \RU{а в 
 N.B.: \ac{IDA} \RU{называет}\EN{calls} ST(0) \RU{просто}\EN{as just} ST.
 \RU{Числа хранятся в формате}\EN{Numbers are stored in the} IEEE 754\EN{ format}.
 
-\RU{Формат значения \IT{long double}}\EN{\IT{long double} value format}:
+\RU{Формат значения \emph{long double}}\EN{\emph{long double} value format}:
 
 \bigskip
 % a hack used here! http://tex.stackexchange.com/questions/73524/bytefield-package
@@ -274,7 +277,7 @@ N.B.: \ac{IDA} \RU{называет}\EN{calls} ST(0) \RU{просто}\EN{as jus
 \end{center}
 
 \begin{center}
-( S\EMDASH{}\RU{знак}\EN{sign}, I\EMDASH{}\RU{целочисленная часть}\EN{integer part} )
+( S --- \RU{знак}\EN{sign}, I --- \RU{целочисленная часть}\EN{integer part} )
 \end{center}
 
 \label{FPU_control_word}
@@ -283,7 +286,7 @@ N.B.: \ac{IDA} \RU{называет}\EN{calls} ST(0) \RU{просто}\EN{as jus
 \RU{Регистр, при помощи которого можно задавать поведение}\EN{Register controlling the behavior of the}
 \ac{FPU}.
 
-\small
+%\small
 \begin{center}
 \begin{tabular}{ | l | l | l | }
 \hline
@@ -322,7 +325,7 @@ N.B.: \ac{IDA} \RU{называет}\EN{calls} ST(0) \RU{просто}\EN{as jus
 \hline
 \end{tabular}
 \end{center}
-\normalsize
+%\normalsize
 
 \RU{Флагами}\EN{The} PM, UM, OM, ZM, DM, IM 
 \RU{задается, генерировать ли исключения в случае соответствующих ошибок}
@@ -440,7 +443,7 @@ SSE: 8 128-\RU{битных регистров}\EN{bit registers}\DE{Bit-Registe
 
 AVX \RU{это расширение всех регистры до 256 бит}
 \EN{is the extension of all these registers to 256 bits}
-\EN{ist eine Erweiterung all Register auf 256 Bit}.
+\DE{ist eine Erweiterung aller Register auf 256 Bit}.
 
 \input{appendix/x86/DRx}
 

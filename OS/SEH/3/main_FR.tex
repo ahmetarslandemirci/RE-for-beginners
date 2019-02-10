@@ -3,7 +3,7 @@
 \label{SEH_win64}
 
 Vous imaginez bien qu'il n'est pas très performant de construire le contexte SEH dans le prologue 
-de chaque fonction. S'y ajoute les nombreux changements de la valeur de \IT{previous try level} 
+de chaque fonction. S'y ajoute les nombreux changements de la valeur de \emph{previous try level} 
 durant l'exécution de la fonction.
 
 C'est pourquoi avec x64, la manière de faire a complèetement changé. Tous les pointeurs vers les 

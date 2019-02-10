@@ -1,6 +1,6 @@
-\newcommand{\PPC}{\InSqBrackets{\IT{PowerPC(tm) Microprocessor Family: The Programming Environments for 32-Bit Microprocessors}, (2000)}\footnote{\AlsoAvailableAs \url{http://yurichev.com/mirrors/PowerPC/6xx_pem.pdf}}}
+\newcommand{\PPC}{\InSqBrackets{\emph{PowerPC(tm) Microprocessor Family: The Programming Environments for 32-Bit Microprocessors}, (2000)}\footnote{\AlsoAvailableAs \url{http://yurichev.com/mirrors/PowerPC/6xx_pem.pdf}}}
 
-\newcommand{\PPCABI}{[Steve Zucker, SunSoft and Kari Karhi, IBM, \IT{SYSTEM V APPLICATION BINARY INTERFACE: PowerPC Processor Supplement}, (1995)]\footnote{\AlsoAvailableAs \url{http://yurichev.com/mirrors/PowerPC/elfspec_ppc.pdf}}}
+\newcommand{\PPCABI}{[Steve Zucker, SunSoft and Kari Karhi, IBM, \emph{SYSTEM V APPLICATION BINARY INTERFACE: PowerPC Processor Supplement}, (1995)]\footnote{\AlsoAvailableAs \url{http://yurichev.com/mirrors/PowerPC/elfspec_ppc.pdf}}}
 
 \subsection{Пример \#1: MacOS Classic и PowerPC}
 
@@ -34,7 +34,7 @@
 инструкций MIPS.
 
 \TT{check1()} это имя которое мы дадим этой функции немного позже.
-\TT{BL} это инструкция \IT{Branch Link} 
+\TT{BL} это инструкция \emph{Branch Link} 
 т.е. предназначенная для вызова подпрограмм.
 Самое важное место --- это инструкция \ac{BNE}, срабатывающая, если проверка наличия донглы прошла
 успешно, либо не срабатывающая в случае ошибки: и тогда адрес текстовой строки с сообщением об ошибке
@@ -90,13 +90,13 @@
 
 В функции имеются две инструкции \TT{li \%r3, 1} 
 и одна \TT{li \%r3, 0} 
-(\IT{Load Immediate}, т.е. загрузить значение в регистр).
+(\emph{Load Immediate}, т.е. загрузить значение в регистр).
 Самая первая инструкция находится на 
 \TT{0x001186B0} --- и честно говоря, трудно заранее понять, что это означает.
 
 А вот то что мы видим дальше понять проще: 
 вызывается \TT{.RBEFINDFIRST()} и в случае ошибки, 0 будет записан в r3
-и мы перейдем на \IT{exit}, а иначе будет вызвана функция \TT{check3()} --- если и она будет
+и мы перейдем на \emph{exit}, а иначе будет вызвана функция \TT{check3()} --- если и она будет
 выполнена с ошибкой, будет вызвана
 \TT{.RBEFINDNEXT()} вероятно, для поиска другого USB-устройства.
 
@@ -104,7 +104,7 @@ N.B.: \TT{clrlwi. \%r0, \%r3, 16} это аналог того что мы уж�
 т.е., \\
 \TT{.RBEFINDFIRST()} вероятно возвращает 16-битное значение.
 
-\TT{B} (означает \IT{branch}) --- безусловный переход.
+\TT{B} (означает \emph{branch}) --- безусловный переход.
 
 \ac{BEQ} это обратная инструкция от \ac{BNE}.
 

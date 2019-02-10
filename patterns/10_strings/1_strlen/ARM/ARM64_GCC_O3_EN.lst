@@ -1,6 +1,6 @@
 my_strlen:
 	mov	x1, x0
-	; X1 is now temporary pointer (eos), acting like §\IT{cursor}§
+	; X1 is now temporary pointer (eos), acting like \emph{cursor}
 .L58:
 	; load byte from X1 to W2, increment X1 (post-index)
 	ldrb	w2, [x1],1

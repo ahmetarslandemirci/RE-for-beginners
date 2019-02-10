@@ -22,13 +22,13 @@ Adressen in einem 32-Bit-Prozess und haben daher eine Breite von 4 Bytes).
 Die Adresse an der Stelle \TT{\$LN11@f} + 8 ist das Tabellenelement, an dem das Label \TT{\$LN4@f} gespeichert ist.
 \JMP holt die Adresse \TT{\$LN4@f} aus der Tabelle und springt dorthin.
 
-Diese Tabelle wird manchmal \IT{Jumptable} oder \IT{Verzweigungstabelle} genannt\footnote{Die ganze Methode wurde
-in früheren Versionen von Fortran \IT{berechnetes GOTO} genannt:
+Diese Tabelle wird manchmal \emph{Jumptable} oder \emph{Verzweigungstabelle} genannt\footnote{Die ganze Methode wurde
+in früheren Versionen von Fortran \emph{berechnetes GOTO} genannt:
 \href{http://go.yurichev.com/17122}{wikipedia}.
 Heutzutage zwar nicht mehr relevant, aber welch ein Ausdruck!}.
 
 Dann wird das zugehörige \printf mit dem Argument \TT{'two'} aufgerufen.\\
-Der Befehl TT{jmp DWORD PTR \$LN11@f[ecx*4]} bedeutet dabei \IT{springe zum an dieser Stelle gespeicherten
+Der Befehl TT{jmp DWORD PTR \$LN11@f[ecx*4]} bedeutet dabei \emph{springe zum an dieser Stelle gespeicherten
 DWORD}\TT{\$LN11@f + ecx * 4}.
 
 \TT{npad} (\myref{sec:npad}) ist ein Assemblermakro, dass das nächste Label so angeordnet, dass es an einer 4 Byte

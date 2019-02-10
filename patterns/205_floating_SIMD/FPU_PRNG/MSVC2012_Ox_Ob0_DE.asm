@@ -8,7 +8,7 @@ _tmp$ = -4
 ; EAX=Pseudozufallswert
 	and	eax, 8388607	; 007fffffH
 	or	eax, 1065353216	; 3f800000H
-; EAX=Pseudozufallswert & 0x007fffff | 0x3f800000
+; EAX=Pseudozufallswert \& 0x007fffff | 0x3f800000
 ; speichere ihn auf lokalem Stack:
 	mov	DWORD PTR _tmp$[esp+4], eax
 ; lade ihn erneut als Fließkommazahl:

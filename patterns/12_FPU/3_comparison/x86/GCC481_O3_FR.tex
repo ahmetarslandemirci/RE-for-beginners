@@ -20,8 +20,8 @@ Voici ce que nous obtenons:
 Difficile de deviner pourquoi \INS{FXCH} (échange les opérandes) est ici.
 
 Il est possible de s'en débarrasser facilement en échangeant les deux premières instructions
-\FLD ou en remplaçant \INS{FCMOVBE} (\IT{below or equal} inférieur ou égal) par
-\INS{FCMOVA} (\IT{above}).
+\FLD ou en remplaçant \INS{FCMOVBE} (\emph{below or equal} inférieur ou égal) par
+\INS{FCMOVA} (\emph{above}).
 Il s'agit probablement d'une imprécision du compilateur.
 
 Donc \INS{FUCOMI} compare \ST{0} ($a$) et \ST{1} ($b$) et met certains flags
@@ -45,7 +45,7 @@ circulaire plutôt qu'une pile (\myref{FPU_is_rather_circular_buffer}).
 Et GDB ne montre pas les registres \GTT{STx}, mais les registre internes du FPU (\GTT{Rx}).
 La flèche (à la ligne 35) pointe sur le haut courant de la pile.
 
-Vous pouvez voir le contenu du registre \GTT{TOP} dans le \IT{Status Word} (ligne 44)---c'est
+Vous pouvez voir le contenu du registre \GTT{TOP} dans le \emph{Status Word} (ligne 44)---c'est
 6 maintenant, donc le haut de la pile pointe maintenant sur le registre interne 6.
 
 Les valeurs de $a$ et $b$ sont échangées après l'exécution de \INS{FXCH} (ligne 54).

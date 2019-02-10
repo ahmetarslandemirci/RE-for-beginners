@@ -52,7 +52,7 @@ Pour 1, l'élément sera un pointeur sur la chaîne qui contient \q{février}, e
 
 GCC 4.9 \Optimizing peut faire encore mieux\footnote{\q{0+} a été laissé dans le
 listing car la sortie de l'assembleur GCC n'est pas assez soignée pour l'éliminer.
-C'est un \IT{déplacement}, et il vaut zéro ici.}:
+C'est un \emph{déplacement}, et il vaut zéro ici.}:
 
 \begin{lstlisting}[caption=GCC 4.9 \Optimizing x64,style=customasmx86]
 	movsx	rdi, edi
@@ -144,7 +144,7 @@ Les noms des mois se trouvent juste après.
 
 Notre programme est minuscule, il n'y a donc pas beaucoup de données à mettre dans
 le segment de données, juste les noms des mois.
-Mais il faut noter qu'il peut y avoir ici vraiment \IT{n'importe quoi} que l'éditeur
+Mais il faut noter qu'il peut y avoir ici vraiment \emph{n'importe quoi} que l'éditeur
 de lien aurait décidé d'y mettre.
 
 Donc, que se passe-t-il si nous passons 12 à la fonction?
@@ -224,11 +224,11 @@ l'avertissement dans la NDT ici \myref{array_of_pointers_to_strings}}:
 
 \lstinputlisting[style=customc]{patterns/13_arrays/45_month_1D/month2_FR.c}
 
-\dots puisque l'expression \IT{month[3]} a un type \IT{const char*}.
+\dots puisque l'expression \emph{month[3]} a un type \emph{const char*}.
 Et donc, le 5ème caractère est extrait de cette expression en ajoutant 4 octets à
 cette adresse.
 
-À propos, la liste d'arguments passée à la fonction \IT{main()} a le même type de
+À propos, la liste d'arguments passée à la fonction \emph{main()} a le même type de
 données:
 
 \lstinputlisting[style=customc]{patterns/13_arrays/45_month_1D/argv_FR.c}

@@ -4,13 +4,13 @@
 
 \begin{itemize}
 \myindex{ARM!\Registers!R0}
-	\item R0\EMDASH{}\RU{результат функции обычно возвращается через R0}
+	\item R0 --- \RU{результат функции обычно возвращается через R0}
 		\EN{function result is usually returned using R0}
-	\item R1...R12\EMDASH{}\ac{GPR}s
-	\item R13\EMDASH{}\ac{AKA} SP (\gls{stack pointer})
+	\item R1...R12 --- \ac{GPR}s
+	\item R13 --- \ac{AKA} SP (\gls{stack pointer})
 \myindex{ARM!\Registers!Link Register}
-	\item R14\EMDASH{}\ac{AKA} LR (\gls{link register})
-	\item R15\EMDASH{}\ac{AKA} PC (program counter)
+	\item R14 --- \ac{AKA} LR (\gls{link register})
+	\item R15 --- \ac{AKA} PC (program counter)
 \end{itemize}
 
 \myindex{ARM!\Registers!scratch registers}
@@ -27,36 +27,36 @@ and the values in them are not required to be restored upon the function's exit}
 \headercolor\ \RU{Бит}\EN{Bit} &
 \headercolor\ \RU{Описание}\EN{Description} \\
 \hline
-0..4           & M\EMDASH{}processor mode \\
+0..4           & M --- processor mode \\
 \hline
-5              & T\EMDASH{}Thumb state \\
+5              & T --- Thumb state \\
 \hline
-6              & F\EMDASH{}FIQ disable \\
+6              & F --- FIQ disable \\
 \hline
-7              & I\EMDASH{}IRQ disable \\
+7              & I --- IRQ disable \\
 \hline
-8              & A\EMDASH{}imprecise data abort disable \\
+8              & A --- imprecise data abort disable \\
 \hline
-9              & E\EMDASH{}data endianness \\
+9              & E --- data endianness \\
 \hline
-10..15, 25, 26 & IT\EMDASH{}if-then state \\
+10..15, 25, 26 & IT --- if-then state \\
 \hline
-16..19         & GE\EMDASH{}greater-than-or-equal-to \\
+16..19         & GE --- greater-than-or-equal-to \\
 \hline
-20..23         & DNM\EMDASH{}do not modify \\
+20..23         & DNM --- do not modify \\
 \hline
-24             & J\EMDASH{}Java state \\
+24             & J --- Java state \\
 \hline
-27             & Q\EMDASH{}sticky overflow \\
+27             & Q --- sticky overflow \\
 \hline
-28             & V\EMDASH{}overflow \\
+28             & V --- overflow \\
 \hline
-29             & C\EMDASH{}carry/borrow/extend \\
+29             & C --- carry/borrow/extend \\
 \hline
 \myindex{ARM!\Registers!Z}
-30             & Z\EMDASH{}zero bit \\
+30             & Z --- zero bit \\
 \hline
-31             & N\EMDASH{}negative/less than \\
+31             & N --- negative/less than \\
 \hline
 \end{tabular}
 \end{center}
@@ -129,19 +129,19 @@ with the other floating point registers}.
 
 \begin{itemize}
 \myindex{ARM!\Registers!X0}
-	\item X0\EMDASH{}\RU{результат функции обычно возвращается через X0}
+	\item X0 --- \RU{результат функции обычно возвращается через X0}
 		\EN{function result is usually returned using X0}
-        \item X0...X7\EMDASH{}\RU{Здесь передаются аргументы функции}\EN{Function arguments are passed here}.
+        \item X0...X7 --- \RU{Здесь передаются аргументы функции}\EN{Function arguments are passed here}.
 	\item X8
-	\item X9...X15\EMDASH{}\RU{временные регистры, вызываемая функция может их использовать и не восстанавливать 
+	\item X9...X15 --- \RU{временные регистры, вызываемая функция может их использовать и не восстанавливать 
 их}\EN{are temporary registers, the callee function can use and not restore them}.
 	\item X16
 	\item X17
 	\item X18
-	\item X19...X29\EMDASH{}\RU{вызываемая функция может их использовать, но должна восстанавливать их по 
+	\item X19...X29 --- \RU{вызываемая функция может их использовать, но должна восстанавливать их по 
 завершению}\EN{callee function can use them, but must restore them upon exit}.
-	\item X29\EMDASH{}\EN{used as}\RU{используется как} \ac{FP} (\EN{at least}\RU{как минимум в} GCC)
-	\item X30\EMDASH{}\q{Procedure Link Register} \ac{AKA} \ac{LR} (\gls{link register}).
+	\item X29 --- \EN{used as}\RU{используется как} \ac{FP} (\EN{at least}\RU{как минимум в} GCC)
+	\item X30 --- \q{Procedure Link Register} \ac{AKA} \ac{LR} (\gls{link register}).
 	\EN{\item X31---register always contains zero \ac{AKA} XZR or \q{Zero Register}. It's 32-bit part is called WZR.}%
 	\RU{\item X31 --- регистр, всегда содержащий ноль \ac{AKA} XZR или \q{Zero Register}. Его 32-битная часть называется WZR.}
 	\item \ac{SP}, \RU{больше не регистр общего пользования}\EN{not a general purpose register anymore}.

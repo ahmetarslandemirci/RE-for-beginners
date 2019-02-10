@@ -20,7 +20,7 @@ Let's compile it in MSVC 2008 with the \Ox and \Obzero options and see the code 
 
 So, the memory layout for all three classes is:
 
-\IT{box} class:
+\emph{box} class:
 
 \begin{center}
 \begin{tabular}{ | l | l | }
@@ -36,7 +36,7 @@ So, the memory layout for all three classes is:
 \end{tabular}
 \end{center}
 
-\IT{solid\_object} class:
+\emph{solid\_object} class:
 
 \begin{center}
 \begin{tabular}{ | l | l | }
@@ -49,9 +49,9 @@ So, the memory layout for all three classes is:
 \end{center}
 
 
-It can be said that the \IT{solid\_box} class memory layout is \IT{united}:
+It can be said that the \emph{solid\_box} class memory layout is \emph{united}:
 
-\IT{solid\_box} class:
+\emph{solid\_box} class:
 
 \begin{center}
 \begin{tabular}{ | l | l | }
@@ -93,7 +93,7 @@ and the \TT{box::get\_volume()} method will work with its three fields, believin
 
 
 Thus, we can say, an object of a class,
-that inherits from several other classes, is representing in memory as a \IT{united} class, that contains all inherited fields.
+that inherits from several other classes, is representing in memory as a \emph{united} class, that contains all inherited fields.
 And each inherited method is called with a pointer to 
 the corresponding structure's part.
 

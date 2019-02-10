@@ -1,14 +1,14 @@
 \mysection{Index de tableau négatifs}
 \label{negative_array_indices}
 
-Il est possible d'accéder à l'espace \IT{avant} un tableau en donnant un index négatif,
+Il est possible d'accéder à l'espace \emph{avant} un tableau en donnant un index négatif,
 e.g., $array[-1]$.
 
 \subsection{Accéder à une chaîne depuis la fin}
 
 \myindex{Python}
 Python \ac{PL} permet d'accéder aux tableaux depuis la fin.
-Par exemple, \IT{string[-1]} renvoie le dernier caractère, \IT{string[-2]} renvoie
+Par exemple, \emph{string[-1]} renvoie le dernier caractère, \emph{string[-2]} renvoie
 le pénultième, etc.
 Difficile à croire, mais ceci est aussi possible en \CCpp:
 
@@ -27,17 +27,17 @@ Rappelons d'abord pourquoi la pile grossit en arrière (\myref{stack_grow_backwa
 Il y a une sorte de bloc en mémoire et vous voulez y stocker à la fois le heap et
 la pile, sans savoir comment ils vont grossir pendant l'exécution.
 
-Vous pouvez mettre un pointeur de \IT{heap} au début du bloc, puis vous mettez un
-pointeur de \IT{pile} à la fin du bloc (\IT{heap + size\_of\_block}), et vous pouvez
-accéder au \IT{n-ième} élément de la pile avec \IT{stack[-n]}.
-Par exemple, \IT{stack[-1]} pour le 1er élément, \IT{stack[-2]} pour le 2nd, etc.
+Vous pouvez mettre un pointeur de \emph{heap} au début du bloc, puis vous mettez un
+pointeur de \emph{pile} à la fin du bloc (\emph{heap + size\_of\_block}), et vous pouvez
+accéder au \emph{n-ième} élément de la pile avec \emph{stack[-n]}.
+Par exemple, \emph{stack[-1]} pour le 1er élément, \emph{stack[-2]} pour le 2nd, etc.
 
 Ceci fonctionnera de la même façon que notre astuce d'accéder la chaîne depuis la
 fin.
 
 Vous pouvez facilement vérifier si les structures n'ont pas commencé à se recouvrir:
-il suffit d'être sûr que l'adresse du dernier élément dans le \IT{heap} est plus
-bas que le dernier élément de la \IT{pile}.
+il suffit d'être sûr que l'adresse du dernier élément dans le \emph{heap} est plus
+bas que le dernier élément de la \emph{pile}.
 
 Malheureusement, l'index  $-0$ ne fonctionnera pas, puisque la représentation des
 nombres négatifs en complément à deux (\myref{sec:signednumbers}) ne permet pas de

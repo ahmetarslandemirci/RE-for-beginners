@@ -22,7 +22,7 @@ _f_div:
 	mov	edx, DWORD PTR [esp+36]
 	mov	DWORD PTR [esp], eax
 	mov	DWORD PTR [esp+4], edx
-	call	___udivdi3 ; unsigned division (§беззнаковое§ §деление§)
+	call	___udivdi3 ; unsigned division (беззнаковое деление)
 	add	esp, 28
 	ret
 
@@ -36,6 +36,6 @@ _f_rem:
 	mov	edx, DWORD PTR [esp+36]
 	mov	DWORD PTR [esp], eax
 	mov	DWORD PTR [esp+4], edx
-	call	___umoddi3 ; unsigned modulo (§беззнаковый§ §остаток§)
+	call	___umoddi3 ; unsigned modulo (беззнаковый остаток)
 	add	esp, 28
 	ret

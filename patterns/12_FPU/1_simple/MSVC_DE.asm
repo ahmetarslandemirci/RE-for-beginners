@@ -12,22 +12,22 @@ _f  PROC
     mov    ebp, esp
     fld    QWORD PTR _a$[ebp]
 
-; aktueller Stand des Stacks: ST(0) = _a
+; aktueller Stand des Stacks: ST(0) = \_a
 
     fdiv   QWORD PTR __real@40091eb851eb851f
 
-; aktueller Stand des Stacks: ST(0) = Ergebnis von _a geteilt durch 3.14
+; aktueller Stand des Stacks: ST(0) = Ergebnis von \_a geteilt durch 3.14
 
     fld    QWORD PTR _b$[ebp]
 
-; aktueller Stand des Stacks: ST(0) = _b;
-; ST(1) = Ergebnis von _a geteilt durch 3.14
+; aktueller Stand des Stacks: ST(0) = \_b;
+; ST(1) = Ergebnis von \_a geteilt durch 3.14
 
     fmul   QWORD PTR __real@4010666666666666
 
 ; aktueller Stand des Stacks: 
-; ST(0) = Ergebnis von _b * 4.1; 
-; ST(1) = Ergebnis von _a geteilt durch 3.14
+; ST(0) = Ergebnis von \_b * 4.1; 
+; ST(1) = Ergebnis von \_a geteilt durch 3.14
 
     faddp  ST(1), ST(0)
 

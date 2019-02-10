@@ -9,12 +9,12 @@ _f_add_test:
 	sub	esp, 28
 	mov	DWORD PTR [esp+8], 1972608889	; 75939f79H
 	mov	DWORD PTR [esp+12], 5461	; 00001555H
-	mov	DWORD PTR [esp], 1942892530	; 73ce2ff_subH
+	mov	DWORD PTR [esp], 1942892530	; 73ce2ff2H
 	mov	DWORD PTR [esp+4], 2874		; 00000b3aH
 	call	_f_add
 	mov	DWORD PTR [esp+4], eax
 	mov	DWORD PTR [esp+8], edx
-	mov	DWORD PTR [esp], OFFSET FLAT:LC0 ; "%lld\12\0"
+	mov	DWORD PTR [esp], OFFSET FLAT:LC0 ; \verb|"%lld\n"|
 	call	_printf
 	add	esp, 28
 	ret

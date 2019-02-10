@@ -14,7 +14,7 @@ arg_0  = dword ptr  8
        mov     eax, ds:off_804855C[eax]
        jmp     eax
 
-loc_80483FE: ; DATA XREF: .rodata:off_804855C
+loc_80483FE: ; DATA XREF: .rodata:off\_804855C
        mov     [esp+18h+var_18], offset aZero ; "zero"
        call    _puts
        jmp     short locret_8048450

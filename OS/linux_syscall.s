@@ -5,10 +5,10 @@ _start:
 	mov	edx,len	; buffer len
 	mov	ecx,msg ; buffer
 	mov	ebx,1	; file descriptor. 1 is for stdout
-	mov	eax,4	; syscall number. 4 is for sys_write
+	mov	eax,4	; syscall number. 4 is for sys\_write
 	int	0x80                
 
-	mov	eax,1	; syscall number. 1 is for sys_exit
+	mov	eax,1	; syscall number. 1 is for sys\_exit
 	int	0x80                
 
 section	.data

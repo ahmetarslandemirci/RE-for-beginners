@@ -19,7 +19,8 @@ like XOR EAX, EAX), and if they are different, it increments a counter at this E
 I have prepared two files for test: test1.bin (30720 bytes) and test2.bin
 (5547752 bytes), I'll compress them by RAR with password and see difference in statistics.
 
-You'll also need to turn off \ac{ASLR}\footnote{\url{https://stackoverflow.com/questions/9560993/how-do-you-disable-aslr-address-space-layout-randomization-on-windows-7-x64}},
+You'll also need to turn off \ac{ASLR}
+\footnote{\url{https://stackoverflow.com/q/9560993}},
 so the PIN tool will report the same RIPs as in RAR executable.
 
 Now let's run it:
@@ -37,7 +38,7 @@ So far, you can ignore all addresses other than ip=0x1400xxxxx, which are in oth
 
 Now let's see a difference: \url{\GitHubPinXORURL/XOR_ins.diff}.
 
-Some XOR instructions executed more often for test2.bin (which is bigger) than for test1.bin (which is smaller).
+Some XOR instructions are executed more often for test2.bin (which is bigger) than for test1.bin (which is smaller).
 So these are clearly related to file size!
 
 The first block of differences is:
@@ -137,7 +138,7 @@ Loop body can be written as:
 state = input_byte ^ (state<<5) & 0x7FFF}.
 \end{lstlisting}
 
-\IT{state} is then used as index in some table. Is this some kind of \ac{CRC}? I don't know, but this could be a checksumming routine.
+\emph{state} is then used as index in some table. Is this some kind of \ac{CRC}? I don't know, but this could be a checksumming routine.
 Or maybe optimized \ac{CRC} routine?
 Any ideas?
 

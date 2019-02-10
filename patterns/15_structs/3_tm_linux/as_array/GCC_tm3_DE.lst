@@ -20,7 +20,7 @@ loc_80483D8:
 ; EBX ist hier ein Pointer auf das struct, ESI ist der Pointer auf dessen Ende.
                 mov     eax, [ebx]	; hole 32-Bit-Wort aus dem Array
                 add     ebx, 4          ; nächstes Feld im struct
-                mov     dword ptr [esp+4], offset a0x08xD ; "0x%08X (%d)\n"
+                mov     dword ptr [esp+4], offset a0x08xD ; \verb|"0x%08X (%d)\n"|
                 mov     dword ptr [esp], 1
                 mov     [esp+0Ch], eax	; übergib Wert an printf()
                 mov     [esp+8], eax	; übergib Wert an printf()

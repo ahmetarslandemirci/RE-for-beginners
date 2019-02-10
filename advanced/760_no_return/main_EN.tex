@@ -1,0 +1,65 @@
+\mysection{The case of forgotten return}
+\label{ForgottenReturn}
+
+Let's revisit the ``attempt to use the result of a function returning \Tvoid'' part: \label{UseResultOfVoidFunc}.
+
+This is a bug I once hit.
+
+And this is also yet another demonstration, how C/C++ places return value into \EAX/\RAX register.
+
+In the piece of code like that, I forgot to add \TT{return}:
+
+\lstinputlisting[style=customc]{\CURPATH/1.c}
+
+Non-optimizing GCC 5.4 silently compiles this with no warnings.
+And the code works!
+Let's see, why:
+
+\lstinputlisting[style=customasmx86,caption=Non-optimizing GCC 5.4]{\CURPATH/O0_no_return_works.lst}
+
+If I add \TT{return rt;}, the only instruction is added at the end, which is redundant:
+
+\lstinputlisting[style=customasmx86,caption=Non-optimizing GCC 5.4]{\CURPATH/O0_return_works.lst}
+
+Bugs like that are very dangerous, sometimes they appear, sometimes hide.
+It's like Heisenbug.
+
+Now I'm trying optimizing GCC:
+
+\lstinputlisting[style=customasmx86,caption=Optimizing GCC 5.4]{\CURPATH/O3_no_return_crash.lst}
+
+Compiler deducing that nothing returns from the function, so it optimizes it away.
+And it assumes, that is returns 0 by default. The zero is then used as an address to a structure in main()..
+Of course, this code crashes.
+
+GCC is C++ mode silent about it as well.
+
+Let's try non-optimizing MSVC 2015 x86.
+It warns about the problem:
+
+\begin{lstlisting}
+c:\tmp\3.c(19) : warning C4716: 'create_color': must return a value                                                               
+\end{lstlisting}
+
+And generates crashing code:
+
+\lstinputlisting[style=customasmx86,caption=Non-optimizing MSVC 2015 x86]{\CURPATH/MSVC_x86_crash.lst}
+
+Now optimizing MSVC 2015 x86 generates crashing code as well, but for the different reason:
+
+\lstinputlisting[style=customasmx86,caption=Optimizing MSVC 2015 x86]{\CURPATH/MSVC_Ox_x86_crash.lst}
+
+However, non-optimizing MSVC 2015 x64 generates working code:
+
+\lstinputlisting[style=customasmx86,caption=Non-optimizing MSVC 2015 x64]{\CURPATH/MSVC_x64_works.lst}
+
+Optimizing MSVC 2015 x64 also inlines the function, as in case of x86, and the resulting code also crashes.
+
+The moral of the story: warnings are very important, use \TT{-Wall}, etc, etc...
+When \TT{return} statement is absent, compiler can just silently do nothing at that point.
+
+Such a bug left unnoticed can ruin a day.
+
+Also, shotgun debugging\footnote{\url{https://en.wikipedia.org/wiki/Shotgun_debugging}}
+is bad, because again, such a bug can left unnoticed (``everything works now, so be it'').
+

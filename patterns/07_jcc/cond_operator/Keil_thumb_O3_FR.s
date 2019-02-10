@@ -1,7 +1,7 @@
 f PROC
-; §comparer la valeur entrée avec 10§
+; comparer la valeur entrée avec 10
         CMP      r0,#0xa
-; §sauter en |L0.8| si égal (EQual )§
+; sauter en |L0.8| si égal (EQual)
         BEQ      |L0.8|
         ADR      r0,|L0.12| ; "it is not ten"
         BX       lr

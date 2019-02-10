@@ -5,7 +5,7 @@ KEY_LEN=16
 
 def chunks(l, n):
     # split n by l-byte chunks
-    # http://stackoverflow.com/questions/312443/how-do-you-split-a-list-into-evenly-sized-chunks-in-python
+    # https://stackoverflow.com/q/312443
     n = max(1, n)
     return [l[i:i + n] for i in range(0, len(l), n)]
 

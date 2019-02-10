@@ -11,7 +11,7 @@ _f_mul	PROC
 	push	edx
 	mov	eax, DWORD PTR _a$[ebp]
 	push	eax
-	call	__allmul ; long long multiplication (§умножение§ §значений§ §типа§ long long)
+	call	__allmul ; long long multiplication (умножение значений типа long long)
 	pop	ebp
 	ret	0
 _f_mul	ENDP
@@ -29,7 +29,7 @@ _f_div	PROC
 	push	edx
 	mov	eax, DWORD PTR _a$[ebp]
 	push	eax
-	call	__aulldiv ; unsigned long long division (§деление§ §беззнаковых§ §значений§ §типа§ long long)
+	call	__aulldiv ; unsigned long long division (деление беззнаковых значений типа long long)
 	pop	ebp
 	ret	0
 _f_div	ENDP
@@ -47,7 +47,7 @@ _f_rem	PROC
 	push	edx
 	mov	eax, DWORD PTR _a$[ebp]
 	push	eax
-	call	__aullrem ; unsigned long long remainder (§вычисление§ §беззнакового§ §остатка§)
+	call	__aullrem ; unsigned long long remainder (вычисление беззнакового остатка)
 	pop	ebp
 	ret	0
 _f_rem	ENDP

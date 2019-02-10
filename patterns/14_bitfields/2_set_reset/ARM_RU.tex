@@ -7,7 +7,7 @@
 \end{lstlisting}
 
 \myindex{ARM!\Instructions!BIC}
-\INS{BIC} (\IT{BItwise bit Clear}) это инструкция сбрасывающая заданные биты. 
+\INS{BIC} (\emph{BItwise bit Clear}) это инструкция сбрасывающая заданные биты. 
 Это как аналог \AND, но только с инвертированным операндом.
 
 Т.е. это аналог инструкций \NOT+\AND.
@@ -17,12 +17,12 @@
 
 Пока всё понятно.
 
-\subsubsection{ARM + \OptimizingKeilVI (\ThumbMode),style=customasmARM}
+\subsubsection{ARM + \OptimizingKeilVI (\ThumbMode)}
 
-\begin{lstlisting}[caption=\OptimizingKeilVI (\ThumbMode)]
+\begin{lstlisting}[caption=\OptimizingKeilVI (\ThumbMode),style=customasmARM]
 01 21 89 03          MOVS    R1, 0x4000
 08 43                ORRS    R0, R1
-49 11                ASRS    R1, R1, #5   ; generate 0x200 and place to R1
+49 11                ASRS    R1, R1, #5   ; сгенерировать 0x200 и записать в R1
 88 43                BICS    R0, R1
 70 47                BX      LR
 \end{lstlisting}

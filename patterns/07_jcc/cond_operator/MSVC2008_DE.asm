@@ -9,17 +9,17 @@ _f	PROC
 	push	ecx
 ; vergleiche Eingabewert mit 10
 	cmp	DWORD PTR _a$[ebp], 10
-; springe zu $LN3@f , falls ungleich
+; springe zu \$LN3@f , falls ungleich
 	jne	SHORT $LN3@f
-; §speichere Pointer auf den String in temporärer Variable:§
+; speichere Pointer auf den String in temporärer Variable:
 	mov	DWORD PTR tv65[ebp], OFFSET $SG746 ; 'it is ten'
 ; springe zum Ende
 	jmp	SHORT $LN4@f
 $LN3@f:
-; §speichere Pointer auf den String in temporärer Variable:§
+; speichere Pointer auf den String in temporärer Variable:
 	mov	DWORD PTR tv65[ebp], OFFSET $SG747 ; 'it is not ten'
 $LN4@f:
-; §beenden. Kopiere Pointer auf den String aus temporärer Variable nach EAX.§
+; beenden. Kopiere Pointer auf den String aus temporärer Variable nach EAX.
 	mov	eax, DWORD PTR tv65[ebp]
 	mov	esp, ebp
 	pop	ebp

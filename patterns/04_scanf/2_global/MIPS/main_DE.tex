@@ -3,7 +3,7 @@
 \myparagraph{Nicht initialisierte globale Variable}
 Nun ist $x$ eine globale Variable.
 Wir kompilieren zu einer ausführbaren Datei anstelle eines Objectfiles und laden diese in \IDA.
-\IDA stellt die Variable $x$ in der ELF Section \IT{.sbss} dar (erinnern Sie sich an \q{Global
+\IDA stellt die Variable $x$ in der ELF Section \emph{.sbss} dar (erinnern Sie sich an \q{Global
 Pointer}?\myref{MIPS_GP}), denn die Variable ist zu Beginn nicht initialisiert.
 
 \lstinputlisting[caption=\Optimizing GCC 4.4.5 (IDA),style=customasmMIPS]{patterns/04_scanf/2_global/MIPS/O3_IDA_DE.lst}

@@ -24,7 +24,7 @@ add esp, 12 ; returns ESP
 
 \newcommand{\SIZEOFINT}{La taille d'une variable de type \Tint est de 4 octets sur les systèmes x86 et de 8 octets sur les systèmes x64}
 
-Similaire à \IT{cdecl}, sauf que c'est le \gls{callee} qui doit réinitialise \ESP à sa valeur d'origine
+Similaire à \emph{cdecl}, sauf que c'est le \gls{callee} qui doit réinitialise \ESP à sa valeur d'origine
 en utilisant l'instruction \TT{RET x} et non pas \RET, \\
 avec \TT{x = nb arguments * sizeof(int)\footnote{\SIZEOFINT}}.
 Après le retour du \gls{callee}, le \gls{caller} ne modifie pas le \gls{stack pointer}. Il ny' a donc pas d'instruction \TT{add esp, x}.
@@ -63,7 +63,7 @@ appelée à partir de l'instruction \TT{RETN n}: divisez $n$ par 4.
 \subsubsection{Fonctions à nombre d'arguments variables}
 
 Les fonctions du style \printf sont un des rares cas de fonctions à nombre d'arguments variables 
-en \CCpp. Elles permettent d'illustrer une différence importante entre les conventions \IT{cdecl} et \IT{stdcall}. 
+en \CCpp. Elles permettent d'illustrer une différence importante entre les conventions \emph{cdecl} et \emph{stdcall}. 
 Partons du principe que le compilateur connait le nombre d'arguments utilisés à chaque fois que la 
 fonction \printf est appelée.
 
@@ -71,11 +71,11 @@ En revanche, la fonction \printf est déjà compilée dans MSVCRT.DLL (si l'on p
 possède aucune information sur le nombre d'arguments qu'elle va recevoir. Elle peut cependant le
 deviner à partir du contenu du paramètre format.
 
-Si la convention \IT{stdcall} était utilisé pour la fonction \printf, elle devrait réajuster le 
+Si la convention \emph{stdcall} était utilisé pour la fonction \printf, elle devrait réajuster le 
 \gls{stack pointer} à sa valeur initiale en comptant le nombre d'arguments dans la chaîne de format.
 Cette situation serait dangereuse et pourrait provoquer un crash du programme à la moindre faute de
 frappe du programmeur.
-La convention \IT{stdcall} n'est donc pas adaptée à ce type de fonction. La convention \IT{cdecl} est préférable.
+La convention \emph{stdcall} n'est donc pas adaptée à ce type de fonction. La convention \emph{cdecl} est préférable.
 
 \subsection{fastcall}
 \label{fastcall}
@@ -83,19 +83,19 @@ La convention \IT{stdcall} n'est donc pas adaptée à ce type de fonction. La co
 
 Il s'agit d'un nom générique pour désigner les conventions qui passent une partie des paramètres dans
 des registres et le reste sur la pile.
-Historiquement, cette méthode était plus performante que les conventions \IT{cdecl}/\IT{stdcall} - 
+Historiquement, cette méthode était plus performante que les conventions \emph{cdecl}/\emph{stdcall} - 
 car elle met moins de pression sur la pile. Ce n'est cependant probablement plus le cas sur les
 processeurs actuels qui sont beaucoup plus complexes.
 
 Cette convention n'est pas standardisée. Les compilateurs peuvent donc l'implémenter à leur guise.
 Prenez une DLL qui en utilise une autre compilée avec une interprétation différente de la convention 
-\IT{fastcall}. Vous avez un cas d'école et des problèmes en perspective.
+\emph{fastcall}. Vous avez un cas d'école et des problèmes en perspective.
 
 Les compilateurs MSVC et GCC passent les deux premiers arguments dans \ECX et \EDX, et le reste des
 arguments sur la pile.
 
 Le \gls{stack pointer} doit être restauré à sa valeur initiale par le \gls{callee} 
-(comme pour la convention \IT{stdcall}).
+(comme pour la convention \emph{stdcall}).
 
 \begin{lstlisting}[caption=fastcall,style=customasmx86]
 push arg3
@@ -129,7 +129,7 @@ Le nombre d'arguments peut, encore une fois, être facilement déduit.
 
 \newcommand{\URLREGPARMM}{\url{http://go.yurichev.com/17040}}
 
-Il s'agit en quelque sorte d'une évolution de la convention \IT{fastcall}\footnote{\URLREGPARMM}.
+Il s'agit en quelque sorte d'une évolution de la convention \emph{fastcall}\footnote{\URLREGPARMM}.
 L'option \TT{-mregparm} permet de définir le nombre d'arguments (3 au maximum) qui doivent être passés 
 dans les registres. \EAX, \EDX et \ECX sont alors utilisés.
 
@@ -181,7 +181,7 @@ Les fonctions plus complexes doivent sauvegarder les valeurs de paramètres afin
 Le \gls{caller} est aussi responsable de rétablir la valeur du \gls{stack pointer} à la valeur qu'il 
 avait avant l'appel de la fonction.
 
-Cette convention est utilisée dans les DLLs Windows x86-64 (à la place de \IT{stdcall} en win32).
+Cette convention est utilisée dans les DLLs Windows x86-64 (à la place de \emph{stdcall} en win32).
 
 Exemple:
 
@@ -266,7 +266,7 @@ Une fois que le \gls{callee} s'achève, la fonction appelante ne les utilise pas
 % TODO (OllyDbg) пример как в стеке меняется $a$
 
 Donc, oui, la valeur des arguments peut être modifiée sans problème.
-Sous réserver que l'argument ne soit pas une \IT{references} en \Cpp{} (\myref{cpp_references}),
+Sous réserver que l'argument ne soit pas une \emph{references} en \Cpp{} (\myref{cpp_references}),
 et que vous ne modifiez pas la valeur qui est référencée par un pointeur, l'effet de votre modification 
 ne se propagera pas au dehors de la fonction.
 

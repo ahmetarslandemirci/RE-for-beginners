@@ -16,14 +16,14 @@
   4006d4:       3c040040        lui     a0,0x40
 ; add low part of x address:
   4006d8:       26050920        addiu   a1,s0,2336
-; now address of x is in $a1.
+; now address of x is in \$a1.
   4006dc:       0320f809        jalr    t9
   4006e0:       248408dc        addiu   a0,a0,2268
   4006e4:       8fbc0010        lw      gp,16(sp)
-; high part of x address is still in $s0. 
+; high part of x address is still in \$s0. 
 ; add low part to it and load a word from memory:
   4006e8:       8e050920        lw      a1,2336(s0)
-; value of x is now in $a1.
+; value of x is now in \$a1.
   4006ec:       8f99803c        lw      t9,-32708(gp)
   4006f0:       3c040040        lui     a0,0x40
   4006f4:       0320f809        jalr    t9

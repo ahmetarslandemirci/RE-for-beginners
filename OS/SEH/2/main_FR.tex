@@ -60,19 +60,19 @@ D'autres compilateurs win32 peuvent choisir un modèle totalement différent.
 \myparagraph{SEH3}
 
 SEH3 est géré par la fonction \TT{\_except\_handler3}. Il ajoute à la structure \TT{\_EXCEPTION\_REGISTRATION} 
-un pointeur vers une \IT{scope table} et une variable \IT{previous try level}.
-SEH4 de son côté ajoute 4 valeurs à la structure \IT{scope table} pour la gestion des dépassements 
+un pointeur vers une \emph{scope table} et une variable \emph{previous try level}.
+SEH4 de son côté ajoute 4 valeurs à la structure \emph{scope table} pour la gestion des dépassements 
 de buffer.\\
 \\
-La structure \IT{scope table} est un ensemble de pointeurs vers les blocs de code du filtre et du 
-gestionnaire de chaque niveau \IT{try/except} imbriqué.
+La structure \emph{scope table} est un ensemble de pointeurs vers les blocs de code du filtre et du 
+gestionnaire de chaque niveau \emph{try/except} imbriqué.
 
 \input{OS/SEH/2/tikz}
 
-Il est essentiel de comprendre que l'\ac{OS} ne se préoccupe que des champs \IT{prev/handle} et de 
+Il est essentiel de comprendre que l'\ac{OS} ne se préoccupe que des champs \emph{prev/handle} et de 
 rien d'autre.\\
 Les autres champs sont exploités par la fonction \TT{\_except\_handler3}, de même que le contenu 
-de la structure \IT{scope table} afin de décider quel gestionnaire exécuter et quand.\\
+de la structure \emph{scope table} afin de décider quel gestionnaire exécuter et quand.\\
 \\
 \myindex{Wine}
 \myindex{ReactOS}
@@ -84,12 +84,13 @@ Celui-ci réimplémente les mêmes fonctions d'une manière quasi équivalente �
 On trouve une autre réimplementation dans Wine\footnote{\href{http://go.yurichev.com/17059}{GitHub}}
 ainsi que dans ReactOS\footnote{\url{http://go.yurichev.com/17060}}.\\
 \\
-Lorsque le champ \IT{filter} est un pointeur NULL, le champ \IT{handler} est un pointeur vers un 
-bloc de code \IT{finally}.\\
+Lorsque le champ \emph{filter} est un pointeur NULL, le champ \emph{handler} est un pointeur vers un 
+bloc de code \emph{finally}.\\
 \\
-Au cours de l'exécution, la valeur du champe \IT{previous try level} change. Ceci permet à la 
+Au cours de l'exécution, la valeur du champe \emph{previous try level} change. \\
+Ceci permet à la 
 fonction \TT{\_except\_handler3} de connaître le niveau d'imbrication et donc de savoir quelle 
-entrée de la table \IT{scope table} utiliser en cas d'exception.
+entrée de la table \emph{scope table} utiliser en cas d'exception.
 
 \myparagraph{SEH3: exemple de bloc try/except}
 
@@ -98,15 +99,15 @@ entrée de la table \IT{scope table} utiliser en cas d'exception.
 \lstinputlisting[caption=MSVC 2003,style=customasmx86]{OS/SEH/2/2_SEH3.asm}
 
 Nous voyons ici la manière dont le bloc SEH est construit sur la pile.
-La structure \IT{scope table} est présente dans le segment \TT{CONST} du programme--- ce qui est 
+La structure \emph{scope table} est présente dans le segment \TT{CONST} du programme--- ce qui est 
 normal puisque son contenu n'a jamais besoin d'être changé.
-Un point intéressant est la manière dont la valeur de la variable \IT{previous try level} évolue.
+Un point intéressant est la manière dont la valeur de la variable \emph{previous try level} évolue.
 Sa valeur initiale est \TT{0xFFFFFFFF} ($-1$).
 L'entrée dans le bloc \TT{try} débute par l'écriture de la valeur 0 dans la variable.
 La sortie du bloc \TT{try} est marquée par la restauration de la valeur $-1$.
 Nous voyons également l'adresse du bloc de filtrage et de celui du gestionnaire.
 
-Nous pouvons donc observer facilement la présence de blocs \IT{try/except} dans la fonction.\\
+Nous pouvons donc observer facilement la présence de blocs \emph{try/except} dans la fonction.\\
 \\
 Le code d'initialisation des structures SEH dans le prologue de la fonction peut être partagé par 
 de nombreuses fonctions. Le compilateur choisi donc parfois d'insérer dans le prologue d'une fonction 
@@ -161,8 +162,8 @@ L'un n'a rien à voir avec MSVC (le dernier) et deux autres sont liés à MSVC: 
 \lstinputlisting[style=customc]{OS/SEH/2/3.c}
 
 Nous avons maintenant deux blocs \TT{try}.
-La structure \IT{scope table} possède donc deux entrées, une pour chaque bloc.
-La valeur de \IT{Previous try level} change selon que l'exécution entre ou sort des blocs \TT{try}.
+La structure \emph{scope table} possède donc deux entrées, une pour chaque bloc.
+La valeur de \emph{Previous try level} change selon que l'exécution entre ou sort des blocs \TT{try}.
 
 \lstinputlisting[caption=MSVC 2003,style=customasmx86]{OS/SEH/2/3_SEH3.asm}
 
@@ -170,7 +171,7 @@ Si nous positionnons un point d'arrêt sur la fonction \printf{} qui est appelé
 nous pouvons constater comment un nouveau gestionnaire SEH est ajouté.
 
 Il s'agit peut-être d'un autre mécanisme interne de la gestion SEH.
-Nous constatons aussi que notre structure \IT{scope table} contient 2 entrées.
+Nous constatons aussi que notre structure \emph{scope table} contient 2 entrées.
 
 \begin{lstlisting}
 tracer.exe -l:3.exe bpx=3.exe!printf --dump-seh
@@ -203,22 +204,22 @@ scopetable entry[0]. previous try level=-2, filter=0x771f74d0 (ntdll.dll!___safe
 \myindex{\BufferOverflow}
 \myindex{Security cookie}
 Lors d'une attaque par dépassement de buffer (\myref{subsec:bufferoverflow}), l'adresse de la 
-\IT{scope table} peut être modifiée. C'est pourquoi à partir de MSVC 2005 SEH3 a été amélioré vers 
+\emph{scope table} peut être modifiée. C'est pourquoi à partir de MSVC 2005 SEH3 a été amélioré vers 
 SEH4 pour ajouter une protection contre ce type d'attaque.
-Le pointeur vers la structure \IT{scope table} est désormais \glslink{xoring}{xored} avec la valeur 
+Le pointeur vers la structure \emph{scope table} est désormais \glslink{xoring}{xored} avec la valeur 
 d'un \gls{security cookie}.
-Par ailleurs, la structure \IT{scope table} a été étendue avec une en-tête contenant deux pointeurs 
-vers des \IT{security cookies}.
+Par ailleurs, la structure \emph{scope table} a été étendue avec une en-tête contenant deux pointeurs 
+vers des \emph{security cookies}.
 
 Chaque élément contient un offset dans la pile d'une valeur correspondant à: 
 adresse du \gls{stack frame} (\EBP) \glslink{xoring}{xored} avec la valeur du \TT{security\_cookie} 
 lui aussi situé sur la pile.
 
 Durant la gestion d'exception, l'intégrité de cette valeur est vérifiée.
-La valeur de chaque \IT{security cookie} situé sur la pile est aléatoire. Une attaque à distance ne 
+La valeur de chaque \emph{security cookie} situé sur la pile est aléatoire. Une attaque à distance ne 
 pourra donc pas la deviner. \\
 \\
-Avec SEH4, la valeur initiale de \IT{previous try level} est de $-2$ et non de $-1$.
+Avec SEH4, la valeur initiale de \emph{previous try level} est de $-2$ et non de $-1$.
 
 \def\SEHfour{1}
 \input{OS/SEH/2/tikz}
@@ -229,7 +230,7 @@ Voici deux exemples compilés avec MSVC 2012 et SEH4:
 
 \lstinputlisting[caption=MSVC 2012: exemple de deux blocs try,style=customasmx86]{OS/SEH/2/3_SEH4.asm}
 
-La signification de \IT{cookies} est la suivante: \TT{Cookie Offset} est la différence entre l'adresse 
+La signification de \emph{cookies} est la suivante: \TT{Cookie Offset} est la différence entre l'adresse 
 dans la pile de la dernière valeur sauvegardée du registre EBP et de l'adresse dans la pile du 
 résultat de l'addition $EBP \oplus security\_cookie$.
 \TT{Cookie XOR Offset} est quant à lui la différence entre $EBP \oplus security\_cookie$ et la valeur 
@@ -245,7 +246,7 @@ $security\_cookie \oplus (CookieXOROffset + address\_of\_saved\_EBP) == stack[ad
 Lorsque \TT{Cookie Offset} vaut $-2$, ceci indique qu'il n'est pas présent.
 
 \myindex{tracer}
-La vérification des \IT{Cookies} est aussi implémentée dans mon \tracer{},
+La vérification des \emph{Cookies} est aussi implémentée dans mon \tracer{},
 voir \href{http://go.yurichev.com/17061}{GitHub} pour les détails.\\
 \\
 Pour les versions à partir de MSVC 2005, il est toujours possible de revenir à la version SEH3 

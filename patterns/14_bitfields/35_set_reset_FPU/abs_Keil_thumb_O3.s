@@ -22,6 +22,6 @@ negate PROC
         LSLS     r1,r1,#31
 ; r1=1<<31=0x80000000
         EORS     r0,r0,r1
-; r0=r0 ^ 0x80000000
+; r0=r0 \verb|^| 0x80000000
         BX       lr
         ENDP

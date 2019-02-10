@@ -5,13 +5,13 @@ get_from_array PROC
 ; R1 = R0>>1 = idx>>1
 ; R1 is now number of triplet
         LSLS     r2,r1,#1
-; R2 = R1<<1 = (R0>>1)<<1 = R0&(~1) = idx&(~1)
+; \verb|R2 = R1<<1 = (R0>>1)<<1 = R0&(~1) = idx&(~1)|
 ; the operation (x>>1)<<1 looks senseless, but it's intended to clear the lowest bit in x (or idx)
         LSLS     r5,r0,#31
 ; R5 = R0<<31 = idx<<31
 ; thus, R5 will contain 0x80000000 in case of even idx or zero if odd 
         ADDS     r4,r1,r2
-; R4 = R1+R2 = idx>>1 + idx&(~1) = offset of triplet begin (or offset of left byte)
+; \verb|R4 = R1+R2 = idx>>1 + idx&(~1) = offset of triplet begin (or offset of left byte)|
 ; the expression looks tricky, but it's equal to multiplication by 1.5
         LSRS     r0,r0,#1
 ; R0 = R0>>1 = idx>>1
@@ -19,9 +19,9 @@ get_from_array PROC
         LDR      r3,|array|
 ; R3 = offset of array table
         LSLS     r1,r0,#1
-; R1 = R0<<1 = (idx>>1)<<1 = idx&(~1)
+; \verb|R1 = R0<<1 = (idx>>1)<<1 = idx&(~1)|
         ADDS     r0,r0,r1
-; R0 = idx>>1 + idx&(~1) = idx*1.5 = offset of triple begin
+; \verb|R0 = idx>>1 + idx&(~1) = idx*1.5 = offset of triple begin|
         ADDS     r1,r3,r0
 ; R1 = R3+R0 = offset of array + idx*1.5
 ; in other words, R1 now contains absolute address of triplet
@@ -34,7 +34,7 @@ get_from_array PROC
         BEQ      |L0.92|
 ; idx is odd, go on:
         LSLS     r0,r2,#28
-; R0 = R2<<28 = middle_byte<<28
+; \verb|R0 = R2<<28 = middle_byte<<28|
 ; load right byte at R1+2:
         LDRB     r1,[r1,#2]
 ; R1 = right byte
@@ -48,10 +48,10 @@ get_from_array PROC
         LDRB     r0,[r3,r4]
 ; R0 = left byte
         LSLS     r0,r0,#4
-; R0 = left_byte<<4
-; shift middle_byte in R2 4 bits right:
+; \verb|R0 = left_byte<<4|
+; \verb|shift middle_byte in R2 4 bits right:|
         LSRS     r1,r2,#4
-; R1=middle_byte>>4
+; \verb|R1=middle_byte>>4|
 |L0.98|
 ; function epilogue:
 ; current R0 value is shifted left byte or part of middle byte

@@ -1,5 +1,5 @@
-seg030:0034             out_port proc far ; CODE XREF: sent_pro+22p
-seg030:0034                               ; sent_pro+2Ap ...
+seg030:0034             out_port proc far ; CODE XREF: sent\_pro+22p
+seg030:0034                               ; sent\_pro+2Ap ...
 seg030:0034
 seg030:0034             arg_0    = byte ptr  6
 seg030:0034

@@ -27,7 +27,7 @@ var_10          = -0x10
     ADD      R7, SP, #0xC
     STR.W    R8, [SP,#0xC+var_10]!
     SUB      SP, SP, #0x54
-    MOVW     R0, #aObjc_methtype ; "objc_methtype"
+    MOVW     R0, #aObjc_methtype ; "objc\_methtype"
     MOVS     R2, #0
     MOVT.W   R0, #0
     MOVS     R5, #0
@@ -74,7 +74,7 @@ var_10          = -0x10
     STR      R0, [SP,#0x64+var_1C]
     MOVS     R0, #0x26
     STR      R0, [SP,#0x64+var_18]
-    MOV      R4, 0xFDA ; "a[%d]=%d\n"
+    MOV      R4, 0xFDA ; "a[\%d]=\%d\textbackslash{}n"
     MOV      R0, SP
     ADDS     R6, R0, #4
     ADD      R4, PC

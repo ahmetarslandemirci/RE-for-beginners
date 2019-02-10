@@ -23,7 +23,7 @@ loc_8048408:
 loc_804840A:
                 movzx   eax, byte ptr [esi+ebx]	; load byte
                 add     ebx, 1          ; j=j+1
-                mov     dword ptr [esp+4], offset a0x02x ; "0x%02X "
+                mov     dword ptr [esp+4], offset a0x02x ; \verb|"0x%02X "|
                 mov     dword ptr [esp], 1
                 mov     [esp+8], eax	; pass loaded byte to printf()
                 call    ___printf_chk

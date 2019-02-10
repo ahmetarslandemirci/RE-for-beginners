@@ -17,7 +17,7 @@ multiplication.
 
 \lstinputlisting[caption=\Optimizing MSVC 2013 x64,style=customasmx86]{\CURPATH/MSVC_2013_x64_Ox_EN.asm}
 
-Now there are 3 iterators: the \IT{cnt} variable and two indices, which are increased by 12 and 28 at 
+Now there are 3 iterators: the \emph{cnt} variable and two indices, which are increased by 12 and 28 at 
 each iteration.
 We can rewrite this code in \CCpp:
 
@@ -32,9 +32,9 @@ GCC 4.9 does even more, leaving only 2 iterators:
 
 \lstinputlisting[caption=\Optimizing GCC 4.9 x64,style=customasmx86]{\CURPATH/GCC491_x64_O3_EN.asm}
 
-There is no \IT{counter} variable any more: GCC concluded that it is not needed.
+There is no \emph{counter} variable any more: GCC concluded that it is not needed.
 
-The last element of the \IT{a2} array is calculated before the loop begins (which is easy: $cnt*7$) 
+The last element of the \emph{a2} array is calculated before the loop begins (which is easy: $cnt*7$) 
 and that's how the loop is to be stopped: just iterate until the second index reaches this precalculated value.
 
 You can read more about multiplication using shifts/additions/subtractions here: 
@@ -44,8 +44,8 @@ This code can be rewritten into \CCpp like that:
 
 \lstinputlisting[style=customc]{\CURPATH/iterators2_EN.c}
 
-GCC (Linaro) 4.9 for ARM64 does the same, but it precalculates the last index of \IT{a1} 
-instead of \IT{a2}, which, of course has the same effect:
+GCC (Linaro) 4.9 for ARM64 does the same, but it precalculates the last index of \emph{a1} 
+instead of \emph{a2}, which, of course has the same effect:
 
 \lstinputlisting[caption=\Optimizing GCC (Linaro) 4.9 ARM64,label=GCC_no_number_sign,style=customasmARM]{\CURPATH/ARM64_GCC_49_O3_EN.s}
 

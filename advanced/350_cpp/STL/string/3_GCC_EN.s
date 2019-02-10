@@ -35,7 +35,7 @@ main:
 
     call _ZNSs6appendERKSs
 
-    ; inlined c_str():
+    ; inlined c\_str():
     mov  eax, DWORD PTR [esp+28]
     mov  DWORD PTR [esp], eax
 

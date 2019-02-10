@@ -32,7 +32,7 @@ ptr=0x0028fe90 _Next=0x0028fe90 _Prev=0x0028fe90 x=3 y=0
 
 Here we see an empty list.
 
-Despite the fact it is empty, it has one element with garbage (\ac{AKA} \IT{dummy node})
+Despite the fact it is empty, it has one element with garbage (\ac{AKA} \emph{dummy node})
 in $x$ and $y$.
 Both the \q{next} and \q{prev} pointers are pointing to the self node:
 
@@ -65,7 +65,7 @@ The $l$ variable always points to the first node.
 The .begin() and .end() iterators are not variables, but functions, 
 which when called return pointers to the corresponding nodes.
 
-Having a dummy element (\ac{AKA} \IT{sentinel node}) is a very popular practice in implementing doubly-linked lists.
+Having a dummy element (\ac{AKA} \emph{sentinel node}) is a very popular practice in implementing doubly-linked lists.
 
 Without it, a lot of operations may become slightly more complex and, hence, slower.
 
@@ -102,7 +102,7 @@ to be valid.
 
 That's why an iterator may become invalid after element deletion: 
 it may still point to the node that has been already deallocated.
-This is also called a \IT{dangling pointer}.
+This is also called a \emph{dangling pointer}.
 
 And of course, the information from the freed node (to which iterator still points) 
 cannot be used anymore.

@@ -41,15 +41,15 @@ Yes, but compiler is not sure that nothing has been overwritten at the 3rd stage
 This is called \q{pointer aliasing}, 
 a situation when the compiler cannot be sure that a memory to which a pointer is pointing hasn't been changed.
 
-\IT{restrict} in the C99 standard \InSqBrackets{\CNineNineStd{} 6.7.3/1}
+\emph{restrict} in the C99 standard \InSqBrackets{\CNineNineStd{} 6.7.3/1}
 is a promise, given by programmer to the compiler that the function arguments 
 marked by this keyword always points to different memory locations and never intersects.
 
-To be more precise and describe this formally, \IT{restrict} shows that only this pointer is to be used
+To be more precise and describe this formally, \emph{restrict} shows that only this pointer is to be used
 to access an object, and no other pointer will be used for it.
 
 It can be even said the object will be accessed
-only via one single pointer, if it is marked as \IT{restrict}.
+only via one single pointer, if it is marked as \emph{restrict}.
 
 Let's add this keyword to each pointer argument:
 
@@ -93,7 +93,7 @@ This is on the programmer's conscience, and the results will be incorrect.
 Let's go back to Fortran. 
 
 Compilers of this programming language treats all pointers as such, 
-so when it was not possible to set \IT{restrict} in C, Fortran could generate faster code in these cases.
+so when it was not possible to set \emph{restrict} in C, Fortran could generate faster code in these cases.
 
 How practical is it? 
 
@@ -102,7 +102,7 @@ In the cases when the function works with several big blocks in memory.
 There are a lot of such in linear algebra, for instance.
 
 Supercomputers/\ac{HPC} are very busy with linear algebra, so probably that is why, traditionally, Fortran is still
-used there [Eugene Loh, \IT{The Ideal HPC Programming Language}, (2010)].
+used there [Eugene Loh, \emph{The Ideal HPC Programming Language}, (2010)].
 
 But when the number of iterations is not very big,
 certainly, the speed boost may not to be significant.

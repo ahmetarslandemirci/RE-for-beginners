@@ -7,19 +7,19 @@ _tmp$ = -4
 ?float_rand@@YAMXZ PROC
 	push	ecx
 	call	?my_rand@@YAIXZ
-; EAX=valeur pseudo-§aléatoire§
+; EAX=valeur pseudo-aléatoire
 	and	eax, 8388607		; 007fffffH
 	or	eax, 1065353216		; 3f800000H
-; EAX=valeur pseudo-§aléatoire§ & 0x007fffff | 0x3f800000
+; EAX=valeur pseudo-aléatoire \& 0x007fffff | 0x3f800000
 ; la stocker dans la pile locale:
 	mov	DWORD PTR _tmp$[esp+4], eax
-; la recharger en tant que nombre §à§ virgule flottante:
+; la recharger en tant que nombre à virgule flottante:
 	fld	DWORD PTR _tmp$[esp+4]
 ; soustraire 1.0:
 	fsub	QWORD PTR __real@3ff0000000000000
 ; stocker la valeur obtenue dans la pile locale et la recharger:
-	fstp	DWORD PTR tv130[esp+4] ; \  ces instructions sont redondantes
-	fld	DWORD PTR tv130[esp+4] ; /
+	fstp	DWORD PTR tv130[esp+4] ; \verb|\  ces instructions sont redondantes|
+	fld	DWORD PTR tv130[esp+4] ; \verb|/                                   |
 	pop	ecx
 	ret	0
 ?float_rand@@YAMXZ ENDP

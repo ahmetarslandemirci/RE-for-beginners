@@ -2,7 +2,7 @@
 \subsection{GCC---eine weitere Sache}
 \label{use_parts_of_C_strings}
 
-Die Tatsache, dass eine \IT{anonyme} C-Zeichenkette den Typ \IT{const} hat (\myref{string_is_const_char}), 
+Die Tatsache, dass eine \emph{anonyme} C-Zeichenkette den Typ \emph{const} hat (\myref{string_is_const_char}), 
 und dass C-Zeichenketten im Segment für konstante Daten angelegt sind (was dafür sorgt, dass sie unveränderbar sind),
 hat eine interessante Auswirkung: der Compiler kann spezifische Teile der Zeichenkette verwenden.
 
@@ -31,32 +31,7 @@ int main()
 Gebräuchliche \CCpp{}-Compiler (inklusive MSVC) allozieren zwei Strings.
 Im Folgenden jedoch ist abgebildet, was GCC 4.8.1 erzeugt:
 
-\begin{lstlisting}[caption=GCC 4.8.1 + IDA,style=customasmx86]
-f1              proc near
-
-s               = dword ptr -1Ch
-
-                sub     esp, 1Ch
-                mov     [esp+1Ch+s], offset s ; "world\n"
-                call    _puts
-                add     esp, 1Ch
-                retn
-f1              endp
-
-f2              proc near
-
-s               = dword ptr -1Ch
-
-                sub     esp, 1Ch
-                mov     [esp+1Ch+s], offset aHello ; "hello "
-                call    _puts
-                add     esp, 1Ch
-                retn
-f2              endp
-
-aHello          db 'hello '
-s               db 'world',0xa,0
-\end{lstlisting}
+\lstinputlisting[caption=GCC 4.8.1 + IDA,style=customasmx86]{patterns/01_helloworld/two_strings.asm}
 
 Wenn die Zeichenkette \q{hello world} ausgegeben wird, werden die beiden Worte im Speicher nebeneinander
 positioniert und die Funktion \puts in \GTT{f2()} merkt nicht, dass die Zeichenkette geteilt ist.

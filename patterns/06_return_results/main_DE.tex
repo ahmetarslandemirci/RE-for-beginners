@@ -10,6 +10,8 @@ Wenn eine Funktion eine \Tfloat Zahl zurückgibt, wird das FPU Register \ST{0} s
 In ARM wird das Ergebnis üblicherweise über das \Reg{0} Register zurückgegeben.
 
 \subsection{Versuch einen Rückgabewert vom Typ \Tvoid zu verwenden}
+\label{UseResultOfVoidFunc}
+
 Was würde passieren, wenn der Rückgabewert der Funktion \main vom Typ \Tvoid und nicht \Tint wäre?
 Der sogenannte Startup-Code ruft \main in etwa wie folgt auf:
 
@@ -27,7 +29,7 @@ Mit anderen Worten:
 \begin{lstlisting}[style=customc]
 exit(main(argc,argv,envp));
 \end{lstlisting}
-Wenn man \main als \Tvoid deklariert muss nichts explizit zurückgegeben werden (mit dem \IT{return} Ausdruck). In diesem
+Wenn man \main als \Tvoid deklariert muss nichts explizit zurückgegeben werden (mit dem \emph{return} Ausdruck). In diesem
 Fall wird etwas Zufälliges, das am Ende der Ausführung von \main in \EAX steht, das einzige Argument der exit()
 Funktion.
 Höchstwahrscheinlich wird es sich um einen Zufallswert handelt, der von der Ausführung der Funktion dort belassen wurde,

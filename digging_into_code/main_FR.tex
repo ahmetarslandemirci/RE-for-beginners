@@ -34,7 +34,7 @@ Il est même possible d'exporter le code dans un fichier texte .lst ou .asm et d
 Lorsque vous essayez de comprendre ce que fait un certain code, ceci peut être facile
 avec une bibliothèque open-source comme libpng.
 Donc, lorsque vous voyez certaines constantes ou chaînes de texte qui vous semblent
-familières, il vaut toujours la peine de les \IT{googler}.
+familières, il vaut toujours la peine de les \emph{googler}.
 Et si vous trouvez le projet open-source où elles sont utilisées, alors il suffit
 de comparer les fonctions.
 Ceci peut permettre de résoudre certaines parties du problème.
@@ -52,7 +52,7 @@ des paquets réseau fonctionne dans SAP 6.0.
 C'est un logiciel gigantesque, mais un .\gls{PDB} détaillé avec des informations
 de débogage est présent, et c'est pratique.
 Il en est finalement arrivé à l'idée que l'une des fonctions, qui était appelée par
-\IT{CsDecomprLZC}, effectuait la décompression des paquets réseau.
+\emph{CsDecomprLZC}, effectuait la décompression des paquets réseau.
 Immédiatement, il a essayé de googler le nom et a rapidement trouvé que la fonction
 était utilisée dans MaxDB (c'est un projet open-source de SAP)
 \footnote{Plus sur ce sujet dans la section concernée~(\myref{sec:SAPGUI})}.
@@ -64,7 +64,7 @@ décompression des paquets réseau.
 
 % binary files might be also here
 
-\mysection{Communication avec le mondes extérieur (niveau fonction)}
+\mysection{Communication avec le monde extérieur (niveau fonction)}
 Il est souvent recommandé de suivre les arguments de la fonction et sa valeur de
 retour dans un débogueur ou \ac{DBI}.
 Par exemple, l'auteur a essayé une fois de comprendre la signification d'une fonction

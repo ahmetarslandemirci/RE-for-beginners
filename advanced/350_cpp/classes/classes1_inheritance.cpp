@@ -23,7 +23,7 @@ class box : public object
         };
         void dump()
         {
-            printf ("this is box. color=%d, width=%d, height=%d, depth=%d\n", color, width, height, depth);
+            printf ("this is a box. color=%d, width=%d, height=%d, depth=%d\n", color, width, height, depth);
         };
 };
 

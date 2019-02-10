@@ -26,7 +26,7 @@
 .text:00000034                 or      $at, $zero ; NOP
 ; restore the GP from local stack:
 .text:00000038                 lw      $gp, 0x20+var_10($fp)
-; set register $2 ($V0) to zero:
+; set register \$2 (\$V0) to zero:
 .text:0000003C                 move    $v0, $zero
 ; function epilogue.
 ; restore the SP:

@@ -23,14 +23,14 @@ are addresses in a 32-bit process and that is why all elements are 4 bytes wide)
 The address of the \TT{\$LN11@f} table + 8 is the table element where the \TT{\$LN4@f} label is stored.
 \JMP fetches the \TT{\$LN4@f} address from the table and jumps to it.
 
-This table is sometimes called \IT{jumptable} or \IT{branch table}\footnote{The whole method was once called 
-\IT{computed GOTO} in early versions of Fortran:
+This table is sometimes called \emph{jumptable} or \emph{branch table}\footnote{The whole method was once called 
+\emph{computed GOTO} in early versions of Fortran:
 \href{http://go.yurichev.com/17122}{wikipedia}.
 Not quite relevant these days, but what a term!}.
 
 Then the corresponding \printf is called with argument \TT{'two'}.\\
 Literally, the \TT{jmp DWORD PTR \$LN11@f[ecx*4]} instruction implies
-\IT{jump to the DWORD that is stored at address} \TT{\$LN11@f + ecx * 4}.
+\emph{jump to the DWORD that is stored at address} \TT{\$LN11@f + ecx * 4}.
 
 \TT{npad} (\myref{sec:npad}) is an assembly language macro that align the next label so that it will be stored at an address aligned on a 4 bytes
 (or 16 bytes) boundary.

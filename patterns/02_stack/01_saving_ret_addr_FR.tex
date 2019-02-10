@@ -41,33 +41,13 @@ c:\tmp6\ss.cpp(4) : warning C4717: 'f' : recursive on all control paths, functio
 
 \dots mais génère tout de même le code correspondant:
 
-\begin{lstlisting}[style=customasmx86]
-?f@@YAXXZ PROC			; f
-; File c:\tmp6\ss.cpp
-; Line 2
-	push	ebp
-	mov	ebp, esp
-; Line 3
-	call	?f@@YAXXZ	; f
-; Line 4
-	pop	ebp
-	ret	0
-?f@@YAXXZ ENDP			; f
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{patterns/02_stack/1.asm}
 
 \dots Si nous utilisons l'option d'optimisation du compilateur (option \TT{\Ox})
 le code optimisé ne va pas déborder de la pile et au lieu de cela va fonctionner
-\IT{correctemment}\footnote{ironique ici}:
+\emph{correctemment}\footnote{ironique ici}:
 
-\begin{lstlisting}[style=customasmx86]
-?f@@YAXXZ PROC			; f
-; File c:\tmp6\ss.cpp
-; Line 2
-$LL3@f:
-; Line 3
-	jmp	SHORT $LL3@f
-?f@@YAXXZ ENDP			; f
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{patterns/02_stack/2.asm}
 
 GCC 4.4.1 génère un code similaire dans les deux cas, sans, toutefois émettre
 d'avertissement à propos de ce problème.
@@ -92,7 +72,7 @@ sont utilisés dans la fonction sont sauvegardés sur la pile, \ac{LR} inclus.
 
 \myindex{ARM!Fonction leaf} % FIXME traduire avec feuille ?
 Néanmoins, si une fonction n'appelle jamais d'autre fonction, dans la terminologie
-\ac{RISC} elle est appelée \IT{\glslink{leaf function}{fonction leaf}}\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}.
+\ac{RISC} elle est appelée \emph{\glslink{leaf function}{fonction leaf}}\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}.
 Ceci a comme conséquence que les fonctions leaf ne sauvegardent pas le registre
 \ac{LR} (car elles ne le modifient pas).
 Si une telle fonction est petite et utilise un petit nombre de registres, elle

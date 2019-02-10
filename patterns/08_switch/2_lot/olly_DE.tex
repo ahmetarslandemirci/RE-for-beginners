@@ -31,7 +31,7 @@ Hier sehen wir eine Jumptable:
 \caption{\olly: Zieladresse mit Jumptable berechnen}
 \label{fig:switch_lot_olly3}
 \end{figure}
-Wir haben \q{Follow in Dump}$\rightarrow$ \q{Address constant} geklickt, sodass wir jetzt die \IT{Jumptable} im
+Wir haben \q{Follow in Dump}$\rightarrow$ \q{Address constant} geklickt, sodass wir jetzt die \emph{Jumptable} im
 Datenfenster sehen. Hier sind 5 32-Bit-Werte\footnote{Diese werden von \olly unterstrichen, da
 es auch FIXUPs sind: \myref{subsec:relocs}, wir kommen später darauf zurück}.
 \ECX ist jetzt 2, sodass das zweite Element (beginnend bei null) der Tabelle verwendet wird.
@@ -46,6 +46,6 @@ Nach dem Sprung sind wir an der Stelle \TT{0x010B103A}: der Code zur Ausgabe von
 \begin{figure}[H]
 \centering
 \myincludegraphics{patterns/08_switch/2_lot/olly4.png}
-\caption{\olly: jetzt sind wir am \IT{case:} Label}
+\caption{\olly: jetzt sind wir am \emph{case:} Label}
 \label{fig:switch_lot_olly4}
 \end{figure}

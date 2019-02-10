@@ -28,20 +28,20 @@ Et même plus que ça: \MUL stocke son résultat dans la paire \GTT{EDX:EAX} en 
 Au contraire, il est possible de ne mettre qu'un seul registre de destination lorsque
 l'on utilise \IMUL, au lieu d'une paire, et alors le \ac{CPU} calculera seulement
 la partie basse, ce qui fonctionne plus rapidement [voir Torborn Granlund,
-\IT{Instruction latencies and throughput for AMD and Intel x86 processors}\footnote{\url{http://yurichev.com/mirrors/x86-timing.pdf}}].
+\emph{Instruction latencies and throughput for AMD and Intel x86 processors}\footnote{\url{http://yurichev.com/mirrors/x86-timing.pdf}}].
 
 Cela étant considéré, les compilateurs \CCpp peuvent générer l'instruction \IMUL
 plus souvent que \MUL.
 
 \myindex{Compiler intrinsic}
 Néanmoins, en utilisant les fonctions intrinsèques du compilateur, il est toujours
-possible d'effectuer une multiplication non signée et d'obtenir le résultat \IT{complet}.
-Ceci est parfois appelé \IT{multiplication étendue}.
-MSVC a une fonction intrinsèque pour ceci, appelée \IT{\_\_emul}\footnote{\url{https://msdn.microsoft.com/en-us/library/d2s81xt0(v=vs.80).aspx}}
-et une autre: \IT{\_umul128}\footnote{\url{https://msdn.microsoft.com/library/3dayytw9%28v=vs.100%29.aspx}}.
-GCC offre le type de données \IT{\_\_int128}, et dans le cas de multiplicandes 64-bit,
+possible d'effectuer une multiplication non signée et d'obtenir le résultat \emph{complet}.
+Ceci est parfois appelé \emph{multiplication étendue}.
+MSVC a une fonction intrinsèque pour ceci, appelée \emph{\_\_emul}\footnote{\url{https://msdn.microsoft.com/en-us/library/d2s81xt0(v=vs.80).aspx}}
+et une autre: \emph{\_umul128}\footnote{\url{https://msdn.microsoft.com/library/3dayytw9%28v=vs.100%29.aspx}}.
+GCC offre le type de données \emph{\_\_int128}, et dans le cas de multiplicandes 64-bit,
 ils sont déjà promus en 128-bit, puis le \glslink{product}{produit} est stocké dans
-une autre valeur \IT{\_\_int128}, puis le résultat est décalé de 64 bits à droite,
+une autre valeur \emph{\_\_int128}, puis le résultat est décalé de 64 bits à droite,
 et vous obtenez la moitié haute du résultat\footnote{Exemple: \url{http://stackoverflow.com/a/13187798}}.
 
 \subsubsection{Fonction MulDiv() dans Windows}

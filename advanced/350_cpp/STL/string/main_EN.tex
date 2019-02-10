@@ -16,11 +16,11 @@ It is not specified in the \Cpp standard how std::string has to be implemented,
 however, it is usually implemented as explained above.
 
 The \Cpp string is not a class (as QString in Qt, for instance) but a template (basic\_string),
-this is made in order to support various character types: at least \Tchar and \IT{wchar\_t}.
+this is made in order to support various character types: at least \Tchar and \emph{wchar\_t}.
 
 So, std::string is a class with \Tchar as its base type.
 
-And std::wstring is a class with \IT{wchar\_t} as its base type.
+And std::wstring is a class with \emph{wchar\_t} as its base type.
 
 \mysubparagraph{MSVC}
 
@@ -70,7 +70,7 @@ GCC's implementation of this structure has one more variable---reference count.
 
 One interesting fact is that in GCC a pointer an instance of std::string instance points not to
 the beginning of the structure, but to the buffer pointer.
-In \IT{libstdc++-v3\textbackslash{}include\textbackslash{}bits\textbackslash{}basic\_string.h}
+In \emph{libstdc++-v3\textbackslash{}include\textbackslash{}bits\textbackslash{}basic\_string.h}
 we can read that it was done for more convenient debugging:
 
 \begin{lstlisting}

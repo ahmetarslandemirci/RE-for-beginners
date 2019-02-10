@@ -95,14 +95,7 @@ We get:
 
 If we take a look in the \TT{open()} function in the \TT{libc.so.6} library, it is only a syscall:
 
-\begin{lstlisting}[caption=open() (libc.so.6),style=customasmx86]
-.text:000BE69B     mov     edx, [esp+4+mode] ; mode
-.text:000BE69F     mov     ecx, [esp+4+flags] ; flags
-.text:000BE6A3     mov     ebx, [esp+4+filename] ; filename
-.text:000BE6A7     mov     eax, 5
-.text:000BE6AC     int     80h             ; LINUX - sys_open
-\end{lstlisting}
-
+\lstinputlisting[caption=open() (libc.so.6),style=customasmx86]{patterns/14_bitfields/1_check/tmp1.asm}
 
 So, the bit fields for \TT{open()} are apparently checked somewhere in the Linux kernel.
 
@@ -120,7 +113,7 @@ N.B.  Aside from passing arguments via the stack,
 there is also a method of passing some of them
 via registers. This is also called fastcall~(\myref{fastcall}).
 This works faster since CPU does not need to access the stack in memory to read argument values.
-GCC has the option \IT{regparm}\footnote{\URLREGPARM},
+GCC has the option \emph{regparm}\footnote{\URLREGPARM},
 through which it's possible to set the number of arguments that can be passed via registers.
 
 \newcommand{\URLKERNELNEWB}{\href{http://go.yurichev.com/17066}{kernelnewbies.org/Linux\_2\_6\_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}}

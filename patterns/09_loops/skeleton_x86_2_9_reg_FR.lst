@@ -4,7 +4,7 @@ body:
     ; corps de la boucle
     ; faire quelque chose ici
     ; utiliser le compteur dans EBX, mais ne pas le modifier!
-    INC EBX ; §incrémenter§
+    INC EBX ; incrémenter
 check:
     CMP EBX, 9
     JLE body

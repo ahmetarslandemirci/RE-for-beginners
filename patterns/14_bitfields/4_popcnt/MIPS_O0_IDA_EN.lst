@@ -21,16 +21,16 @@ loc_20:
                 lw      $v0, 0x18+i($fp)
                 or      $at, $zero ; load delay slot, NOP
                 sllv    $v0, $v1, $v0
-; $v0 = 1<<i
+; \$v0 = 1<<i
                 move    $v1, $v0
                 lw      $v0, 0x18+a($fp)
                 or      $at, $zero ; load delay slot, NOP
                 and     $v0, $v1, $v0
-; $v0 = a&(1<<i)
-; is a&(1<<i) equals to zero? jump to loc_58 then:
+; \$v0 = a \& (1<<i)
+; is a \& (1<<i) equals to zero? jump to loc\_58 then:
                 beqz    $v0, loc_58
                 or      $at, $zero
-; no jump occurred, that means a&(1<<i)!=0, so increment "rt" then:
+; no jump occurred, that means a \& (1<<i)!=0, so increment "rt" then:
                 lw      $v0, 0x18+rt($fp)
                 or      $at, $zero ; load delay slot, NOP
                 addiu   $v0, 1
@@ -45,7 +45,7 @@ loc_58:
 
 loc_68:
 ; load i and compare it with 0x20 (32).
-; jump to loc_20 if it is less then 0x20 (32):
+; jump to loc\_20 if it is less then 0x20 (32):
                 lw      $v0, 0x18+i($fp)
                 or      $at, $zero ; load delay slot, NOP
                 slti    $v0, 0x20  # ' '

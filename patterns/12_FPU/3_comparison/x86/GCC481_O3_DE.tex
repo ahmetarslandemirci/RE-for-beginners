@@ -21,8 +21,8 @@ Wir erhalten also das Folgende:
 Schwer zu sagen, warum \INS{FXCH} (vertausche Operanden) hier verwendet wird.
 
 Es ist möglich, diesen Befehl loszuwerden, indem man die ersten beiden \FLD
-Befehle vertauscht oder \INS{FCMOVBE} (\IT{below or equal}) durch \INS{FCMOVA}
-(\IT{above}) ersetzt.
+Befehle vertauscht oder \INS{FCMOVBE} (\emph{below or equal}) durch \INS{FCMOVA}
+(\emph{above}) ersetzt.
 Wahrscheinlich handelt es sich hierbei um eine Ungenauigkeit im Compiler.
 
 \INS{FUCOMI} vergleicht also \ST{0} ($a$) und \ST{1} ($b$) und setzt einige
@@ -48,7 +48,7 @@ Außerdem zeigt GDB nicht die \GTT{STx} Register, sondern die internen FPU
 Register (\GTT{Rx}). 
 Der Pfeil (in Zeile 35) zeigt auf das aktuell obere Ende des Stacks.
 
-Wir sehen auch den Inhalt des \GTT{TOP} Registers in \IT{Status Word} (Zeile
+Wir sehen auch den Inhalt des \GTT{TOP} Registers in \emph{Status Word} (Zeile
 44)--hier ist dieser 6, sodass das oberste Element im Stack also aktuell auf das
 interne Register 6 zeigt.
 

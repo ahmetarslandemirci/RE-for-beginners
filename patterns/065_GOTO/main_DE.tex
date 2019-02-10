@@ -1,9 +1,9 @@
 \mysection{GOTO Operator}
 
 Der GOTO Operator wird für gewöhnlich als Anti-Pattern angesehen, vgl. dazu
-[Edgar Dijkstra, \IT{Go To Statement Considered Harmful} (1968)\footnote{\url{http://yurichev.com/mirrors/Dijkstra68.pdf}}].
+[Edgar Dijkstra, \emph{Go To Statement Considered Harmful} (1968)\footnote{\url{http://yurichev.com/mirrors/Dijkstra68.pdf}}].
 Nichtsdestotrotz kann es er auch sinnvoll eingesetzt werden, siehe
-[Donald E. Knuth, \IT{Strukt Programming with go to Statements} (1974)\footnote{\url{http://yurichev.com/mirrors/KnuthStructuredProgrammingGoTo.pdf}}]
+[Donald E. Knuth, \emph{Strukt Programming with go to Statements} (1974)\footnote{\url{http://yurichev.com/mirrors/KnuthStructuredProgrammingGoTo.pdf}}]
 \footnote{\InSqBrackets{\CNotes} enthält auch einige Beispiele.}.
 
 Hier ist ein sehr einfaches Beispiel:
@@ -13,7 +13,7 @@ Hier ist ein sehr einfaches Beispiel:
 Dies ehalten wir in MSVC 2012:
 
 \lstinputlisting[caption=MSVC 2012,style=customasmx86]{patterns/065_GOTO/MSVC_goto.asm}
-Der \IT{Goto} Ausdruck wurde einfach durch einen \JMP Befehl ersetzt, der den gleichen Effekt hat: einen unbedingten Sprung an eine andere Stelle.
+Der \emph{Goto} Ausdruck wurde einfach durch einen \JMP Befehl ersetzt, der den gleichen Effekt hat: einen unbedingten Sprung an eine andere Stelle.
 Das zweite \printf kann nur durch menschlichen Eingriff ausgeführt werden, z.B. durch einen Debugger oder Patchen des Codes.
 
 \par

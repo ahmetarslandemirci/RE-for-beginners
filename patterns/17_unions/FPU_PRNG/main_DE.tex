@@ -27,10 +27,10 @@ Ein sehr einfacher linearer Kongruenzgenerator für Zufallszahlen wird in meinem
 \URLXOR} vorgestellt: er erzeugt 32-Bit-Zahlen.
 Der \ac{PRNG} wird mit der aktuellen Zeit um UNIX-Timestamp-Format initialisiert.
 
-Wir stellen hier den Typ \Tfloat als \IT{union} dar--das ist die \CCpp Konstruktion, die es uns ermöglicht, einen
+Wir stellen hier den Typ \Tfloat als \emph{union} dar--das ist die \CCpp Konstruktion, die es uns ermöglicht, einen
 Speicherblock als unterschiedliche Typen aufzufassen.
-In unserem Fall sind wir in der Lage eine Variable vom Typ \IT{union} zu erzeugen und dann auf diese wie auf einen
-\Tfloat oder \IT{uint32\_t} zuzugreifen.
+In unserem Fall sind wir in der Lage eine Variable vom Typ \emph{union} zu erzeugen und dann auf diese wie auf einen
+\Tfloat oder \emph{uint32\_t} zuzugreifen.
 Man kann sagen, dass es sich dabei um einen Hack, d.h. Trick handelt. Sogar um einen sehr schmutzigen.
 
 % WTF?
@@ -47,11 +47,14 @@ vorliegt. Dies werden wir später besprechen: \myref{namemangling}.
 Wenn wir das Beispiel mit MSVC 2012 kompilieren, verwendet es SIMD Befehle für die FPU; mehr dazu unter:
 \myref{FPU_PRNG_SIMD}.
 
+\iffalse
+A BUG HERE
 \subsubsection{MIPS}
 
 \lstinputlisting[caption=\Optimizing GCC 4.4.5,style=customasmMIPS]{patterns/17_unions/FPU_PRNG/MIPS_O3_IDA_DE.lst}
 Hier wurde auch ein unnützer \INS{LUI} Befehl aus unerfindlichen Gründen hinzugefügt.
 Wir haben solch ein Artefakt schon früher betrachtet: \myref{MIPS_FPU_LUI}.
+\fi
 
 \subsubsection{ARM (\ARMMode)}
 

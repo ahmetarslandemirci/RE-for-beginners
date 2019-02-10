@@ -29,7 +29,7 @@
 .text:00000134                 or      $at, $zero
 .text:00000138                 lw      $gp, 0x20+var_10($fp)
 .text:0000013C
-.text:0000013C loc_13C:                                 # CODE XREF: f_unsigned+34
+.text:0000013C loc_13C:                                 # CODE XREF: f\_unsigned+34
 .text:0000013C                 lw      $v1, 0x20+arg_0($fp)
 .text:00000140                 lw      $v0, 0x20+arg_4($fp)
 .text:00000144                 or      $at, $zero
@@ -44,7 +44,7 @@
 .text:00000168                 or      $at, $zero
 .text:0000016C                 lw      $gp, 0x20+var_10($fp)
 .text:00000170
-.text:00000170 loc_170:                                 # CODE XREF: f_unsigned+68
+.text:00000170 loc_170:                                 # CODE XREF: f\_unsigned+68
 .text:00000170                 lw      $v1, 0x20+arg_0($fp)
 .text:00000174                 lw      $v0, 0x20+arg_4($fp)
 .text:00000178                 or      $at, $zero
@@ -60,11 +60,11 @@
 .text:000001A0                 or      $at, $zero
 .text:000001A4                 lw      $gp, 0x20+var_10($fp)
 .text:000001A8
-.text:000001A8 loc_1A8:                                 # CODE XREF: f_unsigned+A0
+.text:000001A8 loc_1A8:                                 # CODE XREF: f\_unsigned+A0
 .text:000001A8                 move    $sp, $fp
 .text:000001AC                 lw      $ra, 0x20+var_4($sp)
 .text:000001B0                 lw      $fp, 0x20+var_8($sp)
 .text:000001B4                 addiu   $sp, 0x20
 .text:000001B8                 jr      $ra
 .text:000001BC                 or      $at, $zero
-.text:000001BC  # End of function f_unsigned
+.text:000001BC  # End of function f\_unsigned

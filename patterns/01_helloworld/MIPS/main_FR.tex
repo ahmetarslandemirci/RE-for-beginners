@@ -56,7 +56,7 @@ d'instructions \INS{LUI} ((\q{Load Upper Immediate}) et \INS{ADDIU}
 dans le nom de l'instruction) et \INS{ADDIU} ajoute les 16 bits de poids faible
 de l'adresse.
 
-\INS{ADDIU} suit \INS{JALR} (vous n'avez pas déjà oublié le \IT{slot de
+\INS{ADDIU} suit \INS{JALR} (vous n'avez pas déjà oublié le \emph{slot de
 délai de branchement} ?).
 Le registre \$4 est aussi appelé \$A0, qui est utilisé pour passer le premier
 argument d'une fonction \footnote{La table des registres MIPS est disponible en
@@ -69,9 +69,9 @@ appendice \myref{MIPS_registers_ref}}.
 dans \ac{RA}.
 C'est très similaire à ARM.
 Oh, encore une chose importante, l'adresse sauvée dans \ac{RA} n'est pas
-l'adresse de l'instruction suivante (car c'est celle du \IT{slot de délai} et
+l'adresse de l'instruction suivante (car c'est celle du \emph{slot de délai} et
 elle est exécutée avant l'instruction de saut), mais l'adresse de l'instruction
-après la suivante (après le \IT{slot de délai}).
+après la suivante (après le \emph{slot de délai}).
 Par conséquent, $PC + 8$ est écrit dans \ac{RA} pendant l'exécution de \TT{JALR},
 dans notre cas, c'est l'adresse de l'instruction \INS{LW} après \INS{ADDIU}.
 
@@ -83,7 +83,7 @@ dans notre cas, c'est l'adresse de l'instruction \INS{LW} après \INS{ADDIU}.
 \INS{MOVE} à la ligne 22 copie la valeur du registre \$0 (\$ZERO) dans \$2 (\$V0).
 \label{MIPS_zero_register}
 
-MIPS a un registre \IT{constant}, qui contient toujours zéro.
+MIPS a un registre \emph{constant}, qui contient toujours zéro.
 Apparemment, les développeurs de MIPS avaient à l'esprit que zéro est la constante
 la plus utilisée en programmation, utilisons donc le registre \$0 à chaque fois
 que zéro est requis.
@@ -102,7 +102,7 @@ jamais utilisé.
 \INS{J} à la ligne 24 saute à l'adresse dans \ac{RA}, qui effectue effectivement
 un retour de la fonction.
 \INS{ADDIU} après \INS{J} est en fait exécutée avant \INS{J} (vous vous rappeler
-du \IT{slot de délai de branchement}?) et fait partie de l'épilogue de la fonction.
+du \emph{slot de délai de branchement}?) et fait partie de l'épilogue de la fonction.
 Voici un listing généré par \IDA. Chaque registre a son propre pseudo nom:
 
 \lstinputlisting[caption=GCC 4.4.5 \Optimizing (\IDA),numbers=left,style=customasmMIPS]{patterns/01_helloworld/MIPS/hw_O3_IDA_FR.lst}
@@ -128,7 +128,7 @@ Nous voyons ici que le registre FP est utilisé comme un pointeur sur la pile.
 Nous voyons aussi 3 \ac{NOP}s.
 Le second et le troisième suivent une instruction de branchement.
 Peut-être que le compilateur GCC ajoute toujours des \ac{NOP}s (à cause du
-\IT{slot de retard de branchement}) après les instructions de branchement, et,
+\emph{slot de retard de branchement}) après les instructions de branchement, et,
 si l'optimisation est demandée, il essaye alors de les éliminer.
 Donc, dans ce cas, ils sont laissés en place.
 
@@ -141,7 +141,7 @@ Voici le listing \IDA:
 Intéressant, \IDA a reconnu les instructions \INS{LUI}/\INS{ADDIU} et les a agrégées
 en une pseudo instruction \INS{LA} (\q{Load Address}) à la ligne 15.
 Nous pouvons voir que cette pseudo instruction a une taille de 8 octets!
-C'est une pseudo instruction (ou \IT{macro}) car ce n'est pas une instruction MIPS
+C'est une pseudo instruction (ou \emph{macro}) car ce n'est pas une instruction MIPS
 réelle, mais plutôt un nom pratique pour une paire d'instructions.
 
 \myindex{MIPS!\Pseudoinstructions!NOP}

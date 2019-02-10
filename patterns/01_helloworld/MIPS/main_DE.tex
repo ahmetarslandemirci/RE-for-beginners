@@ -55,7 +55,7 @@ und \INS{ADDIU} (\q{Add Immediate Unsigned Word}) in \$4 geladen.
 \INS{LUI} setzt die  oberen 16 Bit des Registers (deswegen \q{upper} im Anweisungsnamen)
 und \INS{ADDIU} addiert die unteren 16 Bit der Adresse.
 
-\INS{ADDIU} folgt \INS{JALR} (zur Erinnerung: \IT{branch delay slots}).
+\INS{ADDIU} folgt \INS{JALR} (zur Erinnerung: \emph{branch delay slots}).
 Das Register \$4 wird auch \$A0 genannt und für das Übergeben des ersten Funktionsarguments
 genutzt\footnote{Die MIPS-Register-Tabelle ist im Anhang verfügbar \myref{MIPS_registers_ref}}.
 
@@ -65,8 +65,8 @@ genutzt\footnote{Die MIPS-Register-Tabelle ist im Anhang verfügbar \myref{MIPS_
 gespeichert ist (Adresse von \puts) und speichert die Adresse der übernächsten Anweisung
 (LW) in \ac{RA}. Dies ist sehr ähnlich zu ARM.
 Eine wichtige Sache ist, dass die Adresse in \ac{RA} nicht die Adresse der nächsten
-Anweisung ist (da dies ein \IT{delay slot} ist und vor der Sprunganweisung ausgeführt wird),
-sondern die Adresse der darauf folgenden Anweisung (nach dem \IT{delay slot}).
+Anweisung ist (da dies ein \emph{delay slot} ist und vor der Sprunganweisung ausgeführt wird),
+sondern die Adresse der darauf folgenden Anweisung (nach dem \emph{delay slot}).
 Da in diesem Fall während der Ausführung von \TT{JALR} der Wert $PC + 8$ in \ac{RA}
 geschrieben wird, ist dies die Adresse der \INS{LW}-Anweisung nach \INS{ADDIU}.
 
@@ -78,7 +78,7 @@ Diese Anweisung ist tatsächlich ein Teil des Funktionsepilogs.
 \INS{MOVE} in Zeile 22 kopiert der Wert vom \$0 (\$ZERO)-Register in \$2 (\$V0).
 \label{MIPS_zero_register}
 
-MIPS besitzt ein \IT{konstantes} Register, welches immer eine Null beinhaltet.
+MIPS besitzt ein \emph{konstantes} Register, welches immer eine Null beinhaltet.
 Anscheinend hatten die MIPS-Entwickler die Idee, dass eine Null die beliebteste
 Konstante in der Programmierung ist, also wird in Zukunft immer das \$0-Register
 genutzt wenn eine Null benötigt wird.
@@ -95,7 +95,7 @@ wird niemals genutzt.
 \myindex{MIPS!\Instructions!J}
 
 \INS{J} in Zeile 24 springt zu der Adresse in \ac{RA}, was im Endeffekt einem Sprung aus einer Funktion entspricht.
-\INS{ADDIU} nach \INS{J} wird tatsächlich bevor \INS{J} ausgeführt (siehe \IT{branch delay slots}) und ist
+\INS{ADDIU} nach \INS{J} wird tatsächlich bevor \INS{J} ausgeführt (siehe \emph{branch delay slots}) und ist
 ein Teil des Funktions-Epilogs.
 Hier ist die Ausgabe, die \IDA generiert. Jedes Register hat einen eigenen Pseudo-Namen:
 
@@ -118,7 +118,7 @@ Es ist zu sehen, dass das FP-Register als Zeiger zum Stack Frame genutzt wird.
 Außerdem sind im Listing drei \ac{NOP}-Anweisungen.
 Die zweite und dritte welche der Sprunganweisung folgt.
 Möglicherweise fügt der GCC-Compiler immer \ac{NOP}-Anweisungen nach einer Sprung hinzu
-(wegen der \IT{branch delay slots}) und entfernt diese wenn die Optimierung eingeschaltet ist.
+(wegen der \emph{branch delay slots}) und entfernt diese wenn die Optimierung eingeschaltet ist.
 In diesem Fall bleiben sie also bestehen.
 
 Nachfolgend das \IDA-Listing:
@@ -130,7 +130,7 @@ Nachfolgend das \IDA-Listing:
 Interessanterweise kennt \IDA das Anweisungspaar \INS{LUI}/\INS{ADDIU} und fasst diese zu einer einzigen
 Pseudoanweisung \INS{LA} (\q{Load Address}) zusammen (Zeile 15).
 Es ist auch zu sehen, dass diese Pseudoanweisung eine Größe von 8 Byte hat!
-Dies ist eine Pseudoanweisung (oder \IT{Makro}) weil es sich hier nicht um eine echte MIPS-Anweisung
+Dies ist eine Pseudoanweisung (oder \emph{Makro}) weil es sich hier nicht um eine echte MIPS-Anweisung
 handelt, sondern eher um einen handlichen Namen für ein Anweisungspaar.
 
 \myindex{MIPS!\Pseudoinstructions!NOP}

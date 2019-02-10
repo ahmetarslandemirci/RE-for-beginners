@@ -23,7 +23,7 @@ _print_as_IP PROC
 	shr	ecx, 24
 	; ECX=000000dd
 	push	ecx
-	push	OFFSET $SG3020 ; '%d.%d.%d.%d'
+	push	OFFSET $SG3020 ; \verb|'%d.%d.%d.%d'|
 	call	DWORD PTR __imp__printf
 	add	esp, 20
 	ret	0

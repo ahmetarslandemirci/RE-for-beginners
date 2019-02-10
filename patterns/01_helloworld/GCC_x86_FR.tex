@@ -4,23 +4,7 @@ Maintenant compilons le même code \CCpp avec le compilateur GCC 4.4.1 sur Linux
 Ensuite, avec l'aide du désassembleur \IDA, regardons comment la fonction \main a été créée.
 \IDA, comme MSVC, utilise la syntaxe Intel\footnote{GCC peut aussi produire un listing assembleur utilisant la syntaxe Intel en lui passant les options \TT{-S -masm=intel}.}.
 
-\begin{lstlisting}[caption=code in \IDA,style=customasmx86]
-main            proc near
-
-var_10          = dword ptr -10h
-
-                push    ebp
-                mov     ebp, esp
-                and     esp, 0FFFFFFF0h
-                sub     esp, 10h
-                mov     eax, offset aHelloWorld ; "hello, world\n"
-                mov     [esp+10h+var_10], eax
-                call    _printf
-                mov     eax, 0
-                leave
-                retn
-main            endp
-\end{lstlisting}
+\lstinputlisting[caption=code in \IDA,style=customasmx86]{patterns/01_helloworld/IDA_x86.asm}
 
 \myindex{Prologue de fonction}
 \myindex{x86!\Instructions!AND}
@@ -42,7 +26,7 @@ C'est parce que la taille de la pile allouée est alignée sur une limite de 16-
 \myindex{x86!\Instructions!PUSH}
 L'adresse de la chaîne est (ou un pointeur vers la chaîne) est stockée directement sur la pile sans utiliser
 l'instruction \PUSH.
-\IT{var\_10}~---est une variable locale et est aussi un argument pour \printf{}.
+\emph{var\_10}~---est une variable locale et est aussi un argument pour \printf{}.
 Lisez à ce propos en dessous.
 
 Ensuite la fonction \printf est appelée.
@@ -70,10 +54,10 @@ Nous obtenons ceci:
 
 Le listing contient beaucoup de macros (qui commencent avec un point). Cela ne nous intéresse pas pour le moment.
 
-Pour l'instant, dans un souci de simplification, nous pouvons les ignorer (excepté la macro \IT{.string}
+Pour l'instant, dans un souci de simplification, nous pouvons les ignorer (excepté la macro \emph{.string}
 qui encode une séquence de caractères terminée par un octet nul, comme une chaîne C).
 Ensuite nous verrons cela\footnote{Cette option de GCC peut être utilisée pour éliminer les macros \q{non nécessaires}:
-\IT{-fno-asynchronous-unwind-tables}}:
+\emph{-fno-asynchronous-unwind-tables}}:
 
 \lstinputlisting[caption=GCC 4.7.3,style=customasmx86]{patterns/01_helloworld/GCC_refined.s}
 

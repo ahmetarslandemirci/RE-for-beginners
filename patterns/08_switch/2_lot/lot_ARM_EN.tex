@@ -6,15 +6,15 @@
 This code makes use of the ARM mode feature in which all instructions have a fixed size of 4 bytes.
 
 Let's keep in mind that the maximum value for $a$ is 4 and any greater value will cause
-\IT{<<something unknown\textbackslash{}n>>} string to be printed.
+\emph{<<something unknown\textbackslash{}n>>} string to be printed.
 
 \myindex{ARM!\Instructions!CMP}
 \myindex{ARM!\Instructions!ADDCC}
 The first \TT{CMP R0, \#5} instruction compares the input value of $a$ with 5.
 
 \footnote{ADD---addition}
-The next \TT{ADDCC PC, PC, R0,LSL\#2} instruction is being executed only if $R0 < 5$ (\IT{CC=Carry clear / Less than}). 
-Consequently, if \TT{ADDCC} does not trigger (it is a $R0 \geq 5$ case), a jump to \IT{default\_case} label will occur.
+The next \TT{ADDCC PC, PC, R0,LSL\#2} instruction is being executed only if $R0 < 5$ (\emph{CC=Carry clear / Less than}). 
+Consequently, if \TT{ADDCC} does not trigger (it is a $R0 \geq 5$ case), a jump to \emph{default\_case} label will occur.
 
 But if $R0 < 5$ and \TT{ADDCC} triggers, the following is to be happen:
 
@@ -24,7 +24,7 @@ But as we will see later~(\myref{division_by_shifting}) in section \q{\ShiftsSec
 shift left by 2 bits is equivalent to multiplying by 4.
 
 Then we add $R0*4$ to the current value in \ac{PC}, 
-thus jumping to one of the \TT{B} (\IT{Branch}) instructions located below.
+thus jumping to one of the \TT{B} (\emph{Branch}) instructions located below.
 
 At the moment of the execution of \TT{ADDCC}, the value in \ac{PC} is 8 bytes ahead (\TT{0x180})
 than the address at which the \TT{ADDCC} instruction is located (\TT{0x178}), 
@@ -39,18 +39,18 @@ so that is why \ac{PC} points there. This has to be memorized.
 
 If $a=0$, then is to be added to the value in \ac{PC},
 and the actual value of the \ac{PC} will be written into \ac{PC} (which is 8 bytes ahead)
-and a jump to the label \IT{loc\_180} will happen,
+and a jump to the label \emph{loc\_180} will happen,
 which is 8 bytes ahead of the point where the \TT{ADDCC} instruction is.
 
 If $a=1$, then $PC+8+a*4 = PC+8+1*4 = PC+12 = 0x184$ will be written to \ac{PC},
-which is the address of the \IT{loc\_184} label.
+which is the address of the \emph{loc\_184} label.
 
 With every 1 added to $a$, the resulting \ac{PC} is increased by 4.
 
 4 is the instruction length in ARM mode and also, the length of each \TT{B} instruction,
 of which there are 5 in row.
 
-Each of these five \TT{B} instructions passes control further, to what was programmed in the \IT{switch()}.
+Each of these five \TT{B} instructions passes control further, to what was programmed in the \emph{switch()}.
 
 Pointer loading of the corresponding string occurs there, etc.
 
@@ -74,7 +74,7 @@ the corresponding case.
 \myindex{ARM!\Instructions!BX}
 
 A special function is present here in order to deal with the table and pass control, \\
-named \IT{\_\_ARM\_common\_switch8\_thumb}. 
+named \emph{\_\_ARM\_common\_switch8\_thumb}. 
 It starts with \TT{BX PC}, whose function is to switch the processor to ARM-mode.
 Then you see the function for table processing. 
 

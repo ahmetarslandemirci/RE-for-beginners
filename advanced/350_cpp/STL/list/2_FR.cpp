@@ -38,7 +38,7 @@ void dump_List_vals (struct List_node* n)
 void dump_List_val (unsigned int *a)
 {
 #ifdef _MSC_VER
-    // l'impl§é§mentation de GCC n'a pas le champ "size"
+    // l'implémentation de GCC n'a pas le champ "size"
     printf ("_Myhead=0x%p, _Mysize=%d\n", a[0], a[1]);
 #endif
     dump_List_vals ((struct List_node*)a[0]);

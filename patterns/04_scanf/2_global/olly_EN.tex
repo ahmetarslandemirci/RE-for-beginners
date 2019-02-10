@@ -20,7 +20,7 @@ After we have entered 123 in the console,
 
 But why is the first byte \TT{7B}?
 Thinking logically, \TT{00 00 00 7B} must be there.
-The cause for this is referred as  \gls{endianness}, and x86 uses \IT{little-endian}.
+The cause for this is referred as  \gls{endianness}, and x86 uses \emph{little-endian}.
 This implies that the lowest byte is written first, and the highest written last.
 Read more about it at: \myref{sec:endianness}.
 Back to the example, the 32-bit value is loaded from this memory address into \EAX and passed to \printf.

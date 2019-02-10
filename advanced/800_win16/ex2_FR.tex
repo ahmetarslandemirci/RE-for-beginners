@@ -26,7 +26,7 @@ WinMain         proc near
                 push    ds
                 mov     ax, offset aCaption ; 0x10. "caption"
                 push    ax
-                mov     ax, 3           ; MB_YESNOCANCEL
+                mov     ax, 3           ; MB\_YESNOCANCEL
                 push    ax
                 call    MESSAGEBOX
                 xor     ax, ax          ; return 0
@@ -40,8 +40,7 @@ dseg02:0018 aHelloWorld     db 'hello, world',0
 
 \myindex{x86!\Instructions!RET}
 Quelques points importants ici: la convention d'appel \TT{PASCAL} impose de passer
-le premier argument en premier (\TT{MB\_YESNOCANCEL}), et le dernier argument\EMDASH{}
-en dernier (NULL).
+le premier argument en premier (\TT{MB\_YESNOCANCEL}), et le dernier argument --- en dernier (NULL).
 Cette convention demande aussi à l'\glslink{callee}{appelant} de restaurer le \glslink{stack pointer}{pointeur de pile}:
 D'où l'instruction \TT{RETN} qui a \TT{0Ah} comme argument, ce qui implique que le
 pointeur sera incrémenté de 10 octets lorsque l'on sortira de la fonction.

@@ -13,8 +13,8 @@ my_atoi:
 .L10:
 ; ESI=0 ici si il n'y avait pas de signe moins et 1 si il en avait un
 	lea	eax, [rdx-48]
-; §tout caractère autre qu'un chiffre résultera en un nombre non signé plus grand que 9 après§
-; soustraction donc s'il ne s'agit pas d'un chiffre, sauter en L4, §où l'erreur doit être rapportée§
+; tout caractère autre qu'un chiffre résultera en un nombre non signé plus grand que 9 après
+; soustraction donc s'il ne s'agit pas d'un chiffre, sauter en L4, où l'erreur doit être rapportée
 	cmp	al, 9
 	ja	.L4
 	xor	eax, eax
@@ -31,7 +31,7 @@ my_atoi:
 	test	dl, dl
 	jne	.L7
 ; s'il n'y avait pas de signe moins, sauter l'instruction NEG
-; s'il y en avait un, §l'exécuter§.
+; s'il y en avait un, l'exécuter.
 	test	esi, esi
 	je	.L18
 	neg	eax
@@ -50,9 +50,9 @@ my_atoi:
 	xor	eax, eax
 	jmp	.L18
 .L4:
-; signale une erreur. le §caractère§ est dans EDX
+; signale une erreur. le caractère est dans EDX
 	mov	edi, 1
-	mov	esi, OFFSET FLAT:.LC0 ; "Error! Unexpected char: '%c'\n"
+	mov	esi, OFFSET FLAT:.LC0 ; \verb|"Error! Unexpected char: '%c'\n"|
 	xor	eax, eax
 	call	__printf_chk
 	xor	edi, edi

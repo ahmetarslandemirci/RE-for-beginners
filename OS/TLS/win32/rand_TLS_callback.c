@@ -31,6 +31,6 @@ int my_rand ()
 
 int main()
 {
-	// rand_state is already initialized at the moment (using GetTickCount())
+	// rand\_state is already initialized at the moment (using GetTickCount())
 	printf ("%d\n", my_rand());
 };

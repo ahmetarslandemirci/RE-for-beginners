@@ -245,7 +245,6 @@ present anymore after the operation.}
 \RU{Это может пригодиться для создания шеллкодов}\EN{These can be suitable for shellcode construction}.
 \RU{См. также}\EN{See also}: \myref{subsec:EICAR}.
 
-% FIXME: break table
 % FIXME: start at 0x20...
 \begin{center}
 \begin{longtable}{ | l | l | l | }
@@ -302,10 +301,7 @@ Z	 &5a	 &POP \\
 \_	 &5f	 &POP \\
 \verb|`|	 &60	 &PUSHA \\
 a	 &61	 &POPA \\
-f	 &66	 &\RU{(в 32-битном режиме) переключиться на}\EN{(in 32-bit mode) switch to}\\
-   & & \RU{16-битный размер операнда}\EN{16-bit operand size} \\
-g	 &67	 &\RU{(в 32-битном режиме) переключиться на}\EN{(in 32-bit mode) switch to}\\
-   & & \RU{16-битный размер адреса}\EN{16-bit address size} \\
+
 h	 &68	 &PUSH\\
 i	 &69	 &IMUL\\
 j	 &6a	 &PUSH\\
@@ -321,6 +317,23 @@ w	 &77	 &JA\\
 x	 &78	 &JS\\
 y	 &79	 &JNS\\
 z	 &7a	 &JP\\
+\hline
+\end{longtable}
+\end{center}
+
+\RU{А также}\EN{Also}:
+
+\begin{center}
+\begin{longtable}{ | l | l | l | }
+\hline
+\HeaderColor ASCII\RU{-символ}\EN{ character} & 
+\HeaderColor \RU{шестнадцатеричный код}\EN{hexadecimal code} & 
+\HeaderColor x86\RU{-инструкция}\EN{ instruction} \\
+\hline
+f	 &66	 &\RU{(в 32-битном режиме) переключиться на}\EN{(in 32-bit mode) switch to}\\
+   & & \RU{16-битный размер операнда}\EN{16-bit operand size} \\
+g	 &67	 &\RU{(в 32-битном режиме) переключиться на}\EN{in 32-bit mode) switch to}\\
+   & & \RU{16-битный размер адреса}\EN{16-bit address size} \\
 \hline
 \end{longtable}
 \end{center}

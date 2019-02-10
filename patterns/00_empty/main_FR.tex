@@ -60,7 +60,7 @@ Bien que les fonctions vides soient inutiles, elles sont assez fréquentes dans 
 
 Tout d'abord, les fonctions de débogage sont assez populaires, comme celle-ci:
 
-\lstinputlisting[caption=Code \CCpp]{patterns/00_empty/dbg_print.c}
+\lstinputlisting[caption=Code \CCpp,style=customc]{patterns/00_empty/dbg_print_EN.c}
 
 Dans une compilation en non-debug (e.g., ``release''), \TT{\_DEBUG} n'est pas défini,
 donc la fonction \TT{dbg\_print()}, bien qu'elle soit appelée pendant l'exécution,
@@ -69,7 +69,7 @@ sera vide.
 Un autre moyen de protection logicielle est de faire plusieurs compilations: une pour les clients, une de démonstration.
 La compilation de démonstration peut omettre certaines fonctions importantes, comme ici:
 
-\lstinputlisting[caption=Code \CCpp]{patterns/00_empty/demo.c}
+\lstinputlisting[caption=Code \CCpp,style=customc]{patterns/00_empty/demo_EN.c}
 
 La fonction \TT{save\_file()} peut être appelée lorsque l'utilisateur clique sur le menu \TT{Fichier->Enregistrer}.
 La version de démo peut être livrée avec cet item du menu désactivé, mais même si un logiciel cracker pourra l'activer,

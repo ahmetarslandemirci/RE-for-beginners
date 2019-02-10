@@ -18,9 +18,9 @@ main            proc near
                 lea     esi, [esi+0]	; NOP
 loc_80483D8:
 ; EBX здесь это указатель на структуру, ESI - указатель на её конец.
-                mov     eax, [ebx]	; загрузить §32-битное§ слово из массива
+                mov     eax, [ebx]	; загрузить 32-битное слово из массива
                 add     ebx, 4          ; следующее поле в структуре
-                mov     dword ptr [esp+4], offset a0x08xD ; "0x%08X (%d)\n"
+                mov     dword ptr [esp+4], offset a0x08xD ; \verb|"0x%08X (%d)\n"|
                 mov     dword ptr [esp], 1
                 mov     [esp+0Ch], eax	; передать значение в printf()
                 mov     [esp+8], eax	; передать значение в printf()

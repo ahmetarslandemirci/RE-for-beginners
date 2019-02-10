@@ -37,7 +37,7 @@ Voici un exemple tiré de la zlib:
 L'appel à \TT{setjmp()} sauve les valeurs courantes de \ac{PC}, \ac{SP} et autres
 registres dans une structure \TT{env}, puis renvoie 0.
 
-En cas d'erreur, \TT{longjmp()} vous \IT{téléporte} au point juste après l'appel
+En cas d'erreur, \TT{longjmp()} vous \emph{téléporte} au point juste après l'appel
 à \TT{setjmp()}, comme si l'appel à \TT{setjmp()} avait renvoyé une valeur non nulle
 (qui avait été passée à \TT{longjmp()}).
 \myindex{UNIX!fork}

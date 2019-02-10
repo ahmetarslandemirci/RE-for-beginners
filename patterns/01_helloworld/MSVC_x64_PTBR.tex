@@ -9,7 +9,7 @@ Vamos tentar também o MSVC 64-bits:
 
 No x86-64, todos os registradores foram extendidos para 64-bits e agora seus nomes contém um \TT{R-} no prefixo.
 A fim de diminuir a frequência com que a stack (pilha) é usada (em outras palavras, para acessar memória externa/cache menos vezes),
-existe uma maneira popular de passar argumentos para funções através dos registradores (\IT{fastcall}) \myref{fastcall}.
+existe uma maneira popular de passar argumentos para funções através dos registradores (\emph{fastcall}) \myref{fastcall}.
 Por exemplo, uma parte dos argumentos da função é passada nos registradores, o resto pela stack.
 No Win64, 4 argumentos de funções são passados através dos registradores \RCX, \RDX, \Reg{8}, \Reg{9}.
 Que é o que nós vemos, um ponteiro para a string para o printf() não é passado pela stack, mas no registrador \RCX.

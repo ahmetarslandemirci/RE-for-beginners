@@ -37,19 +37,19 @@ Essayons de modifier un exécutable Linux x64 en utilisant \radare{}:
 \lstinputlisting[caption=\radare{} session]{patterns/01_helloworld/radare.lst}
 
 Ce que je fais ici: je cherche la chaîne \q{hello} en utilisant la commande  \TT{/},
-ensuite je déplace le \IT{curseur} (ou \IT{seek} selon la terminologie de \radare{}) à cette adresse.
+ensuite je déplace le \emph{curseur} (ou \emph{seek} selon la terminologie de \radare{}) à cette adresse.
 Je veux être certain d'être à la bonne adresse: \TT{px} affiche les octets ici.
-\TT{oo+} passe \radare{} en mode \IT{read-write}.
-\TT{w} écrit une chaîne ASCII à la \IT{seek} (\IT{position}) courante.
+\TT{oo+} passe \radare{} en mode \emph{read-write}.
+\TT{w} écrit une chaîne ASCII à la \emph{seek} (\emph{position}) courante.
 Notez le \TT{\textbackslash{}00} à la fin--c'est l'octet à zéro.
 \TT{q} quitte.
 
-\subsubsection{\IT{Traduction} de logiciel à l'ère MS-DOS}
+\subsubsection{\emph{Traduction} de logiciel à l'ère MS-DOS}
 
 La méthode que je viens de décrire était couramment employée pour traduire des logiciels sous MS-DOS en russe dans les
 années 1980 et 1990.
 Les mots et les phrases russes sont en général un peu plus longs qu'en anglais, c'est pourquoi les logiciels
-\IT{traduits} sont pleins d'acronymes sibyllins et d'abréviations difficilement lisibles.
+\emph{traduits} sont pleins d'acronymes sibyllins et d'abréviations difficilement lisibles.
 
 Peut-être que cela s'est produit pour d'autres langages durant cette période.
 

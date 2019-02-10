@@ -24,10 +24,8 @@ Subtract} Befehl verwendet, der mit umgekehrten Operanden subtrahiert.
 \subsubsection{\OptimizingKeilVI: \ARMMode}
 Es ist im ARM mode möglich, einigen Befehlen condition codes hinzuzufügen und genau das tut der Keil Compiler:
 
-
 \lstinputlisting[caption=\OptimizingKeilVI: \ARMMode,style=customasmARM]{patterns/07_jcc/abs/abs_Keil_ARM_O3_DE.s}
 Jetzt sind keine bedingten Sprünge mehr übrig und das ist vorteilhaft: \myref{branch_predictors}.
-
 
 \subsubsection{\NonOptimizing GCC 4.9 (ARM64)}
 

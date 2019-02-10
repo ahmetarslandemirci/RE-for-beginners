@@ -13,6 +13,7 @@ Si une fonction renvoie un nombre de type \Tfloat, le registre \ST{0} du FPU est
 En ARM, d'habitude, le résultat est renvoyé dans le registre \Reg{0}.
 
 \subsection{Tentative d'utilisation du résultat d'une fonction renvoyant \Tvoid}
+\label{UseResultOfVoidFunc}
 
 Donc, que se passe-t-il si le type de retour de la fonction \main a été déclaré
 du type \Tvoid et non pas \Tint?
@@ -35,7 +36,7 @@ exit(main(argc,argv,envp));
 \end{lstlisting}
 
 Si vous déclarez \main comme renvoyant \Tvoid, rien ne sera renvoyé explicitement
-(en utilisant la déclaration \IT{return}), alors quelque chose d'inconnu, qui aura
+(en utilisant la déclaration \emph{return}), alors quelque chose d'inconnu, qui aura
 été stocké dans la registre \EAX lors de l'exécution de \main sera l'unique argument
 de la fonction exit().
 Il y aura probablement une valeur aléatoire, laissée lors de l'exécution de la fonction,
@@ -97,6 +98,8 @@ Hello, world!
 
 14 est le nombre de caractères écrits.
 Le nombre de caractères affichés est \textit{passé} de \printf{}, à travers \TT{EAX}/\TT{RAX}, dans le \q{code de retour}.
+
+Un autre exemple dans le livre: \myref{ForgottenReturn}.
 
 \myindex{Hex-Rays}
 À propos, lorsque l'on décompile du C++ dans Hex-Rays, nous rencontrons souvent

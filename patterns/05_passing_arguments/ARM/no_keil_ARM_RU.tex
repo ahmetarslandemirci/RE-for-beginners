@@ -1,36 +1,19 @@
 \subsubsection{\NonOptimizingKeilVI (\ARMMode)}
 
-\begin{lstlisting}[style=customasmARM]
-.text:000000A4 00 30 A0 E1       MOV     R3, R0
-.text:000000A8 93 21 20 E0       MLA     R0, R3, R1, R2
-.text:000000AC 1E FF 2F E1       BX      LR
-...
-.text:000000B0             main
-.text:000000B0 10 40 2D E9       STMFD   SP!, {R4,LR}
-.text:000000B4 03 20 A0 E3       MOV     R2, #3
-.text:000000B8 02 10 A0 E3       MOV     R1, #2
-.text:000000BC 01 00 A0 E3       MOV     R0, #1
-.text:000000C0 F7 FF FF EB       BL      f
-.text:000000C4 00 40 A0 E1       MOV     R4, R0
-.text:000000C8 04 10 A0 E1       MOV     R1, R4
-.text:000000CC 5A 0F 8F E2       ADR     R0, aD_0        ; "%d\n"
-.text:000000D0 E3 18 00 EB       BL      __2printf
-.text:000000D4 00 00 A0 E3       MOV     R0, #0
-.text:000000D8 10 80 BD E8       LDMFD   SP!, {R4,PC}
-\end{lstlisting}
+\lstinputlisting[style=customasmARM]{patterns/05_passing_arguments/ARM/tmp1.asm}
 
 В функции \main просто вызываются две функции, в первую (\ttf) передается три значения.
 Как уже было упомянуто, первые 4 значения в ARM обычно передаются в первых 4-х регистрах (\Reg{0}-\Reg{3}).
 Функция \ttf, как видно, использует три первых регистра (\Reg{0}-\Reg{2}) как аргументы.
 
 \myindex{ARM!\Instructions!MLA}
-Инструкция \TT{MLA} (\IT{Multiply Accumulate}) перемножает два первых операнда (\Reg{3} и \Reg{1}), 
+Инструкция \TT{MLA} (\emph{Multiply Accumulate}) перемножает два первых операнда (\Reg{3} и \Reg{1}), 
 прибавляет к произведению
 третий операнд (\Reg{2}) и помещает результат в нулевой регистр (\Reg{0}), через который, по стандарту, 
 возвращаются значения функций.
 
 \myindex{Fused multiply–add}
-Умножение и сложение одновременно (\IT{Fused multiply–add}) это часто применяемая операция. Кстати, аналогичной
+Умножение и сложение одновременно (\emph{Fused multiply–add}) это часто применяемая операция. Кстати, аналогичной
 инструкции в x86 не было до появления FMA-инструкций в SIMD
 \footnote{\href{http://go.yurichev.com/17103}{wikipedia}}.
 

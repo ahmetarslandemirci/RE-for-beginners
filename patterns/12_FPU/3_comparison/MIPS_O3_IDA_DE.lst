@@ -1,8 +1,8 @@
 d_max:
-; setze das FPU Condition Bit, falls $f14<$f12 (b<a):
+; setze das FPU Condition Bit, falls \$f14<\$f12 (b<a):
                 c.lt.d  $f14, $f12
                 or      $at, $zero ; NOP
-; springe zu locret_14 , falls das Condition Bit gesetzt ist
+; springe zu locret\_14 , falls das Condition Bit gesetzt ist
                 bc1t    locret_14
 ; dieser Befehl wird stets ausgeführt (setze Rückgabewert auf "a"):
                 mov.d   $f0, $f12  ; branch delay slot

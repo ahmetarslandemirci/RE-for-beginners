@@ -1,7 +1,7 @@
 arith_mean:
 	lea	rax, [rsp+8]
 	; save 6 input registers in 
-	; §\IT{red zone}§ in the local stack
+	; \emph{red zone} in the local stack
 	mov	QWORD PTR [rsp-40], rsi
 	mov	QWORD PTR [rsp-32], rdx
 	mov	QWORD PTR [rsp-16], r8

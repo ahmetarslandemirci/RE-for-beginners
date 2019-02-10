@@ -20,7 +20,7 @@ value    = dword ptr  14h
          add     eax, edx           ; eax=eax+edx=y*30 + x*600
          lea     edx, [eax+ecx]     ; edx=y*30 + x*600 + z
          mov     eax, [ebp+value]
-         mov     dword ptr ds:a[edx*4], eax  ; *(a+edx*4)=§значение§
+         mov     dword ptr ds:a[edx*4], eax  ; *(a+edx*4)=значение
          pop     ebx
          pop     ebp
          retn

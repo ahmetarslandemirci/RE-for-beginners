@@ -82,7 +82,7 @@ par des variables globales, comme:
 
 \lstinputlisting[caption=Code assembleur,style=customasmx86]{patterns/02_stack/global_args.asm}
 
-Mais cette méthode a un inconvénient évident: la fonction \IT{do\_something()}
+Mais cette méthode a un inconvénient évident: la fonction \emph{do\_something()}
 ne peut pas s'appeler elle-même récursivement (ou par une autre fonction),
 car il faudrait écraser ses propres arguments.
 La même histoire avec les variables locales: si vous les stockez dans des variables
@@ -140,7 +140,7 @@ créé est retourné via \TT{AX}.
 
 Cette méthode est encore utilisée par les programmeurs en langage d'assemblage.
 Dans le code source de Windows Research Kernel (qui est très similaire à Windows
-2003) nous pouvons trouver quelque chose comme ça (file \IT{base/ntos/ke/i386/cpu.asm}):
+2003) nous pouvons trouver quelque chose comme ça (file \emph{base/ntos/ke/i386/cpu.asm}):
 
 \begin{lstlisting}[style=customasmx86]
         public  Get386Stepping

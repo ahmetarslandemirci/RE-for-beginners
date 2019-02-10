@@ -64,19 +64,19 @@ address of draw_text()=0x80484cb
 
 (Les commentaires sont miens.)
 
-Puisque \IT{f()} commence à énumérer les éléments de la pile à son premier argument,
+Puisque \emph{f()} commence à énumérer les éléments de la pile à son premier argument,
 le premier élément de la pile est en effet un pointeur sur la chaîne \q{Hello!}.
 Nous voyons que son adresse est aussi utilisée comme troisième argument de la fonction
-\IT{draw\_text()}.
+\emph{draw\_text()}.
 
-Dans \IT{f()} nous pouvons lire tous les arguments des fonctions et les variables
+Dans \emph{f()} nous pouvons lire tous les arguments des fonctions et les variables
 locales si nous connaissons exactement l'agencement de la pile, mais ça change toujours
 d'un compilateur à l'autre.
 Des niveaux d'optimisation différents modifient grandement la structure de la pile.
 
 Mais, si nous pouvons d'une manière ou d'une autre détecter l'information dont nous
 avons besoin, nous pouvons l'utiliser et même la modifier.
-À titre d'exemple, j'ai retravaillé la fonction \IT{f()}:
+À titre d'exemple, j'ai retravaillé la fonction \emph{f()}:
 
 \begin{lstlisting}[style=customc]
 void f(char *text)

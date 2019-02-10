@@ -1,6 +1,6 @@
 _main
        PUSH            {R4,R7,LR}
-       MOVW            R4, #0x1124 ; "%d\n"
+       MOVW            R4, #0x1124 ; "\%d\textbackslash{}n"
        MOVS            R1, #2
        MOVT.W          R4, #0
        ADD             R7, SP, #4

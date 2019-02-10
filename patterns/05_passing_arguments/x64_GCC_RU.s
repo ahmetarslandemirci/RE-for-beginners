@@ -20,7 +20,7 @@ main:
 	mov	edi, 1
 	call	f
 	mov	edx, eax
-	mov	eax, OFFSET FLAT:.LC0 ; "%d\n"
+	mov	eax, OFFSET FLAT:.LC0 ; "\%d\textbackslash{}n"
 	mov	esi, edx
 	mov	rdi, rax
 	mov	eax, 0  ; количество переданных векторных регистров

@@ -25,8 +25,8 @@ This fragment of code takes elements from A and B, multiplies them and saves the
 
 \myindex{x86!\Instructions!PLMULLD}
 \myindex{x86!\Instructions!PLMULHW}
-\newcommand{\PMULLD}{\IT{PMULLD} (\IT{Multiply Packed Signed Dword Integers and Store Low Result})}
-\newcommand{\PMULHW}{\TT{PMULHW} (\IT{Multiply Packed Signed Integers and Store High Result})}
+\newcommand{\PMULLD}{\emph{PMULLD} (\emph{Multiply Packed Signed Dword Integers and Store Low Result})}
+\newcommand{\PMULHW}{\TT{PMULHW} (\emph{Multiply Packed Signed Integers and Store High Result})}
 
 If each array element we have is 32-bit \Tint, then it is possible to load 4 elements from A into a 128-bit 
 XMM-register, from B to another XMM-registers, and by executing \PMULLD{} and \PMULHW{}, 
@@ -73,10 +73,10 @@ The SSE2-related instructions are:
 \myindex{x86!\Instructions!PADDD}
 \begin{itemize}
 \item
-\MOVDQU (\IT{Move Unaligned Double Quadword})---just loads 16 bytes from memory into a XMM-register.
+\MOVDQU (\emph{Move Unaligned Double Quadword})---just loads 16 bytes from memory into a XMM-register.
 
 \item
-\PADDD (\IT{Add Packed Integers})---adds 4 pairs of 32-bit numbers and leaves the result in the first operand.
+\PADDD (\emph{Add Packed Integers})---adds 4 pairs of 32-bit numbers and leaves the result in the first operand.
 By the way, no exception is raised in case of overflow and no flags are to be set, 
 just the low 32 bits of the result are to be stored.
 If one of \PADDD's operands is the address of a value in memory,
@@ -85,7 +85,7 @@ If it is not aligned, an exception will be triggered
 \footnote{More about data alignment: \URLWPDA}.
 
 \item
-\MOVDQA (\IT{Move Aligned Double Quadword})
+\MOVDQA (\emph{Move Aligned Double Quadword})
 is the same as \MOVDQU, but requires the address of the value in memory to be aligned on a 16-bit boundary.
 If it is not aligned, exception will be raised.
 \MOVDQA works faster than \MOVDQU, but requires aforesaid.

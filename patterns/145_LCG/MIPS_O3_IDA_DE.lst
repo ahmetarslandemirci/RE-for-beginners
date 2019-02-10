@@ -1,14 +1,14 @@
 my_srand:
-; speichere $a0 in rand_state:
+; speichere \$a0 in rand\_state:
                 lui     $v0, (rand_state >> 16)
                 jr      $ra
                 sw      $a0, rand_state
 my_rand:
-; lade rand_state nach $v0:
+; lade rand\_state nach \$v0:
                 lui     $v1, (rand_state >> 16)
                 lw      $v0, rand_state
                 or      $at, $zero  ; lade delay slot
-; multipliziere rand_state in $v0 mit 1664525 (RNG_a):
+; multipliziere rand\_state in \$v0 mit 1664525 (RNG\_a):
                 sll     $a1, $v0, 2
                 sll     $a0, $v0, 4
                 addu    $a0, $a1, $a0
@@ -21,11 +21,11 @@ my_rand:
                 addu    $v0, $a0, $v0
                 sll     $a0, $v0, 2
                 addu    $v0, $a0
-; addiere 1013904223 (RNG_c)
+; addiere 1013904223 (RNG\_c)
 ; der LI Befehl ist von IDA aus LUI und ORI zusammengesetzt
                 li      $a0, 0x3C6EF35F 
                 addu    $v0, $a0
-; speichere in rand_state:
+; speichere in rand\_state:
                 sw      $v0, (rand_state & 0xFFFF)($v1)
                 jr      $ra
                 andi    $v0, 0x7FFF ; branch delay slot

@@ -5,32 +5,32 @@ str_trim:
 	mov	x19, x0
 ; X19 will always hold value of "s"
 	bl	strlen
-; X0=str_len
-	cbz	x0, .L9        ; goto L9 (exit) if str_len==0
+; X0=str\_len
+	cbz	x0, .L9        ; goto L9 (exit) if str\_len==0
 	sub	x1, x0, #1
-; X1=X0-1=str_len-1
+; X1=X0-1=str\_len-1
 	add	x3, x19, x1
-; X3=X19+X1=s+str_len-1
-	ldrb	w2, [x19,x1]   ; load byte at address X19+X1=s+str_len-1
+; X3=X19+X1=s+str\_len-1
+	ldrb	w2, [x19,x1]   ; load byte at address X19+X1=s+str\_len-1
 ; W2=loaded character
 	cbz	w2, .L9        ; is it zero? jump to exit then
-	cmp	w2, 10         ; is it '\n'?
+	cmp	w2, 10         ; \verb|is it '\n'?|
 	bne	.L15
 .L12:
 ; main loop body. loaded character is always 10 or 13 at this moment!
 	sub	x2, x1, x0
-; X2=X1-X0=str_len-1-str_len=-1
+; X2=X1-X0=str\_len-1-str\_len=-1
 	add	x2, x3, x2
-; X2=X3+X2=s+str_len-1+(-1)=s+str_len-2
-	strb	wzr, [x2,1]    ; store zero byte at address s+str_len-2+1=s+str_len-1
-	cbz	x1, .L9        ; str_len-1==0? goto exit, if so
-	sub	x1, x1, #1     ; str_len--
-	ldrb	w2, [x19,x1]   ; load next character at address X19+X1=s+str_len-1
-	cmp	w2, 10         ; is it '\n'?
+; X2=X3+X2=s+str\_len-1+(-1)=s+str\_len-2
+	strb	wzr, [x2,1]    ; store zero byte at address s+str\_len-2+1=s+str\_len-1
+	cbz	x1, .L9        ; str\_len-1==0? goto exit, if so
+	sub	x1, x1, #1     ; str\_len--
+	ldrb	w2, [x19,x1]   ; load next character at address X19+X1=s+str\_len-1
+	cmp	w2, 10         ; \verb|is it '\n'?|
 	cbz	w2, .L9        ; jump to exit, if its zero
-	beq	.L12           ; jump to begin loop, if its '\n'
+	beq	.L12           ; \verb|jump to begin loop, if its '\n'|
 .L15:
-	cmp	w2, 13         ; is it '\r'?
+	cmp	w2, 13         ; \verb|is it '\r'?|
 	beq	.L12           ; yes, jump to the loop body begin
 .L9:
 ; return "s"

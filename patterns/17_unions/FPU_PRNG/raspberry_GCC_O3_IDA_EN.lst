@@ -7,7 +7,7 @@ float_rand
                 BIC     R3, R0, #0xFF000000
                 BIC     R3, R3, #0x800000
                 ORR     R3, R3, #0x3F800000
-; R3=pseudorandom value & 0x007fffff | 0x3f800000
+; R3=pseudorandom value \& 0x007fffff | 0x3f800000
 ; copy from R3 to FPU (register S15).
 ; it behaves like bitwise copy, no conversion done:
                 FMSR    S15, R3
@@ -27,7 +27,7 @@ main
 loc_78
                 BL      float_rand
 ; S0=pseudorandom value
-                LDR     R0, =aF         ; "%f"
+                LDR     R0, =aF         ; "\%f"
 ; convert float type value into double type value (printf() will need it):
                 FCVTDS  D7, S0
 ; bitwise copy from D7 into R2/R3 pair of registers (for printf()):

@@ -64,15 +64,15 @@ address of draw_text()=0x80484cb
 
 (Comments are mine.)
 
-Since \IT{f()} starting to enumerate stack elements at its first argument, the first stack element is indeed a pointer
-to \q{Hello!} string. We see its address is also used as third argument to \IT{draw\_text()} function.
+Since \emph{f()} starting to enumerate stack elements at its first argument, the first stack element is indeed a pointer
+to \q{Hello!} string. We see its address is also used as third argument to \emph{draw\_text()} function.
 
-In \IT{f()} we could read all functions arguments and local variables if we know exact stack layout, but it's always
+In \emph{f()} we could read all functions arguments and local variables if we know exact stack layout, but it's always
 changed, from compiler to compiler.
 Various optimization levels affect stack layout greatly.
 
 But if we can somehow detect information we need, we can use it and even modify it.
-As an example, I'll rework \IT{f()} function:
+As an example, I'll rework \emph{f()} function:
 
 \begin{lstlisting}[style=customc]
 void f(char *text)

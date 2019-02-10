@@ -25,7 +25,7 @@ loc_80484B8:
                 shr     ecx, 8          ; ECX=hash>>8
                 movzx   eax, al         ; EAX=*(key+i)
                 mov     eax, dword ptr ds:crctab[eax*4] ; EAX=crctab[EAX]
-                xor     eax, ecx        ; hash=EAX^ECX
+                xor     eax, ecx        ; \verb|hash=EAX^ECX|
                 cmp     ebx, edx
                 ja      short loc_80484B8
 
@@ -35,4 +35,4 @@ loc_80484D3:
                 pop     ebp
                 retn
 crc             endp
-\
+

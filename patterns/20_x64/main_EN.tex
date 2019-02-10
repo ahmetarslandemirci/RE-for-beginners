@@ -19,12 +19,12 @@ Now \ac{GPR}'s are: \RAX, \RBX, \RCX, \RDX,
 \RBP, \RSP, \RSI, \RDI, \Reg{8}, \Reg{9}, \Reg{10}, 
 \Reg{11}, \Reg{12}, \Reg{13}, \Reg{14}, \Reg{15}. 
 
-It is still possible to access the \IT{older} register parts as usual. 
+It is still possible to access the \emph{older} register parts as usual. 
 For example, it is possible to access the lower 32-bit part of the \RAX register using \EAX:
 
 \RegTableOne{RAX}{EAX}{AX}{AH}{AL}
 
-The new \GTT{R8-R15} registers also have their \IT{lower parts}: \GTT{R8D-R15D} (lower 32-bit parts),
+The new \GTT{R8-R15} registers also have their \emph{lower parts}: \GTT{R8D-R15D} (lower 32-bit parts),
 \GTT{R8W-R15W} (lower 16-bit parts), \GTT{R8L-R15L} (lower 8-bit parts).
 
 \RegTableFour{R8}{R8D}{R8W}{R8L}
@@ -131,6 +131,6 @@ Some people make their own memory allocators.
 It's interesting to know about CryptoMiniSat\footnote{\url{https://github.com/msoos/cryptominisat/}} case.
 This program rarely uses more than 4GiB of \ac{RAM}, but it uses pointers heavily.
 So it requires less memory on 32-bit architecture than on 64-bit one.
-To mitigate this problem, author made his own allocator (in \IT{clauseallocator.(h|cpp)} files),
+To mitigate this problem, author made his own allocator (in \emph{clauseallocator.(h|cpp)} files),
 which allows to have access to allocated memory using 32-bit identifiers instead of 64-bit pointers.
 

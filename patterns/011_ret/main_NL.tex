@@ -34,7 +34,7 @@ Het return address wordt niet bijgehouden op de local stack in het ARM \ac{ISA},
 \myindex{x86!\Instructions!MOV}
 Het is een vermelding waard dat \MOV een misleidende naam is voor de instructie in zowel x86 als ARM \ac{ISA}s.
 
-De data wordt feitelijk niet \IT{verplaatst}, maar \IT{gekopieerd}.
+De data wordt feitelijk niet \emph{verplaatst}, maar \emph{gekopieerd}.
 
 \subsection{MIPS}
 
@@ -62,7 +62,7 @@ Dit register staat analoog tot het \ac{LR} in ARM.
 \myindex{MIPS!Branch delay slot}
 Je kan je wel afvragen waarom de posities van de load instructie (LI) en de jump instructie (J of JR) omgewisseld zijn. Dit komt door een \ac{RISC} feature genaamd ``branch delay slot''.
 
-De reden dat dit gebeurd is een kronkel in de architectuur van sommige RISC \ac{ISA}s en is niet belangrijk voor onze doeleinden - we dienen enkel te onthouden dat in MIPS, de instructie die volgt op een jump of branch instructie uitgevoerd wordt \IT{voor} de jump/branch instructie zelf.
+De reden dat dit gebeurd is een kronkel in de architectuur van sommige RISC \ac{ISA}s en is niet belangrijk voor onze doeleinden - we dienen enkel te onthouden dat in MIPS, de instructie die volgt op een jump of branch instructie uitgevoerd wordt \emph{voor} de jump/branch instructie zelf.
 
 Bijgevolg verwisselen branch instructies steeds met de instructie die op voorhand moet worden uitgevoerd.
 

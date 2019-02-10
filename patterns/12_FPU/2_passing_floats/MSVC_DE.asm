@@ -13,7 +13,7 @@ _main    PROC
     fld    QWORD PTR __real@40400147ae147ae1
     fstp   QWORD PTR [esp]
     call   _pow
-    add    esp, 8  ; §\IT{gib}§ Platz für eine Variable frei.
+    add    esp, 8  ; \emph{gib} Platz für eine Variable frei.
 
 ; im lokalen Stack sind hier immer noch 8 Byte für uns reserviert.
 ; Ergebnis jetzt in ST(0)

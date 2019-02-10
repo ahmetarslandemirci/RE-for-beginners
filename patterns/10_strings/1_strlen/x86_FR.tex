@@ -15,9 +15,9 @@ Nous avons ici deux nouvelles instructions: \MOVSX et \TEST.
 
 La première---\MOVSX---prend un octet depuis une adresse en mémoire et stocke la
 valeur dans un registre 32-bit. 
-\MOVSX signifie \IT{MOV with Sign-Extend} (déplacement avec extension de signe).
-\MOVSX met le reste des bits, du 8ème au 31ème, à 1 si l'octet source est \IT{négatif}
-ou à 0 si il est \IT{positif}.
+\MOVSX signifie \emph{MOV with Sign-Extend} (déplacement avec extension de signe).
+\MOVSX met le reste des bits, du 8ème au 31ème, à 1 si l'octet source est \emph{négatif}
+ou à 0 si il est \emph{positif}.
 
 Et voici pourquoi.
 
@@ -30,7 +30,7 @@ Donc, si nous devons transférer \TT{0xFE} depuis une variable de type \Tchar ve
 une de type \Tint, nous devons identifier son signe et l'étendre. C'est ce qu'effectue
 \MOVSX.
 
-Lire à ce propos dans \q{\IT{\SignedNumbersSectionName}} section~(\myref{sec:signednumbers}).
+Lire à ce propos dans \q{\emph{\SignedNumbersSectionName}} section~(\myref{sec:signednumbers}).
 
 Il est difficile de dire si le compilateur doit stocker une variable \Tchar dans
 \EDX, il pourrait simplement utiliser une partie 8-bit du registre (par exemple \DL).
@@ -55,7 +55,7 @@ Essayons GCC 4.4.1:
 
 Le résultat est presque le même qu'avec MSVC, mais ici nous voyons \MOVZX au lieu
 de \MOVSX.
-\MOVZX signifie \IT{MOV with Zero-Extend} (déplacement avec extension à 0).
+\MOVZX signifie \emph{MOV with Zero-Extend} (déplacement avec extension à 0).
 Cette instruction copie une valeur 8-bit ou 16-bit dans un registre 32-bit et met
 les bits restant à 0.
 En fait, cette instructions n'est pratique que pour nous permettre de remplacer cette
@@ -73,8 +73,8 @@ obligé de générer du code compréhensible par les humains.
 
 La nouvelle instruction suivante est \SETNZ.
 Ici, si \AL ne contient pas zéro, \TT{test al, al} met le flag \ZF à 0, mais \SETNZ,
-si \TT{ZF==0} (\IT{NZ} signifie \IT{not zero}, non zéro) met \AL à 1. En langage
-naturel, \IT{si \AL n'est pas zéro, sauter en loc\_80483F0}. Le compilateur génère
+si \TT{ZF==0} (\emph{NZ} signifie \emph{not zero}, non zéro) met \AL à 1. En langage
+naturel, \emph{si \AL n'est pas zéro, sauter en loc\_80483F0}. Le compilateur génère
 du code redondant, mais n'oublions pas qu'il n'est pas en mode optimisation.
 
 \myparagraph{MSVC \Optimizing}
@@ -106,7 +106,7 @@ Ici GCC génère presque le même code que MSVC, à l'exception de la présence 
 Toutefois, ici, \MOVZX pourrait être remplacé par\\
 \TT{mov dl, byte ptr [eax]}.
 
-Peut-être est-il plus simple pour le générateur de code de GCC se se \IT{rappeler}
+Peut-être est-il plus simple pour le générateur de code de GCC se se \emph{rappeler}
 que le registre 32-bit \EDX est alloué entièrement pour une variable \Tchar et il
 est sûr que les bits en partie haute ne contiennent pas de bruit indéfini.
 
@@ -119,7 +119,7 @@ tout les bits de l'opérande. \\
 Elle peut être vu comme un synonyme de l'instruction \TT{XOR ECX, 0ffffffffh}.
 \NOT et l'instruction suivante \ADD calcule la différence entre les pointeurs et
 soustrait 1, d'une façon différente.
-Au début, \ECX, où le pointeur sur \IT{str} est stocké, est inversé et 1 en est soustrait.
+Au début, \ECX, où le pointeur sur \emph{str} est stocké, est inversé et 1 en est soustrait.
 
 Voir aussi: \q{\SignedNumbersSectionName}~(\myref{sec:signednumbers}).
 

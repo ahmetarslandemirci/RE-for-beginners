@@ -8,18 +8,18 @@ Voici à quoi ressemble la fonction  \TT{f\_signed()}:
 
 \myindex{x86!\Instructions!JLE}
 
-La première instruction, \JLE, représente \IT{Jump if Less or Equal} (saut si inférieur ou égal).
+La première instruction, \JLE, représente \emph{Jump if Less or Equal} (saut si inférieur ou égal).
 En d'autres mots, si le deuxième opérande est plus grand ou égal au premier,
 le flux d'exécution est passé à l'adresse ou au label spécifié dans l'instruction.
 Si la condition ne déclenche pas le saut, car le second opérande est plus petit que
 le premier, le flux d'exécution ne sera pas altéré et le premier \printf sera
 exécuté.
 \myindex{x86!\Instructions!JNE}
-Le second test est \JNE: \IT{Jump if Not Equal} (saut si non égal).
+Le second test est \JNE: \emph{Jump if Not Equal} (saut si non égal).
 Le flux d'exécution ne changera pas si les opérandes sont égaux.
 
 \myindex{x86!\Instructions!JGE}
-Le troisième test est \JGE: \IT{Jump if Greater or Equal}---saute si le premier
+Le troisième test est \JGE: \emph{Jump if Greater or Equal}---saute si le premier
 opérande est supérieur ou égal au deuxième.
 Donc, si les trois sauts conditionnels sont effectués, aucun des appels à \printf
 ne sera exécuté.
@@ -35,9 +35,9 @@ suit:
 \myindex{x86!\Instructions!JAE}
 
 Comme déjà mentionné, les instructions de branchement sont différentes:
-\JBE---\IT{Jump if Below or Equal} (saut si inférieur ou égal) et \JAE---\IT{Jump if Above or Equal}
+\JBE---\emph{Jump if Below or Equal} (saut si inférieur ou égal) et \JAE---\emph{Jump if Above or Equal}
 (saut si supérieur ou égal).
-Ces instructions (\JA/\JAE/\JB/\JBE) diffèrent de \JG/\JGE/\JL/\JLE par le fait qu'elles
+Ces instructions (\INS{JA}/\JAE/\JB/\JBE) diffèrent de \JG/\JGE/\JL/\JLE par le fait qu'elles
 travaillent avec des nombres non signés.
 
 \myindex{x86!\Instructions!JA}
@@ -47,7 +47,7 @@ travaillent avec des nombres non signés.
 \myindex{Signed numbers}
 
 Voir aussi la section sur la représentation des nombres signés~(\myref{sec:signednumbers}).
-C'est pourquoi si nous voyons que \JG/\JL sont utilisés à la place de \JA/\JB ou
+C'est pourquoi si nous voyons que \JG/\JL sont utilisés à la place de \INS{JA}/\JB ou
 vice-versa, nous pouvons être presque sûr que les variables sont signées ou non
 signées, respectivement.
 Voici la fonction \main, où presque rien n'est nouveau pour nous:

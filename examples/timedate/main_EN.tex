@@ -6,7 +6,7 @@ Let's find, if we could do something with Windows clock?
 Can we force to go clock hands backwards?
 
 First of all, when you click on date/time in status bar,\\
-a \IT{C:\textbackslash{}WINDOWS\textbackslash{}SYSTEM32\textbackslash{}TIMEDATE.CPL} module gets executed,
+a \emph{C:\textbackslash{}WINDOWS\textbackslash{}SYSTEM32\textbackslash{}TIMEDATE.CPL} module gets executed,
 which is usual executable \ac{PE}-file.
 
 Let's see, how it draw hands?
@@ -22,29 +22,29 @@ OK, what we know? How to draw a clock hand? All they are started at the middle o
 Hence, we must calculate coordinates of a point on circle's border.
 From school-level mathematics we may recall that we have to use sine/cosine functions to draw circle, or at least
 square root.
-There are no such things in \IT{TIMEDATE.CPL}, at least at first glance.
-But, thanks to Microsoft debugging PDB files, I can find a function named \IT{CAnalogClock::DrawHand()}, which calls
-\IT{Gdiplus::Graphics::DrawLine()} at least twice.
+There are no such things in \emph{TIMEDATE.CPL}, at least at first glance.
+But, thanks to Microsoft debugging PDB files, I can find a function named \emph{CAnalogClock::DrawHand()}, which calls
+\emph{Gdiplus::Graphics::DrawLine()} at least twice.
 
 Here is its code:
 
 \lstinputlisting[style=customasmx86]{examples/timedate/1.lst}
 
 \myindex{Windows!Win32!MulDiv()}
-We can see that \IT{DrawLine()} arguments are dependent on result of \IT{MulDiv()} function
-and a \IT{table[]} table (name is mine),
+We can see that \emph{DrawLine()} arguments are dependent on result of \emph{MulDiv()} function
+and a \emph{table[]} table (name is mine),
 which has 8-byte elements (look at \INS{LEA}'s second operand).
 
 What is inside of table[]?
 
 \lstinputlisting[style=customasmx86]{examples/timedate/2.lst}
 
-It's referenced only from \IT{DrawHand()} function.
+It's referenced only from \emph{DrawHand()} function.
 It has 120 32-bit words or 60 32-bit pairs... wait, 60?
 Let's take a closer look at these values.
-First of all, I'll zap 6 pairs or 12 32-bit words with zeros, and then I'll put patched \IT{TIMEDATE.CPL}
-into \IT{C:\textbackslash{}WINDOWS\textbackslash{}SYSTEM32}.
-(You may need to set owner of the *TIMEDATE.CPL* file to your primary user account (instead of \IT{TrustedInstaller}),
+First of all, I'll zap 6 pairs or 12 32-bit words with zeros, and then I'll put patched \emph{TIMEDATE.CPL}
+into \emph{C:\textbackslash{}WINDOWS\textbackslash{}SYSTEM32}.
+(You may need to set owner of the *TIMEDATE.CPL* file to your primary user account (instead of \emph{TrustedInstaller}),
 and also, boot in safe mode with command prompt so you can copy the file, which is usually locked.)
 
 \begin{figure}[H]
@@ -59,7 +59,7 @@ When any hand is outside of this area, hand is visible as usual.
 
 \myindex{Mathematica}
 Let's take even closer look at the table in Mathematica.
-I have copypasted table from the \IT{TIMEDATE.CPL} to a \IT{tbl} file (480 bytes).
+I have copypasted table from the \emph{TIMEDATE.CPL} to a \emph{tbl} file (480 bytes).
 We will take for granted the fact that these are signed values, because half of elements are below zero (0FFFFE0C1h, etc.).
 If these values would be unsigned, they would be suspiciously huge.
 
@@ -150,7 +150,7 @@ time, but the whole clock face is rotated vertically, like we see it from the in
 
 So I did the patcher and then Windows 2000 source code has been leaked (I can't force you to trust me, though).
 Let's take a look on source code if that function and table.\\
-The file is \IT{win2k/private/shell/cpls/utc/clock.c}:
+The file is \emph{win2k/private/shell/cpls/utc/clock.c}:
 
 \begin{lstlisting}[style=customc]
 //
@@ -204,8 +204,8 @@ void DrawHand(
 \end{lstlisting}
 
 Now it's clear: coordinates has been precalculated as if clock face has height and width of $2 \cdot 8000$,
-and then it's rescaled to current clock face radius using \IT{MulDiv()} function.
+and then it's rescaled to current clock face radius using \emph{MulDiv()} function.
 
 POINT structure\footnote{\url{https://msdn.microsoft.com/en-us/library/windows/desktop/dd162805(v=vs.85).aspx}}
-is a structure of two 32-bit values, first is \IT{x}, second is \IT{y}.
+is a structure of two 32-bit values, first is \emph{x}, second is \emph{y}.
 

@@ -7,7 +7,7 @@ printing_function:
 	add	x29, sp, 0
 ; save contents of W0 register:
 	str	w0, [x29,28]
-; load address of the "f(%d)\n" string
+; \verb|load address of the "f(%d)\n" string|
 	adrp	x0, .LC0
 	add	x0, x0, :lo12:.LC0
 ; reload input value from the local stack to W1 register:
@@ -30,9 +30,9 @@ main:
 	b	.L3
 .L4:
 ; load counter value to W0.
-; it will be the first argument of printing_function():
+; it will be the first argument of printing\_function():
 	ldr	w0, [x29,28]
-; call printing_function():
+; call printing\_function():
 	bl	printing_function
 ; increment counter value:
 	ldr	w0, [x29,28]

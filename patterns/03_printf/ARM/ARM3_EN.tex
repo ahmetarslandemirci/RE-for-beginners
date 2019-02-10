@@ -15,7 +15,7 @@ fastcall~(\myref{fastcall}) or win64~(\myref{sec:callingconventions_win64}).
 .text:00000004 03 30 A0 E3   MOV     R3, #3
 .text:00000008 02 20 A0 E3   MOV     R2, #2
 .text:0000000C 01 10 A0 E3   MOV     R1, #1
-.text:00000010 08 00 8F E2   ADR     R0, aADBDCD     ; "a=%d; b=%d; c=%d"
+.text:00000010 08 00 8F E2   ADR     R0, aADBDCD     ; "a=\%d; b=\%d; c=\%d"
 .text:00000014 06 00 00 EB   BL      __2printf
 .text:00000018 00 00 A0 E3   MOV     R0, #0          ; return 0
 .text:0000001C 10 80 BD E8   LDMFD   SP!, {R4,PC}
@@ -24,7 +24,7 @@ fastcall~(\myref{fastcall}) or win64~(\myref{sec:callingconventions_win64}).
 So, the first 4 arguments are passed via the \Reg{0}-\Reg{3} registers in this order:
 a pointer to the \printf format string in 
 \Reg{0}, then 1 in \Reg{1}, 2 in \Reg{2} and 3 in \Reg{3}.
-The instruction at \GTT{0x18} writes 0 to \Reg{0}---this is \IT{return 0} C-statement.
+The instruction at \GTT{0x18} writes 0 to \Reg{0}---this is \emph{return 0} C-statement.
 There is nothing unusual so far.
 
 \OptimizingKeilVI generates the same code.
@@ -37,7 +37,7 @@ There is nothing unusual so far.
 .text:00000002 03 23        MOVS    R3, #3
 .text:00000004 02 22        MOVS    R2, #2
 .text:00000006 01 21        MOVS    R1, #1
-.text:00000008 02 A0        ADR     R0, aADBDCD     ; "a=%d; b=%d; c=%d"
+.text:00000008 02 A0        ADR     R0, aADBDCD     ; "a=\%d; b=\%d; c=\%d"
 .text:0000000A 00 F0 0D F8  BL      __2printf
 .text:0000000E 00 20        MOVS    R0, #0
 .text:00000010 10 BD        POP     {R4,PC}
@@ -48,7 +48,7 @@ There is no significant difference from the non-optimized code for ARM mode.
 \mysubparagraph{\OptimizingKeilVI (\ARMMode) + let's remove return}
 \label{ARM_B_to_printf}
 
-Let's rework example slightly by removing \IT{return 0}:
+Let's rework example slightly by removing \emph{return 0}:
 
 \begin{lstlisting}[style=customc]
 #include <stdio.h>
@@ -61,14 +61,7 @@ void main()
 
 The result is somewhat unusual:
 
-\begin{lstlisting}[caption=\OptimizingKeilVI (\ARMMode),style=customasmARM]
-.text:00000014 main
-.text:00000014 03 30 A0 E3   MOV     R3, #3
-.text:00000018 02 20 A0 E3   MOV     R2, #2
-.text:0000001C 01 10 A0 E3   MOV     R1, #1
-.text:00000020 1E 0E 8F E2   ADR     R0, aADBDCD     ; "a=%d; b=%d; c=%d\n"
-.text:00000024 CB 18 00 EA   B       __2printf
-\end{lstlisting}
+\lstinputlisting[caption=\OptimizingKeilVI (\ARMMode),style=customasmARM]{patterns/03_printf/ARM/tmp3.asm}
 
 \myindex{ARM!\Registers!Link Register}
 \myindex{ARM!\Instructions!B}
@@ -103,14 +96,14 @@ A similar example is presented here:
 
 \myindex{ARM!\Instructions!STP}
 
-The first instruction \INS{STP} (\IT{Store Pair}) saves \ac{FP} (X29) and \ac{LR} (X30) in the stack.
+The first instruction \INS{STP} (\emph{Store Pair}) saves \ac{FP} (X29) and \ac{LR} (X30) in the stack.
 The second \INS{ADD X29, SP, 0} instruction forms the stack frame.
 It is just writing the value of \ac{SP} into X29.
 
 \myindex{ARM!\Instructions!ADRP/ADD pair}
 Next, we see the familiar \INS{ADRP}/\ADD instruction pair, which forms a pointer to the string.
 \myindex{ARM64!lo12}
-\IT{lo12} meaning low 12 bits, i.e., linker will write low 12 bits of LC1 address into the opcode of \ADD instruction.
+\emph{lo12} meaning low 12 bits, i.e., linker will write low 12 bits of LC1 address into the opcode of \ADD instruction.
 \GTT{\%d} in \printf string format is a 32-bit \Tint, so the 1, 2 and 3 are loaded into 32-bit register parts.
 
 \Optimizing GCC (Linaro) 4.9 generates the same code.

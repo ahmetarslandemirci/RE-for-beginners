@@ -1,7 +1,7 @@
 \subsection{Простое шифрование используя XOR-маску}
 \label{XOR_mask_1}
 
-Я нашел одну старую игру в стиле interactive fiction в архиве \IT{if-archive}\footnote{\url{http://www.ifarchive.org/}}:
+Я нашел одну старую игру в стиле interactive fiction в архиве \emph{if-archive}\footnote{\url{http://www.ifarchive.org/}}:
 
 \begin{lstlisting}
 The New Castle v3.5 - Text/Adventure Game
@@ -15,7 +15,7 @@ Software Customization [ASP] Version 3.5 Feb. 2000
 
 Можно скачать здесь: \url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/ff/XOR/mask_1/files/newcastle.tgz}.
 
-Там внутри есть файл (с названием \IT{castle.dbf}), который явно зашифрован, но не настоящим криптоалгоритмом,
+Там внутри есть файл (с названием \emph{castle.dbf}), который явно зашифрован, но не настоящим криптоалгоритмом,
 и оне сжат, это что-то куда проще.
 Я бы даже не стал измерять уровень энтропии (\myref{entropy}) этого файла, потому что я итак уверен, что он низкий.
 Вот как он выглядит в Midnight Commander:
@@ -37,7 +37,7 @@ Software Customization [ASP] Version 3.5 Feb. 2000
 во мноигих исполняемых файлах, и в остальных бинарных файлах.
 
 \myindex{UNIX!xxd}
-Вот дам начала этого файла используя утилиту \IT{xxd} из UNIX:
+Вот дам начала этого файла используя утилиту \emph{xxd} из UNIX:
 
 \lstinputlisting{ff/XOR/mask_1/xxd_result.txt}
 
@@ -48,9 +48,9 @@ Software Customization [ASP] Version 3.5 Feb. 2000
 
 Теперь я буду использовать Mathematica для анализа, есть ли тут повторяющиеся 81-байтные блоки в файле?
 Я разделю входной файл на 81-байтные блоки и затем использую ф-цию
-\IT{Tally[]}\footnote{\url{https://reference.wolfram.com/language/ref/Tally.html}}
+\emph{Tally[]}\footnote{\url{https://reference.wolfram.com/language/ref/Tally.html}}
 которая просто считает, сколько раз каждый элемент встретился во входном списке.
-Вывод Tally не отсортирован, так что я также добавлю ф-цию \IT{Sort[]} для сортировки его по кол-ву вхождений
+Вывод Tally не отсортирован, так что я также добавлю ф-цию \emph{Sort[]} для сортировки его по кол-ву вхождений
 в нисходящем порядке.
 
 \begin{lstlisting}[style=custommath]
@@ -338,7 +338,7 @@ In[]:= DecryptBlock[blk_] := BitXor[key3, blk]
 
 Вот и всё! Теперь мы можем написать утилиту для зашифрования файла назад, и, может быть, модифицировать его перед этим
 
-Файл для Mathematica можно скачать здесь:
+Файл для Mathematica можно скачать здесь:\\
 \url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/ff/XOR/mask_1/files/XOR_mask_1.nb}.
 
 Итог: XOR-шифрование не надежно вообще. Вероятно, разработчик игры хотел просто скрыть внутренности игры от игрока,

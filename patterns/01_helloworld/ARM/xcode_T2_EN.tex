@@ -28,7 +28,7 @@ __cstring:00003E70 48 65 6C 6C 6F 20+aHelloWorld  DCB "Hello world!",0xA,0
 \myindex{ARM!\Instructions!BLX}
 
 The \TT{BL} and \TT{BLX} instructions in Thumb mode, as we recall, are encoded as a pair of 16-bit instructions.
-In Thumb-2 these \IT{surrogate} opcodes are extended in such a way so that new instructions may be encoded here as 32-bit instructions.
+In Thumb-2 these \emph{surrogate} opcodes are extended in such a way so that new instructions may be encoded here as 32-bit instructions.
 
 That is obvious considering that the opcodes of the Thumb-2 instructions always begin with \TT{0xFx} or \TT{0xEx}.
 
@@ -66,7 +66,7 @@ to the \puts function, the processor is also switching from Thumb/Thumb-2 mode t
 This instruction is placed here since the instruction to which control is passed looks like (it is encoded in ARM mode):
 
 \begin{lstlisting}[style=customasmARM]
-__symbolstub1:00003FEC _puts           ; CODE XREF: _hello_world+E
+__symbolstub1:00003FEC _puts           ; CODE XREF: \_hello\_world+E
 __symbolstub1:00003FEC 44 F0 9F E5     LDR  PC, =__imp__puts
 \end{lstlisting}
 
@@ -86,7 +86,7 @@ This is a list of symbols (functions or global variables) imported from external
 
 The \ac{OS} loader loads all modules it needs and, while enumerating import symbols in the primary module, determines the correct addresses of each symbol.
 
-In our case, \IT{\_\_imp\_\_puts} is a 32-bit variable used by the \ac{OS} loader to store the correct address of the function in an external library. 
+In our case, \emph{\_\_imp\_\_puts} is a 32-bit variable used by the \ac{OS} loader to store the correct address of the function in an external library. 
 Then the \TT{LDR} instruction just reads the 32-bit value from this variable and writes it into the \ac{PC} register, passing control to it.
 
 So, in order to reduce the time the \ac{OS} loader needs for completing this procedure, 
@@ -110,7 +110,7 @@ The processor mode, however, is not being switched (hence the absence of an \q{X
 Thunk-functions are hard to understand, apparently, because of a misnomer.
 The simplest way to understand it as adaptors or convertors of one type of jack to another.
 For example, an adaptor allowing the insertion of a British power plug into an American wall socket, or vice-versa. 
-Thunk functions are also sometimes called \IT{wrappers}.
+Thunk functions are also sometimes called \emph{wrappers}.
 
 Here are a couple more descriptions of these functions:
 

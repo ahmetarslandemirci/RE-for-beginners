@@ -1,8 +1,8 @@
 \subsubsection{Lire en dehors des bornes du tableau}
 
-Donc, indexer un tableau est juste \IT{array\lbrack{}index\rbrack}.
+Donc, indexer un tableau est juste \emph{array\lbrack{}index\rbrack}.
 Si vous étudiez le code généré avec soin, vous remarquerez sans doute l'absence de
-test sur les bornes de l'index, qui devrait vérifier \IT{si il est inférieur à 20}.
+test sur les bornes de l'index, qui devrait vérifier \emph{si il est inférieur à 20}.
 Que ce passe-t-il si l'index est supérieur à 20?
 C'est une des caractéristiques de \CCpp qui est souvent critiquée.
 
@@ -18,7 +18,7 @@ Le code produit ce résultat:
 
 \lstinputlisting[caption=\olly: sortie sur la console]{patterns/13_arrays/2_BO/console.txt}
 
-C'est juste \IT{quelque chose} qui se trouvait sur la pile à côté du tableau, 80 octets
+C'est juste \emph{quelque chose} qui se trouvait sur la pile à côté du tableau, 80 octets
 après le début de son premier élément.
 
 \clearpage

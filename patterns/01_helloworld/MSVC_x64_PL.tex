@@ -8,7 +8,7 @@ Wypróbujmy również 64-bitowy MSVC:
 \myindex{fastcall}
 
 W x86-64 wszystkie rejestry zostały rozszerzone do 64-ch bit i mają teraz prefiks \TT{R-}.
-Żeby jak najrzadziej korzystać ze stosu (inaczej mówiąc, jak najmniej korzystać z pamięci cache i pamięci zewnętrznej), od dawna istniała dosyć popularna metoda przekazywania argumentów funkcji przez rejestry (\IT{fastcall}) \myref{fastcall}.
+Żeby jak najrzadziej korzystać ze stosu (inaczej mówiąc, jak najmniej korzystać z pamięci cache i pamięci zewnętrznej), od dawna istniała dosyć popularna metoda przekazywania argumentów funkcji przez rejestry (\emph{fastcall}) \myref{fastcall}.
 Tzn część argumentów funkcji jest przekazywana przez rejestry i część --- przez stos.
 W Win64 pierwsze 4 argumenty funkcji są przekazywane przez rejestry \RCX, \RDX, \Reg{8}, \Reg{9}.
 Właśnie to tutaj widzimy: wskaźnik na linię \printf teraz jest przekazywany nie przez stos, a przez rejestr \RCX.

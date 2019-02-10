@@ -17,7 +17,7 @@ fastcall~(\myref{fastcall}) ou win64~(\myref{sec:callingconventions_win64}).
 .text:00000004 03 30 A0 E3   MOV     R3, #3
 .text:00000008 02 20 A0 E3   MOV     R2, #2
 .text:0000000C 01 10 A0 E3   MOV     R1, #1
-.text:00000010 08 00 8F E2   ADR     R0, aADBDCD     ; "a=%d; b=%d; c=%d"
+.text:00000010 08 00 8F E2   ADR     R0, aADBDCD     ; "a=\%d; b=\%d; c=\%d"
 .text:00000014 06 00 00 EB   BL      __2printf
 .text:00000018 00 00 A0 E3   MOV     R0, #0          ; renvoyer 0
 .text:0000001C 10 80 BD E8   LDMFD   SP!, {R4,PC}
@@ -28,7 +28,7 @@ cet ordre:
 un pointeur sur la chaîne de format de \printf dans \Reg{0}, puis 1 dans \Reg{1},
 2 dans \Reg{2} et 3 dans \Reg{3}.
 L'instruction en \GTT{0x18} écrit 0 dans \Reg{0}---c'est la déclaration C
-de \IT{return 0}.
+de \emph{return 0}.
 
 \OptimizingKeilVI génère le même code.
 
@@ -40,7 +40,7 @@ de \IT{return 0}.
 .text:00000002 03 23        MOVS    R3, #3
 .text:00000004 02 22        MOVS    R2, #2
 .text:00000006 01 21        MOVS    R1, #1
-.text:00000008 02 A0        ADR     R0, aADBDCD     ; "a=%d; b=%d; c=%d"
+.text:00000008 02 A0        ADR     R0, aADBDCD     ; "a=\%d; b=\%d; c=\%d"
 .text:0000000A 00 F0 0D F8  BL      __2printf
 .text:0000000E 00 20        MOVS    R0, #0
 .text:00000010 10 BD        POP     {R4,PC}
@@ -51,7 +51,7 @@ Il n'y a pas de différence significative avec le code non optimisé pour le mod
 \mysubparagraph{\OptimizingKeilVI (\ARMMode) + supprimons le retour}
 \label{ARM_B_to_printf}
 
-Retravaillons légèrement l'exemple en supprimant \IT{return 0}:
+Retravaillons légèrement l'exemple en supprimant \emph{return 0}:
 
 \begin{lstlisting}[style=customc]
 #include <stdio.h>
@@ -64,14 +64,7 @@ void main()
 
 Le résultat est quelque peu inhabituel:
 
-\begin{lstlisting}[caption=\OptimizingKeilVI (\ARMMode),style=customasmARM]
-.text:00000014 main
-.text:00000014 03 30 A0 E3   MOV     R3, #3
-.text:00000018 02 20 A0 E3   MOV     R2, #2
-.text:0000001C 01 10 A0 E3   MOV     R1, #1
-.text:00000020 1E 0E 8F E2   ADR     R0, aADBDCD     ; "a=%d; b=%d; c=%d\n"
-.text:00000024 CB 18 00 EA   B       __2printf
-\end{lstlisting}
+\lstinputlisting[caption=\OptimizingKeilVI (\ARMMode),style=customasmARM]{patterns/03_printf/ARM/tmp3.asm}
 
 \myindex{ARM!\Registers!Link Register}
 \myindex{ARM!\Instructions!B}
@@ -112,7 +105,7 @@ Un exemple similaire est présenté ici:
 
 \myindex{ARM!\Instructions!STP}
 
-La première instruction \INS{STP} (\IT{Store Pair}) sauve \ac{FP} (X29) et \ac{LR} (X30) sur la pile.
+La première instruction \INS{STP} (\emph{Store Pair}) sauve \ac{FP} (X29) et \ac{LR} (X30) sur la pile.
 
 La seconde instruction, \INS{ADD X29, SP, 0} crée la pile.
 Elle écrit simplement la valeur de \ac{SP} dans X29.
@@ -121,7 +114,7 @@ Elle écrit simplement la valeur de \ac{SP} dans X29.
 Ensuite nous voyons la paire d'instructions habituelle \INS{ADRP}/\ADD, qui crée
 le pointeur sur la chaîne.
 \myindex{ARM64!lo12}
-\IT{lo12} signifie les 12 bits de poids faible, i.e., le linker va écrire les 12 bits
+\emph{lo12} signifie les 12 bits de poids faible, i.e., le linker va écrire les 12 bits
 de poids faible de l'adresse LC1 dans l'opcode de l'instruction \ADD.
 \GTT{\%d} dans la chaîne de format de \printf est un \Tint 32-bit, les 1, 2 et
 3 sont chargés dans les parties 32-bit des registres.

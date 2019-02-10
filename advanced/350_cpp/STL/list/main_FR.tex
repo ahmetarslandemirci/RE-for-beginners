@@ -34,7 +34,7 @@ ptr=0x0028fe90 _Next=0x0028fe90 _Prev=0x0028fe90 x=3 y=0
 Ici, nous voyons une liste vide.
 
 Bien que ce soit une liste vide, elle a un élément avec des données non initialisées
-(\ac{AKA} \IT{dummy node}) dans $x$ et $y$.
+(\ac{AKA} \emph{dummy node}) dans $x$ et $y$.
 Les deux pointeurs \q{next} et \q{prev} pointeurs sur le n\oe{}ud lui-même:
 
 \input{\CURPATH/STL/list/empty_list}
@@ -67,7 +67,7 @@ La variable $l$ pointe toujours sur le premier n\oe{}ud.
 Les itérateurs .begin() et .end() ne sont pas des variables, mais des fonctions,
 qui renvoient des pointeurs sur le n\oe{}ud correspondant lorsqu'elle sont appelées.
 
-Avoir un élément fictif (\ac{AKA} \IT{n\oe{}ud sentinelle}) est une pratique répandue
+Avoir un élément fictif (\ac{AKA} \emph{n\oe{}ud sentinelle}) est une pratique répandue
 dans l'implémentation des listes doublements chaînées.
 
 Sans lui, de nombreuses opérations deviennent légèrement plus complexes et de ce fait,
@@ -105,7 +105,7 @@ n\oe{}ud (ou le désallouer) et mettre à jour les pointeurs afin qu'ils soient 
 
 C'est pourquoi un itérateur peut devenir invalide après la suppression d'un élément:
 il peut toujours pointer sur le n\oe{}ud qui a été déjà désalloué.
-Ceci est aussi appelé un \IT{dangling pointer}.
+Ceci est aussi appelé un \emph{dangling pointer}.
 
 Et bien sûr, l'information sur le n\oe{}ud libéré (sur lequel pointe toujours l'itérateur)
 ne peut plus être utilisée.

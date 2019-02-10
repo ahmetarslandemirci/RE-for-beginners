@@ -2,11 +2,11 @@ $LC0:
 	.ascii	"Hello, world!\012\000"
 main:
 ; prolog f-cji
-; odłożyć RA ($31) i FP na stos:
+; odłożyć RA (\$31) i FP na stos:
 	addiu	$sp,$sp,-32
 	sw	$31,28($sp)
 	sw	$fp,24($sp)
-; §ustawić FP (stack frame pointer)§:
+; ustawić FP (stack frame pointer):
 	move	$fp,$sp
 ; ustawić GP:
 	lui	$28,%hi(__gnu_local_gp)
@@ -24,7 +24,7 @@ main:
 
 ; przywrócić GP ze stosu lokalnego:
 	lw	$28,16($fp)
-; ustawić rejestr $2 ($V0) na zero:
+; ustawić rejestr \$2 (\$V0) na zero:
 	move	$2,$0
 ; epilog funkcji.
 ; przywrócić SP:

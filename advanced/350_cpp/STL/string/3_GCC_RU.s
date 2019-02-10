@@ -35,7 +35,7 @@ main:
 
     call _ZNSs6appendERKSs
 
-    ; вставленный код метода (inlined) c_str():
+    ; вставленный код метода (inlined) c\_str():
     mov  eax, DWORD PTR [esp+28]
     mov  DWORD PTR [esp], eax
 

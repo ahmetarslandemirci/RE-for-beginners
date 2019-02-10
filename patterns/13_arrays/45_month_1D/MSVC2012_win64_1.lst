@@ -11,8 +11,8 @@ off_140011000   dq offset aJanuary_1    ; DATA XREF: .text:0000000140001003
                 dq offset aOctober_1    ; "October"
                 dq offset aNovember_1   ; "November"
                 dq offset aDecember_1   ; "December"
-aJanuary_1      db 'January',0          ; DATA XREF: sub_140001020+4
-                                        ; .data:off_140011000
+aJanuary_1      db 'January',0          ; DATA XREF: sub\_140001020+4
+                                        ; .data:off\_140011000
 aFebruary_1     db 'February',0         ; DATA XREF: .data:0000000140011008
                 align 4
 aMarch_1        db 'March',0            ; DATA XREF: .data:0000000140011010

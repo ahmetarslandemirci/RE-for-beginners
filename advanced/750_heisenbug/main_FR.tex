@@ -1,7 +1,7 @@
-% TODO translate
 \mysection{Un autre heisenbug}
+\label{GlobalArraysOverflowHeisenbug}
 
-Parfois, un tableau (ou tampon) peut déborder à cause d'une \IT{erreur de poteaux et d'intervalles}:
+Parfois, un tableau (ou tampon) peut déborder à cause d'une \emph{erreur de poteaux et d'intervalles}:
 
 \lstinputlisting[style=customc]{advanced/750_heisenbug/1.c}
 
@@ -32,11 +32,13 @@ après \TT{array1[]}:
 D'autres compilateurs peuvent arranger les variables dans un autre ordre, et une autre
 variable sera écrasée.
 \myindex{Heisenbug}
-Ceci est aussi un \textit{heisenbug} (\myref{heisenbug})---bug qui peut se produire
+Ceci est aussi un \emph{heisenbug} (\myref{heisenbug})---bug qui peut se produire
 ou passer inaperçu suivant la version du compilateur et les options d'optimisation.
 
 \myindex{Valgrind}
 Si toutes les variables et tableaux sont allouées sur la pile locale, la protection
 de la pile peut être déclenchée, ou pas.
 Toutefois, Valgrind peut trouver ce genre de bugs.
+
+Un exemple connexe dans le livre (jeu Angband): \myref{Angband}.
 

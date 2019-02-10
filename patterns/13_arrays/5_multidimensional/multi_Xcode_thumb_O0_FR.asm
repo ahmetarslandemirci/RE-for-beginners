@@ -26,7 +26,7 @@ MUL.W   R2, R2, R9
 ADD     R2, R3
 LSLS    R1, R1, #2 ; R1=R1<<2
 ADD     R1, R2
-STR     R0, [R1]   ; R1 - adresse de §l'élément§ du tableau
-; §libérer§ le chunk sur la pile locale, §alloué§ pour 4 valeurs de type int
+STR     R0, [R1]   ; R1 - adresse de l'élément du tableau
+; libérer le chunk sur la pile locale, alloué pour 4 valeurs de type int
 ADD     SP, SP, #0x10
 BX      LR

@@ -35,16 +35,10 @@ proche de 9).
 
 En lire plus à ce sujet dans \InSqBrackets{\HenryWarren 10-3}.
 
-Quelques mots pour une meilleure compréhension.
 Beaucoup de gens manquent la division ``cachée'' par $2^{32}$ or $2^{64}$, lorsque
 la partie basse 32-bit (ou la partie 64-bit) du produit n'est pas utilisée.
-Il y a aussi l'idée erronée que le modulo inverse est utilisé ici. Ceci est proche,
-mais pas la même chose.
-L'algorithme d'Euclide étendu est utilisé d'habitude pour trouver le \textit{ coéfficient magique},
-mais en fait, cet algorithme est plutôt utilisé pour résoudre l'équation. Vous pouvez la résoudre
-en utilisant n'importe quelle autre méthode.
-Quoi qu'il en soit, l'algorithme d'Euclide est sans doute le moyen le plus efficient
-de la résoudre.
-De plus, inutile de le mentionner, l'équation est insoluble pour certains diviseurs,
-car ceci est une équation diophantienne (i.e., une équation qui n'admet que des solutions
-entières), puisque nous travaillons sur des registres CPU entiers, après tout.
+C'est pourquoi la division par la multiplication est difficile à comprendre au début.
+
+% TBT
+% \MathForProg has yet another explanation.
+

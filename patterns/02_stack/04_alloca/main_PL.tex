@@ -9,7 +9,7 @@ Przypadek z funkcją \TT{alloca()} jest całkiem ciekawy
 \TT{\AllocaSrcPath{}}}. 
 Ta funkcja działa jak \TT{malloc()}, ale przydziela pamięć od razu na stosie.
 Nie potrzebne jest zwalnianie pamięci \TT{free()}, dlatego że epilog funkcji~(\myref{sec:prologepilog})
-przywróci \ESP do stanu początkowego i przeznaczona pamięć \IT{zostaje wyrzucona}.
+przywróci \ESP do stanu początkowego i przeznaczona pamięć \emph{zostaje wyrzucona}.
 Ciekawa jest również realizacja tej funkcji.
 Ona, w skrócie, po prostu przesuwa \ESP wgłąb stosu i zwraca \ESP jako wskaźnik na przydzielony obszar.
 
@@ -29,7 +29,7 @@ Skompilujmy (MSVC 2010):
 
 \myindex{Compiler intrinsic}
 Jedyny parametr \TT{alloca()} jest przekazywany przez \EAX, a nie jak zwykle, przez stos
-\footnote{To dlatego, że alloca()~--- to nie tyle co funkcja, a raczej \IT{compiler intrinsic} (\myref{sec:compiler_intrinsic})
+\footnote{To dlatego, że alloca()~--- to nie tyle co funkcja, a raczej \emph{compiler intrinsic} (\myref{sec:compiler_intrinsic})
 Jedną z przyczyn, flaczego tu potrzeba funkcji, a nie kilku instrukcji w samym kodzie, polega na tym, że w realizacji
 funkcji alloca() w \ac{MSVC}
 zawarty również kod, czytający z dopiero co przydzielonej pamięci po to, żeby \ac{OS} zaalokowała pamięć fizyczną dla tego obszaru \ac{VM}.
@@ -51,6 +51,6 @@ Spójrzmy na ten sam kod w syntaksie AT\&T:
 Wygląda to tak samo jak i poprzedni listing.
 
 A propos, \INS{movl \$3, 20(\%esp)}~--- jest analogiem do \INS{mov DWORD PTR [esp+20], 3} w syntaksie Intel.
-Adresowanie pamięci typu \IT{rejestr+przesunięcie} jest zapisywane w syntaksie AT\&T jako \TT{przesunięcie(\%{rejestr})}.
+Adresowanie pamięci typu \emph{rejestr+przesunięcie} jest zapisywane w syntaksie AT\&T jako \TT{przesunięcie(\%{rejestr})}.
 
 

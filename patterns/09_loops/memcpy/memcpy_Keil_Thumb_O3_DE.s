@@ -4,9 +4,9 @@ my_memcpy PROC
 ; R2 = Blockgröße
 
         PUSH     {r4,lr}
-; §initialisiere Zähler (i) mit 0§
+; initialisiere Zähler (i) mit 0
         MOVS     r3,#0
-; §Bedingung wird am Ende der Schleife geprüft, daher springe dorthin:§
+; Bedingung wird am Ende der Schleife geprüft, daher springe dorthin:
         B        |L0.12|
 |L0.6|
 ; lade Byte von R1+i:

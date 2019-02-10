@@ -18,11 +18,11 @@ toutefois, elle l'est en général comme expliqué ci-dessus.
 
 La chaîne \Cpp n'est pas une classse (comme QString dansQt, par exemple) mais un
 template (basic\_string), ceci est fait afin de supporter différents types de caractères:
-au moins \Tchar et \IT{wchar\_t}.
+au moins \Tchar et \emph{wchar\_t}.
 
 Donc, std::string est une classe avec \Tchar comme type de base.
 
-Et std::wstring est une classe avec \IT{wchar\_t} comme type de base.
+Et std::wstring est une classe avec \emph{wchar\_t} comme type de base.
 
 \mysubparagraph{MSVC}
 
@@ -76,7 +76,7 @@ références.
 
 Une chose intéressante est que dans GCC un pointeur sur une instance de std::string
 ne pointe pas au début de la structure, mais sur le pointeur du buffer.
-Dans \IT{libstdc++-v3\textbackslash{}include\textbackslash{}bits\textbackslash{}basic\_string.h}
+Dans \emph{libstdc++-v3\textbackslash{}include\textbackslash{}bits\textbackslash{}basic\_string.h}
 nous pouvons lire que ça a été fait ainsi afin de faciliter le débogage:
 
 \begin{lstlisting}

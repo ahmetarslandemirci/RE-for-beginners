@@ -3,39 +3,40 @@
 \begin{center}
 \begin{bytefield}{32}
 	\bitheader[endianness=big]{0,22,23,30,31} \\
-	\bitbox{1}{S} & 
+	\bitbox{1}{S} &
 	\bitbox{8}{%
 		\RU{экспонента}%
 		\EN{exponent}%
 		\ES{exponente}%
 		\PTBRph{}%
 		\DEph{}\PLph{}%
-		\ITAph{}%
+		\IT{esponente}%
 		\FR{exposant}%
-		\JPN{指数}
-	} & 
+		\JA{指数}
+	} &
 	\bitbox{23}{%
 		\RU{мантисса}%
 		\EN{mantissa or fraction}%
 		\ES{mantisa o fracci\'on}%
 		\PTBRph{}%
-		\DEph{}\PLph{}%
-		\ITAph{}%
+		\DEph{}
+		\PLph{}%
+		\IT{mantissa}%
 		\FR{mantisse ou fraction}%
-		\JPN{対数または比}
+		\JA{対数または比}
 	}
 \end{bytefield}
 \end{center}
 
 \begin{center}
-( S\EMDASH{}%
+( S --- %
 	\RU{знак}%
 	\EN{sign}%
 	\ES{signo}%
 	\PTBRph{}%
 	\DEph{}\PLph{}%
-	\ITAph{}%
+	\IT{segno}%
 	\FR{signe}%
-	\JPN{記号}
+	\JA{記号}
 )
 \end{center}

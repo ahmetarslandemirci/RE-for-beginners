@@ -11,7 +11,7 @@ my_atoi PROC
 ; R0=R3*R0=rt*10
 ; shift pointer to the next character:
         ADDS     r1,r1,#1
-; correct whole thing by subtracting 0' character from it':
+; correct whole thing by subtracting '0' character from it:
         SUBS     r0,r0,#0x30
         ADDS     r0,r2,r0
 ; rt=R2+R0=input character + (rt*10 - '0')

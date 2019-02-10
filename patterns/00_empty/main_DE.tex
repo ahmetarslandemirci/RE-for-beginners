@@ -56,7 +56,7 @@ in Low-Level-Code häufiger.
 
 Zum Einen sind Debugging-Funktionen wie die Folgende recht verbreitet:
 
-\lstinputlisting[caption=\EN{\CCpp Code}\DE{\CCpp-Code},style=customc]{patterns/00_empty/dbg_print.c}
+\lstinputlisting[caption=\CCpp-Code,style=customc]{patterns/00_empty/dbg_print_EN.c}
 
 Bei einem Nicht-Debug-Build (d.h. ``Release''), ist \TT{\_DEBUG} nicht definiert.
 Die Funktion \TT{dbg\_print()} ist, obwohl sie bei der Ausführung aufgerufen wird, ohne Inhalt.
@@ -65,7 +65,7 @@ Eine verbreitete Art des Software-Schutzes ist es verschiedene Build-Versionen z
 eine für legale Kunden und eine Demo-Version. Der Letzteren können zum Beispiel wichtige
 Funktionen fehlen, wie folgt:
 
-\lstinputlisting[caption=\EN{\CCpp Code}\DE{\CCpp-Code},style=customc]{patterns/00_empty/demo.c}
+\lstinputlisting[caption=\CCpp-Code,style=customc]{patterns/00_empty/demo_EN.c}
 
 Die Funktion\TT{save\_file()} kann vom Nutzer über den Menüpunkt \TT{File->Save} aufgerufen werden.
 Die Demo-Version könnte mit einem deaktivierten Menüpunkt ausgeliefert werden, selbst wenn ein

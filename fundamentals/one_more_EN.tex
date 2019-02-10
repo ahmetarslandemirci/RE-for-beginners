@@ -6,7 +6,7 @@ and by direct computation.}{\KRBook}
 
 \subsubsection{Getting maximum number of some \gls{word}}
 
-Maximum unsigned number is just a number where all bits are set: \IT{0xFF....FF}
+Maximum unsigned number is just a number where all bits are set: \emph{0xFF....FF}
 (this is -1 if the \gls{word} is treated as signed integer).
 So you take a \gls{word}, set all bits and get the value:
 
@@ -25,8 +25,8 @@ This is 4294967295 for 32-bit integer.
 
 \subsubsection{Getting minimum number for some signed \gls{word}}
 
-Minimum signed number is encoded as \IT{0x80....00}, i.e., most significant bit is set, while others are cleared.
-Maximum signed number is encoded in the same way, but all bits are inverted: \IT{0x7F....FF}.
+Minimum signed number is encoded as \emph{0x80....00}, i.e., most significant bit is set, while others are cleared.
+Maximum signed number is encoded in the same way, but all bits are inverted: \emph{0x7F....FF}.
 
 Let's shift a lone bit left until it disappears:
 
@@ -54,5 +54,5 @@ Output is:
 -2147483648 2147483647
 \end{lstlisting}
 
-Two last numbers are minimum and maximum signed 32-bit \IT{int} respectively.
+Two last numbers are minimum and maximum signed 32-bit \emph{int} respectively.
 

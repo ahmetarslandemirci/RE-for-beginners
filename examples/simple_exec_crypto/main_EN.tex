@@ -17,7 +17,7 @@ def encrypt(buf):
            e(buf[8], 8)+ e(buf[9], 9)+ e(buf[10], 10)+ e(buf[11], 11)+ e(buf[12], 12)+ e(buf[13], 13)+ e(buf[14], 14)+ e(buf[15], 15)
 \end{lstlisting}
 
-Hence, if you encrypt buffer with 16 zeros, you'll get \IT{0, 1, 2, 3 ... 12, 13, 14, 15}.
+Hence, if you encrypt buffer with 16 zeros, you'll get \emph{0, 1, 2, 3 ... 12, 13, 14, 15}.
 
 \myindex{Propagating Cipher Block Chaining}
 Propagating Cipher Block Chaining (PCBC) is also used, here is how it works:
@@ -116,7 +116,7 @@ KEY_LEN=16
 
 def chunks(l, n):
     # split n by l-byte chunks
-    # http://stackoverflow.com/questions/312443/how-do-you-split-a-list-into-evenly-sized-chunks-in-python
+    # https://stackoverflow.com/q/312443
     n = max(1, n)
     return [l[i:i + n] for i in range(0, len(l), n)]
 
@@ -208,7 +208,7 @@ Let's write decryption utility with the key we got:
 import sys, hexdump, array
 
 def xor_strings(s,t):
-    # https://en.wikipedia.org/wiki/XOR_cipher#Example_implementation
+    # \verb|https://en.wikipedia.org/wiki/XOR_cipher#Example_implementation|
     """xor two strings together"""
     return "".join(chr(ord(a)^ord(b)) for a,b in zip(s,t))
 

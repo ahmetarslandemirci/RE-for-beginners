@@ -30,7 +30,7 @@ When the \gls{stack pointer} (\ESP register) has changed back by the\\
 \INS{ADD ESP, X} instruction after a function call, often,
 the number of function arguments could be deduced by simply dividing X by 4.
 
-Of course, this is specific to the \IT{cdecl} calling convention, and only for 32-bit environment.
+Of course, this is specific to the \emph{cdecl} calling convention, and only for 32-bit environment.
 
 See also the calling conventions section ~(\myref{sec:callingconventions}).
 
@@ -65,12 +65,12 @@ We can compile our example in MSVC 2012 with \GTT{/MD} option, which means to li
 so we can see the imported functions clearly in the debugger.
 
 Then load the executable in \olly.
-The very first breakpoint is in \GTT{ntdll.dll}, press 
+The very first breakpoint is in \GTT{ntdll.dll}, press
 F9 (run).
 The second breakpoint is in \ac{CRT}-code.
 Now we have to find the \main function.
 
-Find this code by scrolling the code to the very top (MSVC allocates the \main function at the very beginning of the code section): 
+Find this code by scrolling the code to the very top (MSVC allocates the \main function at the very beginning of the code section):
 \begin{figure}[H]
 \centering
 \myincludegraphics{patterns/03_printf/x86/olly3_1.png}
@@ -105,8 +105,8 @@ Take a look at the right bottom debugger window:
 \caption{\olly: stack after the argument values have been pushed (The red rectangular border was added by the author in a graphics editor)}
 \end{figure}
 
-We can see 3 columns there: address in the stack, value in the stack and some additional \olly comments. 
-\olly understands \printf{}-like strings, so it reports the string here and the 3 values \IT{attached} to it.
+We can see 3 columns there: address in the stack, value in the stack and some additional \olly comments.
+\olly understands \printf{}-like strings, so it reports the string here and the 3 values \emph{attached} to it.
 
 It is possible to right-click on the format string, click on \q{Follow in dump},
 and the format string will appear in the debugger left-bottom window, which always displays some part of the memory.
@@ -121,7 +121,7 @@ We see the following output in the console:
 
 \lstinputlisting{patterns/03_printf/x86/console.txt}
 
-Let's see how the registers and stack state have changed: 
+Let's see how the registers and stack state have changed:
 
 \begin{figure}[H]
 \centering
@@ -131,15 +131,15 @@ Let's see how the registers and stack state have changed:
 \end{figure}
 
 Register \EAX now contains \GTT{0xD} (13).
-That is correct, since \printf returns the number of characters printed. 
-The value of \EIP has changed: indeed, now it contains the address of the instruction coming after 
+That is correct, since \printf returns the number of characters printed.
+The value of \EIP has changed: indeed, now it contains the address of the instruction coming after
 \INS{CALL printf}.
 \ECX and \EDX values have changed as well.
 Apparently, the \printf function's hidden machinery used them for its own needs.
 
 A very important fact is that neither the \ESP value, nor the stack state have been changed!
 We clearly see that the format string and corresponding 3 values are still there.
-This is indeed the \IT{cdecl} calling convention behavior: \gls{callee} does not return \ESP back to its previous value.
+This is indeed the \emph{cdecl} calling convention behavior: \gls{callee} does not return \ESP back to its previous value.
 The \gls{caller} is responsible to do so.
 
 \clearpage
@@ -154,37 +154,16 @@ Press F8 again to execute \INS{ADD ESP, 10} instruction:
 
 \ESP has changed, but the values are still in the stack!
 Yes, of course; no one needs to set these values to zeros or something like that.
-Everything above the stack pointer (\ac{SP}) 
-is \IT{noise} or \IT{\garbage{}} and has no meaning at all.
+Everything above the stack pointer (\ac{SP})
+is \emph{noise} or \emph{\garbage{}} and has no meaning at all.
 It would be time consuming to clear the unused stack entries anyway, and no one really needs to.
+% unless you have sensitive information you don't want to be recoverable?
 
 \myparagraph{GCC}
 
 Now let's compile the same program in Linux using GCC 4.4.1 and take a look at what we have got in \IDA:
 
-\begin{lstlisting}[style=customasmx86]
-main            proc near
-
-var_10          = dword ptr -10h
-var_C           = dword ptr -0Ch
-var_8           = dword ptr -8
-var_4           = dword ptr -4
-
-                push    ebp
-                mov     ebp, esp
-                and     esp, 0FFFFFFF0h
-                sub     esp, 10h
-                mov     eax, offset aADBDCD ; "a=%d; b=%d; c=%d"
-                mov     [esp+10h+var_4], 3
-                mov     [esp+10h+var_8], 2
-                mov     [esp+10h+var_C], 1
-                mov     [esp+10h+var_10], eax
-                call    _printf
-                mov     eax, 0
-                leave
-                retn
-main            endp
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{patterns/03_printf/x86/x86_1.asm}
 
 Its noticeable that the difference between the MSVC code and the GCC code is only in the way the arguments are stored on the stack.
 Here the GCC is working directly with the stack without the use of \PUSH/\POP.
@@ -217,7 +196,7 @@ We don't have the \printf function source code here, so \ac{GDB} can't show it, 
 
 \begin{lstlisting}
 (gdb) run
-Starting program: /home/dennis/polygon/1 
+Starting program: /home/dennis/polygon/1
 
 Breakpoint 1, __printf (format=0x80484f0 "a=%d; b=%d; c=%d") at printf.c:29
 29	printf.c: No such file or directory.
@@ -238,8 +217,8 @@ We can verify this by disassembling the memory at this address:
 \begin{lstlisting}[label=NOP_as_XCHG_example,style=customasmx86]
 (gdb) x/5i 0x0804844a
    0x804844a <main+45>:	mov    $0x0,%eax
-   0x804844f <main+50>:	leave  
-   0x8048450 <main+51>:	ret    
+   0x804844f <main+50>:	leave
+   0x8048450 <main+51>:	ret
    0x8048451:	xchg   %ax,%ax
    0x8048453:	xchg   %ax,%ax
 \end{lstlisting}
@@ -254,11 +233,11 @@ The second element (\GTT{0x080484f0}) is the format string address:
 \end{lstlisting}
 
 Next 3 elements (1, 2, 3) are the \printf arguments.
-The rest of the elements could be just \q{garbage} on the stack, 
+The rest of the elements could be just \q{garbage} on the stack,
 but could also be values from other functions, their local variables, etc.
 We can ignore them for now.
 
-Run \q{finish}. 
+Run \q{finish}.
 The command instructs GDB to \q{execute all instructions until the end of the function}.
 In this case: execute till the end of \printf.
 
@@ -314,8 +293,8 @@ Dump of assembler code for function main:
    0x0804843e <+33>:	movl   $0x80484f0,(%esp)
    0x08048445 <+40>:	call   0x80482f0 <printf@plt>
 => 0x0804844a <+45>:	mov    $0x0,%eax
-   0x0804844f <+50>:	leave  
-   0x08048450 <+51>:	ret    
+   0x0804844f <+50>:	leave
+   0x08048450 <+51>:	ret
 End of assembler dump.
 \end{lstlisting}
 
@@ -336,8 +315,8 @@ Dump of assembler code for function main:
    0x0804843e <+33>:	mov    DWORD PTR [esp],0x80484f0
    0x08048445 <+40>:	call   0x80482f0 <printf@plt>
 => 0x0804844a <+45>:	mov    eax,0x0
-   0x0804844f <+50>:	leave  
-   0x08048450 <+51>:	ret    
+   0x0804844f <+50>:	leave
+   0x08048450 <+51>:	ret
 End of assembler dump.
 \end{lstlisting}
 
@@ -365,4 +344,3 @@ edi            0x0	0
 eip            0x804844f	0x804844f <main+50>
 ...
 \end{lstlisting}
-

@@ -1,6 +1,6 @@
 a$ = 8
 f	PROC
-; RCX = valeur en §entrée§
+; RCX = valeur en entrée
 	xor	eax, eax
 	mov	edx, 1
 	lea	r8d, QWORD PTR [rax+64]
@@ -8,7 +8,7 @@ f	PROC
 	npad	5
 $LL4@f:
 	test	rdx, rcx
-; il n'y a pas le §même bit dans la valeur en entrée?§
+; il n'y a pas le même bit dans la valeur en entrée?
 ; alors passer la prochaine instruction INC.
 	je	SHORT $LN3@f
 	inc	eax	; rt++

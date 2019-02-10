@@ -3,10 +3,10 @@ my_memcpy:
 ; X1 = adresse source
 ; X2 = taille de bloc
 
-; initialiser le compteur (i) §à§ 0
+; initialiser le compteur (i) à 0
 	mov	x3, 0
 .L2:
-; tous les octets sont-ils §copiés§? alors sortir:
+; tous les octets sont-ils copiés? alors sortir:
 	cmp	x3, x2
 	beq	.L5
 ; charger l'octet en X1+i:

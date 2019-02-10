@@ -1,7 +1,7 @@
 % TODO proof-reading
 \subsection{Исключения}
 
-Немного переделаем пример \IT{Month} (\myref{Java_2D_array_month}):
+Немного переделаем пример \emph{Month} (\myref{Java_2D_array_month}):
 
 \begin{lstlisting}[caption=IncorrectMonthException.java,style=customjava]
 public class IncorrectMonthException extends Exception
@@ -83,8 +83,8 @@ class Month2
 
 \TT{getIndex()} это просто акцессор.
 
-\IT{Reference} (указатель) на \TT{IncorrectMonthException} передается в нулевом слоте \ac{LVA}
-(\IT{this}), \TT{aload\_0} берет его, \TT{getfield} загружает значение из объекта, 
+\emph{Reference} (указатель) на \TT{IncorrectMonthException} передается в нулевом слоте \ac{LVA}
+(\emph{this}), \TT{aload\_0} берет его, \TT{getfield} загружает значение из объекта, 
 \TT{ireturn} возвращает его.
 
 \begin{lstlisting}
@@ -120,7 +120,7 @@ class Month2
         24: areturn       
 \end{lstlisting}
 
-\TT{iflt} по смещению 1 это \IT{if less than} (если меньше, чем).
+\TT{iflt} по смещению 1 это \emph{if less than} (если меньше, чем).
 
 В случае неправильного индекса, создается новый объект при помощи инструкции \TT{new} 
 по смещению 10.
@@ -131,7 +131,7 @@ class Month2
 Затем вызывается его конструктор, в который передается индекс (через \ac{TOS}) (по смещению 15).
 
 В то время как управление находится на смещении 18, объект уже создан,
-теперь инструкция \TT{athrow} берет указатель (\IT{reference})
+теперь инструкция \TT{athrow} берет указатель (\emph{reference})
 на только что созданный объект и сигнализирует в \ac{JVM}, чтобы тот нашел подходящий обработчик
 исключения.
 
@@ -184,13 +184,13 @@ class Month2
 
 Но \ac{JVM} передаст сюда управление в случае исключения.
 
-Самая первая \TT{astore\_1} (на 14) берет входящий указатель (\IT{reference}) на объект 
+Самая первая \TT{astore\_1} (на 14) берет входящий указатель (\emph{reference}) на объект 
 исключения и сохраняет его в слоте 1 \ac{LVA}.
 
 Позже, по смещению 31 будет вызван метод этого объекта \\
 (\TT{getIndex()}).
 
-Указатель \IT{reference} на текующий объект исключения передался немного раньше (смещение 30).
+Указатель \emph{reference} на текующий объект исключения передался немного раньше (смещение 30).
 
 Остальной код это просто код для манипуляции со строками: 
 в начале значение возвращенное методом \TT{getIndex()}

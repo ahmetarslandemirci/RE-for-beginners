@@ -35,7 +35,7 @@ Here is an example from zlib:
 
 Call to \TT{setjmp()} saves current \ac{PC}, \ac{SP} and other registers into \TT{env} structure, then it returns 0.
 
-In case of error, \TT{longjmp()} \IT{teleporting} you into the point after right after \TT{setjmp()} call,
+In case of error, \TT{longjmp()} \emph{teleporting} you into the point after right after \TT{setjmp()} call,
 as if \TT{setjmp()} call returned non-null value (which was passed to \TT{longjmp()}).
 \myindex{UNIX!fork}
 This reminds as \TT{fork()} syscall in UNIX.

@@ -2,8 +2,8 @@ i$ = 8
 my_abs	PROC
 ; ECX = input
 	test	ecx, ecx
-; §prüfe Vorzeichen des Eingabewertes§
-; §überspringe NEG Befehl, falls Vorzeichen positiv ist§
+; prüfe Vorzeichen des Eingabewertes
+; überspringe NEG Befehl, falls Vorzeichen positiv ist
 	jns	SHORT $LN2@my_abs
 ; negiere Wert
 	neg	ecx

@@ -5,8 +5,8 @@ Encode un exemple simple:
 \lstinputlisting[style=customc]{\CURPATH/classes/classes4_virtual.cpp}
 
 
-La classe \IT{object} a une méthode virtuelle \TT{dump()} qui est remplacée par celle
-de la classe héritant \IT{box} et \IT{sphere}.
+La classe \emph{object} a une méthode virtuelle \TT{dump()} qui est remplacée par celle
+de la classe héritant \emph{box} et \emph{sphere}.
 
 
 Si nous sommes dans un environnement où le type de l'objet n'est pas connu, comme
@@ -28,7 +28,7 @@ d'autre n'est appelé dans la fonction \main.
 \footnote{Vous pouvez en lire plus sur les pointeurs sur les fonctions dans la section afférente:(\myref{sec:pointerstofunctions}).}
 
 
-Regardons le code du constructeur de la classe \IT{box}:
+Regardons le code du constructeur de la classe \emph{box}:
 
 \lstinputlisting[style=customasmx86]{\CURPATH/classes/classes4_2.asm}
 
@@ -48,12 +48,12 @@ Elles sont appelées table de méthodes virtuelles et \ac{RTTI}.
 La table de méthodes virtuelles a l'adresse des méthodes et la table \ac{RTTI} contient
 l'information à propos des types.
 
-À propos, les tables \ac{RTTI} sont utilisées lors de l'appel à \IT{dynamic\_cast}
-et \IT{typeid} en \Cpp.
+À propos, les tables \ac{RTTI} sont utilisées lors de l'appel à \emph{dynamic\_cast}
+et \emph{typeid} en \Cpp.
 Vous pouvez également voir ici le nom de la classe en chaîne de texte pur.
 
-Ainsi, une méthode de la classe de base \IT{object} peut aussi appelé la méthode
-virtuelle \IT{object::dump()}, qui, en fait, va appeler une méthode d'une classe
+Ainsi, une méthode de la classe de base \emph{object} peut aussi appelé la méthode
+virtuelle \emph{object::dump()}, qui, en fait, va appeler une méthode d'une classe
 héritée, puisque cette information est présente juste dans la structure de l'objet.
 
 

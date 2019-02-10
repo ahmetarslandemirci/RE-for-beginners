@@ -10,7 +10,7 @@
 
 Например:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 f               proc    near
 
         	lea     eax, [esp+4]
@@ -34,7 +34,7 @@ f               endp
 
 \dots будет корректино декомпилировано в:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 signed int __cdecl f(signed int a1, signed int a2)
 {
   signed int result; // eax@2
@@ -49,7 +49,7 @@ signed int __cdecl f(signed int a1, signed int a2)
 
 Но давайте закомментируем одну инструкцию в конце:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 ...
 l01:
 	        ;mov    eax, 2
@@ -59,7 +59,7 @@ l01:
 
 \dots получаем явную ошибку:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 void __cdecl f(char a1, char a2)
 {
   fabs((double)a2);
@@ -68,7 +68,7 @@ void __cdecl f(char a1, char a2)
 
 Вот еще ошибка:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 extrn f1:dword
 extrn f2:dword
 
@@ -78,7 +78,7 @@ f               proc    near
         	fadd    dword ptr [esp+8]
                 fst     dword ptr [esp+12]
 	        fcomp   ds:const_100
-                fld     dword ptr [esp+16]      ; §закомментируйте эту инструкцию, и всё будет хорошо§
+                fld     dword ptr [esp+16]      ; закомментируйте эту инструкцию, и всё будет хорошо
 	        fnstsw  ax
         	test    ah, 1
 
@@ -99,7 +99,7 @@ const_100       dd 42C80000h            ; 100.0
 
 Результат:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 int __cdecl f(float a1, float a2, float a3, float a4)
 {
   double v5; // st7@1
@@ -115,17 +115,17 @@ int __cdecl f(float a1, float a2, float a3, float a4)
 }
 \end{lstlisting}
 
-У переменной \IT{v6} тип \IT{char}, и если вы попытаетесь скомпилировать этот код, компилятор выдаст предупреждение о том,
+У переменной \emph{v6} тип \emph{char}, и если вы попытаетесь скомпилировать этот код, компилятор выдаст предупреждение о том,
 что переменная используется перед тем, как была инициализирована.
 
-Еще ошибка: инструкция \INS{FPATAN} корректно декомпилируется в \IT{atan2()}, но аргументы перепутаны.
+Еще ошибка: инструкция \INS{FPATAN} корректно декомпилируется в \emph{atan2()}, но аргументы перепутаны.
 
 \subsection{Странности}
 
-Hex-Rays часто конвертирует 32-битный \IT{int} в 64-битный.
+Hex-Rays часто конвертирует 32-битный \emph{int} в 64-битный.
 Вот пример:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 f               proc    near
 
 	        mov     eax, [esp+4]
@@ -137,7 +137,7 @@ f               proc    near
 	        sub     eax, [esp+8]
         	; EAX=EAX-a2
 
-                ; §в этом месте, EAX каким-то образом был сконвертирован в 64-битный (RAX)§
+                ; в этом месте, EAX каким-то образом был сконвертирован в 64-битный (RAX)
 
 	        cdq
         	xor     eax, edx
@@ -151,7 +151,7 @@ f               endp
 
 Результат:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 int __cdecl f(int a1, int a2)
 {
   __int64 v2; // rax@1
@@ -162,11 +162,11 @@ int __cdecl f(int a1, int a2)
 \end{lstlisting}
 
 Возможно, это результат инструкции \INS{CDQ}? Я не уверен.
-Так или иначе, если вы видите тип \IT{\_\_int64} вы 32-битном коде, обращайте внимание.
+Так или иначе, если вы видите тип \emph{\_\_int64} вы 32-битном коде, обращайте внимание.
 
 Это тоже странно:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 f               proc    near
 
 	        mov     esi, [esp+4]
@@ -190,7 +190,7 @@ f               endp
 
 Результат:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 signed int __cdecl f(signed int a1)
 {
   signed int result; // eax@3
@@ -207,7 +207,7 @@ signed int __cdecl f(signed int a1)
 
 Иногда Hex-Rays не сокращает деление через умножение:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 f               proc    near
 
         	mov     eax, [esp+4]
@@ -222,7 +222,7 @@ f               endp
 
 Результат:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 int __cdecl f(int a1)
 {
   return (unsigned __int64)(715827883i64 * a1) >> 32;
@@ -236,7 +236,7 @@ int __cdecl f(int a1)
 
 \subsection{Безмолвие}
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 extrn some_func:dword
 
 f               proc    near
@@ -257,7 +257,7 @@ f               endp
 
 Результат:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 int __cdecl f(int a1, int a2)
 {
   int v2; // ecx@1
@@ -267,13 +267,13 @@ int __cdecl f(int a1, int a2)
 }
 \end{lstlisting}
 
-Переменная \IT{v2} (из ECX) потерялась \dots
+Переменная \emph{v2} (из ECX) потерялась \dots
 Да, код некорректный (значение в регистре ECX не сохраняется после вызова другой ф-ции),
 но для Hex-Rays было бы неплохо выдать предупреждение.
 
 Вот еще:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customasmx86]
 extrn some_func:dword
 
 f               proc    near
@@ -292,7 +292,7 @@ f               endp
 
 Результат:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 signed int f()
 {
   char v0; // zf@1
@@ -309,7 +309,7 @@ signed int f()
 
 И снова, предупреждение бы помогло.
 
-Так или иначе, если вы видите переменную типа \IT{char}, которая используется без инициализации, это явный признак того,
+Так или иначе, если вы видите переменную типа \emph{char}, которая используется без инициализации, это явный признак того,
 что что-то пошло не так и требует ручного вмешательства.
 
 \subsection{Запятая}
@@ -319,19 +319,19 @@ signed int f()
 
 Вот простая задача, что возвращает эта ф-ция на Си/Си++?
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 int f()
 {
 	return 1, 2;
 };
 \end{lstlisting}
 
-Это 2: когда компилятор встречает выражение с запятой, он генерирует код, исполняющий все подвыражения, и \IT{возвращает}
+Это 2: когда компилятор встречает выражение с запятой, он генерирует код, исполняющий все подвыражения, и \emph{возвращает}
 значение последнего подвыражения.
 
 Я видел такое в реальном коде:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 if (cond)
 	return global_var=123, 456; // возвращается 456
 else
@@ -346,24 +346,24 @@ else
 \myindex{Racket}
 Запятая в Си/Си++ близка к \TT{begin} в Scheme/Racket: \url{https://docs.racket-lang.org/guide/begin.html}.
 
-Вероятн, есть только одно популярное и всеми одобренное использование запятой, это в выражении \IT{for()}:
+Вероятно, есть только одно популярное и всеми одобренное использование запятой, это в выражении \emph{for()}:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 char *s="hello, world";
 for(int i=0; *s; s++, i++);
-; i = длина строки
+// i = длина строки
 \end{lstlisting}
 
-И \IT{s++} и \IT{i++} исполняются на каждой итерации цикла.
+И \emph{s++} и \emph{i++} исполняются на каждой итерации цикла.
 
-Читайте больше об этом: \url{http://stackoverflow.com/questions/52550/what-does-the-comma-operator-do-in-c}.
+Читайте больше об этом: \url{https://stackoverflow.com/q/52550}.
 
 \myindex{\CLanguageElements!Short-circuit}
 Я пишу всё это потому что Hex-Rays выдает код (как минимум, в моем случае) очень богатый и на запятые и на
-short-circuit-выражения (\IT{короткое замыкание}).
+short-circuit-выражения (\emph{короткое замыкание}).
 Например, вот реальный пример работы Hex-Rays:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
  if ( a >= b || (c = a, (d[a] - e) >> 2 > f) )
     {
     	...
@@ -372,26 +372,26 @@ short-circuit-выражения (\IT{короткое замыкание}).
 Это корректно, оно компилируется и работает, и да поможет вам бог понять, как.
 Вот оно переписанное:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 if (cond1 || (comma_expr, cond2))
 {
 	...
 \end{lstlisting}
 
-Здесь работает \IT{short-circuit} (\IT{короткое замыкание}): в начале проверяется \IT{cond1}, и если оно истинно,
-исполняется тело \IT{if()}, и остальная часть выражения \IT{if()} полностью игнорируется.
-Если \IT{cond1} ложно, тогда исполняется \IT{comma\_expr} (в предыдущем примере, \IT{a} копируется в \IT{c}),
-затем проверяется \IT{cond2}.
-Если \IT{cond2} истинно, исполняется тело \IT{if()}, или нет.
-Другими словами, тело \IT{if()} исполняется, если \IT{cond1} истинно, или если \IT{cond2} истинно,
-но если последнее истинно, исполняется также \IT{comma\_expr}.
+Здесь работает \emph{short-circuit} (\emph{короткое замыкание}): в начале проверяется \emph{cond1}, и если оно истинно,
+исполняется тело \emph{if()}, и остальная часть выражения \emph{if()} полностью игнорируется.
+Если \emph{cond1} ложно, тогда исполняется \emph{comma\_expr} (в предыдущем примере, \emph{a} копируется в \emph{c}),
+затем проверяется \emph{cond2}.
+Если \emph{cond2} истинно, исполняется тело \emph{if()}, или нет.
+Другими словами, тело \emph{if()} исполняется, если \emph{cond1} истинно, или если \emph{cond2} истинно,
+но если последнее истинно, исполняется также \emph{comma\_expr}.
 
 Теперь вы видите, почему запятая имеет такую славу.
 
 \textbf{Еще о short-circuit (короткое замыкание).}
 Частое заблуждение начинающих в том, что подусловия проверяются в каком-то незаданном порядке, и это не верно.
 В выражении \TT{a | b | c}, $a$, $b$ и $c$ исполняются в незаданном порядке, и вот почему в Си/Си++ был также добавлен
-оператор \TT{||}, чтобы явно применять \IT{short-circuit}.
+оператор \TT{||}, чтобы явно применять \emph{short-circuit}.
 
 \subsection{Типы данных}
 
@@ -402,8 +402,8 @@ Hex-Rays может быть слеп к массивам в локальном 
 
 Другая проблема это большие ф-ции, где один и тот же слот в локальном стеке может использоваться разными переменными
 во время исполнения ф-ции.
-Нередкий случай, когда слот в начале используется для \IT{int}-переменной, затем для указателя, затем для переменной типа
-\IT{float}.
+Нередкий случай, когда слот в начале используется для \emph{int}-переменной, затем для указателя, затем для переменной типа
+\emph{float}.
 Hex-Rays корректно декомпилирует это: он создает переменную с каким-то типом, затем приводит её к другому типу в разных частях
 ф-ции.
 Эта проблема решалась мною ручным разделением ф-ции на несколько меньших.
@@ -412,9 +412,9 @@ Hex-Rays корректно декомпилирует это: он создае
 
 \subsection{Длинные и запутанные выражения}
 
-Иногда, во время переписывания, вы можете прийти к длинным и труднопонятным выражениям в конструкциях \IT{if()}, вроде:
+Иногда, во время переписывания, вы можете прийти к длинным и труднопонятным выражениям в конструкциях \emph{if()}, вроде:
 
-\begin{lstlisting}
+\begin{lstlisting}[style=customc]
 if ((! (v38 && v30 <= 5 && v27 != -1)) && ((! (v38 && v30 <= 5) && v27 != -1) || (v24 >= 5 || v26)) && v25)
 {
 ...
@@ -455,7 +455,7 @@ Mathematica может добавить две новых переменных: 
 
 \item Проверяйте/устанавливайте тип данных для переменных, массивов, итд.
 
-\item Если вы видите странный результат, \IT{висящую} переменную (которая используется перед инициализацией),
+\item Если вы видите странный результат, \emph{висящую} переменную (которая используется перед инициализацией),
 попробуйте поменять инструкции вручную, перекомпилировать и снова подать на вход Hex-Rays-у.
 \end{itemize}
 

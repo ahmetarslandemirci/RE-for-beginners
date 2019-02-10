@@ -43,7 +43,7 @@ main:
 	ldrsw	x1, [x29,108]
 ; load value from the array at the address (X0+X1<<2 = address of array + i*4)
 	ldr	w2, [x0,x1,lsl 2]
-; load address of the "a[%d]=%d\n" string:
+; load address of the \verb|"a[%d]=%d\n"| string:
 	adrp	x0, .LC0
 	add	x0, x0, :lo12:.LC0
 ; load "i" variable to W1 and pass it to printf() as second argument:

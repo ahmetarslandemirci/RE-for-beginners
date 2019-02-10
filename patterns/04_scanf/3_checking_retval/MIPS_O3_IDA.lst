@@ -16,8 +16,8 @@
 .text:004006C4           lw      $gp, 0x28+var_18($sp)
 .text:004006C8           lui     $a0, 0x40
 .text:004006CC           la      $t9, __isoc99_scanf
-.text:004006D0           la      $a0, aD          # "%d"
-.text:004006D4           jalr    $t9 ; __isoc99_scanf
+.text:004006D0           la      $a0, aD          # "\%d"
+.text:004006D4           jalr    $t9 ; \_\_isoc99\_scanf
 .text:004006D8           addiu   $a1, $sp, 0x28+var_10  # branch delay slot
 .text:004006DC           li      $v1, 1
 .text:004006E0           lw      $gp, 0x28+var_18($sp)
@@ -37,7 +37,7 @@
 .text:00400710           lw      $a1, 0x28+var_10($sp)
 .text:00400714           lui     $a0, 0x40
 .text:00400718           jalr    $t9 ; printf
-.text:0040071C           la      $a0, aYouEnteredD___  # "You entered %d...\n"
+.text:0040071C           la      $a0, aYouEnteredD___  # "You entered \%d...\textbackslash{}n"
 .text:00400720           lw      $ra, 0x28+var_4($sp)
 .text:00400724           move    $v0, $zero
 .text:00400728           jr      $ra

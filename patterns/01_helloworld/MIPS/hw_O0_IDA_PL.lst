@@ -26,7 +26,7 @@
 .text:00000034                 or      $at, $zero ; NOP
 ; przywrócić GP ze stosu lokalnego:
 .text:00000038                 lw      $gp, 0x20+var_10($fp)
-; ustawić rejestr $2 ($V0) na zero:
+; ustawić rejestr \$2 (\$V0) na zero:
 .text:0000003C                 move    $v0, $zero
 ; epilog funkcji.
 ; przywrócić SP:

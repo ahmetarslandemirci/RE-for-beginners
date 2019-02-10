@@ -67,7 +67,7 @@ die zweite Zahl (2).
 Wenn beide Zahlen als vorzeichenbehaftet repr채sentiert werden, wird die erste Zahl $-2$ und ist kleiner
 als die zweite Zahl (2).
 Das ist der Grund, warum bedingte Spr체nge ~(\myref{sec:Jcc}) sowohl f체r vorzeichenbehaftete (e.g. \JG, \JL)
-als auch vorzeichenlose (\JA, \JB) Operationen vorhanden sind.
+als auch vorzeichenlose (\INS{JA}, \JB) Operationen vorhanden sind.
 
 Aus Gr체nden der Einfachheit ist hier was man wissen muss:
 
@@ -144,8 +144,8 @@ Dies funktioniert, weil -2 (oder 0xfffe) in nat체rlicher Sprache wie folgt repr�
 ``2 fehlt bei diesem Werte bis zum maximalen Wert in einem 16-Bit-Register + 1''.
 -3 kann repr채sentiert werden als ``\dots 3 fehlt in diesem Wert bis zu \dots''.
 Der maximale Wert eines 16-Bit-Registers + 1 ist 0x10000.
-Bei der Addition der beiden Zahlen und \IT{Abschneiden}  durch $2^{16}$ modulo,
-wird $2+3=5$ \IT{fehlen}.
+Bei der Addition der beiden Zahlen und \emph{Abschneiden}  durch $2^{16}$ modulo,
+wird $2+3=5$ \emph{fehlen}.
 
 % subsections:
 \input{fundamentals/MUL_IMUL_DE}

@@ -2,7 +2,7 @@ $LC0:
 	.ascii	"Hello, world!\012\000"
 main:
 ; function prologue.
-; save the RA ($31) and FP in the stack:
+; save the RA (\$31) and FP in the stack:
 	addiu	$sp,$sp,-32
 	sw	$31,28($sp)
 	sw	$fp,24($sp)
@@ -24,7 +24,7 @@ main:
 
 ; restore the GP from the local stack:
 	lw	$28,16($fp)
-; set register $2 ($V0) to zero:
+; set register \$2 (\$V0) to zero:
 	move	$2,$0
 ; function epilogue.
 ; restore the SP:

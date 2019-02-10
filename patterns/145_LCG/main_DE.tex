@@ -11,7 +11,7 @@ Es gibt hier zwei Funktionen: die erste wird verwendet und den internen Zustand 
 zum Erzeugen der Pseudozufallszahlen aufgerufen.
 
 Wir sehen, dass im Algorithmus zwei Konstanten verwendet werden.
-Sie stamen aus [William H. Press and Saul A. Teukolsky and William T. Vetterling and Brian P. Flannery, \IT{Numerical Recipes}, (2007)].
+Sie stamen aus [William H. Press and Saul A. Teukolsky and William T. Vetterling and Brian P. Flannery, \emph{Numerical Recipes}, (2007)].
 
 Definieren wir sie über den \TT{\#define} \CCpp Ausdruck. Es handelt sich um ein Makro.
 
@@ -56,7 +56,7 @@ GCC erzeugt fast den gleichen Code.
 Es ist nicht möglich 32-Bit-Konstanten in ARM Befehle einzubetten, sodass Keil diese extern speichern und dann
 zusätzlich laden muss. Eine interessante Sache ist, dass es ebenfalls nicth möglich ist, die Konstante 0x7FFF
 einzubetten.
-Was Keil dann tut, ist \IT{rand\_state} um 17 Bits nach links zu verschieben und dann um 17 Bits nach rechts zu
+Was Keil dann tut, ist \emph{rand\_state} um 17 Bits nach links zu verschieben und dann um 17 Bits nach rechts zu
 Verchieben.
 Die entspricht Ausdruck $(rand\_state \ll 17) \gg 17$ in \CCpp.
 Es scheint eine nutzlose Operation zu sein, löscht aber die oberen 17 Bits und lässt die 15 niederen Bits intakt und das

@@ -7,7 +7,7 @@ les valeurs appropriées depuis les headers standards et par calcul direct.}{\KR
 \subsubsection{Obtenir le nombre maximum de quelques \glslink{word}{mots}}
 
 Le maximum d'un nombre non signé est simplement un nombre où tous les bits sont mis:
-\IT{0xFF....FF} (ceci est -1 si le \glslink{word}{mot} est traité comme un entier
+\emph{0xFF....FF} (ceci est -1 si le \glslink{word}{mot} est traité comme un entier
 signé).
 Donc, vous prenez un \glslink{word}{mot}, vous mettez tous les bits et vous obtenez
 la valeur:
@@ -27,10 +27,10 @@ C'est 4294967295 pour un entier 32-bit.
 
 \subsubsection{Obtenir le nombre maximum de quelques \glslink{word}{mots} signés}
 
-Le nombre signé minimum est encodé en \IT{0x80....00}, i.e., le bit le plus significatif
+Le nombre signé minimum est encodé en \emph{0x80....00}, i.e., le bit le plus significatif
 est mis, tandis que tous les autres sont à zéro.
 Le nombre maximum signé est encodé de la même manière, mais tous les bits sont
-inversés: \IT{0x7F....FF}.
+inversés: \emph{0x7F....FF}.
 
 Déplaçons un seul bit jusqu'à ce qu'il disparaisse:
 
@@ -59,5 +59,5 @@ La sortie est:
 \end{lstlisting}
 
 Les deux dernier nombres sont respectivement le minimum et le maximum d'un entier
-signé 32-bit \IT{int}.
+signé 32-bit \emph{int}.
 

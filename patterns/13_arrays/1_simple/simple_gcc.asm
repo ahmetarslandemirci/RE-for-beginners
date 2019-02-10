@@ -1,5 +1,5 @@
                 public main
-main            proc near               ; DATA XREF: _start+17
+main            proc near               ; DATA XREF: \_start+17
 
 var_70          = dword ptr -70h
 var_6C          = dword ptr -6Ch
@@ -30,7 +30,7 @@ loc_804840A:
 loc_804841B:
                 mov     eax, [esp+70h+i]
                 mov     edx, [esp+eax*4+70h+i_2]
-                mov     eax, offset aADD ; "a[%d]=%d\n"
+                mov     eax, offset aADD ; "a[\%d]=\%d\textbackslash{}n"
                 mov     [esp+70h+var_68], edx
                 mov     edx, [esp+70h+i]
                 mov     [esp+70h+var_6C], edx

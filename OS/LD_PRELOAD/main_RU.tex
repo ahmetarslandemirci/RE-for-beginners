@@ -1,4 +1,4 @@
-\subsection{Трюк с \IT{LD\_PRELOAD} в Linux}
+\subsection{Трюк с \emph{LD\_PRELOAD} в Linux}
 
 \myindex{LD\_PRELOAD}
 \label{ld_preload}
@@ -10,7 +10,7 @@
 Например, легко перехватывать все вызовы к time(), read(), write(), итд. \\
 \\
 \myindex{uptime}
-Попробуем узнать, сможем ли мы обмануть утилиту \IT{uptime}.
+Попробуем узнать, сможем ли мы обмануть утилиту \emph{uptime}.
 Как известно, она сообщает, как долго компьютер работает.
 \myindex{strace}
 При помощи strace(\myref{strace}), можно увидеть, что эту информацию утилита получает из файла \TT{/proc/uptime}:
@@ -77,7 +77,7 @@ The second number is how much of that time the machine has spent idle, in second
 gcc -fpic -shared -Wall -o fool_uptime.so fool_uptime.c -ldl
 \end{lstlisting}
 
-Запускаем \IT{uptime}, подгружая нашу библиотеку перед остальными:
+Запускаем \emph{uptime}, подгружая нашу библиотеку перед остальными:
 
 \begin{lstlisting}
 LD_PRELOAD=`pwd`/fool_uptime.so uptime
@@ -89,7 +89,7 @@ LD_PRELOAD=`pwd`/fool_uptime.so uptime
  01:23:02 up 24855 days,  3:14,  3 users,  load average: 0.00, 0.01, 0.05
 \end{lstlisting}
 
-Если переменная окружения \IT{LD\_PRELOAD} 
+Если переменная окружения \emph{LD\_PRELOAD} 
 будет всегда указывать на путь и имя файла нашей библиотеки, то она будет
 загружаться для всех запускаемых программ.  \\
 \\

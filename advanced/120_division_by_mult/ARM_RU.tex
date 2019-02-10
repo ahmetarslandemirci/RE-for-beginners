@@ -4,7 +4,7 @@
 Нет также возможности умножения на 32-битную константу одной инструкцией (вспомните что 32-битная
 константа просто не поместится в 32-битных опкод).
 
-При помощи этого любопытного трюка (или \IT{хака})\footnote{hack}, можно обойтись только тремя действиями: 
+При помощи этого любопытного трюка (или \emph{хака})\footnote{hack}, можно обойтись только тремя действиями: 
 сложением, вычитанием и битовыми сдвигами
 ~(\myref{sec:bitfields}).
 
@@ -57,7 +57,7 @@ __text:00002C6C 1E FF 2F E1              BX     LR
 \IDA легко распознала эту последовательность и для краткости, сократила всё это до одной \q{псевдо-инструкции}.
 
 \myindex{ARM!\Instructions!SMMUL}
-Инструкция \TT{SMMUL} (\IT{Signed Most Significant Word Multiply}) 
+Инструкция \TT{SMMUL} (\emph{Signed Most Significant Word Multiply}) 
 умножает числа считая их знаковыми (signed) и оставляет в \Reg{0} старшие 32 бита результата, 
 не сохраняя младшие 32 бита.
 
@@ -77,7 +77,7 @@ __text:00002C6C 1E FF 2F E1              BX     LR
 (\MOV, \ADD, \SUB, \TT{RSB})\footnote{\DataProcessingInstructionsFootNote}
 могут быть дополнены суффиксом, сдвигать ли второй операнд и если да, то на сколько и как.
 
-\TT{ASR} означает \IT{Arithmetic Shift Right}, \TT{LSR} --- \IT{Logical Shift Right}.
+\TT{ASR} означает \emph{Arithmetic Shift Right}, \TT{LSR} --- \emph{Logical Shift Right}.
 
 \subsubsection{\OptimizingXcodeIV (\ThumbTwoMode)}
 
@@ -97,6 +97,6 @@ BX              LR
 
 \NonOptimizing LLVM 
 не занимается генерацией подобного кода, а вместо этого просто вставляет вызов
-библиотечной функции \IT{\_\_\_divsi3}.
+библиотечной функции \emph{\_\_\_divsi3}.
 
-А Keil во всех случаях вставляет вызов функции \IT{\_\_aeabi\_idivmod}.
+А Keil во всех случаях вставляет вызов функции \emph{\_\_aeabi\_idivmod}.

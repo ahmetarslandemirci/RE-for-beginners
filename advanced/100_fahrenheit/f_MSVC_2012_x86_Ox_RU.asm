@@ -17,7 +17,7 @@ _main	PROC
 	call	esi			; вызвать printf()
 	lea	eax, DWORD PTR _fahr$[esp+16]
 	push	eax
-	push	OFFSET $SG4230		; '%lf'
+	push	OFFSET $SG4230		; '\%lf'
 	call	DWORD PTR __imp__scanf
 	add	esp, 12
 	cmp	eax, 1

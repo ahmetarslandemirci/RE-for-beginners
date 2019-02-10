@@ -17,9 +17,9 @@ la valeur après modification.
 \par Le lecteur attentif se demandera peut-être ce qu'il en est avec les conventions d'appel qui 
 utilisent les registres pour passer les arguments.
 
-C'est justement une des utilisations du \IT{Shadow Space}.
+C'est justement une des utilisations du \emph{Shadow Space}.
 
-La valeur en entrée est copiée du registre vers le \IT{Shadow Space} dans la pile locale, puis 
+La valeur en entrée est copiée du registre vers le \emph{Shadow Space} dans la pile locale, puis 
 l'adresse de la pile locale est passée à la fonction appelée:
 
 \lstinputlisting[caption=MSVC 2012 x64 optimisé,style=customasmx86]{OS/calling_conventions/ptr_to_argument/MSVC_2012_x64_O3.asm}
@@ -29,9 +29,9 @@ Le compilateur GCC lui aussi sauvegarde la valeur sur la pile locale:
 \lstinputlisting[caption=GCC 4.9.1 optimisé x64,style=customasmx86]{OS/calling_conventions/ptr_to_argument/GCC491_x64_O3.s}
 
 Le compilateur GCC pour ARM64 se comporte de la même manière, mais l'espace de sauvegarde sur la pile 
-est dénommé \IT{Register Save Area} :
+est dénommé \emph{Register Save Area} :
 
 \lstinputlisting[caption=GCC 4.9.1 optimisé ARM64,style=customasmARM]{OS/calling_conventions/ptr_to_argument/GCC49_ARM64_O3.s}
 
-Enfin, nous constatons un usage similaire du \IT{Shadow Space} ici: \myref{variadic_arith_registers}.
+Enfin, nous constatons un usage similaire du \emph{Shadow Space} ici: \myref{variadic_arith_registers}.
 

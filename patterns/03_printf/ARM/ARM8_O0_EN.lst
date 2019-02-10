@@ -7,7 +7,7 @@ f3:
 	stp	x29, x30, [sp,16]
 ; set stack frame (FP=SP):
 	add	x29, sp, 16
-	adrp	x0, .LC2 ; "a=%d; b=%d; c=%d; d=%d; e=%d; f=%d; g=%d; h=%d\n"
+	adrp	x0, .LC2 ; "a=\%d; b=\%d; c=\%d; d=\%d; e=\%d; f=\%d; g=\%d; h=\%d\textbackslash{}n"
 	add	x0, x0, :lo12:.LC2
 	mov	w1, 8		; 9th argument
 	str	w1, [sp]	; store 9th argument in the stack

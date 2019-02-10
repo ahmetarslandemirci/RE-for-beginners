@@ -10,7 +10,7 @@ Cette opération est aussi appelée \q{population count}\footnote{les CPUs x86 m
 
 Dans cette boucle, la variable d'itération $i$ prend les valeurs de 0 à 31, donc
 la déclaration $1 \ll i$ prend les valeurs de 1 à \TT{0x80000000}.
-Pour décrire cette opération en langage naturel, nous dirions \IT{décaler 1 par n bits à gauche}.
+Pour décrire cette opération en langage naturel, nous dirions \emph{décaler 1 par n bits à gauche}.
 En d'autres mots, la déclaration $1 \ll i$ produit consécutivement toutes les positions
 possible pour un bit dans un nombre de 32-bit.
 Le bit libéré à droite est toujours à 0.
@@ -19,7 +19,7 @@ Le bit libéré à droite est toujours à 0.
 Voici une table de tous les $1 \ll i$ possible
 for $i=0 \ldots 31$:
 
-\small
+%\small
 \begin{center}
 \begin{tabular}{ | l | l | l | l | }
 \hline
@@ -94,7 +94,7 @@ $1 \ll 31$ & $2^{31}$ & 2147483648 & 0x80000000 \\
 \hline
 \end{tabular}
 \end{center}
-\normalsize
+%\normalsize
 
 Ces constantes (masques de bit) apparaissent très souvent le code et un rétro-ingénieur
 pratiquant doit pouvoir les repérer rapidement.
@@ -125,9 +125,9 @@ Revenons à notre exemple.
 La macro \TT{IS\_SET} teste la présence d'un bit dans $a$.
 \myindex{x86!\Instructions!AND}
 
-La macro \TT{IS\_SET} est en fait l'opération logique AND (\IT{AND}) et elle renvoie
+La macro \TT{IS\_SET} est en fait l'opération logique AND (\emph{AND}) et elle renvoie
 0 si le bit testé est absent (à 0), ou le masque de bit, si le bit est présent (à 1).
-L'opérateur \IT{if()} en \CCpp exécute son code si l'expression n'est pas zéro,
+L'opérateur \emph{if()} en \CCpp exécute son code si l'expression n'est pas zéro,
 cela peut même être 123456, c'est pourquoi il fonctionne toujours correctement.
 
 % subsections

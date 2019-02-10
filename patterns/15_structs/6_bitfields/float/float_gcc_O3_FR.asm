@@ -31,7 +31,7 @@ main   proc near
        sub     esp, 10h
        fld     ds:dword_8048614 ; -4.936
        fstp    qword ptr [esp+8]
-       mov     dword ptr [esp+4], offset asc_8048610 ; "%f\n"
+       mov     dword ptr [esp+4], offset asc_8048610 ; \verb|"%f\n"|
        mov     dword ptr [esp], 1
        call    ___printf_chk
        xor     eax, eax

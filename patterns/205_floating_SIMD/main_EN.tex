@@ -120,7 +120,7 @@ in \XMM{0}}
 \end{figure}
 
 We see that \olly shows the XMM registers as pairs of \Tdouble numbers,
-but only the \IT{lower} part is used.
+but only the \emph{lower} part is used.
 
 Apparently, \olly shows them in that format because the SSE2 instructions (suffixed with \TT{-SD}) 
 are executed right now.
@@ -217,7 +217,7 @@ Now we compile it for x64:
 
 There is no way to add 1 to a value in 128-bit XMM register, so it must be placed into memory.
 
-There is, however, the \INS{ADDSD} instruction (\IT{Add Scalar Double-Precision Floating-Point Values}) 
+There is, however, the \INS{ADDSD} instruction (\emph{Add Scalar Double-Precision Floating-Point Values}) 
 which can add a value to the lowest 64-bit half of a XMM register while ignoring the higher one, 
 but MSVC 2012 probably is not that good yet
 \footnote{As an exercise, you may try to rework this code to 

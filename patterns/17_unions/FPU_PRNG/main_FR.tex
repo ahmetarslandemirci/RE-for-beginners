@@ -32,10 +32,10 @@ Un générateur congruentiel linéaire de nombres aléatoire très simple est ut
 mon exemple\footnote{l'idée a été prise de: \URLXOR}, il produit des nombres 32-bit.
 Le \ac{PRNG} est initialisé avec le temps courant au format UNIX timestamp.
 
-Ici, nous représentons un type \Tfloat comme une \IT{union}---c'est la construction \CCpp qui nous
+Ici, nous représentons un type \Tfloat comme une \emph{union}---c'est la construction \CCpp qui nous
 permet d'interpréter un bloc de mémoire sous différents types.
-Dans notre cas, nous pouvons créer une variable de type \IT{union} et y accéder comme
-si c'est un \Tfloat ou un \IT{uint32\_t}.
+Dans notre cas, nous pouvons créer une variable de type \emph{union} et y accéder comme
+si c'est un \Tfloat ou un \emph{uint32\_t}.
 On peut dire que c'est juste un hack. Un sale.
 
 % WTF?
@@ -54,12 +54,15 @@ C++ et ceci est la modification des noms en C++, nous en parlerons plus loin: \m
 Si nous compilons ceci avec MSVC 2012, il utilise des instructions SIMD pour le FPU,
 pour en savoir plus: \myref{FPU_PRNG_SIMD}.
 
+\iffalse
+A BUG HERE
 \subsubsection{MIPS}
 
 \lstinputlisting[caption=GCC 4.4.5 \Optimizing,style=customasmMIPS]{patterns/17_unions/FPU_PRNG/MIPS_O3_IDA_FR.lst}
 
 Il y a aussi une instruction \INS{LUI} inutile, ajoutée pour quelque étrange raison.
 Nous avons déjà considéré cet artefact plus tôt: \myref{MIPS_FPU_LUI}.
+\fi
 
 \subsubsection{ARM (\ARMMode)}
 

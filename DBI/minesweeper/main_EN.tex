@@ -41,9 +41,9 @@ OK, I run it, and clicked on leftmost/topmost cell:
 %\caption{TODO}
 \end{figure}
 
-Yes, unlike Minesweeper from Windows XP, mines are places randomly \IT{after} user's click on cell, so to guarantee
+Yes, unlike Minesweeper from Windows XP, mines are places randomly \emph{after} user's click on cell, so to guarantee
 there is no mine at the cell user first clicked.
-So Minesweeper placed cells on cells other than leftmost/topmost (where I clicked).
+So Minesweeper placed mines on cells other than leftmost/topmost (where I clicked).
 
 Now I clicked on rightmost/topmost cell:
 
@@ -152,7 +152,7 @@ Wait... 0x50 is 80 in decimal representation. And 9*9=81 (standard minesweeper c
 
 After quick investigation, I've found that each 32-bit element is indeed cell coordinate.
 A cell is represented using a single number, it's a number inside of 2D-array.
-Row and column of each mine is decoded like that: \IT{row=n / WIDTH; col=n \% HEIGHT;}
+Row and column of each mine is decoded like that: \emph{row=n / WIDTH; col=n \% HEIGHT;}
 
 So when I tried to decode these two biggest blocks, I've got these cell maps:
 

@@ -44,36 +44,14 @@ c:\tmp6\ss.cpp(4) : warning C4717: 'f' : recursive on all control paths, functio
 
 \dots aber der Compiler erzeugt den Code trotzdem:
 
-\begin{lstlisting}[style=customasmx86]
-?f@@YAXXZ PROC			; f
-; File c:\tmp6\ss.cpp
-; Line 2
-	push	ebp
-	mov	ebp, esp
-; Line 3
-	call	?f@@YAXXZ	; f
-; Line 4
-	pop	ebp
-	ret	0
-?f@@YAXXZ ENDP			; f
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{patterns/02_stack/1.asm}
 
 \dots Auch wenn wir die Compiler Optimierungen einschalten (\TT{/0x} Option) wird der optimierte Code nicht
-den Stack zum überlaufen bringen. Stattdessen wird der Code \IT{korrekt}\footnote{Ironie hier} ausgeführt: 
+den Stack zum überlaufen bringen. Stattdessen wird der Code \emph{korrekt}\footnote{Ironie hier} ausgeführt: 
 
-\begin{lstlisting}[style=customasmx86]
-?f@@YAXXZ PROC			; f
-; File c:\tmp6\ss.cpp
-; Line 2
-$LL3@f:
-; Line 3
-	jmp	SHORT $LL3@f
-?f@@YAXXZ ENDP			; f
-\end{lstlisting}
-
+\lstinputlisting[style=customasmx86]{patterns/02_stack/2.asm}
 
 GCC 4.4.1 generiert vergleichbaren Code in beiden Fällen, jedoch ohne über das Overflow Problem zu warnen.
-
 
 \myparagraph{ARM}
 
@@ -97,7 +75,7 @@ Stack gespeichert, inklusive \ac{LR}.
 
 \myindex{ARM!Leaf Funktion}
 Wenn eine Funktion nie eine andere Funktion aufruft, nennt man das in der \ac{RISC} Terminologie eine
-\IT{\glslink{leaf function}{leaf Funktion}}\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}.  % <-- attention could be a compilier bug
+\emph{\glslink{leaf function}{leaf Funktion}}\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}.  % <-- attention could be a compilier bug
 Als Konsequenz ergibt sich, das leaf Funktionen nicht das \ac{LR} Register speichern (da sie es nicht modifizieren).
 Wenn solche Funktionen klein sind und nur eine geringe Anzahl an Registern benutzt, ist es möglich das der Stack
 gar nicht benutzt wird. Es ist also möglich leaf Funktionen zu benutzen ohne den Stack zurück zu greifen, die Ausführung

@@ -1,11 +1,11 @@
 get_month1:
-; load address of table into $v0:
+; load address of table into \$v0:
                 la      $v0, month1
 ; take input value and multiply it by 4:
                 sll     $a0, 2
 ; sum up address of table and multiplied value:
                 addu    $a0, $v0
-; load table element at this address into $v0:
+; load table element at this address into \$v0:
                 lw      $v0, 0($a0)
 ; return
                 jr      $ra

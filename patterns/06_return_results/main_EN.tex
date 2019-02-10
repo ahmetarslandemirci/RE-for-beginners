@@ -11,6 +11,7 @@ If a function returns a \Tfloat number, the FPU register \ST{0} is used instead.
 In ARM, the result is usually returned in the \Reg{0} register.
 
 \subsection{Attempt to use the result of a function returning \Tvoid}
+\label{UseResultOfVoidFunc}
 
 So, what if the \main function return value was declared of type \Tvoid and not \Tint?
 The so-called startup-code is calling \main roughly as follows:
@@ -30,7 +31,7 @@ In other words:
 exit(main(argc,argv,envp));
 \end{lstlisting}
 
-If you declare \main as \Tvoid, nothing is to be returned explicitly (using the \IT{return} statement),
+If you declare \main as \Tvoid, nothing is to be returned explicitly (using the \emph{return} statement),
 then something random, that has been stored in the \EAX register at the end of \main becomes 
 the sole argument of the exit() function.
 Most likely, there will be a random value, left from your function execution, so the exit code of program is pseudorandom.
@@ -90,7 +91,9 @@ Hello, world!
 \end{lstlisting}
 
 14 is the number of characters printed.
-The number of characters printed is \textit{slips} from \printf{} through \TT{EAX}/\TT{RAX} into \q{exit code}.
+The number of characters printed \textit{slips} from \printf{} through \TT{EAX}/\TT{RAX} into \q{exit code}.
+
+Another example in the book: \myref{ForgottenReturn}.
 
 \myindex{Hex-Rays}
 By the way, when we decompile C++ in Hex-Rays, we can often encounter a function which terminated with destructor of

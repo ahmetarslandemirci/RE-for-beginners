@@ -10,7 +10,7 @@ unsigned int get_from_array (unsigned int idx)
 	// find right triple in array:
 	int triple=(idx>>1);
 	int array_idx=triple*3;
-	//assert (array_idx<ARRAY_SIZE);
+	// \verb|assert (array_idx<ARRAY_SIZE);|
 
 	if (idx&1)
 	{
@@ -35,7 +35,7 @@ void put_to_array (unsigned int idx, unsigned int val)
 	// find right triple in array:
 	int triple=(idx>>1);
 	int array_idx=triple*3;
-	//assert (array_idx<ARRAY_SIZE);
+	// \verb|assert (array_idx<ARRAY_SIZE);|
 
 	if (idx&1)
 	{
@@ -44,7 +44,7 @@ void put_to_array (unsigned int idx, unsigned int val)
 
 		// decompose value to be stored:
 		uint8_t val_lowest_byte=val&0xFF; // isolate lowest 8 bits
-		uint8_t val_highest_nibble=val>>8; // no need to apply &0xF, we already know the val<=0xFFF
+		uint8_t val_highest_nibble=val>>8; // no need to apply \&0xF, as we already know the val<=0xFFF
 
 		// clear low 4 bits in the middle byte:
 		array[array_idx+1]=array[array_idx+1]&0xF0;
@@ -83,7 +83,7 @@ int main()
 	{
 		assert(get_from_array(i)==i);
 	};
-	//put_to_array(0x1000, 1); // will fail due to assert()
+	// \verb|put_to_array(0x1000, 1); // will fail due to assert()|
 
 	// print triples:
 	for (int i=0;i<0x1000/2;i++)

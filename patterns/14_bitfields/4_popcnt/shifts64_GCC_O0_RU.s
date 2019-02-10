@@ -16,7 +16,7 @@ f:
 	mov	rax, rdx
 ; RAX = RDX = a>>i
 	and	eax, 1
-; EAX = EAX&1 = (a>>i)&1
+; EAX = EAX\&1 = (a>>i)\&1
 	test	rax, rax
 ; последний бит был нулевым?
 ; пропустить следующую инструкцию ADD, если это было так.

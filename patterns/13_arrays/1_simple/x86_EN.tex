@@ -9,7 +9,7 @@ Let's compile:
 \myindex{x86!\Instructions!SHL}
 
 Nothing very special, just two loops: the first is a filling loop and second is a printing loop.
-The \TT{shl ecx, 1} instruction is used for value multiplication by 2 in \ECX, more about below~\myref{SHR}.
+The \TT{shl ecx, 1} instruction is used for value multiplication by 2 in \ECX, more about it: ~\myref{SHR}.
 
 80 bytes are allocated on the stack for the array, 20 elements of 4 bytes.
 
@@ -36,16 +36,16 @@ Here is what GCC 4.4.1 does:
 
 \lstinputlisting[caption=GCC 4.4.1,style=customasmx86]{patterns/13_arrays/1_simple/simple_gcc.asm}
 
-By the way, variable $a$ is of type  \IT{int*} 
+By the way, variable $a$ is of type  \emph{int*} 
 (the pointer to \Tint{})---you can pass a pointer to an array to another function,
 but it's more correct to say that a pointer to the first element of the array is passed
 (the addresses of rest of the elements are calculated in an obvious way).
 
-If you index this pointer as \IT{a[idx]}, \IT{idx} is just to be added to the pointer 
+If you index this pointer as \emph{a[idx]}, \emph{idx} is just to be added to the pointer 
 and the element placed there (to which calculated pointer is pointing) is to be returned.
 
 An interesting example: a string of characters like 
-\IT{\q{string}} is an array of characters and it has a type of \IT{const char[]}.
+\emph{string} is an array of characters and it has a type of \emph{const char[]}.
 
 An index can also be applied to this pointer.
 

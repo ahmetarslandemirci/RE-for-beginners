@@ -22,7 +22,7 @@
 Но это не экономично по размеру данных.
 
 Попробуем скомпилировать тот же исходник с опцией (\TT{/Zp1}) 
-(\IT{/Zp[n] pack structures on n-byte boundary}).
+(\emph{/Zp[n] pack structures on n-byte boundary}).
 
 \lstinputlisting[caption=MSVC 2012 /GS- /Zp1,label=src:struct_packing_1,numbers=left,style=customasmx86]{patterns/15_structs/4_packing/packing_msvc_Zp1_RU.asm}
 
@@ -71,20 +71,7 @@
 
 Сам файл PshPack1.h выглядит так:
 
-\begin{lstlisting}[caption=PshPack1.h,style=customc]
-#if ! (defined(lint) || defined(RC_INVOKED))
-#if ( _MSC_VER >= 800 && !defined(_M_I86)) || defined(_PUSHPOP_SUPPORTED)
-#pragma warning(disable:4103)
-#if !(defined( MIDL_PASS )) || defined( __midl )
-#pragma pack(push,1)
-#else
-#pragma pack(1)
-#endif
-#else
-#pragma pack(1)
-#endif
-#endif /* ! (defined(lint) || defined(RC_INVOKED)) */
-\end{lstlisting}
+\lstinputlisting[caption=PshPack1.h,style=customc]{patterns/15_structs/4_packing/tmp1.c}
 
 Собственно, так и задается компилятору, как паковать объявленные после \TT{\#pragma pack} структуры.
 

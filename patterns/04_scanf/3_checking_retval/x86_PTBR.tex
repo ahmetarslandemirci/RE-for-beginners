@@ -9,10 +9,10 @@ A função que chamou (\main) precisa do resultado da função chamada (\scanf),
 então a função chamada retorna esse valor no registrador \EAX.
 
 \myindex{x86!\Instructions!CMP}
-Nós verificamos com a ajuda da instrução \TT{CMP EAX, 1} (\IT{CoMParar}). Em outras palavras, comparamos o valor em \EAX com 1.
+Nós verificamos com a ajuda da instrução \TT{CMP EAX, 1} (\emph{CoMParar}). Em outras palavras, comparamos o valor em \EAX com 1.
 
 \myindex{x86!\Instructions!JNE}
-O jump condicional \JNE está logo depois da instrução \CMP. \JNE significa \IT{Jump if Not Equal} ou seja, ela desvia se o valor não for igual ao comparado.
+O jump condicional \JNE está logo depois da instrução \CMP. \JNE significa \emph{Jump if Not Equal} ou seja, ela desvia se o valor não for igual ao comparado.
 
 Então, se o valor em \EAX não é 1, a \ac{CPU} vai passar a execução para o endereço contido no operando de \JNE, no nosso caso \TT{\$LN2@main}.
 Passando a execução para esse endereço resulta na \ac{CPU} executando \printf com o argumento \TT{What you entered? Huh?}.
@@ -25,7 +25,7 @@ Ele passa a execução para o ponto depois do segundo \printf e logo antes de \T
 
 % FIXME internal \ref{} to x86 flags instead of wikipedia
 \myindex{x86!\Registers!\Flags}
-Então, podemos dizer que comparar um valor com outro é geralmente realizado através do par de instruções \CMP/\Jcc, onde \IT{cc} é código condicional.
+Então, podemos dizer que comparar um valor com outro é geralmente realizado através do par de instruções \CMP/\Jcc, onde \emph{cc} é código condicional.
 \CMP compara dois valores e altera os registros da \ac{CPU} (flags)\footnote{\ac{TBT}: x86 flags, see also: \href{http://go.yurichev.com/17120}{wikipedia}.}.
 \Jcc checa esses registro e decide passar a execução para o endereço específico contido no operando ou não.
 

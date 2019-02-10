@@ -9,7 +9,7 @@ compilation.
 
 Pour être pédant, les types de données des langages de programmation ne servent qu'a
 prévenir des bugs et à l'auto-documentation.
-Il est possible de n'utiliser que deux types de données, comme \IT{int} (ou \IT{int64\_t})
+Il est possible de n'utiliser que deux types de données, comme \emph{int} (ou \emph{int64\_t})
 et l'octet---ce sont les seuls types disponible aux programmeurs en langage d'assemblage.
 Mais c'est une tâche extrêmement difficile d'écrire des programmes en assembleur
 pratique et sans bugs méchants.
@@ -58,11 +58,11 @@ int main()
 };
 \end{lstlisting}
 
-J'utilise \IT{uint64\_t} car j'ai effectué cet exemple sur Linux x64. \IT{int} fonctionnerait
+J'utilise \emph{uint64\_t} car j'ai effectué cet exemple sur Linux x64. \emph{int} fonctionnerait
 pour des \ac{OS}-s 32-bit.
 D'abord, un pointeur sur un caractère (la toute première chaîne de bienvenu) est
-casté en \IT{uint64\_t}, puis passé plus loin.
-La fonction \TT{print\_string()} re-caste la valeur \IT{uint64\_t} en un pointeur
+casté en \emph{uint64\_t}, puis passé plus loin.
+La fonction \TT{print\_string()} re-caste la valeur \emph{uint64\_t} en un pointeur
 sur un caractère.
 
 Ce qui est intéressant, c'est que GCC 4.8.4 produit une sortie assembleur identique
@@ -98,7 +98,7 @@ main:
 
 (j'ai supprimé toutes les directives non significatives de GCC.)
 
-J'ai aussi essayé différents utilitaires UNIX de \IT{diff} et ils ne montrent aucune
+J'ai aussi essayé différents utilitaires UNIX de \emph{diff} et ils ne montrent aucune
 différence.
 
 Continuons à abuser massivement des traditions de programmation de \CCpp.
@@ -144,7 +144,6 @@ int main()
 uint8_t load_byte_at_address (uint64_t address)
 {
 	return *(uint8_t*)address;
-	//this is also possible: return address[0]; 
 };
 
 void print_string (uint64_t address)

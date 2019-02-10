@@ -1,4 +1,4 @@
-\subsection{Hack \IT{LD\_PRELOAD} sur Linux}
+\subsection{Hack \emph{LD\_PRELOAD} sur Linux}
 
 \myindex{LD\_PRELOAD}
 \label{ld_preload}
@@ -10,7 +10,7 @@ Par exemple, il est facile d'intercepter tous les appels à
 time(), read(), write(), etc. \\
 \\
 \myindex{uptime}
-Regardons si l'on peut tromper l'utilitaire \IT{uptime}.
+Regardons si l'on peut tromper l'utilitaire \emph{uptime}.
 Comme chacun le sait, il indique depuis combien de temps l'ordinateur est démarré.
 \myindex{strace}
 Avec l'aide de strace(\myref{strace}), on voit que ces informations proviennent du fichier \TT{/proc/uptime}:
@@ -83,7 +83,7 @@ Compilons le comme une bibliothèque dynamique standard:
 gcc -fpic -shared -Wall -o fool_uptime.so fool_uptime.c -ldl
 \end{lstlisting}
 
-Lançons \IT{uptime}
+Lançons \emph{uptime}
 en chargeant notre bibliothèque avant les autres:
 
 \begin{lstlisting}
@@ -96,7 +96,7 @@ Et nous voyons:
  01:23:02 up 24855 days,  3:14,  3 users,  load average: 0.00, 0.01, 0.05
 \end{lstlisting}
 
-Si la variable d'environnement \IT{LD\_PRELOAD}
+Si la variable d'environnement \emph{LD\_PRELOAD}
 
 pointe toujours sur le nom et le chemin de notre bibliothèque,
 elle sera chargée pour tous les programmes démarrés. \\

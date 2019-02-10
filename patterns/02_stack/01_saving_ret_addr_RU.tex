@@ -39,32 +39,12 @@ c:\tmp6\ss.cpp(4) : warning C4717: 'f' : recursive on all control paths, functio
 
 \dots но, тем не менее, создает нужный код:
 
-\begin{lstlisting}[style=customasmx86]
-?f@@YAXXZ PROC			; f
-; File c:\tmp6\ss.cpp
-; Line 2
-	push	ebp
-	mov	ebp, esp
-; Line 3
-	call	?f@@YAXXZ	; f
-; Line 4
-	pop	ebp
-	ret	0
-?f@@YAXXZ ENDP			; f
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{patterns/02_stack/1.asm}
 
 \dots причем, если включить оптимизацию (\TT{\Ox}), то будет даже интереснее, без переполнения стека, 
-но работать будет \IT{корректно}\footnote{здесь ирония}:
+но работать будет \emph{корректно}\footnote{здесь ирония}:
 
-\begin{lstlisting}[style=customasmx86]
-?f@@YAXXZ PROC			; f
-; File c:\tmp6\ss.cpp
-; Line 2
-$LL3@f:
-; Line 3
-	jmp	SHORT $LL3@f
-?f@@YAXXZ ENDP			; f
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{patterns/02_stack/2.asm}
 
 GCC 4.4.1 генерирует точно такой же код в обоих случаях, хотя и не предупреждает о проблеме.
 
@@ -85,7 +65,7 @@ GCC 4.4.1 генерирует точно такой же код в обоих �
 
 \myindex{ARM!Leaf function}
 Тем не менее, если некая функция не вызывает никаких более функций, в терминологии \ac{RISC} она называется
-\IT{\gls{leaf function}}\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}. 
+\emph{\gls{leaf function}}\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}. 
 Как следствие, \q{leaf}-функция не сохраняет регистр \ac{LR} (потому что не изменяет его).
 А если эта функция небольшая, использует мало регистров, она может не использовать стек вообще.
 Таким образом, в ARM возможен вызов небольших leaf-функций не используя стек.

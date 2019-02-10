@@ -6,15 +6,15 @@ Les types intégraux comportent les nombres, les énumérations et les booléens
 
 \subsection{Bit}
 
-Les valeurs booléennes sont une utilisation évidente des bits: 0 pour \IT{faux} et 1 pour \IT{vrai}.
+Les valeurs booléennes sont une utilisation évidente des bits: 0 pour \emph{faux} et 1 pour \emph{vrai}.
 
 Plusieurs valeurs booléennes peuvent être regroupées en un \glslink{word}{mot}: Un mot de 32 bits contiendra 32 valeur booléennes, etc.
-On appelle \IT{bitmap} ou \IT{bitfield} un tel assemblage.
+On appelle \emph{bitmap} ou \emph{bitfield} un tel assemblage.
 
 Cette approche engendre un surcoût de traitement: décalages, extraction, etc.
-A l'inverse l'utilisation d'un \glslink{word}{mot} (ou d'un type \IT{int}) pour chaque booléen gaspille de l'espace, au profit des performances.
+A l'inverse l'utilisation d'un \glslink{word}{mot} (ou d'un type \emph{int}) pour chaque booléen gaspille de l'espace, au profit des performances.
 
-Dans les environnements C/C++, la valeur 0 représente \IT{faux} et toutes les autres valeurs \IT{vrai}.
+Dans les environnements C/C++, la valeur 0 représente \emph{faux} et toutes les autres valeurs \emph{vrai}.
 Par exemple:
 
 \lstinputlisting[style=customc]{fundamentals/data_types_and_numbers_FR_lst1.c}
@@ -37,7 +37,7 @@ Toutes ces expressions sont toujours en usage.
 
 Les demi-octets ont été utilisés par des CPU 4-bits tel que le Intel 4004 (utilisé dans les calculatrices).
 
-On notera que la représentation \IT{binary-coded decimal} (\ac{BCD}) a été utilisée pour représenter les nombres sur 4 bits.
+On notera que la représentation \emph{binary-coded decimal} (\ac{BCD}) a été utilisée pour représenter les nombres sur 4 bits.
 L'entier 0 est représenté par la valeur 0b0000, l'entier 9 par 0b1001 tandis que les valeurs supérieurs ne sont pas utilisées.
 La valeur décimale 1234 est ainsi représentée par 0x1234.
 Il est évident que cette représentation n'est pas la plus efficace en matière d'espace.
@@ -51,15 +51,20 @@ Les CPUs x86 proposent pour cela quelques instructions assez rares:
 \INS{AAD} (après division).
 
 \myindex{x86!\Registers!AF}
-Le support par les CPUs des nombres au format \ac{BCD} est la raison d'être des \IT{half-carry flag} (sur 8080/Z80) et
-\IT{auxiliary flag} (\TT{AF} sur x86).
+Le support par les CPUs des nombres au format \ac{BCD} est la raison d'être des \emph{half-carry flag} (sur 8080/Z80) et
+\emph{auxiliary flag} (\TT{AF} sur x86).
 Ils représentent la retenue générée après traitement des 4 bits de poids faible (d'un octet).
 Le drapeau est utilisé par les instructions de gestion de retenue ci-dessus.
 
-Le livre \InSqBrackets{Peter Abel, \IT{IBM PC assembly language and programming} (1987)} doit sa popularité à la facilité de ces conversions.
+Le livre \InSqBrackets{Peter Abel, \emph{IBM PC assembly language and programming} (1987)} doit sa popularité à la facilité de ces conversions.
 Hormis ce livre, l'auteur de ces notes n'a jamais rencontré en pratique de nombres au format \ac{BCD}, sauf dans certains
-\IT{nombres magiques} (\myref{magic_numbers}),
+\emph{nombres magiques} (\myref{magic_numbers}),
 tels que lorsque la date de naissance d'un individu est encodé sous la forme 0x19791011---qui n'est autre qu'un nombre au format \ac{BCD}.
+
+%TBT
+%Surprisingly, the author found a use of \ac{BCD}-encoded numbers in SAP software: \url{https://yurichev.com/blog/SAP/}.
+%Some numbers, including prices, are encoded in \ac{BCD} form in database.
+%Perhaps, they used it to make it compatible with some ancient software/hardware?
 
 Les instructions x86 destinées au traitement des nombres \ac{BCD} ont parfois été utilisées à d'autres fins, le plus souvent non documentées, par exemple:
 
@@ -76,7 +81,7 @@ Ce fragment de code abscons converties les nombres de 0 à 15 en caratères \ac{
 
 Le processeur Z80 était un clone de la CPU 8 bits 8080 d'Intel. Par manque de place, il utilisait une \ac{ALU} de 4 bits.
 Chaque opération impliquant deux nombres de 8 bits devait être traitée en deux étapes.
-Il en a découlé une utilisation naturelle des \IT{half-carry flag}.
+Il en a découlé une utilisation naturelle des \emph{half-carry flag}.
 
 \subsection{Caractère}
 
@@ -86,11 +91,11 @@ Les cartes perforées utilisées pour les télétypes ne pouvaient comporter que
 
 \myindex{octet}
 \myindex{fetchmail}
-Le terme \IT{octet} met l'accent sur l'utilisation de 8 bits.:
-\IT{fetchmail} est un de ceux qui utilise cette terminologie.
+Le terme \emph{octet} met l'accent sur l'utilisation de 8 bits.:
+\emph{fetchmail} est un de ceux qui utilise cette terminologie.
 
 Sur les architectures à 36 bits, l'utilisation de 9 bits par caractère a été utilisée: un \glslink{word}{mot} pouvait contenir 4 caractères.
-Ceci explique peut-être que le standard C/C++ indique que le type \IT{char} doit supporter \IT{au moins} 8 bits, mais que l'utilisation
+Ceci explique peut-être que le standard C/C++ indique que le type \emph{char} doit supporter \emph{au moins} 8 bits, mais que l'utilisation
 d'un nombre plus importants de bits est autorisé.
 
 Par exemple, dans l'un des premiers ouvrage sur le langage C \footnote{\url{https://yurichev.com/mirrors/C/bwk-tutor.html}}, nous trouvons :
@@ -109,7 +114,7 @@ Les premiers logiciels de transport de mails fonctionnaient avec des codes ASCII
 Le standard \ac{MIME} nécessitait donc l'encodage des messages rédigés avec des alphabets non latins.
 Le code ASCII sur 7 bits a ensuite été augmenté d'un bit de parité qui a aboutit à la représentation sur 8 bits.
 
-Les clefs de chiffrage utilisées par \IT{Data Encryption Standard} (\ac{DES}) comportent 56 bits, soit 8 groupes de 7 bits
+Les clefs de chiffrage utilisées par \emph{Data Encryption Standard} (\ac{DES}) comportent 56 bits, soit 8 groupes de 7 bits
 ce qui laisse un espace pour un bit de parité dans chaque groupe.
 
 La mémorisation de la table \ac{ASCII} est inutile. Il suffit de se souvenir de certains intervalles.
@@ -119,8 +124,8 @@ Les codes à partir de la valeur 0x80 sont généralement utilisés pour les car
 
 Quelques valeurs typiques à mémoriser sont :
 0 (terminateur d'une chaîne de caractères en C, \TT{'\textbackslash{}0'} et C/C++);
-0xA ou 10 (\IT{fin de ligne}, \TT{'\textbackslash{}n'} en C/C++);
-0xD ou 13 (\IT{retour chariot}, \TT{'\textbackslash{}r'} en C/C++).
+0xA ou 10 (\emph{fin de ligne}, \TT{'\textbackslash{}n'} en C/C++);
+0xD ou 13 (\emph{retour chariot}, \TT{'\textbackslash{}r'} en C/C++).
 
 0x20 (espace).
 
@@ -134,11 +139,11 @@ Les CPUs d'architecture RISC telles que les processeurs ARM et MIPS n'offrent pa
 \myindex{UCS-2}
 
 Il s'agit d'une tentative de supporter des langues non européennes en étendant le stockage d'un caractère à 16 bits.
-L'exemple le plus connu en est le noyau Windows NT et les fonctions win32 suffixées d'un \IT{W}.
+L'exemple le plus connu en est le noyau Windows NT et les fonctions win32 suffixées d'un \emph{W}.
 Cet encodage est nommé UCS-2 ou UTF-16.
 Son utilisation explique la présence d'octets à zéro entre chaque caractère d'un texte en anglais ne comportant que des caractères latins.
 
-En règle général, la notation \IT{wchar\_t} est un synonyme du type \IT{short} qui utilise 16 bits.
+En règle général, la notation \emph{wchar\_t} est un synonyme du type \emph{short} qui utilise 16 bits.
 
 \subsection{Entier signé ou non signé}
 
@@ -160,36 +165,36 @@ Une valeur telle que 0xFFFFFFFF (-1) est souvent utilisée, en particulier pour 
 L'utilisation d'octets est pratique pour le stockage des caractères, mais souvent inadapté aux calculs arithmétiques.
 
 C'est pourquoi, nombre de \ac{CPU}s possèdent des \ac{GPR}s dont la taille est de 16, 32 ou 64 bits.
-Les CPUs 8 bits tels que le 8080 et le Z80 proposent quant à eux de travailler sur des paires de registres 8 bits, dont chacune constitue un \IT{pseudo-registre} de 16 bits.
-(\IT{BC}, \IT{DE}, \IT{HL}, etc.).
+Les CPUs 8 bits tels que le 8080 et le Z80 proposent quant à eux de travailler sur des paires de registres 8 bits, dont chacune constitue un \emph{pseudo-registre} de 16 bits.
+(\emph{BC}, \emph{DE}, \emph{HL}, etc.).
 Les capacités des paires de registres du Z80 en font, en quelque sorte, un émulateur d'une CPU 16 bits.
 
 En règle générale, un CPU présenté comme ''CPU n-bits'' possède des \ac{GPR}s dont la taille est de n bits.
 
-A une certaine époque, les disques durs et les barettes de \ac{RAM} étaient caractérisés comme ayant \IT{n} kilo-mots
-et non pas \IT{b} kilooctets/megaoctets.
+A une certaine époque, les disques durs et les barettes de \ac{RAM} étaient caractérisés comme ayant \emph{n} kilo-mots
+et non pas \emph{b} kilooctets/megaoctets.
 
-Par exemple, \IT{Apollo Guidance Computer}\footnote{\url{https://en.wikipedia.org/wiki/Apollo_Guidance_Computer}}
+Par exemple, \emph{Apollo Guidance Computer}\footnote{\url{https://en.wikipedia.org/wiki/Apollo_Guidance_Computer}}
 possède 2048 mots de \ac{RAM}.
 S'agissant d'un ordinateur 16 bits, il y avait donc 4096 octets de \ac{RAM}.
 
-La mémoire magnétique du \IT{TX-0}\footnote{\url{https://en.wikipedia.org/wiki/TX-0}} était de 64K mots de 18 bits,
+La mémoire magnétique du \emph{TX-0}\footnote{\url{https://en.wikipedia.org/wiki/TX-0}} était de 64K mots de 18 bits,
 i.e., 64 kilo-mots.
 
-\IT{DECSYSTEM-2060}\footnote{\url{https://en.wikipedia.org/wiki/DECSYSTEM-20}}
-pouvait supporter jusqu'à 4096 kilo mots de \IT{solid state memory}
+\emph{DECSYSTEM-2060}\footnote{\url{https://en.wikipedia.org/wiki/DECSYSTEM-20}}
+pouvait supporter jusqu'à 4096 kilo mots de \emph{solid state memory}
 (i.e., hard disks, tapes, etc).
 S'agissant d'un ordinateur 36 bits, cela représentait 18432 kilo octets ou ~18 mega octets.
 
 \myhrule{}
 
-\IT{int} en C/C++ est presque systématiquement représenté par un \glslink{word}{mot}.
-(L'architecture AMD64 fait exception car le type \IT{int} possède une taille de 32 bits, peut-être pour une meilleure portabilité.)
+\emph{int} en C/C++ est presque systématiquement représenté par un \glslink{word}{mot}.
+(L'architecture AMD64 fait exception car le type \emph{int} possède une taille de 32 bits, peut-être pour une meilleure portabilité.)
 
-Le type \IT{int} est représenté sur 16 bits par le PDP-11 et les anciens compilateurs MS-DOS.
-Le type \IT{int} est représenté sur 32 bits sur VAX, ainsi que sur l'architecture x86 à partir du 80386, etc.
+Le type \emph{int} est représenté sur 16 bits par le PDP-11 et les anciens compilateurs MS-DOS.
+Le type \emph{int} est représenté sur 32 bits sur VAX, ainsi que sur l'architecture x86 à partir du 80386, etc.
 
-De plus, dans les programmes C/C++, le type \IT{int} est utilisé par défaut lorsque le type d'une variable n'est pas explicitement déclaré.
+De plus, dans les programmes C/C++, le type \emph{int} est utilisé par défaut lorsque le type d'une variable n'est pas explicitement déclaré.
 Cette pratique peut apparaître comme un héritage du langage de programmation B\footnote{\url{http://yurichev.com/blog/typeless/}}.
 
 \myhrule{}
@@ -201,35 +206,35 @@ Ceci reste vrai même lorsque le registre est utilisé comme compteur d'itérati
 \myhrule{}
 
 En langage assembleur x86, un \glslink{word}{mot} représente 16 bits, car il en était ainsi sur les processeurs 8086 16 bits.
-Un \IT{Double word} représente 32 bits, et un \IT{quad word} 64 bits.
+Un \emph{Double word} représente 32 bits, et un \emph{quad word} 64 bits.
 C'est pourquoi, les mots de 16 bits sont déclarés par \TT{DW} en assembleur x86, ceux de 32 bits par \TT{DD} et ceux de 64 bits par \TT{DQ}.
 
-Dans les architectures ARM, MIPS, etc... un \glslink{word}{mot} représente 32 bits, on parlera alors de \IT{demi-mot} pour les types sur 16 bits.
-En conséquence, un \IT{double word} sur une architecture RISC 32 bits est un type de données qui représente 64 bits.
+Dans les architectures ARM, MIPS, etc... un \glslink{word}{mot} représente 32 bits, on parlera alors de \emph{demi-mot} pour les types sur 16 bits.
+En conséquence, un \emph{double word} sur une architecture RISC 32 bits est un type de données qui représente 64 bits.
 
-\IT{GDB} utilise la terminologie suivante : \IT{demi-mot} pour 16 bits, \glslink{word}{mot} pour 32 bits et \IT{mot géant} pour 64 bits.
+\emph{GDB} utilise la terminologie suivante : \emph{demi-mot} pour 16 bits, \glslink{word}{mot} pour 32 bits et \emph{mot géant} pour 64 bits.
 
-Les environnements C/C++ 16 bits sur PDP-11 et MS-DOS définissent le type \IT{long} comme ayant une taille de 32 bits,
-ce qui serait sans doute une abbréviation de \IT{long word} ou de \IT{long int}.
+Les environnements C/C++ 16 bits sur PDP-11 et MS-DOS définissent le type \emph{long} comme ayant une taille de 32 bits,
+ce qui serait sans doute une abbréviation de \emph{long word} ou de \emph{long int}.
 
-Les environnements C/C++ 32 bits définissent le type \IT{long long} dont la taille est de 64 bits.
+Les environnements C/C++ 32 bits définissent le type \emph{long long} dont la taille est de 64 bits.
 
-L'ambiguïté du terme \IT{mot} est donc désormais évidente.
+L'ambiguïté du terme \emph{mot} est donc désormais évidente.
 
-\subsubsection{Dois-je utiliser le type \IT{int}?}
+\subsubsection{Dois-je utiliser le type \emph{int}?}
 
-Certains affirment que le type \IT{int} ne doit jamais être utilisé, l'ambiguïté de sa définition pouvant être génératrice de bugs.
-A une certaine époque, la bibliothèque bien connue \IT{lzhuf} utilisais le type \IT{int} et fonctionnait parfaitement sur les architectures 16 bits.
-Portée sur une architecture pour laquelle le type \IT{int} représentait 32 bits, elle pouvait alors crasher: \url{http://yurichev.com/blog/lzhuf/}.
+Certains affirment que le type \emph{int} ne doit jamais être utilisé, l'ambiguïté de sa définition pouvant être génératrice de bugs.
+A une certaine époque, la bibliothèque bien connue \emph{lzhuf} utilisais le type \emph{int} et fonctionnait parfaitement sur les architectures 16 bits.
+Portée sur une architecture pour laquelle le type \emph{int} représentait 32 bits, elle pouvait alors crasher: \url{http://yurichev.com/blog/lzhuf/}.
 
-Des types de données moins ambigus sont définis dans le fichier \IT{stdint.h}:
-\IT{uint8\_t}, \IT{uint16\_t}, \IT{uint32\_t}, \IT{uint64\_t}, etc.
+Des types de données moins ambigus sont définis dans le fichier \emph{stdint.h}:
+\emph{uint8\_t}, \emph{uint16\_t}, \emph{uint32\_t}, \emph{uint64\_t}, etc.
 
 \myindex{Donald E. Knuth}
 Donald E. Knuth fut l'un de ceux qui proposa\footnote{\url{http://www-cs-faculty.stanford.edu/~uno/news98.html}}
-d'utiliser pour ces différents types des dénominations aux consonances distinctes: \IT{octet/wyde/tetrabyte/octabyte}.
+d'utiliser pour ces différents types des dénominations aux consonances distinctes: \emph{octet/wyde/tetrabyte/octabyte}.
 Cette pratique est cependant moins courante que celle consistant à inclure directement dans le nom du type
-les termes \IT{u} (\IT{unsigned}) ainsi que le nombre de bits.
+les termes \emph{u} (\emph{unsigned}) ainsi que le nombre de bits.
 
 \subsubsection{Ordinateurs à base de mots}
 
@@ -252,7 +257,7 @@ ou d'un \glslink{word}{mot}.
 Cependant, cette règle n'est pas toujours respectée sur d'autres architectures.
 
 Le processeur 8 bits Z80 peut adresser $2^{16}$ octets, en utilisant une paire de registres 8 bits ou certains registres
-spécialisés (\IT{IX}, \IT{IY}). En outre sur ce processeur les registres \IT{SP} et \IT{PC} contiennent 16 bits.
+spécialisés (\emph{IX}, \emph{IY}). En outre sur ce processeur les registres \emph{SP} et \emph{PC} contiennent 16 bits.
 
 \myindex{Cray-1}
 Le super calculateur Cray-1 possèdent des registres généraux de 64-bit, et des registres d'adressage de 24 bits.
@@ -306,7 +311,7 @@ compteur de boucle et/ou un index dans un tableau.
 
 Si vous constatez qu'une variable contient parfois des nombres très petits et d'autre fois des nombres très grands,
 tels que 0, 1, 2, 3, et 0xFFFFFFFF, 0xFFFFFFFE, 0xFFFFFFFD, il est probable qu'il s'agisse d'un entier signé sous
-forme de \IT{two's complement} (\myref{sec:signednumbers}) auquel cas les 3 dernières valeurs représentent en réalité
+forme de \emph{two's complement} (\myref{sec:signednumbers}) auquel cas les 3 dernières valeurs représentent en réalité
 -1, -2, -3.
 
 \subsubsection{Nombres sur 32 bits}
@@ -325,13 +330,13 @@ De fait, la limite supérieure des nombres utilisés dans les opérations concr�
 
 Si vous examinez le codes source UNIX v6 pour PDP-11
 \footnote{\url{http://minnie.tuhs.org/Archive/PDP-11/Distributions/research/Dennis_v6/}},
-les \IT{int} 16 bits y sont utilisés partout, tandis que le type \IT{long} sur 32 bits ne l'est jamais.
+les \emph{int} 16 bits y sont utilisés partout, tandis que le type \emph{long} sur 32 bits ne l'est jamais.
 
-Pareil à l'époque de MS-DOS: les \IT{int} 16 bits étaient utilisés pratiquement pour tout (indice de tableau, compteur de boucle),
-tandis que le type \IT{long} sur 32 bits ne l'était que rarement.
+Pareil à l'époque de MS-DOS: les \emph{int} 16 bits étaient utilisés pratiquement pour tout (indice de tableau, compteur de boucle),
+tandis que le type \emph{long} sur 32 bits ne l'était que rarement.
 
-Durant l'avènement de l'architecture x86-64, il fut décidé que le type \IT{int} conserverait une taille de 32 bits,
-probablement parce que l'utilisation d'un type \IT{int} de 64 bits est encore plus rare.
+Durant l'avènement de l'architecture x86-64, il fut décidé que le type \emph{int} conserverait une taille de 32 bits,
+probablement parce que l'utilisation d'un type \emph{int} de 64 bits est encore plus rare.
 
 Je dirais que les nombre sur 16 bits qui couvrent l'intervalle 0..65535 sont probablement les nombres les plus
 utilisés en informatique.
@@ -354,7 +359,7 @@ bonne chance qu'il s'agisse :
 
 Il en va à peu près de même pour les valeurs sur 64 bits.
 
-\myparagraph{\dots donc un \IT{int} sur 16 bits est suffisant pout à peu près n'importe quoi?}
+\myparagraph{\dots donc un \emph{int} sur 16 bits est suffisant pout à peu près n'importe quoi?}
 
 Il est intéressant de constater que dans \InSqBrackets{\MAbrash{} chapitre 13}
 nous pouvons lire qu'il existe pléthore de cas pour lesquels des variables sur 16 bits sont largement suffisantes.
@@ -379,7 +384,7 @@ C'est pourquoi, dans le domaine des \ac{DBMS}, la taille des champs textuels est
 Ils pensent simplement \q{Okay, 100 suffira, attendez, 200 ira mieux}.
 Et bien sûr, ils ont raison.
 
-La taille maximale du type \IT{VARCHAR2} dans \oracle est de 4000 caractères et non de 4096.
+La taille maximale du type \emph{VARCHAR2} dans \oracle est de 4000 caractères et non de 4096.
 
 Il n'y a rien à redire à ceci, ce n'est qu'un exemple d'utilisation des nombres sous la forme d'un
 multiple d'une puissance de dix.
@@ -419,7 +424,7 @@ de drapeaux ou bitmap.
 
 \myindex{\CStandardLibrary!strcmp()}
 \myindex{\CStandardLibrary!memcmp()}
-Quand \IT{strcmp()} ou \IT{memcmp()} copient un buffer, ils traitent 4 (ou 8) octets à la fois.
+Quand \emph{strcmp()} ou \emph{memcmp()} copient un buffer, ils traitent 4 (ou 8) octets à la fois.
 Donc, si une chaîne de caractères \q{4321} est recopié à une autre adresse, il adviendra un
 moment où vous observerez la valeur 0x31323334 dans un registre.
 Il s'agit du bloc de 4 caractères traité comme un entier sur 32 bits.

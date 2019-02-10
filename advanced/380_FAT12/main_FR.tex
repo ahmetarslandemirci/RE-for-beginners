@@ -80,7 +80,7 @@ les combiner.
 Ne pas oublier d'isoler les bits inutiles de l'octet du milieu.
 
 Mettre des valeurs se fait presque de la même façon, mais faire attention de ne pas
-écraser les \IT{autres} bits de l'octet du milieu, ne modifier que les \IT{votre}.
+écraser les \emph{autres} bits de l'octet du milieu, ne modifier que les \emph{votre}.
 
 \subsection{Le code C/C++}
 
@@ -181,8 +181,8 @@ La division d'un nombre par 2 est simplement supprimer le dernier bit, qui est l
 reste de la division.
 Bon, nous n'avons pas besoin de décaler ici, juste isoler le bit de poids faible.
 
-Si l'élément est impair, nous prenons les octets du milieu et de droite:\\ (\IT{array[array\_idx+1]}
-et \IT{array[array\_idx+2]}).
+Si l'élément est impair, nous prenons les octets du milieu et de droite:\\ (\emph{array[array\_idx+1]}
+et \emph{array[array\_idx+2]}).
 Les 4 bits de poids faible de l'octet du milieu sont isolés.
 L'octet de droite est pris en entier.
 Maintenant nous devons combiner ces parties en une valeur 12-bit.
@@ -207,7 +207,7 @@ Mais il n'est pas correct de simplement écrire l'octet du milieu, car l'opérat
 d'écriture détruirait l'information relative à l'autre élément.
 Donc la façon répandue de faire est de charger l'octet, de supprimer les octets que
 vous voulez écrire, les y écrire en laissant l'autre partie intacte.
-En utilisant l'opération AND (\TT{\&} in C/C++), nous supprimons tout excepté \IT{notre} partie.
+En utilisant l'opération AND (\TT{\&} in C/C++), nous supprimons tout excepté \emph{notre} partie.
 En utilisant l'opération OR (\TT{|} in C/C++), nous modifions l'octet du milieu.
 
 \subsection{GCC 4.8.2 avec optimisation pour x86-64}
@@ -231,14 +231,14 @@ en désordre des CPUs , et parfois,  échanger des instructions permet d'aller p
 Toutes les adresses dans Linux x64 sont sur 64-bit, donc dans l'arithmétique des
 pointeurs, toutes les valeurs doivent être 64-bit.
 Le code calculant l'offset à l'intérieur d'un  tableau opère sur des valeurs 32-bit
-(l'argument d'entrée \IT{idx} a un type \IT{int}, qui a une largeur de 32 bits),
+(l'argument d'entrée \emph{idx} a un type \emph{int}, qui a une largeur de 32 bits),
 et donc ces valeurs doivent être converties en des adresses 64-bit avant d'effectuer
 la lecture/l'écriture en mémoire.
 Donc, il y a beaucoup d'instructions d'extensions de signe (comme \INS{CDQE}, \INS{MOVSX})
 utilisées pour la conversion.
 Pourquoi étendre le signe? D'après les standards C/C++, l'arithmétique des pointeurs
 peut opérer sur des valeurs négatives (il est possible d'accéder un tableau en utilisant
-des index négatifs comme \IT{array[-123]}, voir: \myref{negative_array_indices}).
+des index négatifs comme \emph{array[-123]}, voir: \myref{negative_array_indices}).
 Comme le compilateur GCC ne peut pas être certain que les indices sont toujours positifs,
 il ajoute des instructions d'extension de signe.
 
@@ -252,7 +252,7 @@ peu d'espace.
 
 \lstinputlisting[style=customasmARM]{advanced/380_FAT12/Keil_thumb_O3_getter_FR.asm}
 
-Il y a au moins une redondance: \IT{idx*1.5} est calculé deux fois.
+Il y a au moins une redondance: \emph{idx*1.5} est calculé deux fois.
 À titre d'exercice, le lecteur peut essayer de retravailler la fonction assembleur
 afin de la rendre plus courte. N'oubliez pas de tester!
 
@@ -261,7 +261,7 @@ avec des instructions 16-bit Thumb, donc donc le compilateur Keil génère souve
 du code complexe en utilisant des instructions de décalage afin d'obtenir le même
 effet.
 Par exemple, il est compliqué de générer le code \INS{AND Rdest, Rsrc, 1} ou \INS{TST Rsrc, 1}
-en mode Thumb, donc Keil génère le code \IT{idx} qui décale l'entrée de 31 bits à
+en mode Thumb, donc Keil génère le code \emph{idx} qui décale l'entrée de 31 bits à
 gauche et ensuite vérifie si le résultat est zéro ou non.
 
 \subsubsection{Setter}
@@ -277,7 +277,7 @@ adéquat.
 \subsubsection{Getter}
 
 La fonction getter pour ARM n'a pas de branche conditionnelle du tout!
-Grâce au suffixe (comme \IT{-EQ}, \IT{-NE}), qui peut être ajouté à de nombreuses
+Grâce au suffixe (comme \emph{-EQ}, \emph{-NE}), qui peut être ajouté à de nombreuses
 instructions en mode ARM, elles ne sont exécutées que si le flag correspondant est
 mis.
 
@@ -290,7 +290,7 @@ De nombreuses instructions en mode ARM peuvent avoir un suffixe de décalage com
 
 \lstinputlisting[style=customasmARM]{advanced/380_FAT12/Keil_ARM_O3_setter_FR.asm}
 
-La valeur de \IT{idx*1.5} est calculée deux fois, cette redondance produite par le
+La valeur de \emph{idx*1.5} est calculée deux fois, cette redondance produite par le
 compilateur Keil peut être éliminée.
 Vous pouvez aussi retravailler cette fonction assembleur afin de la raccourcir. N'oubliez
 pas de tester!
@@ -308,10 +308,10 @@ mode ARM est toujours plus court (toutefois, les instructions sont plus longues)
 
 \lstinputlisting[style=customasmARM]{advanced/380_FAT12/ARM64_getter_FR.lst}
 
-ARM64 possède la nouvelle instruction cool \INS{UBFIZ} (\IT{Unsigned bitfield insert
+ARM64 possède la nouvelle instruction cool \INS{UBFIZ} (\emph{Unsigned bitfield insert
 in zero, with zeros to left and right}), qui peut être utilisée pour mettre un nombre
 spécifié de bits d'un registre vers un autre.
-C'est un alias d'une autre instruction, \INS{UBFM} (\IT{Unsigned bitfield move, with
+C'est un alias d'une autre instruction, \INS{UBFM} (\emph{Unsigned bitfield move, with
  zeros to left and right}).
 L'instruction \INS{UBFM} est l'instruction utilisée en interne en ARM64 au lieu de
 \INS{LSL/LSR} (bit shifts).
@@ -324,7 +324,7 @@ L'instruction \INS{UBFM} est l'instruction utilisée en interne en ARM64 au lieu
 
 Il faut garder à l'esprit que chaque instruction après une instruction
 saut/branchement est d'abord exécutée.
-C'est appelé \IT{branch delay slot} (slot de délai de branchement) dans le jargon
+C'est appelé \emph{branch delay slot} (slot de délai de branchement) dans le jargon
 des CPUs RISC.
 Pour rendre les choses plus simple, il suffit d'échange (mentalement) chaque paire
 d'instructions qui commence avec une instruction de saut ou de branchement.

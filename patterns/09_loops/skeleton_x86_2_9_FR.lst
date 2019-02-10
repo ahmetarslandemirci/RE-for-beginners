@@ -4,7 +4,7 @@ body:
     ; corps de la boucle
     ; faire quelque chose ici
     ; utiliser la variable compteur dans la pile locale
-    MOV REG, [counter] ; §incrémenter§
+    MOV REG, [counter] ; incrémenter
     INC REG 
     MOV [counter], REG
 check:

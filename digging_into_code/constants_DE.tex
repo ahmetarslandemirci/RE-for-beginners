@@ -6,7 +6,7 @@ im realen Leben so wie in ihrem Code.
 Der angehende Reverse Engineer kennt diese Werte und ihre hexadezimale Repr\"asentation sehr gut:
 10=0xA, 100=0x64, 1000=0x3E8, 10000=0x2710.
 
-Die Konstanten \TT{0xAAAAAAAA} (0b10101010101010101010101010101010) und 
+Die Konstanten \TT{0xAAAAAAAA} (0b10101010101010101010101010101010) und \\
 \TT{0x55555555} (0b01010101010101010101010101010101) sind auch sehr popul\"ar---
 sie sind zusammengesetzt aus ver\"andernden Bits. % <-- Findest vielleicht noch ne bessere Bezeichnung
 
@@ -53,7 +53,7 @@ In tabellenlosen CRC-Algorithmen werden bekannte Polynome benutzt, zum Beispiel,
 
 \newcommand{\FNURLMAGIC}{\footnote{\href{http://go.yurichev.com/17112}{wikipedia}}}
 
-Viele Datei-Formate definieren einen Standard-Dateiheader in dem eine \IT{magic number(s)}\FNURLMAGIC{} benutzt wird, einzelne oder sogar mehrere. 
+Viele Datei-Formate definieren einen Standard-Dateiheader in dem eine \emph{magic number(s)}\FNURLMAGIC{} benutzt wird, einzelne oder sogar mehrere. 
 
 \myindex{MS-DOS}
 
@@ -68,7 +68,7 @@ ist es sehr wahrscheinlich das das Programm die Datei validieren muss in dem es
 mindestens die ersten 4 Bytes pr\"uft.
 
 Das kann man wie folgt realisieren:
-(\IT{buf} Zeigt auf den Anfang der geladenen Datei im Speicher) 
+(\emph{buf} Zeigt auf den Anfang der geladenen Datei im Speicher) 
 
 \begin{lstlisting}[style=customasmx86]
 cmp [buf], 0x6468544D ; "MThd"
@@ -105,7 +105,7 @@ Stuxnet benutzt die Zahl ``19790509'' (nicht als 32-Bit Zahl, aber als String), 
 weil die malware Verbindungen nach Israel aufzeigt.
 \footnote{Das ist das Datum der Hinrichtung von Habib Elghanian, persischer Jude.}
 
-Solche Zahlen sind auch sehr beliebt in Amateur Kryptografie, zum Beispiel, ein Ausschnitt aus den \IT{secret function} Interna aus dem HASP3 Dongle %  <-- Vielleicht bessere formulierung?
+Solche Zahlen sind auch sehr beliebt in Amateur Kryptografie, zum Beispiel, ein Ausschnitt aus den \emph{secret function} Interna aus dem HASP3 Dongle %  <-- Vielleicht bessere formulierung?
 \footnote{\url{https://web.archive.org/web/20160311231616/http://www.woodmann.com/fravia/bayu3.htm}}:
 
 \begin{lstlisting}[style=customc]
@@ -140,10 +140,10 @@ void emulate_func2(unsigned short seed)
 \subsubsection{DHCP}
 
 Das Trifft auf Netzwerk Protokolle ebenso zu. 
-Zum Beispiel, die Pakete des DHCP Protokoll's beinhalten so genannte \IT{magic cookie}: \TT{0x63538263}.
+Zum Beispiel, die Pakete des DHCP Protokoll's beinhalten so genannte \emph{magic cookie}: \TT{0x63538263}.
 Jeder Code der ein DHCP Pakete generiert, muss diese Konstante in das Pakete einbetten.
 Wenn wir diesen Code finden, wissen wir auch wo es passiert und nicht nur was passiert.
-Jedes Programm das DHCP Pakete empfangen kann muss verifizieren das der \IT{magic cookie} mit der Konstante 
+Jedes Programm das DHCP Pakete empfangen kann muss verifizieren das der \emph{magic cookie} mit der Konstante 
 \"ubereinstimmt. 
 
 Zum Beispiel, lasst uns die dhcpcore.dll Datei aus Windows 7 x64 analysieren die nach der Konstante suchen.
@@ -195,4 +195,4 @@ eine ver-/Entschl\"usselung Routine.
 Das ist einfach mit \IDA: Alt-B oder Alt-I.
 \myindex{bin\"ar grep}
 Und f\"ur das suchen von Konstanten in einem Haufen großer Dateien, oder f\"ur das suchen in nicht ausf\"uhrbaren Dateien,
-gibt es ein kleines Utility genannt \IT{binary grep}\footnote{\BGREPURL}.
+gibt es ein kleines Utility genannt \emph{binary grep}\footnote{\BGREPURL}.

@@ -58,7 +58,7 @@ Despite the fact empty functions seem useless, they are quite frequent in low-le
 
 First of all, they are quite popular in debugging functions, like this one:
 
-\lstinputlisting[caption=\EN{\CCpp Code},style=customc]{patterns/00_empty/dbg_print.c}
+\lstinputlisting[caption=\CCpp code,style=customc]{patterns/00_empty/dbg_print_EN.c}
 
 In a non-debug build (as in a ``release''), \TT{\_DEBUG} is not defined,
 so the \TT{dbg\_print()} function, despite still being called during execution,
@@ -67,7 +67,7 @@ will be empty.
 Similarly, a popular method of software protection is to make one build for legal customers, and another demo build.
 A demo build can lack some important functions, as with this example:
 
-\lstinputlisting[caption=\EN{\CCpp Code},style=customc]{patterns/00_empty/demo.c}
+\lstinputlisting[caption=\CCpp code,style=customc]{patterns/00_empty/demo_EN.c}
 
 The \TT{save\_file()} function can be called when the user clicks \TT{File->Save} on the menu.
 The demo version may be delivered with this menu item disabled, but even if a software cracker will enable it,

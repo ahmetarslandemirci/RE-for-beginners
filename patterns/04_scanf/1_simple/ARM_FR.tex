@@ -11,12 +11,25 @@ Le type \Tint est 32-bit, donc nous avons besoin de 4 octets pour le stocker que
 part en mémoire, et il tient exactement dans un registre 32-bit.
 \myindex{IDA!var\_?}
 De l'espace pour la variable locale \GTT{x} est allouée sur la pile et \IDA l'a
-nommée \IT{var\_8}. Il n'est toutefois pas nécessaire de définir cette macro, puisque
+nommée \emph{var\_8}. Il n'est toutefois pas nécessaire de définir cette macro, puisque
 le \ac{SP} (\glslink{stack pointer}{pointeur de pile}) pointe déjà sur cet espace et
 peut être utilisé directement.
 
-Doc, la valeur de \ac{SP} est copiée dans la registre \Reg{1} et, avec la chaîne
+Donc, la valeur de \ac{SP} est copiée dans la registre \Reg{1} et, avec la chaîne
 de format, passée à \scanf.
+
+Les instructions \INS{PUSH/POP} se comportent différemment en ARM et en x86 (c'est l'inverse)
+Il y a des sysnonymes aux instructions \INS{STM/STMDB/LDM/LDMIA}.
+Et l'instruction \INS{PUSH} écrit d'abord une valeur sur la pile, \emph{et ensuite}
+soustrait 4 de \ac{SP}.
+De ce fait, après \INS{PUSH}, \ac{SP} pointe sur de l'espace inutilisé sur la pile.
+Il est utilisé par \scanf, et après par \printf.
+
+\INS{LDMIA} signifie \emph{Load Multiple Registers Increment address After each transfer}
+(charge plusieurs registres incrémente l'adresse après chaque transfert).
+\INS{STMDB} signifie \emph{Store Multiple Registers Decrement address Before each transfer}
+(socke plusieurs registres décrémente l'adresse avant chaque transfert).
+
 \myindex{ARM!\Instructions!LDR}
 Plus tard, avec l'aide de l'instruction \INS{LDR}, cette valeur est copiée depuis
 la pile vers le registre \Reg{1} afin de la passer à \printf.

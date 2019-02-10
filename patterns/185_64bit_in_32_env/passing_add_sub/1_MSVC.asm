@@ -12,11 +12,11 @@ _f_add_test PROC
 	push	5461		; 00001555H
 	push	1972608889	; 75939f79H
 	push	2874		; 00000b3aH
-	push	1942892530	; 73ce2ff_subH
+	push	1942892530	; 73ce2ff2H
 	call	_f_add
 	push	edx
 	push	eax
-	push	OFFSET $SG1436 ; '%I64d', 0aH, 00H
+	push	OFFSET $SG1436 ; \verb|'%I64d', 0aH, 00H|
 	call	_printf
 	add	esp, 28
 	ret	0

@@ -10,7 +10,7 @@ main    proc near
         mov     rsi, 1111111122222222h ; 2nd argument
         mov     rdi, 1122334455667788h ; 1st argument
         call    f
-        mov     edi, offset format ; "%lld\n"
+        mov     edi, offset format ; "\%lld\textbackslash{}n"
         mov     rsi, rax
         xor     eax, eax ; number of vector registers passed
         call    _printf

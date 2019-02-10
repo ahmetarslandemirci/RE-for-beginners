@@ -4,23 +4,7 @@
 Затем при помощи \IDA посмотрим как скомпилировалась функция \main.
 \IDA, как и MSVC, показывает код в синтаксисе Intel\footnote{Мы также можем заставить GCC генерировать листинги в этом формате при помощи ключей \TT{-S -masm=intel}.}.
 
-\begin{lstlisting}[caption=код в \IDA,style=customasmx86]
-main            proc near
-
-var_10          = dword ptr -10h
-
-                push    ebp
-                mov     ebp, esp
-                and     esp, 0FFFFFFF0h
-                sub     esp, 10h
-                mov     eax, offset aHelloWorld ; "hello, world\n"
-                mov     [esp+10h+var_10], eax
-                call    _printf
-                mov     eax, 0
-                leave
-                retn
-main            endp
-\end{lstlisting}
+\lstinputlisting[caption=код в \IDA,style=customasmx86]{patterns/01_helloworld/IDA_x86.asm}
 
 \myindex{Function prologue}
 \myindex{x86!\Instructions!AND}
@@ -39,7 +23,7 @@ main            endp
 % TODO1: rewrite.
 \myindex{x86!\Instructions!PUSH}
 Адрес строки (или указатель на строку) затем записывается прямо в стек без помощи инструкции \PUSH.
-\IT{var\_10} одновременно и локальная переменная и аргумент для \printf{}. Подробнее об этом будет ниже.
+\emph{var\_10} одновременно и локальная переменная и аргумент для \printf{}. Подробнее об этом будет ниже.
 
 Затем вызывается \printf.
 
@@ -67,9 +51,9 @@ gcc -S 1_1.c
 Здесь много макросов (начинающихся с точки). Они нам пока не интересны.
 
 Пока что, ради упрощения, мы можем 
-их игнорировать (кроме макроса \IT{.string}, при помощи которого кодируется последовательность символов, 
+их игнорировать (кроме макроса \emph{.string}, при помощи которого кодируется последовательность символов, 
 оканчивающихся нулем~--- такие же строки как в Си). И тогда получится следующее
-\footnote{Кстати, для уменьшения генерации \q{лишних} макросов, можно использовать такой ключ GCC: \IT{-fno-asynchronous-unwind-tables}}:
+\footnote{Кстати, для уменьшения генерации \q{лишних} макросов, можно использовать такой ключ GCC: \emph{-fno-asynchronous-unwind-tables}}:
 
 \lstinputlisting[caption=GCC 4.7.3,style=customasmx86]{patterns/01_helloworld/GCC_refined.s}
 

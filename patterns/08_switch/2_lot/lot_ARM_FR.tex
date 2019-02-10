@@ -7,7 +7,7 @@ Ce code utilise les caractéristiques du mode ARM dans lequel toutes les instruc
 ont une taille fixe de 4 octets.
 
 Gardons à l'esprit que la valeur maximale de $a$ est 4 et que toute autre valeur
-supérieure provoquera l'affichage de la chaîne \IT{<<something unknown\textbackslash{}n>>}
+supérieure provoquera l'affichage de la chaîne \emph{<<something unknown\textbackslash{}n>>}
 
 \myindex{ARM!\Instructions!CMP}
 \myindex{ARM!\Instructions!ADDCC}
@@ -15,9 +15,9 @@ La première instruction \TT{CMP R0, \#5} compare la valeur entrée dans $a$ ave
 
 \footnote{ADD---addition}
 L'instruction suivante, \TT{ADDCC PC, PC, R0,LSL\#2}, est exécutée si et seulement
-si $R0 < 5$ (\IT{CC=Carry clear / Less than} retenue vide, inférieur à).
+si $R0 < 5$ (\emph{CC=Carry clear / Less than} retenue vide, inférieur à).
 Par conséquent, si \TT{ADDCC} n'est pas exécutée (c'est le cas $R0 \geq 5$), un
-saut au label \IT{default\_case} se produit.
+saut au label \emph{default\_case} se produit.
 
 Mais si $R0 < 5$ et que \TT{ADDCC} est exécuté, voici ce qui se produit:
 
@@ -28,7 +28,7 @@ Mais comme nous le verrons plus tard~(\myref{division_by_shifting}) dans la sect
 par 4.
 
 Puis, nous ajoutons $R0*4$ à la valeur courante du \ac{PC}, et sautons à l'une
-des instructions \TT{B} (\IT{Branch}) situées plus bas.
+des instructions \TT{B} (\emph{Branch}) situées plus bas.
 
 Au moment de l'exécution de \TT{ADDCC}, la valeur du \ac{PC} est en avance de 8
 octets (\TT{0x180}) sur l'adresse à laquelle l'instruction \TT{ADDCC} se trouve
@@ -41,11 +41,11 @@ exécutée, le processeur, à ce moment, commence à préparer les instructions 
 la suivante, c'est pourquoi \ac{PC} pointe ici. Cela doit être mémorisé.
 
 Si $a=0$, elle sera ajoutée à la valeur de \ac{PC}, et la valeur courante de \ac{PC}
-sera écrite dans \ac{PC} (qui est 8 octets en avant) et un saut au label \IT{loc\_180}
+sera écrite dans \ac{PC} (qui est 8 octets en avant) et un saut au label \emph{loc\_180}
 sera effectué, qui est 8 octets en avant du point où l'instruction se trouve.
 
 Si $a=1$, alors $PC+8+a*4 = PC+8+1*4 = PC+12 = 0x184$ sera écrit dans \ac{PC}, qui
-est l'adresse du label \IT{loc\_184}.
+est l'adresse du label \emph{loc\_184}.
 
 A chaque fois que l'on ajoute 1 à $a$, le \ac{PC} résultant est incrémenté de
 4.
@@ -54,7 +54,7 @@ A chaque fois que l'on ajoute 1 à $a$, le \ac{PC} résultant est incrémenté d
 \TT{B} desquelles il y a 5 à la suite.
 
 Chacune de ces cinq instructions \TT{B} passe le contrôle plus loin, à ce qui a
-été programmé dans le \IT{switch()}.
+été programmé dans le \emph{switch()}.
 
 Le chargement du pointeur sur la chaîne correspondante se produit ici, etc.
 
@@ -79,7 +79,7 @@ contrôle doit être passé dans chaque cas.
 \myindex{ARM!\Instructions!BX}
 
 Une fonction spéciale est présente ici qui s'occupe de la table et du passage du
-contrôle, appelée\\ \IT{\_\_ARM\_common\_switch8\_thumb}.
+contrôle, appelée\\ \emph{\_\_ARM\_common\_switch8\_thumb}.
 Elle commence avec \TT{BX PC}, dont la fonction est de passer le mode du processeur
 en ARM.
 Ensuite, vous voyez la fonction pour le traitement de la table.

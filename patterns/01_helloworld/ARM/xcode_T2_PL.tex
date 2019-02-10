@@ -61,7 +61,7 @@ do f-cji \puts, odbywa się zmiana trybu procesora z Thumb/Thumb-2 na tryb ARM (
 Tutaj jest to niezbędne dlatego, że instrukcja (ona jest zakodowana w trybie ARM) wygląda tak:
 
 \begin{lstlisting}[style=customasmARM]
-__symbolstub1:00003FEC _puts           ; CODE XREF: _hello_world+E
+__symbolstub1:00003FEC _puts           ; CODE XREF: \_hello\_world+E
 __symbolstub1:00003FEC 44 F0 9F E5     LDR  PC, =__imp__puts
 \end{lstlisting}
 
@@ -78,7 +78,7 @@ W bibliotekach dynamicznych znajdują się często wykorzystywane funkcje biblio
 W wykonywalnym pliku binarnym 
 (Windows PE .exe, ELF lub Mach-O) istnieje segment importów, lista symboli (funkcji lub zmiennych globalnych) importowanych z modułów zewnętrznych i, również, nazwy tych modułów.
 Program rozruchowy ładuje niezbędne moduły i, iterując po symbolach zaimportowanych w module głównym, ustawia rzeczywiste adresy każdego z symboli.
-W naszym przypadku, \IT{\_\_imp\_\_puts} 
+W naszym przypadku, \emph{\_\_imp\_\_puts} 
 jest zmienną 32-bitową, gdzie program rozruchowy wpiszę adres rzeczywisty tej f-cji w bibliotece zewnętrznej. 
 Czyli instrukcja \TT{LDR} po prostu bierze 32-bitową wartość z tej zmiennej, i, zapisując ją do rejestru \ac{PC}, przekazuje tam zarządzanie.
 Żeby zmniejszyć czas działania programu rozruchowego, trzeba sprawić aby adres zapisywał się tylko raz do specjalnie przydzielonego miejsca.
@@ -97,7 +97,7 @@ do właśnie takiej \glslink{thunk function}{thunk-funkcji}, lecz procesor się 
 
 Thunk-funckje są trudne do zrozumienia przede wszystkim przez brak spójności w terminologii.
 Najprościej będzie traktować je jako adaptery-przejściówki z jednego typu gniazdek na drugi.
-Na przykład, adapter pozwalający wstawić do gniazdka amerykańskiego wtyczkę brytyjską i na odwrót. Thunk-funkcje również są czasami nazywane \IT{wrapper-ami}. \IT{Wrap} w języku angielskim to \IT{owinąć}, \IT{zawinąć}.
+Na przykład, adapter pozwalający wstawić do gniazdka amerykańskiego wtyczkę brytyjską i na odwrót. Thunk-funkcje również są czasami nazywane \emph{wrapper-ami}. \emph{Wrap} w języku angielskim to \emph{owinąć}, \emph{zawinąć}.
 Oto jeszcze kilka definicji tych funkcji:
 
 \begin{framed}

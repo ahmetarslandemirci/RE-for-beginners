@@ -1,5 +1,5 @@
-loc_C01EF6B4:       ; CODE XREF: do_filp_open+4F
-                test    bl, 40h         ; O_CREAT
+loc_C01EF6B4:       ; CODE XREF: do\_filp\_open+4F
+                test    bl, 40h         ; O\_CREAT
                 jnz     loc_C01EF810
                 mov     edi, ebx
                 shr     edi, 11h

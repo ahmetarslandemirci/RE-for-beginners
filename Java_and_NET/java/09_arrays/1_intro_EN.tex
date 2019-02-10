@@ -37,24 +37,24 @@ Let's first create an array of 10 integers and fill it:
         27: return        
 \end{lstlisting}
 
-The \TT{newarray} instruction creates an array object of 10 \IT{int} elements.
+The \TT{newarray} instruction creates an array object of 10 \emph{int} elements.
 
 The array's size is set with \TT{bipush} and left at \ac{TOS}.
 
 The array's type is set in \TT{newarray} instruction's operand.
 
-After \TT{newarray}'s execution, a \IT{reference} (or pointer) to the newly created array in the heap 
+After \TT{newarray}'s execution, a \emph{reference} (or pointer) to the newly created array in the heap 
 is left at the \ac{TOS}.
 
-\TT{astore\_1} stores the \IT{reference} to the 1st slot in \ac{LVA}.
+\TT{astore\_1} stores the \emph{reference} to the 1st slot in \ac{LVA}.
 
-The second part of the \main function is the loop which stores \IT{i} into the corresponding
+The second part of the \main function is the loop which stores \emph{i} into the corresponding
 array element.
 
-\TT{aload\_1} gets a \IT{reference} of the array and places it in the stack.
+\TT{aload\_1} gets a \emph{reference} of the array and places it in the stack.
 
 \TT{iastore} then stores the integer value from the stack in the array, 
-\IT{reference} of which is currently in \ac{TOS}.
+\emph{reference} of which is currently in \ac{TOS}.
 
 The third part of the \main function calls the \TT{dump()} function.
 
@@ -94,18 +94,18 @@ Now let's proceed to the \TT{dump()} function:
 The incoming \TT{reference} to the array is in the zeroth slot.
 
 The \TT{a.length} expression in the source code is converted to an \TT{arraylength} instruction: 
-it takes a \IT{reference} to the array and leaves the array size at \ac{TOS}.
+it takes a \emph{reference} to the array and leaves the array size at \ac{TOS}.
 
 \TT{iaload} at offset 13 is used to load array elements, 
-it requires to array \IT{reference} be present
+it requires to array \emph{reference} be present
 in the stack (prepared by \TT{aload\_0} at 11), 
 and also an index (prepared by \TT{iload\_1} at offset 12).
 
-Needless to say, instructions prefixed with \IT{a} may be mistakenly comprehended 
-as \IT{array} instructions.
+Needless to say, instructions prefixed with \emph{a} may be mistakenly comprehended 
+as \emph{array} instructions.
 
 It's not correct.
-These instructions works with \IT{references} to objects.
+These instructions works with \emph{references} to objects.
 
 And arrays and strings are objects too.
 

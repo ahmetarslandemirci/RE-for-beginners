@@ -1,4 +1,4 @@
-\subsection{\IT{LD\_PRELOAD}-Hack in Linux}
+\subsection{\emph{LD\_PRELOAD}-Hack in Linux}
 
 \myindex{LD\_PRELOAD}
 \label{ld_preload}
@@ -10,7 +10,7 @@ Dies wiederum erlaubt es die eigenen Funktionen für die des Systems zu \q{erset
 Es ist zum Beispiel einfach alle Aufrufe zu time(), read(), write(), usw. abzufangen.
 
 \myindex{uptime}
-Sehen wir uns einmal an, wie das Tool \IT{uptime} ausgetrickst werden kann.
+Sehen wir uns einmal an, wie das Tool \emph{uptime} ausgetrickst werden kann.
 Wie bekannt ist, zeigt dieses Programm an, wie lange der Computer schon arbeitet.
 \myindex{strace}
 Mithilfe von strace(\myref{strace}), ist es möglich zu sehen, dass das Tool die
@@ -88,7 +88,7 @@ Kompilieren wir den Code als gemeinsame, dynamische Bibliothek:
 gcc -fpic -shared -Wall -o fool_uptime.so fool_uptime.c -ldl
 \end{lstlisting}
 
-Jetzt starten wir \IT{uptime} während unsere Bibliothek vor den anderen geladen wird:
+Jetzt starten wir \emph{uptime} während unsere Bibliothek vor den anderen geladen wird:
 
 \begin{lstlisting}
 LD_PRELOAD=`pwd`/fool_uptime.so uptime
@@ -100,7 +100,7 @@ Und wir sehen:
  01:23:02 up 24855 days,  3:14,  3 users,  load average: 0.00, 0.01, 0.05
 \end{lstlisting}
 
-Wenn die \IT{LD\_PRELOAD}-Umgebungsvariable immer auf den Dateinamen und -pfad unserer
+Wenn die \emph{LD\_PRELOAD}-Umgebungsvariable immer auf den Dateinamen und -pfad unserer
 Bibliothek zeigt, wird diese vor allen anderen gestarteten Programmen geladen.
 
 Weitere Beispiele:

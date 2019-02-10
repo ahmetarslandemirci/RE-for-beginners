@@ -18,19 +18,19 @@ code vraiment étrange (ce listing est généré par MSVC 2013 x86):
 
 Ceci est étrange, car comment travaille les humains avec deux pointeurs? Ils stockent
 les deux adresses dans deux registres ou deux emplacements mémoire.
-Dans ce cas, le compilateur MSVC stocke les deux pointeurs comme un pointeur (\IT{dst glissant} dans \EAX)
-et la différence entre les pointeurs \IT{src} et \IT{dst} (qui reste inchangée lors
+Dans ce cas, le compilateur MSVC stocke les deux pointeurs comme un pointeur (\emph{dst glissant} dans \EAX)
+et la différence entre les pointeurs \emph{src} et \emph{dst} (qui reste inchangée lors
 de l'exécution du corps de la boucle) dans \ESI.
 \myindex{\CLanguageElements!ptrdiff\_t}
 (À propos, ceci est un des rare cas où le type de donnée ptrdiff\_t peut être utilisé.)
-Lorsqu'il doit charger un octet depuis \IT{src}, il le charge en \IT{diff + dst glissant}
-et stocke l'octet juste en \IT{dst glissant}.
+Lorsqu'il doit charger un octet depuis \emph{src}, il le charge en \emph{diff + dst glissant}
+et stocke l'octet juste en \emph{dst glissant}.
 
 Ceci est plus une astuce d'optimisation. Mais j'ai récrit cette fonction en:
 
 \lstinputlisting[style=customasmx86]{advanced/500_loop_optimizations/1_2.lst}
 
-\dots et ça fonctionne aussi efficacement que la version \IT{optimisée} sur mon Intel
+\dots et ça fonctionne aussi efficacement que la version \emph{optimisée} sur mon Intel
 Xeon E31220 @ 3.10GHz.
 Peut-être que cette optimisation ciblait des vieux CPUs x86 des années 1990, puisque
 ce truc est utilisé au moins par l'ancien MS VC 6.0?
@@ -53,7 +53,7 @@ void __cdecl f1(char *dst, char *src, size_t size)
     sliding_dst = dst;
     do
     {
-      tmp = (sliding_dst++)[src - dst];         // difference (src-dst) is calculated once, before loop body
+      tmp = (sliding_dst++)[src - dst];         // difference (src-dst) is calculated once, at the beginnning
       *(sliding_dst - 1) = tmp;
       --counter;
     }
@@ -63,7 +63,7 @@ void __cdecl f1(char *dst, char *src, size_t size)
 \end{lstlisting}
 
 Néanmoins, cette astuce d'optimisation est souvent utilisée par MSVC (pas uniquement
-dans des routines \IT{memcpy()} \ac{DIY} maison, mais dans de nombreuses boucles
+dans des routines \emph{memcpy()} \ac{DIY} maison, mais dans de nombreuses boucles
 qui utilisent deux tableaux ou plus).
 Donc, ça vaut le coup pour les rétro-ingénieurs de la garder à l'esprit.
 

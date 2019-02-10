@@ -12,7 +12,7 @@ main:
 	mov	esi, 2
 	mov	edi, 1
 	call	f
-	mov	edi, OFFSET FLAT:.LC0 ; "%d\n"
+	mov	edi, OFFSET FLAT:.LC0 ; "\%d\textbackslash{}n"
 	mov	esi, eax
 	xor	eax, eax  ; number of vector registers passed
 	call	printf

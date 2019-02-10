@@ -11,7 +11,7 @@ month2	DB	04aH
 ...
 
 get_month2 PROC
-; §étendre§ le signe de l'argument en §entrée§ sur 64-bit
+; étendre le signe de l'argument en entrée sur 64-bit
 	movsxd	rax, ecx
 	lea	rcx, QWORD PTR [rax+rax*4]
 ; RCX=mois+mois*4=mois*5

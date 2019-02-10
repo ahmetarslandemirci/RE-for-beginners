@@ -1,15 +1,15 @@
                 .globl get_mois2
 get_mois2:
-; $a0=mois
+; \$a0=mois
                 sll     $v0, $a0, 3
-; $v0 = $a0<<3 = mois*8
+; \$v0 = \$a0<<3 = mois*8
                 sll     $a0, 1
-; $a0 = $a0<<1 = mois*2
+; \$a0 = \$a0<<1 = mois*2
                 addu    $a0, $v0
-; $a0 = mois*2+mois*8 = mois*10
+; \$a0 = mois*2+mois*8 = mois*10
 ; charger l'adresse de la table:
                 la      $v0, mois2
-; ajouter l'adresse de la table et l'index que nous avons §calculé§ et sortir:
+; ajouter l'adresse de la table et l'index que nous avons calculé et sortir:
                 jr      $ra
                 addu    $v0, $a0
 

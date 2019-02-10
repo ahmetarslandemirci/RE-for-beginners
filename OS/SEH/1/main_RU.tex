@@ -73,10 +73,10 @@
 это простейший односвязный список, и эти элементы хранятся прямо в стеке.
 
 \begin{lstlisting}[caption=MSVC/VC/crt/src/exsup.inc,style=customasmx86]
-\_EXCEPTION\_REGISTRATION struc
+_EXCEPTION_REGISTRATION struc
      prev    dd      ?
      handler dd      ?
-\_EXCEPTION\_REGISTRATION ends
+_EXCEPTION_REGISTRATION ends
 \end{lstlisting}
 
 Так что каждое поле \q{handler} указывает на обработчик,

@@ -4,9 +4,9 @@ W1 = val
   54:           lsr     w3, w0, #1
 ; W3 = W0>>1 = idx>>1
   58:           lsl     w2, w3, #2
-; W2 = W3<<2 = (W0>>1)<<2 = (idx&(~1))<<1
+; \verb|W2 = W3<<2 = (W0>>1)<<2 = (idx&(~1))<<1|
   5c:           sub     w2, w2, w3
-; W2 = W2-W3 = (idx&(~1))<<1 - idx>>1 = idx*1.5
+; \verb|W2 = W2-W3 = (idx&(~1))<<1 - idx>>1 = idx*1.5|
 ; jump if lowest bit in idx is 1:
   60:           tbnz    w0, #0, 94 <put_to_array+0x40>
   
@@ -30,10 +30,10 @@ W1 = val
   80:           ldrb    w2, [x0,x3]
 ; W2 = middle byte
   84:           and     w2, w2, #0xf
-; W2 = W2&0xF = middle_byte&0xF (high 4 bits in middle byte are dropped)
+; \verb|W2 = W2&0xF = middle_byte&0xF (high 4 bits in middle byte are dropped)|
 ; merge parts of new version of middle byte:
   88:           orr     w1, w2, w1
-; W1 = W2|W1 = middle_byte&0xF | val<<4
+; \verb!W1 = W2|W1 = middle_byte&0xF | val<<4!
 ; store W2 (new middle byte) at X0+X3 = array+idx*1.5+1
   8c:           strb    w1, [x0,x3]
   90:           ret
@@ -52,9 +52,9 @@ W1 = val
   a8:           ldrb    w3, [x0,x4]
 ; W3 = middle byte
   ac:           and     w3, w3, #0xfffffff0
-; W3 = W3&0xFFFFFFF0 = middle_byte&0xFFFFFFF0, i.e., clear lowest 4 bits
+; \verb|W3 = W3&0xFFFFFFF0 = middle_byte&0xFFFFFFF0, i.e., clear lowest 4 bits|
   b0:           orr     w3, w3, w1, lsr #8
-; W3 = W3|W1>>8 = middle_byte&0xFFFFFFF0 | val>>8
+; \verb!W3 = W3|W1>>8 = middle_byte&0xFFFFFFF0 | val>>8!
 ; store new version of middle byte at X0+X4=array+idx*1.5+1:
   b4:           strb    w3, [x0,x4]
 ; now store lowest 8 bits of val (in W1) at X0+W2=array+idx*1.5+2, i.e., place of right byte

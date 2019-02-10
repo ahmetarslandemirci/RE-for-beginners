@@ -1,7 +1,7 @@
                 
 		...
 
-		; RCX = address of jmp_buf
+		; RCX = address of jmp\_buf
 		
 		mov     [rcx], rax
                 mov     [rcx+8], rbx

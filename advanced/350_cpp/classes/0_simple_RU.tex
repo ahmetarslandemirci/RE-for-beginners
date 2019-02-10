@@ -16,8 +16,8 @@
 Под каждый экземпляр класса $c$ выделяется по 8 байт, столько же, сколько нужно 
 для хранения двух переменных.
 
-Для \IT{c1} вызывается конструктор по умолчанию без аргументов \TT{??0c@@QAE@XZ}. \\
-Для \IT{c2} вызывается другой конструктор \TT{??0c@@QAE@HH@Z} и передаются два числа в качестве аргументов.
+Для \emph{c1} вызывается конструктор по умолчанию без аргументов \TT{??0c@@QAE@XZ}. \\
+Для \emph{c2} вызывается другой конструктор \TT{??0c@@QAE@HH@Z} и передаются два числа в качестве аргументов.
 
 \myindex{thiscall}
 \label{thiscall}
@@ -38,7 +38,7 @@
 Ну и конечно, у разных классов могут быть методы с одинаковыми именами.
 
 \myindex{Компоновщик}
-\IT{Name mangling} позволяет закодировать имя класса + имя метода + типы всех аргументов метода 
+\emph{Name mangling} позволяет закодировать имя класса + имя метода + типы всех аргументов метода 
 в одной ASCII-строке, которая затем используется как внутреннее имя функции. 
 Это все потому что ни компоновщик\footnote{linker}, ни загрузчик DLL \ac{OS}
 (мангленные имена могут быть среди экспортов/импортов в DLL), 
@@ -99,7 +99,7 @@
 \footnote{Видимо, так решили для упрощения портирования \CCpp{}-кода на x64}, 
 поэтому здесь используются 32-битные части регистров.
 
-В методе \TT{dump()} вместо \RET мы видим \TT{JMP printf}, этот \IT{хак} мы рассматривали ранее: \myref{JMP_instead_of_RET}.
+В методе \TT{dump()} вместо \RET мы видим \TT{JMP printf}, этот \emph{хак} мы рассматривали ранее: \myref{JMP_instead_of_RET}.
 
 \myparagraph{GCC: x86}
 
@@ -107,7 +107,7 @@
 
 \lstinputlisting[caption=GCC 4.4.1,style=customasmx86]{\CURPATH/classes/simple_GCC.asm}
 
-Здесь мы видим, что применяется иной \IT{name mangling} характерный для стандартов GNU
+Здесь мы видим, что применяется иной \emph{name mangling} характерный для стандартов GNU
 \footnote{Еще о name mangling разных компиляторов:\\
 \InSqBrackets{\AgnerFogCC}.}
 Во-вторых, указатель на экземпляр передается как первый аргумент функции --- конечно же, скрыто от программиста.
@@ -170,32 +170,9 @@ void ZN1cC1Eii (int *obj, int a, int b)
 
 И функция \TT{dump()}:
 
-\begin{lstlisting}[style=customasmx86]
-                public _ZN1c4dumpEv
-_ZN1c4dumpEv    proc near
+\lstinputlisting[style=customasmx86]{\CURPATH/classes/tmp1.asm}
 
-var_18          = dword ptr -18h
-var_14          = dword ptr -14h
-var_10          = dword ptr -10h
-arg_0           = dword ptr  8
-
-                push    ebp
-                mov     ebp, esp
-                sub     esp, 18h
-                mov     eax, [ebp+arg_0]
-                mov     edx, [eax+4]
-                mov     eax, [ebp+arg_0]
-                mov     eax, [eax]
-                mov     [esp+18h+var_10], edx
-                mov     [esp+18h+var_14], eax
-                mov     [esp+18h+var_18], offset aDD ; "%d; %d\n"
-                call    _printf
-                leave
-                retn
-_ZN1c4dumpEv    endp
-\end{lstlisting}
-
-Эта функция \IT{во внутреннем представлении} имеет один аргумент, через который передается указатель на 
+Эта функция \emph{во внутреннем представлении} имеет один аргумент, через который передается указатель на 
 объект\footnote{экземпляр класса} (\ITthis).
 
 Это можно переписать на Си:
@@ -208,7 +185,7 @@ void ZN1c4dumpEv (int *obj)
 \end{lstlisting}
 
 Таким образом, если брать в учет только эти простые примеры, разница между MSVC и GCC 
-в способе кодирования имен функций (\IT{name mangling}) и передаче указателя на экземпляр класса 
+в способе кодирования имен функций (\emph{name mangling}) и передаче указателя на экземпляр класса 
 (через \ECX или через первый аргумент).
 
 \myparagraph{GCC: x86-64}
@@ -216,7 +193,7 @@ void ZN1c4dumpEv (int *obj)
 Первые 6 аргументов, как мы уже знаем, передаются через 6 регистров \RDI, \RSI, \RDX, \RCX, \Reg{8} и 
 \Reg{9} (\SysVABI), а указатель на \ITthis через первый (\RDI) что мы здесь и видим.
 Тип \Tint 32-битный и здесь.
-\IT{Хак} с \JMP вместо \RET используется и здесь.
+\emph{Хак} с \JMP вместо \RET используется и здесь.
 
 \lstinputlisting[caption=GCC 4.4.6 x64,style=customasmx86]{\CURPATH/classes/simple_GCC_x64_RU.s}
 

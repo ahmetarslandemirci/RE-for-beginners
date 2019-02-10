@@ -14,7 +14,7 @@ loc_8048465:
                 mov     eax, [esp+20h+var_4]
                 mov     [esp+20h+var_20], eax
                 call    printing_function
-                add     [esp+20h+var_4], 1  ; (i) §erhöhen§
+                add     [esp+20h+var_4], 1  ; (i) erhöhen
 
 loc_8048476:
                 cmp     [esp+20h+var_4], 9

@@ -4,8 +4,10 @@
 \RU{Это макрос в ассемблере, для выравнивания некоторой метки по некоторой границе.}
 \EN{It is an assembly language macro for aligning labels on a specific boundary.}
 \DE{Dies ist ein Assembler-Makro um Labels an bestimmten Grenzen auszurichten.}
+\FR{C'est une macro du langage d'assemblage pour aligner les labels sur une limite
+spécifique.}
 
-\RU{Это нужно для тех \IT{нагруженных} меток, куда чаще всего передается управление, например, 
+\RU{Это нужно для тех \emph{нагруженных} меток, куда чаще всего передается управление, например, 
 начало тела цикла. 
 Для того чтобы процессор мог эффективнее вытягивать данные или код из памяти, через шину с памятью, 
 кэширование, итд.}
@@ -13,8 +15,11 @@
 So the CPU can load the data or code from the memory effectively, through the memory bus, cache lines, etc.}
 \DE{Dies ist oft nützlich Labels, die oft Ziel einer Kotrollstruktur sind, wie Schleifenköpfe.
 Somit kann die CPU Daten oder Code sehr effizient vom Speicher durch den Bus, den Cache, usw. laden.}
+\FR{C'est souvent nécessaire pour des labels très utilisés, comme par exemple le
+début d'un corps de boucle. Ainsi, le CPU peut charger les données ou le code depuis
+la mémoire efficacement, à travers le bus mémoire, les caches, etc.}
 
-\RU{Взято из}\EN{Taken from}\DE{Entnommen von} \TT{listing.inc} (MSVC):
+\RU{Взято из}\EN{Taken from}\DE{Entnommen von}\FR{Pris de} \TT{listing.inc} (MSVC):
 
 \myindex{x86!\Instructions!NOP}
 \RU{Это, кстати, любопытный пример различных вариантов \NOP{}-ов. 
@@ -23,6 +28,8 @@ Somit kann die CPU Daten oder Code sehr effizient vom Speicher durch den Bus, de
 All these instructions have no effects whatsoever, but have a different size.}
 \DE{Dies ist übrigens ein Beispiel für die unterschiedlichen \NOP-Variationen.
 Keine dieser Anweisungen hat eine Auswirkung, aber alle haben eine unterschiedliche Größe.}
+\FR{À propos, c'est un exemple curieux des différentes variations de \NOP. Toutes
+ces instructions n'ont pas d'effet, mais ont une taille différente.}
 
 \RU{Цель в том, чтобы была только одна инструкция, а не набор NOP-ов, 
 считается что так лучше для производительности CPU.}
@@ -30,6 +37,8 @@ Keine dieser Anweisungen hat eine Auswirkung, aber alle haben eine unterschiedli
 is accepted to be better for CPU performance.}
 \DE{Eine einzelne Idle-Anweisung anstatt mehrerer NOPs hat positive Auswirkungen
 auf die CPU-Performance.}
+\FR{Avoir une seule instruction sans effet au lieu de plusieurs est accepté comme
+étant meilleur pour la performance du CPU.}
 
 \begin{lstlisting}[style=customasmx86]
 ;; LISTING.INC

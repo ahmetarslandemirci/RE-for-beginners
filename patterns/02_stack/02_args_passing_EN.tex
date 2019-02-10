@@ -72,7 +72,7 @@ A somewhat popular way among assembly language newbies is to pass arguments via 
 
 \lstinputlisting[caption=Assembly code,style=customasmx86]{patterns/02_stack/global_args.asm}
 
-But this method has obvious drawback: \IT{do\_something()} function cannot call itself recursively (or via another function),
+But this method has obvious drawback: \emph{do\_something()} function cannot call itself recursively (or via another function),
 because it has to zap its own arguments.
 The same story with local variables: if you hold them in global variables, the function couldn't call itself.
 And this is also not thread-safe
@@ -125,7 +125,7 @@ In case of error, \TT{CF} flag is raised. Otherwise, handle of newly created fil
 
 This method is still used by assembly language programmers.
 In Windows Research Kernel source code (which is quite similar to Windows 2003) we can find something like this
-(file \IT{base/ntos/ke/i386/cpu.asm}):
+(file \emph{base/ntos/ke/i386/cpu.asm}):
 
 \begin{lstlisting}[style=customasmx86]
         public  Get386Stepping

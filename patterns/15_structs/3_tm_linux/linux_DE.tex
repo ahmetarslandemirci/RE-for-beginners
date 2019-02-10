@@ -17,12 +17,12 @@ in \EAX, ohne jedoch die Flags zu verändern. Siehe hierzu auch den entsprechend
 
 \myparagraph{GDB}
 Versuchen wir dieses Beispiel in GDB zu laden
-\footnote{Das Ergebnis von \IT{date} ist zu Demonstrationszwecken leicht korrigiert worden. Natürlich ist es nicht
+\footnote{Das Ergebnis von \emph{date} ist zu Demonstrationszwecken leicht korrigiert worden. Natürlich ist es nicht
 möglich, GDB noch in der gleichen Sekunde auszuführen.}:
 
 \lstinputlisting[caption=GDB]{patterns/15_structs/3_tm_linux/GCC_tm_GDB.txt}
 Wir finden unser struct leicht im Stack.
-Zuerst schauen wir uns an, wie es in \IT{time.h} definiert ist:
+Zuerst schauen wir uns an, wie es in \emph{time.h} definiert ist:
 
 \begin{lstlisting}[caption=time.h, label=struct_tm,style=customc]
 struct tm

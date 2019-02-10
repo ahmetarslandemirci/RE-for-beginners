@@ -31,6 +31,8 @@ Essayons la même chose dans GCC 4.4.1 avec l'option \Othree:
 \myindex{x86!\Instructions!NOP}
 \myindex{x86!\Instructions!LEA}
 
+% \vref bug, please ignore "\\"...
 GCC a aligné le début de la boucle sur une limite de 8-octet en ajoutant \NOP et
-\TT{lea esi, [esi+0]} (qui est aussi une opération sans effet).
+\TT{lea esi, [esi+0]} (qui est aussi une opération sans effet).\\
+\\
 Vous pouvez en lire plus à ce sujet dans la section npad~(\myref{sec:npad}).

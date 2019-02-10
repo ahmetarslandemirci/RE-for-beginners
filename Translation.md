@@ -49,7 +49,7 @@ There are also `\ESph{}`, `\PTBRph{}`, `\PLph{}`, `\DEph{}` and `\ITAph{}` place
 
 ## Compiling
 
-To check your results, just run `make ES`, `make PTBR`, `make PL`, `make ITA`, `make DE`.
+To check your results, just run `make RE4B-ES`, `make RE4B-PTBR`, `make RE4B-PL`, `make RE4B-IT`, `make RE4B-DE`.
 You'll see almost blank pages with only listings and screenshots, without any text, but your text will be present.
 
 ## Coordination
@@ -74,16 +74,31 @@ Whenever I add/modify some part of text, I also add "\ac{TBT}" (To Be Translated
 into a place where translation should be updated.
 And/or, I add commentary at the first line of each translated file, which should be updated.
 
-## Escaping non-Latin characters in listings
+## Listings
 
-listings TeX package sometimes goes crazy if it encounters UTF-8 character(s) and digit(s) in one line: [stack overflow discussion](http://tex.stackexchange.com/questions/24528/having-problems-with-listings-and-utf-8-can-it-be-fixed).
-So it must be escaped, and in this project, "paragraph" symbol is used: `§`.
-(Almost) all Cyrillic comments in listings are escaped, [for example](https://github.com/DennisYurichev/RE-for-beginners/blob/9bcd72d176b1f86aa31dda21007740f83ae90484/patterns/02_stack/04_alloca/2_1_gcc_intel_O3_RU.asm#L9).
-How to escape French diacritic symbols, [for example](https://github.com/DennisYurichev/RE-for-beginners/blob/c4ee7d6abc3022fd60167d22f47cf100bc4be425/patterns/03_printf/ARM/ARM8_O0_FR.lst#L12).
-Do not worry about misplacing them or not placing at all, I'll fix it by myself.
+There was a time (before Jan-2019) when I wrote this:
 
-For those, who interested, § symbol is in fact switches you into TeX mode, and you can write anything here as in .tex files, like `\IT{italic}`, etc.
-This is why single `$` symbol cannot be used inside escaped line.
+	listings TeX package sometimes goes crazy if it encounters UTF-8 character(s) and digit(s) in one line: [stack overflow discussion](http://tex.stackexchange.com/questions/24528/having-problems-with-listings-and-utf-8-can-it-be-fixed).
+	So it must be escaped, and in this project, "paragraph" symbol is used: `§`.
+	(Almost) all Cyrillic comments in listings are escaped, [for example](https://github.com/DennisYurichev/RE-for-beginners/blob/9bcd72d176b1f86aa31dda21007740f83ae90484/patterns/02_stack/04_alloca/2_1_gcc_intel_O3_RU.asm#L9).
+	How to escape French diacritic symbols, [for example](https://github.com/DennisYurichev/RE-for-beginners/blob/c4ee7d6abc3022fd60167d22f47cf100bc4be425/patterns/03_printf/ARM/ARM8_O0_FR.lst#L12).
+	Do not worry about misplacing them or not placing at all, I'll fix it by myself.
+
+	For those, who interested, § symbol is in fact switches you into TeX mode, and you can write anything here as in .tex files, like `\IT{italic}`, etc.
+	This is why single `$` symbol cannot be used inside escaped line.
+
+In Jan-2019 I learnt about "texcl=true" and now comments in listings are in TeX mode.
+But, several characters needs to be escaped, as in usual TeX code: $, #, %, \, etc.
+To be on safe side, use \verb|comment|.
+But if a comment itself contains pipe symbol ("|"), you can do this: \verb!comment!.
+
+However, \verb|long_string| is unbreakable and thus is not suitable for long strings...
+In this case, I enclose smaller parts of comment in listing...
+
+"§" symbol is still to be used in code, but not in comments.
+This is a case of translated variable names, like:
+https://github.com/DennisYurichev/RE-for-beginners/blob/master/patterns/09_loops/simple/loops_1_RU.c
+https://github.com/DennisYurichev/RE-for-beginners/blob/master/patterns/09_loops/simple/loops_3_RU.c
 
 ## Contact me
 

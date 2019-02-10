@@ -96,7 +96,7 @@ W kodzie wygenerowanym robi to instrukcja \\
 \INS{MOV EAX, 0} --- znowu dlatego, że opcode jest krótszy (2 bajty w \XOR kontra 5 w \MOV).
 
 \myindex{x86!\Instructions!SUB}
-Niektóre kompilatory genrują \INS{SUB EAX, EAX}, co oznacza \IT{odjąć wartość w} \EAX \IT{od wartości w }\EAX, co w każdym przypadku da w wyniku końcowym 0.
+Niektóre kompilatory genrują \INS{SUB EAX, EAX}, co oznacza \emph{odjąć wartość w} \EAX \emph{od wartości w }\EAX, co w każdym przypadku da w wyniku końcowym 0.
 
 \myindex{x86!\Instructions!RET}
 Ostatnia instrukcja \RET zwraca zarządzanie do funkcji wywołującej. Zwykle jest to kod \CCpp \ac{CRT}, który zwróci zarządzanie do \ac{OS}.

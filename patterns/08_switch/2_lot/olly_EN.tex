@@ -32,7 +32,7 @@ Here we see a jumptable:
 \label{fig:switch_lot_olly3}
 \end{figure}
 
-Here we've clicked \q{Follow in Dump} $\rightarrow$ \q{Address constant}, so now we see the \IT{jumptable} in the data window.
+Here we've clicked \q{Follow in Dump} $\rightarrow$ \q{Address constant}, so now we see the \emph{jumptable} in the data window.
 These are 5 32-bit values\footnote{They are underlined by \olly because
 these are also FIXUPs: \myref{subsec:relocs}, we are going to come back to them later}.
 \ECX is now 2, so the third element (can be indexed as 2\footnote{About indexing, see also: \ref{arrays_at_one}}) of the table is to be used.
@@ -46,6 +46,6 @@ After the jump we are at \TT{0x010B103A}: the code printing \q{two} will now be 
 \begin{figure}[H]
 \centering
 \myincludegraphics{patterns/08_switch/2_lot/olly4.png}
-\caption{\olly: now we at the \IT{case:} label}
+\caption{\olly: now we at the \emph{case:} label}
 \label{fig:switch_lot_olly4}
 \end{figure}

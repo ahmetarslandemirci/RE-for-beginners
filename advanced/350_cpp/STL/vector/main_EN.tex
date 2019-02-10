@@ -25,7 +25,7 @@ Here is the output of this program when compiled in MSVC:
 As it can be seen, there is no allocated buffer when \main starts.
 After the first \TT{push\_back()} call, a buffer is allocated.
 And then, after each \TT{push\_back()} 
-call, both array size and buffer size (\IT{capacity}) are increased.
+call, both array size and buffer size (\emph{capacity}) are increased.
 But the buffer address changes as well, because \TT{push\_back()} 
 reallocates the buffer in the \gls{heap} each time.
 It is costly operation, that's why it is very important to predict the size of the array in the future and reserve 

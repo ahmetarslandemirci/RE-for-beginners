@@ -6,7 +6,7 @@ f_unsigned:
 	mov	ebx, DWORD PTR [esp+36]
 	cmp	esi, ebx
 	ja	.L13
-	cmp	esi, ebx  ; §dieser Befehl könnte entfernt werden§
+	cmp	esi, ebx  ; dieser Befehl könnte entfernt werden
 	je	.L14
 .L10:
 	jb	.L15

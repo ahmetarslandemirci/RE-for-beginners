@@ -1,3 +1,10 @@
+   Jan-2019: There was a time when \IT macro was used for italic text and \ITA for Italian text.
+             To be consistent, I'm using \emph for italic text now and \IT for Italian text.
+             True for filename suffixes as well.
+
+             Also, \JA macro is now used for Japanese, instead of \JPN.
+
+   Jan-2019: syntax highlighting (comments only so far)
 02-Jul-2018: DBI examples: minesweeper and WinRAR
 15-Sep-2016: More fundamentals and examples
 14-Sep-2016: More of my blog posts are copypasted into the book

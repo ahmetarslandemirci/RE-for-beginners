@@ -18,14 +18,14 @@
 ; reload them.
 .text:00000024                 lw      $v1, 0x20+arg_0($fp)
 .text:00000028                 lw      $v0, 0x20+arg_4($fp)
-; $v0=b
-; $v1=a
+; \$v0=b
+; \$v1=a
 .text:0000002C                 or      $at, $zero ; NOP
-; Pseudo-Befehl, entspricht "slt $v0,$v0,$v1" 
-; setze $v0 auf 1 ,falls $v0<$v1 (b<a) oder ansonsten auf 0:
+; Pseudo-Befehl, entspricht "slt \$v0,\$v0,\$v1" 
+; setze \$v0 auf 1 ,falls \$v0<\$v1 (b<a) oder ansonsten auf 0:
 .text:00000030                 slt     $v0, $v1
-; springe zu loc_5c, falls die Bedingung nicht wahr ist
-; Pseudo-Befehl, entspricht "beq $v0,$zero,loc_5c":
+; springe zu loc\_5c, falls die Bedingung nicht wahr ist
+; Pseudo-Befehl, entspricht "beq \$v0,\$zero,loc\_5c":
 .text:00000034                 beqz    $v0, loc_5C
 ; gibt "a>b" aus und verlasse
 .text:00000038                 or      $at, $zero ; branch delay slot, NOP
@@ -38,11 +38,11 @@
 .text:00000054                 or      $at, $zero ; branch delay slot, NOP
 .text:00000058                 lw      $gp, 0x20+var_10($fp)
 .text:0000005C
-.text:0000005C loc_5C:                                  # CODE XREF: f_signed+34
+.text:0000005C loc_5C:                                  # CODE XREF: f\_signed+34
 .text:0000005C                 lw      $v1, 0x20+arg_0($fp)
 .text:00000060                 lw      $v0, 0x20+arg_4($fp)
 .text:00000064                 or      $at, $zero ; NOP
-; prüfe, ob a==b, springe nach loc_90 , falls falsch:
+; prüfe, ob a==b, springe nach loc\_90 , falls falsch:
 .text:00000068                 bne     $v1, $v0, loc_90
 .text:0000006C                 or      $at, $zero ; branch delay slot, NOP
 ; Bedingung its wahr, gibt "a==b" aus und verlasse
@@ -55,13 +55,13 @@
 .text:00000088                 or      $at, $zero ; branch delay slot, NOP
 .text:0000008C                 lw      $gp, 0x20+var_10($fp)
 .text:00000090
-.text:00000090 loc_90:                                  # CODE XREF: f_signed+68
+.text:00000090 loc_90:                                  # CODE XREF: f\_signed+68
 .text:00000090                 lw      $v1, 0x20+arg_0($fp)
 .text:00000094                 lw      $v0, 0x20+arg_4($fp)
 .text:00000098                 or      $at, $zero ; NOP
-; prüfe, ob $v1<$v0 (a<b), setze $v0 auf 1 , falls die Bedingung whar ist.
+; prüfe, ob \$v1<\$v0 (a<b), setze \$v0 auf 1 , falls die Bedingung whar ist.
 .text:0000009C                 slt     $v0, $v1, $v0
-; falls die Bedingung nicht wahr ist (d.h.., $v0==0), springe nach loc_c8:
+; falls die Bedingung nicht wahr ist (d.h.., \$v0==0), springe nach loc\_c8:
 .text:000000A0                 beqz    $v0, loc_C8
 .text:000000A4                 or      $at, $zero ; branch delay slot, NOP
 ; Bedingung ist wahr, gib "a<b" aus und verlasse
@@ -75,11 +75,11 @@
 .text:000000C4                 lw      $gp, 0x20+var_10($fp)
 .text:000000C8
 ; alle 3 Bedingungen waren falsch, also nur verlassen
-.text:000000C8 loc_C8:                                  # CODE XREF: f_signed+A0
+.text:000000C8 loc_C8:                                  # CODE XREF: f\_signed+A0
 .text:000000C8                 move    $sp, $fp
 .text:000000CC                 lw      $ra, 0x20+var_4($sp)
 .text:000000D0                 lw      $fp, 0x20+var_8($sp)
 .text:000000D4                 addiu   $sp, 0x20
 .text:000000D8                 jr      $ra
 .text:000000DC                 or      $at, $zero ; branch delay slot, NOP
-.text:000000DC  # End of function f_signed
+.text:000000DC  # End of function f\_signed

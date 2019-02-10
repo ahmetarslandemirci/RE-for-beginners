@@ -1,7 +1,7 @@
-.text:6EB9DBC7 ; private: enum  Gdiplus::Status __thiscall CAnalogClock::_DrawHand(class Gdiplus::Graphics *, int, struct ClockHand const &, class Gdiplus::Pen *)
+.text:6EB9DBC7 ; private: enum  Gdiplus::Status \_\_thiscall CAnalogClock::\_DrawHand(class Gdiplus::Graphics *, int, struct ClockHand const \&, class Gdiplus::Pen *)
 .text:6EB9DBC7 ?_DrawHand@CAnalogClock@@AAE?AW4Status@Gdiplus@@PAVGraphics@3@HABUClockHand@@PAVPen@3@@Z proc near
-.text:6EB9DBC7                                         ; CODE XREF: CAnalogClock::_ClockPaint(HDC__ *)+163
-.text:6EB9DBC7                                         ; CAnalogClock::_ClockPaint(HDC__ *)+18B
+.text:6EB9DBC7      ; \verb|CODE XREF: CAnalogClock::_ClockPaint(HDC__ *)+163|
+.text:6EB9DBC7      ; \verb|CAnalogClock::_ClockPaint(HDC__ *)+18B|
 .text:6EB9DBC7
 .text:6EB9DBC7 var_10          = dword ptr -10h
 .text:6EB9DBC7 var_C           = dword ptr -0Ch
@@ -66,7 +66,7 @@
 .text:6EB9DC51                 lea     eax, [ebp+var_10]
 .text:6EB9DC54                 push    eax
 .text:6EB9DC55                 push    [ebp+arg_C]
-.text:6EB9DC58                 call    ?DrawLine@Graphics@Gdiplus@@QAE?AW4Status@2@PBVPen@2@ABVPoint@2@1@Z ; Gdiplus::Graphics::DrawLine(Gdiplus::Pen const *,Gdiplus::Point const &,Gdiplus::Point const &)
+.text:6EB9DC58                 call    ?DrawLine@Graphics@Gdiplus@@QAE?AW4Status@2@PBVPen@2@ABVPoint@2@1@Z ; Gdiplus::Graphics::DrawLine(Gdiplus::Pen const *,Gdiplus::Point const \&,Gdiplus::Point const \&)
 .text:6EB9DC5D                 mov     ecx, [edi+8]
 .text:6EB9DC60                 test    ecx, ecx
 .text:6EB9DC62                 jbe     short loc_6EB9DCAA
@@ -94,10 +94,10 @@
 .text:6EB9DC9E                 lea     eax, [ebp+var_10]
 .text:6EB9DCA1                 push    eax
 .text:6EB9DCA2                 push    [ebp+arg_C]
-.text:6EB9DCA5                 call    ?DrawLine@Graphics@Gdiplus@@QAE?AW4Status@2@PBVPen@2@ABVPoint@2@1@Z ; Gdiplus::Graphics::DrawLine(Gdiplus::Pen const *,Gdiplus::Point const &,Gdiplus::Point const &)
+.text:6EB9DCA5                 call    ?DrawLine@Graphics@Gdiplus@@QAE?AW4Status@2@PBVPen@2@ABVPoint@2@1@Z ; Gdiplus::Graphics::DrawLine(Gdiplus::Pen const *,Gdiplus::Point const \&,Gdiplus::Point const \&)
 .text:6EB9DCAA
-.text:6EB9DCAA loc_6EB9DCAA:                           ; CODE XREF: CAnalogClock::_DrawHand(Gdiplus::Graphics *,int,ClockHand const &,Gdiplus::Pen *)+9B
-.text:6EB9DCAA                                         ; CAnalogClock::_DrawHand(Gdiplus::Graphics *,int,ClockHand const &,Gdiplus::Pen *)+9F
+.text:6EB9DCAA loc_6EB9DCAA:   ; CODE XREF: CAnalogClock::\_DrawHand(Gdiplus::Graphics *,int,ClockHand const \&,Gdiplus::Pen *)+9B
+.text:6EB9DCAA                 ; CAnalogClock::\_DrawHand(Gdiplus::Graphics *,int,ClockHand const \&,Gdiplus::Pen *)+9F
 .text:6EB9DCAA                 pop     edi
 .text:6EB9DCAB                 pop     esi
 .text:6EB9DCAC                 pop     ebx

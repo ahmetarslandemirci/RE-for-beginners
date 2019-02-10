@@ -8,7 +8,7 @@ _f	PROC
 	mov	DWORD PTR _a$[ebp], eax
 	mov	ecx, DWORD PTR _a$[ebp]
 	push	ecx
-	push	OFFSET $SG2938 ; '%d', 0aH
+	push	OFFSET $SG2938 ; '\%d', 0aH
 	call	_printf
 	add	esp, 8
 	pop	ebp

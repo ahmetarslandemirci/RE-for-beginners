@@ -10,7 +10,7 @@ Hier ist alles ganz einfach.
 gesehen haben)
 
 Alle drei Argumente werden über den 32-Bit Part des X-Registers übergeben.
-In der tat, die Argumente sind 32-Bit \IT{int}'s.
+In der tat, die Argumente sind 32-Bit \emph{int}'s.
 Das Ergebnis wird in \TT{W0} gespeichert.
 
 \lstinputlisting[caption=\Optimizing GCC (Linaro) 4.9]{patterns/05_passing_arguments/ARM/ARM64_O3_EN.s}
@@ -68,7 +68,7 @@ für den Fall das die Funktion die \TT{W0..W2} Register benutzen muss
 das verhindert das überschreiben der Original Argumente, die vielleicht
 noch in Zukunft gebraucht werden.
 
-Das bezeichnet man auch als \IT{Register Save Area.} (\ARMPCS).
+Das bezeichnet man auch als \emph{Register Save Area.} (\ARMPCS).
 Der Callee, ist hier nicht in der Pflicht die Werte zu speichern.
 So Ähnlich wie beim \q{Shadow Space}: \myref{shadow_space}.
 

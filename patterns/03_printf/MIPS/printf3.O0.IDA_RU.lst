@@ -12,7 +12,7 @@
 .text:00000010                 la      $gp, __gnu_local_gp
 .text:00000018                 sw      $gp, 0x20+var_10($sp)
 ; загрузить адрес текстовой строки:
-.text:0000001C                 la      $v0, aADBDCD     # "a=%d; b=%d; c=%d"
+.text:0000001C                 la      $v0, aADBDCD     # "a=\%d; b=\%d; c=\%d"
 ; установить первый аргумент printf():
 .text:00000024                 move    $a0, $v0
 ; установить второй аргумент printf():

@@ -33,7 +33,7 @@ Lorsque le \glslink{stack pointer}{pointeur de pile} (registre \ESP) est re-modi
 par l'instruction \INS{ADD ESP, X} après un appel de fonction, souvent, le nombre
 d'arguments de la fonction peut-être déduit en divisant simplement X par 4.
 
-Bien sûr, cela est spécifique à la convention d'appel \IT{cdecl}, et seulement
+Bien sûr, cela est spécifique à la convention d'appel \emph{cdecl}, et seulement
 pour un environnement 32-bit.
 
 Voir aussi la section sur les conventions d'appel ~(\myref{sec:callingconventions}).
@@ -119,7 +119,7 @@ rectangle rouge a été ajouté par l'auteur dans un éditeur graphique)}
 Nous pouvons voir 3 colonnes ici: adresse dans la pile, valeur dans la pile et quelques
 commentaires additionnels d'\olly.
 \olly reconnaît les chaînes de type \printf{}, donc il signale ici la chaîne et
-les 3 valeurs \IT{attachées} à elle.
+les 3 valeurs \emph{attachées} à elle.
 
 Il est possible de faire un clic-droit sur la chaîne de format, cliquer sur \q{Follow in dump},
 et la chaîne de format va apparaître dans la fenêtre en bas à gauche du debugger. qui affiche
@@ -159,7 +159,7 @@ Un fait très important est que ni la valeur de \ESP, ni l'état de la pile n'on
 été changés!
 Nous voyons clairement que la chaîne de format et les trois valeurs correspondantes
 sont toujours là.
-C'est en effet le comportement de la convention d'appel \IT{cdecl}: \glslink{callee}{l'appelée}
+C'est en effet le comportement de la convention d'appel \emph{cdecl}: \glslink{callee}{l'appelée}
 ne doit pas remettre \ESP à sa valeur précédente.
 \glslink{caller}{L'appelant} est responsable de le faire.
 
@@ -176,8 +176,8 @@ Appuyer sur F8 à nouveau pour exécuter l'instruction \INS{ADD ESP, 10}:
 \ESP a changé, mais les valeurs sont toujours dans la pile!
 Oui, bien sûr; il n'y a pas besoin de mettre ces valeurs à zéro ou quelque chose
 comme ça.
-Tout ce qui se trouve au dessus du pointeur de pile (\ac{SP}) est du \IT{bruit}
-ou des \IT{déchets} et n'a pas du tout de signification.
+Tout ce qui se trouve au dessus du pointeur de pile (\ac{SP}) est du \emph{bruit}
+ou des \emph{déchets} et n'a pas du tout de signification.
 Ça prendrait beaucoup de temps de mettre à zéro les entrées inutilisées de la
 pile, et personne n'a vraiment besoin de le faire.
 
@@ -186,29 +186,7 @@ pile, et personne n'a vraiment besoin de le faire.
 Maintenant, compilons la même programme sous Linux en utilisant GCC 4.4.1 et regardons
 ce que nous obtenons dans \IDA:
 
-\begin{lstlisting}[style=customasmx86]
-main            proc near
-
-var_10          = dword ptr -10h
-var_C           = dword ptr -0Ch
-var_8           = dword ptr -8
-var_4           = dword ptr -4
-
-                push    ebp
-                mov     ebp, esp
-                and     esp, 0FFFFFFF0h
-                sub     esp, 10h
-                mov     eax, offset aADBDCD ; "a=%d; b=%d; c=%d"
-                mov     [esp+10h+var_4], 3
-                mov     [esp+10h+var_8], 2
-                mov     [esp+10h+var_C], 1
-                mov     [esp+10h+var_10], eax
-                call    _printf
-                mov     eax, 0
-                leave
-                retn
-main            endp
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{patterns/03_printf/x86/x86_1.asm}
 
 Il est visible que la différence entre le code MSVC et celui de GCC est seulement
 dans la manière dont les arguments sont stockés sur la pile.

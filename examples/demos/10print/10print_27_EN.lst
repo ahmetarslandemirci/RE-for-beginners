@@ -4,7 +4,7 @@
 00000007: E440     in     al,040   ; read 8-bit of timer
 00000009: D1E8     shr    ax,1     ; get second bit to CF flag
 0000000B: D1E8     shr    ax,1
-0000000D: B05C     mov    al,05C   ; prepare '\'
+0000000D: B05C     mov    al,05C   ; prepare \verb|'\'|
 0000000F: 7202     jc     000000013
 00000011: B02F     mov    al,02F   ; prepare '/'
 ; output character to screen

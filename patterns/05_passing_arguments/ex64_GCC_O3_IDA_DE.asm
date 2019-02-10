@@ -10,9 +10,9 @@ main    proc near
         mov     rsi, 1111111122222222h ; zweites Argument
         mov     rdi, 1122334455667788h ; erstes Argument
         call    f
-        mov     edi, offset format ; "%lld\n"
+        mov     edi, offset format ; "\%lld\textbackslash{}n"
         mov     rsi, rax
-        xor     eax, eax ; §Anzahl der Vector Register wird übergeben§
+        xor     eax, eax ; Anzahl der Vector Register wird übergeben
         call    _printf
         xor     eax, eax
         add     rsp, 8

@@ -54,8 +54,8 @@ The \INS{BL} instruction calls the \puts function instead of \printf.
 GCC replaced the first \printf call with \puts.
 Indeed: \printf with a sole argument is almost analogous to \puts. 
 
-\IT{Almost}, because the two functions are producing the same result only in case the 
-string does not contain printf format identifiers starting with \IT{\%}. 
+\emph{Almost}, because the two functions are producing the same result only in case the 
+string does not contain printf format identifiers starting with \emph{\%}. 
 In case it does, the effect of these two functions would be different
 \footnote{It has also to be noted the \puts does not require a `\textbackslash{}n' new line symbol 
 at the end of a string, so we do not see it here.}.
@@ -63,6 +63,6 @@ at the end of a string, so we do not see it here.}.
 Why did the compiler replace the \printf with \puts? Presumably because \puts is faster
 \footnote{\href{http://go.yurichev.com/17063}{ciselant.de/projects/gcc\_printf/gcc\_printf.html}}. 
 
-Because it just passes characters to \gls{stdout} without comparing every one of them with the \IT{\%} symbol.
+Because it just passes characters to \gls{stdout} without comparing every one of them with the \emph{\%} symbol.
 
 Next, we see the familiar \TT{MOV R0, \#0} instruction intended to set the \Reg{0} register to 0.

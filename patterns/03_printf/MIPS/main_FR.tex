@@ -14,7 +14,7 @@ sont utilisés pour le passage des arguments aux fonctions.
 \lstinputlisting[caption=GCC 4.4.5 \Optimizing (IDA),style=customasmMIPS]{patterns/03_printf/MIPS/printf3.O3.IDA_FR.lst}
 
 \IDA a agrégé la paire d'instructions \INS{LUI} et \INS{ADDIU} en une pseudo instruction \INS{LA}.
-C'est pourquoi il n'y a pas d'instruction à l'adresse 0x1C: car \INS{LA} \IT{occupe} 8 octets.
+C'est pourquoi il n'y a pas d'instruction à l'adresse 0x1C: car \INS{LA} \emph{occupe} 8 octets.
 
 \myparagraph{GCC 4.4.5 \NonOptimizing}
 

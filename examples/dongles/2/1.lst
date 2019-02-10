@@ -33,7 +33,7 @@
 .text:00022B0C        add     eax, ebx
 .text:00022B0E        push    eax
 .text:00022B0F        lea     eax, [ebp+var_44]
-.text:00022B12        push    offset aDevSlD  ; "/dev/sl%d"
+.text:00022B12        push    offset aDevSlD  ; \verb|"/dev/sl%d"|
 .text:00022B17        push    eax
 .text:00022B18        call    nl_sprintf
 .text:00022B1D        push    0               ; int
@@ -45,7 +45,7 @@
 .text:00022B33        lea     eax, [ebx+7]
 .text:00022B36        push    eax
 .text:00022B37        lea     eax, [ebp+var_44]
-.text:00022B3A        push    offset aDevRbslD ; "/dev/rbsl%d"
+.text:00022B3A        push    offset aDevRbslD ; \verb|"/dev/rbsl%d"|
 .text:00022B3F        push    eax
 .text:00022B40        call    nl_sprintf
 .text:00022B45        add     esp, 0Ch
@@ -115,7 +115,7 @@
 .text:00022BAD        movsx   eax, ds:byte_407224
 .text:00022BB4        push    eax
 .text:00022BB5        lea     eax, [ebp+var_44]
-.text:00022BB8        push    offset a46CCS   ; "46%c%c%s"
+.text:00022BB8        push    offset a46CCS   ; \verb|"46%c%c%s"|
 .text:00022BBD        push    eax
 .text:00022BBE        call    nl_sprintf
 .text:00022BC3        lea     eax, [ebp+var_44]

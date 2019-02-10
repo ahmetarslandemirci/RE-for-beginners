@@ -33,7 +33,7 @@ ARM utilise le registre \Reg{0} pour renvoyer le résultat d'une fonction, donc 
 
 Il est à noter que l'instruction \MOV est trompeuse pour les plateformes x86 et ARM \ac{ISA}s.
 
-La donnée n'est en réalité pas \IT{déplacée (moved)} mais \IT{copiée}.
+La donnée n'est en réalité pas \emph{déplacée (moved)} mais \emph{copiée}.
 
 \subsection{MIPS}
 
@@ -62,7 +62,7 @@ valeur immédiate (LI) et l'instruction de saut (J ou JR) sont échangées. Ceci
 dû à une fonctionnalité du \ac{RISC} appelée ``branch delay slot'' (slot de délai
 de branchement).
 
-La raison de cela est du à une bizarrerie dans l'architecture de certains RISC \ac{ISA}s et n'est pas importante pour nous. Nous gardons juste en tête qu'en MIPS, l'instruction qui suit une instruction de saut ou de branchement est exécutée \IT{avant} l'instruction de saut ou de branchement elle-même.
+La raison de cela est du à une bizarrerie dans l'architecture de certains RISC \ac{ISA}s et n'est pas importante pour nous. Nous gardons juste en tête qu'en MIPS, l'instruction qui suit une instruction de saut ou de branchement est exécutée \emph{avant} l'instruction de saut ou de branchement elle-même.
 
 Par conséquent, les instructions de branchement échangent toujours leur place avec l'instruction qui doit être exécutée avant.
 
@@ -71,9 +71,9 @@ Par conséquent, les instructions de branchement échangent toujours leur place 
 
 \subsection{En pratique}
 
-Les fonctions qui retournent simplement 1 (\IT{true}) ou 0 (\IT{false}) sont vraiment fréquentes en pratique.
+Les fonctions qui retournent simplement 1 (\emph{true}) ou 0 (\emph{false}) sont vraiment fréquentes en pratique.
 
-Les plus petits utilitaires UNIX standard, \IT{/bin/true} et \IT{/bin/false} renvoient
+Les plus petits utilitaires UNIX standard, \emph{/bin/true} et \emph{/bin/false} renvoient
 respectivement 0 et 1, comme code de retour.
 (un code retour de zéro signifie en général succès, non-zéro une erreur).
 

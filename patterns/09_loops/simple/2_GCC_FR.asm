@@ -10,11 +10,11 @@ var_20          = dword ptr -20h
                 mov     ebx, 2    ; i=2
                 sub     esp, 1Ch
 
-; aligner le label loc_80484D0 (§début§ du corps de la boucle) sur une limite de 16-octet:
+; aligner le label loc\_80484D0 (début du corps de la boucle) sur une limite de 16-octet:
                 nop
 
 loc_80484D0:
-; passer (i) comme premier argument §à§ printing_function():
+; passer (i) comme premier argument à printing\_function():
                 mov     [esp+20h+var_20], ebx 
                 add     ebx, 1    ; i++
                 call    printing_function

@@ -14,7 +14,7 @@ comme un XOR:
 Le fichier chiffré peut être téléchargé
 \href{https://github.com/DennisYurichev/RE-for-beginners/blob/master/ff/XOR/mask_2/files/cipher.txt}{ici}.
 
-L'utilitaire Linux \IT{ent} indique environ $\textasciitilde{}7.5$ bits par octet,
+L'utilitaire Linux \emph{ent} indique environ $\textasciitilde{}7.5$ bits par octet,
 et ceci est un haut niveau d'entropie (\myref{entropy}), proche de celui de fichiers
 compressés ou chiffrés correctement.
 Mais encore, nous distinguons clairement quelques patterns, il y a quelques blocs
@@ -233,7 +233,7 @@ tous les 4..7 caractères.
 
 Maintenant, encore une bonne nouvelle: nous pouvons mesurer la fréquence des espaces
 au fur et à mesure du déchiffrement de notre fichier.
-Maintenant je compte les espaces dans chaque \IT{slice} et jette les clefs de 1 octets
+Maintenant je compte les espaces dans chaque \emph{slice} et jette les clefs de 1 octets
 qui produise un résultat avec un nombre d'espaces trop petit (ou trop grand, mais
 c'est presque impossible avec une si petite clef):
 

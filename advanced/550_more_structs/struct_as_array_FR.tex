@@ -35,8 +35,8 @@ int main()
 };
 \end{lstlisting}
 
-Ceci fonctionne: la fonction \IT{mean()} ne va jamais accéder après la fin de la
-structure \IT{five\_ints}, car 5 est passé, signifiant que seuls 5 entiers vont être
+Ceci fonctionne: la fonction \emph{mean()} ne va jamais accéder après la fin de la
+structure \emph{five\_ints}, car 5 est passé, signifiant que seuls 5 entiers vont être
 accédés.
 
 \subsubsection{Mettre une chaîne dans une structure}
@@ -65,7 +65,7 @@ int main()
 };
 \end{lstlisting}
 
-L'attribut \IT{((aligned (1),packed))} doit être utilisé, car sinon, chaque champ
+L'attribut \emph{((aligned (1),packed))} doit être utilisé, car sinon, chaque champ
 de la structure sera aligné sur une limite de 4 ou 8 octets.
 
 \subsubsection{Résumé}

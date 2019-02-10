@@ -123,7 +123,7 @@ $LN6:
 	sub	rsp, 32
 	mov	ebx, ecx
 	mov	edx, ecx
-	lea	rcx, OFFSET FLAT:$SG86277 ; 'in filter. code=0x%08X'
+	lea	rcx, OFFSET FLAT:$SG86277 ; \verb|'in filter. code=0x%08X'|
 	call	printf
 	cmp	ebx, 1122867; 00112233H
 	jne	SHORT $LN2@filter_use

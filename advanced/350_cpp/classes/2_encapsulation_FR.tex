@@ -1,6 +1,6 @@
 \subsubsection{Encapsulation}
 
-L'encapsulation consiste à cacher les données dans des sections \IT{private} de la
+L'encapsulation consiste à cacher les données dans des sections \emph{private} de la
 classe, e.g. de n'autoriser leurs accès que depuis les méthodes de la classe.
 
 Toutefois, y a-t-il des repères dans le code à propos du fait que certains champs
@@ -43,13 +43,13 @@ compilerait pas si elle ressemblait à ceci:
 
 \lstinputlisting[style=customc]{\CURPATH/classes/classes2_2_FR.cpp}
 
-Néanmoins, si nous castons le type \IT{box} sur un \IT{pointeur sur un tableau de int},
+Néanmoins, si nous castons le type \emph{box} sur un \emph{pointeur sur un tableau de int},
 que nous modifions le tableau de \Tint{}-s que nous avons, nous pourrions réussir.
 
 \lstinputlisting[style=customc]{\CURPATH/classes/classes2_3.cpp}
 
 Le code de cette fonction est très simple---on peut dire que la fonction prend un
-pointeur sur un tableau de \Tint{}-s en entrée et écrit \IT{123} dans le second \Tint{}:
+pointeur sur un tableau de \Tint{}-s en entrée et écrit \emph{123} dans le second \Tint{}:
 
 \lstinputlisting[style=customasmx86]{\CURPATH/classes/classes2_5.asm}
 
@@ -60,12 +60,12 @@ Regardons comment ça fonctionne:
 Lançons-le:
 
 \begin{lstlisting}
-this is box. color=1, width=10, height=20, depth=30
-this is box. color=1, width=123, height=20, depth=30
+this is a box. color=1, width=10, height=20, depth=30
+this is a box. color=1, width=123, height=20, depth=30
 \end{lstlisting}
 
 Nous voyons que l'encapsulation est juste une protection des champs de la classe
 lors de l'étape de compilation.
 
 Le compilateur \Cpp n'autorise pas la génération de code qui modifie directement
-les champs protégés, néanmoins, il est possible de le faire avec l'aide de \IT{dirty hacks}.
+les champs protégés, néanmoins, il est possible de le faire avec l'aide de \emph{dirty hacks}.

@@ -65,14 +65,14 @@ Auf diese Weise wird jede Zellen des 3*4 Arrays im Speicher abgelegt:
 \myindex{row-major order}
 Um also die Adresse des benötigten Elements zu berechnen, multiplizieren wir zunächst den ersten Index mit 4 (der
 Arraybreite) und addieren dann den zweiten Index.
-Dies nennt man \IT{Zeilenordnung} (engl. row-major order) und diese Methode zur Darstellung von Arrays und Matrizen
+Dies nennt man \emph{Zeilenordnung} (engl. row-major order) und diese Methode zur Darstellung von Arrays und Matrizen
 wird mindestens von \CCpp und Python verwendet.
 Der Ausdruck row-major order bedeutet: \q{schreibe zuerst die Elemente der ersten Zeilen, dann die zweite Zeile\dots
 und schließlich die Elemente der letzten Zeile}.
 
 \myindex{column-major order}
 \myindex{Fortran}
-Eine andere Methode zur Darstellung heißt \IT{Spaltenordnung} (engl. column-major order) (die Indizes des Arrays werden
+Eine andere Methode zur Darstellung heißt \emph{Spaltenordnung} (engl. column-major order) (die Indizes des Arrays werden
 in umgekehrter Reihenfolge verwendet) und wird zumindest in Fortran, MATLAB und R verwendet.
 Der Ausdruck column-major oder bedeutet: \q{schreibe zuerst die Elemente der ersten Spalte, dann die zweite Spalte\dots
 und schließlich die Elemente der letzten Spalte}.
@@ -84,10 +84,11 @@ Elemente sequentiell zugegriffen wird.
 
 Wenn eine Funktion auf Daten zeilenweise zugreift, ist Zeilenordnung besser und umgekehrt.
 
-% subsections
+% subsubsections
 \input{patterns/13_arrays/5_multidimensional/2D_DE}
 \input{patterns/13_arrays/5_multidimensional/2D_as_1D_DE}
 \input{patterns/13_arrays/5_multidimensional/3D_DE}
+% \input{patterns/13_arrays/5_multidimensional/dimensions_DE}
 
 \subsubsection{Weitere Beispiele}
 Der Bildschirm wird als 2D-Array dargestellt, aber der Videopuffer ist ein lineares 1D-Array.

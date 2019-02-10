@@ -48,7 +48,7 @@ After the execution of \strlen{}, the control is passed to the L2 label,
 and there two clauses are checked, one after another.
 
 \myindex{\CLanguageElements!Short-circuit}
-The second will never be checked, if the first one (\IT{str\_len==0}) is false 
+The second will never be checked, if the first one (\emph{str\_len==0}) is false 
 (this is \q{short-circuit}).
 
 Now let's see this function in short form:
@@ -85,7 +85,7 @@ The common way to implement the main loop is probably this:
 
 But GCC has decided to reverse these two steps. 
 
-Of course, \IT{store zero character} cannot be first step, so another check is needed:
+Of course, \emph{store zero character} cannot be first step, so another check is needed:
 
 \begin{itemize}
 \item workout first character. match it to \CRLF{}, exit if character is not \CRLF{}

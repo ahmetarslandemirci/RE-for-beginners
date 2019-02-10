@@ -95,13 +95,7 @@ Wir erhalten folgenden Code:
 Wenn wir uns die Funktion \TT{open()} in der Bibliothek \TT{libc.so.6}
 anschauen, gibt es nur einen syscall:
 
-\begin{lstlisting}[caption=open() (libc.so.6),style=customasmx86]
-.text:000BE69B     mov     edx, [esp+4+mode] ; mode
-.text:000BE69F     mov     ecx, [esp+4+flags] ; flags
-.text:000BE6A3     mov     ebx, [esp+4+filename] ; filename
-.text:000BE6A7     mov     eax, 5
-.text:000BE6AC     int     80h             ; LINUX - sys_open
-\end{lstlisting}
+\lstinputlisting[caption=open() (libc.so.6),style=customasmx86]{patterns/14_bitfields/1_check/tmp1.asm}
 
 Die Bitfields für \TT{open()} werden also offenbar irgendwo im Linux Kernel
 geprüft.
@@ -123,7 +117,7 @@ einige von ihnen direkt über Register zu übergeben. Dies wird auch
 fastcall~(\myref{fastcall}) genannt. 
 Es ist schneller, da die CPU nicht auf den Stack im Speicher zugreifen muss, um
 die Funktionsargumente einzulesen.
-GCC kennt dafür die Option \IT{regparm}\footnote{\URLREGPARM}, mithilfe derer es
+GCC kennt dafür die Option \emph{regparm}\footnote{\URLREGPARM}, mithilfe derer es
 möglich ist, die Anzahl der Argumente anzugeben, die über Register übergeben
 werden sollen.
 

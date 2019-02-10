@@ -2,7 +2,7 @@
 
 Jusqu'à la standardisation du support de la virgule flottante, certains fabricants
 de processeur ont ajouté leur propre instructions étendues.
-Ensuite, VFP (\IT{Vector Floating Point}) a été standardisé.
+Ensuite, VFP (\emph{Vector Floating Point}) a été standardisé.
 
 Une différence importante par rapport au x86 est qu'en ARM, il n'y a pas de pile,
 vous travaillez seulement avec des registres.
@@ -79,9 +79,9 @@ seulement dans des ordinateurs coûteux.
 \myindex{ARM!armhf}
 \myindex{ARM!hard float}
 
-L'émulation d'un coprocesseur FPU est appelée \IT{soft float} ou \IT{armel} (\IT{emulation})
+L'émulation d'un coprocesseur FPU est appelée \emph{soft float} ou \emph{armel} (\emph{emulation})
 dans le monde ARM, alors que l'utilisation des instructions d'un coprocesseur FPU
-est appelée \IT{hard float} ou \IT{armhf}.
+est appelée \emph{hard float} ou \emph{armhf}.
 
 \iffalse
 % TODO разобраться...
@@ -89,8 +89,8 @@ est appelée \IT{hard float} ou \IT{armhf}.
 
 Par exemple, le noyau Linux pour Raspberry Pi est compilé en deux variantes.
 
-Dans le case \IT{soft float}, les arguments sont passés par les R-registres, et dans
-le cas \IT{hard float}---par les registes-D.
+Dans le case \emph{soft float}, les arguments sont passés par les R-registres, et dans
+le cas \emph{hard float}---par les registes-D.
 
 Et c'est ce qui empêche d'utiliser des bibliothèques armfh pour de code armel ou
 vice-versa, et c'est pourquoi le code dans les distributions Linux doit être compilé

@@ -13,7 +13,7 @@
 \myindex{ARM!\Instructions!CMP}
 \myindex{ARM!\Instructions!BLT}
 \INS{CMP R4, \#0xA} сравнивает $i$ с \TT{0xA} (10). 
-Следующая за ней инструкция \INS{BLT} (\IT{Branch Less Than}) совершит переход, если $i$ меньше чем 10.
+Следующая за ней инструкция \INS{BLT} (\emph{Branch Less Than}) совершит переход, если $i$ меньше чем 10.
 В противном случае в \Reg{0} запишется 0 (потому что наша функция возвращает 0) 
 и произойдет выход из функции.
 
@@ -39,8 +39,8 @@ void printing_function(int i)
 
 \myindex{Unrolled loop}
 \myindex{Inline code}
-Так что LLVM не только \IT{развернул} цикл, 
-но также и представил мою очень простую функцию \ttf как \IT{inline-функцию},
+Так что LLVM не только \emph{развернул} цикл, 
+но также и представил мою очень простую функцию \ttf как \emph{inline-функцию},
 и вставил её тело вместо цикла 8 раз. 
 Это возможно, когда функция очень простая (как та что у меня) и когда
 она вызывается не очень много раз, как здесь.
@@ -51,4 +51,4 @@ void printing_function(int i)
 
 \myparagraph{ARM64: \NonOptimizing GCC 4.9.1}
 
-\lstinputlisting[caption=\NonOptimizing GCC 4.9.1 -fno-inline,style=customasmARM]{patterns/09_loops/simple/ARM/ARM64_GCC491_O3_RU.s}
+\lstinputlisting[caption=\NonOptimizing GCC 4.9.1 -fno-inline,style=customasmARM]{patterns/09_loops/simple/ARM/ARM64_GCC491_O0_RU.s}

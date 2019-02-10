@@ -3,7 +3,7 @@ my_memcpy:
 ; X1 = Quelladresse
 ; X2 = Blockgröße
 
-; §initialisiere Zähler (i) mit 0§
+; initialisiere Zähler (i) mit 0
 	mov	x3, 0
 .L2:
 ; alles kopiert? dann verlassen:

@@ -1,4 +1,4 @@
-﻿\newcommand{\ARMELF}{\InSqBrackets{\IT{ELF for the ARM 64-bit Architecture (AArch64)}, (2013)}\footnote{\AlsoAvailableAs \url{http://go.yurichev.com/17288}}}
+﻿\newcommand{\ARMELF}{\InSqBrackets{\emph{ELF for the ARM 64-bit Architecture (AArch64)}, (2013)}\footnote{\AlsoAvailableAs \url{http://go.yurichev.com/17288}}}
 
 \subsection{Релоки в ARM64}
 \label{ARM64_relocs}
@@ -90,7 +90,7 @@ Contents of section .rodata:
 
 В качестве примера, попробуем дизассемблировать инструкцию BL вручную.\\
 \TT{0x97ffffa0} это $0b10010111111111111111111110100000$.
-В соответствии с \InSqBrackets{\ARMSixFourRef C5.6.26}, \IT{imm26} это последние 26 бит:\\
+В соответствии с \InSqBrackets{\ARMSixFourRef C5.6.26}, \emph{imm26} это последние 26 бит:\\
 $imm26 = 0b11111111111111111110100000$.
 Это \TT{0x3FFFFA0}, но \ac{MSB} это 1, 
 так что число отрицательное, мы можем вручную его конвертировать в удобный для нас вид.

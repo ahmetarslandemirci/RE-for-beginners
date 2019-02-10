@@ -26,7 +26,7 @@ Vraisemblablement que ça a été fait pour économiser de l'espace.
 Les vieux ordinateurs 8-bit avaient une mémoire très restreinte.
 
 Les caractères de tous les messages sont toujours dans la table \ac{ASCII} 7-bit
-standard, donc il est garanti que le 8ème bit n'est jamais utilisé pour les caractères.
+standard, donc il est garanti que le 7ème bit n'est jamais utilisé pour les caractères.
 
 Pour afficher une telle chaîne, nous devons tester le \ac{MSB} de chaque octet, et
 s'il est mis, nous devons l'effacer, puis afficher le caractère et arrêter.
@@ -59,7 +59,7 @@ void print_string()
 };
 \end{lstlisting}
 
-Maintenant ce qui est intéressant, puisque le 8ème bit est le bit le plus significatif
+Maintenant ce qui est intéressant, puisque le 7ème bit est le bit le plus significatif
 (dans un octet), c'est que nous pouvons le tester, le mettre et le supprimer en utilisant
 des opérations arithmétiques au lieu de logiques:
 
@@ -91,19 +91,19 @@ void print()
 };
 \end{lstlisting}
 
-Par défaut, \IT{char} est un type signé en \CCpp, donc pour le comparer avec une
+Par défaut, \emph{char} est un type signé en \CCpp, donc pour le comparer avec une
 variable comme 0x80 (qui est négative ($-128$) si elle est traitée comme signée),
 nous devons traiter chaque caractère dans le texte du message comme non signé.
 
-Maintenant si le 8ème bit est mis, le nombre est toujours supérieur ou égal à
+Maintenant si le 7ème bit est mis, le nombre est toujours supérieur ou égal à
 0x80.
-Si le 8ème est à zéro, le nombre est toujours plus petit que 0x80.
+Si le 7ème est à zéro, le nombre est toujours plus petit que 0x80.
 
-Et même plus que ça: si le 8ème bit est mis, il peut être effacé en soustrayant 0x80,
+Et même plus que ça: si le 7ème bit est mis, il peut être effacé en soustrayant 0x80,
 rien d'autre.
 Si il n'est pas mis avant, toutefois, la soustraction va détruire d'autres bits.
 
-De même, si le 8ème est à zéro, il est possible de le mettre en ajoutant 0x80.
+De même, si le 7ème est à zéro, il est possible de le mettre en ajoutant 0x80.
 Mais s'il est déjà mis, l'opération d'addition va détruire d'autres bits.
 
 En fait, ceci est valide pour n'importe quel bit.

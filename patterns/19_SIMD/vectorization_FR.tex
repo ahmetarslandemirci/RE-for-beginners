@@ -30,8 +30,8 @@ dans C.
 
 \myindex{x86!\Instructions!PLMULLD}
 \myindex{x86!\Instructions!PLMULHW}
-\newcommand{\PMULLD}{\IT{PMULLD} (\IT{Multiply Packed Signed Dword Integers and Store Low Result})}
-\newcommand{\PMULHW}{\TT{PMULHW} (\IT{Multiply Packed Signed Integers and Store High Result})}
+\newcommand{\PMULLD}{\emph{PMULLD} (\emph{Multiply Packed Signed Dword Integers and Store Low Result})}
+\newcommand{\PMULHW}{\TT{PMULHW} (\emph{Multiply Packed Signed Integers and Store High Result})}
 
 Si chaque élément du tableau que nous avons est un \Tint 32-bit, alors il est possible
 de charger 4 éléments de A dans un registre XMM 128-bit, 4 de B dans un autre registre
@@ -81,11 +81,11 @@ Les instructions relatives à SSE2 sont:
 \myindex{x86!\Instructions!PADDD}
 \begin{itemize}
 \item
-\MOVDQU (\IT{Move Unaligned Double Quadword} déplacer double quadruple mot non
+\MOVDQU (\emph{Move Unaligned Double Quadword} déplacer double quadruple mot non
 alignés)---charge juste 16 octets depuis la mémoire dans un registre XMM.
 
 \item
-\PADDD (\IT{Add Packed Integers} ajouter entier packé)---ajoute 4 paires de nombres
+\PADDD (\emph{Add Packed Integers} ajouter entier packé)---ajoute 4 paires de nombres
 32-bit et laisse le résultat dans le premier opérande.
 À propos, aucune exception n'est levée en cas de débordement et aucun flag n'est mis,
 seuls les 32-bit bas du résultat sont stockés.
@@ -95,7 +95,7 @@ Si elle n'est pas alignée, une exception est levée\footnote{En savoir plus sur
 des données: \URLWPDA}.
 
 \item
-\MOVDQA (\IT{Move Aligned Double Quadword}) est la même chose que \MOVDQU, mais nécessite
+\MOVDQA (\emph{Move Aligned Double Quadword}) est la même chose que \MOVDQU, mais nécessite
 que l'adresse de la valeur en mémoire soit alignée sur une limite de 16 octets. Si
 elle n'est pas alignée, une exception est levée.
 \MOVDQA fonctionne plus vite que \MOVDQU, mais nécessite la condition qui vient d'être

@@ -171,14 +171,14 @@ Cela signifie que cette instruction a trouvé deux octets à zéro, et ce n'est 
 surprenant.
 
 \TT{PMOVMSKB} dans notre cas va mettre \EAX à\\
-\IT{0b0010000000100000}.
+\emph{0b0010000000100000}.
 
 Bien sûr, notre fonction doit seulement prendre le premier octet à zéro et ignorer
 le reste.
 
 \myindex{x86!\Instructions!BSF}
 \label{instruction_BSF}
-L'instruction suivante est \TT{BSF} (\IT{Bit Scan Forward}).
+L'instruction suivante est \TT{BSF} (\emph{Bit Scan Forward}).
 
 Cette instruction trouve le premier bit mis à 1 et met sa position dans le premier
 opérande.

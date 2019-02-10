@@ -4,23 +4,7 @@ Als nächstes wird der gleiche \CCpp-Code mit GCC 4.4.1 unter Linux kompiliert: 
 Mithilfe des \IDA-Disassemblers wird untersucht, wie die \main-Funktion erzeugt wurde.
 \IDA nutzt, genau wie MSVX den Intel-Syntax\footnote{GCC kann Assembler-Ausgaben im Intel-Syntax erzeugen mit der Options \TT{-S -masm=intel}.}.
 
-\begin{lstlisting}[caption=Code in \IDA,style=customasmx86]
-main            proc near
-
-var_10          = dword ptr -10h
-
-                push    ebp
-                mov     ebp, esp
-                and     esp, 0FFFFFFF0h
-                sub     esp, 10h
-                mov     eax, offset aHelloWorld ; "hello, world\n"
-                mov     [esp+10h+var_10], eax
-                call    _printf
-                mov     eax, 0
-                leave
-                retn
-main            endp
-\end{lstlisting}
+\lstinputlisting[caption=Code in \IDA,style=customasmx86]{patterns/01_helloworld/IDA_x86.asm}
 
 \myindex{Function prologue}
 \myindex{x86!\Instructions!AND}
@@ -67,11 +51,11 @@ Das Ergebnis ist wie folgt:
 
 Der Quellcode beinhaltet Makros (beginnend mit einem Punkt), die hier aber nicht von Belang sind.
 
-An dieser Stelle werden aus Gründen der Übersichtlichkeit alle Makros au0er \IT{.string}
+An dieser Stelle werden aus Gründen der Übersichtlichkeit alle Makros au0er \emph{.string}
 ignoriert. Letzeres kodiert eine Null-terminierte Zeichenkette, die einem C-String entspricht.
 
 Die resultierende Ausgabe ist diese
-\footnote{Um die \q{unnötigen} Makros zu unterdrücen kann die GCC-Option \IT{-fno-asynchronous-unwind-tables} genutzt werden}:
+\footnote{Um die \q{unnötigen} Makros zu unterdrücen kann die GCC-Option \emph{-fno-asynchronous-unwind-tables} genutzt werden}:
 
 \lstinputlisting[caption=GCC 4.7.3,style=customasmx86]{patterns/01_helloworld/GCC_refined.s}
 

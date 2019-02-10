@@ -18,7 +18,7 @@ HRSRC WINAPI FindResource(
 );
 \end{lstlisting}
 
-\IT{lpName} и \IT{lpType} имеют тип \IT{char*} или \IT{wchar*}, и когда кто-то всё еще хочет передать идентификатор,
+\emph{lpName} и \emph{lpType} имеют тип \emph{char*} или \emph{wchar*}, и когда кто-то всё еще хочет передать идентификатор,
 нужно использовать макрос
 \href{https://msdn.microsoft.com/en-us/library/windows/desktop/ms648029%28v=vs.85%29.aspx}{MAKEINTRESOURCE}, вот так:
 
@@ -30,7 +30,7 @@ result = FindResource(..., MAKEINTRESOURCE(1234), ...);
 
 Очень интересно то, что всё что делает MAKEINTRESOURCE это приводит целочисленное к указателю.
 В MSVC 2013, в файле\\
-\IT{Microsoft SDKs\textbackslash{}Windows\textbackslash{}v7.1A\textbackslash{}Include\textbackslash{}Ks.h},
+\emph{Microsoft SDKs\textbackslash{}Windows\textbackslash{}v7.1A\textbackslash{}Include\textbackslash{}Ks.h},
 мы можем найти это:
 
 \begin{lstlisting}[style=customc]
@@ -44,7 +44,7 @@ result = FindResource(..., MAKEINTRESOURCE(1234), ...);
 \end{lstlisting}
 
 Звучит безумно. Заглянем внутрь древнего, когда-то утекшего, исходного кода Windows NT4.
-В \IT{private/windows/base/client/module.c} мы можем найти исходный код \IT{FindResource()}:
+В \emph{private/windows/base/client/module.c} мы можем найти исходный код \emph{FindResource()}:
 
 \begin{lstlisting}[style=customc]
 HRSRC
@@ -73,7 +73,7 @@ FindResourceA(
 ...
 \end{lstlisting}
 
-Посмотрим в \IT{BaseDllMapResourceIdA()} в том же исходном файле:
+Посмотрим в \emph{BaseDllMapResourceIdA()} в том же исходном файле:
 
 \begin{lstlisting}[style=customc]
 ULONG
@@ -132,7 +132,8 @@ BaseDllMapResourceIdA(
 }
 \end{lstlisting}
 
-К \IT{lpId} применяется операция ``И'' с \IT{LDR\_RESOURCE\_ID\_NAME\_MASK}. Маску можно найти в \IT{public/sdk/inc/ntldr.h}:
+К \emph{lpId} применяется операция ``И'' с \emph{LDR\_RESOURCE\_ID\_NAME\_MASK}. \\
+Маску можно найти в \emph{public/sdk/inc/ntldr.h}:
 
 \begin{lstlisting}[style=customc]
 ...
@@ -142,74 +143,18 @@ BaseDllMapResourceIdA(
 ...
 \end{lstlisting}
 
-Так что к \IT{lpId} применяется операция ``И'' c \IT{0xFFFF0000}, и если присутствуют какие-либо биты за младшими 16 битами,
-исполняется первая часто ф-ции и (\IT{lpId} принимается за адрес строки).
-Иначе --- вторая часть ф-ции (\IT{lpId} принимается за 16-битное значение).
+Так что к \emph{lpId} применяется операция ``И'' c \emph{0xFFFF0000}, и если присутствуют какие-либо биты за младшими 16 битами,
+исполняется первая часто ф-ции и (\emph{lpId} принимается за адрес строки).
+Иначе --- вторая часть ф-ции (\emph{lpId} принимается за 16-битное значение).
 
 Этот же код можно найти и в Windows 7, в файле kernel32.dll:
 
-\begin{lstlisting}[style=customasmx86]
-....
-
-.text:0000000078D24510 ; __int64 __fastcall BaseDllMapResourceIdA(PCSZ SourceString)
-.text:0000000078D24510 BaseDllMapResourceIdA proc near         ; CODE XREF: FindResourceExA+34
-.text:0000000078D24510                                         ; FindResourceExA+4B
-.text:0000000078D24510
-.text:0000000078D24510 var_38          = qword ptr -38h
-.text:0000000078D24510 var_30          = qword ptr -30h
-.text:0000000078D24510 var_28          = _UNICODE_STRING ptr -28h
-.text:0000000078D24510 DestinationString= _STRING ptr -18h
-.text:0000000078D24510 arg_8           = dword ptr  10h
-.text:0000000078D24510
-.text:0000000078D24510 ; FUNCTION CHUNK AT .text:0000000078D42FB4 SIZE 000000D5 BYTES
-.text:0000000078D24510
-.text:0000000078D24510                 push    rbx
-.text:0000000078D24512                 sub     rsp, 50h
-.text:0000000078D24516                 cmp     rcx, 10000h
-.text:0000000078D2451D                 jnb     loc_78D42FB4
-.text:0000000078D24523                 mov     [rsp+58h+var_38], rcx
-.text:0000000078D24528                 jmp     short $+2
-.text:0000000078D2452A ; ---------------------------------------------------------------------------
-.text:0000000078D2452A
-.text:0000000078D2452A loc_78D2452A:                           ; CODE XREF: BaseDllMapResourceIdA+18
-.text:0000000078D2452A                                         ; BaseDllMapResourceIdA+1EAD0
-.text:0000000078D2452A                 jmp     short $+2
-.text:0000000078D2452C ; ---------------------------------------------------------------------------
-.text:0000000078D2452C
-.text:0000000078D2452C loc_78D2452C:                           ; CODE XREF: BaseDllMapResourceIdA:loc_78D2452A
-.text:0000000078D2452C                                         ; BaseDllMapResourceIdA+1EB74
-.text:0000000078D2452C                 mov     rax, rcx
-.text:0000000078D2452F                 add     rsp, 50h
-.text:0000000078D24533                 pop     rbx
-.text:0000000078D24534                 retn
-.text:0000000078D24534 ; ---------------------------------------------------------------------------
-.text:0000000078D24535                 align 20h
-.text:0000000078D24535 BaseDllMapResourceIdA endp
-
-....
-
-.text:0000000078D42FB4 loc_78D42FB4:                           ; CODE XREF: BaseDllMapResourceIdA+D
-.text:0000000078D42FB4                 cmp     byte ptr [rcx], '#'
-.text:0000000078D42FB7                 jnz     short loc_78D43005
-.text:0000000078D42FB9                 inc     rcx
-.text:0000000078D42FBC                 lea     r8, [rsp+58h+arg_8]
-.text:0000000078D42FC1                 mov     edx, 0Ah
-.text:0000000078D42FC6                 call    cs:__imp_RtlCharToInteger
-.text:0000000078D42FCC                 mov     ecx, [rsp+58h+arg_8]
-.text:0000000078D42FD0                 mov     [rsp+58h+var_38], rcx
-.text:0000000078D42FD5                 test    eax, eax
-.text:0000000078D42FD7                 js      short loc_78D42FE6
-.text:0000000078D42FD9                 test    rcx, 0FFFFFFFFFFFF0000h
-.text:0000000078D42FE0                 jz      loc_78D2452A
-
-....
-
-\end{lstlisting}
+\lstinputlisting[style=customasmx86]{advanced/450_more_ptrs/tmp1.lst}
 
 Если значение больше чем 0x10000, происходит переход в то место, где обрабатывается строка.
-Иначе, входное значение \IT{lpId} возвращается как есть.
-Маска \IT{0xFFFF0000} здесь больше не используется, т.к., это все же 64-битный код, но всё-таки,
-маска \IT{0xFFFFFFFFFFFF0000} могла бы здесь использоваться.
+Иначе, входное значение \emph{lpId} возвращается как есть.
+Маска \emph{0xFFFF0000} здесь больше не используется, т.к., это все же 64-битный код, но всё-таки,
+маска \emph{0xFFFFFFFFFFFF0000} могла бы здесь использоваться.
 
 Внимательный читатель может спросить, что если адрес входной строки будет ниже 0x10000?
 Этот код полагается на тот факт, что в Windows нет ничего по адресам ниже 0x10000, по крайней мере, в Win32.
@@ -223,7 +168,7 @@ How does MAKE­INT­RESOURCE work? It just stashes the integer in the bottom 16 
 \end{framed}
 
 Коротко говоря, это грязный хак, и наверное не стоит его использовать, если только нет большой необходимости.
-Вероятно, аргумент ф-ции \IT{FindResource()} в прошлом имел тип \IT{SHORT}, а потом в Microsoft добавили возможность
+Вероятно, аргумент ф-ции \emph{FindResource()} в прошлом имел тип \emph{SHORT}, а потом в Microsoft добавили возможность
 передавать здесь и строки, но старый код также нужно было поддерживать.
 
 Вот мой короткий очищенный пример:
@@ -284,7 +229,7 @@ struct kernfs_node *kernfs_create_link(struct kernfs_node *parent,
 
 ( \url{https://github.com/torvalds/linux/blob/fceef393a538134f03b778c5d2519e670269342f/fs/kernfs/symlink.c#L25} )
 
-\IT{ERR\_PTR} это макрос, приводящий целочисленное к указателю:
+\emph{ERR\_PTR} это макрос, приводящий целочисленное к указателю:
 
 \begin{lstlisting}[style=customc]
 static inline void * __must_check ERR_PTR(long error)
@@ -304,10 +249,10 @@ static inline void * __must_check ERR_PTR(long error)
 Это означает, коды ошибок это ``указатели'' очень близкие к -1, и, будем надеяться, в памяти ядра ничего не находится
 по адресам вроде 0xFFFFFFFFFFFFFFFF, 0xFFFFFFFFFFFFFFFE, 0xFFFFFFFFFFFFFFFD, итд.
 
-Намного более популярный способ это возвращать \IT{NULL} в случае ошибки и передавать код ошибки через дополнительный
+Намного более популярный способ это возвращать \emph{NULL} в случае ошибки и передавать код ошибки через дополнительный
 аргумент.
 Авторы ядра Linux так не делают, но все кто пользуется этими ф-циями, должны помнить, что возвращаемый указатель
-должен быть вначале проверен при помощи \IT{IS\_ERR\_VALUE} перед разыменовыванием.
+должен быть вначале проверен при помощи \emph{IS\_ERR\_VALUE} перед разыменовыванием.
 
 Например:
 

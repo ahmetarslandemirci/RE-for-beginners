@@ -1,6 +1,6 @@
 _pos$75552 = -4          ; taille = 4
 _str$ = 8                ; taille = 4
-?strlen_sse2@@YAIPBD@Z PROC ; strlen_sse2
+?strlen_sse2@@YAIPBD@Z PROC ; strlen\_sse2
 
     push     ebp
     mov      ebp, esp
@@ -50,4 +50,4 @@ $LN9@strlen_sse:
     mov      esp, ebp
     pop      ebp
     ret      0
-?strlen_sse2@@YAIPBD@Z ENDP                ; strlen_sse2
+?strlen_sse2@@YAIPBD@Z ENDP                ; strlen\_sse2

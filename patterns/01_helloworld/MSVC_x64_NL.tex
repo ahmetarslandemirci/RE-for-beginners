@@ -9,7 +9,7 @@ Laat ons ook eens kijken naar 64-bit MSVC:
 
 In x86-64 zijn alle registers uitgebreid tot 64-bit, en hebben hun namen een \TT{R-} prefix gekregen.
 Om de stack minder te gebruiken (met andere woorden, om het externe geheugen/cache minder vaak te benaderen), bestaat
-er een populaire manier om functies parameters door te geven via registers (\IT{fastcall}) \myref{fastcall}.
+er een populaire manier om functies parameters door te geven via registers (\emph{fastcall}) \myref{fastcall}.
 Bv., een deel van de parameters wordt doorgegeven via het register, de rest --- via de stack.
 In Win64, worden 4 functie parameters doorgegeven via de \RCX, \RDX, \Reg{8}, \Reg{9} registers.
 Dat is wat we hier zien: een pointer naar de string voor \printf wordt doorgegeven, niet via de stack, maar via het \RCX register.

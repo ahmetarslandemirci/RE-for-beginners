@@ -24,7 +24,7 @@ main            proc near
                 mov     ecx, 1 ; первый аргумент
                 call    f
                 mov     edx, eax
-                lea     rcx, $SG2931    ; "%d\n"
+                lea     rcx, $SG2931    ; "\%d\textbackslash{}n"
                 call    printf
 
                 ; возврат 0

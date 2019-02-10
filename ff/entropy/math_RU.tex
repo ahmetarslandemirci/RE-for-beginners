@@ -46,7 +46,7 @@ fPutASCIIWindow[CurrentBlock]}]
 \myindex{GeoIP}
 Начнем с файла \href{https://www.maxmind.com/en/geoip-demo}{GeoIP}
 (в котором информация об \ac{ISP} для каждого блока IP-адресов).
-Бинарный файл \IT{GeoIPISP.dat} имеет какие-то таблицы (вероятно, интервалы IP-адресов) плюс какой-то набор текстовых строк
+Бинарный файл \emph{GeoIPISP.dat} имеет какие-то таблицы (вероятно, интервалы IP-адресов) плюс какой-то набор текстовых строк
 в конце файла (содержащий названия \ac{ISP}).
 
 Когда загружаю его в Mathematica, вижу такое:
@@ -56,8 +56,8 @@ fPutASCIIWindow[CurrentBlock]}]
 В графике две части: первая, в каком-то смысле, хаотичная, вторая более ровная.
 
 0 в горизонтальной оси графика означает самый низкий уровень энтропии
-(данные, которые можно сжать очень сильно, \IT{упорядоченные} другими словами) 
-и 8 это самый высокий (нельзя сжать вообще, \IT{хаотичные} или \IT{случайные} другими словами).
+(данные, которые можно сжать очень сильно, \emph{упорядоченные} другими словами) 
+и 8 это самый высокий (нельзя сжать вообще, \emph{хаотичные} или \emph{случайные} другими словами).
 Почему 0 и 8? 0 означает 0 бит на байт (байт как контейнер не заполнен вообще) 
 и 8 означает 8 бит на байт, т.е., весь байт (как контейнер) плотно заполнен информацией.
 
@@ -254,8 +254,9 @@ DECIMAL       HEXADECIMAL     ENTROPY
 
 \subsubsection{Ссылки}
 
-Бинарные файлы, которые использовались в этой части:
-\url{https://github.com/DennisYurichev/RE-for-beginners/tree/master/ff/entropy/files}.
-Файл для Wolfram Mathematica: \url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/ff/entropy/files/binary_file_entropy.nb}
+Бинарные файлы, которые использовались в этой части:\\
+\url{https://github.com/DennisYurichev/RE-for-beginners/tree/master/ff/entropy/files}.\\
+Файл для Wolfram Mathematica: \\
+\url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/ff/entropy/files/binary_file_entropy.nb} \\
 (все ячейки должны быть в начале проинициализированы, что всё начало работать).
 

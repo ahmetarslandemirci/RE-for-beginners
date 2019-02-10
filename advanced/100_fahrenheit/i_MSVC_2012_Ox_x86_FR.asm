@@ -13,7 +13,7 @@ _main	PROC
 	call	esi			; appeler printf()
 	lea	eax, DWORD PTR _fahr$[esp+12]
 	push	eax
-	push	OFFSET $SG4230		; '%d'
+	push	OFFSET $SG4230		; '\%d'
 	call	DWORD PTR __imp__scanf
 	add	esp, 12
 	cmp	eax, 1
@@ -44,10 +44,10 @@ $LN2@main:
 $LN10@main:
 $LN1@main:
 	push	eax
-	push	OFFSET $SG4234		; 'Celsius: %d'
+	push	OFFSET $SG4234		; 'Celsius: \%d'
 	call	esi	; appeler printf()
 	add	esp, 8
-	; renvoyer 0 - §d'après§ le standard C99
+	; renvoyer 0 - d'après le standard C99
 	xor	eax, eax
 	pop	esi
 	pop	ecx

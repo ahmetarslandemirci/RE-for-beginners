@@ -20,7 +20,7 @@ Win32 функция \TT{GetSystemTime()} обязуется сохранить 
 
 \myindex{x86!\Instructions!MOVZX}
 
-Новая инструкция ~--- \MOVZX (\IT{Move with Zero eXtend}). 
+Новая инструкция ~--- \MOVZX (\emph{Move with Zero eXtend}). 
 Она нужна почти там же где и \MOVSX, 
 только всегда очищает остальные биты в 0. Дело в том, что \printf требует 32-битный тип \Tint, 
 а в структуре лежит WORD ~--- это 16-битный беззнаковый тип. Поэтому копируя значение из WORD в \Tint, 

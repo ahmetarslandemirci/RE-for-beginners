@@ -1,4 +1,4 @@
-\subsection{Случай с функцией \IT{vprintf()}}
+\subsection{Случай с функцией \emph{vprintf()}}
 \myindex{\CStandardLibrary!vprintf}
 \myindex{\CStandardLibrary!va\_list}
 
@@ -12,7 +12,7 @@
 Но как?
 Вот зачем нужны функции с \q{v} в названии.
 
-Одна из них это \IT{vprintf()}: она берет строку формата и указатель на переменную типа \TT{va\_list}:
+Одна из них это \emph{vprintf()}: она берет строку формата и указатель на переменную типа \TT{va\_list}:
 
 \lstinputlisting[style=customc]{\CURPATH/die.c}
 
@@ -23,7 +23,7 @@
 \lstinputlisting[caption=\Optimizing MSVC 2010,style=customasmx86]{\CURPATH/die_MSVC2010_Ox_RU.asm}
 
 Мы видим, что всё что наша функция делает это просто берет указатель на аргументы, 
-передает его в \IT{vprintf()},
+передает его в \emph{vprintf()},
 и эта функция работает с ним, как с бесконечным массивом аргументов!
 
 \lstinputlisting[caption=\Optimizing MSVC 2012 x64,style=customasmx86]{\CURPATH/die_MSVC2012_x64_Ox_RU.asm}

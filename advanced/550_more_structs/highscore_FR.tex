@@ -11,7 +11,7 @@ L'ancien jeu \q{Block out}\footnote{\url{http://www.bestoldgames.net/eng/old-gam
 \end{figure}
 
 Maintenant, nous pouvons voir que le fichier qui a changé après que nous ayons ajouté
-notre nom est \IT{BLSCORE.DAT}.
+notre nom est \emph{BLSCORE.DAT}.
 
 \begin{lstlisting}
 % xxd -g 1 BLSCORE.DAT
@@ -52,9 +52,9 @@ sont toujours placés en mémoire de manière adjacente les uns aux autres.
 \myindex{\CStandardLibrary!read()}
 \myindex{\CStandardLibrary!fread()}
 Cela nous permet d'écrire le tableau/la structure entièrement dans le fichier en
-utilisant une fonction unique \IT{write()} ou \IT{fwrite()}, et de le restaurer en
-utilisant \IT{read()} ou \IT{fread()}, aussi simplement que ça.
-Ceci est ce qui est appelé \IT{sérialisation} de nos jours.
+utilisant une fonction unique \emph{write()} ou \emph{fwrite()}, et de le restaurer en
+utilisant \emph{read()} ou \emph{fread()}, aussi simplement que ça.
+Ceci est ce qui est appelé \emph{sérialisation} de nos jours.
 
 \subsubsection{Lire}
 
@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
 };
 \end{lstlisting}
 
-Nous avons besoin de l'attribut \IT{((aligned (1),packed))} de GCC afin que tous
+Nous avons besoin de l'attribut \emph{((aligned (1),packed))} de GCC afin que tous
 les champs de la structure soient alignés sur une limite de 1-octet.
 
 Bien sûr, il fonctionne:
@@ -231,7 +231,7 @@ fuiter à l'extérieur.
 \myindex{Microsoft Word}
 Les versions de Microsoft Word des années 1990 laissaient souvent des morceaux de
 texte précédemment édité dans les fichiers *.doc*.
-C'était alors une sorte de distraction d'obtenir un fichier \IT{.doc} de quelqu'un
+C'était alors une sorte de distraction d'obtenir un fichier \emph{.doc} de quelqu'un
 d'autre, de l'ouvrir dans un éditeur hexadécimal et de lire d'autres choses, qui
 avaient été éditées avant sur cet ordinateur.
 
@@ -245,7 +245,7 @@ dans OpenSSL.
 \q{Block out} a plusieurs types de pièces (plat/basique/étendu), la taille peut être configurée, etc.
 Et il semble que pour chaque configuration, \q{Block out} a son propre tableau des
 meilleurs scores.
-J'ai remarqué que de l'information est probablement stockée dans le fichier \IT{BLSCORE.IDX}.
+J'ai remarqué que de l'information est probablement stockée dans le fichier \emph{BLSCORE.IDX}.
 Ceci peut être un travail pour les fans de \q{Block out}---de comprendre aussi sa
 structure.
 Les fichiers de \q{Block out} sont ici: \url{http://beginners.re/examples/blockout.zip}

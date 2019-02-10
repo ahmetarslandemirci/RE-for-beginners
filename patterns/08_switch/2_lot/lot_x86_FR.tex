@@ -26,15 +26,15 @@ L'adresse de la table \TT{\$LN11@f} + 8 est celle de l'élément de la table où
 le label \TT{\$LN4@f} est stocké.
 \JMP prend l'adresse de \TT{\$LN4@f} dans la table et y saute.
 
-Cette table est quelquefois appelée \IT{jumptable} (table de saut) ou \IT{branch table}
-(table de branchement)\footnote{L'ensemble de la méthode était appelé \IT{computed
+Cette table est quelquefois appelée \emph{jumptable} (table de saut) ou \emph{branch table}
+(table de branchement)\footnote{L'ensemble de la méthode était appelé \emph{computed
 GOTO} (GOTO calculés) dans les premières versions de ForTran:
 \href{http://go.yurichev.com/17122}{Wikipédia}.
 Pas très pertinent de nos jours, mais quel terme!}.
 
 Le \printf correspondant est appelé avec l'argument \TT{'two'}.\\
 Littéralement, l'instruction \TT{jmp DWORD PTR \$LN11@f[ecx*4]} signifie
-\IT{sauter au DWORD qui est stocké à l'adresse} \TT{\$LN11@f + ecx * 4}.
+\emph{sauter au DWORD qui est stocké à l'adresse} \TT{\$LN11@f + ecx * 4}.
 
 \TT{npad} (\myref{sec:npad}) est une macro du langage d'assemblage qui aligne le
 label suivant de telle sorte qu'il soit stocké à une adresse alignée sur une limite

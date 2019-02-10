@@ -5,7 +5,7 @@ f_unsigned:
 	add	x29, sp, 0
 	str	x19, [sp,16]
 	mov	w19, w0
-	bhi	.L25	; §verzweige, falls größer (a>b)§
+	bhi	.L25	; verzweige, falls größer (a>b)
 	cmp	w19, w1
 	beq	.L26	; verzweige, falls gleich (a==b)
 .L23:

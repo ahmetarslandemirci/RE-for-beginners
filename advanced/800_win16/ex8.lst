@@ -1,4 +1,4 @@
-wcl -i=C:\WATCOM\h\win\ -s -os -ml -bt=windows -bcl=windows ex8.c
+; \verb|wcl -i=C:\WATCOM\h\win\ -s -os -ml -bt=windows -bcl=windows ex8.c|
 
 cseg01:0000 collect_stat    proc far                ; CODE XREF: WinMain+C9p
 cseg01:0000
@@ -12,7 +12,7 @@ cseg01:0002                 mov     bp, sp
 cseg01:0004                 push    ax
 cseg01:0005
 cseg01:0005 loc_5:                                  ; CODE XREF: sub_4129+5CP
-cseg01:0005                                         ; DATA XREF: dseg02:off_61F4o
+cseg01:0005                                         ; DATA XREF: dseg02:off\_61F4o
 cseg01:0005                 push    ax
 cseg01:0006                 mov     si, ax
 cseg01:0008                 mov     [bp+var_4], dx
@@ -21,7 +21,7 @@ cseg01:000E                 mov     dx, cx
 cseg01:0010                 xor     ax, ax
 cseg01:0012                 mov     cl, 3
 cseg01:0014
-cseg01:0014 loc_14:                                 ; CODE XREF: collect_stat+40j
+cseg01:0014 loc_14:                                 ; CODE XREF: collect\_stat+40j
 cseg01:0014                 cmp     ax, [bp+arg_0]
 cseg01:0017                 jnb     short loc_42
 cseg01:0019                 mov     es, dx
@@ -39,7 +39,7 @@ cseg01:003A                 adc     word ptr es:[bx+6], 0
 cseg01:003F                 inc     ax
 cseg01:0040                 jmp     short loc_14
 cseg01:0042
-cseg01:0042 loc_42:                                 ; CODE XREF: collect_stat+17j
+cseg01:0042 loc_42:                                 ; CODE XREF: collect\_stat+17j
 cseg01:0042                 mov     sp, bp
 cseg01:0044                 pop     bp
 cseg01:0045                 pop     si
@@ -70,17 +70,17 @@ cseg01:0056                 mov     si, dx
 cseg01:0058                 mov     [bp+var_A], 0
 cseg01:005D                 jmp     short loc_99
 cseg01:005F
-cseg01:005F loc_5F:                                 ; CODE XREF: output_stat+84j
+cseg01:005F loc_5F:                                 ; CODE XREF: output\_stat+84j
 cseg01:005F                 push    word ptr es:[bx+6]
 cseg01:0063                 push    word ptr es:[bx+4]
 cseg01:0067                 push    word ptr es:[bx+2]
 cseg01:006B                 push    word ptr es:[bx]
 cseg01:006E                 push    [bp+var_A]
 cseg01:0071                 push    ds
-cseg01:0072                 mov     bx, offset a03d06d ; "%03d: %06d\n"
+cseg01:0072                 mov     bx, offset a03d06d ; \verb|"%03d: %06d\n"|
 cseg01:0075                 push    bx
 cseg01:0076
-cseg01:0076 loc_76:                                 ; CODE XREF: output_stat+9Dj
+cseg01:0076 loc_76:                                 ; CODE XREF: output\_stat+9Dj
 cseg01:0076                 lea     ax, [bp+var_8A]
 cseg01:007A                 push    ds
 cseg01:007B                 push    ax
@@ -93,12 +93,12 @@ cseg01:0088                 push    ds
 cseg01:0089                 push    ax
 cseg01:008A                 call    OUTPUTDEBUGSTRING
 cseg01:008F
-cseg01:008F loc_8F:                                 ; CODE XREF: output_stat+76j
+cseg01:008F loc_8F:                                 ; CODE XREF: output\_stat+76j
 cseg01:008F                 inc     [bp+var_A]
 cseg01:0092                 cmp     [bp+var_A], 256
 cseg01:0097                 jge     short loc_E8
 cseg01:0099
-cseg01:0099 loc_99:                                 ; CODE XREF: output_stat+14j
+cseg01:0099 loc_99:                                 ; CODE XREF: output\_stat+14j
 cseg01:0099                 mov     cl, 3
 cseg01:009B                 mov     bx, [bp+var_A]
 cseg01:009E                 shl     bx, cl
@@ -113,8 +113,8 @@ cseg01:00B9                 jnz     short loc_C1
 cseg01:00BB                 cmp     word ptr es:[bx], 0
 cseg01:00BF                 jz      short loc_8F
 cseg01:00C1
-cseg01:00C1 loc_C1:                                 ; CODE XREF: output_stat+62j
-cseg01:00C1                                         ; output_stat+69j ...
+cseg01:00C1 loc_C1:                                 ; CODE XREF: output\_stat+62j
+cseg01:00C1                                         ; output\_stat+69j ...
 cseg01:00C1                 mov     al, byte ptr [bp+var_A]
 cseg01:00C4                 xor     ah, ah
 cseg01:00C6                 mov     di, ax
@@ -126,12 +126,12 @@ cseg01:00D7                 push    word ptr es:[bx+2]
 cseg01:00DB                 push    word ptr es:[bx]
 cseg01:00DE                 push    [bp+var_A]
 cseg01:00E1                 push    ds
-cseg01:00E2                 mov     ax, offset aC06d ; "  %c: %06d\n"
+cseg01:00E2                 mov     ax, offset aC06d ; \verb|"  %c: %06d\n"|
 cseg01:00E5                 push    ax
 cseg01:00E6                 jmp     short loc_76
 cseg01:00E8
-cseg01:00E8 loc_E8:                                 ; CODE XREF: output_stat+4Ej
-cseg01:00E8                                         ; output_file_info+31j ...
+cseg01:00E8 loc_E8:                                 ; CODE XREF: output\_stat+4Ej
+cseg01:00E8                                         ; output\_file\_info+31j ...
 cseg01:00E8                 lea     sp, [bp-8]
 cseg01:00EB                 pop     di
 cseg01:00EC                 pop     si
@@ -173,7 +173,7 @@ cseg01:0108                 call    near ptr stat
 cseg01:010C                 test    ax, ax
 cseg01:010E                 jz      short loc_125
 cseg01:0110                 push    ds
-cseg01:0111                 mov     ax, offset aCannotStatFile ; "cannot stat file:\n"
+cseg01:0111                 mov     ax, offset aCannotStatFile ; \verb|"cannot stat file:\n"|
 cseg01:0114                 push    ax
 cseg01:0115                 call    OUTPUTDEBUGSTRING
 cseg01:011A                 push    si
@@ -182,11 +182,11 @@ cseg01:011C                 call    OUTPUTDEBUGSTRING
 cseg01:0121                 xor     ax, ax
 cseg01:0123                 jmp     short loc_E8
 cseg01:0125
-cseg01:0125 loc_125:                                ; CODE XREF: output_file_info+1Cj
+cseg01:0125 loc_125:                                ; CODE XREF: output\_file\_info+1Cj
 cseg01:0125                 push    [bp+var_2A]
 cseg01:0128                 push    [bp+var_2C]
 cseg01:012B                 push    ds
-cseg01:012C                 mov     ax, offset aFileSizeD ; "file size: %d\n"
+cseg01:012C                 mov     ax, offset aFileSizeD ; \verb|"file size: %d\n"|
 cseg01:012F                 push    ax
 cseg01:0130                 lea     dx, [bp+var_BC]
 cseg01:0134                 push    ds
@@ -215,7 +215,7 @@ cseg01:016A                 mov     ax, es:[bx+0Ah]
 cseg01:016E                 add     ax, 1900
 cseg01:0171                 push    ax
 cseg01:0172                 push    ds
-cseg01:0173                 mov     ax, offset aFileModificati ; "File modification date/time: %04d-%02d-"...
+cseg01:0173                 mov     ax, offset aFileModificati ; \verb|"File modification date/time: %04d-%02d-"...|
 cseg01:0176                 push    ax
 cseg01:0177                 lea     dx, [bp+var_BC]
 cseg01:017B                 push    ds
@@ -289,7 +289,7 @@ cseg01:01E9                 jnz     short loc_201
 cseg01:01EB                 test    ax, ax
 cseg01:01ED                 jnz     short loc_201
 cseg01:01EF                 push    ds
-cseg01:01F0                 mov     ax, offset aCannotOpenFile ; "cannot open file:\n"
+cseg01:01F0                 mov     ax, offset aCannotOpenFile ; \verb|"cannot open file:\n"|
 cseg01:01F3                 push    ax
 cseg01:01F4                 call    OUTPUTDEBUGSTRING
 cseg01:01F9                 push    [bp+arg_6]
@@ -315,7 +315,7 @@ cseg01:021E                 jnz     short loc_230
 cseg01:0220                 test    ax, ax
 cseg01:0222                 jnz     short loc_230
 cseg01:0224                 push    ds
-cseg01:0225                 mov     ax, offset aCannotAllocate ; "cannot allocate buffer\n"
+cseg01:0225                 mov     ax, offset aCannotAllocate ; \verb|"cannot allocate buffer\n"|
 cseg01:0228
 cseg01:0228 loc_228:                                ; CODE XREF: WinMain+BAj
 cseg01:0228                 push    ax
@@ -339,7 +339,7 @@ cseg01:0246                 mov     si, ax
 cseg01:0248                 test    ax, ax
 cseg01:024A                 jnz     short loc_252
 cseg01:024C                 push    ds
-cseg01:024D                 mov     ax, offset aReadFileFailed ; "read file failed\n"
+cseg01:024D                 mov     ax, offset aReadFileFailed ; \verb|"read file failed\n"|
 cseg01:0250                 jmp     short loc_228
 cseg01:0252
 cseg01:0252 loc_252:                                ; CODE XREF: WinMain+B4j

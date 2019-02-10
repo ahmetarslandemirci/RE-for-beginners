@@ -7,9 +7,9 @@
 либо же несколько операторов if().
 
 \myindex{ARM!\Instructions!ADRcc}
-Так или иначе, мы снова видим здесь инструкции с предикатами, например, \ADREQ (\IT{(Equal)}), 
+Так или иначе, мы снова видим здесь инструкции с предикатами, например, \ADREQ (\emph{(Equal)}), 
 которая будет исполняться только
-если $R0=0$, и тогда в \Reg{0} будет загружен адрес строки \IT{<<zero\textbackslash{}n>>}.
+если $R0=0$, и тогда в \Reg{0} будет загружен адрес строки \emph{<<zero\textbackslash{}n>>}.
 
 \myindex{ARM!\Instructions!BEQ}
 Следующая инструкция \ac{BEQ} перенаправит исполнение на \TT{loc\_170}, если $R0=0$.
@@ -28,11 +28,11 @@
 \myindex{ARM!\Instructions!CMP}
 Последняя инструкция \TT{CMP R0, \#2} здесь нужна, чтобы узнать $a=2$ или нет.
 
-Если это не так, то при помощи \ADRNE (\IT{Not Equal}) в \Reg{0} будет загружен указатель на 
-строку \IT{<<something unknown \textbackslash{}n>>}, ведь $a$ уже было проверено на 0 и 1 до этого, 
+Если это не так, то при помощи \ADRNE (\emph{Not Equal}) в \Reg{0} будет загружен указатель на 
+строку \emph{<<something unknown \textbackslash{}n>>}, ведь $a$ уже было проверено на 0 и 1 до этого, 
 и здесь $a$ точно не попадает под эти константы.
 
-Ну а если $R0=2$, в \Reg{0} будет загружен указатель на строку \IT{<<two\textbackslash{}n>>} при помощи инструкции \ADREQ.
+Ну а если $R0=2$, в \Reg{0} будет загружен указатель на строку \emph{<<two\textbackslash{}n>>} при помощи инструкции \ADREQ.
 
 \subsubsection{ARM: \OptimizingKeilVI (\ThumbMode)}
 
@@ -57,6 +57,6 @@
 \lstinputlisting[style=customasmARM]{patterns/08_switch/1_few/ARM64_GCC_O3_RU.lst}
 
 Фрагмент кода более оптимизированный.
-Инструкция \TT{CBZ} (\IT{Compare and Branch on Zero}~--- сравнить и перейти если ноль) совершает переход если \RegW{0} ноль.
+Инструкция \TT{CBZ} (\emph{Compare and Branch on Zero}~--- сравнить и перейти если ноль) совершает переход если \RegW{0} ноль.
 Здесь также прямой переход на \puts вместо вызова, как уже было описано:~\myref{JMP_instead_of_RET}.
 

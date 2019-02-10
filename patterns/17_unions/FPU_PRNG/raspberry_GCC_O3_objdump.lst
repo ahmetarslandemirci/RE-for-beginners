@@ -1,7 +1,7 @@
 00000038 <float_rand>:
   38:   e92d4008        push    {r3, lr}
   3c:   ebfffffe        bl      10 <my_rand>
-  40:   ed9f0a05        vldr    s0, [pc, #20]   ; 5c <float_rand+0x24>
+  40:   ed9f0a05        vldr    s0, [pc, #20]   ; 5c <float\_rand+0x24>
   44:   e3c034ff        bic     r3, r0, #-16777216      ; 0xff000000
   48:   e3c33502        bic     r3, r3, #8388608        ; 0x800000
   4c:   e38335fe        orr     r3, r3, #1065353216     ; 0x3f800000

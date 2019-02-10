@@ -6,9 +6,9 @@ _my_min	PROC
 	mov	eax, DWORD PTR _a$[ebp]
 ; comparer A et B:
 	cmp	eax, DWORD PTR _b$[ebp]
-; §sauter si A est supérieur ou égal à B:§
+; sauter si A est supérieur ou égal à B:
 	jge	SHORT $LN2@my_min
-; §recharger A dans EAX si autrement et sauter à la sortie§
+; recharger A dans EAX si autrement et sauter à la sortie
 	mov	eax, DWORD PTR _a$[ebp]
 	jmp	SHORT $LN3@my_min
 	jmp	SHORT $LN3@my_min ; ce JMP est redondant
@@ -28,9 +28,9 @@ _my_max	PROC
 	mov	eax, DWORD PTR _a$[ebp]
 ; comparer A et B:
 	cmp	eax, DWORD PTR _b$[ebp]
-; §sauter si A est inférieur ou égal à B:§
+; sauter si A est inférieur ou égal à B:
 	jle	SHORT $LN2@my_max
-; §recharger A dans EAX si autrement et sauter à la sortie§
+; recharger A dans EAX si autrement et sauter à la sortie
 	mov	eax, DWORD PTR _a$[ebp]
 	jmp	SHORT $LN3@my_max
 	jmp	SHORT $LN3@my_max ; ce JMP est redondant

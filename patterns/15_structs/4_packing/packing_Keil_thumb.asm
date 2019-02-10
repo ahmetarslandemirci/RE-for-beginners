@@ -19,7 +19,7 @@
 .text:0000028A 68 46              MOV     R0, SP
 .text:0000028C 03 7B              LDRB    R3, [R0,#12]    ; c
 .text:0000028E 01 79              LDRB    R1, [R0,#4]     ; a
-.text:00000290 59 A0              ADR     R0, aADBDCDDD   ; "a=%d; b=%d; c=%d; d=%d\n"
+.text:00000290 59 A0              ADR     R0, aADBDCDDD   ; "a=\%d; b=\%d; c=\%d; d=\%d\textbackslash{}n"
 .text:00000292 05 F0 AD FF        BL      __2printf
 .text:00000296 D2 E6              B       exit
 

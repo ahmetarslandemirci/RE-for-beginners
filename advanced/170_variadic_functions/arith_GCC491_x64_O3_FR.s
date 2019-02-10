@@ -1,7 +1,7 @@
 arith_mean:
 	lea	rax, [rsp+8]
-	; sauver les 6 registrers en §entrée§ dans
-	; la §\IT{red zone}§  sur la pile locale
+	; sauver les 6 registrers en entrée dans
+	; la \emph{red zone}  sur la pile locale
 	mov	QWORD PTR [rsp-40], rsi
 	mov	QWORD PTR [rsp-32], rdx
 	mov	QWORD PTR [rsp-16], r8
@@ -16,7 +16,7 @@ arith_mean:
 	mov	QWORD PTR [rsp-56], rax
 	jmp	.L5
 .L7:
-	; traiter les arguments §sauvés§
+	; traiter les arguments sauvés
 	lea	rax, [rsp-48]
 	mov	ecx, esi
 	add	esi, 8
@@ -28,10 +28,10 @@ arith_mean:
 	add	edi, ecx
 	add	r8d, 1
 .L5:
-	; §décider§, quelle partie traiter maintenant.
-	; est-ce que le nombre d'arguments actuel est §inférieur ou égal à 6§?
+	; décider, quelle partie traiter maintenant.
+	; est-ce que le nombre d'arguments actuel est inférieur ou égal à 6?
 	cmp	esi, 47
-	jbe	.L7 		; non, traiter les arguments §sauvegardés§;
+	jbe	.L7 		; non, traiter les arguments sauvegardés;
 	; traiter les arguments de la pile
 	mov	rcx, rdx
 	add	rdx, 8

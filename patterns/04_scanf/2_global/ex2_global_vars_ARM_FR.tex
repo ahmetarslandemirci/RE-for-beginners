@@ -3,13 +3,13 @@
 \lstinputlisting[caption=IDA,style=customasmARM]{patterns/04_scanf/2_global/ARM.lst}
 
 Donc, la variable \TT{x} est maintenant globale, et pour cette raison, elle se trouve
-dans un autre segment, appelé le segment de données (\IT{.data}).
+dans un autre segment, appelé le segment de données (\emph{.data}).
 On pourrait demander pour quoi les chaînes de textes sont dans le segment de code
-(\IT{.text}) et \TT{x} là.
+(\emph{.text}) et \TT{x} là.
 C'est parque c'est une variable et que par définition sa valeur peut changer. En
 outre, elle peut même changer souvent.
 Alors que les chaînes de texte ont un type constant, elles ne changent pas, donc
-elles sont dans le segment \IT{.text}.
+elles sont dans le segment \emph{.text}.
 \myindex{\RAM}
 \myindex{\ROM}
 
@@ -45,7 +45,7 @@ du code, elle peut même se trouver sur un module de mémoire externe.
 \myindex{\CLanguageElements!const}
 \myindex{\ROM}
 
-Encore une chose: si une variable est déclarée comme \IT{const}, le compilateur
+Encore une chose: si une variable est déclarée comme \emph{const}, le compilateur
 Keil va l'allouer dans le segment \TT{.constdata}.
 
 Peut-être qu'après, l'éditeur de liens mettra ce segment en ROM aussi, à côté du segment de code.

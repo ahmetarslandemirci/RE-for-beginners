@@ -35,7 +35,7 @@ int main()
 };
 \end{lstlisting}
 
-This works: \IT{mean()} function will never access behind the end of \IT{five\_ints} structure,
+This works: \emph{mean()} function will never access behind the end of \emph{five\_ints} structure,
 because 5 is passed, meaining, only 5 integers will be accessed.
 
 \subsubsection{Putting string into structure}
@@ -64,7 +64,7 @@ int main()
 };
 \end{lstlisting}
 
-\IT{((aligned (1),packed))} attribute must be used, because otherwise,
+\emph{((aligned (1),packed))} attribute must be used, because otherwise,
 each structure field will be aligned on 4-byte or 8-byte boundary.
 
 \subsubsection{Summary}

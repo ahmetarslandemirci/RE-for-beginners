@@ -58,7 +58,7 @@
 %The first string is \q{random}, which is the name of the method.
 %
 %The second string is \q{()D}, which encodes the function's type.
-%It means that it returns a \IT{double} value (hence the \IT{D} in the string).
+%It means that it returns a \emph{double} value (hence the \emph{D} in the string).
 %
 %This is the way 
 %1) JVM can check data for type correctness; 
@@ -113,27 +113,27 @@
 %\TT{ldc} at offset 3 takes a pointer to the \q{Hello, World} string in the constant pool
 %and pushes in the stack.
 %
-%It's called a \IT{reference} in the Java world, but it's rather a pointer, or an address
+%It's called a \emph{reference} in the Java world, but it's rather a pointer, or an address
 %
-%\footnote{About difference in pointers and \IT{reference}'s in C++ see: \myref{cpp_references}.}.
+%\footnote{About difference in pointers and \emph{reference}'s in C++ see: \myref{cpp_references}.}.
 %
 %The familiar \TT{invokevirtual} instruction takes the information about the \TT{println} 
 %function (or method) from the constant pool and calls it.
 %
 %As we may know, there are several \TT{println} methods, one for each data type.
 %
-%Our case is the version of \TT{println} intended for the \IT{String} data type.
+%Our case is the version of \TT{println} intended for the \emph{String} data type.
 %
 %
 %But what about the first \TT{getstatic} instruction?
 %
-%This instruction takes a \IT{reference} (or address of) a field of the object \TT{System.out} 
+%This instruction takes a \emph{reference} (or address of) a field of the object \TT{System.out} 
 %and pushes it in the stack.
 %
-%This value is acts like the \IT{this} pointer for the \TT{println} method.
+%This value is acts like the \emph{this} pointer for the \TT{println} method.
 %
 %Thus, internally, the \TT{println} method takes two arguments for input:
-%1) \IT{this}, i.e., a pointer to an object; 
+%1) \emph{this}, i.e., a pointer to an object; 
 %2) the address of the \q{Hello, World} string.
 %
 %

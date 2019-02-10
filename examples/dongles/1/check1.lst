@@ -1,5 +1,5 @@
 seg000:00101B40             check1: # CODE XREF: seg000:00063E7Cp
-seg000:00101B40                     # sub_64070+160p ...
+seg000:00101B40                     # sub\_64070+160p ...
 seg000:00101B40
 seg000:00101B40             .set arg_8,  8
 seg000:00101B40

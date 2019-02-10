@@ -10,20 +10,20 @@
   4006c0:       0320f809        jalr    t9
   4006c4:       248408d0        addiu   a0,a0,2256
   4006c8:       8fbc0010        lw      gp,16(sp)
-; §bereite höherwertigen Teil der Adresse von x vor:§
+; bereite höherwertigen Teil der Adresse von x vor:
   4006cc:       3c100041        lui     s0,0x41
   4006d0:       8f998038        lw      t9,-32712(gp)
   4006d4:       3c040040        lui     a0,0x40
 ; addiere niederwertigen Teil der Adresse von x:
   4006d8:       26050920        addiu   a1,s0,2336
-; Adresse von x liegt nun in $a1.
+; Adresse von x liegt nun in \$a1.
   4006dc:       0320f809        jalr    t9
   4006e0:       248408dc        addiu   a0,a0,2268
   4006e4:       8fbc0010        lw      gp,16(sp)
-; §höherwertiger Teil der Adresse von x liegt immer noch in§ $s0.
+; höherwertiger Teil der Adresse von x liegt immer noch in \$s0.
 ; addiere niederwertigen Teil und lade ein Word aus dem Speicher:
   4006e8:       8e050920        lw      a1,2336(s0)
-; Wert von x liegt jetzt in $a1.
+; Wert von x liegt jetzt in \$a1.
   4006ec:       8f99803c        lw      t9,-32708(gp)
   4006f0:       3c040040        lui     a0,0x40
   4006f4:       0320f809        jalr    t9

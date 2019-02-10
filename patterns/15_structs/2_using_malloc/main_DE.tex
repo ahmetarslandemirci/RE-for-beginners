@@ -15,7 +15,7 @@ Die win32-Funktion \TT{GetSystemTime()} kümmert sich um das Speichern des Werte
 nicht hier gesichert wird und nach dem Aufruf von \TT{GetSystemTime()} weiterverwendet wird.
 
 \myindex{x86!\Instructions!MOVZX}
-Wir finden einen neuen Befehl~---\MOVZX (\IT{Move with Zero eXtend}).
+Wir finden einen neuen Befehl~---\MOVZX (\emph{Move with Zero eXtend}).
 Er wird in den meisten Fällen als \MOVSX verwendet, setzt aber die übrigen Bits auf 0.
 Das wird benötigt, da \printf einen 32-Bit \Tint erwartet, wir aber ein WORD im struct haben~---also einen 16-Bit Typ
 ohne Vorzeichen.

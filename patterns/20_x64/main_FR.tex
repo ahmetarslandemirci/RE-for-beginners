@@ -19,7 +19,7 @@ Les \ac{GPR} sont donc désormais: \RAX, \RBX, \RCX, \RDX,
 \RBP, \RSP, \RSI, \RDI, \Reg{8}, \Reg{9}, \Reg{10}, 
 \Reg{11}, \Reg{12}, \Reg{13}, \Reg{14}, \Reg{15}. 
 
-Les \IT{anciens} registres restent accessibles de la manière habituelle. Ainsi, l'utilisation de 
+Les \emph{anciens} registres restent accessibles de la manière habituelle. Ainsi, l'utilisation de 
 \EAX donne accès aux 32 bits de poids faible du registre \RAX:
 
 \RegTableOne{RAX}{EAX}{AX}{AH}{AL}
@@ -134,6 +134,6 @@ Il est intéressant de se pencher sur le cas de CryptoMiniSat\footnote{\url{http
 Ce programme qui utilise rarement plus de 4Go de \ac{RAM}, fait un usage intensif des pointeurs.
 Il nécessite donc moins de mémoire sur les architectures 32 bits que sur celles à 64 bits.
 Pour remédier à ce problème, l'auteur a donc programmé son propre allocateur 
-(dans \IT{clauseallocator.(h|cpp)}), qui lui permet d'allouer de la mémoire en utilisant des 
+(dans \emph{clauseallocator.(h|cpp)}), qui lui permet d'allouer de la mémoire en utilisant des 
 identifiants sur 32 bits à la place de pointeurs sur 64 bits.
 

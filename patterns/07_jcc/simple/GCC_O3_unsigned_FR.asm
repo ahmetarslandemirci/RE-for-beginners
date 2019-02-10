@@ -6,7 +6,7 @@ f_unsigned:
 	mov	ebx, DWORD PTR [esp+36]
 	cmp	esi, ebx
 	ja	.L13
-	cmp	esi, ebx  ; §cette instruction peut être supprimée§
+	cmp	esi, ebx  ; cette instruction peut être supprimée
 	je	.L14
 .L10:
 	jb	.L15

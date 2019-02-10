@@ -9,7 +9,7 @@ _strlen PROC
 $LN2@strlen_:
     mov     ecx, DWORD PTR _eos$[ebp]  ; ECX=eos
     
-    ; взять байт, на который указывает ECX и положить его в EDX расширяя до §32-х§ бит, учитывая знак
+    ; взять байт, на который указывает ECX и положить его в EDX расширяя до 32-х бит, учитывая знак
 
     movsx   edx, BYTE PTR [ecx]             
     mov     eax, DWORD PTR _eos$[ebp]  ; EAX=eos

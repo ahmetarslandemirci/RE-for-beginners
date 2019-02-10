@@ -64,6 +64,6 @@ MSVC 2013 делает то же самое.
 
 \lstinputlisting[caption=\Optimizing GCC 4.4.5 (IDA),style=customasmMIPS]{patterns/07_jcc/minmax/minmax_MIPS_O3_IDA_RU.lst}
 
-Не забывайте о \IT{branch delay slots}: первая \INS{MOVE} исполняется \IT{перед} \INS{BEQZ},
+Не забывайте о \emph{branch delay slots}: первая \INS{MOVE} исполняется \emph{перед} \INS{BEQZ},
 вторая \INS{MOVE} исполняется только если переход не произошел.
 

@@ -6,7 +6,7 @@ void bzero(uint8_t* dst, size_t count)
 	int i;
 
 	if (count&(~7))
-		// обработать §8-байтные§ блоки
+		// обработать 8-байтные блоки
 		for (i=0; i<count>>3; i++)
 		{
 			*(uint64_t*)dst=0;

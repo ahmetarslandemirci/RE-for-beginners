@@ -8,7 +8,7 @@ my_memcpy PROC
 |L0.4|
 ; all bytes copied?
         CMP      r3,r2
-; the following block is executed only if §\IT{less than}§ condition,
+; the following block is executed only if \emph{less than} condition,
 ; i.e., if R2<R3 or i<size.
 ; load byte at R1+i:
         LDRBCC   r12,[r1,r3]
@@ -16,7 +16,7 @@ my_memcpy PROC
         STRBCC   r12,[r0,r3]
 ; i++
         ADDCC    r3,r3,#1
-; the last instruction of the §\IT{conditional block}§.
+; the last instruction of the \emph{conditional block}.
 ; jump to loop begin if i<size
 ; do nothing otherwise (i.e., if i>=size)
         BCC      |L0.4|

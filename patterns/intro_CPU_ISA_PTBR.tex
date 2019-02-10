@@ -52,7 +52,7 @@ Alguém poderia perguntar por que é preciso haver diferença entre código de m
 É muito mais fácil para os humanos usar uma \ac{PL} de alto nível como \CCpp, Java, Python, etc., mas é muito mais fácil para a \ac{CPU} usar um nível de abstração muito menor.
 talvez fosse possível inventar uma \ac{CPU} que pudesse executar código feito em \ac{PL} alto nível, mas seria inúmeras vezes mais complexa do que as \ac{CPU}s que conhecemos hoje.
 De forma semelhante, é muito inconveninente para os seres humanos escrever em linguagem assembly, devido ao fato dela ser tão baixo nível e difícil de escrever sem comenter uma enorme quantidade de erros irritantes.
-O programa que converte o código de \ac{PL} de alto nível em assembly é chamado \IT{compiler}.
+O programa que converte o código de \ac{PL} de alto nível em assembly é chamado \emph{compiler}.
 \fi
 
 \myindex{ARM!\ARMMode}%
@@ -69,7 +69,7 @@ Então concluiu-se que não era tão econômico quanto se imaginou a princípio.
 Na verdade, as instruções de \ac{CPU} mais utilizadas \footnote{São estas MOV/PUSH/CALL/Jcc} em aplicações do mundo real podem ser codificadas usando menos informação.
 Foi adicionado então outro \ac{ISA}, chamado Thumb, onde cada instrução era codificada em apenas 2 bytes.
 Este é conhecido como \q{Thumb mode}.
-No entanto, nem \IT{all} instruções ARM podem ser codificadas em apenas 2 bytes, então o conjunto de instruções Thumb é de certa forma limitado.
+No entanto, nem \emph{all} instruções ARM podem ser codificadas em apenas 2 bytes, então o conjunto de instruções Thumb é de certa forma limitado.
 É interessante notar que códigos compilados para os modos ARM e Thumb podem, conforme esperado, coexistir num mesmo programa.
 Os criadores do ARM concluíram que o Thumb poderia ser extendido, dando origem ao Thumb-2, que apareceu no ARMv7.
 Thumb-2 ainda usa instruções de 2 bytes, mas possui algumas novas instruções com 4 bytes de tamanho.

@@ -1,7 +1,7 @@
 _c$ = 8		; size = 4
 @f3@12	PROC
-; _a$ = ecx
-; _b$ = edx
+; \_a\$ = ecx
+; \_b\$ = edx
 	mov	eax, ecx
 	imul	eax, edx
 	add	eax, DWORD PTR _c$[esp-4]

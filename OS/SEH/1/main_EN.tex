@@ -73,10 +73,10 @@ We save it in the stack and store the address of our handler there.
 The structure is named \TT{\_EXCEPTION\_REGISTRATION}, it is a simple singly-linked list and its elements are stored right in the stack.
 
 \begin{lstlisting}[caption=MSVC/VC/crt/src/exsup.inc,style=customasmx86]
-\_EXCEPTION\_REGISTRATION struc
+_EXCEPTION_REGISTRATION struc
      prev    dd      ?
      handler dd      ?
-\_EXCEPTION\_REGISTRATION ends
+_EXCEPTION_REGISTRATION ends
 \end{lstlisting}
 
 So each \q{handler} field points to a handler and an each \q{prev} field points to the previous record in the chain of exception handlers.

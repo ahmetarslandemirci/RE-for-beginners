@@ -15,7 +15,7 @@ f6:
 	adrp	x0, .LC0
 	add	x0, x0, :lo12:.LC0
 	bl	puts
-; load pointer to the "%d" string:
+; load pointer to the "\%d" string:
 	adrp	x0, .LC1
 	add	x0, x0, :lo12:.LC1
 ; calculate address of x variable in the local stack
@@ -30,7 +30,7 @@ f6:
 ; at this moment W0=1, meaning no error
 ; load x value from the local stack
 	ldr	w1, [x29,28]
-; load pointer to the "You entered %d...\n" string:
+; load pointer to the "You entered \%d...\textbackslash{}n" string:
 	adrp	x0, .LC2
 	add	x0, x0, :lo12:.LC2
 	bl	printf

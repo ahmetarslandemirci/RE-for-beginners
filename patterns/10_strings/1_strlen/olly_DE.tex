@@ -13,7 +13,7 @@ Durchlauf:
 \end{figure}
 
 Wir sehen, dass \olly eine Schleife gefunden hat, und zur Verbesserung der
-Lesbarkeit, diese in eckige Klammern \IT{eingeschlossen} hat.
+Lesbarkeit, diese in eckige Klammern \emph{eingeschlossen} hat.
 Nach Rechtsklick auf \EAX wählen wir \q{Follow in Dump} und das Speicherfenster
 scrollt an die passende Stelle. 
 Hier sehen wir den String \q{hello!} im Speicher. 
@@ -47,6 +47,7 @@ Schleife:
 \label{fig:strlen_olly_3}
 \end{figure}
 
+% FIXME:
 Wir sehen, dass \EAX jetzt die Adresse des Nullbytes direkt hinter dem String
 enthält. In der Zwischenzeit hat sich \EDX nicht verändert, es zeigt also immer
 noch auf den Anfang des Strings. 

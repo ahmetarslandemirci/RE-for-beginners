@@ -17,11 +17,11 @@ flags (\ac{FPSCR}), puisqu'il est nécessaire de stocker des flags spécifique a
 Et tout comme en x86, il n'y a pas d'instruction de saut conditionnel qui teste des
 bits dans le registre de status du coprocesseur.
 Donc il y a \INS{VMRS}, qui copie 4 bits (N, Z, C, V) du mot d'état du coprocesseur
-dans les bits du registre de status \IT{général} (\ac{APSR}).
+dans les bits du registre de status \emph{général} (\ac{APSR}).
 
 \myindex{ARM!\Instructions!VMOVGT}
 \INS{VMOVGT} est l'analogue de l'instruction \INS{MOVGT} pour D-registres, elle s'exécute
-si un opérande est plus grand que l'autre lors de la comparaison (\IT{GT---Greater Than}).
+si un opérande est plus grand que l'autre lors de la comparaison (\emph{GT---Greater Than}).
 
 Si elle est exécutée, la valeur de $a$ sera écrite dans \GTT{D16} (ce qui est écrit
 en ce moment dans \GTT{D17}).
@@ -65,12 +65,12 @@ puisque que l'instruction \INS{IT GT} se trouve juste avant.
 \label{ARM_Thumb_IT}
 \myindex{ARM!\Instructions!IT}
 \myindex{ARM!if-then block}
-L'instruction \INS{IT} défini ce que l'on appelle un \IT{bloc if-then}.
+L'instruction \INS{IT} défini ce que l'on appelle un \emph{bloc if-then}.
 
 Après cette instruction, il est possible de mettre jusqu'à 4 instructions, chacune
 d'entre elles ayant un suffixe de prédicat.
 Dans notre exemple, \INS{IT GT} implique que l'instruction suivante ne sera exécutée
-que si la condition \IT{GT} (\IT{Greater Than} plus grand que) est vraie.
+que si la condition \emph{GT} (\emph{Greater Than} plus grand que) est vraie.
 
 \myindex{Angry Birds}
 Voici un exemple de code plus complexe, à propos, d'Angry Birds (pour iOS):
@@ -84,12 +84,12 @@ BLX             _objc_msgSend ; not suffixed
 ...
 \end{lstlisting}
 
-\INS{ITE} est l'acronyme de \IT{if-then-else}
+\INS{ITE} est l'acronyme de \emph{if-then-else}
 et elle encode un suffixe pour les deux prochaines instructions.
 
-La première instruction est exécutée si la condition encodée dans \INS{ITE} (\IT{NE, not equal})
+La première instruction est exécutée si la condition encodée dans \INS{ITE} (\emph{NE, not equal})
 est vraie, et la seconde---si la condition n'est pas vraie (l'inverse de la condition
-\GTT{NE} est \GTT{EQ} (\IT{equal})).
+\GTT{NE} est \GTT{EQ} (\emph{equal})).
 
 L'instruction qui suit le second \INS{VMOV} (ou \INS{VMOVEQ}) est normale, non suffixée
 (\INS{BLX}).
@@ -113,7 +113,7 @@ instructions suivantes seront exécutées si la condition est vraie.
 
 C'est pourquoi \IDA ajoute le suffixe \GTT{-EQ} à chacune d'entre elles.
 
-Et si il y avait, par exemple, \INS{ITEEE EQ} (\IT{if-then-else-else-else}),
+Et si il y avait, par exemple, \INS{ITEEE EQ} (\emph{if-then-else-else-else}),
 alors les suffixes seraient mis comme suit:
 
 \begin{lstlisting}
@@ -138,16 +138,16 @@ CBZ             R0, loc_1E7E32 ; not suffixed
 ...
 \end{lstlisting}
 
-\INS{ITTE} (\IT{if-then-then-else})
+\INS{ITTE} (\emph{if-then-then-else})
 
 implique que les 1ère et 2ème instructions seront exécutées si la condition \GTT{LE}
-(\IT{Less or Equal} moins ou égal) est vraie, et que la 3ème---si la condition inverse
-(\GTT{GT}---\IT{Greater Than} plus grand que) est vraie.
+(\emph{Less or Equal} moins ou égal) est vraie, et que la 3ème---si la condition inverse
+(\GTT{GT}---\emph{Greater Than} plus grand que) est vraie.
 
 En général, les compilateurs ne génèrent pas toutes les combinaisons possible.
 \myindex{Angry Birds}
 
-Par exemple, dans le jeu Angry Birds mentionné ((\IT{classic} version pour iOS)
+Par exemple, dans le jeu Angry Birds mentionné ((\emph{classic} version pour iOS)
 seules les les variantes suivantes de l'instruction \INS{IT} sont utilisées:
 \INS{IT}, \INS{ITE}, \INS{ITT}, \INS{ITTE}, \INS{ITTT}, \INS{ITTTT}.
 \myindex{\GrepUsage}
@@ -238,5 +238,5 @@ Donc il appelle une fonction d'une bibliothèque externe pour effectuer la compa
 \myindex{ARM!\Instructions!BCS}
 
 N.B. Le résultat de la comparaison est laissé dans les flags par cette fonction,
-donc l'instruction \INS{BCS} (\IT{Carry set---Greater than or equal} plus grand ou
+donc l'instruction \INS{BCS} (\emph{Carry set---Greater than or equal} plus grand ou
 égal) fonctionne sans code additionnel.

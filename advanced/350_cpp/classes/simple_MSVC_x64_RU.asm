@@ -3,7 +3,7 @@
 ?dump@c@@QEAAXXZ PROC ; c::dump
     mov    r8d, DWORD PTR [rcx+4]
     mov    edx, DWORD PTR [rcx]
-    lea    rcx, OFFSET FLAT:??_C@_07NJBDCIEC@?$CFd?$DL?5?$CFd?6?$AA@ ; '%d; %d'
+    lea    rcx, OFFSET FLAT:??_C@_07NJBDCIEC@?$CFd?$DL?5?$CFd?6?$AA@ ; \verb|'%d; %d'|
     jmp    printf
 ?dump@c@@QEAAXXZ ENDP ; c::dump
 

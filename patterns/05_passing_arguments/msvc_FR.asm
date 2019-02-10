@@ -21,7 +21,7 @@ _main	PROC
 	call	_f
 	add	esp, 12
 	push	eax
-	push	OFFSET $SG2463 ; '%d', 0aH, 00H
+	push	OFFSET $SG2463 ; '\%d', 0aH, 00H
 	call	_printf
 	add	esp, 8
 	; retourner 0

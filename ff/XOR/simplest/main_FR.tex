@@ -23,7 +23,7 @@ utilisée dans du code source, sans caractères d'échappement.
 
 La seconde propriété exploite le fait que tous les caractères imprimables sont organisés
 en lignes: 0x2x-0x7x, et lorsque vous inversez les deux bits de poids faible, le caractère
-est \IT{déplacé} de 1 ou 3 caractères à droite ou à gauche, mais n'est jamais \IT{déplacé}
+est \emph{déplacé} de 1 ou 3 caractères à droite ou à gauche, mais n'est jamais \emph{déplacé}
 sur une autre ligne (peut-être non imprimable):
 
 \begin{figure}[H]
@@ -34,7 +34,7 @@ sur une autre ligne (peut-être non imprimable):
 
 \dots avec la seule exception du caractère 0x7F.
 
-Par exemple, \IT{chiffrons} les caractères de l'intervalle A-Z:
+Par exemple, \emph{chiffrons} les caractères de l'intervalle A-Z:
 
 \begin{lstlisting}
 #!/usr/bin/python
@@ -55,6 +55,6 @@ et ``a''.
 
 Encore une fois, ceci est un exemple intéressant de l'exploitation des propriétés
 de XOR plutôt qu'un chiffrement:
-le même effet de \IT{préservation de l'imprimabilité} peut être obtenu en échangeant
+le même effet de \emph{préservation de l'imprimabilité} peut être obtenu en échangeant
 chacun des 4 bits de poids faible, avec n'importe quelle combinaison.
 

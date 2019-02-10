@@ -1,11 +1,11 @@
 \myindex{x86!\Instructions!SAR}
   \label{ins:SAR}
-  \item[SAR] \RU{Арифметический сдвиг вправо}\EN{Arithmetic shift right}
+  \item[SAR] \RU{Арифметический сдвиг вправо}\EN{Arithmetic shift right}\FR{Décalage arithmétique à droite}
 
 \begin{center}
 	\begin{tikzpicture}[scale=0.7, every node/.style={scale=0.7}]
 	\edef\bitsize{1cm}
-	\tikzstyle{byte}=[draw,minimum size=\bitsize]	
+	\tikzstyle{byte}=[draw,minimum size=\bitsize]
 	\tikzstyle{every path}=[thick]
 
 	\node [draw,rectangle,minimum size=\bitsize] (a1) {7};
@@ -27,9 +27,9 @@
 	\node [draw,rectangle,minimum size=\bitsize] (b6) [right of=b5] {2};
 	\node [draw,rectangle,minimum size=\bitsize] (b7) [right of=b6] {1};
 	\node [draw,rectangle,minimum size=\bitsize] (b8) [right of=b7] {0};
-	
+
 	\node [shape=rectangle,draw,minimum size=\bitsize] (cf) [right=of b7] {CF};
-	
+
 	\draw [->] (a1.south) -- (b1.north); %7
 	\draw [->] (a1.south) -- (b2.north); %6
 
@@ -39,12 +39,13 @@
 	\draw [->] (a5.south) -- (b6.north); %3
 	\draw [->] (a6.south) -- (b7.north); %2
 	\draw [->] (a7.south) -- (b8.north); %1
-	
+
 	\draw [->] (a8.south) -- (cf.north);
 
 	\end{tikzpicture}
 \end{center}
 
-\RU{Таким образом, бит знака всегда остается на месте}
-\EN{Hence, the sign bit always stays at the place of the} \ac{MSB}.
+\RU{Таким образом, бит знака всегда остается на месте}%
+\EN{Hence, the sign bit always stays at the place of the}%
+\FR{De ce fait, le bit de signe reste toujours à la place du} \ac{MSB}.
 

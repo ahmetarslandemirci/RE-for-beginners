@@ -1,6 +1,6 @@
 f:
 	cmp	x0, 10
-	beq	.L3		; branch if equal §(переход, если равно)§
+	beq	.L3		; branch if equal (переход, если равно)
 	adrp	x0, .LC1	; "it is ten"
 	add	x0, x0, :lo12:.LC1
 	ret

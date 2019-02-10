@@ -18,12 +18,12 @@ _main    PROC
     add    esp, 4
     lea    eax, DWORD PTR _x$[ebp]
     push   eax
-    push   OFFSET $SG3832 ; '%d'
+    push   OFFSET $SG3832 ; '\%d'
     call   _scanf
     add    esp, 8
     mov    ecx, DWORD PTR _x$[ebp]
     push   ecx
-    push   OFFSET $SG3833 ; 'You entered %d...'
+    push   OFFSET $SG3833 ; 'You entered \%d...'
     call   _printf
     add    esp, 8
 

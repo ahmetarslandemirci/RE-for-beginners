@@ -11,7 +11,7 @@ _fib	PROC
 	mov	DWORD PTR _next$[ebp], eax
 	mov	ecx, DWORD PTR _next$[ebp]
 	push	ecx
-	push	OFFSET $SG2751 ; '%d'
+	push	OFFSET $SG2751 ; '\%d'
 	call	DWORD PTR __imp__printf
 	add	esp, 8
 	mov	edx, DWORD PTR _next$[ebp]
@@ -36,7 +36,7 @@ _fib	ENDP
 _main	PROC
 	push	ebp
 	mov	ebp, esp
-	push	OFFSET $SG2753 ; "0\n1\n1\n"
+	push	OFFSET $SG2753 ; \verb|"0\n1\n1\n"|
 	call	DWORD PTR __imp__printf
 	add	esp, 4
 	push	20

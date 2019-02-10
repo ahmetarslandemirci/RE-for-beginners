@@ -8,16 +8,16 @@ Here is how the \TT{f\_signed()} function looks like:
 
 \myindex{x86!\Instructions!JLE}
 
-The first instruction, \JLE, stands for \IT{Jump if Less or Equal}. 
+The first instruction, \JLE, stands for \emph{Jump if Less or Equal}. 
 In other words, if the second operand is 
 larger or equal to the first one, the control flow will be passed to the address or label specified in the instruction.
 If this condition does not trigger because the second operand is smaller than the first one, the control flow would not be altered and the first \printf would be executed.
 \myindex{x86!\Instructions!JNE}
-The second check is \JNE: \IT{Jump if Not Equal}.
+The second check is \JNE: \emph{Jump if Not Equal}.
 The control flow will not change if the operands are equal.
 
 \myindex{x86!\Instructions!JGE}
-The third check is \JGE: \IT{Jump if Greater or Equal}---jump if the first operand is larger than 
+The third check is \JGE: \emph{Jump if Greater or Equal}---jump if the first operand is larger than 
 the second or if they are equal.
 So, if all three conditional jumps are triggered, none of the \printf calls would be executed whatsoever. 
 This is impossible without special intervention.
@@ -31,8 +31,8 @@ are used instead of \JLE and \JGE, as follows:
 \myindex{x86!\Instructions!JAE}
 
 As already mentioned, the branch instructions are different:
-\JBE---\IT{Jump if Below or Equal} and \JAE---\IT{Jump if Above or Equal}.
-These instructions (\JA/\JAE/\JB/\JBE) differ from \JG/\JGE/\JL/\JLE in the fact that they work with unsigned numbers.
+\JBE---\emph{Jump if Below or Equal} and \JAE---\emph{Jump if Above or Equal}.
+These instructions (\INS{JA}/\JAE/\JB/\JBE) differ from \JG/\JGE/\JL/\JLE in the fact that they work with unsigned numbers.
 
 \myindex{x86!\Instructions!JA}
 \myindex{x86!\Instructions!JB}
@@ -41,7 +41,7 @@ These instructions (\JA/\JAE/\JB/\JBE) differ from \JG/\JGE/\JL/\JLE in the fact
 \myindex{Signed numbers}
 
 See also the section about signed number representations~(\myref{sec:signednumbers}).
-That is why if we see \JG/\JL in use instead of \JA/\JB or vice-versa, 
+That is why if we see \JG/\JL in use instead of \INS{JA}/\JB or vice-versa, 
 we can be almost sure that the variables are signed or unsigned, respectively.
 Here is also the \main function, where there is nothing much new to us:
 

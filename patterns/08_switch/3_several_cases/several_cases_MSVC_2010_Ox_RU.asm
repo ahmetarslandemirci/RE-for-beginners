@@ -27,7 +27,7 @@ $LN2@f:
 $LN1@f:
 	mov	DWORD PTR _a$[esp-4], OFFSET $SG2806 ; 'default'
 	jmp	DWORD PTR __imp__printf
-	npad	2 ; выровнять таблицу $LN11@f по §16-байтной§ границе
+	npad	2 ; выровнять таблицу \$LN11@f по 16-байтной границе
 $LN11@f:
 	DD	$LN5@f ; вывести '1, 2, 7, 10'
 	DD	$LN4@f ; вывести '3, 4, 5'

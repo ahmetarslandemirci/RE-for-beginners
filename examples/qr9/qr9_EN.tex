@@ -14,7 +14,7 @@ All function and label names were given by me during the analysis.
 Let's start from the top. Here is a function that takes two file names and password.
 
 \begin{lstlisting}[style=customasmx86]
-.text:00541320 ; int __cdecl crypt_file(int Str, char *Filename, int password)
+.text:00541320 ; int __cdecl crypt_file(char *Str, char *Filename, int password)
 .text:00541320 crypt_file      proc near
 .text:00541320
 .text:00541320 Str             = dword ptr  4
@@ -29,7 +29,7 @@ Open the file and report if an error occurs:
 .text:00541320                 mov     eax, [esp+Str]
 .text:00541324                 push    ebp
 .text:00541325                 push    offset Mode     ; "rb"
-.text:0054132A                 push    eax             ; Filename
+.text:0054132A                 push    eax             ; Str
 .text:0054132B                 call    _fopen          ; open file
 .text:00541330                 mov     ebp, eax
 .text:00541332                 add     esp, 8
@@ -382,7 +382,7 @@ Function \TT{crypt()}:
 
 \myindex{x86!\Instructions!MOVSD}
 This fragment of code copies a part of the input buffer to an internal array we later name \q{cube64}.
-The size is in the \ECX register. \TT{MOVSD} stands for \IT{move 32-bit dword}, so, 
+The size is in the \ECX register. \TT{MOVSD} stands for \emph{move 32-bit dword}, so, 
 16 32-bit dwords are exactly 64 bytes.
 
 \begin{lstlisting}[style=customasmx86]
@@ -667,7 +667,7 @@ Let's start with \TT{get\_bit()}:
 \end{lstlisting}
 
 \dots in other words: calculate an index in 
-the cube64 array: \IT{arg\_4 + arg\_0 * 8}.
+the cube64 array: \emph{arg\_4 + arg\_0 * 8}.
 Then shift a byte from the array by arg\_8 bits right. 
 Isolate the lowest bit and return it.
 
@@ -824,7 +824,7 @@ Prepare a pointer to the internal array again:
 \lstinputlisting[style=customasmx86]{examples/qr9/6_EN}
 
 \dots this code is placing the contents of the internal array to the cube global array via the \TT{set\_bit()} function, 
-\IT{but} in a different order!
+\emph{but} in a different order!
 Now the counter of the first loop is in the range of 7 to 0, \glslink{decrement}{decrementing} at each iteration!
 
 The C code representation looks like:
@@ -849,7 +849,7 @@ Not very understandable, but if we take a look at \TT{rotate2()} function:
 
 \lstinputlisting[style=customasmx86]{examples/qr9/7_EN}
 
-It is \IT{almost} the same, except the order of the arguments of the \TT{get\_bit()} and \TT{set\_bit()} is different. 
+It is \emph{almost} the same, except the order of the arguments of the \TT{get\_bit()} and \TT{set\_bit()} is different. 
 Let's rewrite it in C-like code:
 
 \begin{lstlisting}[style=customc]
@@ -919,7 +919,7 @@ void decrypt (BYTE *buf, int sz, char *pw)
 };
 \end{lstlisting}
 
-It is almost the same as for \TT{crypt()}, \IT{but} the password string is reversed by the
+It is almost the same as for \TT{crypt()}, \emph{but} the password string is reversed by the
 strrev() \footnote{\href{http://go.yurichev.com/17249}{MSDN}}
 standard C function and \TT{rotate\_all()} is called with argument 3. 
 

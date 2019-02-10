@@ -3,14 +3,14 @@
 ...
 .text:00000000 main
 .text:00000000         PUSH    {R4,LR}
-.text:00000002         ADR     R0, aEnterX  ; "Enter X:\n"
+.text:00000002         ADR     R0, aEnterX  ; "Enter X:\textbackslash{}n"
 .text:00000004         BL      __2printf
 .text:00000008         LDR     R1, =x
-.text:0000000A         ADR     R0, aD       ; "%d"
+.text:0000000A         ADR     R0, aD       ; "\%d"
 .text:0000000C         BL      __0scanf
 .text:00000010         LDR     R0, =x
 .text:00000012         LDR     R1, [R0]
-.text:00000014         ADR     R0, aYouEnteredD___ ; "You entered %d...\n"
+.text:00000014         ADR     R0, aYouEnteredD___ ; "You entered \%d...\textbackslash{}n"
 .text:00000016         BL      __2printf
 .text:0000001A         MOVS    R0, #0
 .text:0000001C         POP     {R4,PC}

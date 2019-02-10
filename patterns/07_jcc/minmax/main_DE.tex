@@ -69,7 +69,7 @@ Leider ist GCC 4.4.5 für MIPS nicht so gut:
 
 \lstinputlisting[caption=\Optimizing GCC 4.4.5
 (IDA),style=customasmMIPS]{patterns/07_jcc/minmax/minmax_MIPS_O3_IDA_DE.lst} 
-Vergessen Sie nicht die \IT{branch delay slots}: der erste \INS{MOVE} wird \IT{vor} \INS{BEQZ} ausgeführt, der zweite
+Vergessen Sie nicht die \emph{branch delay slots}: der erste \INS{MOVE} wird \emph{vor} \INS{BEQZ} ausgeführt, der zweite
 \INS{MOVE} wird nur dann ausgeführt, wenn die Verzweigung nicht genommen wird.
 
 

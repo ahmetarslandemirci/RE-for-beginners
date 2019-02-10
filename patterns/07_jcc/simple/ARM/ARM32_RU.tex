@@ -13,24 +13,24 @@
 
 \myindex{ARM!\Instructions!ADD}
 \myindex{ARM!\Instructions!ADDAL}
-К примеру, инструкция \ADD на самом деле называется \TT{ADDAL} внутри, \TT{AL} означает \IT{Always}, то есть, исполнять всегда.
-Предикаты кодируются в 4-х старших битах инструкции 32-битных ARM-инструкций (\IT{condition field}).
+К примеру, инструкция \ADD на самом деле называется \TT{ADDAL} внутри, \TT{AL} означает \emph{Always}, то есть, исполнять всегда.
+Предикаты кодируются в 4-х старших битах инструкции 32-битных ARM-инструкций (\emph{condition field}).
 \myindex{ARM!\Instructions!B}
 Инструкция безусловного перехода \TT{B} на самом деле условная и кодируется так же, 
-как и прочие инструкции условных переходов, но имеет \TT{AL} в \IT{condition field}, 
-то есть исполняется всегда (\IT{execute ALways}), игнорируя флаги.
+как и прочие инструкции условных переходов, но имеет \TT{AL} в \emph{condition field}, 
+то есть исполняется всегда (\emph{execute ALways}), игнорируя флаги.
 
 \myindex{ARM!\Instructions!ADR}
 \myindex{ARM!\Instructions!ADRcc}
 \myindex{ARM!\Instructions!CMP}
 Инструкция \TT{ADRGT} работает так же, как и \TT{ADR}, но исполняется только в случае,
 если предыдущая инструкция \CMP,
-сравнивая два числа, обнаруживает, что одно из них больше второго (\IT{Greater Than}).
+сравнивая два числа, обнаруживает, что одно из них больше второго (\emph{Greater Than}).
 
 \myindex{ARM!\Instructions!BL}
 \myindex{ARM!\Instructions!BLcc}
 Следующая инструкция \TT{BLGT} ведет себя так же, как и \TT{BL} и сработает, только если 
-результат сравнения ``больше чем'' (\IT{Greater Than}).
+результат сравнения ``больше чем'' (\emph{Greater Than}).
 \TT{ADRGT} записывает в \Reg{0} указатель на строку \TT{a>b\textbackslash{}n}, а \TT{BLGT} вызывает \printf.
 Следовательно, эти инструкции с суффиксом \TT{-GT} исполнятся только в том случае, если значение
 в \Reg{0} (там $a$) было больше, чем значение в \Reg{4} (там $b$).
@@ -44,7 +44,7 @@
 \myindex{ARM!\Instructions!LDMccFD}
 \myindex{ARM!\Instructions!LDMFD}
 Далее мы увидим \TT{LDMGEFD}. Эта инструкция работает так же, как и \TT{LDMFD}\footnote{\ac{LDMFD}}, 
-но сработает только если в результате сравнения одно из значений было больше или равно второму (\IT{Greater or Equal}).
+но сработает только если в результате сравнения одно из значений было больше или равно второму (\emph{Greater or Equal}).
 Смысл инструкции \TT{LDMGEFD SP!, \{R4-R6,PC\}} 
 в том, что это как бы эпилог функции, но он сработает только если $a>=b$, только тогда работа 
 функции закончится.
@@ -63,7 +63,7 @@
 \myindex{ARM!\Instructions!BLcc}
 \myindex{ARM!\Instructions!LDMccFD}
 Функция \TT{f\_unsigned} точно такая же, но там используются инструкции \TT{ADRHI}, \TT{BLHI}, и \TT{LDMCSFD}. Эти предикаты
-(\IT{HI = Unsigned higher, CS = Carry Set (greater than or equal)})
+(\emph{HI = Unsigned higher, CS = Carry Set (greater than or equal)})
 аналогичны рассмотренным, но служат для работы с беззнаковыми значениями.
 
 В функции \main ничего нового для нас нет:
@@ -90,13 +90,13 @@
 \myindex{ARM!\Instructions!BCS}
 \myindex{ARM!\Instructions!B}
 \myindex{ARM!\ThumbMode}
-В режиме Thumb только инструкции \TT{B} могут быть дополнены условием исполнения (\IT{condition code}), 
+В режиме Thumb только инструкции \TT{B} могут быть дополнены условием исполнения (\emph{condition code}), 
 так что код для режима Thumb выглядит привычнее.
 
-\TT{BLE} это обычный переход с условием \IT{Less than or Equal}, 
-\TT{BNE} --- \IT{Not Equal}, 
-\TT{BGE} --- \IT{Greater than or Equal}.
+\TT{BLE} это обычный переход с условием \emph{Less than or Equal}, 
+\TT{BNE} --- \emph{Not Equal}, 
+\TT{BGE} --- \emph{Greater than or Equal}.
 
 Функция \TT{f\_unsigned} точно такая же, но для работы с беззнаковыми величинами 
 там используются инструкции \TT{BLS} 
-(\IT{Unsigned lower or same}) и \TT{BCS} (\IT{Carry Set (Greater than or equal)}).
+(\emph{Unsigned lower or same}) и \TT{BCS} (\emph{Carry Set (Greater than or equal)}).

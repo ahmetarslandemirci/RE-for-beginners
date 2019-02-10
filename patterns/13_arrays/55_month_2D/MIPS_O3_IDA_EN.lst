@@ -1,12 +1,12 @@
                 .globl get_month2
 get_month2:
-; $a0=month
+; \$a0=month
                 sll     $v0, $a0, 3
-; $v0 = $a0<<3 = month*8
+; \$v0 = \$a0<<3 = month*8
                 sll     $a0, 1
-; $a0 = $a0<<1 = month*2
+; \$a0 = \$a0<<1 = month*2
                 addu    $a0, $v0
-; $a0 = month*2+month*8 = month*10
+; \$a0 = month*2+month*8 = month*10
 ; load address of the table:
                 la      $v0, month2
 ; sum up table address and index we calculated and return:

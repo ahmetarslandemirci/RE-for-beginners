@@ -6,7 +6,7 @@ _main PROC
     mov  eax, OFFSET ?s@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A ; s
     cmovae eax, DWORD PTR ?s@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A
     push eax
-    push OFFSET $SG39519 ; '%s'
+    push OFFSET $SG39519 ; '\%s'
     call _printf
     add  esp, 8
     xor  eax, eax

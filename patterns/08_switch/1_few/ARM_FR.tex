@@ -8,9 +8,9 @@ dans le code source d'origine ou juste un ensemble de déclarations if().
 
 \myindex{ARM!\Instructions!ADRcc}
 
-En tout cas, nous voyons ici des instructions conditionnelles (comme \ADREQ (\IT{Equal}))
+En tout cas, nous voyons ici des instructions conditionnelles (comme \ADREQ (\emph{Equal}))
 qui ne sont exécutées que si $R0=0$, et qui chargent ensuite l'adresse de la chaîne
-\IT{<<zero\textbackslash{}n>>} dans \Reg{0}.
+\emph{<<zero\textbackslash{}n>>} dans \Reg{0}.
 \myindex{ARM!\Instructions!BEQ}
 L'instruction suivante \ac{BEQ} redirige le flux d'exécution en \TT{loc\_170}, si $R0=0$.
 
@@ -29,11 +29,11 @@ A la fin, il y a trois chemins vers \printf{}.
 \myindex{ARM!\Instructions!CMP}
 La dernière instruction, \TT{CMP R0, \#2}, est nécessaire pour vérifier si $a=2$.
 
-Si ce n'est pas vrai, alors \ADRNE charge un pointeur sur la chaîne \IT{<<something unknown \textbackslash{}n>>}
+Si ce n'est pas vrai, alors \ADRNE charge un pointeur sur la chaîne \emph{<<something unknown \textbackslash{}n>>}
 dans \Reg{0}, puisque $a$ a déjà été comparée pour savoir s'elle est égale
 à 0 ou 1, et nous sommes sûrs que la variable $a$ n'est pas égale à l'un de
 ces nombres, à ce point.
-Et si $R0=2$, un pointeur sur la chaîne \IT{<<two\textbackslash{}n>>} sera chargé
+Et si $R0=2$, un pointeur sur la chaîne \emph{<<two\textbackslash{}n>>} sera chargé
 par \ADREQ dans \Reg{0}.
 
 \subsubsection{ARM: \OptimizingKeilVI (\ThumbMode)}
@@ -61,7 +61,7 @@ Les pointeurs de chaîne sont passés à \puts en utilisant la paire d'instructi
 \lstinputlisting[style=customasmARM]{patterns/08_switch/1_few/ARM64_GCC_O3_FR.lst}
 
 Ce morceau de code est mieux optimisé.
-L'instruction \TT{CBZ} (\IT{Compare and Branch on Zero} comparer et sauter si zéro)
+L'instruction \TT{CBZ} (\emph{Compare and Branch on Zero} comparer et sauter si zéro)
 effectue un saut si \RegW{0} vaut zéro.
 Il y a alors un saut direct à \puts au lieu de l'appeler, comme cela a été expliqué
 avant:~\myref{JMP_instead_of_RET}.

@@ -7,7 +7,7 @@ float_rand
                 BIC     R3, R0, #0xFF000000
                 BIC     R3, R3, #0x800000
                 ORR     R3, R3, #0x3F800000
-; R3=Pseudorzufallswert & 0x007fffff | 0x3f800000
+; R3=Pseudorzufallswert \& 0x007fffff | 0x3f800000
 ; kopiere aus R3 zur FPU (Register S15).
 ; entspricht bitweisem Kopieren, Umwandlung findet nicht statt:
                 FMSR    S15, R3
@@ -27,7 +27,7 @@ main
 loc_78
                 BL      float_rand
 ; S0=Pseudozufallswert
-                LDR     R0, =aF         ; "%f"
+                LDR     R0, =aF         ; "\%f"
 ; kovertiere float in double (printf() benötigt dieses Format):
                 FCVTDS  D7, S0
 ; bitwises Kopieren von D7 nach R2/R3 (für printf()):

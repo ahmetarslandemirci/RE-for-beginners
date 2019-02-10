@@ -1,6 +1,6 @@
 _this$ = -4       ; size = 4
 ??0c@@QAE@XZ PROC ; c::c, COMDAT
-; _this$ = ecx
+; \_this\$ = ecx
     push ebp
     mov  ebp, esp
     push ecx
@@ -19,7 +19,7 @@ _this$ = -4 ; size = 4
 _a$ = 8     ; size = 4
 _b$ = 12    ; size = 4
 ??0c@@QAE@HH@Z PROC ; c::c, COMDAT
-; _this$ = ecx
+; \_this\$ = ecx
     push ebp
     mov  ebp, esp
     push ecx

@@ -74,7 +74,7 @@ typedef struct _SYSTEM_BASIC_INFORMATION {
 
 Это система x64, так что каждый PVOID занимает здесь 8 байт.
 
-Так что все \IT{reserved}-поля занимают $24+4*8=56$.
+Так что все \emph{reserved}-поля занимают $24+4*8=56$.
 
 О да, это значит, что \TT{var\_C20} в локальном стеке это именно поле
 \TT{NumberOfProcessors} структуры \TT{SYSTEM\_BASIC\_INFORMATION}.
@@ -82,7 +82,7 @@ typedef struct _SYSTEM_BASIC_INFORMATION {
 Проверим нашу догадку.
 Скопируем \TT{taskmgr.exe} из \TT{C:\textbackslash{}Windows\textbackslash{}System32} 
 в какую-нибудь другую папку 
-(чтобы \IT{Windows Resource Protection} не пыталась восстанавливать измененный \TT{taskmgr.exe}).
+(чтобы \emph{Windows Resource Protection} не пыталась восстанавливать измененный \TT{taskmgr.exe}).
 
 Откроем его в Hiew и найдем это место:
 

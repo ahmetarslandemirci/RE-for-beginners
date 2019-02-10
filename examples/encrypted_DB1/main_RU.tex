@@ -73,7 +73,7 @@ In[]:= ListPlot[Entropies]
 Большинство значений между 5.0 и 5.4.
 Это свидетельство того что данные сжаты и/или зашифрованы.
 
-Чтобы понять разброс (variance), подсчитаем энтропии всех строк в книге Конана Дойля \IT{The Hound of the Baskervilles}:
+Чтобы понять разброс (variance), подсчитаем энтропии всех строк в книге Конана Дойля \emph{The Hound of the Baskervilles}:
 
 \begin{lstlisting}
 In[]:= BaskervillesLines = Import["http://www.gutenberg.org/cache/epub/2852/pg2852.txt", "List"];
@@ -119,7 +119,7 @@ Out[]= 1.
 С другой стороны, самодельные криптоалгоритмы попадаются часто, потому что их куда легче заставить работать.
 \myindex{memfrob()}
 \myindex{ROT13}
-Даже примитивные криптосистемы без ключей, как \IT{memfrob()}\footnote{\url{http://linux.die.net/man/3/memfrob}}
+Даже примитивные криптосистемы без ключей, как \emph{memfrob()}\footnote{\url{http://linux.die.net/man/3/memfrob}}
 и ROT13 нормально работают без ошибок.
 А чтобы написать свой компрессор с нуля, используя только фантазию и воображение, так что он будет работать без ошибок,
 это серьезная задача.
@@ -197,10 +197,12 @@ ListPlot[Counts[Map[StringLength[#] &, BinaryStrings]]]
 Почему программа использует шифрование AES чтобы дешифровать БД?
 
 ОК, найти ф-цию шифрования блока это не проблема.
-Она называется \IT{CryptoPP::Rijndael::Enc::ProcessAndXorBlock}:\\
-\url{https://github.com/mmoss/cryptopp/blob/2772f7b57182b31a41659b48d5f35a7b6cedd34d/src/rijndael.cpp#L349},
-и она может вызывать другую ф-цию: \IT{Rijndael::Enc::AdvancedProcessBlocks()}\\
-\url{https://github.com/mmoss/cryptopp/blob/2772f7b57182b31a41659b48d5f35a7b6cedd34d/src/rijndael.cpp#L1179},
+Она называется \\
+\emph{CryptoPP::Rijndael::Enc::ProcessAndXorBlock}:
+\href{https://github.com/mmoss/cryptopp/blob/2772f7b57182b31a41659b48d5f35a7b6cedd34d/src/rijndael.cpp#L349}{src},
+и она может вызывать другую ф-цию: \\
+\emph{Rijndael::Enc::AdvancedProcessBlocks()}
+\href{https://github.com/mmoss/cryptopp/blob/2772f7b57182b31a41659b48d5f35a7b6cedd34d/src/rijndael.cpp#L1179}{src},
 которая, в свою очередь, может вызывать две ф-ции (
 \href{https://github.com/mmoss/cryptopp/blob/2772f7b57182b31a41659b48d5f35a7b6cedd34d/src/rijndael.cpp#L1000}{AESNI\_Enc\_Block}
 and
@@ -209,7 +211,7 @@ and
 которые имеют инструкции \INS{AESENC}.
 
 Так что, судя по внутренностям CryptoPP, \\
-\IT{CryptoPP::Rijndael::Enc::ProcessAndXorBlock()} шифрует один 16-байтный блок.
+\emph{CryptoPP::Rijndael::Enc::ProcessAndXorBlock()} шифрует один 16-байтный блок.
 Попробуем установить брякпоинт на ней и посмотрим, что происходит во время дешифрования.
 Я снова использую мою простую утилиту tracer.
 Сейчас программа должна дешифровать первый блок.
@@ -229,11 +231,11 @@ size_t Rijndael::Enc::AdvancedProcessBlocks(const byte *inBlocks, const byte *xo
 enum {BT_InBlockIsCounter=1, BT_DontIncrementInOutPointers=2, BT_XorInput=4, BT_ReverseDirection=8, BT_AllowParallel=16} FlagsForAdvancedProcessBlocks;
 \end{lstlisting}
 
-ОК, запускаем tracer на ф-ции \IT{ProcessAndXorBlock()}:
+ОК, запускаем tracer на ф-ции \emph{ProcessAndXorBlock()}:
 
 \lstinputlisting{examples/encrypted_DB1/2.lst}
 
-Тут мы можем увидить входы в ф-цию \IT{ProcessAndXorBlock()}, и выходы из нее.
+Тут мы можем увидить входы в ф-цию \emph{ProcessAndXorBlock()}, и выходы из нее.
 
 Это вывод из ф-ции во время первого вызова:
 
@@ -241,7 +243,7 @@ enum {BT_InBlockIsCounter=1, BT_DontIncrementInOutPointers=2, BT_XorInput=4, BT_
 00000000: C7 39 4E 7B 33 1B D6 1F-B8 31 10 39 39 13 A5 5D ".9N{3....1.99..]"
 \end{lstlisting}
 
-Затем ф-ция \IT{ProcessAndXorBlock()} вызывается с блоком нулевого размера, но с флагом 8 (\IT{BT\_ReverseDirection}).
+Затем ф-ция \emph{ProcessAndXorBlock()} вызывается с блоком нулевого размера, но с флагом 8 (\emph{BT\_ReverseDirection}).
 
 Второй вызов:
 
@@ -259,7 +261,7 @@ enum {BT_InBlockIsCounter=1, BT_DontIncrementInOutPointers=2, BT_XorInput=4, BT_
 
 Первый вывод очень похож на первые 16 байт зашифрованного буфера.
 
-Вывод первого вызова \IT{ProcessAndXorBlock()}:
+Вывод первого вызова \emph{ProcessAndXorBlock()}:
 
 \begin{lstlisting}
 00000000: C7 39 4E 7B 33 1B D6 1F-B8 31 10 39 39 13 A5 5D ".9N{3....1.99..]"
@@ -299,10 +301,10 @@ enum {BT_InBlockIsCounter=1, BT_DontIncrementInOutPointers=2, BT_XorInput=4, BT_
 \label{fig:CFB_decryption}
 \end{figure}
 
-Посмотрим: операция шифрования в AES генерирует 16 байт (или 128 бит) \IT{случайных} данных,
+Посмотрим: операция шифрования в AES генерирует 16 байт (или 128 бит) \emph{случайных} данных,
 которые можно использовать во время применения операции XOR, но кто заставляет нас использовать все 16 байт?
 Если на последней итерации у нас 1 байт данных, давайте про-XOR-им 1 байт данных с 1 байтом сгенерированных
-\IT{случайных} данных?
+\emph{случайных} данных?
 Это приводит к важному свойству режима \ac{CFB}: данные не нужно выравнивать, данные произвольного размера
 могут быть зашифрованы и дешифрованы.
 
@@ -310,7 +312,7 @@ enum {BT_InBlockIsCounter=1, BT_DontIncrementInOutPointers=2, BT_XorInput=4, BT_
 И вот почему инструкция \INS{AESDEC} никогда не вызывается.
 
 Давайте попробуем дешифровать первый блок вручную, используя Питон.
-Режим \ac{CFB} также использует \ac{IV}, как \IT{seed} для \ac{CSPRNG}.
+Режим \ac{CFB} также использует \ac{IV}, как \emph{seed} для \ac{CSPRNG}.
 В нашем случае, \ac{IV} это блок, который шифруется на первой итерации:
 
 \begin{lstlisting}
@@ -320,8 +322,8 @@ enum {BT_InBlockIsCounter=1, BT_DontIncrementInOutPointers=2, BT_XorInput=4, BT_
 О, и нам нужно также восстановить ключ шифрования.
 \myindex{x86!\Instructions!AESKEYGENASSIST}
 В DLL есть \INS{AESKEYGENASSIST}, и она вызывается, и используется в ф-ции \\
-\IT{Rijndael::Base::UncheckedSetKey()}:\\
-\url{https://github.com/mmoss/cryptopp/blob/2772f7b57182b31a41659b48d5f35a7b6cedd34d/src/rijndael.cpp#L198}
+\emph{Rijndael::Base::UncheckedSetKey()}:
+\href{https://github.com/mmoss/cryptopp/blob/2772f7b57182b31a41659b48d5f35a7b6cedd34d/src/rijndael.cpp#L198}{src}.
 Её легко найти в IDA и установить брякпойнт. Посмотрим:
 
 \begin{lstlisting}
@@ -345,7 +347,7 @@ Argument 3/3 +0x8: software.exe!.text+0x1c101
 PID=2068|Process software.exe exited. ExitCode=0 (0x0)
 \end{lstlisting}
 
-Так вот это ключ: \IT{CD C5 7E AD 28 5F 6D E1-CE 8F CC 29 B1 21 88 8E}.
+Так вот это ключ: \emph{CD C5 7E AD 28 5F 6D E1-CE 8F CC 29 B1 21 88 8E}.
 
 Во время ручного дешифрования мы получаем это:
 
@@ -467,17 +469,17 @@ PID=2068|Process software.exe exited. ExitCode=0 (0x0)
 
 Легко увидеть строки закодированные в UTF-16, это имена и фамилии.
 Первый байт (или 16-битное слово) похоже это просто длина строки, мы можем проверить это визуально.
-\IT{FF FE} это, похоже, \ac{BOM} в Уникоде.
+\emph{FF FE} это, похоже, \ac{BOM} в Уникоде.
 
 После каждой строки есть еще 12 байт.
 
 Используя этот скрипт
 (\url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/encrypted_DB1/dump_buffer_rest.py})
-я получил случайную выборку из \IT{хвостов}:
+я получил случайную выборку из \emph{хвостов}:
 
 \lstinputlisting{examples/encrypted_DB1/tails.lst}
 
-Видим что байты 0x40 и 0x07 присутствуют в каждом \IT{хвосте}.
+Видим что байты 0x40 и 0x07 присутствуют в каждом \emph{хвосте}.
 Самый последний байт всегда в пределах 1..0x1F (1..31), я проверил.
 Предпоследний байт всегда в пределах 1..0xC (1..12).
 Ух, это выглядит как дата!
@@ -485,7 +487,7 @@ PID=2068|Process software.exe exited. ExitCode=0 (0x0)
 месяца и еще 8 для дня)?
 0x7DD это 2013, 0x7D5 это 2005, итд. Похоже нормально. Это дата.
 Там есть еще 8 байт.
-Судя по тому факту что БД называется \IT{orders} (заказы), может быть здесь присутствует сумма?
+Судя по тому факту что БД называется \emph{orders} (заказы), может быть здесь присутствует сумма?
 Я сделал попытку интерпретировать их как числа с плавающей точкой двойной точности в формате IEEE 754, и вывести все значения!
 
 Некоторые:
@@ -558,7 +560,7 @@ OrderID= 5 name= LENA MARCUS sum= 179.0 date= 2004 / 6 / 3
 
 \subsection{Шум в конце}
 
-Остался только один вопрос, иногда \IT{хвост} длиннее:
+Остался только один вопрос, иногда \emph{хвост} длиннее:
 
 \begin{lstlisting}
 00000000: 0E 00 FF FE 54 00 48 00  45 00 52 00 45 00 53 00  ....T.H.E.R.E.S.
@@ -567,7 +569,7 @@ OrderID= 5 name= LENA MARCUS sum= 179.0 date= 2004 / 6 / 3
 OrderID= 172 name= THERESE TUTTLE sum= 152.95 date= 2004 / 7 / 26
 \end{lstlisting}
 
-(Байты \IT{00 07 07 19} не используются и являются балластом.)
+(Байты \emph{00 07 07 19} не используются и являются балластом.)
 
 \begin{lstlisting}
 00000000: 0C 00 FF FE 4D 00 45 00  4C 00 41 00 4E 00 49 00  ....M.E.L.A.N.I.
@@ -576,9 +578,9 @@ OrderID= 172 name= THERESE TUTTLE sum= 152.95 date= 2004 / 7 / 26
 OrderID= 286 name= MELANIE KIRK sum= 161.0 date= 2004 / 9 / 2
 \end{lstlisting}
 
-(\IT{00 02} не используются.)
+(\emph{00 02} не используются.)
 
-После близкого рассмотрения мы можем видеть, что шум в конце \IT{хвоста} просто остался от предыдущего
+После близкого рассмотрения мы можем видеть, что шум в конце \emph{хвоста} просто остался от предыдущего
 шифрования!
 
 Вот два идущих подряд буфера:
@@ -595,7 +597,7 @@ OrderID= 171 name= BONNIE GOLDSTEIN sum= 44.95 date= 2004 / 7 / 25
 OrderID= 172 name= THERESE TUTTLE sum= 152.95 date= 2004 / 7 / 26
 \end{lstlisting}
 
-(Последние байты \IT{07 07 19} скопированы из предыдущего незашифрованного буфера.)
+(Последние байты \emph{07 07 19} скопированы из предыдущего незашифрованного буфера.)
 
 Еще два подряд идущих буфера:
 
@@ -628,7 +630,7 @@ OrderID= 286 name= MELANIE KIRK sum= 161.0 date= 2004 / 9 / 2
 шифрования.
 Некоторые книги об этом: \myref{crypto_books}.
 
-\IT{Зашифрованное} содержимое БД было искусственно мною создано ради демонстрации.
+\emph{Зашифрованное} содержимое БД было искусственно мною создано ради демонстрации.
 Я использовал наиболее популярные имена и фамилии в США, отсюда: \url{http://stackoverflow.com/questions/1803628/raw-list-of-person-names},
 и скомбинировал их случайным образом.
 Даты и суммы были сгенерированы случайным образом.

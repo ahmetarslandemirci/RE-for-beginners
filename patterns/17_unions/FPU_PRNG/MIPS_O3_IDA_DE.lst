@@ -11,24 +11,24 @@ var_4           = -4
 ; Aufruf von my_rand():
                 jal     my_rand
                 or      $at, $zero ; branch delay slot, NOP
-; $v0=32-bit Pseudozufallswert
+; \$v0=32-bit Pseudozufallswert
                 li      $v1, 0x7FFFFF
-; $v1=0x7FFFFF
+; \$v1=0x7FFFFF
                 and     $v1, $v0, $v1
-; $v1=Pseudozufallswert & 0x7FFFFF
+; \verb|$v1=Pseudozufallswert & 0x7FFFFF|
                 lui     $a0, 0x3F80
-; $a0=0x3F800000
+; \$a0=0x3F800000
                 or      $v1, $a0
-; $v1=Pseudozufallswert & 0x7FFFFF | 0x3F800000
+; \verb!$v1=Pseudozufallswert & 0x7FFFFF | 0x3F800000!
 ; der Zweck des folgenden Befehls ist schwer zu verstehen
                 lui     $v0, ($LC0 >> 16)
-; lade 1.0 nach $f0:
+; lade 1.0 nach \$f0:
                 lwc1    $f0, $LC0
-; verschiebe Wert $v1 zu Koprozessor 1 (in Register $f2)
+; verschiebe Wert \$v1 zu Koprozessor 1 (in Register \$f2)
 ; verhält sich wie bitweises Kopieren, Umwandlung findet nicht statt:
                 mtc1    $v1, $f2
                 lw      $ra, 0x20+var_4($sp)
-; subtrahiere 1.0. Lasse Ergebnis in $f0:
+; subtrahiere 1.0. Lasse Ergebnis in \$f0:
                 sub.s   $f0, $f2, $f0
                 jr      $ra
                 addiu   $sp, 0x20  ; branch delay slot
@@ -53,9 +53,9 @@ var_4           = -4
                 or      $at, $zero ; load delay slot, NOP
                 jalr    $t9
                 move    $a0, $zero ; branch delay slot
-                lui     $s2, ($LC1 >> 16)  # "%f\n"
+                lui     $s2, ($LC1 >> 16)  # \verb|"%f\n"|
                 move    $a0, $v0
-                la      $s2, ($LC1 & 0xFFFF)  # "%f\n"
+                la      $s2, ($LC1 & 0xFFFF)  # \verb|"%f\n"|
                 move    $s0, $zero
                 jal     my_srand
                 li      $s1, 0x64  # 'd' ; branch delay slot
@@ -64,7 +64,7 @@ loc_104:
                 jal     float_rand
                 addiu   $s0, 1
                 lw      $gp, 0x28+var_18($sp)
-; konvertiere Wert von float_rand() in double (printf() benötigt diesen):
+; \verb|konvertiere Wert von float_rand() in double (printf() benötigt diesen):|
                 cvt.d.s $f2, $f0
                 lw      $t9, (printf & 0xFFFF)($gp)
                 mfc1    $a3, $f2

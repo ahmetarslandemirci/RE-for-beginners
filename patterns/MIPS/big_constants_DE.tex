@@ -39,7 +39,7 @@ Die GCC-Assembler-Ausgabe beinhaltet ebenfalls die LI-Pseudo-Anweisung, allerdin
 ist hier auch die Anweisung \INS{LUI} (\q{Load Upper Immediate}), die einen 16-Bit-Wert
 im höherwertigen Teil des Registers sichert.
 
-Nachfolgend die \IT{objdump}-Ausgabe:
+Nachfolgend die \emph{objdump}-Ausgabe:
 
 \begin{lstlisting}[caption=objdump,style=customasmMIPS]
 00000000 <f>:
@@ -61,7 +61,7 @@ unsigned int f2()
 
 \myindex{MIPS!\Instructions!LW}
 
-Dies ist leicht unterschiedlich: \INS{LUI} läd die oberen 16 Bit von \IT{global\_var}
+Dies ist leicht unterschiedlich: \INS{LUI} läd die oberen 16 Bit von \emph{global\_var}
 in \$2 (or \$V0). Anschließend läd \INS{LW} die unteren 16 Bit und addiert sie mit
 dem Inhalt von \$2:
 
@@ -91,10 +91,10 @@ _f2:
 
                 .data
                 .globl global_var
-global_var:     .word 0x12345678         # DATA XREF: _f2
+global_var:     .word 0x12345678         # DATA XREF: \_f2
 \end{lstlisting}
 
-Die Ausgabe von \IT{objdump} ist die selbe wie die Assembler-Ausgabe von GCC.
+Die Ausgabe von \emph{objdump} ist die selbe wie die Assembler-Ausgabe von GCC.
 Nachfolgend die Speicherauszüge der Objektdateien:
 
 \begin{lstlisting}[caption=objdump,style=customasmMIPS]
@@ -129,7 +129,7 @@ OFFSET   TYPE              VALUE
 
 \end{lstlisting}
 
-Es ist zu sehen, dass die Adresse von \IT{global\_var} direkt mit den Anweisungen
+Es ist zu sehen, dass die Adresse von \emph{global\_var} direkt mit den Anweisungen
 \INS{LUI} und \INS{LW} beim Laden der ausführbaren Datei geschrieben wird:
-der höherwertige 16-Bit-Teil von \IT{global\_var} mit der ersten Anweisung (\INS{LUI}),
+der höherwertige 16-Bit-Teil von \emph{global\_var} mit der ersten Anweisung (\INS{LUI}),
 der niederwertige 16-Bit-Teil mit der zweiten Anweisung (\INS{LW}).

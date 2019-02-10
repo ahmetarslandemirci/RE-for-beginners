@@ -80,10 +80,10 @@ Die Struktur heißt \TT{\_EXCEPTION\_REGISTRATION}. Dabei handelt es sich um ein
 einfach-verkette Liste, deren Elemente direkt auf dem Stack gesichert werden.
 
 \begin{lstlisting}[caption=MSVC/VC/crt/src/exsup.inc,style=customasmx86]
-\_EXCEPTION\_REGISTRATION struc
+_EXCEPTION_REGISTRATION struc
      prev    dd      ?
      handler dd      ?
-\_EXCEPTION\_REGISTRATION ends
+_EXCEPTION_REGISTRATION ends
 \end{lstlisting}
 
 Jedes \q{handler}-Feld zeigt auf einen Handler und jedes \q{prev}-Feld zeigt auf den
@@ -198,7 +198,7 @@ Anschließend versuchen wir einen Wert von der Speicheradresse 0 zu lesen.
 
 Natürlich befindet sich hier nichts unter Win32, womit eine Ausnahme geworfen wird.
 
-Der allererste Handler wird aufgerufen (der von oben) und prüft ob der Code der Konstante
+Der allererste Handler wird aufgerufen (der von oben) und prüft ob der Code der Konstante\\
 \TT{EXCEPTION\_ACCESS\_VIOLATION} entspricht.
 
 Der Code der von der Adresse an der Speicherstelle 0 liest, sieht wie folgt aus:

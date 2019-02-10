@@ -26,7 +26,7 @@
 .text:00000034                 or      $at, $zero ; NOP
 ; GP vom lokalen Stack wieder herstellen:
 .text:00000038                 lw      $gp, 0x20+var_10($fp)
-; Setze das Register $2 ($V0) zu 0:
+; Setze das Register \$2 (\$V0) zu 0:
 .text:0000003C                 move    $v0, $zero
 ; Funktionsepilog.
 ; SP wiederherstellen:

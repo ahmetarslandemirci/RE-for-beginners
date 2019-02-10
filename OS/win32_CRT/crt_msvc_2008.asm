@@ -26,11 +26,11 @@ ms_exc = CPPEH_RECORD ptr -18h
        jmp     short loc_40109A
 
 
-loc_401096: ; CODE XREF: ___tmainCRTStartup+18
-            ; ___tmainCRTStartup+29 ...
+loc_401096: ; \verb|CODE XREF: ___tmainCRTStartup+18|
+            ; \verb|___tmainCRTStartup+29 ...|
        and     [ebp+var_1C], 0
 
-loc_40109A: ; CODE XREF: ___tmainCRTStartup+50
+loc_40109A: ; \verb|CODE XREF: ___tmainCRTStartup+50|
        push    1
        call    __heap_init
        pop     ecx
@@ -40,7 +40,7 @@ loc_40109A: ; CODE XREF: ___tmainCRTStartup+50
        call    _fast_error_exit
        pop     ecx
 
-loc_4010AE: ; CODE XREF: ___tmainCRTStartup+60
+loc_4010AE: ; \verb|CODE XREF: ___tmainCRTStartup+60|
        call    __mtinit
        test    eax, eax
        jnz     short loc_4010BF
@@ -48,7 +48,7 @@ loc_4010AE: ; CODE XREF: ___tmainCRTStartup+60
        call    _fast_error_exit
        pop     ecx
 
-loc_4010BF: ; CODE XREF: ___tmainCRTStartup+71
+loc_4010BF: ; \verb|CODE XREF: ___tmainCRTStartup+71|
        call    sub_401F2B
        and     [ebp+ms_exc.disabled], 0
        call    __ioinit
@@ -58,7 +58,7 @@ loc_4010BF: ; CODE XREF: ___tmainCRTStartup+71
        call    __amsg_exit
        pop     ecx
 
-loc_4010D9: ; CODE XREF: ___tmainCRTStartup+8B
+loc_4010D9: ; \verb|CODE XREF: ___tmainCRTStartup+8B|
        call    ds:GetCommandLineA
        mov     dword_40B7F8, eax
        call    ___crtGetEnvironmentStringsA
@@ -70,7 +70,7 @@ loc_4010D9: ; CODE XREF: ___tmainCRTStartup+8B
        call    __amsg_exit
        pop     ecx
 
-loc_4010FF: ; CODE XREF: ___tmainCRTStartup+B1
+loc_4010FF: ; \verb|CODE XREF: ___tmainCRTStartup+B1|
        call    __setenvp
        test    eax, eax
        jge     short loc_401110
@@ -78,7 +78,7 @@ loc_4010FF: ; CODE XREF: ___tmainCRTStartup+B1
        call    __amsg_exit
        pop     ecx
 
-loc_401110: ; CODE XREF: ___tmainCRTStartup+C2
+loc_401110: ; \verb|CODE XREF: ___tmainCRTStartup+C2|
        push    1
        call    __cinit
        pop     ecx
@@ -88,7 +88,7 @@ loc_401110: ; CODE XREF: ___tmainCRTStartup+C2
        call    __amsg_exit
        pop     ecx
 
-loc_401123: ; CODE XREF: ___tmainCRTStartup+D6
+loc_401123: ; \verb|CODE XREF: ___tmainCRTStartup+D6|
        mov     eax, envp
        mov     dword_40AC80, eax
        push    eax             ; envp
@@ -102,12 +102,12 @@ loc_401123: ; CODE XREF: ___tmainCRTStartup+D6
        push    eax             ; uExitCode
        call    $LN32
 
-$LN28:      ; CODE XREF: ___tmainCRTStartup+105
+$LN28:      ; \verb|CODE XREF: ___tmainCRTStartup+105|
        call    __cexit
        jmp     short loc_401186
 
 
-$LN27:      ; DATA XREF: .rdata:stru_4092D0
+$LN27:      ; \verb|DATA XREF: .rdata:stru_4092D0|
        mov     eax, [ebp+ms_exc.exc_ptr] ; Exception filter 0 for function 401044
        mov     ecx, [eax]
        mov     ecx, [ecx]
@@ -122,7 +122,7 @@ $LN24:
        retn
 
 
-$LN14:      ; DATA XREF: .rdata:stru_4092D0
+$LN14:      ; \verb|DATA XREF: .rdata:stru_4092D0|
        mov     esp, [ebp+ms_exc.old_esp] ; Exception handler 0 for function 401044
        mov     eax, [ebp+var_24]
        mov     [ebp+var_20], eax
@@ -132,10 +132,10 @@ $LN14:      ; DATA XREF: .rdata:stru_4092D0
        call    __exit
 
 
-$LN29:      ; CODE XREF: ___tmainCRTStartup+135
+$LN29:      ; \verb|CODE XREF: ___tmainCRTStartup+135|
        call    __c_exit
 
-loc_401186: ; CODE XREF: ___tmainCRTStartup+112
+loc_401186: ; \verb|CODE XREF: ___tmainCRTStartup+112|
        mov     [ebp+ms_exc.disabled], 0FFFFFFFEh
        mov     eax, [ebp+var_20]
        call    __SEH_epilog4

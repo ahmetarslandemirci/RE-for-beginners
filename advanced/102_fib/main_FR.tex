@@ -44,7 +44,7 @@ C'est ce qui a été fait par l'auteur pour cet exemple.}:
 La fonction est récursive \footnote{i.e., elle s'appelle elle-même}, donc la pile
 ressemble à un \q{sandwich}.
 
-Nous voyons que l'argument \IT{limit} est toujours le même (\TT{0x14} ou 20), mais
+Nous voyons que l'argument \emph{limit} est toujours le même (\TT{0x14} ou 20), mais
 que les arguments $a$ et $b$ sont différents pour chaque appel.
 
 Il y a aussi ici le \ac{RA}-s et la valeur sauvée de \EBP.
@@ -76,12 +76,12 @@ commenter) le test de la limite et ça va planter avec l'exception \TT{0xC00000F
 
 \subsection{Exemple \#2}
 
-Ma fonction a quelques redondances, donc ajoutons une nouvelle variable locale \IT{next}
+Ma fonction a quelques redondances, donc ajoutons une nouvelle variable locale \emph{next}
 et remplaçons tout les \q{a+b} avec elle:
 
 \lstinputlisting[style=customc]{\CURPATH/fib2.c}
 
-C'est la sortie de MSVC sans optimisation, donc la variable \IT{next} est allouée
+C'est la sortie de MSVC sans optimisation, donc la variable \emph{next} est allouée
 sur la pile locale:
 
 \lstinputlisting[caption=MSVC 2010 x86,style=customasmx86]{\CURPATH/fib2.asm}
@@ -96,7 +96,7 @@ Chargeons-le à nouveau dans \olly:
 \label{fig:fib_olly2}
 \end{figure}
 
-Maintenant, la variable \IT{next} est présente dans chaque frame.
+Maintenant, la variable \emph{next} est présente dans chaque frame.
 
 \clearpage
 
@@ -105,7 +105,7 @@ Examinons plus attentivement la pile. L'auteur a de nouveau ajouté ses commenta
 \lstinputlisting{\CURPATH/stack2_FR.txt}
 
 % FIXME what a word! hmmm...
-Voici ce que l'on voit: la valeur \IT{next} est calculée dans chaque appel de la fonction,
+Voici ce que l'on voit: la valeur \emph{next} est calculée dans chaque appel de la fonction,
 puis passée comme argument $b$ au prochain appel.
 
 \subsection{Résumé}

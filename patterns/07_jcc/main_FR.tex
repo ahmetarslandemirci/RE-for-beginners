@@ -18,10 +18,10 @@ Voici le squelette générique d'un saut conditionnel:
 CMP registre, registre/valeur
 Jcc true ; cc=condition code, code de condition
 false:
-... §le code qui sera exécuté si le résultat de la comparaison est faux (false)§ ...
+... le code qui sera exécuté si le résultat de la comparaison est faux (false) ...
 JMP exit 
 true:
-... §le code qui sera exécuté si le résultat de la comparaison est vrai (true)§ ...
+... le code qui sera exécuté si le résultat de la comparaison est vrai (true) ...
 exit:
 \end{lstlisting}
 
@@ -31,10 +31,10 @@ exit:
 CMP registre, registre/valeur
 Bcc true ; cc=condition code
 false:
-... §le code qui sera exécuté si le résultat de la comparaison est faux (false)§ ...
+... le code qui sera exécuté si le résultat de la comparaison est faux (false) ...
 JMP exit 
 true:
-... §le code qui sera exécuté si le résultat de la comparaison est vrai (true)§ ...
+... le code qui sera exécuté si le résultat de la comparaison est vrai (true) ...
 exit:
 \end{lstlisting}
 
@@ -88,8 +88,8 @@ ARM:
 
 \begin{lstlisting}[caption=ARM (\ARMMode),style=customasmARM]
 CMP registre, registre/valeur
-instr1_cc ; §cette instruction sera exécutée si le code conditionnel est vrai§ (true)
-instr2_cc ; §cette autre instruction sera exécutée si cet autre code conditionnel est vrai§ (true)
+instr1_cc ; cette instruction sera exécutée si le code conditionnel est vrai (true)
+instr2_cc ; cette autre instruction sera exécutée si cet autre code conditionnel est vrai (true)
 ... etc.
 \end{lstlisting}
 
@@ -106,10 +106,10 @@ Lire à ce propos: \myref{ARM_Thumb_IT}.
 \begin{lstlisting}[caption=ARM (\ThumbMode),style=customasmARM]
 CMP registre, registre/valeur
 ITEEE EQ ; met ces suffixes: if-then-else-else-else
-instr1   ; §instruction exécutée si la condition est vraie§
-instr2   ; §instruction exécutée si la condition est fausse§
-instr3   ; §instruction exécutée si la condition est fausse§
-instr4   ; §instruction exécutée si la condition est fausse§
+instr1   ; instruction exécutée si la condition est vraie
+instr2   ; instruction exécutée si la condition est fausse
+instr3   ; instruction exécutée si la condition est fausse
+instr4   ; instruction exécutée si la condition est fausse
 \end{lstlisting}
 
 \subsection{\Exercise}

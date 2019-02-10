@@ -7,7 +7,7 @@ if()-Ausdrücken vorliegt.
 
 
 \myindex{ARM!\Instructions!ADRcc}
-Wir finden hier Befehle mit Prädikaten wieder (wie \ADREQ (\IT{Equal})), welcher nur dann ausgeführt wird, wenn $R0=0$
+Wir finden hier Befehle mit Prädikaten wieder (wie \ADREQ (\emph{Equal})), welcher nur dann ausgeführt wird, wenn $R0=0$
 und dann die Adresse des Strings IT{<<zero\textbackslash{}n>>} nach \Reg{0} lädt.
 
 \myindex{ARM!\Instructions!BEQ}
@@ -24,10 +24,10 @@ kennengelernt~(\myref{ARM_B_to_printf}). Am Ende gibt es drei Wege zur Ausführu
 \myindex{ARM!\Instructions!ADRcc}
 \myindex{ARM!\Instructions!CMP}
 Der letzte Befehl, \TT{CMP R0, \#2}, wird benötigt, um zu prüfen, ob $a=2$.
-Wenn dies nicht der Fall ist, lädt \ADRNE einen Pointer auf den String \IT{<<something unknown \textbackslash{}n>>} nach
+Wenn dies nicht der Fall ist, lädt \ADRNE einen Pointer auf den String \emph{<<something unknown \textbackslash{}n>>} nach
 \Reg{0}, da $a$ bereits auf Gleichheit mit 0 oder 1 geprüft wurde und wir können sicher sein, dass die Variable $a$ an
 dieser Stelle keinen dieser beiden Werte enthält.
-Falls $R0=2$ ist, lädt \ADREQ einen Pointer auf den String \IT{<<two\textbackslash{}n>>} nach \Reg{0}. 
+Falls $R0=2$ ist, lädt \ADREQ einen Pointer auf den String \emph{<<two\textbackslash{}n>>} nach \Reg{0}. 
 
 \subsubsection{ARM: \OptimizingKeilVI (\ThumbMode)}
 
@@ -50,7 +50,7 @@ Die Pointer auf die Strings werden an \puts mit einem \INS{ADRP}/\INS{ADD} Befeh
 
 \lstinputlisting[style=customasmARM]{patterns/08_switch/1_few/ARM64_GCC_O3_DE.lst}
 Ein besser optimiertes Stück Code. 
-Der Befehl \TT{CBZ} (\IT{Compare and Branch on Zero}) springt, falls \RegW{0} gleich null ist.
+Der Befehl \TT{CBZ} (\emph{Compare and Branch on Zero}) springt, falls \RegW{0} gleich null ist.
 Es gibt auch einen direkten Sprung zu \puts anstelle eines Aufrufs, so wie bereits hier
 erklärt:~\myref{JMP_instead_of_RET}.
 

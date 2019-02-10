@@ -19,7 +19,7 @@ This is quite interesting encryption (or rather obfuscation), because it has two
 2) resulting characters are also printable, so the whole string can be used in source code without escaping characters.
 
 The second property exploits the fact that all printable characters organized in rows: 0x2x-0x7x, and when you 
-flip two lowest bits, character \IT{moving} 1 or 3 characters left or right, but never \IT{moved} to another (maybe
+flip two lowest bits, character \emph{moving} 1 or 3 characters left or right, but never \emph{moved} to another (maybe
 non-printable) row:
 
 \begin{figure}[H]
@@ -30,7 +30,7 @@ non-printable) row:
 
 \dots with a single exception of 0x7F character.
 
-For example, let's \IT{encrypt} characters in A-Z range:
+For example, let's \emph{encrypt} characters in A-Z range:
 
 \begin{lstlisting}
 #!/usr/bin/python
@@ -49,6 +49,6 @@ CBA@GFEDKJIHONML
 It's like ``@'' and ``C'' characters has been swapped, and so are ``B'' and ``a''.
 
 Yet again, this is interesting example of exploiting XOR properties, rather than encryption:
-the very same effect of \IT{preserving printableness} can be achieved while flipping any of lowest 4 bits,
+the very same effect of \emph{preserving printableness} can be achieved while flipping any of lowest 4 bits,
 in any combination.
 

@@ -7,8 +7,8 @@ _d_max     PROC
     mov    ebp, esp
     fld    QWORD PTR _b$[ebp]
 
-; §état§ courant de la pile: ST(0) = _b
-; comparer _b (ST(0)) et _a, et §dépiler§ un registre
+; état courant de la pile: ST(0) = \_b
+; comparer \_b (ST(0)) et \_a, et dépiler un registre
 
     fcomp  QWORD PTR _a$[ebp]
 

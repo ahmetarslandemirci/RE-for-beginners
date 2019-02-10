@@ -3,7 +3,7 @@ my_max:
 ; RSI=B
 ; comparer A et B:
 	cmp	rdi, rsi
-; §préparer B pour le renvoyer dans RAX:§
+; préparer B pour le renvoyer dans RAX:
 	mov	rax, rsi
 ; si A>=B, mettre A (RDI) dans RAX pour le renvoyer.
 ; cette instruction ne fait rien autrement (si A<B)
@@ -15,7 +15,7 @@ my_min:
 ; RSI=B
 ; comparer A et B:
 	cmp	rdi, rsi
-; §préparer B pour le renvoyer dans RAX:§
+; préparer B pour le renvoyer dans RAX:
 	mov	rax, rsi
 ; si A<=B, mettre A (RDI) dans RAX pour le renvoyer.
 ; cette instruction ne fait rien autrement (si A>B)

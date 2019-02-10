@@ -4,7 +4,7 @@ _BSS	ENDS
 
 init$ = 8
 my_srand PROC
-; ECX = argument en §entrée§
+; ECX = argument en entrée
 	mov	DWORD PTR rand_state, ecx
 	ret	0
 my_srand ENDP

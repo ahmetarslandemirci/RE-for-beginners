@@ -21,7 +21,7 @@ utilisant des adresses alignées.
 
 En revanche ce n'est pas très économique en terme d'espace.
 
-Tentons maintenant une compilation avec l'option (\TT{/Zp1}) (\IT{/Zp[n] indique qu'il faut compresser les 
+Tentons maintenant une compilation avec l'option (\TT{/Zp1}) (\emph{/Zp[n] indique qu'il faut compresser les 
 structures en utilisant des frontières tous les n octets}).
 
 \lstinputlisting[caption=MSVC 2012 /GS- /Zp1,label=src:struct_packing_1,numbers=left,style=customasmx86]{patterns/15_structs/4_packing/packing_msvc_Zp1_FR.asm}
@@ -72,20 +72,7 @@ et celles-ci:
 
 Le fichier PshPack1.h ressemble à ceci:
 
-\begin{lstlisting}[caption=PshPack1.h,style=customc]
-#if ! (defined(lint) || defined(RC_INVOKED))
-#if ( _MSC_VER >= 800 && !defined(_M_I86)) || defined(_PUSHPOP_SUPPORTED)
-#pragma warning(disable:4103)
-#if !(defined( MIDL_PASS )) || defined( __midl )
-#pragma pack(push,1)
-#else
-#pragma pack(1)
-#endif
-#else
-#pragma pack(1)
-#endif
-#endif /* ! (defined(lint) || defined(RC_INVOKED)) */
-\end{lstlisting}
+\lstinputlisting[caption=PshPack1.h,style=customc]{patterns/15_structs/4_packing/tmp1.c}
 
 Ces instructions indiquent au compilateur comment compresser les structures définies après \TT{\#pragma pack}.
 

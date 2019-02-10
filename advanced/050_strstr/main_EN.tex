@@ -4,7 +4,7 @@
 
 Let's back to the fact that GCC sometimes can use part of string: \myref{use_parts_of_C_strings}.
 
-The \IT{strstr()} \CCpp standard library function is used to find any occurrence in a string.
+The \emph{strstr()} \CCpp standard library function is used to find any occurrence in a string.
 This is what we will do:
 
 \begin{lstlisting}[style=customc]
@@ -28,7 +28,7 @@ The output is:
 0x8048537, [world!]
 \end{lstlisting}
 
-The difference between the address of the original string and the address of the substring that \IT{strstr()} has returned is 7.
+The difference between the address of the original string and the address of the substring that \emph{strstr()} has returned is 7.
 Indeed, \q{Hello, } string has length of 7 characters.
 
 The \printf{} function during second call has no idea there are some other characters before

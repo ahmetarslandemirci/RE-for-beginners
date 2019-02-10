@@ -23,12 +23,12 @@ put_to_array PROC
         LDRB     r3,[r0,#1]
 ; R3 = octet du milieu
         AND      r3,r3,#0xf0
-; R3 = R3&0xF0 = middle_byte&0xF0
+; \verb|R3 = R3&0xF0 = middle_byte&0xF0|
         ORR      r2,r3,r1,LSR #8
-; R2 = R3 | R1>>8 = middle_byte&0xF0 | val>>8
-; stocker middle_byte&0xF0 | val>>8 en R0+1 (§à la place de l'octet du milieu§):
+; \verb!R2 = R3 | R1>>8 = middle_byte&0xF0 | val>>8!
+; \verb!stocker middle_byte&0xF0 | val>>8 en R0+1 (à la place de l'octet du milieu):!
 	STRB     r2,[r0,#1]
-; stocker es 8 bits bas de val (ou val&0xFF) en R0+2 (§à la place de l'octet de droite§):
+; \verb|stocker es 8 bits bas de val (ou val&0xFF) en R0+2 (à la place de l'octet de droite):|
         STRB     r1,[r0,#2]
         BX       lr
 |L0.56|
@@ -39,14 +39,14 @@ put_to_array PROC
         STRB     r2,[r12,r3]
 ; charger l'octet en R0+1 (octet du milieu):
         LDRB     r2,[r0,#1]
-; R2 = middle_byte
+; \verb|R2 = middle_byte|
 ; supprimer les 4 bits hauts de l'octet du milieu:
         AND      r2,r2,#0xf
-; R2 = R2&0xF = middle_byte&0xF
-; mettre §à§ jour l'octet du milieu:
+; \verb|R2 = R2&0xF = middle_byte&0xF|
+; mettre à jour l'octet du milieu:
         ORR      r1,r2,r1,LSL #4
-; R1 = R2 | R1<<4 = middle_byte&0xF | val<<4
-; stocker l'octet mis §à§ jour en R0+1:
+; \verb!R1 = R2 | R1<<4 = middle_byte&0xF | val<<4!
+; stocker l'octet mis à jour en R0+1:
         STRB     r1,[r0,#1]
         BX       lr
 ENDP

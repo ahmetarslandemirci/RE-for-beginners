@@ -1,7 +1,7 @@
 ﻿\subsubsection{Structure comme un ensemble de valeurs}
 
 Afin d'illustrer le fait qu'une structure n'est qu'une collection de variables située côte-à-côte, 
-retravaillons notre exemple sur la base de la définition de la structure \IT{tm}: \lstref{struct_tm}.
+retravaillons notre exemple sur la base de la définition de la structure \emph{tm}: \lstref{struct_tm}.
 
 \lstinputlisting[style=customc]{patterns/15_structs/3_tm_linux/as_array/GCC_tm2.c}
 
@@ -58,7 +58,7 @@ Pas d'exemple de débogage ici. Le comportement est toujours le même.
 
 \lstinputlisting[style=customc]{patterns/15_structs/3_tm_linux/as_array/GCC_tm3.c}
 
-Nous n'avons qu'à utiliser l'opérateur \IT{cast} pour transformer notre pointeur vers une structure 
+Nous n'avons qu'à utiliser l'opérateur \emph{cast} pour transformer notre pointeur vers une structure 
 en un tableau de \Tint{}'s. Et cela fonctionne !
 Nous avons exécuté l'exemple à 23h51m45s le 26 juillet 2014.
 
@@ -97,7 +97,7 @@ s'agissait d'un tableau.
 \subsubsection{Une structure sous forme d'un tableau d'octets}
 
 Nous pouvons aller plus loin.
-Utilisons l'opérateur \IT{cast} pour transformer le pointeur en un tableau d'octets, puis affichons 
+Utilisons l'opérateur \emph{cast} pour transformer le pointeur en un tableau d'octets, puis affichons 
 son contenu:
 
 \lstinputlisting[style=customc]{patterns/15_structs/3_tm_linux/as_array/GCC_tm4.c}

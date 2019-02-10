@@ -35,17 +35,17 @@ Nachfolgend wird der Patch einer ausführbaren Datei unter einem 64 Bit-Linux mi
 \lstinputlisting[caption=\radare{} session]{patterns/01_helloworld/radare.lst}
 
 Was hier passiert ist folgendes: suchen von \q{hello} mit dem \TT{/}-Kommando,
-dann Setzen des \IT{cursor} (oder \IT{seek} im \radare{}-Wording) an diese Adresse.
+dann Setzen des \emph{cursor} (oder \emph{seek} im \radare{}-Wording) an diese Adresse.
 Um sicher zu gehen, dass die richtige Stelle gesetzt ist, kann mit \TT{px} der Datenblock ausgegeben werden.
-\TT{oo+} versetzt \radare{} in den \IT{Lese-Schreibe}-Modus.
+\TT{oo+} versetzt \radare{} in den \emph{Lese-Schreibe}-Modus.
 \TT{w} schreibt einen ASCII string an die aktuelle Adresse.
 Hinweis: \TT{\textbackslash{}00} am Ende ist das Null-Byte.
 \TT{q} beendet \radare{}.
 
-\subsubsection{Software-\IT{Lokalisation} zu MS-DOS-Zeiten}
+\subsubsection{Software-\emph{Lokalisation} zu MS-DOS-Zeiten}
 
 Der hier beschriebene Weg war in den 1980ern und  1990ern sehr vebreitet, um MS-DOS-Progamme in die russische Sprache zu übersetzen.
 Russische Wörter und Sätze sind in der Regel etwas länger als ihre englischen Gegenstücke, was der Grund ist, dass
-viele \IT{lokalisierte} Programme eine Menge seltsamer Akronyme und Abkürzungen haben.
+viele \emph{lokalisierte} Programme eine Menge seltsamer Akronyme und Abkürzungen haben.
 
 Möglicherweise passierte dies in der Zeit auch in anderen Sprachen.

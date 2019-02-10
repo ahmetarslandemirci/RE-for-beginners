@@ -3,7 +3,7 @@
 f2:
 ; sauver FP et LR sur la pile:
 	stp	x29, x30, [sp, -16]!
-; §définir la pile (FP=SP):§
+; définir la pile (FP=SP):
 	add	x29, sp, 0
 	adrp	x0, .LC1
 	add	x0, x0, :lo12:.LC1

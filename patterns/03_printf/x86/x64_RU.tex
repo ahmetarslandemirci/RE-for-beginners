@@ -94,7 +94,7 @@ rip            0x7ffff7a65f60	0x7ffff7a65f60 <__printf>
 0x400628:	"a=%d; b=%d; c=%d; d=%d; e=%d; f=%d; g=%d; h=%d\n"
 \end{lstlisting}
 
-Дампим стек на этот раз с командой x/g --- \IT{g} означает \IT{giant words}, т.е. 64-битные слова.
+Дампим стек на этот раз с командой x/g --- \emph{g} означает \emph{giant words}, т.е. 64-битные слова.
 
 \begin{lstlisting}
 (gdb) x/10g $rsp

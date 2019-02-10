@@ -8,11 +8,11 @@ Die aufrufende Funktion (\main) benötigt das Ergebnis der aufgerufenen Funktion
 Register \EAX zurückgibt.
 
 \myindex{x86!\Instructions!CMP}
-Wir prüfen mithilfe des Befehls \TT{CMP EAX, 1} (\IT{CoMPare}). Mit anderen Worten, wir vergleichen den Wert in \EAX mit
+Wir prüfen mithilfe des Befehls \TT{CMP EAX, 1} (\emph{CoMPare}). Mit anderen Worten, wir vergleichen den Wert in \EAX mit
 1.
 
 \myindex{x86!\Instructions!JNE}
-Ein bedingter \JNE Sprung folgt auf den \CMP Befehl. \JNE steht für \IT{Jump if Not Equal}.
+Ein bedingter \JNE Sprung folgt auf den \CMP Befehl. \JNE steht für \emph{Jump if Not Equal}.
 
 Wenn also der Wert in \EAX ungleich 1 ist, wird die \ac{CPU} die Ausführung an der Stelle fortsetzen, die im Operanden
 von \JNE steht, in unserem Fall \TT{\$LN2@main}.
@@ -32,7 +32,7 @@ die Rückgabe von 0 implementiert.
 % FIXME internal \ref{} to x86 flags instead of wikipedia
 \myindex{x86!\Registers!\Flags}
 Man kann also festhalten, dass der Vergleich von zwei Werten gewöhnlich durch ein \CMP/\Jcc Befehlspaar implementiert
-wird, wobei \IT{cc} für \IT{condition code}, also Sprungbedingung, steht. 
+wird, wobei \emph{cc} für \emph{condition code}, also Sprungbedingung, steht. 
 \CMP vergleicht zwei Werte und setzt die Flags des Prozessors\footnote{zu x86 Flags, siehe auch:
 \href{http://go.yurichev.com/17120}{wikipedia}.}.
 \Jcc prüft diese Flags und entscheidet entweder den Control Flow an die angegebene Adresse zu übergeben oder nicht.
@@ -48,10 +48,10 @@ Wenn wir 1 und 1 vergleichen, ist $1-1=0$ und daher wird das \ZF Flag gesetzt (g
 der letzten Berechnung 0 ergeben hat).
 \ZF kann nur durch diesen Umstand gesetzt werden, nämlich, dass zwei Operanden gleich sind.
 \JNE prüft nur das \ZF Flag und springt nur, wenn dieses nicht gesetzt ist. \JNE ist daher ein Synonym für \JNZ
-(\IT{Jump if Not Zero}).
+(\emph{Jump if Not Zero}).
 Der Assembler übersetzt \JNE und \JNZ in den gleichen Opcode.
 Der \CMP Befehl kann also durch ein \SUB ersetzt werden, aber mit dem Unterschied, dass \SUB den Wert des ersten
-Operanden verändert. \CMP bedeutet also \IT{SUB ohne Speichern des Ergebnisses, aber mit Setzen der Flags}.
+Operanden verändert. \CMP bedeutet also \emph{SUB ohne Speichern des Ergebnisses, aber mit Setzen der Flags}.
 
 \subsubsection{MSVC: x86: IDA}
 

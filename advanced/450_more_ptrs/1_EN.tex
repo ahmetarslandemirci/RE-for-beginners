@@ -5,7 +5,7 @@ Pointer variable is supplied with a type of the value to which pointer points.
 So then compiler will be able to catch data typization bugs during compilation.
 
 To be pedantic, data typing in programming languages is all about preventing bugs and self-documentation.
-It's possible to use maybe two of data types like \IT{int} (or \IT{int64\_t}) and byte---these are the only types which are available to assembly language programmers.
+It's possible to use maybe two of data types like \emph{int} (or \emph{int64\_t}) and byte---these are the only types which are available to assembly language programmers.
 But it's just very hard task to write big and practical assembly programs without nasty bugs.
 Any small typo can lead to hard-to-find bug.
 
@@ -52,9 +52,9 @@ int main()
 };
 \end{lstlisting}
 
-I use \IT{uint64\_t} because I run this example on Linux x64. \IT{int} would work for 32-bit \ac{OS}-es.
-First, a pointer to character (the very first in the greeting string) is casted to \IT{uint64\_t}, then it's passed further.
-\TT{print\_string()} function casts back incoming \IT{uint64\_t} value into pointer to a character.
+I use \emph{uint64\_t} because I run this example on Linux x64. \emph{int} would work for 32-bit \ac{OS}-es.
+First, a pointer to character (the very first in the greeting string) is casted to \emph{uint64\_t}, then it's passed further.
+\TT{print\_string()} function casts back incoming \emph{uint64\_t} value into pointer to a character.
 
 What is interesting is that GCC 4.8.4 produces identical assembly output for both versions:
 
@@ -88,7 +88,7 @@ main:
 
 (I've removed all insignificant GCC directives.)
 
-I also tried UNIX \IT{diff} utility and it shows no differences at all.
+I also tried UNIX \emph{diff} utility and it shows no differences at all.
 
 Let's continue to abuse C/C++ programming traditions heavily.
 Someone may write this:
@@ -133,7 +133,6 @@ It can be rewritten like this:
 uint8_t load_byte_at_address (uint64_t address)
 {
 	return *(uint8_t*)address;
-	//this is also possible: return address[0]; 
 };
 
 void print_string (uint64_t address)

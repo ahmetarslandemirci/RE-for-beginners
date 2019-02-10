@@ -1,6 +1,6 @@
 a$ = 8
 f	PROC
-; RCX = §valeur en entrée§
+; RCX = valeur en entrée
 	xor	eax, eax
 	mov	edx, 1
 	lea	r8d, QWORD PTR [rax+32]

@@ -10,9 +10,9 @@ $LN2@main:
     add    eax, 1                  ; добавляем 1 к i
     mov    DWORD PTR _i$[ebp], eax
 $LN3@main:
-    cmp    DWORD PTR _i$[ebp], 10  ; это условие проверяется §\IT{перед}§ каждой итерацией
+    cmp    DWORD PTR _i$[ebp], 10  ; это условие проверяется \emph{перед} каждой итерацией
     jge    SHORT $LN1@main         ; если i больше или равно 10, заканчиваем цикл
-    mov    ecx, DWORD PTR _i$[ebp] ; тело цикла: вызов функции printing_function(i)
+    mov    ecx, DWORD PTR _i$[ebp] ; тело цикла: вызов функции printing\_function(i)
     push   ecx
     call   _printing_function
     add    esp, 4

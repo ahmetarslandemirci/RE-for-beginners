@@ -1,4 +1,4 @@
-; int __cdecl f(int, int *, int *, int *)
+; \verb|int __cdecl f(int, int *, int *, int *)|
                 public ?f@@YAHHPAH00@Z
 ?f@@YAHHPAH00@Z proc near
 

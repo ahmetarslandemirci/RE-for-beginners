@@ -1,9 +1,9 @@
 \mysection{Оператор GOTO}
 
 Оператор GOTO считается анти-паттерном, см:
-[Edgar Dijkstra, \IT{Go To Statement Considered Harmful} (1968)\footnote{\url{http://yurichev.com/mirrors/Dijkstra68.pdf}}].
+[Edgar Dijkstra, \emph{Go To Statement Considered Harmful} (1968)\footnote{\url{http://yurichev.com/mirrors/Dijkstra68.pdf}}].
 Но тем не менее, его можно использовать в разумных пределах, см:
-[Donald E. Knuth, \IT{Structured Programming with go to Statements} (1974)\footnote{\url{http://yurichev.com/mirrors/KnuthStructuredProgrammingGoTo.pdf}}]
+[Donald E. Knuth, \emph{Structured Programming with go to Statements} (1974)\footnote{\url{http://yurichev.com/mirrors/KnuthStructuredProgrammingGoTo.pdf}}]
 \footnote{В \InSqBrackets{\CNotes} также есть примеры.}.
 
 Вот простейший пример:
@@ -14,7 +14,7 @@
 
 \lstinputlisting[caption=MSVC 2012,style=customasmx86]{patterns/065_GOTO/MSVC_goto.asm}
 
-Выражение \IT{goto} заменяется инструкцией \JMP, которая работает точно также: безусловный переход в другое место.
+Выражение \emph{goto} заменяется инструкцией \JMP, которая работает точно также: безусловный переход в другое место.
 Вызов второго \printf может исполнится только при помощи человеческого вмешательства, используя отладчик или модифицирование кода.
 
 \par

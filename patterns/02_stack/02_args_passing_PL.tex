@@ -72,7 +72,7 @@ W pewnym sensie, popularną metodą wśród początkującyh jest przekazywanie a
 
 \lstinputlisting[caption=Kod w asemblerze,style=customasmx86]{patterns/02_stack/global_args.asm}
 
-Ale ta metoda posiada dużą wadę: funkcja \IT{do\_something()} nie może wywołać sama siebie poprzez rekurencję (lub za pomocą innej funkcji),
+Ale ta metoda posiada dużą wadę: funkcja \emph{do\_something()} nie może wywołać sama siebie poprzez rekurencję (lub za pomocą innej funkcji),
 dlatego że wtedy będzie trzeba wymazać własne argumenty.
 Ta sama historia ze zmiennymi lokalnymi: jeśli przechowywać je w zmiennych globalnych, funkcja nie będzie nogła wywołać sama siebie.
 Do tego, ta metoda nie jest biezpieczna dla środowiska wielowątkowego\footnote{Przy poprawnej realizacji,
@@ -128,7 +128,7 @@ W innym przypadku, handle stworzonego pliku jest zwracany do \TT{AX}.
 
 Ta metoda dotychczasowo jest wykorzystywana przez programistów asemblera.
 W kodach wyjściowych Windows Research Kernel (który jest bardzo podobny do Windows 2003) możemy znaleźć coś takiego\\
-(plik \IT{base/ntos/ke/i386/cpu.asm}):
+(plik \emph{base/ntos/ke/i386/cpu.asm}):
 
 \begin{lstlisting}[style=customasmx86]
         public  Get386Stepping

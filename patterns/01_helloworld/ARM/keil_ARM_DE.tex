@@ -7,7 +7,7 @@ armcc.exe --arm --c90 -O0 1.c
 \end{lstlisting}
 
 \myindex{\IntelSyntax}
-Der \IT{armcc}-Compiler erstellt Assembler-Quelltext im Intel-Syntax, hat aber High-Level-Makros
+Der \emph{armcc}-Compiler erstellt Assembler-Quelltext im Intel-Syntax, hat aber High-Level-Makros
 bezüglich der ARM-Prozessoren\footnote{d.h. der ARM-Mode hat keine \PUSH/\POP-Anweisungen}.
 Es ist hier wichtig die \q{richtigen} Anweisungen zu sehen, deswegen ist hier das Ergebnis mit
 \IDA kompiliert.
@@ -31,7 +31,7 @@ Tatsächlich wurde der Code für den ARM- und nicht den Thumb-Mode erstellt.
 Die erste Anweisung, \INS{STMFD SP!, \{R4,LR\}}\footnote{\ac{STMFD}}, arbeitet wie eine x86-\PUSH-Anweisung
 um die Werte der beiden Register (\Reg{4} and \ac{LR}) auf den Stack zu legen.
 
-Die Ausgabe des \IT{armcc}-Compilers, zeigt, aus Gründen der Einfachheit, die \INS{PUSH \{r4,lr\}}-Anweisung.
+Die Ausgabe des \emph{armcc}-Compilers, zeigt, aus Gründen der Einfachheit, die \INS{PUSH \{r4,lr\}}-Anweisung.
 Dies ist nicht vollständig präzise. Die \PUSH-Anweisung ist nur im Thumb-Mode verfügbar.
 Um die Dinge nicht zu verwirrend zu machen, wird der Code in \IDA kompiliert.
 
@@ -98,7 +98,7 @@ lädt die Werte nacheinander vom Stack (oder eine andere Speicheradresse) um sie
 zu sichern. Außerdem wird der Stack Pointer \ac{SP} inkrementiert. Hier arbeitet der Befehl wie \POP.
 
 Die erste Anweisung \TT{STMFD} sichert das Register-Paar \Reg{4} und \ac{LR} auf dem Stack, jedoch werden \Reg{4} und \ac{PC}
-während der Ausführung von \TT{LDMFD} \IT{wiederhergestellt}.
+während der Ausführung von \TT{LDMFD} \emph{wiederhergestellt}.
 
 Wie bereits bekannt, wird die Adresse die nach der Ausführung einer Funktion angesprungen wird in dem \ac{LR}-Register gesichert.
 Die allererste Anweisung sichert diese Wert auf dem Stack weil das gleiche Register von der \main-Funktion genutzt wird,

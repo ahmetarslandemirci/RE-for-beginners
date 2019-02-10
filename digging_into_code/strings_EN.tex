@@ -11,7 +11,7 @@ a complete list of the program’s hard-coded file name, environment variables,
 undocumented options, obscure error messages, and so forth.}{The Unix-Haters Handbook}
 
 \myindex{UNIX!strings}
-The standard UNIX \IT{strings} utility is quick-n-dirty way to see strings in file.
+The standard UNIX \emph{strings} utility is quick-n-dirty way to see strings in file.
 For example, these are some strings from OpenSSH 7.2 sshd executable file:
 
 \lstinputlisting{digging_into_code/sshd_strings.txt}
@@ -23,7 +23,7 @@ Of course, OpenSSH is open-source program.
 But looking at readable strings inside of some unknown binary is often a first step of analysis.
 \myindex{UNIX!grep}
 
-\IT{grep} can be applied as well.
+\emph{grep} can be applied as well.
 
 \myindex{Hiew}
 \myindex{Sysinternals}
@@ -35,7 +35,7 @@ Debugging messages are very helpful if present.
 In some sense, the debugging messages are reporting
 what's going on in the program right now. Often these are \printf-like functions,
 which write to log-files, or sometimes do not writing anything but the calls are still present 
-since the build is not a debug one but \IT{release} one.
+since the build is not a debug one but \emph{release} one.
 \myindex{\oracle}
 
 If local or global variables are dumped in debug messages, it might be helpful as well 

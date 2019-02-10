@@ -10,10 +10,10 @@
 	sal	rax, 2
 ; RAX = месяц<<2 = месяц*4
 	add	rax, rdx
-; RAX = RAX+RDX = §месяц§*4+§месяц§ = §месяц§*5
+; RAX = RAX+RDX = месяц*4+месяц = месяц*5
 	add	rax, rax
-; RAX = RAX*2 = §месяц§*5*2 = §месяц§*10
+; RAX = RAX*2 = месяц*5*2 = месяц*10
 	add	rax, OFFSET FLAT:month2
-; RAX = §месяц§*10 + указатель на таблицу
+; RAX = месяц*10 + указатель на таблицу
 	pop	rbp
 	ret

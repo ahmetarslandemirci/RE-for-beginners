@@ -64,7 +64,7 @@ Hier ist das Stacklayout während der Control Flow in der \main ist:
 \end{center}
 Der Befehl \TT{a[19]=something} schreibt den letzten \Tint innerhalb der Grenzen des Arrays (bis hierhin ist alles in
 Ordnung!).
-Der Befehl \TT{a[20]=something} schreibt \IT{something} an die Stelle, an der der \EBP gespeichert ist.
+Der Befehl \TT{a[20]=something} schreibt \emph{something} an die Stelle, an der der \EBP gespeichert ist.
 
 Sehen wir uns den Zustand der Register im Moment des Absturzes an. In unserem Fall wurde 20 in das zwanzigste Element
 geschrieben. Am Ende der Funktion stellt der Funktionsepilog den originalen Wert von \EBP wieder her.
@@ -77,7 +77,7 @@ Die CPU springt an die Adresse \TT{0x15}, aber hier befindet sich kein ausführb
 wird.
 
 \myindex{\BufferOverflow}
-Dies nennt man einen \IT{Buffer Overflow}\footnote{\href{http://go.yurichev.com/17132}{wikipedia}}.
+Dies nennt man einen \emph{Buffer Overflow}\footnote{\href{http://go.yurichev.com/17132}{wikipedia}}.
 
 Ersetzt man das \Tint Array durch einen String (\Tchar Array) und erzeugt absichtlich einen langen String und übergibt
 ihn im Programm an eine Funktion, die die Länge des Strings nicht prüft und ihn in einen kurzen Buffer kopiert, kann man

@@ -10,7 +10,7 @@ seg000:0011873C 93 E1 FF FC   stw     %r31, var_4(%sp)
 seg000:00118740 7C 08 02 A6   mflr    %r0
 seg000:00118744 38 A0 00 00   li      %r5, 0
 seg000:00118748 93 C1 FF F8   stw     %r30, var_8(%sp)
-seg000:0011874C 83 C2 95 A8   lwz     %r30, off_1485E8 # dword_24B704
+seg000:0011874C 83 C2 95 A8   lwz     %r30, off_1485E8 # dword\_24B704
 seg000:00118750               .using dword_24B704, %r30
 seg000:00118750 93 A1 FF F4   stw     %r29, var_C(%sp)
 seg000:00118754 3B A3 00 00   addi    %r29, %r3, 0

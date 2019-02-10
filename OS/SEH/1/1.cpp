@@ -45,10 +45,10 @@ int main()
 
 	// install exception handler
 	__asm
-	{                           	// make EXCEPTION_REGISTRATION record:
+	{                           	// make EXCEPTION\_REGISTRATION record:
 		push    handler         // address of handler function
 		push    FS:[0]          // address of previous handler
-		mov     FS:[0],ESP      // add new EXECEPTION_REGISTRATION
+		mov     FS:[0],ESP      // add new EXECEPTION\_REGISTRATION
 	}
 
     	RaiseException (0xE1223344, 0, 0, NULL);
@@ -61,10 +61,10 @@ int main()
 
 	// deinstall exception handler
 	__asm
-	{                          	// remove our EXECEPTION_REGISTRATION record
+	{                          	// remove our EXECEPTION\_REGISTRATION record
 		mov     eax,[ESP]       // get pointer to previous record
 		mov     FS:[0], EAX     // install previous record
-		add     esp, 8          // clean our EXECEPTION_REGISTRATION off stack
+		add     esp, 8          // clean our EXECEPTION\_REGISTRATION off stack
 	}
 
 	return 0;

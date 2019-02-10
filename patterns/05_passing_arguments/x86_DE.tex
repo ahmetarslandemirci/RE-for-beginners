@@ -4,7 +4,7 @@
 
 Das ist das Ergebnis nach dem kompilieren (MSVC 2010 Express):
 
-\lstinputlisting[label=src:passing_arguments_ex_MSVC_cdecl,caption=MSVC 2010 Express]{patterns/05_passing_arguments/msvc_DE.asm}
+\lstinputlisting[label=src:passing_arguments_ex_MSVC_cdecl,caption=MSVC 2010 Express,style=customasmx86]{patterns/05_passing_arguments/msvc_DE.asm}
 
 \myindex{x86!\Registers!EBP}
 
@@ -12,9 +12,9 @@ Was wir hier sehen ist das die \main Funktion drei Zahlen auf den Stack schiebt 
 
 Der Argument zugriff innerhalb von \ttf wird organisiert mit der Hilfe von Makros wie zum Beispiel:\\
 \TT{\_a\$ = 8}, 
-auf die gleiche weise wie Lokale Variablen allerdings mit positiven Offsets (adressiert mit \IT{plus}).
+auf die gleiche weise wie Lokale Variablen allerdings mit positiven Offsets (adressiert mit \emph{plus}).
 
-Also adressieren wir die \IT{äussere} Seite des \glslink{stack frame}{Stack frame} indem wir \TT{\_a\$} Makros zum Wert des \EBP Registers addieren  
+Also adressieren wir die \emph{äussere} Seite des \glslink{stack frame}{Stack frame} indem wir \TT{\_a\$} Makros zum Wert des \EBP Registers addieren  
 
 \myindex{x86!\Instructions!IMUL}
 \myindex{x86!\Instructions!ADD}
@@ -37,7 +37,7 @@ für den \printf Aufruf benutzt.
 
 Lasst uns das gleiche in GCC kompilieren und die Ergebnisse in \IDA betrachten:
 
-\lstinputlisting[caption=GCC 4.4.1]{patterns/05_passing_arguments/gcc_DE.asm}
+\lstinputlisting[caption=GCC 4.4.1,style=customasmx86]{patterns/05_passing_arguments/gcc_DE.asm}
 
 Das Ergebnis ist fast das gleiche aber mit kleineren Unterschieden die wir bereits früher
 besprochen haben.

@@ -2,7 +2,7 @@ $SG3454	DB	'true', 00H
 $SG3456	DB	'false', 00H
 
 _s$ = 8		; size = 4
-?is_bool@@YA_NPAD@Z PROC ; is_bool
+?is_bool@@YA_NPAD@Z PROC ; is\_bool
 	push	esi
 	mov	esi, DWORD PTR _s$[esp]
 	mov	ecx, OFFSET $SG3454 ; 'true'
@@ -76,4 +76,4 @@ $LN1@is_bool:
 	pop	esi
 
 	ret	0
-?is_bool@@YA_NPAD@Z ENDP ; is_bool
+?is_bool@@YA_NPAD@Z ENDP ; is\_bool

@@ -1,7 +1,7 @@
 ﻿\subsubsection{Структура как набор переменных}
 
 Чтобы проиллюстрировать то что структура ~--- это просто набор переменных, лежащих в одном месте, 
-переделаем немного пример, еще раз заглянув в описание структуры \IT{tm}: \lstref{struct_tm}.
+переделаем немного пример, еще раз заглянув в описание структуры \emph{tm}: \lstref{struct_tm}.
 
 \lstinputlisting[style=customc]{patterns/15_structs/3_tm_linux/as_array/GCC_tm2.c}
 
@@ -57,7 +57,7 @@ In file included from GCC_tm2.c:2:0:
 
 \lstinputlisting[style=customc]{patterns/15_structs/3_tm_linux/as_array/GCC_tm3.c}
 
-Мы просто приводим (\IT{cast}) указатель на структуру к массиву \Tint{}-ов.
+Мы просто приводим (\emph{cast}) указатель на структуру к массиву \Tint{}-ов.
 И это работает!
 Запускаем пример 23:51:45 26-July-2014.
 
@@ -92,7 +92,7 @@ In file included from GCC_tm2.c:2:0:
 
 \subsubsection{Структура как массив байт}
 
-Можно пойти еще дальше. Можно привести (\IT{cast}) указатель к массиву байт и вывести его:%
+Можно пойти еще дальше. Можно привести (\emph{cast}) указатель к массиву байт и вывести его:%
 
 \lstinputlisting[style=customc]{patterns/15_structs/3_tm_linux/as_array/GCC_tm4.c}
 

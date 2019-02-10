@@ -1,6 +1,6 @@
 f:
                 lui     $gp, (__gnu_local_gp >> 16)
-; jump to loc_24 if input value is lesser than 5:
+; jump to loc\_24 if input value is lesser than 5:
                 sltiu   $v0, $a0, 5
                 bnez    $v0, loc_24
                 la      $gp, (__gnu_local_gp & 0xFFFF) ; branch delay slot
@@ -43,7 +43,7 @@ sub_58:                                  # DATA XREF: .rodata:00000130
                 jr      $t9
                 la      $a0, ($LC4 & 0xFFFF)  # "four" ; branch delay slot
 
-sub_6C:                                  # DATA XREF: .rodata:off_120
+sub_6C:                                  # DATA XREF: .rodata:off\_120
 ; print "zero" and finish
                 lui     $a0, ($LC0 >> 16)  # "zero"
                 lw      $t9, (puts & 0xFFFF)($gp)

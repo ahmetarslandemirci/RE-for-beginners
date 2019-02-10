@@ -10,13 +10,13 @@ var_4           = dword ptr -4
                 sub     esp, 20h
                 mov     [esp+20h+var_20], offset aEnterX ; "Enter X:"
                 call    _puts
-                mov     eax, offset aD  ; "%d"
+                mov     eax, offset aD  ; "\%d"
                 lea     edx, [esp+20h+var_4]
                 mov     [esp+20h+var_1C], edx
                 mov     [esp+20h+var_20], eax
                 call    ___isoc99_scanf
                 mov     edx, [esp+20h+var_4]
-                mov     eax, offset aYouEnteredD___ ; "You entered %d...\n"
+                mov     eax, offset aYouEnteredD___ ; "You entered \%d...\textbackslash{}n"
                 mov     [esp+20h+var_1C], edx
                 mov     [esp+20h+var_20], eax
                 call    _printf

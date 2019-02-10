@@ -2,7 +2,7 @@
 \subsection{Chiffrement simple utilisant un masque XOR}
 \label{XOR_mask_1}
 
-J'ai trouvé un vieux jeu de fiction interactif en plongeant profondément dans \IT{if-archive}\footnote{\url{http://www.ifarchive.org/}}:
+J'ai trouvé un vieux jeu de fiction interactif en plongeant profondément dans \emph{if-archive}\footnote{\url{http://www.ifarchive.org/}}:
 
 \begin{lstlisting}
 The New Castle v3.5 - Text/Adventure Game
@@ -17,7 +17,7 @@ Software Customization [ASP] Version 3.5 Feb. 2000
 Il est téléchargeable
 \url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/ff/XOR/mask_1/files/newcastle.tgz}{ici}.
 
-Il y a un fichier à l'intérieur (appelé \IT{castle.dbf}) qui est visiblement chiffré,
+Il y a un fichier à l'intérieur (appelé \emph{castle.dbf}) qui est visiblement chiffré,
 mais pas avec un vrai algorithme de crypto, qui n'est pas non plus compressé, il
 s'agit plutôt de quelque chose de plus simple.
 Je ne vais même pas mesurer le niveau d'entropie (\myref{entropy}) du fichier, car
@@ -44,7 +44,7 @@ d'octets à zéro, qui, à tour de rôle, sont présentes dans de nombreux
 fichiers exécutables, tout comme dans des fichiers de données binaires.
 
 \myindex{UNIX!xxd}
-Ici, je vais afficher le début du fichier en utilisant l'utilitaire UNIX \IT{xxd}:
+Ici, je vais afficher le début du fichier en utilisant l'utilitaire UNIX \emph{xxd}:
 
 \lstinputlisting{ff/XOR/mask_1/xxd_result.txt}
 
@@ -56,9 +56,9 @@ La taille du fichier est 1658961, et est divisible par 81 (et il y a donc 20481 
 Maintenant, je vais utiliser Mathematica pour l'analyse, y a-t-il des blocs de 81
 octets se répètant dans le fichier?
 Je vais séparer le fichier d'entrée en blocs de 81 octets et ensuite utiliser la fonction
-\IT{Tally[]}\footnote{\url{https://reference.wolfram.com/language/ref/Tally.html}}
+\emph{Tally[]}\footnote{\url{https://reference.wolfram.com/language/ref/Tally.html}}
 qui compte simplement combien de fois un élément était présent dans la liste en entrée.
-La sortie de Tally n'est pas triée, donc je vais ajouter la fonction \IT{Sort[]}
+La sortie de Tally n'est pas triée, donc je vais ajouter la fonction \emph{Sort[]}
 pour trier le nombre d'occurrences par ordre décroissant.
 
 \begin{lstlisting}[style=custommath]
@@ -358,8 +358,8 @@ un chiffre différent, ainsi, ils ne diffèrent que du second octet.
 C'est tout! Maintenant nous pouvons écrire un utilitaire pour chiffrer à nouveau le
 fichier, et peut-être le modifier avant.
 
-Le fichier notebook de Mathematica est téléchargeable
-\url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/ff/XOR/mask_1/files/XOR_mask_1.nb}{ici}.
+Le fichier notebook de Mathematica est téléchargeable 
+\href{https://github.com/DennisYurichev/RE-for-beginners/blob/master/ff/XOR/mask_1/files/XOR_mask_1.nb}{ici}.
 
 Résumé: un tel chiffrement avec XOR n'est pas robuste du tout. Le développeur du jeu
 escomptait, probablement, empêcher les joueurs de chercher des informations sur le

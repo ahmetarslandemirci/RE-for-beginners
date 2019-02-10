@@ -7,18 +7,18 @@
 \lstinputlisting[caption=\NonOptimizing MSVC 2010,style=customasmx86]{patterns/07_jcc/simple/signed_MSVC.asm}
 
 \myindex{x86!\Instructions!JLE}
-Первая инструкция \JLE значит \IT{Jump if Less or Equal}. 
+Первая инструкция \JLE значит \emph{Jump if Less or Equal}. 
 Если второй операнд больше первого или равен ему, произойдет переход туда, где будет следующая проверка.
 
 А если это условие не срабатывает (то есть второй операнд меньше первого), то перехода не будет, 
 и сработает первый \printf.
 
 \myindex{x86!\Instructions!JNE}
-Вторая проверка это \JNE: \IT{Jump if Not Equal}.
+Вторая проверка это \JNE: \emph{Jump if Not Equal}.
 Переход не произойдет, если операнды равны.
 
 \myindex{x86!\Instructions!JGE}
-Третья проверка \JGE: \IT{Jump if Greater or Equal} --- переход 
+Третья проверка \JGE: \emph{Jump if Greater or Equal} --- переход 
 если первый операнд больше второго или равен ему.
 Кстати, если все три условных перехода сработают, ни один \printf не вызовется. 
 Но без внешнего вмешательства это невозможно.
@@ -32,8 +32,8 @@
 \myindex{x86!\Instructions!JAE}
 Здесь всё то же самое, только инструкции условных переходов немного другие:
 
-\JBE --- \IT{Jump if Below or Equal} и \JAE\EMDASH{}\IT{Jump if Above or Equal}.
-Эти инструкции (\JA/\JAE/\JB/\JBE) 
+\JBE --- \emph{Jump if Below or Equal} и \JAE --- \emph{Jump if Above or Equal}.
+Эти инструкции (\INS{JA}/\JAE/\JB/\JBE) 
 отличаются от \JG/\JGE/\JL/\JLE тем, что работают с беззнаковыми переменными.
 
 \myindex{x86!\Instructions!JA}
@@ -42,7 +42,7 @@
 \myindex{x86!\Instructions!JL}
 \myindex{Signed numbers}
 Отступление: смотрите также секцию о представлении знака в числах ~(\myref{sec:signednumbers}).
-Таким образом, увидев где используется \JG/\JL вместо \JA/\JB и наоборот, 
+Таким образом, увидев где используется \JG/\JL вместо \INS{JA}/\JB и наоборот, 
 можно сказать почти уверенно насчет того, 
 является ли тип переменной знаковым (signed) или беззнаковым (unsigned).
 

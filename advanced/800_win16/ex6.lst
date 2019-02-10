@@ -22,7 +22,7 @@ var_2           = word ptr -2
                 mov     ax, [bx+0Ah]     ; year
                 add     ax, 1900
                 push    ax
-                mov     ax, offset a04d02d02d02d02 ; "%04d-%02d-%02d %02d:%02d:%02d"
+                mov     ax, offset a04d02d02d02d02 ; \verb|"%04d-%02d-%02d %02d:%02d:%02d"|
                 push    ax
                 mov     ax, offset strbuf
                 push    ax
@@ -36,7 +36,7 @@ var_2           = word ptr -2
                 push    ds
                 mov     ax, offset aCaption ; "caption"
                 push    ax
-                xor     ax, ax          ; MB_OK
+                xor     ax, ax          ; MB\_OK
                 push    ax
                 call    MESSAGEBOX
                 xor     ax, ax

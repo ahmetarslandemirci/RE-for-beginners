@@ -100,14 +100,7 @@ Nous obtenons:
 Si nous regardons dans la fonction \TT{open()} de la bibliothèque \TT{libc.so.6},
 c'est seulement un appel système:
 
-\begin{lstlisting}[caption=open() (libc.so.6),style=customasmx86]
-.text:000BE69B     mov     edx, [esp+4+mode] ; mode
-.text:000BE69F     mov     ecx, [esp+4+flags] ; flags
-.text:000BE6A3     mov     ebx, [esp+4+filename] ; filename
-.text:000BE6A7     mov     eax, 5
-.text:000BE6AC     int     80h             ; LINUX - sys_open
-\end{lstlisting}
-
+\lstinputlisting[caption=open() (libc.so.6),style=customasmx86]{patterns/14_bitfields/1_check/tmp1.asm}
 
 Donc, le champ de bits pour \TT{open()} est apparemment testé quelque part dans le
 noyau Linux.
@@ -128,7 +121,7 @@ N.B. Outre le passage des arguments par la pile, il y a aussi une méthode consi
 à passer certains d'entre eux par des registres. Ceci est aussi appelé fastcall~(\myref{fastcall}).
 Ceci fonctionne plus vite puisque le CPU ne doit pas faire d'accès à la pile en mémoire
 pour lire la valeur des arguments.
-GCC a l'option \IT{regparm}\footnote{\URLREGPARM}, avec laquelle il est possible
+GCC a l'option \emph{regparm}\footnote{\URLREGPARM}, avec laquelle il est possible
 de définir le nombre d'arguments qui peuvent être passés par des registres.
 
 \newcommand{\URLKERNELNEWB}{\href{http://go.yurichev.com/17066}{kernelnewbies.org/Linux\_2\_6\_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}}

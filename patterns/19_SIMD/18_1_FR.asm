@@ -1,4 +1,4 @@
-; int __cdecl f(int, int *, int *, int *)
+; \verb|int __cdecl f(int, int *, int *, int *)|
                 public ?f@@YAHHPAH00@Z
 ?f@@YAHHPAH00@Z proc near
 
@@ -55,7 +55,7 @@ loc_67: ; CODE XREF: f(int,int *,int *,int *)+59
 
 loc_7F: ; CODE XREF: f(int,int *,int *,int *)+65
        mov     edi, eax        ; edi = ar3
-       and     edi, 0Fh        ; est-ce que ar3 est §aligné§ sur 16-octets?
+       and     edi, 0Fh        ; est-ce que ar3 est aligné sur 16-octets?
        jz      short loc_9A    ; oui
        test    edi, 3
        jnz     loc_162
@@ -91,7 +91,7 @@ loc_C1: ; CODE XREF: f(int,int *,int *,int *)+CD
 
 loc_D6: ; CODE XREF: f(int,int *,int *,int *)+B2
        mov     esi, [esp+10h+ar2]
-       lea     esi, [esi+edi*4] ; est-ce que ar2+i*4 est §aligné§ sur 16-octets?
+       lea     esi, [esi+edi*4] ; est-ce que ar2+i*4 est aligné sur 16-octets?
        test    esi, 0Fh
        jz      short loc_109   ; oui!
        mov     ebx, [esp+10h+ar1]
@@ -99,7 +99,7 @@ loc_D6: ; CODE XREF: f(int,int *,int *,int *)+B2
 
 loc_ED: ; CODE XREF: f(int,int *,int *,int *)+105
        movdqu  xmm1, xmmword ptr [ebx+edi*4] ; ar1+i*4
-       movdqu  xmm0, xmmword ptr [esi+edi*4] ; ar2+i*4 n'est pas §aligné§ sur 16-octet, donc le charger dans XMM0
+       movdqu  xmm0, xmmword ptr [esi+edi*4] ; ar2+i*4 n'est pas aligné sur 16-octet, donc le charger dans XMM0
        paddd   xmm1, xmm0
        movdqa  xmmword ptr [eax+edi*4], xmm1 ; ar3+i*4
        add     edi, 4

@@ -7,7 +7,7 @@
 Everything here is simple.
 \TT{MADD} is just an instruction doing fused multiply/add (similar to the \TT{MLA} we already saw).
 All 3 arguments are passed in the 32-bit parts of X-registers.
-Indeed, the argument types are 32-bit \IT{int}'s.
+Indeed, the argument types are 32-bit \emph{int}'s.
 The result is returned in \TT{W0}.
 
 \lstinputlisting[caption=\Optimizing GCC (Linaro) 4.9,style=customasmARM]{patterns/05_passing_arguments/ARM/ARM64_O3_EN.s}
@@ -65,7 +65,7 @@ in case someone (or something) in this function needs using the \TT{W0...W2}
 registers. This prevents overwriting the original
 function arguments, which may be needed again in the future.
 
-This is called \IT{Register Save Area.} (\ARMPCS).
+This is called \emph{Register Save Area.} (\ARMPCS).
 The callee, however, is not obliged to save them.
 This is somewhat similar to \q{Shadow Space}: \myref{shadow_space}.
 

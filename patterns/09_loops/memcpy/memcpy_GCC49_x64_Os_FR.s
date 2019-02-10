@@ -6,7 +6,7 @@ my_memcpy:
 ; initialiser le compteur (i) à 0
 	xor	eax, eax
 .L2:
-; tous les octets sont-ils §copiés§? alors sortir:
+; tous les octets sont-ils copiés? alors sortir:
 	cmp	rax, rdx
 	je	.L5
 ; charger l'octet en RSI+i:

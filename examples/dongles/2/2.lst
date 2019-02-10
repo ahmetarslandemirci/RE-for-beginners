@@ -1,6 +1,6 @@
 .text:0000DBE8        public SSQ
-.text:0000DBE8 SSQ    proc near ; CODE XREF: sys_info+A9p
-.text:0000DBE8                  ; sys_info+CBp ...
+.text:0000DBE8 SSQ    proc near ; CODE XREF: sys\_info+A9p
+.text:0000DBE8                  ; sys\_info+CBp ...
 .text:0000DBE8
 .text:0000DBE8 arg_0  = dword ptr  8
 .text:0000DBE8

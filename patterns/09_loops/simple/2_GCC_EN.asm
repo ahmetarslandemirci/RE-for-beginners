@@ -10,11 +10,11 @@ var_20          = dword ptr -20h
                 mov     ebx, 2    ; i=2
                 sub     esp, 1Ch
 
-; aligning label loc_80484D0 (loop body begin) by 16-byte border:
+; aligning label loc\_80484D0 (loop body begin) by 16-byte border:
                 nop
 
 loc_80484D0:
-; pass (i) as first argument to printing_function():
+; pass (i) as first argument to printing\_function():
                 mov     [esp+20h+var_20], ebx 
                 add     ebx, 1    ; i++
                 call    printing_function
