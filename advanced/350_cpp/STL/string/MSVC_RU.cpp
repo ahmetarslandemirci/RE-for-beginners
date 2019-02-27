@@ -20,8 +20,8 @@ void dump_std_string(std::string s)
 
 int main()
 {
-    std::string s1="short string";
-    std::string s2="string longer that 16 bytes";
+    std::string s1="a short string";
+    std::string s2="a string longer than 16 bytes";
 
     dump_std_string(s1);
     dump_std_string(s2);
