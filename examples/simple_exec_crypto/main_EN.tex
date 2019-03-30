@@ -95,7 +95,7 @@ FF byte is also very often occurred in negative displacements like these:
 8D 95 F8 5C FF FF                 lea     edx, [ebp-0A308h]
 \end{lstlisting}
 
-So far so good. Now we have to try various 16-byte keys, decrypt executable section and measure how often 00, FF ad 8B bytes are occurred.
+So far so good. Now we have to try various 16-byte keys, decrypt executable section and measure how often 00, FF and 8B bytes are occurred.
 Let's also keep in sight how PCBC decryption works:
 
 \begin{figure}[H]
@@ -162,7 +162,7 @@ for N in range(KEY_LEN):
     print sorted_stat[0]
 \end{lstlisting}
 
-(Source code can downloaded \href{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/simple_exec_crypto/files/decrypt.py}{here}.)
+(Source code can be downloaded \href{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/simple_exec_crypto/files/decrypt.py}{here}.)
 
 I run it and here is a key for which 00/FF/8B bytes presence in decrypted buffer is maximal:
 
@@ -243,14 +243,14 @@ for c in tmp:
 fout.close()
 \end{lstlisting}
 
-(Source code can downloaded \href{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/simple_exec_crypto/files/decrypt2.py}{here}.)
+(Source code can be downloaded \href{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/simple_exec_crypto/files/decrypt2.py}{here}.)
 
 Let's check resulting file:
 
 \lstinputlisting{examples/simple_exec_crypto/objdump_result.txt}
 
 Yes, this is seems correctly disassembled piece of x86 code.
-The whole dectyped file can be downloaded \href{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/simple_exec_crypto/files/decrypted.bin}{here}.
+The whole decryped file can be downloaded \href{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/simple_exec_crypto/files/decrypted.bin}{here}.
 
 In fact, this is text section from regedit.exe from Windows 7.
 But this example is based on a real case I encountered, so just executable is different (and key), algorithm is the same.
